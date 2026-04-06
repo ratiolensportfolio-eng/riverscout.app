@@ -171,7 +171,6 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                     </div>
                     <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', fontWeight: 500, color: 'var(--rvdk)' }}>{out.n}</div>
                     <div style={{ fontSize: '11px', color: 'var(--tx2)', marginTop: '2px' }}>{out.d}</div>
-                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--rv)', marginTop: '3px' }}>{out.l}</div>
                   </div>
                 ))}
               </div>
@@ -406,7 +405,6 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                       <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', fontWeight: 500, color: 'var(--rvdk)' }}>{out.n}</div>
                       <div style={{ fontSize: '11px', color: 'var(--tx2)', marginTop: '1px' }}>{out.d}</div>
                     </div>
-                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--rv)' }}>{out.l}</div>
                   </div>
                 ))}
               </div>
