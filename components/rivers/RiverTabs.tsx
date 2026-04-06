@@ -4,7 +4,7 @@ import { useState } from 'react'
 import type { River, FlowData } from '@/types'
 import { formatCfs, trendArrow, celsiusToFahrenheit, isHypothermiaRisk } from '@/lib/usgs'
 
-const TABS = ['Overview', 'History', 'Trip Reports', 'Trip Planning', 'Documents'] as const
+const TABS = ['Overview', 'History', 'Trip Reports', 'Trip Planning', 'Maps & Guides', 'Documents'] as const
 type Tab = typeof TABS[number]
 
 const ERA_LABELS: Record<string, string> = {
@@ -409,6 +409,82 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                 ))}
               </div>
             )}
+          </div>
+        )}
+
+        {/* ── MAPS & GUIDES ──────────────────────────────────── */}
+        {tab === 'Maps & Guides' && (
+          <div>
+            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' }}>
+              Maps & Guides for {river.n}
+            </div>
+
+            {/* Featured map placeholder */}
+            <div style={{ border: '.5px solid var(--rvmd)', borderRadius: 'var(--rlg)', padding: '16px 18px', background: 'var(--rvlt)', marginBottom: '12px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                <div>
+                  <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--rv)', textTransform: 'uppercase', letterSpacing: '.7px', marginBottom: '4px' }}>
+                    Featured Map
+                  </div>
+                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '15px', fontWeight: 600, color: 'var(--rvdk)', marginBottom: '4px' }}>
+                    {river.n} — River Map & Guide
+                  </div>
+                  <div style={{ fontSize: '12px', color: 'var(--tx2)', lineHeight: 1.5, marginBottom: '8px' }}>
+                    Detailed put-in/take-out locations, rapid ratings, mile markers, camping, and access points.
+                  </div>
+                  <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>
+                    Waterproof · Double-sided · Updated {new Date().getFullYear()}
+                  </div>
+                </div>
+              </div>
+              <div style={{
+                marginTop: '12px', display: 'inline-block',
+                fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
+                padding: '8px 18px', borderRadius: 'var(--r)',
+                background: 'var(--rvdk)', color: '#fff', cursor: 'default',
+                opacity: 0.7,
+              }}>
+                Coming Soon
+              </div>
+            </div>
+
+            {/* Additional map slots */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+              <div style={{ border: '.5px solid var(--bd)', borderRadius: 'var(--r)', padding: '12px 14px', background: 'var(--bg2)' }}>
+                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '4px' }}>
+                  Topographic Map
+                </div>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 600, color: 'var(--tx)', marginBottom: '3px' }}>
+                  {river.co.split('/')[0].trim()} County Topo
+                </div>
+                <div style={{ fontSize: '11px', color: 'var(--tx2)', marginBottom: '8px' }}>
+                  USGS 7.5-minute quadrangle covering the river corridor
+                </div>
+                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>
+                  Coming Soon
+                </div>
+              </div>
+
+              <div style={{ border: '.5px solid var(--bd)', borderRadius: 'var(--r)', padding: '12px 14px', background: 'var(--bg2)' }}>
+                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '4px' }}>
+                  Guidebook
+                </div>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 600, color: 'var(--tx)', marginBottom: '3px' }}>
+                  {river.abbr} Paddling Guide
+                </div>
+                <div style={{ fontSize: '11px', color: 'var(--tx2)', marginBottom: '8px' }}>
+                  Comprehensive guidebook covering rivers in {river.abbr}
+                </div>
+                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>
+                  Coming Soon
+                </div>
+              </div>
+            </div>
+
+            {/* Affiliate notice */}
+            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginTop: '16px', lineHeight: 1.5, fontStyle: 'italic' }}>
+              Maps and guides are selected by RiverScout editors. Some links may earn a small commission that supports this site.
+            </div>
           </div>
         )}
 
