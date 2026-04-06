@@ -60,7 +60,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'pine_mi', n: 'Pine River', lp: true, up: false, wild: true, nat: true, ww: true,
-        co: 'Lake / Osceola Co.', len: '60 mi', cls: 'II–III', opt: '150–600',
+        co: 'Lake / Osceola Co.', len: '60 mi', cls: 'II–III', opt: '150–350',
         g: '04057510', avg: 248, histFlow: 230, mx: 238, my: 250, abbr: 'MI',
         desc: "Michigan's premier whitewater river — the Pine runs cold, clear, and fast through the Manistee National Forest. Designated Wild & Scenic in 1978 among the first eight rivers in the eastern U.S. to receive that honor. Crystal spring-fed water stays below 65°F year-round, supporting one of Michigan's finest wild brook trout populations.",
         desig: 'National Wild & Scenic River (1978) · Michigan Natural River',
@@ -209,7 +209,7 @@ export const STATES: StatesDB = {
     rivers: [
       {
         id: 'arkansas', n: 'Arkansas River', ww: true, wild: false, mtn: true, front: false,
-        co: 'Chaffee / Fremont Co.', len: '148 mi', cls: 'I–V', opt: '500–3000',
+        co: 'Chaffee / Fremont Co.', len: '148 mi', cls: 'I–V', opt: '700–3000',
         g: '07091200', avg: 1250, histFlow: 1100, mx: 380, my: 108, abbr: 'CO',
         desc: "America's most-rafted river. From the headwaters near Leadville the Arkansas drops 5,000 feet in 125 miles. Browns Canyon is Colorado's #1 Class III run; the Numbers push Class IV–V; Royal Gorge delivers Class V through thousand-foot walls.",
         desig: 'Browns Canyon National Monument · Gold Medal Fishery',
@@ -273,7 +273,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'glenwood', n: 'Colorado River — Glenwood Canyon', ww: true, wild: false, mtn: false, front: false,
-        co: 'Garfield Co.', len: '12 mi', cls: 'III–IV', opt: '3000–10000',
+        co: 'Garfield Co.', len: '12 mi', cls: 'III–IV', opt: '3000–8000',
         g: '09085000', avg: 6800, histFlow: 6200, mx: 340, my: 80, abbr: 'CO',
         desc: "Twelve miles of thundering Class III–IV through Glenwood Canyon — one of the most dramatically scenic river corridors in North America. Limestone walls rise 1,800 feet from the Colorado River as I-70 clings to the cliff faces above. The mandatory Shoshone hydraulic is the most powerful river feature on the Colorado. Best in May–June spring runoff.",
         desig: 'Glenwood Canyon Recreation Area · White River National Forest',
@@ -347,7 +347,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'mf_salmon', n: 'Middle Fork of the Salmon', ww: true, wild: true, remote: true, mtn: true,
-        co: 'Custer / Idaho Co.', len: '100 mi', cls: 'IV–V', opt: '2000–8000',
+        co: 'Custer / Idaho Co.', len: '100 mi', cls: 'IV–V', opt: '3000–8000',
         g: '13309000', avg: 2800, histFlow: 2550, mx: 290, my: 82, abbr: 'ID',
         desc: "The premier wilderness river trip in North America — 100 miles through the Frank Church-River of No Return Wilderness, the largest roadless area in the lower 48. Accessible only by float plane or a 28-mile trail. Begins at 6,000 feet elevation with Class IV–V whitewater and descends 3,000 feet through Impassable Canyon to join the Main Salmon. Grizzly bears, gray wolves, mountain goats, and Chinook salmon share the corridor.",
         desig: 'National Wild & Scenic River · Frank Church-River of No Return Wilderness · Float Plane Access Only',
@@ -388,7 +388,7 @@ export const STATES: StatesDB = {
     rivers: [
       {
         id: 'rogue', n: 'Rogue River', ww: true, wild: true, coastal: true, desert: false,
-        co: 'Jackson / Josephine / Curry Co.', len: '215 mi', cls: 'I–IV', opt: '1500–6000',
+        co: 'Jackson / Josephine / Curry Co.', len: '215 mi', cls: 'I–IV', opt: '1000–4000',
         g: '14361500', avg: 3200, histFlow: 2900, mx: 180, my: 125, abbr: 'OR',
         desc: "Oregon's most famous river — flows 215 miles from the Cascades to the Pacific. The Wild Rogue section (40 miles through Siskiyou National Forest, trail access only) is one of the finest multi-day wilderness floats in North America. Class III–IV whitewater, black bear, osprey, and remote hot springs.",
         desig: 'National Wild & Scenic River (1968, original) · Rogue River-Siskiyou National Forest',
@@ -793,7 +793,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'ocoee', n: 'Ocoee River', ww: true, wild: false, nat: false, appalachian: true,
-        co: 'Polk Co.', len: '8 mi', cls: 'III–IV', opt: '1200–2200',
+        co: 'Polk Co.', len: '8 mi', cls: 'III–IV', opt: '1200–1800',
         g: '03564500', avg: 1500, histFlow: 1350, mx: 548, my: 122, abbr: 'TN',
         desc: "Site of the 1996 Atlanta Olympics whitewater canoe/kayak events — the Ocoee is the most commercially rafted river in the South and the most technically consistent Class III–IV river in the Southeast. Dam-regulated flows from Ocoee No. 2 powerhouse create perfect year-round conditions. The 5-mile middle Ocoee section is a non-stop Class III–IV wave train through the Cherokee National Forest.",
         desig: 'Cherokee National Forest · 1996 Olympic Whitewater Venue · Tennessee Scenic River',
@@ -1199,7 +1199,7 @@ export const STATES: StatesDB = {
     rivers: [
       {
         id: 'grandcanyon', n: 'Colorado River — Grand Canyon', ww: true, wild: true, desert: true, canyon: true,
-        co: 'Coconino / Mohave Co.', len: '226 mi', cls: 'I–V', opt: '5000–25000',
+        co: 'Coconino / Mohave Co.', len: '226 mi', cls: 'I–V', opt: '8000–25000',
         g: '09380000', avg: 12000, histFlow: 10500, mx: 185, my: 72, abbr: 'AZ',
         desc: "The greatest river journey in North America — 226 miles through the Grand Canyon, one of the Seven Natural Wonders of the World. The Colorado cuts through 1.7 billion years of geological record. Lava Falls (Class V) drops 37 feet in 300 yards — the most famous single rapid in North America. Wait times for private permits now exceed 10–15 years.",
         desig: 'Grand Canyon National Park (UNESCO World Heritage) · National Wild & Scenic River',
@@ -1257,7 +1257,7 @@ export const STATES: StatesDB = {
     rivers: [
       {
         id: 'snake_wy', n: 'Snake River — Snake River Canyon', ww: true, wild: true, remote: false, fishing: true,
-        co: 'Teton Co.', len: '26 mi', cls: 'III–IV', opt: '5000–15000',
+        co: 'Teton Co.', len: '26 mi', cls: 'III–IV', opt: '4000–12000',
         g: '13022500', avg: 6800, histFlow: 6200, mx: 270, my: 155, abbr: 'WY',
         desc: "The Snake River through Alpine Canyon below Jackson Hole delivers the biggest whitewater in Wyoming — 26 miles of Class III–IV rapids framed by the Teton Range. Grand Teton National Park headwaters feed world-class Yellowstone cutthroat trout fishing alongside genuine big-water excitement. The canyon section from West Table Creek to Sheep Gulch packs eight named rapids into 8 miles.",
         desig: "Wild & Scenic Candidate · Grand Teton National Park",
@@ -2449,7 +2449,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'guadalupe', n: 'Guadalupe River', ww: true, scenic: true, desert: false, spring: true,
-        co: 'Comal / Kendall Co.', len: '230 mi', cls: 'I–III', opt: '200–2000',
+        co: 'Comal / Kendall Co.', len: '230 mi', cls: 'I–III', opt: '150–500',
         g: '08167500', avg: 680, histFlow: 612, mx: 430, my: 400, abbr: 'TX',
         desc: "The heart of Texas Hill Country — a spring-fed river flowing through limestone canyons, ancient cypress groves, and the self-proclaimed tubing capital of the world. Below Canyon Dam, the cold tailwater supports rainbow trout — the southernmost trout fishery in the central United States. Gruene and New Braunfels anchor a thriving river culture.",
         desig: 'Guadalupe River State Park · Texas Paddling Trail',
