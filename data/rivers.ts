@@ -257,7 +257,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'crystal', n: 'Crystal River', ww: true, wild: false, mtn: true, front: false,
-        co: 'Pitkin / Gunnison Co.', len: '40 mi', cls: 'II–IV', opt: '150–500',
+        co: 'Pitkin / Gunnison Co.', len: '40 mi', cls: 'II–IV', opt: '200–800',
         g: '09081600', avg: 185, histFlow: 160, mx: 355, my: 82, abbr: 'CO',
         desc: "A gem of the Elk Mountains — the Crystal River flows 40 miles from the Maroon Bells Wilderness through the Victorian coal town of Redstone and the marble quarry village of Marble to the Roaring Fork at Carbondale. Upper canyon delivers technical Class III–IV in a spectacular alpine gorge; lower river mellows through Elk Mountain scenery. Colorado's best-kept paddling secret.",
         desig: 'Wild & Scenic Study River · Gunnison National Forest · Marble Quarry National Historic District',
@@ -363,7 +363,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'hells_canyon', n: 'Snake River — Hells Canyon', ww: true, wild: true, remote: true, mtn: false,
-        co: 'Idaho / Oregon border, Adams / Wallowa Co.', len: '79 mi', cls: 'III–V', opt: '12000–40000',
+        co: 'Idaho / Oregon border, Adams / Wallowa Co.', len: '79 mi', cls: 'III–IV', opt: '8000–30000',
         g: '13290000', avg: 24000, histFlow: 21000, mx: 235, my: 95, abbr: 'ID',
         desc: "Hells Canyon is the deepest river gorge in North America — 7,993 feet from the Seven Devils peaks to the Snake River, deeper than the Grand Canyon. The 79-mile corridor along the Idaho-Oregon border has no road access for 68 miles. Class III–V whitewater, ancient Nez Perce pictographs, and North America's largest bighorn sheep population. Dam-controlled flows create year-round paddling.",
         desig: 'Hells Canyon National Recreation Area · National Wild & Scenic River · Deepest Gorge in North America',
@@ -436,7 +436,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'illinois_or', n: 'Illinois River', ww: true, wild: true, coastal: true, desert: false,
-        co: 'Josephine / Curry Co.', len: '56 mi', cls: 'IV–V', opt: '800–3000',
+        co: 'Josephine / Curry Co.', len: '56 mi', cls: 'III–IV', opt: '800–3000',
         g: '14377100', avg: 1400, histFlow: 1250, mx: 158, my: 133, abbr: 'OR',
         desc: "Oregon's most challenging multi-day wilderness float — 34 miles through the Siskiyou Mountains with no road access and no trail exits for 28 miles. The Illinois canyon contains some of the most botanically diverse terrain on earth, with rare serpentine plant communities found nowhere else. Class IV–V Preacher Falls, York Creek, and the Green Wall are Oregon benchmarks.",
         desig: "National Wild & Scenic River (1984) · Kalmiopsis Wilderness · Most Botanically Diverse River Canyon in North America",
@@ -612,7 +612,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'clarion', n: 'Clarion River', ww: false, wild: true, nat: true, scenic: true,
-        co: 'Clarion / Forest Co.', len: '120 mi', cls: 'I–III', opt: '400–2000',
+        co: 'Clarion / Forest Co.', len: '120 mi', cls: 'I–II', opt: '400–2000',
         g: '03031500', avg: 1200, histFlow: 1080, mx: 420, my: 70, abbr: 'PA',
         desc: "Pennsylvania's most beloved canoe river outside of the Delaware — 120 miles through the Allegheny National Forest with the Clarion River Gorge delivering Class I–III paddling through a remote hemlock and hardwood canyon. Designated a National Wild & Scenic River in 1996. Outstanding smallmouth bass fishing, multiple primitive campsites, and genuine Allegheny backcountry solitude.",
         desig: 'National Wild & Scenic River (1996) · Allegheny National Forest',
@@ -702,7 +702,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'missouri_mt', n: 'Missouri River — Upper Missouri Breaks', ww: false, wild: true, remote: true, fishing: false,
-        co: 'Chouteau / Blaine / Phillips Co.', len: '149 mi', cls: 'I', opt: '5000–20000',
+        co: 'Chouteau / Blaine / Phillips Co.', len: '149 mi', cls: 'I', opt: '5000–15000',
         g: '06054500', avg: 9200, histFlow: 8500, mx: 378, my: 38, abbr: 'MT',
         desc: "The most historically significant float in North America — Lewis and Clark paddled these exact 149 miles through the Upper Missouri Breaks in May 1805. The river flows through one of the largest remaining areas of shortgrass prairie wilderness in the world, past white sandstone formations, pronghorn antelope, bighorn sheep, and bald eagles. Changed almost nothing in 220 years.",
         desig: 'Upper Missouri River Breaks National Monument · National Wild & Scenic River · Lewis & Clark National Historic Trail',
@@ -718,7 +718,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'stillwater', n: 'Stillwater River', ww: true, wild: false, remote: false, fishing: true,
-        co: 'Stillwater / Park Co.', len: '80 mi', cls: 'II–IV', opt: '800–3500',
+        co: 'Stillwater / Park Co.', len: '80 mi', cls: 'II–III', opt: '800–3500',
         g: '06209500', avg: 1400, histFlow: 1280, mx: 382, my: 92, abbr: 'MT',
         desc: "Drains the Beartooth Mountains (one of the highest mountain ranges in the U.S.) through the Absaroka-Beartooth Wilderness to Columbus. The upper river through the Beartooth canyon delivers Class III–IV whitewater in a spectacular alpine gorge; the lower river is a blue-ribbon trout stream in classic Paradise Valley-adjacent scenery. World-class fly fishing for brown and rainbow trout.",
         desig: 'Absaroka-Beartooth Wilderness (headwaters) · Montana Blue-Ribbon Trout Stream',
@@ -793,7 +793,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'ocoee', n: 'Ocoee River', ww: true, wild: false, nat: false, appalachian: true,
-        co: 'Polk Co.', len: '8 mi', cls: 'III–IV', opt: '1200–1800',
+        co: 'Polk Co.', len: '8 mi', cls: 'III–IV', opt: '1200–2500',
         g: '03564500', avg: 1500, histFlow: 1350, mx: 548, my: 122, abbr: 'TN',
         desc: "Site of the 1996 Atlanta Olympics whitewater canoe/kayak events — the Ocoee is the most commercially rafted river in the South and the most technically consistent Class III–IV river in the Southeast. Dam-regulated flows from Ocoee No. 2 powerhouse create perfect year-round conditions. The 5-mile middle Ocoee section is a non-stop Class III–IV wave train through the Cherokee National Forest.",
         desig: 'Cherokee National Forest · 1996 Olympic Whitewater Venue · Tennessee Scenic River',
@@ -943,7 +943,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'shenandoah', n: 'Shenandoah River', ww: false, wild: true, appalachian: true, piedmont: false,
-        co: 'Shenandoah / Page / Warren Co.', len: '286 mi', cls: 'I–II', opt: '500–4000',
+        co: 'Shenandoah / Page / Warren Co.', len: '286 mi', cls: 'I–III', opt: '500–4000',
         g: '01636500', avg: 2100, histFlow: 1950, mx: 330, my: 70, abbr: 'VA',
         desc: "One of the most beloved canoe rivers in the eastern United States — flows through the Shenandoah Valley between the Blue Ridge and Allegheny Mountains in a series of long, gliding pools and Class I–III ledge rapids. Harpers Ferry confluence with the Potomac is one of the most historically significant river junctions in America.",
         desig: 'Virginia Scenic River · Shenandoah River State Park',
@@ -960,7 +960,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'rappahannock', n: 'Rappahannock River', ww: true, wild: true, appalachian: false, piedmont: true,
-        co: 'Rappahannock / Culpeper / Spotsylvania Co.', len: '195 mi', cls: 'I–IV', opt: '600–3500',
+        co: 'Rappahannock / Culpeper / Spotsylvania Co.', len: '195 mi', cls: 'I–III', opt: '600–3500',
         g: '01668000', avg: 1800, histFlow: 1650, mx: 460, my: 88, abbr: 'VA',
         desc: "One of the last great undammed rivers in the eastern United States — flows 195 miles from the Blue Ridge to the Chesapeake Bay without a single major dam on its main stem. The Rappahannock rapids at Fredericksburg are a natural Class II–III waterfall in the heart of the city.",
         desig: 'Virginia Scenic River · Last Undammed Eastern Coastal Plain River',
@@ -976,7 +976,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'newriver_va', n: 'New River — Virginia', ww: true, wild: true, appalachian: true, piedmont: false,
-        co: 'Giles / Pulaski / Carroll Co.', len: '162 mi', cls: 'I–IV', opt: '1500–6000',
+        co: 'Giles / Pulaski / Carroll Co.', len: '162 mi', cls: 'I–III', opt: '1500–6000',
         g: '03168000', avg: 3400, histFlow: 3100, mx: 382, my: 100, abbr: 'VA',
         desc: "One of the oldest rivers in the world — the New River predates the Appalachian Mountains and flows northward through the ridges it carved 65+ million years ago. In Virginia the river delivers Class III–IV Breaks Interstate Park whitewater and the famous Narrows of Virginia, before crossing into West Virginia and becoming America's newest national park. Extraordinary fly fishing.",
         desig: 'Virginia Scenic River · New River Trail State Park (57-mile rail-trail) · Part of New River Gorge NP complex',
@@ -992,7 +992,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'russell_fork', n: 'Russell Fork', ww: true, wild: false, appalachian: true, piedmont: false,
-        co: 'Dickenson Co., VA / Pike Co., KY', len: '15 mi', cls: 'IV–V+', opt: '1000–3000',
+        co: 'Dickenson Co., VA / Pike Co., KY', len: '15 mi', cls: 'IV–V+', opt: '800–1500',
         g: '03208500', avg: 900, histFlow: 820, mx: 455, my: 110, abbr: 'VA',
         desc: "The most extreme commercially-accessible whitewater in the eastern United States — the Russell Fork's Breaks Canyon section drops through a 1,000-foot gorge at the Virginia-Kentucky border with Class IV–V+ rapids including El Horendo, Triple Drop, and Tower Falls. Best on fall dam releases from Pound Reservoir. The Breaks Interstate Park canyon is the deepest canyon east of the Mississippi.",
         desig: 'Breaks Interstate Park (VA/KY) · The Grand Canyon of the South · Deepest Canyon East of the Mississippi',
@@ -1050,7 +1050,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'green_river', n: 'Green River', ww: false, wild: false, scenic: true, cave: true,
-        co: 'Hart / Edmonson / Butler Co.', len: '384 mi', cls: 'I–II', opt: '500–3000',
+        co: 'Hart / Edmonson / Butler Co.', len: '384 mi', cls: 'I–II', opt: '300–1200',
         g: '03308500', avg: 1850, histFlow: 1700, mx: 290, my: 118, abbr: 'KY',
         desc: "Kentucky's longest river at 384 miles — flows through the heart of Mammoth Cave National Park in one of the most geologically extraordinary landscapes on earth. A 25-mile wilderness canoe route through Mammoth Cave NP is one of the most unique paddling experiences in America — floating above the world's longest known cave system.",
         desig: 'Mammoth Cave National Park · UNESCO World Heritage Site · International Biosphere Reserve',
@@ -1142,7 +1142,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'french_broad', n: 'French Broad River', ww: false, wild: false, appalachian: true, piedmont: false,
-        co: 'Henderson / Buncombe / Madison Co.', len: '210 mi', cls: 'I–III', opt: '800–4000',
+        co: 'Henderson / Buncombe / Madison Co.', len: '210 mi', cls: 'I–IV', opt: '800–4000',
         g: '03451500', avg: 2100, histFlow: 1900, mx: 290, my: 100, abbr: 'NC',
         desc: "One of the oldest rivers in the world — geologists believe the French Broad predates the Blue Ridge Mountains and carved its path through the rising Appalachians over millions of years. Flows 210 miles from headwaters near Brevard through Asheville and into Tennessee. Hot Springs NC — where hot springs meet the river — is one of the most beloved paddling destinations in the Southeast.",
         desig: 'North Carolina Scenic River · Appalachian Trail crosses at Hot Springs',
@@ -1174,7 +1174,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'watauga', n: 'Watauga River', ww: true, wild: false, appalachian: true, piedmont: false,
-        co: 'Watauga / Avery Co.', len: '60 mi', cls: 'II–IV', opt: '300–1200',
+        co: 'Watauga / Avery Co.', len: '60 mi', cls: 'II–IV', opt: '200–800',
         g: '03468000', avg: 520, histFlow: 475, mx: 350, my: 100, abbr: 'NC',
         desc: "Flows from the High Country of the Blue Ridge near Boone through the Tennessee Valley Divide in a series of gorges and waterfalls. The Watauga Gorge delivers Class III–IV whitewater through one of the most dramatic high-country canyons in North Carolina. Dam releases from Watauga Lake (TVA) provide consistent flows. Best spring through early summer.",
         desig: 'Watauga County State Natural Area (gorge section)',
@@ -1273,7 +1273,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'green_wy', n: 'Green River — Flaming Gorge', ww: false, wild: false, remote: true, fishing: true,
-        co: 'Sweetwater Co.', len: '40 mi', cls: 'I–III', opt: '800–3500',
+        co: 'Sweetwater Co.', len: '40 mi', cls: 'I–II', opt: '800–3500',
         g: '09217000', avg: 1800, histFlow: 1600, mx: 255, my: 185, abbr: 'WY',
         desc: "Below Flaming Gorge Dam the Green River carves through Red Canyon — 1,500-foot red rock walls sheltering one of the finest trout tailwaters in the American West. The cold, clear dam releases maintain year-round flows ideal for trophy brown and rainbow trout. Forty miles of Class I–III water through the Flaming Gorge National Recreation Area.",
         desig: "Flaming Gorge National Recreation Area · Ashley National Forest",
@@ -1330,7 +1330,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'san_juan', n: 'San Juan River', ww: true, wild: false, desert: true, canyon: true,
-        co: 'San Juan Co.', len: '84 mi', cls: 'II–III', opt: '500–5000',
+        co: 'San Juan Co.', len: '84 mi', cls: 'II', opt: '1000–4000',
         g: '09379500', avg: 2200, histFlow: 1950, mx: 215, my: 285, abbr: 'UT',
         desc: "The San Juan River from Mexican Hat to Clay Hills winds 84 miles through Monument Valley country — a river of deep geological time. The Honaker Trail formation exposes 300 million years of Earth history in the canyon walls. Ancestral Puebloan ruins, petroglyphs, and granaries appear at nearly every bend. The Goosenecks of the San Juan — where the river meanders 5 miles to travel 1 mile of distance — are among the most photographed geological features in the Southwest.",
         desig: "BLM San Juan River Recreation Area",
@@ -1387,7 +1387,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'rio_chama', n: 'Rio Chama', ww: true, wild: true, desert: true, canyon: false,
-        co: 'Rio Arriba Co.', len: '33 mi', cls: 'II–III', opt: '300–2000',
+        co: 'Rio Arriba Co.', len: '33 mi', cls: 'II', opt: '300–1500',
         g: '08284100', avg: 580, histFlow: 520, mx: 258, my: 355, abbr: 'NM',
         desc: "Thirty-three miles of Wild & Scenic wilderness float through Georgia O'Keeffe country — the Rio Chama canyon is a living painting of red, yellow, and white sedimentary walls that inspired decades of O'Keeffe's most iconic work. Class II–III whitewater through the Santa Fe National Forest with no roads, no development, and canyon walls that shift color with every hour of light.",
         desig: "National Wild & Scenic River · Santa Fe National Forest",
@@ -1617,7 +1617,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'chattahoochee', n: 'Chattahoochee River — Metro Atlanta', ww: false, wild: false, piedmont: true, appalachian: false,
-        co: 'Fulton / Cobb Co.', len: '48 mi', cls: 'I–III', opt: '800–4000',
+        co: 'Fulton / Cobb Co.', len: '48 mi', cls: 'I–II', opt: '750–2500',
         g: '02336000', avg: 2400, histFlow: 2200, mx: 720, my: 390, abbr: 'GA',
         desc: "Urban river through Atlanta's Chattahoochee River National Recreation Area — 48 miles of NPS-managed parkland through the heart of metro Atlanta. The most accessible paddling in the Southeast's largest city.",
         desig: 'Chattahoochee River NRA (NPS), Georgia Scenic River',
@@ -1632,7 +1632,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'toccoa', n: 'Toccoa River', ww: true, wild: false, piedmont: false, appalachian: true,
-        co: 'Fannin Co.', len: '30 mi', cls: 'I–III', opt: '300–1500',
+        co: 'Fannin Co.', len: '30 mi', cls: 'I–II', opt: '300–1200',
         g: '02392000', avg: 680, histFlow: 620, mx: 720, my: 390, abbr: 'GA',
         desc: "Blue Ridge mountains gem — the Toccoa River flows through Chattahoochee National Forest as a TVA tailwater from Blue Ridge Dam. Excellent trout fishing in cold, clear water with Class I–III rapids through Appalachian forest.",
         desig: 'Chattahoochee National Forest, Georgia Scenic River',
@@ -2352,7 +2352,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'saluda', n: 'Saluda River', ww: true, scenic: true, piedmont: true, lowcountry: false,
-        co: 'Richland / Lexington Co.', len: '10 mi', cls: 'II–IV', opt: '600–2500',
+        co: 'Richland / Lexington Co.', len: '10 mi', cls: 'I–III', opt: '600–2500',
         g: '02169000', avg: 1400, histFlow: 1260, mx: 730, my: 370, abbr: 'SC',
         desc: "Dam-release urban whitewater through the heart of Columbia — the Saluda delivers Class II–IV rapids minutes from the State House. Lake Murray Dam releases create reliable flows through a surprisingly wild corridor between the capital city's neighborhoods.",
         desig: 'Saluda Riverwalk · Three Rivers Greenway',
@@ -2393,7 +2393,7 @@ export const STATES: StatesDB = {
     rivers: [
       {
         id: 'niobrara', n: 'Niobrara River', scenic: true, prairie: true, sandhills: true, fishing: true,
-        co: 'Cherry / Keya Paha Co.', len: '76 mi', cls: 'I–III', opt: '600–2500',
+        co: 'Cherry / Keya Paha Co.', len: '76 mi', cls: 'I–II', opt: '300–1500',
         g: '06461500', avg: 1200, histFlow: 1080, mx: 405, my: 200, abbr: 'NE',
         desc: "Nebraska's crown jewel — a National Scenic River carving through the Sandhills with over 200 waterfalls and springs feeding the main stem. Fossil beds dating back 10 million years line the canyon walls. One of the most biodiverse river corridors on the Great Plains.",
         desig: 'National Scenic River (1991)',
@@ -2617,7 +2617,7 @@ export const STATES: StatesDB = {
     rivers: [
       {
         id: 'illinois_ok', n: 'Illinois River', ww: true, scenic: true, ozark: true, prairie: false,
-        co: 'Cherokee / Sequoyah Co.', len: '70 mi', cls: 'I–III', opt: '400–3000',
+        co: 'Cherokee / Sequoyah Co.', len: '70 mi', cls: 'I–II', opt: '400–2000',
         g: '07196500', avg: 1100, histFlow: 990, mx: 435, my: 320, abbr: 'OK',
         desc: "Oklahoma's most popular canoe river — 70 miles of Ozark foothill water flowing through Cherokee Nation territory. The Illinois draws over 300,000 paddlers annually, making it the most-visited river in the state. Class I–III rapids through limestone bluffs and hardwood forest.",
         desig: "Oklahoma Scenic Rivers Act (1977) — Oklahoma's first designated Scenic River",
@@ -2673,7 +2673,7 @@ export const STATES: StatesDB = {
     rivers: [
       {
         id: 'big_bend', n: 'Rio Grande — Big Bend', ww: true, scenic: true, desert: true, spring: false,
-        co: 'Brewster Co.', len: '118 mi', cls: 'II–IV', opt: '300–3000',
+        co: 'Brewster Co.', len: '118 mi', cls: 'II–III', opt: '300–2000',
         g: '08374200', avg: 420, histFlow: 378, mx: 430, my: 400, abbr: 'TX',
         desc: "The Rio Grande through Big Bend National Park — 118 miles of desert canyon paddling along the U.S.–Mexico border. Santa Elena Canyon rises 1,500 feet from the river in sheer limestone walls. Mariscal Canyon is even more remote. One of the great multi-day desert river expeditions in North America.",
         desig: 'Big Bend National Park · Rio Grande Wild & Scenic River',
@@ -2719,7 +2719,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'guadalupe', n: 'Guadalupe River', ww: true, scenic: true, desert: false, spring: true,
-        co: 'Comal / Kendall Co.', len: '230 mi', cls: 'I–III', opt: '150–500',
+        co: 'Comal / Kendall Co.', len: '230 mi', cls: 'I–II', opt: '150–500',
         g: '08167500', avg: 680, histFlow: 612, mx: 430, my: 400, abbr: 'TX',
         desc: "The heart of Texas Hill Country — a spring-fed river flowing through limestone canyons, ancient cypress groves, and the self-proclaimed tubing capital of the world. Below Canyon Dam, the cold tailwater supports rainbow trout — the southernmost trout fishery in the central United States. Gruene and New Braunfels anchor a thriving river culture.",
         desig: 'Guadalupe River State Park · Texas Paddling Trail',
@@ -3361,7 +3361,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'savage', n: 'Savage River', ww: true, scenic: false,
-        co: 'Garrett Co.', len: '27 mi', cls: 'IV–V', opt: '300–1200',
+        co: 'Garrett Co.', len: '27 mi', cls: 'IV–V', opt: '350–800',
         g: '01596500', avg: 180, histFlow: 160, mx: 780, my: 265, abbr: 'MD',
         desc: "Site of the 1989 ICF Whitewater World Championships — the only time the Worlds have been held on a natural river channel in the United States. The Savage River delivers 5 miles of continuous expert Class IV–V whitewater through a remote Appalachian gorge in Garrett County, with dam releases from Savage River Reservoir providing scheduled flows.",
         desig: 'Savage River State Forest · Maryland Wild River',
