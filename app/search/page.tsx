@@ -19,8 +19,8 @@ export default function SearchPage() {
 
       const matchesFilter =
         filter === 'all' ||
-        (filter === 'ww' && r.ww) ||
-        (filter === 'wild' && r.wild)
+        (filter === 'ww' && (r as Record<string, unknown>)['ww']) ||
+        (filter === 'wild' && (r as Record<string, unknown>)['wild'])
 
       return matchesQuery && matchesFilter
     })
@@ -86,7 +86,7 @@ export default function SearchPage() {
                     Class {river.cls}
                   </span>
                   <span style={{ fontSize: '9px', fontFamily: "'IBM Plex Mono', monospace", color: 'var(--tx3)' }}>{river.len}</span>
-                  {river.wild && <span style={{ fontSize: '9px', fontFamily: "'IBM Plex Mono', monospace", padding: '2px 5px', borderRadius: '3px', background: '#EAF3DE', color: '#3B6D11' }}>Wild & Scenic</span>}
+                  {!!(river as Record<string, unknown>)['wild'] && <span style={{ fontSize: '9px', fontFamily: "'IBM Plex Mono', monospace", padding: '2px 5px', borderRadius: '3px', background: '#EAF3DE', color: '#3B6D11' }}>Wild & Scenic</span>}
                 </div>
               </div>
             </div>
