@@ -40,7 +40,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Reconnaissance of the Manistee River', s: 'USGS', y: 1968, tp: 'Survey', pg: 42 }, { t: 'Manistee River Watershed Assessment', s: 'MDEQ', y: 2012, tp: 'Ecology', pg: 178 }],
         revs: [{ u: 'chris_upmich', d: 'Sep 2024', s: 5, t: 'Three-day float from Mesick to Tippy. Best Michigan trip in 20 years. Clear at 650 cfs, incredible fall color.' }, { u: 'salmoncreek99', d: 'Oct 2024', s: 4, t: 'Below Tippy at 900 cfs — king salmon stacking. Epic.' }],
-        outs: [{ n: 'Pine River Paddlesports Center', d: 'Lower Manistee trips and rentals', l: 'pineriverpaddlesports.com' }],
+        outs: [{ n: 'Pine River Paddlesports Center', d: 'Lower Manistee trips and rentals', l: 'thepineriver.com' }],
       },
       {
         id: 'muskegon', n: 'Muskegon River', lp: true, up: false, wild: false, nat: false, ww: false,
@@ -87,7 +87,7 @@ export const STATES: StatesDB = {
           { u: 'familyfloat_mi', d: 'Aug 2024', s: 4, t: "Low Bridge to Peterson with the kids at 200 cfs. Mild enough for beginners, beautiful forest canopy the whole way. One Class II rapid that woke everyone up." },
         ],
         outs: [
-          { n: 'Pine River Paddlesports Center', d: 'Full-service outfitter, shuttles, gear, camping', l: 'pineriverpaddlesports.com' },
+          { n: 'Pine River Paddlesports Center', d: 'Full-service outfitter, shuttles, gear, camping', l: 'thepineriver.com' },
           { n: 'Horina Canoe & Kayak Rental', d: 'Budget-friendly rentals, multiple access points', l: 'horinacanoe.com' },
         ],
       },
