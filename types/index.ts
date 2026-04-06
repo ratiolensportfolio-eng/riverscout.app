@@ -20,6 +20,7 @@ export interface RiverDoc {
   y: number   // year
   tp: string  // type
   pg: number  // pages
+  url?: string // link to document (optional)
 }
 
 export interface Review {

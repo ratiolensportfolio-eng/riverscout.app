@@ -496,21 +496,35 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                 <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px' }}>
                   {river.docs.length} document{river.docs.length !== 1 ? 's' : ''}
                 </div>
-                {river.docs.map((doc, i) => (
-                  <div key={i} style={{ padding: '10px 12px', background: 'var(--bg2)', borderRadius: 'var(--r)', marginBottom: '8px', border: '.5px solid var(--bd)' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '4px' }}>
-                      <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 600, color: 'var(--tx)', flex: 1, marginRight: '8px' }}>
-                        {doc.t}
+                {river.docs.map((doc, i) => {
+                  const inner = (
+                    <>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '4px' }}>
+                        <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 600, color: doc.url ? 'var(--rvdk)' : 'var(--tx)', flex: 1, marginRight: '8px' }}>
+                          {doc.t}
+                          {doc.url && <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--rv)', marginLeft: '6px' }}>↗</span>}
+                        </div>
+                        <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', padding: '2px 6px', borderRadius: '3px', background: 'var(--rvlt)', color: 'var(--rvdk)', flexShrink: 0 }}>
+                          {doc.tp}
+                        </span>
                       </div>
-                      <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', padding: '2px 6px', borderRadius: '3px', background: 'var(--rvlt)', color: 'var(--rvdk)', flexShrink: 0 }}>
-                        {doc.tp}
-                      </span>
+                      <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)' }}>
+                        {doc.s} · {doc.y} · {doc.pg} pages
+                      </div>
+                    </>
+                  )
+                  return doc.url ? (
+                    <a key={i} href={doc.url.startsWith('http') ? doc.url : `https://${doc.url}`} target="_blank" rel="noopener noreferrer"
+                      style={{ display: 'block', padding: '10px 12px', background: 'var(--bg2)', borderRadius: 'var(--r)', marginBottom: '8px', border: '.5px solid var(--bd)', textDecoration: 'none', color: 'inherit', transition: 'border-color .15s', }}
+                      onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--rvmd)')}
+                      onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--bd)')}
+                    >{inner}</a>
+                  ) : (
+                    <div key={i} style={{ padding: '10px 12px', background: 'var(--bg2)', borderRadius: 'var(--r)', marginBottom: '8px', border: '.5px solid var(--bd)' }}>
+                      {inner}
                     </div>
-                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)' }}>
-                      {doc.s} · {doc.y} · {doc.pg} pages
-                    </div>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
             ) : (
               <EmptyState icon="📄" label="No documents on file" sub="Permit forms, maps, and guides for this river will appear here." />
