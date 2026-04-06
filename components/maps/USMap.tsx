@@ -6,315 +6,300 @@ import { STATES } from '@/data/rivers'
 
 const LIVE_STATES = new Set(Object.keys(STATES))
 
-// Multi-part states map to a single state key
 function toKey(id: string): string {
-  const map: Record<string, string> = {
-    'MI-lp': 'mi',
-    'MI-up': 'mi',
-  }
+  const map: Record<string, string> = { 'MI-lp': 'mi', 'MI-up': 'mi' }
   return map[id] ?? id.toLowerCase()
 }
 
-interface Tooltip {
-  x: number
-  y: number
-  name: string
-  count: number
-  live: boolean
-}
+interface Tooltip { x: number; y: number; name: string; count: number; live: boolean }
 
 export default function USMap() {
   const router = useRouter()
   const [tooltip, setTooltip] = useState<Tooltip | null>(null)
   const [hovered, setHovered] = useState<string | null>(null)
 
-  function handleClick(id: string) {
+  const onClick = (id: string) => {
     const key = toKey(id)
     if (LIVE_STATES.has(key)) router.push(`/state/${key}`)
   }
 
-  function handleEnter(e: React.MouseEvent<SVGElement>, id: string, name: string) {
+  const onEnter = (e: React.MouseEvent<SVGPathElement>, id: string, name: string) => {
     const key = toKey(id)
     const live = LIVE_STATES.has(key)
     const count = live ? (STATES[key]?.rivers.length ?? 0) : 0
-    const svgRect = e.currentTarget.closest('svg')!.getBoundingClientRect()
-    setTooltip({ x: e.clientX - svgRect.left, y: e.clientY - svgRect.top - 14, name, count, live })
+    const r = e.currentTarget.closest('svg')!.getBoundingClientRect()
+    setTooltip({ x: e.clientX - r.left, y: e.clientY - r.top - 16, name, count, live })
     setHovered(id)
   }
 
-  function handleLeave() {
-    setTooltip(null)
-    setHovered(null)
+  const onMove = (e: React.MouseEvent<SVGPathElement>) => {
+    const r = e.currentTarget.closest('svg')?.getBoundingClientRect()
+    if (r) setTooltip(t => t ? { ...t, x: e.clientX - r.left, y: e.clientY - r.top - 16 } : null)
   }
 
-  function handleMove(e: React.MouseEvent<SVGElement>) {
-    const svgRect = e.currentTarget.closest('svg')?.getBoundingClientRect()
-    if (svgRect) setTooltip(t => t ? { ...t, x: e.clientX - svgRect.left, y: e.clientY - svgRect.top - 14 } : null)
-  }
-
-  // Shared pointer events
-  const events = (id: string, name: string) => ({
-    onMouseEnter: (e: React.MouseEvent<SVGPathElement>) => handleEnter(e, id, name),
-    onMouseLeave: handleLeave,
-    onMouseMove: (e: React.MouseEvent<SVGPathElement>) => handleMove(e),
-    onClick: () => handleClick(id),
+  const ev = (id: string, name: string) => ({
+    onMouseEnter: (e: React.MouseEvent<SVGPathElement>) => onEnter(e, id, name),
+    onMouseLeave: () => { setTooltip(null); setHovered(null) },
+    onMouseMove: onMove,
+    onClick: () => onClick(id),
   })
 
-  function liveFill(id: string) {
-    if (hovered === id) return 'url(#fill-live-hover)'
-    return 'url(#fill-live)'
+  // Live state path rendering
+  const lp = (id: string, name: string, d: string) => {
+    const h = hovered === id
+    return (
+      <path key={id} id={id} d={d}
+        fill={h ? '#4db896' : '#92c5de'}
+        stroke={h ? 'rgba(255,255,255,1)' : 'rgba(255,255,255,0.8)'}
+        strokeWidth={h ? 1.4 : 0.8}
+        cursor="pointer"
+        style={{ transition: 'fill .14s, filter .14s', filter: h ? 'drop-shadow(0 2px 6px rgba(0,80,50,.4))' : 'none' }}
+        {...ev(id, name)}
+      />
+    )
   }
 
-  function soonFill(id: string) {
-    if (hovered === id) return '#c8c4bc'
-    return '#d4d0c8'
+  // Coming-soon path rendering
+  const sp = (id: string, name: string, d: string) => {
+    const h = hovered === id
+    return (
+      <path key={id} id={id} d={d}
+        fill={h ? '#c4c0b8' : '#d8d4cc'}
+        stroke="rgba(255,255,255,0.6)"
+        strokeWidth={0.55}
+        cursor="default"
+        style={{ transition: 'fill .1s' }}
+        {...ev(id, name)}
+      />
+    )
   }
-
-  function liveStroke(id: string) {
-    return hovered === id ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.75)'
-  }
-
-  function liveStrokeW(id: string) {
-    return hovered === id ? 1.2 : 0.7
-  }
-
-  function liveCursor(id: string) {
-    return LIVE_STATES.has(toKey(id)) ? 'pointer' : 'default'
-  }
-
-  const lp = (id: string, name: string, d: string) => (
-    <path
-      key={id}
-      id={id}
-      d={d}
-      fill={liveFill(id)}
-      stroke={liveStroke(id)}
-      strokeWidth={liveStrokeW(id)}
-      cursor={liveCursor(id)}
-      style={{ transition: 'fill .15s, stroke .15s, filter .15s', filter: hovered === id ? 'drop-shadow(0 1px 4px rgba(0,80,60,.35))' : 'none' }}
-      {...events(id, name)}
-    />
-  )
-
-  const sp = (id: string, name: string, d: string) => (
-    <path
-      key={id}
-      id={id}
-      d={d}
-      fill={soonFill(id)}
-      stroke="rgba(255,255,255,0.65)"
-      strokeWidth={hovered === id ? 0.9 : 0.55}
-      cursor="default"
-      style={{ transition: 'fill .12s' }}
-      {...events(id, name)}
-    />
-  )
 
   const pulse = (cx: number, cy: number, dur: string) => (
-    <g key={`pulse-${cx}-${cy}`} style={{ pointerEvents: 'none' }}>
+    <g key={`p${cx}${cy}`} style={{ pointerEvents: 'none' }}>
       <circle cx={cx} cy={cy} r={3.5} fill="#1db971" opacity={0.95} />
-      <circle cx={cx} cy={cy} r={3.5} fill="#1db971" opacity={0.4}>
+      <circle cx={cx} cy={cy} r={3.5} fill="#1db971" opacity={0.38}>
         <animate attributeName="r" from="3.5" to="10" dur={dur} repeatCount="indefinite" />
-        <animate attributeName="opacity" from="0.4" to="0" dur={dur} repeatCount="indefinite" />
+        <animate attributeName="opacity" from="0.38" to="0" dur={dur} repeatCount="indefinite" />
       </circle>
     </g>
   )
 
   const lbl = (x: number, y: number, text: string) => (
-    <text key={`lbl-${text}`} x={x} y={y} fontFamily="IBM Plex Mono,monospace" fontSize={7.5}
-      fill="#0a3558" fontWeight="600" textAnchor="middle" pointerEvents="none"
-      style={{ textShadow: '0 0 4px rgba(255,255,255,0.6)', userSelect: 'none' }}>
+    <text key={`l${text}`} x={x} y={y}
+      fontFamily="IBM Plex Mono,monospace" fontSize={7} fontWeight="700"
+      fill="#08385a" textAnchor="middle" pointerEvents="none"
+      style={{ userSelect: 'none' }}>
       {text}
     </text>
   )
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-      <svg
-        viewBox="0 0 960 530"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ width: '100%', height: '100%', display: 'block', borderRadius: '8px', boxShadow: '0 4px 24px rgba(0,0,0,.18)' }}
-      >
+      <svg viewBox="0 0 960 530" xmlns="http://www.w3.org/2000/svg"
+        style={{ width: '100%', height: '100%', display: 'block', borderRadius: '10px', boxShadow: '0 6px 32px rgba(0,0,0,.22)' }}>
         <defs>
-          {/* Ocean background gradient */}
-          <radialGradient id="ocean-grad" cx="50%" cy="50%" r="65%">
-            <stop offset="0%" stopColor="#3a7ca5" />
-            <stop offset="100%" stopColor="#1a3f5c" />
+          <radialGradient id="ocean" cx="50%" cy="45%" r="60%">
+            <stop offset="0%" stopColor="#2e6a9a" />
+            <stop offset="100%" stopColor="#152d42" />
           </radialGradient>
-
-          {/* Live state fill gradient — calm blue */}
-          <linearGradient id="fill-live" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#a8d4ec" />
-            <stop offset="100%" stopColor="#7eb8d8" />
-          </linearGradient>
-
-          {/* Live state hover fill — teal */}
-          <linearGradient id="fill-live-hover" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#5dcaa5" />
-            <stop offset="100%" stopColor="#3daa88" />
-          </linearGradient>
-
-          {/* Subtle land texture for non-state fill */}
-          <pattern id="land-texture" patternUnits="userSpaceOnUse" width="4" height="4">
-            <rect width="4" height="4" fill="#cbc8c0" />
-            <rect width="2" height="2" fill="#c8c5bd" />
+          {/* Subtle land texture between states */}
+          <pattern id="hatching" patternUnits="userSpaceOnUse" width="3" height="3" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="3" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
           </pattern>
         </defs>
 
-        {/* Ocean background */}
-        <rect width="960" height="530" rx="8" fill="url(#ocean-grad)" />
-
-        {/* Subtle ocean shimmer lines */}
-        {[60, 110, 160, 210, 260, 310, 360, 410, 460].map(y => (
-          <line key={y} x1="0" y1={y} x2="960" y2={y} stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+        {/* Ocean */}
+        <rect width="960" height="530" rx="10" fill="url(#ocean)" />
+        {/* Very subtle latitude lines */}
+        {[100, 160, 220, 280, 340, 400, 460].map(y => (
+          <line key={y} x1="20" y1={y} x2="940" y2={y} stroke="rgba(255,255,255,0.035)" strokeWidth="1" />
         ))}
 
-        {/* ── LIVE STATES ─────────────────────────────── */}
-        {lp('WA', 'Washington',   'M92,48 L200,40 L210,74 L196,88 L170,94 L130,102 L100,102 L86,88 Z')}
-        {lp('OR', 'Oregon',       'M86,88 L130,102 L170,94 L196,88 L200,136 L174,148 L136,154 L86,154 L78,134 Z')}
-        {lp('CA', 'California',   'M78,154 L136,154 L150,192 L148,252 L128,300 L96,320 L68,300 L58,262 L64,204 Z')}
-        {lp('ID', 'Idaho',        'M200,40 L258,38 L264,84 L248,124 L218,132 L196,122 L196,88 L210,74 Z')}
-        {lp('MT', 'Montana',      'M200,40 L366,36 L372,90 L338,94 L298,90 L264,84 L258,38 Z')}
-        {lp('CO', 'Colorado',     'M262,142 L342,138 L348,196 L262,198 Z')}
-        {lp('AZ', 'Arizona',      'M148,210 L206,224 L228,198 L232,250 L172,264 L138,254 Z')}
-        {lp('MI-lp', 'Michigan',  'M551,120 L564,116 L578,114 L594,116 L608,124 L616,136 L614,152 L606,162 L594,168 L580,172 L566,172 L555,166 L548,154 L548,140 Z')}
-        {lp('MI-up', 'Michigan',  'M516,90 L538,84 L560,80 L582,80 L600,82 L616,88 L624,98 L618,108 L604,114 L590,116 L574,116 L558,116 L542,114 L528,108 Z')}
-        {lp('PA', 'Pennsylvania', 'M618,108 L670,104 L674,130 L642,130 L616,134 Z')}
-        {lp('WV', 'West Virginia','M616,134 L642,130 L648,152 L626,156 L618,150 Z')}
-        {lp('VA', 'Virginia',     'M626,152 L672,148 L674,170 L626,174 Z')}
-        {lp('KY', 'Kentucky',     'M540,172 L566,172 L590,168 L623,154 L626,188 L558,194 Z')}
-        {lp('TN', 'Tennessee',    'M558,194 L626,188 L630,212 L556,216 Z')}
-        {lp('NC', 'North Carolina','M626,174 L670,170 L674,190 L622,192 Z')}
+        {/* ── LIVE STATES ─────────────────────────────────────────── */}
 
-        {/* ── COMING-SOON STATES ───────────────────────── */}
-        {sp('WY', 'Wyoming',       'M258,84 L338,82 L342,138 L262,142 Z')}
-        {sp('NV', 'Nevada',        'M136,154 L196,122 L218,132 L222,192 L206,224 L148,210 L140,186 Z')}
-        {sp('UT', 'Utah',          'M218,132 L262,142 L262,198 L228,198 L222,192 Z')}
-        {sp('NM', 'New Mexico',    'M228,198 L262,198 L348,196 L352,248 L234,250 Z')}
-        {sp('TX', 'Texas',         'M352,248 L500,224 L506,260 L512,316 L490,364 L440,382 L388,352 L354,312 Z')}
-        {sp('OK', 'Oklahoma',      'M382,226 L498,222 L500,224 L352,248 L354,262 Z')}
-        {sp('KS', 'Kansas',        'M380,184 L496,182 L498,222 L382,226 Z')}
-        {sp('NE', 'Nebraska',      'M376,140 L494,140 L496,182 L380,184 Z')}
-        {sp('SD', 'South Dakota',  'M374,90 L492,90 L494,140 L376,140 Z')}
-        {sp('ND', 'North Dakota',  'M372,90 L372,46 L488,42 L492,90 Z')}
-        {sp('MN', 'Minnesota',     'M492,42 L562,40 L566,50 L552,80 L542,90 L494,90 Z')}
-        {sp('IA', 'Iowa',          'M494,90 L542,90 L546,134 L496,140 Z')}
-        {sp('MO', 'Missouri',      'M496,140 L546,134 L554,180 L526,200 L498,204 L496,182 Z')}
-        {sp('AR', 'Arkansas',      'M498,204 L554,180 L556,228 L500,230 Z')}
-        {sp('LA', 'Louisiana',     'M500,230 L556,228 L552,272 L516,284 L488,272 Z')}
-        {sp('WI', 'Wisconsin',     'M542,66 L570,60 L586,78 L582,102 L566,116 L548,110 L536,96 Z')}
-        {sp('IL', 'Illinois',      'M548,118 L568,122 L566,172 L542,176 L536,152 L538,128 Z')}
-        {sp('IN', 'Indiana',       'M568,122 L588,122 L590,168 L566,172 Z')}
-        {sp('OH', 'Ohio',          'M588,114 L618,108 L623,154 L600,160 L590,168 Z')}
-        {sp('SC', 'South Carolina','M622,192 L650,188 L654,210 L626,212 Z')}
-        {sp('GA', 'Georgia',       'M588,214 L622,210 L626,262 L590,264 Z')}
-        {sp('FL', 'Florida',       'M590,264 L626,262 L634,292 L618,330 L602,348 L584,328 L574,288 Z')}
-        {sp('AL', 'Alabama',       'M556,216 L588,214 L590,264 L558,262 Z')}
-        {sp('MS', 'Mississippi',   'M500,230 L536,228 L538,268 L520,272 Z')}
-        {sp('NY', 'New York',      'M618,94 L684,90 L688,108 L670,104 L618,108 L612,106 Z')}
-        {sp('NJ', 'New Jersey',    'M681,108 L690,106 L694,128 L682,130 Z')}
-        {sp('MD', 'Maryland',      'M650,128 L676,124 L678,136 L656,138 Z')}
-        {sp('DE', 'Delaware',      'M682,124 L690,122 L692,134 L682,134 Z')}
-        {sp('MA', 'Massachusetts', 'M688,90 L722,88 L724,100 L714,100 L694,100 L688,102 Z')}
-        {sp('ME', 'Maine',         'M710,58 L734,56 L738,88 L712,90 L710,68 Z')}
-        {sp('CT', 'Connecticut',   'M714,100 L726,100 L726,112 L714,112 Z')}
-        {sp('RI', 'Rhode Island',  'M726,100 L734,100 L734,112 L726,112 Z')}
-        {sp('VT', 'Vermont',       'M688,68 L700,68 L700,90 L688,90 Z')}
-        {sp('NH', 'New Hampshire', 'M700,60 L712,58 L712,90 L700,90 Z')}
+        {/* Washington — with Olympic Peninsula bump */}
+        {lp('WA', 'Washington',
+          'M 92,50 L 132,44 L 168,40 L 200,40 L 210,74 L 204,82 L 196,90 L 180,97 L 162,103 L 140,106 L 118,108 L 100,106 L 88,98 L 82,86 L 84,66 Z')}
 
-        {/* ── LABELS for live states ────────────────────── */}
-        {lbl(145, 50,  'WA')}
-        {lbl(145, 123, 'OR')}
-        {lbl(97,  240, 'CA')}
-        {lbl(229, 78,  'ID')}
-        {lbl(283, 61,  'MT')}
-        {lbl(305, 172, 'CO')}
-        {lbl(184, 232, 'AZ')}
-        {lbl(581, 147, 'MI')}
-        {lbl(568, 96,  'MI UP')}
-        {lbl(647, 120, 'PA')}
-        {lbl(633, 144, 'WV')}
-        {lbl(650, 162, 'VA')}
-        {lbl(583, 184, 'KY')}
-        {lbl(592, 205, 'TN')}
-        {lbl(650, 182, 'NC')}
+        {/* Oregon — Columbia River southern border */}
+        {lp('OR', 'Oregon',
+          'M 82,86 L 88,98 L 100,106 L 118,108 L 140,106 L 162,103 L 180,97 L 196,90 L 200,112 L 200,136 L 178,146 L 158,152 L 132,156 L 104,156 L 86,156 L 78,140 L 76,120 Z')}
 
-        {/* ── ANIMATED PULSE DOTS on live states ─────────── */}
-        {pulse(145,  42, '2.0s')}
-        {pulse(145, 120, '2.1s')}
-        {pulse(97,  237, '2.5s')}
-        {pulse(230,  60, '2.3s')}
-        {pulse(283,  63, '2.6s')}
-        {pulse(305, 168, '2.2s')}
-        {pulse(184, 230, '2.4s')}
-        {pulse(581, 146, '2.0s')}
-        {pulse(570,  92, '2.2s')}
-        {pulse(648, 118, '2.1s')}
-        {pulse(633, 142, '2.4s')}
-        {pulse(650, 160, '2.2s')}
-        {pulse(582, 181, '2.3s')}
-        {pulse(592, 202, '2.2s')}
-        {pulse(650, 181, '2.1s')}
+        {/* California — long diagonal coast */}
+        {lp('CA', 'California',
+          'M 78,140 L 86,156 L 104,156 L 132,156 L 148,188 L 152,218 L 150,250 L 144,276 L 132,298 L 116,314 L 96,322 L 76,308 L 62,284 L 56,256 L 60,226 L 64,200 L 70,172 Z')}
 
-        {/* ── Alaska / Hawaii insets ───────────────────── */}
+        {/* Idaho — narrow panhandle at top */}
+        {lp('ID', 'Idaho',
+          'M 200,40 L 258,38 L 262,58 L 264,84 L 252,112 L 244,128 L 220,134 L 196,124 L 196,100 L 196,90 L 200,112 L 200,88 L 204,74 L 210,74 Z')}
+
+        {/* Montana */}
+        {lp('MT', 'Montana',
+          'M 200,40 L 268,36 L 310,34 L 366,34 L 374,88 L 346,92 L 310,90 L 278,88 L 264,84 L 262,58 L 258,38 Z')}
+
+        {/* Colorado */}
+        {lp('CO', 'Colorado',
+          'M 262,142 L 344,138 L 350,196 L 264,200 Z')}
+
+        {/* Arizona — NW corner notch for Hoover Dam area */}
+        {lp('AZ', 'Arizona',
+          'M 144,212 L 162,212 L 184,216 L 208,224 L 228,200 L 234,250 L 224,264 L 196,272 L 172,266 L 148,256 L 136,238 Z')}
+
+        {/* Michigan — LOWER PENINSULA (mitten shape) */}
+        {lp('MI-lp', 'Michigan',
+          'M 548,174 L 548,158 L 546,144 L 548,132 L 552,122 L 560,116 L 572,113 L 586,113 L 600,117 L 610,125 L 616,135 L 616,148 C 614,156 610,162 604,166 L 608,152 C 612,144 614,138 610,133 C 606,128 598,130 594,138 L 588,156 C 582,164 574,170 564,174 L 554,175 Z')}
+
+        {/* Michigan — UPPER PENINSULA */}
+        {lp('MI-up', 'Michigan',
+          'M 514,92 L 532,86 L 552,82 L 574,80 L 596,82 L 614,88 L 624,97 L 620,108 L 608,114 L 594,117 L 576,117 L 558,117 L 542,114 L 528,108 L 518,100 Z')}
+
+        {/* Pennsylvania */}
+        {lp('PA', 'Pennsylvania',
+          'M 616,106 L 636,103 L 656,101 L 674,100 L 676,120 L 676,130 L 648,132 L 624,134 L 618,130 L 616,118 Z')}
+
+        {/* West Virginia */}
+        {lp('WV', 'West Virginia',
+          'M 618,130 L 624,134 L 648,132 L 650,148 L 648,156 L 634,160 L 624,158 L 616,152 L 614,140 Z')}
+
+        {/* Virginia */}
+        {lp('VA', 'Virginia',
+          'M 624,158 L 634,160 L 648,156 L 658,154 L 672,150 L 676,168 L 660,174 L 640,178 L 624,176 L 624,165 Z')}
+
+        {/* Kentucky */}
+        {lp('KY', 'Kentucky',
+          'M 542,174 L 554,175 L 564,174 L 588,172 L 608,168 L 616,162 L 624,158 L 624,165 L 624,176 L 628,186 L 606,192 L 576,196 L 552,196 L 540,192 Z')}
+
+        {/* Tennessee */}
+        {lp('TN', 'Tennessee',
+          'M 540,192 L 552,196 L 576,196 L 606,192 L 628,186 L 634,210 L 610,215 L 576,216 L 550,216 L 538,214 Z')}
+
+        {/* North Carolina */}
+        {lp('NC', 'North Carolina',
+          'M 624,176 L 640,178 L 660,174 L 676,170 L 680,186 L 672,192 L 650,194 L 632,194 L 622,192 L 622,184 Z')}
+
+        {/* ── COMING-SOON STATES ───────────────────────────────────── */}
+
+        {sp('WY', 'Wyoming',       'M 258,84 L 340,80 L 344,138 L 262,142 Z')}
+        {sp('NV', 'Nevada',        'M 132,156 L 196,124 L 220,134 L 224,192 L 208,224 L 184,216 L 162,212 L 144,212 L 140,188 Z')}
+        {sp('UT', 'Utah',          'M 220,134 L 262,142 L 264,200 L 228,200 L 224,192 Z')}
+        {sp('NM', 'New Mexico',    'M 228,200 L 264,200 L 350,196 L 354,252 L 234,252 Z')}
+        {sp('TX', 'Texas',
+          'M 354,252 L 370,244 L 416,230 L 464,220 L 504,218 L 508,256 L 514,306 L 510,340 L 496,366 L 472,384 L 450,390 L 420,376 L 392,350 L 368,316 L 356,284 Z')}
+        {sp('OK', 'Oklahoma',      'M 302,248 L 354,252 L 356,268 L 380,228 L 464,224 L 504,218 L 504,224 L 302,260 Z')}
+        {sp('KS', 'Kansas',        'M 380,184 L 500,180 L 504,218 L 380,228 Z')}
+        {sp('NE', 'Nebraska',      'M 376,140 L 500,138 L 500,180 L 380,184 Z')}
+        {sp('SD', 'South Dakota',  'M 374,90 L 496,88 L 500,138 L 376,140 Z')}
+        {sp('ND', 'North Dakota',  'M 372,90 L 374,48 L 492,44 L 496,88 L 374,90 Z')}
+        {sp('MN', 'Minnesota',     'M 492,44 L 564,40 L 568,52 L 556,80 L 546,92 L 496,88 Z')}
+        {sp('IA', 'Iowa',          'M 496,88 L 546,92 L 550,136 L 500,138 Z')}
+        {sp('MO', 'Missouri',      'M 500,138 L 550,136 L 558,180 L 556,196 L 528,202 L 502,204 L 500,180 Z')}
+        {sp('AR', 'Arkansas',      'M 502,204 L 528,202 L 556,196 L 558,228 L 502,232 Z')}
+        {sp('LA', 'Louisiana',     'M 502,232 L 558,228 L 554,270 L 536,282 L 516,282 L 492,272 Z')}
+        {sp('WI', 'Wisconsin',     'M 544,68 L 572,62 L 588,80 L 584,104 L 568,118 L 552,114 L 540,98 Z')}
+        {sp('IL', 'Illinois',      'M 548,116 L 570,122 L 568,174 L 540,176 L 536,154 L 540,130 Z')}
+        {sp('IN', 'Indiana',       'M 570,122 L 590,122 L 592,168 L 568,174 Z')}
+        {sp('OH', 'Ohio',          'M 590,114 L 616,106 L 616,118 L 618,130 L 614,140 L 600,160 L 590,168 L 586,155 L 590,130 Z')}
+        {sp('SC', 'South Carolina','M 622,192 L 622,184 L 632,194 L 650,194 L 656,212 L 630,216 Z')}
+        {sp('GA', 'Georgia',       'M 590,216 L 630,216 L 634,262 L 592,266 Z')}
+        {sp('FL', 'Florida',
+          'M 592,266 L 634,262 L 640,288 L 644,312 L 632,338 L 618,352 L 604,350 L 590,328 L 582,296 Z')}
+        {sp('AL', 'Alabama',       'M 558,216 L 590,216 L 592,266 L 560,264 Z')}
+        {sp('MS', 'Mississippi',   'M 502,232 L 538,230 L 540,268 L 520,272 Z')}
+        {sp('NY', 'New York',
+          'M 616,80 L 654,76 L 690,74 L 692,92 L 684,100 L 674,100 L 660,100 L 648,98 L 638,100 L 624,100 L 618,96 Z')}
+        {sp('NJ', 'New Jersey',    'M 684,100 L 692,98 L 697,118 L 692,128 L 682,128 Z')}
+        {sp('MD', 'Maryland',      'M 648,130 L 676,126 L 680,138 L 668,142 L 648,142 Z')}
+        {sp('DE', 'Delaware',      'M 684,128 L 692,126 L 694,140 L 684,140 Z')}
+        {sp('MA', 'Massachusetts', 'M 692,92 L 726,90 L 728,102 L 718,104 L 700,104 L 692,102 Z')}
+        {sp('ME', 'Maine',         'M 712,58 L 738,54 L 742,86 L 714,90 Z')}
+        {sp('CT', 'Connecticut',   'M 716,102 L 728,102 L 728,114 L 716,114 Z')}
+        {sp('RI', 'Rhode Island',  'M 728,100 L 736,100 L 736,112 L 728,112 Z')}
+        {sp('VT', 'Vermont',       'M 690,70 L 702,68 L 702,90 L 690,90 Z')}
+        {sp('NH', 'New Hampshire', 'M 702,60 L 714,58 L 714,90 L 702,90 Z')}
+
+        {/* ── LIVE STATE LABELS ────────────────────────────────────── */}
+        {lbl(146, 51,  'WA')}
+        {lbl(142, 124, 'OR')}
+        {lbl(100, 244, 'CA')}
+        {lbl(232, 76,  'ID')}
+        {lbl(287, 60,  'MT')}
+        {lbl(306, 172, 'CO')}
+        {lbl(186, 238, 'AZ')}
+        {lbl(582, 148, 'MI')}
+        {lbl(569, 96,  'MI·UP')}
+        {lbl(648, 117, 'PA')}
+        {lbl(634, 146, 'WV')}
+        {lbl(650, 165, 'VA')}
+        {lbl(584, 187, 'KY')}
+        {lbl(586, 207, 'TN')}
+        {lbl(650, 185, 'NC')}
+
+        {/* ── PULSE DOTS on live states ────────────────────────────── */}
+        {pulse(146, 44,  '2.0s')}
+        {pulse(142, 120, '2.1s')}
+        {pulse(100, 240, '2.5s')}
+        {pulse(232, 58,  '2.3s')}
+        {pulse(287, 62,  '2.6s')}
+        {pulse(306, 168, '2.2s')}
+        {pulse(186, 234, '2.4s')}
+        {pulse(582, 145, '2.0s')}
+        {pulse(569, 90,  '2.2s')}
+        {pulse(648, 114, '2.1s')}
+        {pulse(634, 143, '2.4s')}
+        {pulse(650, 162, '2.2s')}
+        {pulse(584, 184, '2.3s')}
+        {pulse(586, 204, '2.2s')}
+        {pulse(650, 182, '2.1s')}
+
+        {/* ── Alaska / Hawaii insets ───────────────────────────────── */}
         <g>
-          <rect x="28" y="430" width="116" height="72" rx="5" fill="#1e4e6e" stroke="rgba(255,255,255,0.15)" strokeWidth={0.7} />
-          <text x="86" y="456" fontFamily="IBM Plex Mono,monospace" fontSize={9.5} fill="#7ab4d0" textAnchor="middle" fontWeight="500">Alaska</text>
-          <text x="86" y="471" fontFamily="IBM Plex Mono,monospace" fontSize={8} fill="rgba(255,255,255,0.35)" textAnchor="middle">coming soon</text>
+          <rect x="26" y="428" width="120" height="74" rx="6" fill="#163347" stroke="rgba(255,255,255,0.12)" strokeWidth={0.7} />
+          <text x="86" y="456" fontFamily="IBM Plex Mono,monospace" fontSize={10} fontWeight="500" fill="#5fa8cc" textAnchor="middle">Alaska</text>
+          <text x="86" y="472" fontFamily="IBM Plex Mono,monospace" fontSize={8} fill="rgba(255,255,255,0.3)" textAnchor="middle">coming soon</text>
         </g>
         <g>
-          <rect x="158" y="430" width="80" height="52" rx="5" fill="#1e4e6e" stroke="rgba(255,255,255,0.15)" strokeWidth={0.7} />
-          <text x="198" y="461" fontFamily="IBM Plex Mono,monospace" fontSize={9.5} fill="#7ab4d0" textAnchor="middle" fontWeight="500">Hawaii</text>
-          <text x="198" y="474" fontFamily="IBM Plex Mono,monospace" fontSize={8} fill="rgba(255,255,255,0.35)" textAnchor="middle">coming soon</text>
+          <rect x="160" y="428" width="82" height="54" rx="6" fill="#163347" stroke="rgba(255,255,255,0.12)" strokeWidth={0.7} />
+          <text x="201" y="459" fontFamily="IBM Plex Mono,monospace" fontSize={10} fontWeight="500" fill="#5fa8cc" textAnchor="middle">Hawaii</text>
+          <text x="201" y="474" fontFamily="IBM Plex Mono,monospace" fontSize={8} fill="rgba(255,255,255,0.3)" textAnchor="middle">coming soon</text>
         </g>
 
-        {/* ── Footer label ────────────────────────────── */}
-        <text x="480" y="516" fontFamily="IBM Plex Mono,monospace" fontSize={8.5} fill="rgba(255,255,255,0.4)" textAnchor="middle">
+        {/* ── Footer ──────────────────────────────────────────────── */}
+        <text x="480" y="516" fontFamily="IBM Plex Mono,monospace" fontSize={8.5} fill="rgba(255,255,255,0.32)" textAnchor="middle">
           14 states live · WA · OR · ID · MT · CO · CA · MI · PA · WV · VA · KY · TN · NC · AZ — more added monthly
         </text>
       </svg>
 
-      {/* ── Tooltip ────────────────────────────────────── */}
+      {/* Tooltip */}
       {tooltip && (
         <div style={{
-          position: 'absolute',
-          left: tooltip.x + 14,
-          top: tooltip.y,
-          background: 'var(--bg)',
-          border: '.5px solid var(--bd2)',
-          borderRadius: 'var(--r)',
-          padding: '8px 13px',
+          position: 'absolute', left: tooltip.x + 14, top: tooltip.y,
+          background: 'var(--bg)', border: '.5px solid var(--bd2)',
+          borderRadius: 'var(--r)', padding: '8px 13px',
           fontFamily: "'IBM Plex Mono', monospace",
-          pointerEvents: 'none',
-          boxShadow: '0 4px 16px rgba(0,0,0,.18)',
-          zIndex: 50,
-          whiteSpace: 'nowrap',
-          minWidth: '130px',
+          pointerEvents: 'none', boxShadow: '0 4px 18px rgba(0,0,0,.18)',
+          zIndex: 50, whiteSpace: 'nowrap',
         }}>
           <div style={{ fontSize: '12px', fontWeight: 600, color: 'var(--rvdk)', marginBottom: '3px' }}>{tooltip.name}</div>
-          {tooltip.live ? (
-            <div style={{ fontSize: '10px', color: 'var(--rv)' }}>
-              <span style={{ marginRight: '6px' }}>●</span>{tooltip.count} rivers · click to explore
-            </div>
-          ) : (
-            <div style={{ fontSize: '10px', color: 'var(--tx3)' }}>Coming soon</div>
-          )}
+          {tooltip.live
+            ? <div style={{ fontSize: '10px', color: 'var(--rv)' }}>● {tooltip.count} rivers · click to explore</div>
+            : <div style={{ fontSize: '10px', color: 'var(--tx3)' }}>Coming soon</div>
+          }
         </div>
       )}
 
-      {/* ── Legend ────────────────────────────────────── */}
+      {/* Legend */}
       <div style={{
-        position: 'absolute', bottom: '18px', right: '14px',
+        position: 'absolute', bottom: '16px', right: '14px',
         display: 'flex', gap: '16px',
         fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px',
-        color: 'rgba(255,255,255,0.65)',
+        color: 'rgba(255,255,255,0.55)',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-          <div style={{ width: '10px', height: '10px', borderRadius: '2px', background: 'linear-gradient(#a8d4ec, #7eb8d8)' }} />
+          <div style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#92c5de' }} />
           Live data
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-          <div style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#d4d0c8' }} />
+          <div style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#d8d4cc' }} />
           Coming soon
         </div>
       </div>
