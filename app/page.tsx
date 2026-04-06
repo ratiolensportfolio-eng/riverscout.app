@@ -1,10 +1,56 @@
 import Link from 'next/link'
 import { ALL_RIVERS, STATES } from '@/data/rivers'
+import { fetchGaugeData } from '@/lib/usgs'
 import USMap from '@/components/maps/USMap'
+import type { FlowCondition } from '@/types'
 
-export default function HomePage() {
+export const revalidate = 900
+
+export default async function HomePage() {
   const stateCount = Object.keys(STATES).length
   const riverCount = ALL_RIVERS.length
+
+  // Fetch live conditions for all rivers in parallel
+  const rivers = ALL_RIVERS
+  const results = await Promise.allSettled(
+    rivers.map((r: typeof rivers[number]) => fetchGaugeData(r.g, r.opt).then(flow => ({ id: r.id, stateKey: r.stateKey, name: r.n, flow })))
+  )
+
+  // Build per-state condition summary
+  type StateCondition = { optimal: number; low: number; high: number; flood: number; total: number; topCfs: { name: string; cfs: number; condition: FlowCondition }[] }
+  const stateConditions: Record<string, StateCondition> = {}
+
+  for (const result of results) {
+    if (result.status !== 'fulfilled') continue
+    const { stateKey, flow, name } = result.value
+    if (!stateConditions[stateKey]) stateConditions[stateKey] = { optimal: 0, low: 0, high: 0, flood: 0, total: 0, topCfs: [] }
+    const sc = stateConditions[stateKey]
+    sc.total++
+    if (flow.condition === 'optimal') sc.optimal++
+    else if (flow.condition === 'low') sc.low++
+    else if (flow.condition === 'high') sc.high++
+    else if (flow.condition === 'flood') sc.flood++
+    if (flow.cfs !== null) {
+      sc.topCfs.push({ name, cfs: flow.cfs, condition: flow.condition })
+    }
+  }
+
+  // Determine dominant condition per state
+  const stateFlowMap: Record<string, FlowCondition> = {}
+  for (const [key, sc] of Object.entries(stateConditions)) {
+    if (sc.flood > 0) stateFlowMap[key] = 'flood'
+    else if (sc.high > sc.optimal) stateFlowMap[key] = 'high'
+    else if (sc.optimal > 0) stateFlowMap[key] = 'optimal'
+    else stateFlowMap[key] = 'low'
+  }
+
+  // Count conditions across all rivers
+  let totalOptimal = 0, totalHigh = 0, totalFlood = 0
+  for (const sc of Object.values(stateConditions)) {
+    totalOptimal += sc.optimal
+    totalHigh += sc.high
+    totalFlood += sc.flood
+  }
 
   return (
     <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)', display: 'flex', flexDirection: 'column' }}>
@@ -46,11 +92,32 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+        {/* Live conditions bar */}
+        <div style={{ display: 'flex', gap: '12px', marginTop: '8px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px' }}>
+          {totalOptimal > 0 && (
+            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--rv)', display: 'inline-block' }} />
+              <span style={{ color: 'var(--rv)' }}>{totalOptimal} optimal</span>
+            </span>
+          )}
+          {totalHigh > 0 && (
+            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--am)', display: 'inline-block' }} />
+              <span style={{ color: 'var(--am)' }}>{totalHigh} high</span>
+            </span>
+          )}
+          {totalFlood > 0 && (
+            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--dg)', display: 'inline-block' }} />
+              <span style={{ color: 'var(--dg)' }}>{totalFlood} flood</span>
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Map — fills remaining height */}
       <div style={{ flex: 1, minHeight: 0, padding: '0 8px 8px', position: 'relative' }}>
-        <USMap />
+        <USMap stateFlowMap={stateFlowMap} stateConditions={stateConditions} />
       </div>
     </main>
   )

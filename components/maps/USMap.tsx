@@ -4,6 +4,8 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { STATES } from '@/data/rivers'
 
+import type { FlowCondition } from '@/types'
+
 const LIVE_STATES = new Set(Object.keys(STATES))
 
 function toKey(id: string): string {
@@ -11,9 +13,28 @@ function toKey(id: string): string {
   return map[id] ?? id.toLowerCase()
 }
 
-interface Tooltip { x: number; y: number; name: string; count: number; live: boolean }
+// Flow-condition → state fill color
+const COND_FILL: Record<string, { base: string; hover: string }> = {
+  optimal: { base: '#6dc9a0', hover: '#4db896' },
+  low:     { base: '#92c5de', hover: '#6fb0d0' },
+  high:    { base: '#e8b954', hover: '#d9a63e' },
+  flood:   { base: '#e07070', hover: '#cc5555' },
+}
+const DEFAULT_FILL = { base: '#92c5de', hover: '#4db896' }
 
-export default function USMap() {
+interface StateConditionSummary {
+  optimal: number; low: number; high: number; flood: number; total: number
+  topCfs: { name: string; cfs: number; condition: FlowCondition }[]
+}
+
+interface Props {
+  stateFlowMap?: Record<string, FlowCondition>
+  stateConditions?: Record<string, StateConditionSummary>
+}
+
+interface Tooltip { x: number; y: number; name: string; count: number; live: boolean; cond?: FlowCondition; summary?: StateConditionSummary }
+
+export default function USMap({ stateFlowMap, stateConditions }: Props) {
   const router = useRouter()
   const [tooltip, setTooltip] = useState<Tooltip | null>(null)
   const [hovered, setHovered] = useState<string | null>(null)
@@ -28,7 +49,9 @@ export default function USMap() {
     const live = LIVE_STATES.has(key)
     const count = live ? (STATES[key]?.rivers.length ?? 0) : 0
     const r = e.currentTarget.closest('svg')!.getBoundingClientRect()
-    setTooltip({ x: e.clientX - r.left, y: e.clientY - r.top - 16, name, count, live })
+    const cond = stateFlowMap?.[key]
+    const summary = stateConditions?.[key]
+    setTooltip({ x: e.clientX - r.left, y: e.clientY - r.top - 16, name, count, live, cond, summary })
     setHovered(id)
   }
 
@@ -44,12 +67,15 @@ export default function USMap() {
     onClick: () => onClick(id),
   })
 
-  // Live state path rendering
+  // Live state path rendering — colored by flow condition
   const lp = (id: string, name: string, d: string) => {
     const h = hovered === id
+    const key = toKey(id)
+    const cond = stateFlowMap?.[key]
+    const colors = (cond && COND_FILL[cond]) || DEFAULT_FILL
     return (
       <path key={id} id={id} d={d}
-        fill={h ? '#4db896' : '#92c5de'}
+        fill={h ? colors.hover : colors.base}
         stroke={h ? 'rgba(255,255,255,1)' : 'rgba(255,255,255,0.8)'}
         strokeWidth={h ? 1.4 : 0.8}
         cursor="pointer"
@@ -277,27 +303,59 @@ export default function USMap() {
           borderRadius: 'var(--r)', padding: '8px 13px',
           fontFamily: "'IBM Plex Mono', monospace",
           pointerEvents: 'none', boxShadow: '0 4px 18px rgba(0,0,0,.18)',
-          zIndex: 50, whiteSpace: 'nowrap',
+          zIndex: 50, whiteSpace: 'nowrap', maxWidth: '240px',
         }}>
           <div style={{ fontSize: '12px', fontWeight: 600, color: 'var(--rvdk)', marginBottom: '3px' }}>{tooltip.name}</div>
-          {tooltip.live
-            ? <div style={{ fontSize: '10px', color: 'var(--rv)' }}>● {tooltip.count} rivers · click to explore</div>
-            : <div style={{ fontSize: '10px', color: 'var(--tx3)' }}>Coming soon</div>
-          }
+          {tooltip.live ? (
+            <>
+              <div style={{ fontSize: '10px', color: 'var(--rv)', marginBottom: tooltip.summary ? '5px' : 0 }}>● {tooltip.count} rivers · click to explore</div>
+              {tooltip.summary && (
+                <div style={{ fontSize: '9px', color: 'var(--tx2)', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  {tooltip.summary.optimal > 0 && <span style={{ color: 'var(--rv)' }}>● {tooltip.summary.optimal} optimal</span>}
+                  {tooltip.summary.high > 0 && <span style={{ color: 'var(--am)' }}>● {tooltip.summary.high} high</span>}
+                  {tooltip.summary.low > 0 && <span style={{ color: 'var(--lo)' }}>● {tooltip.summary.low} low</span>}
+                  {tooltip.summary.flood > 0 && <span style={{ color: 'var(--dg)' }}>● {tooltip.summary.flood} flood</span>}
+                </div>
+              )}
+            </>
+          ) : (
+            <div style={{ fontSize: '10px', color: 'var(--tx3)' }}>Coming soon</div>
+          )}
         </div>
       )}
 
       {/* Legend */}
       <div style={{
         position: 'absolute', bottom: '16px', right: '14px',
-        display: 'flex', gap: '16px',
+        display: 'flex', gap: '14px',
         fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px',
         color: 'rgba(255,255,255,0.55)',
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-          <div style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#92c5de' }} />
-          Live data
-        </div>
+        {stateFlowMap ? (
+          <>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+              <div style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#6dc9a0' }} />
+              Optimal
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+              <div style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#92c5de' }} />
+              Low
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+              <div style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#e8b954' }} />
+              High
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+              <div style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#e07070' }} />
+              Flood
+            </div>
+          </>
+        ) : (
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <div style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#92c5de' }} />
+            Live data
+          </div>
+        )}
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
           <div style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#d8d4cc' }} />
           Coming soon

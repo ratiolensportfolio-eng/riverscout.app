@@ -1,0 +1,112 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { createSupabaseClient } from '@/lib/supabase'
+
+// POST /api/alerts — subscribe to flow alerts
+export async function POST(req: NextRequest) {
+  try {
+    const body = await req.json()
+    const { email, riverId, riverName, threshold, stateKey } = body
+
+    if (!email || !riverId || !riverName || !threshold) {
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
+    }
+
+    if (!['optimal', 'high', 'flood', 'any'].includes(threshold)) {
+      return NextResponse.json({ error: 'Invalid threshold. Must be optimal, high, flood, or any' }, { status: 400 })
+    }
+
+    const supabase = createSupabaseClient()
+
+    // Upsert — if same email+river already exists, update threshold
+    const { data, error } = await supabase
+      .from('flow_alerts')
+      .upsert(
+        {
+          email,
+          river_id: riverId,
+          river_name: riverName,
+          state_key: stateKey || null,
+          threshold,
+          active: true,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: 'email,river_id' }
+      )
+      .select()
+
+    if (error) {
+      console.error('Supabase insert error:', error)
+      return NextResponse.json({ error: 'Failed to create alert' }, { status: 500 })
+    }
+
+    return NextResponse.json({ ok: true, alert: data?.[0] })
+  } catch (err) {
+    console.error('Alert subscribe error:', err)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+  }
+}
+
+// GET /api/alerts?email=... — list alerts for an email
+export async function GET(req: NextRequest) {
+  const email = req.nextUrl.searchParams.get('email')
+  if (!email) {
+    return NextResponse.json({ error: 'Email required' }, { status: 400 })
+  }
+
+  const supabase = createSupabaseClient()
+  const { data, error } = await supabase
+    .from('flow_alerts')
+    .select('*')
+    .eq('email', email)
+    .eq('active', true)
+    .order('created_at', { ascending: false })
+
+  if (error) {
+    console.error('Supabase fetch error:', error)
+    return NextResponse.json({ error: 'Failed to fetch alerts' }, { status: 500 })
+  }
+
+  return NextResponse.json({ alerts: data })
+}
+
+// DELETE /api/alerts — unsubscribe
+export async function DELETE(req: NextRequest) {
+  try {
+    const body = await req.json()
+    const { email, riverId } = body
+
+    if (!email) {
+      return NextResponse.json({ error: 'Email required' }, { status: 400 })
+    }
+
+    const supabase = createSupabaseClient()
+
+    if (riverId) {
+      // Delete specific alert
+      const { error } = await supabase
+        .from('flow_alerts')
+        .delete()
+        .eq('email', email)
+        .eq('river_id', riverId)
+
+      if (error) {
+        return NextResponse.json({ error: 'Failed to delete alert' }, { status: 500 })
+      }
+    } else {
+      // Delete all alerts for this email
+      const { error } = await supabase
+        .from('flow_alerts')
+        .delete()
+        .eq('email', email)
+
+      if (error) {
+        return NextResponse.json({ error: 'Failed to delete alerts' }, { status: 500 })
+      }
+    }
+
+    return NextResponse.json({ ok: true })
+  } catch (err) {
+    console.error('Alert delete error:', err)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+  }
+}
