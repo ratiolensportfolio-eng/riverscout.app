@@ -254,6 +254,12 @@ const STATE_CENTERS: Record<string, { x: number; y: number }> = {
   ky: { x: 680, y: 315 },
   tn: { x: 660, y: 345 },
   nc: { x: 770, y: 340 },
+  wy: { x: 270, y: 165 },
+  ut: { x: 210, y: 265 },
+  nm: { x: 265, y: 365 },
+  me: { x: 860, y: 115 },
+  ny: { x: 790, y: 180 },
+  ga: { x: 720, y: 380 },
 }
 
 export default function USMap({ stateFlowMap, stateConditions }: Props) {
@@ -413,7 +419,7 @@ export default function USMap({ stateFlowMap, stateConditions }: Props) {
 
         {/* ── Footer ── */}
         <text x="480" y="578" fontFamily="IBM Plex Mono,monospace" fontSize={8.5} fill="rgba(255,255,255,0.32)" textAnchor="middle">
-          14 states live · WA · OR · ID · MT · CO · CA · MI · PA · WV · VA · KY · TN · NC · AZ — more added monthly
+          20 states live · WA · OR · ID · MT · WY · UT · CO · NM · CA · AZ · MI · PA · WV · VA · KY · TN · NC · GA · NY · ME
         </text>
       </svg>
 
