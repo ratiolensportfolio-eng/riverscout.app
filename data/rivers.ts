@@ -10,7 +10,7 @@ export const STATES: StatesDB = {
     rivers: [
       {
         id: 'ausable', n: 'Au Sable River', lp: true, up: false, wild: true, nat: true, ww: false,
-        co: 'Crawford / Oscoda Co.', len: '140 mi', cls: 'I–II', opt: '200–800',
+        co: 'Crawford / Oscoda Co.', len: '140 mi', cls: 'I', opt: '200–800',
         g: '04137500', avg: 410, histFlow: 390, mx: 265, my: 254, abbr: 'MI',
         desc: "Michigan's most celebrated canoe river — 140 miles of spring-fed water from Grayling to Lake Huron. Birthplace of Trout Unlimited (1959) and home of the legendary Au Sable Canoe Marathon, 120 miles nonstop each July since 1947.",
         desig: 'National Wild & Scenic River (1984) · Michigan Natural River',
@@ -27,7 +27,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'manistee', n: 'Manistee River', lp: true, up: false, wild: true, nat: true, ww: false,
-        co: 'Manistee / Wexford Co.', len: '190 mi', cls: 'I–II', opt: '300–1200',
+        co: 'Manistee / Wexford Co.', len: '190 mi', cls: 'I', opt: '300–1200',
         g: '04126520', avg: 740, histFlow: 690, mx: 248, my: 240, abbr: 'MI',
         desc: '190 miles through Manistee National Forest — among the finest trout fisheries east of the Rockies. Upper reach is fast and intimate; below Tippy Dam widens into world-class steelhead and Chinook salmon water every fall.',
         desig: 'National Scenic River · Michigan Natural River',
@@ -44,7 +44,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'muskegon', n: 'Muskegon River', lp: true, up: false, wild: false, nat: false, ww: false,
-        co: 'Mecosta / Newaygo / Muskegon Co.', len: '216 mi', cls: 'I–II', opt: '800–3000',
+        co: 'Mecosta / Newaygo / Muskegon Co.', len: '216 mi', cls: 'I', opt: '800–3000',
         g: '04121970', avg: 1840, histFlow: 1650, mx: 216, my: 260, abbr: 'MI',
         desc: "Michigan's longest river entirely within the state. World-class steelhead and Chinook salmon. The world's first logging railroad was built in 1876 specifically to feed logs into the Muskegon system.",
         desig: 'Michigan Designated Trout Stream (lower reach)',
@@ -59,8 +59,8 @@ export const STATES: StatesDB = {
         outs: [{ n: 'Sawmill Canoe Rental', d: 'Day trips, family-friendly', l: 'sawmillcanoe.com' }],
       },
       {
-        id: 'pine_mi', n: 'Pine River', lp: true, up: false, wild: true, nat: true, ww: true,
-        co: 'Lake / Osceola Co.', len: '60 mi', cls: 'II–III', opt: '150–350',
+        id: 'pine_mi', n: 'Pine River', lp: true, up: false, wild: true, nat: true, ww: false,
+        co: 'Lake / Osceola Co.', len: '60 mi', cls: 'I', opt: '150–350',
         g: '04057510', avg: 248, histFlow: 230, mx: 238, my: 250, abbr: 'MI',
         desc: "Michigan's premier whitewater river — the Pine runs cold, clear, and fast through the Manistee National Forest. Designated Wild & Scenic in 1978 among the first eight rivers in the eastern U.S. to receive that honor. Crystal spring-fed water stays below 65°F year-round, supporting one of Michigan's finest wild brook trout populations.",
         desig: 'National Wild & Scenic River (1978) · Michigan Natural River',
@@ -507,7 +507,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'skagit', n: 'Skagit River', ww: false, wild: true, pnw: true, eastside: false,
-        co: 'Skagit / Whatcom Co.', len: '150 mi', cls: 'I–III', opt: '4000–15000',
+        co: 'Skagit / Whatcom Co.', len: '150 mi', cls: 'I–II', opt: '4000–15000',
         g: '12178000', avg: 8500, histFlow: 7800, mx: 170, my: 55, abbr: 'WA',
         desc: "Washington's second-largest river by volume, draining the North Cascades and flowing to Puget Sound. The Skagit is one of the last rivers in the lower 48 to support all five Pacific salmon species. The upper Skagit is the only place in the lower 48 where bald eagles winter in the thousands.",
         desig: 'National Wild & Scenic River (upper 158 miles) · North Cascades National Park (upper watershed)',
@@ -539,7 +539,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'sauk', n: 'Sauk River', ww: false, wild: false, pnw: true, eastside: false,
-        co: 'Skagit / Snohomish Co.', len: '36 mi', cls: 'I–III', opt: '1500–7000',
+        co: 'Skagit / Snohomish Co.', len: '36 mi', cls: 'I–II', opt: '1500–7000',
         g: '12189500', avg: 3500, histFlow: 3200, mx: 200, my: 52, abbr: 'WA',
         desc: "Flows from Glacier Peak Wilderness through ancient old-growth Douglas fir to the Skagit — one of Washington's most wildlife-rich rivers. Class I–III paddling through pristine Cascade foothills with extraordinary salmon viewing in fall and bald eagle congregations in winter. The Sauk-Suiattle Indian Tribe's ancestral home.",
         desig: 'Glacier Peak Wilderness (headwaters) · Sauk-Suiattle Tribal Reserved Rights',
@@ -685,7 +685,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'blackfoot', n: 'Blackfoot River', ww: false, wild: false, remote: false, fishing: true,
-        co: 'Powell / Missoula Co.', len: '132 mi', cls: 'I–III', opt: '1500–5000',
+        co: 'Powell / Missoula Co.', len: '132 mi', cls: 'I–II', opt: '1500–5000',
         g: '12340000', avg: 2200, histFlow: 2000, mx: 240, my: 115, abbr: 'MT',
         desc: "'A River Runs Through It' country. Norman Maclean's Blackfoot River flows 132 miles from the Continental Divide to the Clark Fork near Missoula. A beloved recreation river restored through a landmark conservation partnership. Exceptional fly-fishing, continuous Class II–III whitewater in spring, and access to some of the last wild bull trout habitat in the lower 48.",
         desig: 'Blackfoot Challenge Conservation Area · Montana Blue-Ribbon Trout Stream',
@@ -776,7 +776,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'hiwassee', n: 'Hiwassee River', ww: false, wild: false, nat: false, appalachian: true,
-        co: 'Polk / Bradley Co.', len: '72 mi', cls: 'I–III', opt: '900–3500',
+        co: 'Polk / Bradley Co.', len: '72 mi', cls: 'I–II', opt: '900–3500',
         g: '03566000', avg: 1700, histFlow: 1560, mx: 560, my: 120, abbr: 'TN',
         desc: "One of the Southeast's most beloved paddling rivers — flows through the Cherokee National Forest in the Blue Ridge Mountains and is regulated by releases from Apalachia Dam, creating consistent flows all summer. Outstanding for beginners and families. World-class blue-ribbon trout fishery below the dam.",
         desig: 'Cherokee National Forest · John Muir Scenic Trail · Blue-Ribbon Trout Stream',
@@ -943,7 +943,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'shenandoah', n: 'Shenandoah River', ww: false, wild: true, appalachian: true, piedmont: false,
-        co: 'Shenandoah / Page / Warren Co.', len: '286 mi', cls: 'I–III', opt: '500–4000',
+        co: 'Shenandoah / Page / Warren Co.', len: '286 mi', cls: 'I–II', opt: '500–4000',
         g: '01636500', avg: 2100, histFlow: 1950, mx: 330, my: 70, abbr: 'VA',
         desc: "One of the most beloved canoe rivers in the eastern United States — flows through the Shenandoah Valley between the Blue Ridge and Allegheny Mountains in a series of long, gliding pools and Class I–III ledge rapids. Harpers Ferry confluence with the Potomac is one of the most historically significant river junctions in America.",
         desig: 'Virginia Scenic River · Shenandoah River State Park',
@@ -1232,7 +1232,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'verde', n: 'Verde River', ww: false, wild: true, desert: true, canyon: false,
-        co: 'Yavapai Co.', len: '170 mi', cls: 'I–III', opt: '300–2000',
+        co: 'Yavapai Co.', len: '170 mi', cls: 'I–II', opt: '300–2000',
         g: '09504000', avg: 680, histFlow: 620, mx: 250, my: 105, abbr: 'AZ',
         desc: "Arizona's last major free-flowing river — 170 miles through the Sonoran and semi-desert grassland from the Prescott National Forest to the Salt River. The Verde River Greenway protects a remarkable riparian corridor: nesting bald eagles, river otters, great blue herons, and over 100 bird species in the middle of the Sonoran Desert. Best paddled November through April.",
         desig: "Verde River Greenway State Natural Area · Arizona's Last Free-Flowing River",
