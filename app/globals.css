@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --rv: #1D9E75;
+  --rvdk: #085041;
+  --rvlt: #E1F5EE;
+  --rvmd: #9FE1CB;
+
+  --wt: #185FA5;
+  --wtlt: #E6F1FB;
+  --wtmd: #B5D4F4;
+
+  --am: #BA7517;
+  --amlt: #FAEEDA;
+
+  --dg: #A32D2D;
+  --dglt: #FCEBEB;
+
+  --lo: #533AB7;
+  --lolt: #EEEDFE;
+
+  --bg: #fff;
+  --bg2: #f6f5f2;
+  --bg3: #eeede8;
+
+  --tx: #1a1a18;
+  --tx2: #666660;
+  --tx3: #aaa99a;
+
+  --bd: #e2e1d8;
+  --bd2: #c8c7be;
+
+  --r: 8px;
+  --rlg: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #18181a;
+    --bg2: #222224;
+    --bg3: #2a2a2c;
+    --tx: #f0efe8;
+    --tx2: #8a8a80;
+    --tx3: #555550;
+    --bd: #333336;
+    --bd2: #444448;
+  }
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  background: var(--bg);
+  color: var(--tx);
+}
+
+/* Flow condition utility classes */
+.cond-opt { background: var(--rvlt); color: var(--rvdk); }
+.cond-low { background: var(--lolt); color: var(--lo); }
+.cond-high { background: var(--amlt); color: var(--am); }
+.cond-flood { background: var(--dglt); color: var(--dg); }
+.cond-loading { background: var(--bg3); color: var(--tx3); }
+
+/* Scrollbar hiding */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Pulsing live dot */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+.pulse-dot {
+  animation: pulse 2s ease-in-out infinite;
+}
