@@ -260,6 +260,34 @@ const STATE_CENTERS: Record<string, { x: number; y: number }> = {
   me: { x: 860, y: 115 },
   ny: { x: 790, y: 180 },
   ga: { x: 720, y: 380 },
+  mn: { x: 520, y: 105 },
+  wi: { x: 590, y: 135 },
+  ia: { x: 510, y: 195 },
+  mo: { x: 530, y: 280 },
+  ar: { x: 530, y: 340 },
+  la: { x: 540, y: 430 },
+  ms: { x: 585, y: 395 },
+  al: { x: 645, y: 380 },
+  fl: { x: 690, y: 460 },
+  sc: { x: 745, y: 365 },
+  ne: { x: 405, y: 200 },
+  sd: { x: 395, y: 135 },
+  nd: { x: 395, y: 85 },
+  ks: { x: 430, y: 270 },
+  ok: { x: 435, y: 320 },
+  tx: { x: 410, y: 410 },
+  nv: { x: 130, y: 220 },
+  oh: { x: 700, y: 235 },
+  in: { x: 650, y: 255 },
+  il: { x: 600, y: 255 },
+  nh: { x: 845, y: 115 },
+  vt: { x: 830, y: 120 },
+  ct: { x: 835, y: 195 },
+  ri: { x: 855, y: 195 },
+  nj: { x: 815, y: 230 },
+  de: { x: 815, y: 255 },
+  md: { x: 790, y: 260 },
+  ma: { x: 845, y: 180 },
 }
 
 export default function USMap({ stateFlowMap, stateConditions }: Props) {
@@ -419,7 +447,7 @@ export default function USMap({ stateFlowMap, stateConditions }: Props) {
 
         {/* ── Footer ── */}
         <text x="480" y="578" fontFamily="IBM Plex Mono,monospace" fontSize={8.5} fill="rgba(255,255,255,0.32)" textAnchor="middle">
-          20 states live · WA · OR · ID · MT · WY · UT · CO · NM · CA · AZ · MI · PA · WV · VA · KY · TN · NC · GA · NY · ME
+          48 states live · every river in America — Alaska & Hawaii coming soon
         </text>
       </svg>
 
