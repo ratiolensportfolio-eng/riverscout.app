@@ -39,7 +39,7 @@ export const STATES: StatesDB = {
       },
             {
         id: 'ausable', n: 'Au Sable River', lp: true, up: false, wild: true, nat: true, ww: false,
-        co: 'Crawford / Oscoda Co.', len: '140 mi', cls: 'I', opt: '200–800',
+        co: 'Crawford / Oscoda Co.', len: '140 mi', cls: 'Riffles', opt: '200–800',
         g: '04137500', avg: 410, histFlow: 390, mx: 265, my: 254, abbr: 'MI',
         desc: "Michigan's most celebrated canoe river — 140 miles of spring-fed water from Grayling to Lake Huron. Birthplace of Trout Unlimited (1959) and home of the legendary Au Sable Canoe Marathon, 120 miles nonstop each July since 1947.",
         desig: 'National Wild & Scenic River (1984) · Michigan Natural River',
@@ -56,7 +56,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'manistee', n: 'Manistee River', lp: true, up: false, wild: true, nat: true, ww: false,
-        co: 'Manistee / Wexford Co.', len: '190 mi', cls: 'I', opt: '300–1200',
+        co: 'Manistee / Wexford Co.', len: '190 mi', cls: 'Riffles', opt: '300–1200',
         g: '04126520', avg: 740, histFlow: 690, mx: 248, my: 240, abbr: 'MI',
         desc: '190 miles through Manistee National Forest — among the finest trout fisheries east of the Rockies. Upper reach is fast and intimate; below Tippy Dam widens into world-class steelhead and Chinook salmon water every fall.',
         desig: 'National Scenic River · Michigan Natural River',
@@ -73,7 +73,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'muskegon', n: 'Muskegon River', lp: true, up: false, wild: false, nat: false, ww: false,
-        co: 'Mecosta / Newaygo / Muskegon Co.', len: '216 mi', cls: 'I', opt: '800–3000',
+        co: 'Mecosta / Newaygo / Muskegon Co.', len: '216 mi', cls: 'Riffles', opt: '800–3000',
         g: '04121970', avg: 1840, histFlow: 1650, mx: 216, my: 260, abbr: 'MI',
         desc: "Michigan's longest river entirely within the state. World-class steelhead and Chinook salmon. The world's first logging railroad was built in 1876 specifically to feed logs into the Muskegon system.",
         desig: 'Michigan Designated Trout Stream (lower reach)',
@@ -89,7 +89,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'pere_marquette', n: 'Pere Marquette River', lp: true, up: false, wild: true, nat: true, ww: false,
-        co: 'Lake / Mason Co.', len: '67 mi', cls: 'I', opt: '300–1000',
+        co: 'Lake / Mason Co.', len: '67 mi', cls: 'Riffles', opt: '300–1000',
         g: '04122500', avg: 710, histFlow: 650, mx: 240, my: 248, abbr: 'MI',
         desc: "National Wild & Scenic River and Michigan Natural River, the Pere Marquette is a legendary steelhead and salmon fishery. The upper river features designated fly-fishing-only water, drawing anglers from across the country.",
         desig: 'National Wild & Scenic River · Michigan Natural River',
@@ -104,7 +104,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'boardman', n: 'Boardman River', lp: true, up: false, wild: false, nat: true, ww: false,
-        co: 'Grand Traverse / Kalkaska Co.', len: '40 mi', cls: 'I', opt: '150–500',
+        co: 'Grand Traverse / Kalkaska Co.', len: '40 mi', cls: 'Riffles', opt: '150–500',
         g: '04127200', avg: 280, histFlow: 255, mx: 255, my: 230, abbr: 'MI',
         desc: "Flows into Grand Traverse Bay at Traverse City, the Boardman has seen dramatic ecological revival through recent dam removals restoring fish passage. A cold, clear stream winding through forested terrain to one of Michigan's most vibrant waterfronts.",
         desig: 'Michigan Natural River',
@@ -119,7 +119,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'jordan', n: 'Jordan River', lp: true, up: false, wild: false, nat: true, ww: false,
-        co: 'Antrim / Charlevoix Co.', len: '33 mi', cls: 'I', opt: '100–400',
+        co: 'Antrim / Charlevoix Co.', len: '33 mi', cls: 'Riffles', opt: '100–400',
         g: '04127800', avg: 180, histFlow: 165, mx: 260, my: 225, abbr: 'MI',
         desc: "Michigan's first designated Natural River (1972), the Jordan is a cold spring-fed gem with superb brook trout fishing. Its intimate, winding course through the Jordan River Valley is one of the most scenic paddles in the Lower Peninsula.",
         desig: 'Michigan Natural River (1972 — first in state)',
@@ -134,7 +134,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'betsie', n: 'Betsie River', lp: true, up: false, wild: false, nat: true, ww: false,
-        co: 'Benzie Co.', len: '55 mi', cls: 'I', opt: '150–500',
+        co: 'Benzie Co.', len: '55 mi', cls: 'Riffles', opt: '150–500',
         g: '04126550', avg: 260, histFlow: 235, mx: 242, my: 237, abbr: 'MI',
         desc: "Flowing to Lake Michigan at Frankfort near the Sleeping Bear Dunes, the Betsie offers excellent salmon and steelhead runs. A scenic Natural River winding through Benzie County's rolling forests and farmland.",
         desig: 'Michigan Natural River',
@@ -149,7 +149,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'platte_mi', n: 'Platte River', lp: true, up: false, wild: false, nat: true, ww: false,
-        co: 'Benzie Co.', len: '30 mi', cls: 'I', opt: '80–300',
+        co: 'Benzie Co.', len: '30 mi', cls: 'Riffles', opt: '80–300',
         g: '04126740', avg: 150, histFlow: 135, mx: 247, my: 234, abbr: 'MI',
         desc: "Flowing through Sleeping Bear Dunes National Lakeshore, the Platte is famous for its coho salmon run — one of the first successful Pacific salmon introductions in the Great Lakes. A gentle, crystal-clear paddle to Lake Michigan.",
         desig: 'Michigan Natural River · Sleeping Bear Dunes National Lakeshore',
@@ -164,7 +164,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'rifle', n: 'Rifle River', lp: true, up: false, wild: false, nat: true, ww: false,
-        co: 'Ogemaw / Arenac Co.', len: '60 mi', cls: 'I', opt: '200–800',
+        co: 'Ogemaw / Arenac Co.', len: '60 mi', cls: 'Riffles', opt: '200–800',
         g: '04141000', avg: 380, histFlow: 345, mx: 280, my: 258, abbr: 'MI',
         desc: "Flowing through the Rifle River Recreation Area, the Rifle is one of Michigan's most family-friendly float rivers with good smallmouth bass fishing. A gentle, forested paddle through the eastern LP.",
         desig: 'Michigan Natural River',
@@ -179,7 +179,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'huron_mi', n: 'Huron River', lp: true, up: false, wild: false, nat: false, ww: false,
-        co: 'Washtenaw / Wayne Co.', len: '130 mi', cls: 'I', opt: '300–1200',
+        co: 'Washtenaw / Wayne Co.', len: '130 mi', cls: 'Riffles', opt: '300–1200',
         g: '04174500', avg: 620, histFlow: 560, mx: 275, my: 275, abbr: 'MI',
         desc: "Michigan's only National Water Trail at 104 miles, the Huron flows through Ann Arbor and is the most accessible urban paddle in the state. A remarkable blend of city parks, wetlands, and natural areas along a surprisingly wild corridor.",
         desig: 'National Water Trail (104 mi)',
@@ -209,7 +209,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'thornapple', n: 'Thornapple River', lp: true, up: false, wild: false, nat: false, ww: false,
-        co: 'Barry / Eaton Co.', len: '90 mi', cls: 'I', opt: '300–1200',
+        co: 'Barry / Eaton Co.', len: '90 mi', cls: 'Riffles', opt: '300–1200',
         g: '04117500', avg: 680, histFlow: 620, mx: 255, my: 270, abbr: 'MI',
         desc: "Winding through southwest Michigan's rural farmland, the Thornapple offers good bass fishing and a peaceful, pastoral paddle to its confluence with the Grand River. A quiet alternative to busier northern LP rivers.",
         desig: 'None',
@@ -224,7 +224,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'crystal_mi', n: 'Crystal River (Glen Arbor)', lp: true, up: false, wild: false, nat: false, ww: false,
-        co: 'Leelanau Co.', len: '2.5 mi', cls: 'I', opt: '40–150',
+        co: 'Leelanau Co.', len: '2.5 mi', cls: 'Riffles', opt: '40–150',
         g: '04127918', avg: 75, histFlow: 68, mx: 248, my: 228, abbr: 'MI',
         desc: "The shortest river in Michigan at just 2.5 miles, the Crystal flows with teal-blue, glass-clear water through Sleeping Bear Dunes National Lakeshore. An extremely popular short paddle and one of the most photographed waterways in the state.",
         desig: 'Sleeping Bear Dunes National Lakeshore',
@@ -239,7 +239,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'ausable_sb', n: 'Au Sable South Branch', lp: true, up: false, wild: false, nat: false, ww: false,
-        co: 'Crawford / Roscommon Co.', len: '40 mi', cls: 'I', opt: '100–400',
+        co: 'Crawford / Roscommon Co.', len: '40 mi', cls: 'Riffles', opt: '100–400',
         g: '04135700', avg: 180, histFlow: 162, mx: 270, my: 258, abbr: 'MI',
         desc: "Quieter and more intimate than the main stem Au Sable, the South Branch winds through state forest with wild brook trout in every pool. A peaceful escape for anglers and paddlers seeking solitude.",
         desig: 'Michigan Natural River',
@@ -254,7 +254,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'black_cheboygan', n: 'Black River (Cheboygan)', lp: true, up: false, wild: false, nat: false, ww: false,
-        co: 'Cheboygan Co.', len: '40 mi', cls: 'I', opt: '200–800',
+        co: 'Cheboygan Co.', len: '40 mi', cls: 'Riffles', opt: '200–800',
         g: '04131500', avg: 380, histFlow: 342, mx: 275, my: 240, abbr: 'MI',
         desc: "Flowing into Black Lake and then to Lake Huron, the Black River traverses some of the most remote northern Lower Peninsula landscape. A quiet, forested paddle far from the crowds of more popular rivers.",
         desig: 'None',
@@ -269,7 +269,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'cass', n: 'Cass River', lp: true, up: false, wild: false, nat: false, ww: false,
-        co: 'Tuscola Co.', len: '95 mi', cls: 'I', opt: '200–1200',
+        co: 'Tuscola Co.', len: '95 mi', cls: 'Riffles', opt: '200–1200',
         g: '04151500', avg: 620, histFlow: 558, mx: 278, my: 262, abbr: 'MI',
         desc: "Michigan's Thumb area river flowing through agricultural country, the Cass is a family-friendly paddle with gentle current and easy access. A pleasant introduction to paddling in the eastern Lower Peninsula.",
         desig: 'None',
@@ -284,7 +284,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'chippewa_mi', n: 'Chippewa River', lp: true, up: false, wild: false, nat: false, ww: false,
-        co: 'Mecosta / Isabella Co.', len: '90 mi', cls: 'I', opt: '150–600',
+        co: 'Mecosta / Isabella Co.', len: '90 mi', cls: 'Riffles', opt: '150–600',
         g: '04154000', avg: 340, histFlow: 306, mx: 260, my: 260, abbr: 'MI',
         desc: "Flowing through the Mt. Pleasant area and Central Michigan University's hometown, the Chippewa is a gentle central LP paddle with good smallmouth bass fishing and easy access from mid-Michigan communities.",
         desig: 'None',
@@ -299,7 +299,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'dowagiac', n: 'Dowagiac River', lp: true, up: false, wild: false, nat: false, ww: false,
-        co: 'Cass Co.', len: '30 mi', cls: 'I', opt: '100–400',
+        co: 'Cass Co.', len: '30 mi', cls: 'Riffles', opt: '100–400',
         g: '04101800', avg: 180, histFlow: 162, mx: 240, my: 272, abbr: 'MI',
         desc: "A spring-fed creek in southwest Michigan with excellent trout habitat, the Dowagiac is a small gem prized by anglers for its cold, clear water and healthy brown trout population.",
         desig: 'Michigan Designated Trout Stream',
@@ -314,7 +314,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'kalamazoo', n: 'Kalamazoo River', lp: true, up: false, wild: false, nat: false, ww: false,
-        co: 'Kalamazoo / Allegan Co.', len: '175 mi', cls: 'I', opt: '500–3000',
+        co: 'Kalamazoo / Allegan Co.', len: '175 mi', cls: 'Riffles', opt: '500–3000',
         g: '04106000', avg: 1600, histFlow: 1440, mx: 245, my: 268, abbr: 'MI',
         desc: "Major southwest Michigan river flowing 175 miles to Lake Michigan at Saugatuck. The Kalamazoo offers diverse paddling from urban stretches through Kalamazoo to scenic lower reaches through Allegan State Game Area.",
         desig: 'None',
@@ -329,7 +329,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'little_manistee', n: 'Little Manistee River', lp: true, up: false, wild: false, nat: true, ww: false,
-        co: 'Lake / Mason Co.', len: '55 mi', cls: 'I', opt: '150–600',
+        co: 'Lake / Mason Co.', len: '55 mi', cls: 'Riffles', opt: '150–600',
         g: '04126200', avg: 280, histFlow: 252, mx: 242, my: 245, abbr: 'MI',
         desc: "Premier steelhead river and home to the Michigan DNR weir used for egg collection to stock rivers statewide. The Little Manistee runs cold and clear through the Manistee National Forest.",
         desig: 'Michigan Natural River',
@@ -344,7 +344,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'little_muskegon', n: 'Little Muskegon River', lp: true, up: false, wild: false, nat: false, ww: false,
-        co: 'Mecosta / Newaygo Co.', len: '50 mi', cls: 'I', opt: '100–400',
+        co: 'Mecosta / Newaygo Co.', len: '50 mi', cls: 'Riffles', opt: '100–400',
         g: '04121300', avg: 220, histFlow: 198, mx: 240, my: 258, abbr: 'MI',
         desc: "Quiet tributary of the Muskegon River flowing through the Manistee National Forest, the Little Muskegon offers excellent trout fishing and a peaceful, uncrowded paddle far from the busier main stem.",
         desig: 'None',
@@ -359,7 +359,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'ocqueoc', n: 'Ocqueoc River', lp: true, up: false, wild: false, nat: false, ww: false,
-        co: 'Presque Isle Co.', len: '30 mi', cls: 'I', opt: '80–300',
+        co: 'Presque Isle Co.', len: '30 mi', cls: 'Riffles', opt: '80–300',
         g: '04133500', avg: 140, histFlow: 126, mx: 280, my: 242, abbr: 'MI',
         desc: "Home to Ocqueoc Falls, the only named waterfall in Michigan's Lower Peninsula. A small, intimate river in the remote northeastern LP with good trout fishing and a surprising natural landmark.",
         desig: 'None',
@@ -374,7 +374,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'pigeon_mi', n: 'Pigeon River', lp: true, up: false, wild: false, nat: false, ww: false,
-        co: 'Otsego Co.', len: '40 mi', cls: 'I', opt: '100–400',
+        co: 'Otsego Co.', len: '40 mi', cls: 'Riffles', opt: '100–400',
         g: '04132500', avg: 190, histFlow: 171, mx: 272, my: 244, abbr: 'MI',
         desc: "Flowing through the Pigeon River Country State Forest — Michigan's elk country — the Pigeon is the most remote river in the Lower Peninsula. A wild, intimate paddle with a chance to see elk along the banks.",
         desig: 'None',
@@ -389,7 +389,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'shiawassee', n: 'Shiawassee River', lp: true, up: false, wild: false, nat: false, ww: false,
-        co: 'Livingston / Shiawassee Co.', len: '100 mi', cls: 'I', opt: '200–1000',
+        co: 'Livingston / Shiawassee Co.', len: '100 mi', cls: 'Riffles', opt: '200–1000',
         g: '04144500', avg: 480, histFlow: 432, mx: 270, my: 268, abbr: 'MI',
         desc: "Flowing through mid-Michigan to the Shiawassee National Wildlife Refuge, this river offers gentle paddling through farmland and wetlands with excellent birding opportunities.",
         desig: 'Shiawassee National Wildlife Refuge (lower reach)',
@@ -419,7 +419,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'thunder_bay', n: 'Thunder Bay River', lp: true, up: false, wild: false, nat: false, ww: false,
-        co: 'Montmorency / Alpena Co.', len: '70 mi', cls: 'I', opt: '200–800',
+        co: 'Montmorency / Alpena Co.', len: '70 mi', cls: 'Riffles', opt: '200–800',
         g: '04135000', avg: 420, histFlow: 378, mx: 278, my: 248, abbr: 'MI',
         desc: "Flowing to Lake Huron at Alpena and the Thunder Bay National Marine Sanctuary, this northeastern LP river offers a scenic paddle through forested country to one of the Great Lakes' most significant underwater preserves.",
         desig: 'None',
@@ -434,7 +434,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'white_mi', n: 'White River', lp: true, up: false, wild: false, nat: false, ww: false,
-        co: 'Newaygo / Oceana Co.', len: '50 mi', cls: 'I', opt: '150–600',
+        co: 'Newaygo / Oceana Co.', len: '50 mi', cls: 'Riffles', opt: '150–600',
         g: '04122100', avg: 310, histFlow: 279, mx: 236, my: 255, abbr: 'MI',
         desc: "A Lake Michigan tributary at Hesperia with good steelhead and salmon runs, the White River is a scenic west Michigan paddle through the Manistee National Forest with reliable spring-fed flow.",
         desig: 'None',
