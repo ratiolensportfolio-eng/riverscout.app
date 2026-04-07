@@ -3,7 +3,7 @@
 
 const RESEND_API_URL = 'https://api.resend.com/emails'
 const FROM_ADDRESS = 'RiverScout <noreply@riverscout.app>'
-const ADMIN_EMAIL = 'outfitters@riverscout.app'
+const ADMIN_EMAIL = 'Paddle.rivers.us@gmail.com'
 
 interface SendEmailOptions {
   to: string | string[]
