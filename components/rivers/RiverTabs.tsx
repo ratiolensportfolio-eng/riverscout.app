@@ -485,42 +485,6 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
         {/* ── TRIP PLANNING ─────────────────────────────────── */}
         {tab === 'Trip Planning' && (
           <div>
-            {/* Interactive River Map */}
-            {riverHasMap && (
-              <div style={{ marginBottom: '16px' }}>
-                {!riverMapData && !riverMapLoading && (
-                  <button onClick={async () => {
-                    setRiverMapLoading(true)
-                    const data = await loadRiverMap(river.id)
-                    if (data) setRiverMapData(data)
-                    setRiverMapLoading(false)
-                  }} style={{
-                    width: '100%', padding: '14px', border: '.5px solid var(--rvmd)',
-                    borderRadius: 'var(--rlg)', background: 'var(--rvlt)', cursor: 'pointer',
-                    fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--rvdk)',
-                    textAlign: 'center',
-                  }}>
-                    Load Interactive River Map — Access Points, Distances & Paddle Times
-                  </button>
-                )}
-                {riverMapLoading && (
-                  <div style={{ padding: '20px', textAlign: 'center', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>
-                    Loading map data...
-                  </div>
-                )}
-                {riverMapData && (
-                  <Suspense fallback={<div style={{ height: '350px', background: 'var(--bg2)', borderRadius: 'var(--rlg)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>Loading map...</div>}>
-                    <RiverMap
-                      riverName={river.n}
-                      accessPoints={riverMapData.accessPoints}
-                      sections={riverMapData.sections}
-                      riverPath={riverMapData.riverPath}
-                    />
-                  </Suspense>
-                )}
-              </div>
-            )}
-
             {/* Safety snapshot */}
             <div style={{ background: 'var(--bg2)', borderRadius: 'var(--r)', padding: '12px 14px', marginBottom: '14px', border: '.5px solid var(--bd)' }}>
               <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
@@ -600,6 +564,42 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
             <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' }}>
               Maps & Guides for {river.n}
             </div>
+
+            {/* Interactive River Map */}
+            {riverHasMap && (
+              <div style={{ marginBottom: '16px' }}>
+                {!riverMapData && !riverMapLoading && (
+                  <button onClick={async () => {
+                    setRiverMapLoading(true)
+                    const data = await loadRiverMap(river.id)
+                    if (data) setRiverMapData(data)
+                    setRiverMapLoading(false)
+                  }} style={{
+                    width: '100%', padding: '14px', border: '.5px solid var(--rvmd)',
+                    borderRadius: 'var(--rlg)', background: 'var(--rvlt)', cursor: 'pointer',
+                    fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--rvdk)',
+                    textAlign: 'center',
+                  }}>
+                    Load Interactive River Map — Access Points, Distances & Paddle Times
+                  </button>
+                )}
+                {riverMapLoading && (
+                  <div style={{ padding: '20px', textAlign: 'center', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>
+                    Loading map data...
+                  </div>
+                )}
+                {riverMapData && (
+                  <Suspense fallback={<div style={{ height: '350px', background: 'var(--bg2)', borderRadius: 'var(--rlg)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>Loading map...</div>}>
+                    <RiverMap
+                      riverName={river.n}
+                      accessPoints={riverMapData.accessPoints}
+                      sections={riverMapData.sections}
+                      riverPath={riverMapData.riverPath}
+                    />
+                  </Suspense>
+                )}
+              </div>
+            )}
 
             {/* Featured map placeholder */}
             <div style={{ border: '.5px solid var(--rvmd)', borderRadius: 'var(--rlg)', padding: '16px 18px', background: 'var(--rvlt)', marginBottom: '12px' }}>
