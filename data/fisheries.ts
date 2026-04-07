@@ -748,7 +748,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
       { name: 'Terrestrials', timing: 'July–September' },
     ],
     runs: [],
-    guides: ['St. Peter's Fly Shop', 'Rocky Mountain Adventures'],
+    guides: ["St. Peter's Fly Shop", 'Rocky Mountain Adventures'],
   },
 
   yampa: {
