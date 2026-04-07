@@ -9,7 +9,7 @@ import { hasRiverMap, loadRiverMap } from '@/data/river-maps'
 import { FISHERIES } from '@/data/fisheries'
 import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
-const TABS = ['Overview', 'History', 'Trip Reports', 'Trip Planning', 'Fishing', 'Maps & Guides', 'Documents'] as const
+const TABS = ['Overview', 'History', 'Trip Reports', 'Fishing', 'Maps & Guides', 'Documents'] as const
 type Tab = typeof TABS[number]
 
 const ERA_LABELS: Record<string, string> = {
@@ -480,82 +480,6 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                 </form>
               )}
             </div>
-          </div>
-        )}
-
-        {/* ── TRIP PLANNING ─────────────────────────────────── */}
-        {tab === 'Trip Planning' && (
-          <div>
-            {/* Safety snapshot */}
-            <div style={{ background: 'var(--bg2)', borderRadius: 'var(--r)', padding: '12px 14px', marginBottom: '14px', border: '.5px solid var(--bd)' }}>
-              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
-                Current conditions
-              </div>
-              <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-                <CondItem label="Flow" value={flow.cfs !== null ? `${formatCfs(flow.cfs)} CFS` : '—'} />
-                <CondItem label="Condition" value={
-                  flow.condition === 'optimal' ? '✓ Optimal' :
-                  flow.condition === 'low' ? '↓ Below optimal' :
-                  flow.condition === 'high' ? '↑ Above optimal' :
-                  flow.condition === 'flood' ? '⚠ Flood' : '—'
-                } />
-                {flow.tempC !== null && (
-                  <CondItem
-                    label="Water temp"
-                    value={`${celsiusToFahrenheit(flow.tempC)}°F${isHypothermiaRisk(flow.tempC) ? ' ⚠ Cold' : ''}`}
-                  />
-                )}
-                <CondItem label="Optimal range" value={`${river.opt} CFS`} />
-              </div>
-            </div>
-
-            {/* Safety note if temp is cold */}
-            {flow.tempC !== null && isHypothermiaRisk(flow.tempC) && (
-              <div style={{ background: '#fff3f0', border: '.5px solid #f4a', borderRadius: 'var(--r)', padding: '10px 13px', marginBottom: '14px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: '#c02', lineHeight: 1.6 }}>
-                ⚠️ Water temp {celsiusToFahrenheit(flow.tempC)}°F — hypothermia risk is real. Wear a wetsuit or drysuit and paddle with experienced partners.
-              </div>
-            )}
-
-            {/* Gear checklist */}
-            <div style={{ marginBottom: '14px' }}>
-              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
-                Gear checklist — Class {river.cls}
-              </div>
-              {gear.map((item, i) => (
-                <GearItem key={i} label={item} />
-              ))}
-            </div>
-
-            {/* Sections for planning */}
-            {river.secs.length > 0 && (
-              <div style={{ marginBottom: '14px' }}>
-                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
-                  Sections to plan
-                </div>
-                {river.secs.map((sec, i) => (
-                  <div key={i} style={{ fontSize: '12px', color: 'var(--tx)', marginBottom: '5px', paddingLeft: '10px', borderLeft: '2px solid var(--rvmd)', lineHeight: 1.55 }}>
-                    {sec}
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* Outfitters */}
-            {river.outs.length > 0 && (
-              <div>
-                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
-                  Hire a guide
-                </div>
-                {river.outs.map((out, i) => (
-                  <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 0', borderBottom: '.5px solid var(--bd)' }}>
-                    <div>
-                      <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', fontWeight: 500, color: 'var(--rvdk)' }}>{out.n}</div>
-                      <div style={{ fontSize: '11px', color: 'var(--tx2)', marginTop: '1px' }}>{out.d}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
         )}
 
