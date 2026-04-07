@@ -97,10 +97,28 @@ export default function OutfitterJoin() {
       // Destination — contact sales
       window.location.href = `mailto:outfitters@riverscout.app?subject=Destination Sponsor Inquiry — ${form.businessName}&body=Business: ${form.businessName}%0AEmail: ${form.email}%0APhone: ${form.phone}%0AStates of interest: ${selectedRivers.join(', ')}`
     } else {
-      // Paid tier — redirect to Stripe (stubbed)
-      // TODO: POST to /api/stripe/checkout with tier, billing cycle, outfitter details
-      // For now, redirect to success with tier param
-      window.location.href = `/outfitters/success?tier=${selectedTier}&billing=${billingCycle}`
+      // Paid tier — create Stripe Checkout Session
+      try {
+        const res = await fetch('/api/stripe/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            tier: selectedTier,
+            billing: billingCycle,
+            businessName: form.businessName,
+            email: form.email,
+            riverIds: selectedRivers,
+          }),
+        })
+        const data = await res.json()
+        if (data.url) {
+          window.location.href = data.url
+        } else {
+          setError(data.error || 'Failed to start checkout')
+        }
+      } catch {
+        setError('Network error — please try again')
+      }
     }
     setSubmitting(false)
   }

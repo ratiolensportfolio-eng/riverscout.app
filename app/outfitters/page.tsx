@@ -128,20 +128,21 @@ export default function OutfitterPortal() {
                 </ul>
 
                 {/* CTA */}
-                <button style={{
-                  width: '100%', padding: '10px',
-                  fontFamily: mono, fontSize: '11px', fontWeight: 500,
-                  border: tier.monthlyPrice === 0 ? `.5px solid ${colors.border}` : 'none',
-                  borderRadius: 'var(--r)',
-                  background: tier.monthlyPrice === 0 ? 'var(--bg)' : colors.accent,
-                  color: tier.monthlyPrice === 0 ? colors.accent : '#fff',
-                  cursor: 'pointer',
-                  letterSpacing: '.3px',
-                }}>
+                <Link href={tier.yearlyPrice === null ? 'mailto:outfitters@riverscout.app?subject=Destination Sponsor Inquiry' : '/outfitters/join'}
+                  style={{
+                    display: 'block', width: '100%', padding: '10px', textAlign: 'center',
+                    fontFamily: mono, fontSize: '11px', fontWeight: 500,
+                    border: tier.monthlyPrice === 0 ? `.5px solid ${colors.border}` : 'none',
+                    borderRadius: 'var(--r)',
+                    background: tier.monthlyPrice === 0 ? 'var(--bg)' : colors.accent,
+                    color: tier.monthlyPrice === 0 ? colors.accent : '#fff',
+                    textDecoration: 'none',
+                    letterSpacing: '.3px',
+                  }}>
                   {tier.monthlyPrice === 0 ? 'Claim Free Listing' :
                    tier.yearlyPrice === null ? 'Contact Sales' :
                    'Get Started'}
-                </button>
+                </Link>
               </div>
             )
           })}
