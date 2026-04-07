@@ -160,15 +160,105 @@ export interface TripReport {
 
 // ── Outfitter Types ───────────────────────────────────────────────
 
-export type OutfitterTier = 'free' | 'featured' | 'sponsored'
+export type OutfitterTier = 'listed' | 'featured' | 'sponsored' | 'guide' | 'destination'
 
 export interface OutfitterListing {
   id: string
   name: string
   description: string
   website: string
+  phone?: string
+  email?: string
   riverIds: string[]
+  stateKeys?: string[]       // for destination sponsors
   tier: OutfitterTier
   logoUrl: string | null
+  photoUrls?: string[]
+  stripeCustomerId?: string
+  stripeSubscriptionId?: string
+  active: boolean
   createdAt: string
+  expiresAt?: string
 }
+
+export interface OutfitterTierConfig {
+  tier: OutfitterTier
+  name: string
+  monthlyPrice: number       // 0 for free
+  yearlyPrice: number | null // null = contact sales
+  maxRivers: number | null   // null = unlimited (destination)
+  stripePriceIdMonthly?: string
+  stripePriceIdYearly?: string
+  features: string[]
+}
+
+export const OUTFITTER_TIERS: OutfitterTierConfig[] = [
+  {
+    tier: 'listed',
+    name: 'Listed',
+    monthlyPrice: 0,
+    yearlyPrice: 0,
+    maxRivers: 1,
+    features: [
+      'Business name and description on river page',
+      'Appear in outfitter directory',
+      'Basic listing — no website link, no logo',
+    ],
+  },
+  {
+    tier: 'featured',
+    name: 'Featured',
+    monthlyPrice: 49,
+    yearlyPrice: 399,
+    maxRivers: 3,
+    features: [
+      'Everything in Listed',
+      'Website link and phone number displayed',
+      'Logo on river page',
+      'Featured badge — higher placement',
+      'Up to 3 rivers per subscription',
+    ],
+  },
+  {
+    tier: 'sponsored',
+    name: 'Sponsored',
+    monthlyPrice: 149,
+    yearlyPrice: 999,
+    maxRivers: 6,
+    features: [
+      'Everything in Featured',
+      'Top-of-page placement with photo gallery',
+      'Sponsored badge with accent border',
+      'Up to 6 rivers per subscription',
+      'Priority in search results',
+      'Trip planning integration',
+    ],
+  },
+  {
+    tier: 'guide',
+    name: 'Guide Profile',
+    monthlyPrice: 29,
+    yearlyPrice: 249,
+    maxRivers: 3,
+    features: [
+      'Individual guide profile (not a business)',
+      'Appear on Fishing tab as a listed guide',
+      'Website link and contact info',
+      'Guide badge',
+      'Up to 3 rivers',
+    ],
+  },
+  {
+    tier: 'destination',
+    name: 'Destination Sponsor',
+    monthlyPrice: 499,
+    yearlyPrice: null, // contact sales
+    maxRivers: null,   // covers entire state/region
+    features: [
+      'Cover an entire state or region',
+      'Brand placement on state page and all river pages',
+      'Custom landing page on RiverScout',
+      'Annual contract — contact sales',
+    ],
+  },
+]
