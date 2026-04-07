@@ -1,0 +1,54 @@
+import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
+
+// Buffalo River (AR) — geometry from USGS NHDPlus HR
+// 39 points, 14/200 segments stitched
+
+// Access points — TO BE POPULATED with real GPS coordinates
+// Research put-in/take-out locations and add them here
+export const accessPoints: AccessPoint[] = []
+
+// Sections — TO BE POPULATED with real distances and paddle times
+export const sections: RiverSection[] = []
+
+// River path from USGS NHDPlus High Resolution dataset
+export const riverPath: [number, number][] = [
+  [-92.7522, 35.9819],
+  [-92.752, 35.9818],
+  [-92.752, 35.9818],
+  [-92.7502, 35.982],
+  [-92.7463, 35.9839],
+  [-92.7426, 35.9864],
+  [-92.7374, 35.9847],
+  [-92.7374, 35.9847],
+  [-92.7341, 35.9853],
+  [-92.7332, 35.9884],
+  [-92.7406, 35.9887],
+  [-92.742, 35.991],
+  [-92.7379, 35.997],
+  [-92.7356, 35.9979],
+  [-92.729, 35.9958],
+  [-92.729, 35.9868],
+  [-92.7252, 35.9848],
+  [-92.7252, 35.9848],
+  [-92.7182, 35.9849],
+  [-92.7182, 35.9849],
+  [-92.717, 35.9849],
+  [-92.717, 35.9849],
+  [-92.7106, 35.9922],
+  [-92.7062, 35.9946],
+  [-92.704, 35.9957],
+  [-92.7027, 35.9965],
+  [-92.7027, 35.9965],
+  [-92.6999, 35.9972],
+  [-92.6999, 35.9972],
+  [-92.6983, 35.9976],
+  [-92.6955, 35.9973],
+  [-92.6952, 35.9972],
+  [-92.6952, 35.9972],
+  [-92.6932, 35.9976],
+  [-92.6895, 35.9997],
+  [-92.6893, 36.0001],
+  [-92.6893, 36.0001],
+  [-92.6892, 36.0007],
+  [-92.6892, 36.0007],
+]
