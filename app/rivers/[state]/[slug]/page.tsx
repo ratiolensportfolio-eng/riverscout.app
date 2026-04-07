@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { getRiverBySlug, getStateSlug, getRiverSlug, ALL_RIVERS } from '@/data/rivers'
 import { fetchGaugeData, formatCfs, trendArrow, celsiusToFahrenheit, isHypothermiaRisk } from '@/lib/usgs'
 import RiverTabs from '@/components/rivers/RiverTabs'
+import SuggestCorrection from '@/components/SuggestCorrection'
 import type { Metadata } from 'next'
 
 export const revalidate = 900
@@ -118,8 +119,11 @@ export default async function RiverPage({ params }: Props) {
           </div>
         )}
 
-        <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginTop: '4px' }}>
-          Optimal: {river.opt} CFS · USGS #{river.g}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '4px' }}>
+          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)' }}>
+            Optimal: {river.opt} CFS · USGS #{river.g}
+          </div>
+          <SuggestCorrection riverId={river.id} riverName={river.n} stateKey={river.stateKey} />
         </div>
       </div>
 
