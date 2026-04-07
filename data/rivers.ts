@@ -2678,6 +2678,11 @@ export const STATES: StatesDB = {
           { era: 'native', entries: [{ yr: 'Pre-contact', title: "Chisos and Comanche Territory — 'The Big Bend'", text: "The Big Bend region was home to the Chisos people and later a stronghold of the Comanche. The rugged canyons provided shelter and the river sustained life in the Chihuahuan Desert. Spanish explorers called the region 'el despoblado' — the uninhabited land.", src: 'NPS Big Bend National Park; Texas State Historical Association' }] },
           { era: 'survey', entries: [{ yr: '1899', title: 'USGS Rio Grande Survey — Robert Hill Expedition', text: "USGS geologist Robert T. Hill led the first scientific exploration of the Big Bend canyons in 1899, a harrowing 350-mile journey through uncharted desert. His reports revealed the geological wonder of Santa Elena, Mariscal, and Boquillas canyons to the American public.", src: 'USGS; Hill, R.T. (1901) Running the Canyons of the Rio Grande' }] },
           { era: 'modern', entries: [{ yr: '2023', title: 'Big Bend Paddling — Desert Expedition Revival', text: "After years of low flows due to upstream diversions in Mexico and the U.S., the Rio Grande through Big Bend has seen renewed paddling interest. Conservation groups are working to restore minimum flows to sustain the river's ecological and recreational value.", src: 'Big Bend Conservancy; American Rivers' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [],
+      },
       {
         id: 'brazos', n: 'Brazos River', ww: false, scenic: true, desert: false, spring: false,
         co: 'Palo Pinto Co.', len: '840 mi', cls: 'I–II', opt: '300–3000',
