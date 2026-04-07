@@ -100,7 +100,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [{ u: 'flyrod_pm', d: 'Oct 2024', s: 5, t: 'Fall steelhead run at 680 cfs — hooked into a chrome hen that peeled 50 yards of line. The PM never disappoints.' }, { u: 'paddlecraft_mi', d: 'Aug 2024', s: 4, t: 'Bowman Bridge to Indian Bridge at 420 cfs. Gentle current, beautiful cedar-lined banks, perfect family float.' }],
-        outs: [{ n: 'Baldwin Canoe Rental', d: 'Full-service outfitter on the upper Pere Marquette' }, { n: 'Pere Marquette Expeditions', d: 'Guided fishing and paddling trips' }],
+        outs: [{ n: 'Baldwin Canoe Rental', d: 'Full-service outfitter on the upper Pere Marquette', l: '' }, { n: 'Pere Marquette Expeditions', d: 'Guided fishing and paddling trips', l: '' }],
       },
       {
         id: 'boardman', n: 'Boardman River', lp: true, up: false, wild: false, nat: true, ww: false,
@@ -115,7 +115,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [{ u: 'tc_local_paddle', d: 'Jul 2024', s: 4, t: 'Paddled the lower stretch into town at 240 cfs. Amazing to see the river flowing free where dams used to be. Trout rising everywhere.' }, { u: 'kayak_northwest_mi', d: 'Sep 2024', s: 4, t: 'Upper Boardman is surprisingly remote for being so close to Traverse City. Beautiful fall color paddle.' }],
-        outs: [{ n: 'Boardman River Outfitters', d: 'Kayak and canoe rentals near Traverse City' }, { n: 'Ranch Rudolf', d: 'Canoe and kayak livery on the upper Boardman' }],
+        outs: [{ n: 'Boardman River Outfitters', d: 'Kayak and canoe rentals near Traverse City', l: '' }, { n: 'Ranch Rudolf', d: 'Canoe and kayak livery on the upper Boardman', l: '' }],
       },
       {
         id: 'jordan', n: 'Jordan River', lp: true, up: false, wild: false, nat: true, ww: false,
@@ -130,7 +130,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [{ u: 'brooktrout_mi', d: 'Jun 2024', s: 5, t: 'Graves Crossing to Webster Bridge at 150 cfs — brook trout in every pool. The Jordan is as good as it gets in the LP.' }, { u: 'northwoods_canoe', d: 'Aug 2024', s: 4, t: 'Tight turns and overhanging cedars. Canoe skills required but the scenery is worth every stroke.' }],
-        outs: [{ n: 'Jordan Valley Outfitters', d: 'Canoe and kayak rentals, shuttle service' }],
+        outs: [{ n: 'Jordan Valley Outfitters', d: 'Canoe and kayak rentals, shuttle service', l: '' }],
       },
       {
         id: 'betsie', n: 'Betsie River', lp: true, up: false, wild: false, nat: true, ww: false,
@@ -145,7 +145,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [{ u: 'benzie_paddler', d: 'Sep 2024', s: 4, t: 'Fall color float from Thompsonville at 220 cfs. Salmon splashing upstream the whole way. Ended near Frankfort with a Lake Michigan sunset.' }, { u: 'steelhead_betsie', d: 'Nov 2024', s: 5, t: 'Chrome steelhead stacking at 380 cfs. The Betsie is underrated.' }],
-        outs: [{ n: 'Betsie River Canoes & Campground', d: 'Canoe and kayak rentals with riverside camping' }],
+        outs: [{ n: 'Betsie River Canoes & Campground', d: 'Canoe and kayak rentals with riverside camping', l: '' }],
       },
       {
         id: 'platte_mi', n: 'Platte River', lp: true, up: false, wild: false, nat: true, ww: false,
@@ -160,7 +160,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [{ u: 'sleepingbear_kayak', d: 'Jul 2024', s: 5, t: 'Platte to Lake Michigan at 120 cfs — water so clear you can see every pebble. The river mouth at Platte Bay is magical.' }, { u: 'salmon_run_mi', d: 'Oct 2024', s: 4, t: 'Coho jumping everywhere at 180 cfs. The fall run on the Platte is a Michigan tradition.' }],
-        outs: [{ n: 'Riverside Canoes', d: 'Canoe and kayak rentals on the Platte River' }, { n: 'Platte River Campground', d: 'NPS campground with river access and Lake Michigan beach' }],
+        outs: [{ n: 'Riverside Canoes', d: 'Canoe and kayak rentals on the Platte River', l: '' }, { n: 'Platte River Campground', d: 'NPS campground with river access and Lake Michigan beach', l: '' }],
       },
       {
         id: 'rifle', n: 'Rifle River', lp: true, up: false, wild: false, nat: true, ww: false,
@@ -175,7 +175,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [{ u: 'familyfloat_rifle', d: 'Jul 2024', s: 4, t: 'Selkirk to Sterling at 350 cfs with the whole family. Easy current, sandy bottom, great smallmouth fishing. Perfect beginner river.' }, { u: 'mi_bass_angler', d: 'Aug 2024', s: 4, t: 'Smallmouth on every bend at 280 cfs. The Rifle is an underappreciated gem.' }],
-        outs: [{ n: 'Russell Canoe Livery', d: 'Canoe, kayak, and tube rentals on the Rifle River' }],
+        outs: [{ n: 'Russell Canoe Livery', d: 'Canoe, kayak, and tube rentals on the Rifle River', l: '' }],
       },
       {
         id: 'huron_mi', n: 'Huron River', lp: true, up: false, wild: false, nat: false, ww: false,
@@ -190,7 +190,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [{ u: 'a2_paddler', d: 'Jun 2024', s: 4, t: 'Ann Arbor section at 500 cfs — paddled right through downtown. Herons, turtles, and coffee shops. Urban paddling at its finest.' }, { u: 'huron_water_trail', d: 'Sep 2024', s: 4, t: "Did four days on the National Water Trail. Surprisingly wild stretches between the towns. Michigan's most underrated long paddle." }],
-        outs: [{ n: 'Argo Canoe Livery', d: 'City of Ann Arbor livery with Argo Cascades access' }, { n: 'Heavner Canoe Rental', d: 'Canoe and kayak rentals on the upper Huron' }],
+        outs: [{ n: 'Argo Canoe Livery', d: 'City of Ann Arbor livery with Argo Cascades access', l: '' }, { n: 'Heavner Canoe Rental', d: 'Canoe and kayak rentals on the upper Huron', l: '' }],
       },
       {
         id: 'flat_river', n: 'Flat River', lp: true, up: false, wild: false, nat: false, ww: false,
@@ -205,7 +205,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [{ u: 'centralmi_kayak', d: 'Jul 2024', s: 4, t: 'Belding to Fallasburg at 450 cfs. Paddled under the covered bridge and caught smallmouth on every riffle. Hidden gem.' }, { u: 'flatriver_angler', d: 'Apr 2024', s: 4, t: 'Spring steelhead at 600 cfs — fish stacking at every gravel bar. The Flat gets overlooked but the fishing is excellent.' }],
-        outs: [{ n: 'Double R Ranch Resort', d: 'Canoe and kayak rentals on the Flat River' }],
+        outs: [{ n: 'Double R Ranch Resort', d: 'Canoe and kayak rentals on the Flat River', l: '' }],
       },
       {
         id: 'thornapple', n: 'Thornapple River', lp: true, up: false, wild: false, nat: false, ww: false,
@@ -220,7 +220,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [{ u: 'sw_michigan_paddle', d: 'Aug 2024', s: 4, t: 'Hastings to the Grand River at 600 cfs. Pastoral scenery, good bass fishing, and not another paddler in sight.' }, { u: 'thornapple_local', d: 'Jun 2024', s: 3, t: 'Solid local float at 450 cfs. Nothing flashy but peaceful and the smallmouth cooperated.' }],
-        outs: [{ n: 'Thornapple River Livery', d: 'Canoe and kayak rentals in Hastings' }],
+        outs: [{ n: 'Thornapple River Livery', d: 'Canoe and kayak rentals in Hastings', l: '' }],
       },
       {
         id: 'crystal_mi', n: 'Crystal River (Glen Arbor)', lp: true, up: false, wild: false, nat: false, ww: false,
@@ -235,7 +235,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [{ u: 'glenarborlife', d: 'Jul 2024', s: 5, t: 'Two miles of the clearest water you will ever see. Teal blue over white sand. Get there early — it gets crowded by noon.' }, { u: 'sleeping_bear_fan', d: 'Aug 2024', s: 4, t: 'Short but absolutely stunning at 60 cfs. Bring a mask and snorkel — the underwater visibility is unreal.' }],
-        outs: [{ n: 'Crystal River Outfitters', d: 'Kayak and tube rentals in Glen Arbor' }, { n: 'Sleeping Bear Surf & Kayak', d: 'Paddleboard and kayak rentals near the Crystal River' }],
+        outs: [{ n: 'Crystal River Outfitters', d: 'Kayak and tube rentals in Glen Arbor', l: '' }, { n: 'Sleeping Bear Surf & Kayak', d: 'Paddleboard and kayak rentals near the Crystal River', l: '' }],
       },
       {
         id: 'twohearted', n: 'Two Hearted River', lp: false, up: true, wild: true, nat: true, ww: false,
