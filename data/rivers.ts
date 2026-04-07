@@ -2254,6 +2254,11 @@ export const STATES: StatesDB = {
         history: [
           { era: 'native', entries: [{ yr: 'Pre-contact', title: 'Timucua Homeland — Sacred Springs', text: "The Ichetucknee springs were sacred to the Timucua people, who inhabited north-central Florida for over 10,000 years. Archaeological sites along the river document continuous habitation. Spanish missions were established nearby in the 1600s, devastating the Timucua through disease.", src: 'Florida Division of Historical Resources; Ichetucknee Springs State Park' }] },
           { era: 'survey', entries: [{ yr: '1970', title: 'Ichetucknee Springs State Park Established', text: "Florida acquired the Ichetucknee corridor and established the state park in 1970, rescuing the springs from commercial development. The park now manages over 200,000 visitors annually while maintaining the river's pristine water quality.", src: 'Florida State Parks; DEP' }] },
+        ],
+        docs: [],
+        revs: [{ u: 'springs_paddler', d: 'Jul 2024', s: 5, t: 'Ichetucknee at 310 cfs — crystal clear, 72 degrees, turtles and fish everywhere. Six miles of the most beautiful spring water in Florida.' }, { u: 'fl_nature_lover', d: 'Jun 2024', s: 5, t: 'Headspring to Dampier Landing in 2 hours. The water clarity is unreal — you can see every blade of eelgrass on the bottom.' }],
+        outs: [{ n: 'Ichetucknee Springs State Park', d: 'Tube and kayak rentals, shuttle service', l: 'floridastateparks.org' }],
+      },
       {
         id: 'peace', n: 'Peace River', spring: false, scenic: true, coastal: false, wildlife: true,
         co: 'Polk / DeSoto Co.', len: '106 mi', cls: 'I', opt: '200–2000',
