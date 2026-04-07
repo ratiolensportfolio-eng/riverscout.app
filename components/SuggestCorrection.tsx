@@ -97,7 +97,7 @@ export default function SuggestCorrection({ riverId, riverName, stateKey }: Prop
         background: 'none', border: 'none', cursor: 'pointer',
         textDecoration: 'underline', padding: '4px 0',
       }}>
-        Suggest a correction
+        Improve This River
       </button>
     )
   }
@@ -118,7 +118,7 @@ export default function SuggestCorrection({ riverId, riverName, stateKey }: Prop
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
             <h2 style={{ fontFamily: serif, fontSize: '18px', fontWeight: 700, color: 'var(--rvdk)', margin: 0 }}>
-              Suggest a Correction
+              Improve This River
             </h2>
             <button onClick={() => setOpen(false)} style={{
               background: 'none', border: 'none', fontSize: '18px', color: 'var(--tx3)', cursor: 'pointer',
@@ -136,7 +136,7 @@ export default function SuggestCorrection({ riverId, riverName, stateKey }: Prop
                 Thank you!
               </div>
               <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx2)', marginBottom: '12px' }}>
-                Your correction has been submitted for review.
+                Your improvement has been submitted for review. Thank you for being a river steward.
               </div>
               <button onClick={() => { setOpen(false); setSubmitted(false); setForm({ field: '', currentValue: '', suggestedValue: '', reason: '', sourceUrl: '' }) }}
                 style={{ fontFamily: mono, fontSize: '10px', color: 'var(--rv)', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}>
@@ -147,7 +147,7 @@ export default function SuggestCorrection({ riverId, riverName, stateKey }: Prop
             <form onSubmit={handleSubmit}>
               <label style={{ display: 'block', marginBottom: '12px' }}>
                 <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', display: 'block', marginBottom: '4px' }}>
-                  What needs correcting? *
+                  What can be improved? *
                 </span>
                 <select value={form.field} onChange={e => setForm(f => ({ ...f, field: e.target.value }))}
                   style={{ width: '100%', padding: '8px 10px', fontFamily: mono, fontSize: '12px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)' }}>
@@ -158,7 +158,7 @@ export default function SuggestCorrection({ riverId, riverName, stateKey }: Prop
 
               <label style={{ display: 'block', marginBottom: '12px' }}>
                 <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', display: 'block', marginBottom: '4px' }}>
-                  Current value (what it says now) *
+                  What does it say now? *
                 </span>
                 <input type="text" value={form.currentValue} onChange={e => setForm(f => ({ ...f, currentValue: e.target.value }))}
                   placeholder="e.g. Class III-IV"
@@ -167,7 +167,7 @@ export default function SuggestCorrection({ riverId, riverName, stateKey }: Prop
 
               <label style={{ display: 'block', marginBottom: '12px' }}>
                 <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', display: 'block', marginBottom: '4px' }}>
-                  Correct value (what it should be) *
+                  What should it say? *
                 </span>
                 <input type="text" value={form.suggestedValue} onChange={e => setForm(f => ({ ...f, suggestedValue: e.target.value }))}
                   placeholder="e.g. Class II-III"
@@ -176,7 +176,7 @@ export default function SuggestCorrection({ riverId, riverName, stateKey }: Prop
 
               <label style={{ display: 'block', marginBottom: '12px' }}>
                 <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', display: 'block', marginBottom: '4px' }}>
-                  Why is this wrong? *
+                  How do you know? *
                 </span>
                 <textarea value={form.reason} onChange={e => setForm(f => ({ ...f, reason: e.target.value }))}
                   placeholder="I paddle this river regularly and..."
@@ -201,7 +201,7 @@ export default function SuggestCorrection({ riverId, riverName, stateKey }: Prop
                   background: 'var(--rv)', color: '#fff', border: 'none', borderRadius: 'var(--r)',
                   cursor: submitting ? 'wait' : 'pointer', opacity: submitting ? 0.6 : 1,
                 }}>
-                {submitting ? 'Submitting...' : 'Submit Correction'}
+                {submitting ? 'Submitting...' : 'Submit Improvement'}
               </button>
             </form>
           )}

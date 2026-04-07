@@ -113,9 +113,9 @@ export async function PATCH(req: NextRequest) {
             body: JSON.stringify({
               from: 'RiverScout <noreply@riverscout.app>',
               to: 'outfitters@riverscout.app',
-              subject: `[Approved] Correction for ${s.river_name}: ${s.field}`,
+              subject: `[Approved] Improvement for ${s.river_name}: ${s.field}`,
               html: `
-                <h2>Approved Correction</h2>
+                <h2>Approved River Improvement</h2>
                 <p><strong>River:</strong> ${s.river_name} (${s.state_key})</p>
                 <p><strong>Field:</strong> ${s.field}</p>
                 <p><strong>Current:</strong> ${s.current_value}</p>
@@ -124,7 +124,7 @@ export async function PATCH(req: NextRequest) {
                 ${s.source_url ? `<p><strong>Source:</strong> <a href="${s.source_url}">${s.source_url}</a></p>` : ''}
                 ${s.user_email ? `<p><strong>Submitted by:</strong> ${s.user_email}</p>` : ''}
                 <hr/>
-                <p style="color:#999;">This correction was approved and needs to be applied to the database.</p>
+                <p style="color:#999;">This improvement was approved and needs to be applied to the database.</p>
               `,
             }),
           })

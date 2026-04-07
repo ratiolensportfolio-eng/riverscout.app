@@ -111,7 +111,7 @@ export default function AdminSuggestions() {
 
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '20px 28px' }}>
         <h1 style={{ fontFamily: serif, fontSize: '22px', fontWeight: 700, color: 'var(--rvdk)', marginBottom: '4px' }}>
-          Correction Suggestions
+          River Improvements
         </h1>
         <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)', marginBottom: '16px' }}>
           {suggestions.length} {filter} suggestion{suggestions.length !== 1 ? 's' : ''}
