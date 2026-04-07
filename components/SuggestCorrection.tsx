@@ -93,10 +93,15 @@ export default function SuggestCorrection({ riverId, riverName, stateKey }: Prop
   if (!open) {
     return (
       <button onClick={() => setOpen(true)} style={{
-        fontFamily: mono, fontSize: '9px', color: 'var(--tx3)',
-        background: 'none', border: 'none', cursor: 'pointer',
-        textDecoration: 'underline', padding: '4px 0',
-      }}>
+        fontFamily: mono, fontSize: '10px', color: 'var(--rv)',
+        background: 'var(--rvlt)', border: '.5px solid var(--rvmd)',
+        borderRadius: '12px', cursor: 'pointer',
+        padding: '4px 12px', letterSpacing: '.3px',
+        transition: 'background .15s',
+      }}
+        onMouseEnter={e => (e.currentTarget.style.background = 'var(--rvmd)')}
+        onMouseLeave={e => (e.currentTarget.style.background = 'var(--rvlt)')}
+      >
         Improve This River
       </button>
     )
