@@ -2289,11 +2289,6 @@ export const STATES: StatesDB = {
         revs: [{ u: 'se_florida_paddle', d: 'Mar 2025', s: 5, t: 'Riverbend Park to Jonathan Dickinson at 100 cfs — ancient cypress, manatees, and total wilderness 20 minutes from Jupiter. Unbelievable.' }, { u: 'jupiter_kayaker', d: 'Feb 2025', s: 4, t: "Loxahatchee at 80 cfs — narrow, shaded, prehistoric-feeling. Florida's best-kept paddling secret in Palm Beach County." }],
         outs: [{ n: 'Canoe Outfitters of Florida', d: 'Loxahatchee River kayak and canoe rentals', l: 'canoeoutfittersofflorida.com' }],
       },
-        ],
-        docs: [],
-        revs: [{ u: 'springs_chaser_fl', d: 'Jun 2025', s: 5, t: 'Ichetucknee from headspring at 310 cfs — 72-degree crystal water, manatees, turtles on every log. Six miles of pure Florida paradise.' }, { u: 'orlando_kayaker', d: 'May 2025', s: 5, t: "Arrived at opening on a Tuesday. Had the river nearly to myself. You can see every grain of sand on the bottom. Florida's best spring run." }],
-        outs: [{ n: 'Ichetucknee Springs State Park', d: 'Tube and kayak rentals, tram shuttle', l: 'floridastateparks.org/ichetucknee' }],
-      },
       {
         id: 'suwannee', n: 'Suwannee River', spring: true, scenic: true, coastal: true, wildlife: true,
         co: 'Hamilton / Suwannee Co.', len: '246 mi', cls: 'I', opt: '2000–15000',
