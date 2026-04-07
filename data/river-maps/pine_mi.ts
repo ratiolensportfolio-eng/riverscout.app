@@ -1,28 +1,50 @@
 import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Pine River, Michigan — Access Points (upstream to downstream)
-// Access points snapped to USGS NHDPlus river geometry
+// Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
+// Referenced from Pine River Paddlesports Center map
 export const accessPoints: AccessPoint[] = [
   {
-    name: 'Edgetts Bridge',
+    name: 'Briar Patch',
+    lat: 44.05921,
+    lng: -85.5571,
+    type: 'put-in',
+    description: 'Upper put-in near Luther. Quiet start to the Pine River, less traffic.',
+  },
+  {
+    name: 'Meadowbrook',
     lat: 44.06235,
     lng: -85.58318,
-    type: 'put-in',
-    description: 'Upper put-in. Parking at Edgetts Lodge. Quieter start, shallow water at low flows.',
+    type: 'access',
+    description: 'Access point between Briar Patch and Skookum.',
+  },
+  {
+    name: 'Skookum',
+    lat: 44.07195,
+    lng: -85.62057,
+    type: 'access',
+    description: 'Access point upstream of Walker Bridge. Private campground access.',
+  },
+  {
+    name: 'Walker Bridge',
+    lat: 44.08334,
+    lng: -85.64722,
+    type: 'access',
+    description: 'Private access. Canoe livery upstream of Lincoln Bridge.',
   },
   {
     name: 'Lincoln Bridge',
     lat: 44.13305,
     lng: -85.69622,
     type: 'access',
-    description: 'USFS access with dirt parking loop. Wide grassy area, easy drop-in. Most popular starting point.',
+    description: 'USFS access with dirt parking loop. Wide grassy area, easy drop-in.',
   },
   {
     name: 'Elm Flats',
     lat: 44.151,
     lng: -85.71374,
     type: 'access',
-    description: 'USFS access point. Sandy landing area. Good for short trips from Lincoln Bridge.',
+    description: 'USFS access point. Sandy landing area.',
   },
   {
     name: 'Dobson Bridge',
@@ -36,47 +58,57 @@ export const accessPoints: AccessPoint[] = [
     lat: 44.19066,
     lng: -85.76988,
     type: 'access',
-    description: 'USFS campground and access on M-37. North side launch. The section downstream to Low Bridge is the most popular.',
+    description: 'Most popular starting point. USFS campground and access on M-37. North side launch. Peterson Bridge Campground is the only USFS campground on the Pine.',
+  },
+  {
+    name: 'Pine River Paddlesports Center',
+    lat: 44.20059,
+    lng: -85.79192,
+    type: 'access',
+    description: 'Full-service outfitter with shuttles, gear, and quiet campground. Located between Peterson Bridge and Low Bridge on M-37. thepineriver.com',
   },
   {
     name: 'Low Bridge',
     lat: 44.203,
     lng: -85.80959,
-    type: 'access',
-    description: 'USFS access off Low Bridge Road (FR 5993). The Peterson to Low Bridge run is the classic Pine River trip.',
-  },
-  {
-    name: 'High Bridge',
-    lat: 44.20139,
-    lng: -85.85174,
-    type: 'access',
-    description: 'Access point below Low Bridge. River widens and slows through this stretch.',
-  },
-  {
-    name: 'Stronach Dam (Portage)',
-    lat: 44.21188,
-    lng: -85.89246,
-    type: 'portage',
-    description: 'Mandatory portage around Stronach Dam. Take out on river right, carry 200 yards.',
-  },
-  {
-    name: 'Tippy Dam Pond / Take-out',
-    lat: 44.25336,
-    lng: -85.91497,
     type: 'take-out',
-    description: 'Final take-out at Tippy Dam backwater. End of the Pine River paddling corridor.',
+    description: 'USFS access off Low Bridge Road. The Peterson to Low Bridge run is the classic Pine River trip. Most common take-out.',
   },
 ]
 
 // Pine River Sections with distances and paddle times
 export const sections: RiverSection[] = [
   {
-    from: 'Edgetts Bridge',
+    from: 'Briar Patch',
+    to: 'Meadowbrook',
+    miles: 4.5,
+    paddleTime: '1.5–2 hours',
+    class: 'I',
+    notes: 'Upper Pine River near Luther. Narrow, winding, with some log jams. Quieter and less crowded. Shallow at flows below 150 CFS.',
+  },
+  {
+    from: 'Meadowbrook',
+    to: 'Skookum',
+    miles: 5.0,
+    paddleTime: '2–2.5 hours',
+    class: 'I',
+    notes: 'Winding through cedar and pine forest. A few tight turns with sweepers — stay alert.',
+  },
+  {
+    from: 'Skookum',
+    to: 'Walker Bridge',
+    miles: 6.0,
+    paddleTime: '2–3 hours',
+    class: 'I',
+    notes: 'River begins to widen slightly. Good trout fishing through this stretch.',
+  },
+  {
+    from: 'Walker Bridge',
     to: 'Lincoln Bridge',
-    miles: 8.5,
+    miles: 9.0,
     paddleTime: '3–4 hours',
     class: 'I',
-    notes: 'Upper Pine River. Narrow, winding, with some log jams that may require maneuvering. Quieter and less crowded than sections downstream. Shallow at flows below 150 CFS.',
+    notes: 'Popular section with good current. Multiple campgrounds along this stretch.',
   },
   {
     from: 'Lincoln Bridge',
@@ -84,7 +116,7 @@ export const sections: RiverSection[] = [
     miles: 3.5,
     paddleTime: '45 min – 1 hour',
     class: 'I',
-    notes: 'Short, easy run. Good warm-up or family float. Sandy banks, a few riffles. Popular starting point for day trips.',
+    notes: 'Short, easy run. Good warm-up or family float. Sandy banks, a few riffles.',
   },
   {
     from: 'Elm Flats',
@@ -92,7 +124,7 @@ export const sections: RiverSection[] = [
     miles: 5.0,
     paddleTime: '1.5–2 hours',
     class: 'I',
-    notes: 'Swift current through pine and cedar forest. Some tight turns with sweepers — stay alert. Excellent brook trout water.',
+    notes: 'Swift current through pine and cedar forest. Some tight turns with sweepers. Excellent brook trout water.',
   },
   {
     from: 'Dobson Bridge',
@@ -100,7 +132,7 @@ export const sections: RiverSection[] = [
     miles: 5.5,
     paddleTime: '2–2.5 hours',
     class: 'I',
-    notes: 'Faster water, a few fun riffles. The river picks up pace through this section. Good intermediate section.',
+    notes: 'Faster water, a few fun riffles. The river picks up pace through this section.',
   },
   {
     from: 'Peterson Bridge',
@@ -108,23 +140,7 @@ export const sections: RiverSection[] = [
     miles: 6.0,
     paddleTime: '2–3 hours',
     class: 'I',
-    notes: 'The classic Pine River trip. Fastest water on the river, continuous swift current. Most popular section — expect company on summer weekends. This is the run that Pine River Paddlesports Center operates on.',
-  },
-  {
-    from: 'Low Bridge',
-    to: 'High Bridge',
-    miles: 4.5,
-    paddleTime: '1.5–2 hours',
-    class: 'I',
-    notes: 'River begins to widen and slow. More relaxed paddling, good for families. Fewer paddlers than the Peterson–Low Bridge run.',
-  },
-  {
-    from: 'High Bridge',
-    to: 'Stronach Dam',
-    miles: 5.0,
-    paddleTime: '2–2.5 hours',
-    class: 'I',
-    notes: 'Wider, slower water approaching Stronach Dam impoundment. Mandatory portage at the dam — take out river right, carry approximately 200 yards.',
+    notes: 'The classic Pine River trip. Fastest water on the river, continuous swift current. Most popular section — Pine River Paddlesports Center operates on this stretch. Expect company on summer weekends.',
   },
 ]
 
