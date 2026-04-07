@@ -4,6 +4,7 @@ import { getRiverBySlug, getStateSlug, getRiverSlug, ALL_RIVERS } from '@/data/r
 import { fetchGaugeData, formatCfs, trendArrow, celsiusToFahrenheit, isHypothermiaRisk } from '@/lib/usgs'
 import RiverTabs from '@/components/rivers/RiverTabs'
 import SuggestCorrection from '@/components/SuggestCorrection'
+import { getDesignationBadges } from '@/lib/designations'
 import type { Metadata } from 'next'
 
 export const revalidate = 900
@@ -86,6 +87,25 @@ export default async function RiverPage({ params }: Props) {
         <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 700, color: '#042C53' }}>
           {river.n}
         </div>
+        {/* Designation badges */}
+        {(() => {
+          const badges = getDesignationBadges(river.desig)
+          return badges.length > 0 ? (
+            <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', margin: '4px 0 6px' }}>
+              {badges.map((b, i) => (
+                <span key={i} style={{
+                  fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px',
+                  padding: '2px 8px', borderRadius: '10px',
+                  color: b.color, background: b.bg, border: `.5px solid ${b.border}`,
+                  display: 'inline-flex', alignItems: 'center', gap: '3px',
+                  letterSpacing: '.3px',
+                }}>
+                  <span style={{ fontSize: '10px' }}>{b.icon}</span> {b.label}
+                </span>
+              ))}
+            </div>
+          ) : null
+        })()}
         <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--wt)', margin: '2px 0 8px', letterSpacing: '.3px' }}>
           {river.co} · {river.len} · Class {river.cls}
         </div>

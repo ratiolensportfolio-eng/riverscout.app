@@ -5,6 +5,7 @@ import { fetchGaugeData, formatCfs } from '@/lib/usgs'
 import { STATE_MAP_CONFIG } from '@/data/state-centers'
 import { RIVER_COORDS } from '@/data/river-coordinates'
 import StateRiverMap from '@/components/maps/StateRiverMap'
+import { getDesignationBadges } from '@/lib/designations'
 import type { FlowData, FlowCondition } from '@/types'
 
 export const revalidate = 900
@@ -116,6 +117,24 @@ export default async function StatePage({ params }: Props) {
                     </span>
                   )}
                 </div>
+                {/* Designation badges */}
+                {(() => {
+                  const badges = getDesignationBadges(river.desig)
+                  return badges.length > 0 ? (
+                    <div style={{ display: 'flex', gap: '3px', flexWrap: 'wrap', marginTop: '3px' }}>
+                      {badges.slice(0, 2).map((b, i) => (
+                        <span key={i} style={{
+                          fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px',
+                          padding: '1px 5px', borderRadius: '6px',
+                          color: b.color, background: b.bg, border: `.5px solid ${b.border}`,
+                          display: 'inline-flex', alignItems: 'center', gap: '2px',
+                        }}>
+                          <span style={{ fontSize: '8px' }}>{b.icon}</span> {b.label}
+                        </span>
+                      ))}
+                    </div>
+                  ) : null
+                })()}
               </Link>
             )
           })}
