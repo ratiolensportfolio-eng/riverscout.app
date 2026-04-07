@@ -3,12 +3,42 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Black Creek (MS) — geometry from USGS NHDPlus HR
 // 106 points, 36/36 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Fairley Bridge",
+    lat: 31.2091,
+    lng: -89.4022,
+    type: "put-in",
+    description: "Upper put-in at Fairley Bridge. Start of Mississippi\"s only National Wild and Scenic River.",
+  },
+  {
+    name: "Janice",
+    lat: 31.1105,
+    lng: -89.286,
+    type: "access",
+    description: "Mid-river access near Janice. Good midpoint for splitting the run into two days.",
+  },
+  {
+    name: "Moody Landing",
+    lat: 31.0973,
+    lng: -89.2789,
+    type: "take-out",
+    description: "Take-out at Moody Landing. End of the classic Black Creek wilderness float.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Fairley Bridge",
+    to: "Moody Landing",
+    miles: 30,
+    paddleTime: "2 days",
+    class: "I-II",
+    notes: "Mississippi\"s only National Wild and Scenic River. Pristine blackwater creek through De Soto National Forest with white sandbars ideal for camping. Mostly gentle current with a few Class I-II shoals. Best as an overnight trip\u2014Janice makes a good halfway point.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

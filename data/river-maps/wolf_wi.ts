@@ -3,12 +3,42 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Wolf River (WI) — geometry from USGS NHDPlus HR
 // 200 points, 56/56 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Langlade",
+    lat: 45.1147,
+    lng: -88.6502,
+    type: "put-in",
+    description: "Put-in near Langlade for the Wolf River. Gateway to Wisconsin\"s best whitewater.",
+  },
+  {
+    name: "Big Smokey Falls",
+    lat: 44.95,
+    lng: -88.6473,
+    type: "access",
+    description: "Big Smokey Falls, the Wolf River\"s most famous rapid. Class IV ledge drop on the Menominee Reservation.",
+  },
+  {
+    name: "Keshena",
+    lat: 44.8828,
+    lng: -88.6343,
+    type: "take-out",
+    description: "Take-out near Keshena on the Menominee Reservation. End of the classic Wolf River run.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Langlade",
+    to: "Keshena",
+    miles: 20,
+    paddleTime: "6\u20138 hours",
+    class: "II-IV",
+    notes: "Classic Wisconsin whitewater through the Menominee Reservation. Big Smokey Falls (Class IV), Sherry Rapids, and Gilmore\"s Mistake. Best in spring and after rain.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

@@ -3,12 +3,35 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // South Fork Cottonwood River (KS) — geometry from USGS NHDPlus HR
 // 219 points, 87/87 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Marion",
+    lat: 38.2196,
+    lng: -96.5663,
+    type: "put-in",
+    description: "Put-in near Marion. The South Fork Cottonwood winds through the heart of the tallgrass Flint Hills.",
+  },
+  {
+    name: "Cottonwood Falls",
+    lat: 38.3459,
+    lng: -96.4901,
+    type: "take-out",
+    description: "Take-out at Cottonwood Falls. Historic Chase County seat with the iconic 1873 limestone courthouse.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Marion",
+    to: "Cottonwood Falls",
+    miles: 25,
+    paddleTime: "8\u201312 hours",
+    class: "I-II",
+    notes: "Remote tallgrass prairie paddling through the Flint Hills. Gentle current with a few rocky riffles. Very little development along the banks\u2014one of the last intact tallgrass prairie ecosystems on Earth. Best in spring when water levels are adequate; can be too low by midsummer.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

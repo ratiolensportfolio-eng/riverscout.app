@@ -3,12 +3,35 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Little Missouri River (ND) — geometry from USGS NHDPlus HR
 // 179 points, 168/168 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Medora",
+    lat: 46.9219,
+    lng: -103.5287,
+    type: "put-in",
+    description: "Put-in at Medora, gateway to Theodore Roosevelt National Park. The river carves through colorful Badlands buttes from here north.",
+  },
+  {
+    name: "North Unit, Theodore Roosevelt NP",
+    lat: 47.2033,
+    lng: -103.602,
+    type: "take-out",
+    description: "Take-out near the North Unit of Theodore Roosevelt National Park. Remote Badlands scenery with bison, wild horses, and elk.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Medora",
+    to: "North Unit, Theodore Roosevelt NP",
+    miles: 50,
+    paddleTime: "3\u20135 days",
+    class: "I-II",
+    notes: "Epic multi-day wilderness float through the North Dakota Badlands. Dramatic eroded buttes, petrified forest, and abundant wildlife. Mostly gentle current with some Class II riffles in the upper canyon. Very remote\u2014no services or road access for long stretches. Spring snowmelt (May\u2013June) provides the most reliable water levels; the river can be too low by late summer.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

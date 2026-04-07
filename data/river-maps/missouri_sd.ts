@@ -3,12 +3,42 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Missouri River (SD) — geometry from USGS NHDPlus HR
 // 181 points, 83/83 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Fort Randall Dam",
+    lat: 43.0707,
+    lng: -98.551,
+    type: "put-in",
+    description: "Put-in below Fort Randall Dam. Cold, clear tailwater reach of the Missouri\u2014one of the last unchannelized stretches of the Big Muddy.",
+  },
+  {
+    name: "Niobrara Confluence",
+    lat: 42.8079,
+    lng: -98.1044,
+    type: "access",
+    description: "Access near the Niobrara River confluence. The Missouri picks up volume and sandbars become more prominent downstream.",
+  },
+  {
+    name: "Running Water",
+    lat: 42.7992,
+    lng: -98.0907,
+    type: "take-out",
+    description: "Take-out at Running Water, SD. End of the Missouri National Recreational River segment.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Fort Randall Dam",
+    to: "Running Water",
+    miles: 59,
+    paddleTime: "2\u20133 days",
+    class: "I",
+    notes: "Designated Missouri National Recreational River. Wide, braided channel with cottonwood islands, sandbars, and abundant wildlife. Mostly flatwater with steady current from dam releases. Bald eagles, pelicans, and terns are common. Best as a multi-day camping trip on river sandbars.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

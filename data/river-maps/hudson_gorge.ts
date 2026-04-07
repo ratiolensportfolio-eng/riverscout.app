@@ -3,12 +3,42 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Hudson River (NY) — geometry from USGS NHDPlus HR
 // 17 points, 4/200 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Indian River Confluence",
+    lat: 43.9526,
+    lng: -74.0687,
+    type: "put-in",
+    description: "Put-in for the Hudson River Gorge at the Indian River confluence. Remote Adirondack access.",
+  },
+  {
+    name: "Blue Ledge",
+    lat: 43.9616,
+    lng: -74.0903,
+    type: "access",
+    description: "Iconic Class IV section of the gorge. Towering cliff walls and continuous whitewater.",
+  },
+  {
+    name: "North River",
+    lat: 43.9695,
+    lng: -74.094,
+    type: "take-out",
+    description: "Take-out for the Hudson Gorge run at North River. Shuttle road access.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Indian River Confluence",
+    to: "North River",
+    miles: 17,
+    paddleTime: "5\u20137 hours",
+    class: "III-IV",
+    notes: "Premier Adirondack whitewater. Remote gorge with Blue Ledge, Harris Rift, and Ord Falls. Spring runoff best (April\u2013May).",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

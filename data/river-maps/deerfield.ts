@@ -3,12 +3,42 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Deerfield River (MA) — geometry from USGS NHDPlus HR
 // 163 points, 129/129 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Fife Brook Dam",
+    lat: 42.6889,
+    lng: -72.9736,
+    type: "put-in",
+    description: "Put-in below Fife Brook Dam. Dam-controlled releases provide reliable flows for paddling.",
+  },
+  {
+    name: "Zoar Gap",
+    lat: 42.6509,
+    lng: -72.9532,
+    type: "access",
+    description: "Zoar Gap rapid, the signature Class III drop on the Deerfield. Boulder garden with big waves.",
+  },
+  {
+    name: "Charlemont",
+    lat: 42.6259,
+    lng: -72.8628,
+    type: "take-out",
+    description: "Take-out near Charlemont. Multiple outfitters in the area for shuttle service.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Fife Brook Dam",
+    to: "Charlemont",
+    miles: 8,
+    paddleTime: "2\u20134 hours",
+    class: "II-IV",
+    notes: "Fife Brook section of the Deerfield River. Dam-release dependent with Zoar Gap (Class III) as the highlight. Popular New England whitewater run.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

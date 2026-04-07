@@ -3,12 +3,72 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Arkansas River (CO) — geometry from USGS NHDPlus HR
 // 270 points, 121/200 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Buena Vista",
+    lat: 38.689,
+    lng: -106.046,
+    type: "put-in",
+    description: "Popular put-in for the upper Arkansas. Easy river access near downtown Buena Vista.",
+  },
+  {
+    name: "Fisherman\"s Bridge",
+    lat: 38.6517,
+    lng: -106.051,
+    type: "access",
+    description: "Mid-river access below Buena Vista. Bridge crossing with parking.",
+  },
+  {
+    name: "Ruby Mountain",
+    lat: 38.5718,
+    lng: -106.0545,
+    type: "access",
+    description: "Start of Browns Canyon National Monument. Wilderness-only access from here downstream.",
+  },
+  {
+    name: "Hecla Junction",
+    lat: 38.5416,
+    lng: -105.995,
+    type: "access",
+    description: "Take-out for Browns Canyon. BLM-managed put-in/take-out with parking and restrooms.",
+  },
+  {
+    name: "Salida",
+    lat: 38.4984,
+    lng: -105.925,
+    type: "take-out",
+    description: "Take-out near downtown Salida. Riverside park with easy access.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Buena Vista",
+    to: "Ruby Mountain",
+    miles: 8,
+    paddleTime: "2\u20133 hours",
+    class: "II-III",
+    notes: "Fun intermediate run through the upper valley. Continuous Class II-III rapids with mountain scenery.",
+  },
+  {
+    from: "Ruby Mountain",
+    to: "Hecla Junction",
+    miles: 10,
+    paddleTime: "3\u20134 hours",
+    class: "III",
+    notes: "Browns Canyon National Monument. Roadless wilderness canyon with consistent Class III whitewater.",
+  },
+  {
+    from: "Hecla Junction",
+    to: "Salida",
+    miles: 8,
+    paddleTime: "2\u20133 hours",
+    class: "II",
+    notes: "Mellow float through the Arkansas River valley into Salida. Great for beginners and tubing.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

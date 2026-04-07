@@ -3,12 +3,42 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Wood River (RI) — geometry from USGS NHDPlus HR
 // 124 points, 50/64 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Arcadia Management Area",
+    lat: 41.5668,
+    lng: -71.7149,
+    type: "put-in",
+    description: "Put-in at the Arcadia Management Area. Narrow, winding stream through Rhode Island\"s largest wildlife management area.",
+  },
+  {
+    name: "Wyoming",
+    lat: 41.516,
+    lng: -71.7035,
+    type: "access",
+    description: "Mid-river access near the village of Wyoming. Small rapids and riffles through wooded corridor.",
+  },
+  {
+    name: "Alton",
+    lat: 41.4565,
+    lng: -71.7109,
+    type: "take-out",
+    description: "Take-out near Alton. The Wood River widens here before joining the Pawcatuck River system.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Arcadia Management Area",
+    to: "Alton",
+    miles: 8,
+    paddleTime: "3\u20134 hours",
+    class: "I-II",
+    notes: "One of Rhode Island\"s best paddling streams. Narrow and winding through Arcadia, with small Class I-II riffles. Watch for downed trees in the upper section. Best at moderate water levels in spring or after rain.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

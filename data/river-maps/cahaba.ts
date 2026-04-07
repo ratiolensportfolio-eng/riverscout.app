@@ -3,12 +3,50 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Cahaba River (AL) — geometry from USGS NHDPlus HR
 // 225 points, 142/142 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Grants Mill",
+    lat: 33.4797,
+    lng: -86.7126,
+    type: "put-in",
+    description: "Put-in at Grants Mill in Birmingham. Urban headwaters of Alabama\"s longest free-flowing river.",
+  },
+  {
+    name: "Cahaba Lily Preserve",
+    lat: 33.2608,
+    lng: -86.897,
+    type: "access",
+    description: "Access at the Cahaba River National Wildlife Refuge. The Cahaba lily (Hymenocallis coronaria) blooms on rocky shoals in May\u2013June.",
+  },
+  {
+    name: "Centreville",
+    lat: 32.9499,
+    lng: -87.1411,
+    type: "take-out",
+    description: "Take-out at Centreville. End of the most popular Cahaba paddling corridor.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Grants Mill",
+    to: "Cahaba Lily Preserve",
+    miles: 25,
+    paddleTime: "8\u201310 hours",
+    class: "I-II",
+    notes: "From urban Birmingham into increasingly wild terrain. Class I-II shoals and riffles over bedrock. The Cahaba is one of the most biodiverse rivers in North America. Visit in late May for the iconic Cahaba lily bloom.",
+  },
+  {
+    from: "Cahaba Lily Preserve",
+    to: "Centreville",
+    miles: 30,
+    paddleTime: "10\u201312 hours",
+    class: "I",
+    notes: "Gentle, wide river through rural Alabama. Mostly flatwater with occasional riffles. Great for a relaxed multi-day float. Rich aquatic biodiversity\u2014over 130 fish species and 40 mussel species call the Cahaba home.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

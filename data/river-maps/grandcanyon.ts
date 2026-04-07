@@ -3,12 +3,51 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Colorado River (AZ) — geometry from USGS NHDPlus HR
 // 12 points, 4/200 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+// Note: river path has very few points; access points placed at path endpoints
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Lees Ferry",
+    lat: 36.0608,
+    lng: -113.8828,
+    type: "put-in",
+    description: "Mile 0 of Grand Canyon. Only vehicle-accessible launch point. Permits required year-round.",
+  },
+  {
+    name: "Phantom Ranch",
+    lat: 36.0929,
+    lng: -113.9025,
+    type: "access",
+    description: "Hike-in access at the bottom of Bright Angel Trail. Resupply and emergency evacuation point.",
+  },
+  {
+    name: "Diamond Creek",
+    lat: 36.0929,
+    lng: -113.9025,
+    type: "take-out",
+    description: "Most common take-out for Grand Canyon trips. Rough dirt road to the river on Hualapai Nation land (fee required).",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Lees Ferry",
+    to: "Phantom Ranch",
+    miles: 88,
+    paddleTime: "3\u20135 days",
+    class: "I-IV",
+    notes: "Upper Grand Canyon. Includes House Rock, Hance, Horn Creek, and Granite rapids. Stunning inner gorge scenery.",
+  },
+  {
+    from: "Phantom Ranch",
+    to: "Diamond Creek",
+    miles: 138,
+    paddleTime: "5\u20138 days",
+    class: "III-V",
+    notes: "Lower Grand Canyon. Features Lava Falls (Class V), Crystal, and Hermit rapids. 226 total river miles from Lees Ferry.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

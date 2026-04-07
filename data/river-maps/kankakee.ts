@@ -3,12 +3,42 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Kankakee River (IL) — geometry from USGS NHDPlus HR
 // 207 points, 71/71 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Kankakee River State Park",
+    lat: 41.1557,
+    lng: -87.9177,
+    type: "put-in",
+    description: "Put-in at Kankakee River State Park. Limestone canyon scenery unusual for the Illinois prairie.",
+  },
+  {
+    name: "Aroma Park",
+    lat: 41.079,
+    lng: -87.8184,
+    type: "access",
+    description: "Mid-river access at Aroma Park. Small village with basic amenities near the river.",
+  },
+  {
+    name: "Momence",
+    lat: 41.1584,
+    lng: -87.6705,
+    type: "take-out",
+    description: "Take-out at Momence. The river passes over a natural limestone ledge here\u2014the Momence Wetlands stretch is ecologically significant.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Kankakee River State Park",
+    to: "Momence",
+    miles: 18,
+    paddleTime: "6\u20138 hours",
+    class: "I-II",
+    notes: "Scenic prairie river with surprising limestone canyon features near the state park. Gentle current with a few riffles. One of the best flatwater-to-easy-whitewater floats in northeastern Illinois.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

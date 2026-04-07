@@ -3,12 +3,42 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Saluda River (SC) — geometry from USGS NHDPlus HR
 // 63 points, 29/29 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Lake Murray Dam",
+    lat: 34.0501,
+    lng: -81.2052,
+    type: "put-in",
+    description: "Put-in below Lake Murray Dam. Flows depend entirely on dam release schedule\u2014check SCE&G generation schedule before launching.",
+  },
+  {
+    name: "Riverbanks Zoo",
+    lat: 34.0064,
+    lng: -81.0732,
+    type: "access",
+    description: "Access near Riverbanks Zoo and Botanical Garden. Popular urban paddling stretch.",
+  },
+  {
+    name: "Saluda Shoals Park",
+    lat: 34.0479,
+    lng: -81.1793,
+    type: "take-out",
+    description: "Take-out at Saluda Shoals Park. Well-maintained county park with parking, restrooms, and river access.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Lake Murray Dam",
+    to: "Saluda Shoals Park",
+    miles: 10,
+    paddleTime: "3\u20135 hours",
+    class: "II-IV",
+    notes: "Dam-release river\u2014difficulty varies dramatically with water level. At low flows it is a Class II rock garden; at high release it becomes continuous Class III-IV whitewater. Always check the generation schedule before paddling.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

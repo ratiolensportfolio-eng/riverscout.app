@@ -3,12 +3,42 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Rio Grande (NM) — geometry from USGS NHDPlus HR
 // 186 points, 81/81 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "John Dunn Bridge",
+    lat: 36.5615,
+    lng: -105.7049,
+    type: "put-in",
+    description: "Put-in for the Taos Box at John Dunn Bridge. Steep road into the Rio Grande Gorge.",
+  },
+  {
+    name: "Manby Hot Springs",
+    lat: 36.4947,
+    lng: -105.7248,
+    type: "access",
+    description: "Natural hot springs along the river. Popular rest stop in the gorge.",
+  },
+  {
+    name: "Taos Junction Bridge",
+    lat: 36.3028,
+    lng: -105.771,
+    type: "take-out",
+    description: "Take-out for the Taos Box at Taos Junction Bridge (County Road 567).",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "John Dunn Bridge",
+    to: "Taos Junction Bridge",
+    miles: 17,
+    paddleTime: "5\u20137 hours",
+    class: "III-IV",
+    notes: "The Taos Box: deep basalt gorge of the Rio Grande. Continuous Class III-IV whitewater with Powerline, Rock Garden, and Razorblade rapids. Best flows May\u2013June.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

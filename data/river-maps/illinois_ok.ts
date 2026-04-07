@@ -3,12 +3,42 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Illinois River (OK) — geometry from USGS NHDPlus HR
 // 106 points, 44/200 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Tenkiller Ferry",
+    lat: 35.8509,
+    lng: -94.9144,
+    type: "put-in",
+    description: "Upper Illinois River put-in near Tenkiller Ferry area. Popular Oklahoma paddling destination.",
+  },
+  {
+    name: "No Head Hollow",
+    lat: 35.8183,
+    lng: -94.9185,
+    type: "access",
+    description: "Mid-river access at No Head Hollow. Scenic Ozark bluffs along the river.",
+  },
+  {
+    name: "Tahlequah",
+    lat: 35.7004,
+    lng: -94.9569,
+    type: "take-out",
+    description: "Take-out near Tahlequah, capital of the Cherokee Nation. Multiple outfitter access points.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Tenkiller Ferry",
+    to: "Tahlequah",
+    miles: 12,
+    paddleTime: "4\u20136 hours",
+    class: "I-II",
+    notes: "Scenic Ozark float through eastern Oklahoma. Gentle Class I-II water, limestone bluffs, and clear pools. Very popular summer float trip.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

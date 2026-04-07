@@ -3,12 +3,42 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Sugar Creek (IN) — geometry from USGS NHDPlus HR
 // 176 points, 173/173 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Shades State Park",
+    lat: 39.9431,
+    lng: -87.0812,
+    type: "put-in",
+    description: "Put-in at Shades State Park. Deep sandstone canyons and old-growth forest along the banks.",
+  },
+  {
+    name: "Turkey Run State Park",
+    lat: 39.9169,
+    lng: -87.1425,
+    type: "access",
+    description: "Mid-river access at Turkey Run State Park. Indiana\"s covered-bridge country with dramatic sandstone gorges.",
+  },
+  {
+    name: "Cox Ford Covered Bridge",
+    lat: 39.8932,
+    lng: -87.1643,
+    type: "take-out",
+    description: "Take-out at the historic Cox Ford Covered Bridge. One of Indiana\"s most photogenic river landmarks.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Shades State Park",
+    to: "Cox Ford Covered Bridge",
+    miles: 12,
+    paddleTime: "4\u20136 hours",
+    class: "I-II",
+    notes: "Gentle float through Indiana\"s covered-bridge country. Sandstone bluffs, old-growth forest, and several historic covered bridges along the way. Best in spring with moderate water levels.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

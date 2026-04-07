@@ -3,12 +3,57 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Chattahoochee River (GA) — geometry from USGS NHDPlus HR
 // 239 points, 102/102 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Buford Dam",
+    lat: 34.1228,
+    lng: -84.0976,
+    type: "put-in",
+    description: "Put-in below Buford Dam at the Chattahoochee River National Recreation Area. Cold-water trout fishery.",
+  },
+  {
+    name: "Jones Bridge",
+    lat: 33.9901,
+    lng: -84.1985,
+    type: "access",
+    description: "Jones Bridge unit of the NRA. Popular access with parking, trails, and river access.",
+  },
+  {
+    name: "Powers Island",
+    lat: 33.9113,
+    lng: -84.4469,
+    type: "access",
+    description: "Popular tubing and kayaking put-in. Easy float to Paces Ferry. Summer weekend crowds.",
+  },
+  {
+    name: "Paces Ferry",
+    lat: 33.8488,
+    lng: -84.4588,
+    type: "take-out",
+    description: "Take-out at Paces Ferry unit near Vinings. End of the popular tubing section.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Buford Dam",
+    to: "Jones Bridge",
+    miles: 12,
+    paddleTime: "4\u20136 hours",
+    class: "I-II",
+    notes: "Cold tailwater trout section through the Chattahoochee River NRA. Gentle rapids, scenic wooded corridor in metro Atlanta.",
+  },
+  {
+    from: "Powers Island",
+    to: "Paces Ferry",
+    miles: 5,
+    paddleTime: "2\u20133 hours",
+    class: "I",
+    notes: "Easy flat-water float popular for tubing and casual paddling. Urban section with good access.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

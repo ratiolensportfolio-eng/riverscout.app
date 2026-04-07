@@ -3,12 +3,42 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Potomac River (MD) — geometry from USGS NHDPlus HR
 // 193 points, 94/94 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Great Falls Overlook",
+    lat: 38.9919,
+    lng: -77.2482,
+    type: "put-in",
+    description: "Put-in above Great Falls. Expert paddlers only above the falls. Overlook viewpoint at Great Falls Park.",
+  },
+  {
+    name: "Great Falls",
+    lat: 38.9837,
+    lng: -77.245,
+    type: "portage",
+    description: "Class V+ Great Falls of the Potomac. Mandatory portage for most paddlers. Extremely dangerous hydraulics.",
+  },
+  {
+    name: "Carderock",
+    lat: 38.9689,
+    lng: -77.2008,
+    type: "take-out",
+    description: "Take-out at Carderock Recreation Area. Popular climbing and picnic area with river access.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Great Falls Overlook",
+    to: "Carderock",
+    miles: 4,
+    paddleTime: "2\u20134 hours",
+    class: "II-V",
+    notes: "Great Falls to Carderock. Class V falls (portage for most), then Class II-III Mather Gorge below. Popular expert kayak run near Washington, D.C.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

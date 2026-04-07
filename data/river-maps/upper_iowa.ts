@@ -3,12 +3,42 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Upper Iowa River (IA) — geometry from USGS NHDPlus HR
 // 210 points, 141/141 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Kendallville",
+    lat: 43.3854,
+    lng: -91.8523,
+    type: "put-in",
+    description: "Upper put-in in the Driftless Area. Limestone bluffs begin immediately downstream.",
+  },
+  {
+    name: "Bluffton",
+    lat: 43.4083,
+    lng: -91.5777,
+    type: "access",
+    description: "Mid-river access near Bluffton. Good rest stop with small-town amenities.",
+  },
+  {
+    name: "Decorah",
+    lat: 43.3085,
+    lng: -91.7748,
+    type: "take-out",
+    description: "Take-out near Decorah. Scenic Driftless bluffs and cold-water trout streams throughout.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Kendallville",
+    to: "Decorah",
+    miles: 25,
+    paddleTime: "8\u201310 hours",
+    class: "I-II",
+    notes: "Classic Driftless Area float through towering limestone bluffs and spring-fed tributaries. Mostly gentle current with a few Class II riffles. Great for multi-day camping trips.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [
