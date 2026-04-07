@@ -1,42 +1,56 @@
 -- Outfitter listings with tiered subscriptions
-create table if not exists outfitter_listings (
+-- NOTE: This schema has been created directly in Supabase.
+-- This file is kept as reference only.
+
+create table public.outfitters (
   id uuid primary key default gen_random_uuid(),
-  name text not null,
-  description text not null default '',
+  user_id uuid references auth.users on delete cascade,
+  business_name text not null,
+  description text,
   website text,
   phone text,
-  email text not null,
-  river_ids text[] not null default '{}',
-  state_keys text[] default '{}',       -- for destination sponsors
-  tier text not null default 'listed',   -- listed, featured, sponsored, guide, destination
   logo_url text,
-  photo_urls text[] default '{}',
+  cover_photo_url text,
+  tier text default 'listed' check (tier in ('listed','featured','sponsored','guide','destination')),
+  river_ids text[] default '{}',
+  state_keys text[] default '{}',
+  specialty_tags text[] default '{}',
   stripe_customer_id text,
   stripe_subscription_id text,
-  active boolean not null default true,
-  claimed_at timestamptz not null default now(),
-  expires_at timestamptz,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
+  stripe_price_id text,
+  active boolean default false,
+  founding_member boolean default false,
+  clicks integer default 0,
+  created_at timestamptz default now(),
+  updated_at timestamptz default now()
 );
 
--- Indexes
-create index if not exists idx_outfitter_river on outfitter_listings using gin(river_ids);
-create index if not exists idx_outfitter_state on outfitter_listings using gin(state_keys);
-create index if not exists idx_outfitter_tier on outfitter_listings(tier);
-create index if not exists idx_outfitter_active on outfitter_listings(active) where active = true;
+create table public.outfitter_clicks (
+  id uuid primary key default gen_random_uuid(),
+  outfitter_id uuid references public.outfitters on delete cascade,
+  river_id text,
+  clicked_at timestamptz default now()
+);
 
--- Enable RLS
-alter table outfitter_listings enable row level security;
+alter table public.outfitters enable row level security;
+alter table public.outfitter_clicks enable row level security;
 
--- Anyone can read active listings
-create policy "Public read active listings" on outfitter_listings
-  for select using (active = true);
+-- Outfitters can read and update their own listing
+create policy "Outfitters manage own listing"
+  on public.outfitters for all
+  using (auth.uid() = user_id);
 
--- Anyone can create a free listing (claim)
-create policy "Public insert listings" on outfitter_listings
-  for insert with check (true);
+-- Listings are publicly readable when active
+create policy "Active listings are public"
+  on public.outfitters for select
+  using (active = true);
 
--- Only the listing owner can update (matched by email for now)
-create policy "Owner update listings" on outfitter_listings
-  for update using (true);
+-- RPC function to increment clicks atomically
+create or replace function increment_outfitter_clicks(outfitter_uuid uuid)
+returns void as $$
+begin
+  update public.outfitters
+  set clicks = clicks + 1, updated_at = now()
+  where id = outfitter_uuid;
+end;
+$$ language plpgsql security definer;

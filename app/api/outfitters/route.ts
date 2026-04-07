@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createSupabaseClient } from '@/lib/supabase'
 
-// GET /api/outfitters?riverId=... — fetch active outfitter listings for a river
+// GET /api/outfitters?riverId=...&stateKey=... — fetch active outfitter listings
 export async function GET(req: NextRequest) {
   const riverId = req.nextUrl.searchParams.get('riverId')
   const stateKey = req.nextUrl.searchParams.get('stateKey')
@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
   const supabase = createSupabaseClient()
 
   let query = supabase
-    .from('outfitter_listings')
+    .from('outfitters')
     .select('*')
     .eq('active', true)
 
@@ -20,37 +20,37 @@ export async function GET(req: NextRequest) {
     query = query.contains('state_keys', [stateKey])
   }
 
-  // Order by tier priority: destination > sponsored > featured > guide > listed
   const { data, error } = await query.order('created_at', { ascending: false })
 
   if (error) {
+    console.error('Fetch outfitters error:', error)
     return NextResponse.json({ error: 'Failed to fetch listings' }, { status: 500 })
   }
 
-  // Sort by tier priority
+  // Sort by tier priority: destination > sponsored > featured > guide > listed
   const tierOrder: Record<string, number> = { destination: 0, sponsored: 1, featured: 2, guide: 3, listed: 4 }
   const sorted = (data || []).sort((a, b) => (tierOrder[a.tier] ?? 5) - (tierOrder[b.tier] ?? 5))
 
   return NextResponse.json({ listings: sorted })
 }
 
-// POST /api/outfitters — claim a free listing
+// POST /api/outfitters — claim a free listing (requires user_id from auth)
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { name, email, description, riverId, phone, website } = body
+    const { userId, businessName, description, riverId, phone } = body
 
-    if (!name || !email || !riverId) {
-      return NextResponse.json({ error: 'Name, email, and river are required' }, { status: 400 })
+    if (!userId || !businessName || !riverId) {
+      return NextResponse.json({ error: 'userId, businessName, and riverId are required' }, { status: 400 })
     }
 
     const supabase = createSupabaseClient()
 
-    // Check if this email already has a listing on this river
+    // Check if this user already has a listing on this river
     const { data: existing } = await supabase
-      .from('outfitter_listings')
+      .from('outfitters')
       .select('id')
-      .eq('email', email)
+      .eq('user_id', userId)
       .contains('river_ids', [riverId])
 
     if (existing && existing.length > 0) {
@@ -58,16 +58,15 @@ export async function POST(req: NextRequest) {
     }
 
     const { data, error } = await supabase
-      .from('outfitter_listings')
+      .from('outfitters')
       .insert({
-        name: name.trim(),
-        email: email.trim(),
-        description: description?.trim() || '',
+        user_id: userId,
+        business_name: businessName.trim(),
+        description: description?.trim() || null,
         river_ids: [riverId],
         phone: phone?.trim() || null,
-        website: null, // website link not shown on free tier
         tier: 'listed',
-        active: true,
+        active: false,  // free listings start inactive until reviewed
       })
       .select()
 

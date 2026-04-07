@@ -162,23 +162,36 @@ export interface TripReport {
 
 export type OutfitterTier = 'listed' | 'featured' | 'sponsored' | 'guide' | 'destination'
 
+// Matches public.outfitters table in Supabase
 export interface OutfitterListing {
   id: string
-  name: string
-  description: string
-  website: string
-  phone?: string
-  email?: string
-  riverIds: string[]
-  stateKeys?: string[]       // for destination sponsors
+  user_id: string
+  business_name: string
+  description: string | null
+  website: string | null
+  phone: string | null
+  logo_url: string | null
+  cover_photo_url: string | null
   tier: OutfitterTier
-  logoUrl: string | null
-  photoUrls?: string[]
-  stripeCustomerId?: string
-  stripeSubscriptionId?: string
+  river_ids: string[]
+  state_keys: string[]
+  specialty_tags: string[]
+  stripe_customer_id: string | null
+  stripe_subscription_id: string | null
+  stripe_price_id: string | null
   active: boolean
-  createdAt: string
-  expiresAt?: string
+  founding_member: boolean
+  clicks: number
+  created_at: string
+  updated_at: string
+}
+
+// Matches public.outfitter_clicks table in Supabase
+export interface OutfitterClick {
+  id: string
+  outfitter_id: string
+  river_id: string | null
+  clicked_at: string
 }
 
 export interface OutfitterTierConfig {
