@@ -155,7 +155,7 @@ export default function OutfitterPortal() {
           {[
             {
               q: 'What do paddlers see on RiverScout?',
-              a: 'Live USGS flow data, interactive river maps with access points, hatch calendars, trip reports with photos, and outfitter listings. Every paddler checking conditions before a trip sees your listing.',
+              a: 'Live USGS flow data, interactive river maps with access points, hatch calendars, trip reports with photos, fishing guides, and outfitter listings. Every paddler checking conditions before a trip sees your listing.',
             },
             {
               q: 'Can I list on multiple rivers?',
@@ -163,15 +163,23 @@ export default function OutfitterPortal() {
             },
             {
               q: "What's the difference between Featured and Sponsored?",
-              a: 'Featured gets your logo and website link on the river page. Sponsored gets top-of-page placement, a photo gallery, priority in search, and integration into trip planning tools.',
+              a: "Featured gives you top placement in the Outfitters tab with your logo, cover photo, booking link, and phone number. Sponsored puts you on the Overview tab — the first thing paddlers see — plus you get included in flow alert emails when your rivers hit optimal CFS, and a quarterly traffic report.",
             },
             {
               q: "I'm a solo fishing guide, not a rafting company.",
-              a: "The Guide Profile tier is built for you — $29/month gets your name, contact info, and guide badge on the Fishing tab of your rivers.",
+              a: "The Guide Profile is built for individual guides. $29/month gets you a personal profile page with specialty tags (fly fishing, kayak instruction, family floats), a direct contact form, and placement in the Local Guides section — separate from business listings.",
+            },
+            {
+              q: 'What are flow alert emails?',
+              a: "Paddlers subscribe to get notified when specific rivers hit optimal conditions. Sponsored outfitters are included in those emails — your name, logo, and booking link go directly to paddlers who are actively planning a trip on your river at that moment.",
+            },
+            {
+              q: 'How does the Destination Sponsor tier work?',
+              a: "Destination Sponsors get branded placement on every river page in their state, featured placement on the state landing page, logo in the state newsletter, and co-branding in all flow alert emails for that state. It's an annual contract — reach out to discuss.",
             },
             {
               q: 'Can I cancel anytime?',
-              a: 'Monthly subscriptions cancel anytime. Annual subscriptions are non-refundable but you keep your listing through the paid period.',
+              a: 'Monthly subscriptions cancel anytime, effective at the end of the billing period. Annual subscriptions are non-refundable but you keep your listing through the paid period. Free listings can be removed on request.',
             },
           ].map((faq, i) => (
             <div key={i} style={{ marginBottom: '14px', padding: '12px 14px', background: 'var(--bg2)', borderRadius: 'var(--r)', border: '.5px solid var(--bd)' }}>

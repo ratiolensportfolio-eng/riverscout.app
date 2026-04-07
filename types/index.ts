@@ -200,9 +200,10 @@ export const OUTFITTER_TIERS: OutfitterTierConfig[] = [
     yearlyPrice: 0,
     maxRivers: 1,
     features: [
-      'Business name and description on river page',
-      'Appear in outfitter directory',
-      'Basic listing — no website link, no logo',
+      'Directory listing on selected rivers',
+      'Business name, location, and website link',
+      'Shows in Outfitters tab on river pages',
+      'No photos, no priority placement',
     ],
   },
   {
@@ -212,11 +213,12 @@ export const OUTFITTER_TIERS: OutfitterTierConfig[] = [
     yearlyPrice: 399,
     maxRivers: 3,
     features: [
-      'Everything in Listed',
-      'Website link and phone number displayed',
-      'Logo on river page',
-      'Featured badge — higher placement',
-      'Up to 3 rivers per subscription',
+      'Top placement in Outfitters tab',
+      'Logo and cover photo upload',
+      '3–5 sentence description',
+      'Direct booking link and phone number',
+      'Click analytics dashboard',
+      'Up to 3 rivers included',
     ],
   },
   {
@@ -227,11 +229,11 @@ export const OUTFITTER_TIERS: OutfitterTierConfig[] = [
     maxRivers: 6,
     features: [
       'Everything in Featured',
-      'Top-of-page placement with photo gallery',
-      'Sponsored badge with accent border',
-      'Up to 6 rivers per subscription',
-      'Priority in search results',
-      'Trip planning integration',
+      'Placement in river Overview tab — first tab, above the fold',
+      'Included in flow alert emails when rivers hit optimal CFS',
+      'Up to 6 rivers included',
+      'Priority placement above Featured listings',
+      'Quarterly traffic report emailed to you',
     ],
   },
   {
@@ -241,11 +243,11 @@ export const OUTFITTER_TIERS: OutfitterTierConfig[] = [
     yearlyPrice: 249,
     maxRivers: 3,
     features: [
-      'Individual guide profile (not a business)',
-      'Appear on Fishing tab as a listed guide',
-      'Website link and contact info',
-      'Guide badge',
-      'Up to 3 rivers',
+      'Personal guide profile page',
+      'Specialty tags — fly fishing, kayak instruction, family floats',
+      'Direct contact form on your profile',
+      'Listed in Local Guides section on river pages',
+      'Separate from outfitter business listings',
     ],
   },
   {
@@ -255,10 +257,11 @@ export const OUTFITTER_TIERS: OutfitterTierConfig[] = [
     yearlyPrice: null, // contact sales
     maxRivers: null,   // covers entire state/region
     features: [
-      'Cover an entire state or region',
-      'Brand placement on state page and all river pages',
-      'Custom landing page on RiverScout',
-      'Annual contract — contact sales',
+      'Sponsored placement on every river page in your state',
+      'Featured in state landing page hero section',
+      'Logo placement in newsletter for that state',
+      'Co-branded in flow alert emails for all rivers in state',
+      'Contact sales — not self-serve checkout',
     ],
   },
 ]
