@@ -11,7 +11,7 @@ export const STATES: StatesDB = {
 {
         id: 'pine_mi', n: 'Pine River', lp: true, up: false, wild: true, nat: true, ww: false,
         co: 'Lake / Osceola Co.', len: '60 mi', cls: 'I', opt: '150–350',
-        g: '04057510', avg: 248, histFlow: 230, mx: 238, my: 250, abbr: 'MI',
+        g: '04125460', avg: 248, histFlow: 230, mx: 238, my: 250, abbr: 'MI',
         desc: "Michigan's premier whitewater river — the Pine runs cold, clear, and fast through the Manistee National Forest. Designated Wild & Scenic in 1978 among the first eight rivers in the eastern U.S. to receive that honor. Crystal spring-fed water stays below 65°F year-round, supporting one of Michigan's finest wild brook trout populations.",
         desig: 'National Wild & Scenic River (1978) · Michigan Natural River',
         secs: [
@@ -57,7 +57,7 @@ export const STATES: StatesDB = {
       {
         id: 'manistee', n: 'Manistee River', lp: true, up: false, wild: true, nat: true, ww: false,
         co: 'Manistee / Wexford Co.', len: '190 mi', cls: 'Riffles', opt: '300–1200',
-        g: '04126520', avg: 740, histFlow: 690, mx: 248, my: 240, abbr: 'MI',
+        g: '04124000', avg: 740, histFlow: 690, mx: 248, my: 240, abbr: 'MI',
         desc: '190 miles through Manistee National Forest — among the finest trout fisheries east of the Rockies. Upper reach is fast and intimate; below Tippy Dam widens into world-class steelhead and Chinook salmon water every fall.',
         desig: 'National Scenic River · Michigan Natural River',
         secs: ['Upper — Gaylord to Hodenpyl Dam, remote', 'Middle — Hodenpyl to Tippy Dam, classic canoe water', 'Lower — Tippy Dam to Lake Michigan, steelhead corridor'],
@@ -135,7 +135,7 @@ export const STATES: StatesDB = {
       {
         id: 'betsie', n: 'Betsie River', lp: true, up: false, wild: false, nat: true, ww: false,
         co: 'Benzie Co.', len: '55 mi', cls: 'Riffles', opt: '150–500',
-        g: '04126550', avg: 260, histFlow: 235, mx: 242, my: 237, abbr: 'MI',
+        g: '04126530', avg: 260, histFlow: 235, mx: 242, my: 237, abbr: 'MI',
         desc: "Flowing to Lake Michigan at Frankfort near the Sleeping Bear Dunes, the Betsie offers excellent salmon and steelhead runs. A scenic Natural River winding through Benzie County's rolling forests and farmland.",
         desig: 'Michigan Natural River',
         secs: ['Upper — Grass Lake to Thompsonville, gentle meadow paddle', 'Lower — Thompsonville to Betsie Lake, faster current through forested corridor'],
@@ -165,7 +165,7 @@ export const STATES: StatesDB = {
       {
         id: 'rifle', n: 'Rifle River', lp: true, up: false, wild: false, nat: true, ww: false,
         co: 'Ogemaw / Arenac Co.', len: '60 mi', cls: 'Riffles', opt: '200–800',
-        g: '04141000', avg: 380, histFlow: 345, mx: 280, my: 258, abbr: 'MI',
+        g: '04142000', avg: 380, histFlow: 345, mx: 280, my: 258, abbr: 'MI',
         desc: "Flowing through the Rifle River Recreation Area, the Rifle is one of Michigan's most family-friendly float rivers with good smallmouth bass fishing. A gentle, forested paddle through the eastern LP.",
         desig: 'Michigan Natural River',
         secs: ['Upper — Rifle River Recreation Area, scenic headwaters', 'Middle — Selkirk to Sterling, popular family float', 'Lower — Sterling to Saginaw Bay, wider and slower'],
@@ -195,7 +195,7 @@ export const STATES: StatesDB = {
       {
         id: 'flat_river', n: 'Flat River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Montcalm / Ionia Co.', len: '80 mi', cls: 'Riffles', opt: '200–800',
-        g: '04116500', avg: 520, histFlow: 470, mx: 250, my: 265, abbr: 'MI',
+        g: '04116000', avg: 520, histFlow: 470, mx: 250, my: 265, abbr: 'MI',
         desc: "A central Lower Peninsula gem, the Flat River flows past the historic Fallasburg Covered Bridge and offers excellent smallmouth bass and steelhead fishing. Gentle Class I-II water through rolling farmland and hardwood forest.",
         desig: 'Michigan Designated Trout Stream (upper reach)',
         secs: ['Upper — Greenville to Belding, gentle meanders', 'Middle — Belding to Fallasburg, covered bridge and light rapids', 'Lower — Fallasburg to Lowell, confluence with Grand River'],
@@ -225,7 +225,7 @@ export const STATES: StatesDB = {
       {
         id: 'crystal_mi', n: 'Crystal River (Glen Arbor)', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Leelanau Co.', len: '2.5 mi', cls: 'Riffles', opt: '40–150',
-        g: '04127918', avg: 75, histFlow: 68, mx: 248, my: 228, abbr: 'MI',
+        g: '04127997', avg: 75, histFlow: 68, mx: 248, my: 228, abbr: 'MI',
         desc: "The shortest river in Michigan at just 2.5 miles, the Crystal flows with teal-blue, glass-clear water through Sleeping Bear Dunes National Lakeshore. An extremely popular short paddle and one of the most photographed waterways in the state.",
         desig: 'Sleeping Bear Dunes National Lakeshore',
         secs: ['Fisher Road to Glen Lake — 2.5 mi, the complete crystal-clear experience'],
@@ -330,7 +330,7 @@ export const STATES: StatesDB = {
       {
         id: 'little_manistee', n: 'Little Manistee River', lp: true, up: false, wild: false, nat: true, ww: false,
         co: 'Lake / Mason Co.', len: '55 mi', cls: 'Riffles', opt: '150–600',
-        g: '04126200', avg: 280, histFlow: 252, mx: 242, my: 245, abbr: 'MI',
+        g: '04126130', avg: 280, histFlow: 252, mx: 242, my: 245, abbr: 'MI',
         desc: "Premier steelhead river and home to the Michigan DNR weir used for egg collection to stock rivers statewide. The Little Manistee runs cold and clear through the Manistee National Forest.",
         desig: 'Michigan Natural River',
         secs: ['Upper — Luther to Old Stronach Road, narrow forest paddle', 'Lower — Old Stronach Road to Manistee Lake, steelhead corridor'],
@@ -360,7 +360,7 @@ export const STATES: StatesDB = {
       {
         id: 'ocqueoc', n: 'Ocqueoc River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Presque Isle Co.', len: '30 mi', cls: 'Riffles', opt: '80–300',
-        g: '04133500', avg: 140, histFlow: 126, mx: 280, my: 242, abbr: 'MI',
+        g: '04133501', avg: 140, histFlow: 126, mx: 280, my: 242, abbr: 'MI',
         desc: "Home to Ocqueoc Falls, the only named waterfall in Michigan's Lower Peninsula. A small, intimate river in the remote northeastern LP with good trout fishing and a surprising natural landmark.",
         desig: 'None',
         secs: ['Upper — Ocqueoc Falls area, scenic headwaters', 'Lower — Ocqueoc Falls to Lake Huron, gentle forest paddle'],
@@ -405,7 +405,7 @@ export const STATES: StatesDB = {
       {
         id: 'sturgeon_lp', n: 'Sturgeon River (LP)', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Otsego / Cheboygan Co.', len: '45 mi', cls: 'I–II', opt: '150–600',
-        g: '04132000', avg: 260, histFlow: 234, mx: 268, my: 238, abbr: 'MI',
+        g: '04131980', avg: 260, histFlow: 234, mx: 268, my: 238, abbr: 'MI',
         desc: "The fastest river in the Lower Peninsula with good current and Class I-II water that can challenge beginners. A scenic, forested paddle through the northern LP with reliable flow and a reputation for swift water.",
         desig: 'Michigan Natural River',
         secs: ['Upper — Wolverine to Rondo, fast current through state forest', 'Lower — Rondo to Burt Lake, gentler but still moving'],
@@ -420,7 +420,7 @@ export const STATES: StatesDB = {
       {
         id: 'thunder_bay', n: 'Thunder Bay River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Montmorency / Alpena Co.', len: '70 mi', cls: 'Riffles', opt: '200–800',
-        g: '04135000', avg: 420, histFlow: 378, mx: 278, my: 248, abbr: 'MI',
+        g: '04135500', avg: 420, histFlow: 378, mx: 278, my: 248, abbr: 'MI',
         desc: "Flowing to Lake Huron at Alpena and the Thunder Bay National Marine Sanctuary, this northeastern LP river offers a scenic paddle through forested country to one of the Great Lakes' most significant underwater preserves.",
         desig: 'None',
         secs: ['Upper — Atlanta to Hillman, narrow forest paddle', 'Lower — Hillman to Alpena, wider current to Lake Huron'],
@@ -689,7 +689,7 @@ export const STATES: StatesDB = {
       {
         id: 'payette', n: 'North Fork Payette', ww: true, wild: false, remote: false, mtn: true,
         co: 'Valley / Gem Co.', len: '48 mi', cls: 'III–V+', opt: '800–2500',
-        g: '13245400', avg: 1100, histFlow: 980, mx: 170, my: 115, abbr: 'ID',
+        g: '13247500', avg: 1100, histFlow: 980, mx: 170, my: 115, abbr: 'ID',
         desc: 'The North Fork Payette through Banks is legendary in the North American kayaking community — Class V and V+ whitewater that draws elite paddlers from around the world. Cascade Falls section rivals any whitewater in the country. The roadside gorge provides easy shuttles and difficult consequences. Not for the uninitiated.',
         desig: 'Idaho Recreation Corridor',
         secs: ['Cascade section — Class V+, Cascade Falls is Class V+/VI', 'Banks to Horseshoe Bend — Class IV–V, most popular section', 'Lower NFP — Class III–IV, scenic and challenging'],
@@ -704,7 +704,7 @@ export const STATES: StatesDB = {
       {
         id: 'mf_salmon', n: 'Middle Fork of the Salmon', ww: true, wild: true, remote: true, mtn: true,
         co: 'Custer / Idaho Co.', len: '100 mi', cls: 'IV–V', opt: '3000–8000',
-        g: '13309000', avg: 2800, histFlow: 2550, mx: 290, my: 82, abbr: 'ID',
+        g: '13309220', avg: 2800, histFlow: 2550, mx: 290, my: 82, abbr: 'ID',
         desc: "The premier wilderness river trip in North America — 100 miles through the Frank Church-River of No Return Wilderness, the largest roadless area in the lower 48. Accessible only by float plane or a 28-mile trail. Begins at 6,000 feet elevation with Class IV–V whitewater and descends 3,000 feet through Impassable Canyon to join the Main Salmon. Grizzly bears, gray wolves, mountain goats, and Chinook salmon share the corridor.",
         desig: 'National Wild & Scenic River · Frank Church-River of No Return Wilderness · Float Plane Access Only',
         secs: ['Boundary Creek to Indian Creek — Class IV–V, upper canyon, Marble Creek and Velvet Falls', 'Indian Creek to Pistol Creek — Class III–IV, open valley, best camps', 'Pistol Creek to Main Salmon — Class IV–V, Impassable Canyon, Rubber and Hancock rapids (Class V)'],
@@ -720,7 +720,7 @@ export const STATES: StatesDB = {
       {
         id: 'hells_canyon', n: 'Snake River — Hells Canyon', ww: true, wild: true, remote: true, mtn: false,
         co: 'Idaho / Oregon border, Adams / Wallowa Co.', len: '79 mi', cls: 'III–IV', opt: '8000–30000',
-        g: '13290000', avg: 24000, histFlow: 21000, mx: 235, my: 95, abbr: 'ID',
+        g: '13290450', avg: 24000, histFlow: 21000, mx: 235, my: 95, abbr: 'ID',
         desc: "Hells Canyon is the deepest river gorge in North America — 7,993 feet from the Seven Devils peaks to the Snake River, deeper than the Grand Canyon. The 79-mile corridor along the Idaho-Oregon border has no road access for 68 miles. Class III–V whitewater, ancient Nez Perce pictographs, and North America's largest bighorn sheep population. Dam-controlled flows create year-round paddling.",
         desig: 'Hells Canyon National Recreation Area · National Wild & Scenic River · Deepest Gorge in North America',
         secs: ['Hells Canyon Dam to Cache Creek — Class V, 32 mi upper canyon, Granite Creek and Wild Sheep rapids', 'Cache Creek to Pittsburg Landing — Class III–IV, most popular float', 'Lower canyon to Lewiston — Class I–II, widening Snake River'],
@@ -761,7 +761,7 @@ export const STATES: StatesDB = {
       {
         id: 'deschutes', n: 'Deschutes River', ww: true, wild: true, coastal: false, desert: true,
         co: 'Deschutes / Wasco Co.', len: '252 mi', cls: 'I–IV', opt: '1500–5000',
-        g: '14102000', avg: 2800, histFlow: 2600, mx: 380, my: 65, abbr: 'OR',
+        g: '14092500', avg: 2800, histFlow: 2600, mx: 380, my: 65, abbr: 'OR',
         desc: "Flows 252 miles from the Cascade Mountains through Oregon's high desert to the Columbia River. The Lower Deschutes from Maupin is one of the Northwest's great whitewater destinations — 100 miles of canyon paddling through 25-million-year-old basalt. Legendary rainbow trout fishery.",
         desig: 'National Wild & Scenic River (lower 100 miles) · Deschutes State Recreation Area',
         secs: ['Upper Deschutes — Bend area, Class I–II, urban', 'Maupin section — Class III–IV, the classic Lower Deschutes run', 'Columbia confluence — Class I–II, wider and slower'],
@@ -809,7 +809,7 @@ export const STATES: StatesDB = {
       {
         id: 'north_umpqua', n: 'North Umpqua River', ww: false, wild: true, coastal: true, desert: false,
         co: 'Douglas Co.', len: '110 mi', cls: 'I–IV', opt: '1000–4000',
-        g: '14317000', avg: 2200, histFlow: 2000, mx: 200, my: 130, abbr: 'OR',
+        g: '14317600', avg: 2200, histFlow: 2000, mx: 200, my: 130, abbr: 'OR',
         desc: "One of the most beautiful rivers in the Pacific Northwest — emerald green, spring-fed, and remarkably stable from volcanic geology. The North Umpqua flows 110 miles through Umpqua National Forest with the famous 79-mile North Umpqua Trail running beside it. World-renowned summer steelhead and Chinook fishery. The Narrows deliver Class III–IV whitewater through a volcanic gorge.",
         desig: "National Wild & Scenic River (upper 33.8 miles) · Umpqua National Forest · Fly-Fishing-Only Section (above Steamboat Creek)",
         secs: ['Susan Creek to Toketee — Class I–II, volcanic canyon, best scenery', 'Toketee to Horseshoe Bend — Class III, popular family section', 'Narrows and Tioga (Glide area) — Class III–IV, best whitewater'],
@@ -1100,7 +1100,7 @@ export const STATES: StatesDB = {
       {
         id: 'nolichucky', n: 'Nolichucky River', ww: true, wild: true, nat: true, appalachian: true,
         co: 'Unicoi / Greene Co.', len: '115 mi', cls: 'III–IV', opt: '600–3000',
-        g: '03469500', avg: 1400, histFlow: 1280, mx: 530, my: 95, abbr: 'TN',
+        g: '03467609', avg: 1400, histFlow: 1280, mx: 530, my: 95, abbr: 'TN',
         desc: "The Nolichucky gorge is the deepest river gorge in the eastern United States — deeper even than the New River Gorge. Plunges through the Unaka Mountains in a 3,000-foot-deep canyon in the Pisgah National Forest. Class III–IV rapids in a remote corridor with no road access for 26 miles. One of Appalachia's great wilderness paddling experiences.",
         desig: 'Nolichucky Gorge Special Management Area · Pisgah National Forest',
         secs: ['Poplar NC to Erwin TN — Class III–IV, the 26-mile gorge run', 'Erwin to Embreeville — Class I–II, post-gorge recovery', 'Lower Nolichucky — Class I, farm country'],
@@ -1117,7 +1117,7 @@ export const STATES: StatesDB = {
       {
         id: 'obeds', n: 'Obed Wild & Scenic River', ww: true, wild: true, nat: false, appalachian: true,
         co: 'Cumberland / Morgan Co.', len: '45 mi', cls: 'III–V', opt: '400–2000',
-        g: '03537500', avg: 890, histFlow: 820, mx: 400, my: 105, abbr: 'TN',
+        g: '03539800', avg: 890, histFlow: 820, mx: 400, my: 105, abbr: 'TN',
         desc: "Tennessee's only National Wild & Scenic River — and among the best-kept secrets in eastern whitewater. The Obed and its tributaries (Clear Creek and Daddy's Creek) cut through the Cumberland Plateau in dramatic sandstone gorges. Technical, unforgiving, and extraordinary.",
         desig: "Tennessee's Only National Wild & Scenic River (1976) · NPS Obed Wild & Scenic River",
         secs: ['Obed Junction to Nemo — Class IV–V, technical', "Clear Creek Gorge — Class IV+, the hardest tributary", "Daddy's Creek — Class III–IV, most accessible section"],
@@ -1166,7 +1166,7 @@ export const STATES: StatesDB = {
       {
         id: 'duck_river', n: 'Duck River', ww: false, wild: false, nat: false, appalachian: false,
         co: 'Maury / Marshall / Humphreys Co.', len: '284 mi', cls: 'I–II', opt: '400–2500',
-        g: '03600500', avg: 1850, histFlow: 1700, mx: 400, my: 118, abbr: 'TN',
+        g: '03599500', avg: 1850, histFlow: 1700, mx: 400, my: 118, abbr: 'TN',
         desc: "The most biologically diverse river in North America — the Duck River supports more species of freshwater fish and mussels per mile than any other river on the continent. 284 miles through the heart of middle Tennessee, flowing through some of the oldest and most continuously inhabited landscapes in eastern North America. Class I–II scenic floating through cedar glades, limestone bluffs, and agricultural bottomland.",
         desig: 'Tennessee Scenic River · One of the Most Biologically Diverse Rivers in North America (NatureServe)',
         secs: ['Upper Duck — Shelbyville to Lewisburg, Class I–II, scenic limestone bluffs', 'Middle Duck — Columbia area, Class I, most popular float', 'Lower Duck to Tennessee River — Class I, wide bottomland'],
@@ -1208,7 +1208,7 @@ export const STATES: StatesDB = {
       {
         id: 'tuolumne', n: 'Tuolumne River', ww: true, wild: true, sierra: true, coastal: false,
         co: 'Tuolumne Co.', len: '18 mi', cls: 'III–V', opt: '300–2500',
-        g: '11275500', avg: 980, histFlow: 850, mx: 215, my: 100, abbr: 'CA',
+        g: '11274790', avg: 980, histFlow: 850, mx: 215, my: 100, abbr: 'CA',
         desc: "The crown jewel of California whitewater — an 18-mile wilderness float through the Grand Canyon of the Tuolumne in Stanislaus National Forest. Pristine Sierra granite, Muir Gorge, Clavey Falls (Class V), and the famous Lumsden campsite make this one of the finest multi-day runs in the American West.",
         desig: 'National Wild & Scenic River (1984) · Stanislaus National Forest',
         secs: ['Lumsden Bridge to Ward\'s Ferry — 18 mi, the full classic run', 'Cherry Creek section above Lumsden — Class V, expert only'],
@@ -1225,7 +1225,7 @@ export const STATES: StatesDB = {
       {
         id: 'kern', n: 'Kern River', ww: true, wild: true, sierra: true, coastal: false,
         co: 'Kern Co.', len: '170 mi', cls: 'I–V+', opt: '400–2500',
-        g: '11187500', avg: 1100, histFlow: 950, mx: 210, my: 145, abbr: 'CA',
+        g: '11189500', avg: 1100, histFlow: 950, mx: 210, my: 145, abbr: 'CA',
         desc: "Southern California's premier whitewater river — drops out of the southern Sierra Nevada through Sequoia National Forest and Kern Canyon. The Forks of the Kern (Class V–V+) is one of the most committing wilderness whitewater runs in North America: 15 miles of continuous Class V with no road access.",
         desig: 'National Wild & Scenic River · Sequoia National Forest',
         secs: ['Forks of the Kern — Class V–V+, 15 mi, wilderness only', 'Upper Kern (Johnsondale to Fairview) — Class IV–V', 'Lower Kern Canyon — Class III–IV, most accessible'],
@@ -1465,7 +1465,7 @@ export const STATES: StatesDB = {
       {
         id: 'nantahala', n: 'Nantahala River', ww: true, wild: false, appalachian: true, piedmont: false,
         co: 'Swain / Macon Co.', len: '8 mi', cls: 'II–III', opt: '600–1200',
-        g: '03502000', avg: 820, histFlow: 750, mx: 160, my: 112, abbr: 'NC',
+        g: '03504000', avg: 820, histFlow: 750, mx: 160, my: 112, abbr: 'NC',
         desc: "The most commercially rafted river in the eastern United States — 8 miles of continuous Class II–III through the Nantahala Gorge in Nantahala National Forest. Ice-cold tailwater from Fontana Reservoir creates year-round paddling. 'Nantahala' means 'Land of the Noonday Sun' in Cherokee — the gorge is so deep that sunlight only reaches the river floor at midday.",
         desig: 'Nantahala National Forest · Nantahala Outdoor Center (NOC) — founded 1972',
         secs: ['Ferebee Park to NOC — 8 mi, continuous Class II–III', 'Nantahala Falls at takeout — Class III+, distinct final drop'],
@@ -1515,7 +1515,7 @@ export const STATES: StatesDB = {
       {
         id: 'green_nc', n: 'Green River Narrows', ww: true, wild: false, appalachian: true, piedmont: false,
         co: 'Polk Co.', len: '6 mi', cls: 'IV–V+', opt: '200–600',
-        g: '03505000', avg: 320, histFlow: 290, mx: 270, my: 112, abbr: 'NC',
+        g: '03504000', avg: 320, histFlow: 290, mx: 270, my: 112, abbr: 'NC',
         desc: "Six miles of the most technical creek kayaking in the eastern United States — the Green River Narrows has become a world-renowned destination for expert paddlers since the 1990s. A continuous sequence of Class IV–V+ drops through a narrow gorge of Piedmont granite, culminating in the famous Gorilla rapid (Class V+). The annual Green Race draws the world's fastest creek racers each November.",
         desig: 'Gorge section — Unmaintained road access only · Green River Preserve corridor',
         secs: ['Fishtop Access to Hwy 176 — Class IV–V+, the Narrows, 6 mi', 'Above Fishtop — Class III–IV, warm-up', 'Green River Lake to Narrows — Class II, upper river'],
@@ -1531,7 +1531,7 @@ export const STATES: StatesDB = {
       {
         id: 'watauga', n: 'Watauga River', ww: true, wild: false, appalachian: true, piedmont: false,
         co: 'Watauga / Avery Co.', len: '60 mi', cls: 'II–IV', opt: '200–800',
-        g: '03468000', avg: 520, histFlow: 475, mx: 350, my: 100, abbr: 'NC',
+        g: '03479000', avg: 520, histFlow: 475, mx: 350, my: 100, abbr: 'NC',
         desc: "Flows from the High Country of the Blue Ridge near Boone through the Tennessee Valley Divide in a series of gorges and waterfalls. The Watauga Gorge delivers Class III–IV whitewater through one of the most dramatic high-country canyons in North Carolina. Dam releases from Watauga Lake (TVA) provide consistent flows. Best spring through early summer.",
         desig: 'Watauga County State Natural Area (gorge section)',
         secs: ['Watauga Lake tailwater to Hampton — Class II–III, TVA release section', 'Hampton to Siam — Class III–IV, Watauga Gorge, most technical', 'Below Wilbur Dam — Class II, lower river toward Elizabethton TN'],
@@ -1919,7 +1919,7 @@ export const STATES: StatesDB = {
       {
         id: 'moose_ny', n: "Moose River — Bottom Moose", ww: true, wild: false, scenic: true, adirondack: true,
         co: 'Lewis / Herkimer Co.', len: '8 mi', cls: 'IV–V', opt: '500–2500',
-        g: '04253000', avg: 1200, histFlow: 1080, mx: 810, my: 180, abbr: 'NY',
+        g: '04252500', avg: 1200, histFlow: 1080, mx: 810, my: 180, abbr: 'NY',
         desc: "Premier Adirondack expert kayaking — the Bottom Moose delivers eight miles of continuous Class IV–V whitewater through a remote gorge. Crystal Falls, Fowlersville Falls, and Agers Falls are rites of passage for northeastern creek boaters.",
         desig: 'Adirondack Park · New York Wild Forest',
         secs: ['McKeever to Fowlersville — 4 mi, Class IV, Crystal Falls and Tannery Rapids', 'Fowlersville to Agers Falls — 4 mi, Class IV–V, the marquee section'],
@@ -2019,7 +2019,7 @@ export const STATES: StatesDB = {
       {
         id: 'etowah', n: 'Etowah River', ww: false, wild: false, piedmont: false, appalachian: true,
         co: 'Dawson / Cherokee Co.', len: '164 mi', cls: 'I–II', opt: '300–2000',
-        g: '02389500', avg: 1200, histFlow: 1080, mx: 720, my: 390, abbr: 'GA',
+        g: '02392000', avg: 1200, histFlow: 1080, mx: 720, my: 390, abbr: 'GA',
         desc: "From the north Georgia mountains to Lake Allatoona, the Etowah flows through some of the most historically significant landscape in the Southeast. Cherokee history, Civil War sites, and the Etowah Indian Mounds line the corridor.",
         desig: 'Etowah Indian Mounds State Historic Site · Georgia Water Trail',
         secs: ['Dahlonega to Dawsonville — 25 mi, mountain headwaters, Class I–II', 'Canton to Lake Allatoona — 30 mi, Piedmont foothills float'],
@@ -2059,7 +2059,7 @@ export const STATES: StatesDB = {
       {
         id: 'kawishiwi', n: 'Boundary Waters — Kawishiwi River', ww: false, wild: true, bwca: true, fishing: true,
         co: 'Lake Co.', len: '30 mi', cls: 'I', opt: '200–800',
-        g: '05127000', avg: 380, histFlow: 342, mx: 490, my: 80, abbr: 'MN',
+        g: '05124480', avg: 380, histFlow: 342, mx: 490, my: 80, abbr: 'MN',
         desc: "The Kawishiwi is the most-traveled canoe route into the Boundary Waters Canoe Area Wilderness — over a million acres of roadless lake-and-river country straddling the Minnesota-Ontario border. Paddlers portage between crystal-clear lakes connected by short river segments through boreal forest unchanged since the last ice age.",
         desig: 'Boundary Waters Canoe Area Wilderness (1978) · Superior National Forest',
         secs: ['Kawishiwi Lake to Sawbill Entry — 12 mi, classic BWCAW entry route', 'Kawishiwi Falls portage — iconic 80-rod carry around falls'],
@@ -2128,7 +2128,7 @@ export const STATES: StatesDB = {
       {
         id: 'wolf_wi', n: 'Wolf River', ww: true, wild: true, northwoods: true, fishing: true,
         co: 'Menominee / Shawano Co.', len: '65 mi', cls: 'II–IV', opt: '600–3,000',
-        g: '04077000', avg: 1600, histFlow: 1440, mx: 590, my: 135, abbr: 'WI',
+        g: '04074950', avg: 1600, histFlow: 1440, mx: 590, my: 135, abbr: 'WI',
         desc: "Wisconsin's legendary whitewater river flows through the Menominee Indian Reservation — one of the most sustainably managed forests in North America. The Wolf delivers 20 miles of continuous Class II–IV rapids through ancient granite ledges, with Ducknest Rapids and Gilmore's Mistake as the marquee drops. The Menominee Nation has stewarded this forest since time immemorial, and it looks the same today as it did 150 years ago.",
         desig: 'National Wild & Scenic River candidate · Menominee Reservation',
         secs: ['Hollister to Big Smokey Falls — 15 mi, Class II–III, best intermediate run', "Gilmore's Mistake to Keshena Falls — 8 mi, Class III–IV, expert", 'Langlade to Hollister — 20 mi, Class I–II warm-up', 'Keshena Falls — Class V portage, do not run'],
@@ -2143,7 +2143,7 @@ export const STATES: StatesDB = {
       {
         id: 'namekagon', n: 'Namekagon River', ww: false, wild: true, northwoods: true, fishing: true,
         co: 'Bayfield / Sawyer Co.', len: '98 mi', cls: 'I–II', opt: '200–800',
-        g: '05332500', avg: 480, histFlow: 432, mx: 560, my: 110, abbr: 'WI',
+        g: '05333500', avg: 480, histFlow: 432, mx: 560, my: 110, abbr: 'WI',
         desc: "The Namekagon is the northern arm of the St. Croix National Scenic Riverway — 98 miles of pristine northwoods paddling from Namekagon Lake near Cable to its confluence with the St. Croix at Riverside. Crystal-clear water over sand and gravel, Class I–II riffles, and virtually no development make this one of the finest multi-day canoe trips in the Midwest.",
         desig: 'St. Croix National Scenic Riverway (NPS) · National Wild & Scenic River',
         secs: ['Namekagon Lake to Hayward — 30 mi, intimate headwaters', 'Hayward to Trego — 35 mi, classic northwoods corridor', 'Trego to Riverside — 33 mi, wider river, excellent camping'],
@@ -2173,7 +2173,7 @@ export const STATES: StatesDB = {
       {
         id: 'flambeau', n: 'Flambeau River', ww: true, wild: true, northwoods: true, fishing: true,
         co: 'Price / Rusk Co.', len: '60 mi', cls: 'I–III', opt: '600–3,000',
-        g: '05357000', avg: 1600, histFlow: 1440, mx: 580, my: 110, abbr: 'WI',
+        g: '05357335', avg: 1600, histFlow: 1440, mx: 580, my: 110, abbr: 'WI',
         desc: "The North Fork Flambeau is Wisconsin's premier wilderness whitewater river — 60 miles of continuous Class I–III rapids through old-growth hemlock forests and remote northwoods. The Flambeau River State Forest protects the corridor, and multi-day trips offer a true backcountry experience with riverside campsites and minimal development.",
         desig: "Flambeau River State Forest · Wisconsin Outstanding Resource Water",
         secs: ["Nine Mile Creek to Oxbo — 15 mi, Class II–III, best whitewater", "Oxbo to Cedar Rapids — 20 mi, Class I–II, scenic forest run", "Upper North Fork — Park Falls to Nine Mile, 15 mi, Class I warmup"],
@@ -2298,7 +2298,7 @@ export const STATES: StatesDB = {
       {
         id: 'st_francis', n: 'St. Francis River', ww: true, scenic: true, ozark: true, spring: false,
         co: 'Madison Co.', len: '20 mi', cls: 'II–IV', opt: '400–2,500',
-        g: '07034000', avg: 820, histFlow: 738, mx: 550, my: 270, abbr: 'MO',
+        g: '07037500', avg: 820, histFlow: 738, mx: 550, my: 270, abbr: 'MO',
         desc: "Missouri's best whitewater — the St. Francis carves through Precambrian rhyolite at Millstream Gardens Conservation Area, creating a dramatic series of Class III–IV drops through billion-year-old igneous rock. Cat's Eye, Double Drop, and Rickety Rack are the marquee rapids on this geologically unique river. The exposed St. Francois Mountains rhyolite is among the oldest exposed rock in North America.",
         desig: 'Millstream Gardens Conservation Area · Missouri Natural Area',
         secs: ['Millstream Gardens — 3 mi, Class III–IV, main whitewater run', 'Silver Mines to Millstream — 8 mi, Class II lead-in', 'Below Millstream to Hwy H — 9 mi, Class I–II cooldown'],
@@ -2806,7 +2806,7 @@ export const STATES: StatesDB = {
       {
         id: 'missouri_sd', n: "Missouri River — Below Fort Randall", scenic: true, prairie: true, badlands: false, fishing: true,
         co: 'Gregory / Charles Mix Co.', len: '59 mi', cls: 'I', opt: '15000–40000',
-        g: '06453000', avg: 24000, histFlow: 21600, mx: 395, my: 135, abbr: 'SD',
+        g: '06452000', avg: 24000, histFlow: 21600, mx: 395, my: 135, abbr: 'SD',
         desc: "The Lewis and Clark National Historic Trail follows this 59-mile reach of cold, clear tailwater below Fort Randall Dam. The dam-released water creates world-class walleye and paddlefish habitat. Wide sandbars, cottonwood galleries, and virtually no development make this one of the most pristine stretches of the Missouri anywhere.",
         desig: 'Lewis & Clark National Historic Trail · Missouri National Recreational River',
         secs: ['Fort Randall Dam to Running Water — 30 mi, cold tailwater, big sandbars', 'Running Water to Niobrara confluence — 29 mi, wider river, island camping'],
@@ -2950,7 +2950,7 @@ export const STATES: StatesDB = {
       {
         id: 'fall_river_ks', n: 'Fall River', scenic: true, prairie: true, flinthills: true, fishing: true,
         co: 'Greenwood Co.', len: '65 mi', cls: 'I–II', opt: '200–1200',
-        g: '07168500', avg: 380, histFlow: 342, mx: 430, my: 270, abbr: 'KS',
+        g: '07167500', avg: 380, histFlow: 342, mx: 430, my: 270, abbr: 'KS',
         desc: "A hidden gem of the Flint Hills — the Fall River winds through scenic tallgrass prairie with limestone ledges, gentle riffles, and excellent fishing below Fall River Reservoir. One of the best small-river paddling experiences in Kansas, with reliable tailwater flows and virtually no crowds.",
         desig: 'Fall River State Park · Kansas Scenic Streams candidate',
         secs: ['Below Fall River Dam — 20 mi, reliable tailwater, best paddling', 'Climax to Severy — 25 mi, prairie riffles and pools', 'Severy to Verdigris confluence — 20 mi, wider valley'],
@@ -3030,7 +3030,7 @@ export const STATES: StatesDB = {
       {
         id: 'big_bend', n: 'Rio Grande — Big Bend', ww: true, scenic: true, desert: true, spring: false,
         co: 'Brewster Co.', len: '118 mi', cls: 'II–III', opt: '300–2000',
-        g: '08374200', avg: 420, histFlow: 378, mx: 430, my: 400, abbr: 'TX',
+        g: '08374550', avg: 420, histFlow: 378, mx: 430, my: 400, abbr: 'TX',
         desc: "The Rio Grande through Big Bend National Park — 118 miles of desert canyon paddling along the U.S.–Mexico border. Santa Elena Canyon rises 1,500 feet from the river in sheer limestone walls. Mariscal Canyon is even more remote. One of the great multi-day desert river expeditions in North America.",
         desig: 'Big Bend National Park · Rio Grande Wild & Scenic River',
         secs: ['Santa Elena Canyon — 20 mi, Class II–IV, iconic 1,500-ft walls', 'Mariscal Canyon — 10 mi, Class II–III, most remote', 'Boquillas Canyon — 30 mi, Class I–II, desert float'],
@@ -3092,7 +3092,7 @@ export const STATES: StatesDB = {
       {
         id: 'devils_river', n: "Devils River", ww: true, scenic: true, desert: true, spring: true,
         co: 'Val Verde Co.', len: '45 mi', cls: 'I–III', opt: '100–800',
-        g: '08449400', avg: 240, histFlow: 216, mx: 430, my: 400, abbr: 'TX',
+        g: '08449100', avg: 240, histFlow: 216, mx: 430, my: 400, abbr: 'TX',
         desc: "The most pristine river in Texas — a spring-fed limestone canyon so remote and undeveloped that it looks much as it did 10,000 years ago. The Devils River runs crystal clear through Val Verde County, fed entirely by springs from the Edwards-Trinity Aquifer. Access is extremely limited, and the Texas Parks and Wildlife Department restricts daily launches to protect the fragile ecosystem.",
         desig: "Devils River State Natural Area · Texas Conservation Priority",
         secs: ['Baker Crossing to Dolan Falls — 22 mi, remote limestone canyon', 'Dolan Falls to Lake Amistad — 23 mi, lower canyon, Class I–II'],
@@ -3418,7 +3418,7 @@ export const STATES: StatesDB = {
       {
         id: 'west_river', n: 'West River', ww: true, scenic: false,
         co: 'Windham Co.', len: '36 mi', cls: 'II–IV', opt: '400–1500',
-        g: '01155000', avg: 680, histFlow: 610, mx: 835, my: 125, abbr: 'VT',
+        g: '01155500', avg: 680, histFlow: 610, mx: 835, my: 125, abbr: 'VT',
         desc: "Vermont's premier dam-release whitewater classic. The West River below Ball Mountain Dam delivers powerful Class II–IV rapids during scheduled fall releases that draw paddlers from across the Northeast. The annual West River Race is one of the oldest whitewater competitions in America.",
         desig: 'Army Corps Ball Mountain Dam Recreation Area · Vermont Scenic River candidate',
         secs: ['Ball Mountain Dam to Jamaica — Class III–IV, the release run', 'Jamaica to Brattleboro — Class I–II, lower river'],
@@ -3556,7 +3556,7 @@ export const STATES: StatesDB = {
       {
         id: 'blackstone', n: 'Blackstone River', scenic: true, flat: true,
         co: 'Providence Co.', len: '48 mi', cls: 'I–II', opt: '200–1200',
-        g: '01113000', avg: 580, histFlow: 520, mx: 860, my: 200, abbr: 'RI',
+        g: '01112500', avg: 580, histFlow: 520, mx: 860, my: 200, abbr: 'RI',
         desc: "The birthplace of the American Industrial Revolution. The Blackstone flows 48 miles from Worcester, MA to Narragansett Bay, past the historic Slater Mill where Samuel Slater launched American textile manufacturing in 1793. The Blackstone Valley National Heritage Corridor preserves this industrial landscape for paddlers and historians alike.",
         desig: 'Blackstone River Valley National Historical Park · Blackstone Heritage Corridor',
         secs: ['Woonsocket to Central Falls — Class I–II, mill corridor', 'Central Falls to Narragansett Bay — Class I, tidal approach'],
@@ -3595,7 +3595,7 @@ export const STATES: StatesDB = {
       {
         id: 'wharton', n: 'Pine Barrens — Batona Trail Rivers', ww: false, flat: true,
         co: 'Burlington Co.', len: '30 mi', cls: 'I', opt: '80–300',
-        g: '01409500', avg: 180, histFlow: 160, mx: 810, my: 225, abbr: 'NJ',
+        g: '01410000', avg: 180, histFlow: 160, mx: 810, my: 225, abbr: 'NJ',
         desc: "Tea-colored cedar water through the heart of the New Jersey Pine Barrens — Wharton State Forest protects 115,000 acres of this unique ecosystem. The Mullica, Batsto, and Wading rivers wind through Atlantic white cedar swamps and pygmy pine forests. A landscape unlike anything else on the Eastern Seaboard.",
         desig: 'Wharton State Forest · Pinelands National Reserve · National Wild & Scenic River (Mullica)',
         secs: ['Batsto River — Class I, cedar swamp classic', 'Wading River — Class I, wider and sandier'],
