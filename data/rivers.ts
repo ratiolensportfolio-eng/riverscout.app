@@ -2713,11 +2713,6 @@ export const STATES: StatesDB = {
         revs: [{ u: 'sanmarcos_local', d: 'Jun 2025', s: 5, t: 'Spring Lake to Rio Vista at 170 cfs — 72-degree crystal water, visibility to the bottom everywhere. Best urban paddle in Texas.' }, { u: 'hillcountry_kayaker', d: 'May 2025', s: 4, t: 'San Marcos headsprings are unreal — you can see every pebble 15 feet down. Short but sweet paddle through a fun college town.' }],
         outs: [{ n: 'TG Canoes', d: 'San Marcos River kayak and canoe rentals', l: 'tgcanoes.com' }],
       },
-        ],
-        docs: [{ t: 'Rio Grande Wild & Scenic River Management Plan', s: 'NPS', y: 2004, tp: 'Federal', pg: 310 , url: 'https://www.rivers.gov/sites/rivers/files/documents/plans/rio-grande-plan.pdf'}],
-        revs: [{ u: 'desert_river_rat', d: 'Feb 2025', s: 5, t: 'Santa Elena Canyon at 600 cfs after rain — 1,500-foot walls closing in, Class III rapids echoing. The most dramatic canyon paddling in America.' }, { u: 'big_bend_explorer', d: 'Mar 2025', s: 4, t: 'Mariscal Canyon at 350 cfs — remote, hot, and absolutely wild. Three days without seeing another person. Bring all your water.' }],
-        outs: [{ n: 'Far Flung Outdoor Center', d: 'Big Bend river trips since 1977', l: 'farflungoutdoorcenter.com' }, { n: 'Big Bend River Tours', d: 'Guided multi-day canyon expeditions', l: 'bigbendrivertours.com' }],
-      },
       {
         id: 'guadalupe', n: 'Guadalupe River', ww: true, scenic: true, desert: false, spring: true,
         co: 'Comal / Kendall Co.', len: '230 mi', cls: 'I–II', opt: '150–500',
