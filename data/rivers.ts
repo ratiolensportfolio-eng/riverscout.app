@@ -149,7 +149,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'platte_mi', n: 'Platte River', lp: true, up: false, wild: false, nat: true, ww: false,
-        co: 'Benzie Co.', len: '30 mi', cls: 'Riffles', opt: '80–300',
+        co: 'Benzie Co.', len: '30 mi', cls: 'I', opt: '80–300',
         g: '04126740', avg: 150, histFlow: 135, mx: 247, my: 234, abbr: 'MI',
         desc: "Flowing through Sleeping Bear Dunes National Lakeshore, the Platte is famous for its coho salmon run — one of the first successful Pacific salmon introductions in the Great Lakes. A gentle, crystal-clear paddle to Lake Michigan.",
         desig: 'Michigan Natural River · Sleeping Bear Dunes National Lakeshore',
@@ -194,7 +194,7 @@ export const STATES: StatesDB = {
       },
       {
         id: 'flat_river', n: 'Flat River', lp: true, up: false, wild: false, nat: false, ww: false,
-        co: 'Montcalm / Ionia Co.', len: '80 mi', cls: 'I–II', opt: '200–800',
+        co: 'Montcalm / Ionia Co.', len: '80 mi', cls: 'Riffles', opt: '200–800',
         g: '04116500', avg: 520, histFlow: 470, mx: 250, my: 265, abbr: 'MI',
         desc: "A central Lower Peninsula gem, the Flat River flows past the historic Fallasburg Covered Bridge and offers excellent smallmouth bass and steelhead fishing. Gentle Class I-II water through rolling farmland and hardwood forest.",
         desig: 'Michigan Designated Trout Stream (upper reach)',
