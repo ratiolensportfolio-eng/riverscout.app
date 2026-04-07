@@ -1,8 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, lazy, Suspense } from 'react'
 import type { River, FlowData } from '@/types'
 import { formatCfs, trendArrow, celsiusToFahrenheit, isHypothermiaRisk } from '@/lib/usgs'
+
+const RiverMap = lazy(() => import('@/components/maps/RiverMap'))
+import { hasRiverMap, loadRiverMap } from '@/data/river-maps'
+import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 const TABS = ['Overview', 'History', 'Trip Reports', 'Trip Planning', 'Maps & Guides', 'Documents'] as const
 type Tab = typeof TABS[number]
@@ -81,6 +85,9 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
   const [uploading, setUploading] = useState(false)
   const [userReports, setUserReports] = useState<UserReport[]>([])
   const [loadingReports, setLoadingReports] = useState(false)
+  const [riverMapData, setRiverMapData] = useState<{ accessPoints: AccessPoint[]; sections: RiverSection[]; riverPath: [number, number][] } | null>(null)
+  const [riverMapLoading, setRiverMapLoading] = useState(false)
+  const riverHasMap = hasRiverMap(river.id)
 
   // Fetch user-submitted reports when Trip Reports tab is selected
   const fetchReports = async () => {
@@ -478,6 +485,42 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
         {/* ── TRIP PLANNING ─────────────────────────────────── */}
         {tab === 'Trip Planning' && (
           <div>
+            {/* Interactive River Map */}
+            {riverHasMap && (
+              <div style={{ marginBottom: '16px' }}>
+                {!riverMapData && !riverMapLoading && (
+                  <button onClick={async () => {
+                    setRiverMapLoading(true)
+                    const data = await loadRiverMap(river.id)
+                    if (data) setRiverMapData(data)
+                    setRiverMapLoading(false)
+                  }} style={{
+                    width: '100%', padding: '14px', border: '.5px solid var(--rvmd)',
+                    borderRadius: 'var(--rlg)', background: 'var(--rvlt)', cursor: 'pointer',
+                    fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--rvdk)',
+                    textAlign: 'center',
+                  }}>
+                    Load Interactive River Map — Access Points, Distances & Paddle Times
+                  </button>
+                )}
+                {riverMapLoading && (
+                  <div style={{ padding: '20px', textAlign: 'center', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>
+                    Loading map data...
+                  </div>
+                )}
+                {riverMapData && (
+                  <Suspense fallback={<div style={{ height: '350px', background: 'var(--bg2)', borderRadius: 'var(--rlg)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>Loading map...</div>}>
+                    <RiverMap
+                      riverName={river.n}
+                      accessPoints={riverMapData.accessPoints}
+                      sections={riverMapData.sections}
+                      riverPath={riverMapData.riverPath}
+                    />
+                  </Suspense>
+                )}
+              </div>
+            )}
+
             {/* Safety snapshot */}
             <div style={{ background: 'var(--bg2)', borderRadius: 'var(--r)', padding: '12px 14px', marginBottom: '14px', border: '.5px solid var(--bd)' }}>
               <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
