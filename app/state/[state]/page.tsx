@@ -2,7 +2,10 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getState, STATES, getRiverPath } from '@/data/rivers'
 import { fetchGaugeData, formatCfs } from '@/lib/usgs'
-import type { FlowData } from '@/types'
+import { STATE_MAP_CONFIG } from '@/data/state-centers'
+import { RIVER_COORDS } from '@/data/river-coordinates'
+import StateRiverMap from '@/components/maps/StateRiverMap'
+import type { FlowData, FlowCondition } from '@/types'
 
 export const revalidate = 900
 
@@ -118,16 +121,47 @@ export default async function StatePage({ params }: Props) {
           })}
         </div>
 
-        {/* Main panel */}
-        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '8px', color: 'var(--tx2)' }}>
-          <div style={{ fontSize: '36px', opacity: 0.15 }}>⛵</div>
-          <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '17px' }}>
-            Select a river
-          </div>
-          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', textAlign: 'center', lineHeight: 1.6 }}>
-            {state.rivers.length} rivers in {state.name}<br />
-            with live USGS flow data
-          </div>
+        {/* Main panel — interactive state map */}
+        <div style={{ flex: 1, position: 'relative' }}>
+          {(() => {
+            const mapConfig = STATE_MAP_CONFIG[stateKey]
+            const riverDots = state.rivers.map(river => {
+              const flow = flowMap.get(river.id)
+              const coords = RIVER_COORDS[river.id]
+              return coords ? {
+                id: river.id,
+                name: river.n,
+                lat: coords[0],
+                lng: coords[1],
+                condition: (flow?.condition ?? 'loading') as FlowCondition,
+                cfs: flow?.cfs ?? null,
+                cls: river.cls,
+                stateKey,
+              } : null
+            }).filter((r): r is NonNullable<typeof r> => r !== null)
+
+            if (!mapConfig) {
+              return (
+                <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '8px', color: 'var(--tx2)' }}>
+                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '17px' }}>
+                    {state.rivers.length} rivers in {state.name}
+                  </div>
+                  <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>
+                    Select a river from the list
+                  </div>
+                </div>
+              )
+            }
+
+            return (
+              <StateRiverMap
+                rivers={riverDots}
+                stateName={state.name}
+                stateCenter={mapConfig.center}
+                stateZoom={mapConfig.zoom}
+              />
+            )
+          })()}
         </div>
       </div>
     </main>
