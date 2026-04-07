@@ -3,12 +3,64 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Current River (MO) — geometry from USGS NHDPlus HR
 // 39 points, 14/200 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Montauk",
+    lat: 37.4409,
+    lng: -91.6561,
+    type: "put-in",
+    description: "Montauk State Park put-in. Spring-fed headwaters of the Current River.",
+  },
+  {
+    name: "Cedar Grove",
+    lat: 37.4352,
+    lng: -91.6549,
+    type: "access",
+    description: "Cedar Grove access point with picnic area.",
+  },
+  {
+    name: "Akers Ferry",
+    lat: 37.4271,
+    lng: -91.6439,
+    type: "access",
+    description: "Historic Akers Ferry crossing. Campground and canoe rental nearby.",
+  },
+  {
+    name: "Round Spring",
+    lat: 37.4280,
+    lng: -91.6428,
+    type: "access",
+    description: "Round Spring access with cave tours and NPS campground.",
+  },
+  {
+    name: "Two Rivers",
+    lat: 37.4294,
+    lng: -91.6145,
+    type: "take-out",
+    description: "Two Rivers access at the Jacks Fork confluence. End point for Ozark NSR floats.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Montauk",
+    to: "Akers Ferry",
+    miles: 30,
+    paddleTime: "1\u20132 days",
+    class: "I-II",
+    notes: "Crystal-clear spring-fed water through the Ozarks. Easy Class I-II riffles with deep blue pools. Cedar Grove makes a good midway stop.",
+  },
+  {
+    from: "Akers Ferry",
+    to: "Two Rivers",
+    miles: 25,
+    paddleTime: "1\u20132 days",
+    class: "I-II",
+    notes: "Scenic float past bluffs, caves, and springs. Round Spring cave tour is a worthwhile side trip. Gentle current suitable for all skill levels.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

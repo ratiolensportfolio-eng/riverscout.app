@@ -3,12 +3,57 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Little Miami River (OH) — geometry from USGS NHDPlus HR
 // 220 points, 77/77 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "John Bryan SP",
+    lat: 39.7096,
+    lng: -83.9757,
+    type: "put-in",
+    description: "Put-in at John Bryan State Park. Limestone gorge with small Class I-II ledges.",
+  },
+  {
+    name: "Yellow Springs",
+    lat: 39.7055,
+    lng: -83.9825,
+    type: "access",
+    description: "Yellow Springs access near the village. Bike trail parallels the river.",
+  },
+  {
+    name: "Xenia",
+    lat: 39.6965,
+    lng: -84.0063,
+    type: "access",
+    description: "Xenia river access. Junction of multiple bike trail segments.",
+  },
+  {
+    name: "Morrow",
+    lat: 39.3560,
+    lng: -84.1308,
+    type: "take-out",
+    description: "Take-out at Morrow. Southern endpoint for popular Little Miami canoe livery trips.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "John Bryan SP",
+    to: "Xenia",
+    miles: 15,
+    paddleTime: "4\u20136 hours",
+    class: "I-II",
+    notes: "Upper Little Miami through the Clifton Gorge area. Small ledges and riffles in the limestone gorge. Scenic stretch with Glen Helen Nature Preserve nearby.",
+  },
+  {
+    from: "Xenia",
+    to: "Morrow",
+    miles: 30,
+    paddleTime: "1\u20132 days",
+    class: "I",
+    notes: "Gentle flatwater float through rural southwestern Ohio. Easy current, great for beginners. Little Miami Scenic Trail runs alongside for shuttle logistics.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

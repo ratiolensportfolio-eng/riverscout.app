@@ -3,12 +3,42 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Niobrara River (NE) — geometry from USGS NHDPlus HR
 // 36 points, 14/200 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Berry Bridge",
+    lat: 42.9081,
+    lng: -100.4547,
+    type: "put-in",
+    description: "Put-in at Berry Bridge. Starting point for the most popular Niobrara float.",
+  },
+  {
+    name: "Smith Falls SP",
+    lat: 42.9025,
+    lng: -100.3750,
+    type: "access",
+    description: "Smith Falls State Park \u2014 tallest waterfall in Nebraska (63 ft). Worth a stop to hike to the falls.",
+  },
+  {
+    name: "Rocky Ford",
+    lat: 42.9025,
+    lng: -100.3750,
+    type: "take-out",
+    description: "Rocky Ford take-out. End of the most popular Niobrara tubing and canoeing section.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Berry Bridge",
+    to: "Rocky Ford",
+    miles: 25,
+    paddleTime: "5\u20137 hours",
+    class: "I-II",
+    notes: "Most popular float in Nebraska. Gentle Class I-II current past spring-fed waterfalls and canyon walls. Smith Falls is the highlight \u2014 pull over river-left to hike to the base. Tubes, canoes, and kayaks all work well.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

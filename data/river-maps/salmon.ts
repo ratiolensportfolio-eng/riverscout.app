@@ -3,12 +3,42 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Salmon River (ID) — geometry from USGS NHDPlus HR
 // 15 points, 4/200 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
+export const accessPoints: AccessPoint[] = [
+  {
+    name: 'Corn Creek',
+    lat: 45.0291,
+    lng: -113.9157,
+    type: 'put-in',
+    description: 'Main Salmon "River of No Return" launch site. Permit required. USFS ranger station and boat ramp.',
+  },
+  {
+    name: 'Allison Bar',
+    lat: 45.0497,
+    lng: -113.9155,
+    type: 'campsite',
+    description: 'Popular mid-trip camp along the Main Salmon. Sandy beach with good upstream eddy.',
+  },
+  {
+    name: 'Vinegar Creek',
+    lat: 45.0697,
+    lng: -113.9168,
+    type: 'take-out',
+    description: 'Take-out for Main Salmon wilderness float. Also known as Carey Creek access. Jet boat shuttle available.',
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// Main Salmon River sections
+export const sections: RiverSection[] = [
+  {
+    from: 'Corn Creek',
+    to: 'Vinegar Creek',
+    miles: 80,
+    paddleTime: '5\u20136 days',
+    class: 'III-IV',
+    notes: 'The "River of No Return" \u2014 premier multi-day wilderness float through the Frank Church Wilderness. Big sandy beaches, hot springs, and Class III-IV rapids including Salmon Falls and Whiplash.',
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

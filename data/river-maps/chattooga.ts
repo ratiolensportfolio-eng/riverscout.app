@@ -3,12 +3,57 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Chattooga River (NC/GA/SC) — geometry from USGS NHDPlus HR
 // 232 points, 64/64 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
+export const accessPoints: AccessPoint[] = [
+  {
+    name: 'Highway 28 Bridge',
+    lat: 34.9693,
+    lng: -83.1198,
+    type: 'put-in',
+    description: 'Section III put-in at the Highway 28 bridge. Parking and river access on the SC side.',
+  },
+  {
+    name: 'Bull Sluice',
+    lat: 34.9292,
+    lng: -83.152,
+    type: 'access',
+    description: 'Class IV Bull Sluice rapid. Mandatory scout on river left. Iconic Chattooga rapid visible from the trail.',
+  },
+  {
+    name: 'Woodall Shoals',
+    lat: 34.8972,
+    lng: -83.1896,
+    type: 'access',
+    description: 'Section IV put-in below Bull Sluice. Access via Woodall Shoals trail. Start of the expert-only Section IV.',
+  },
+  {
+    name: 'Lake Tugaloo',
+    lat: 34.7561,
+    lng: -83.3266,
+    type: 'take-out',
+    description: 'Take-out on Lake Tugaloo at the bottom of Section IV. Flatwater paddle to the ramp after Five Falls.',
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// Chattooga River sections
+export const sections: RiverSection[] = [
+  {
+    from: 'Highway 28 Bridge',
+    to: 'Woodall Shoals',
+    miles: 10,
+    paddleTime: '4\u20136 hours',
+    class: 'III-IV',
+    notes: 'Section III \u2014 the classic Chattooga run from the movie "Deliverance." Bull Sluice (Class IV) is the crux rapid. Beautiful Wild and Scenic river corridor.',
+  },
+  {
+    from: 'Woodall Shoals',
+    to: 'Lake Tugaloo',
+    miles: 8,
+    paddleTime: '4\u20136 hours',
+    class: 'IV-V',
+    notes: 'Section IV \u2014 expert-only whitewater featuring the Five Falls sequence: Entrance, Corkscrew, Crack-in-the-Rock, Jawbone, and Sock-em-Dog. Mandatory portages for most paddlers.',
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

@@ -3,12 +3,50 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Guadalupe River (TX) — geometry from USGS NHDPlus HR
 // 197 points, 134/135 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
+export const accessPoints: AccessPoint[] = [
+  {
+    name: 'Canyon Dam',
+    lat: 29.8786,
+    lng: -98.5007,
+    type: 'put-in',
+    description: 'Put-in below Canyon Lake dam. Cold, clear tailwater fed by dam releases. Year-round trout fishery.',
+  },
+  {
+    name: 'Gruene',
+    lat: 29.7347,
+    lng: -98.1047,
+    type: 'access',
+    description: 'Access near historic Gruene. Take-out for the upper trout water section or put-in for the tubing stretch.',
+  },
+  {
+    name: 'New Braunfels',
+    lat: 29.6979,
+    lng: -98.1071,
+    type: 'take-out',
+    description: 'Take-out in New Braunfels. End of the popular tubing and floating section through town.',
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// Guadalupe River sections
+export const sections: RiverSection[] = [
+  {
+    from: 'Canyon Dam',
+    to: 'Gruene',
+    miles: 12,
+    paddleTime: '4\u20136 hours',
+    class: 'I-II',
+    notes: 'Cold tailwater trout section below Canyon Dam. Texas" premier trout fishery with year-round cold water. Mild riffles and pools.',
+  },
+  {
+    from: 'Gruene',
+    to: 'New Braunfels',
+    miles: 8,
+    paddleTime: '2\u20134 hours',
+    class: 'I-II',
+    notes: 'The famous Texas Hill Country tubing stretch. Easy floating through Gruene and into New Braunfels. Very popular in summer.',
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

@@ -3,12 +3,50 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Ocoee River (TN) — geometry from USGS NHDPlus HR
 // 235 points, 102/103 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Ocoee Dam #2",
+    lat: 35.0034,
+    lng: -84.4002,
+    type: "put-in",
+    description: "Put-in for the Middle Ocoee below Dam #2. Scheduled releases create reliable whitewater.",
+  },
+  {
+    name: "Olympic Section Start",
+    lat: 35.0951,
+    lng: -84.5470,
+    type: "access",
+    description: "Start of the Upper/Olympic section. Site of the 1996 Olympic whitewater events.",
+  },
+  {
+    name: "US-64 Bridge",
+    lat: 35.1097,
+    lng: -84.5672,
+    type: "take-out",
+    description: "Take-out for the Olympic section near the US-64 bridge.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Ocoee Dam #2",
+    to: "Olympic Section Start",
+    miles: 5,
+    paddleTime: "2\u20133 hours",
+    class: "III-IV",
+    notes: "The classic Middle Ocoee. Tablesaw, Broken Nose, Double Suck, and Hell Hole are key rapids. Dam-release schedule controls flow.",
+  },
+  {
+    from: "Olympic Section Start",
+    to: "US-64 Bridge",
+    miles: 3,
+    paddleTime: "1\u20132 hours",
+    class: "III-IV",
+    notes: "Upper/Olympic section built for the 1996 Atlanta Games. Steeper gradient with man-made features. Limited release days.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

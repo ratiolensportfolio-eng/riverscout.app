@@ -3,12 +3,57 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Gauley River (WV) — geometry from USGS NHDPlus HR
 // 58 points, 21/200 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Summersville Dam",
+    lat: 38.2706,
+    lng: -80.6815,
+    type: "put-in",
+    description: "Upper Gauley put-in below Summersville Dam. Seasonal releases Sept-Oct draw huge crowds.",
+  },
+  {
+    name: "Pillow Rock",
+    lat: 38.2860,
+    lng: -80.7081,
+    type: "access",
+    description: "Iconic Class V rapid on the Upper Gauley. Scout or portage river-left.",
+  },
+  {
+    name: "Peters Creek",
+    lat: 38.2988,
+    lng: -80.7697,
+    type: "access",
+    description: "Divides Upper and Lower Gauley. Common take-out for Upper, put-in for Lower.",
+  },
+  {
+    name: "Swiss",
+    lat: 38.2555,
+    lng: -80.8222,
+    type: "take-out",
+    description: "Lower Gauley take-out at the Swiss access area.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Summersville Dam",
+    to: "Peters Creek",
+    miles: 12,
+    paddleTime: "4\u20136 hours",
+    class: "IV-V",
+    notes: "Premier big-water Class V run. Pillow Rock, Lost Paddle, Iron Ring among signature rapids. Dam-release dependent (Sept\u2013Oct Gauley Season).",
+  },
+  {
+    from: "Peters Creek",
+    to: "Swiss",
+    miles: 13,
+    paddleTime: "4\u20135 hours",
+    class: "III-IV",
+    notes: "Slightly mellower than Upper but still demanding. Pure Screaming Hell and Koontz Flume are highlights.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

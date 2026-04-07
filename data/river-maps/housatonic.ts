@@ -3,12 +3,42 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Housatonic River (CT) — geometry from USGS NHDPlus HR
 // 189 points, 80/97 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Falls Village",
+    lat: 41.9528,
+    lng: -73.3700,
+    type: "put-in",
+    description: "Put-in below Falls Village dam. Class III-IV rapids in the first mile during high water.",
+  },
+  {
+    name: "West Cornwall",
+    lat: 41.8684,
+    lng: -73.3683,
+    type: "access",
+    description: "West Cornwall covered bridge access. Iconic 1864 covered bridge over the Housatonic.",
+  },
+  {
+    name: "Kent",
+    lat: 41.7229,
+    lng: -73.4845,
+    type: "take-out",
+    description: "Take-out in Kent, CT. Bulls Bridge gorge (Class IV, expert only) lies just downstream.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Falls Village",
+    to: "Kent",
+    miles: 15,
+    paddleTime: "5\u20137 hours",
+    class: "I-III",
+    notes: "Best whitewater day trip in Connecticut. Class III rapids near Falls Village ease to Class I-II flatwater through the covered bridge at West Cornwall. Take out before Bulls Bridge gorge unless experienced.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

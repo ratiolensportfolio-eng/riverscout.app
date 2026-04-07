@@ -3,12 +3,49 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Snake River (WY) — geometry from USGS NHDPlus HR
 // 113 points, 48/200 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
+export const accessPoints: AccessPoint[] = [
+  {
+    name: 'West Table Creek',
+    lat: 43.326,
+    lng: -111.2021,
+    type: 'put-in',
+    description: 'Upper put-in for Snake River Canyon. Popular commercial rafting launch south of Jackson Hole.',
+  },
+  {
+    name: 'Sheep Gulch',
+    lat: 43.3196,
+    lng: -111.1831,
+    type: 'access',
+    description: 'Mid-canyon access point. Alternate put-in or lunch stop for canyon trips.',
+  },
+  {
+    name: 'Lunch Counter Rapid',
+    lat: 43.3018,
+    lng: -111.1507,
+    type: 'access',
+    description: 'Class III wave train and the canyon"s most famous rapid. Popular kayak surfing spot.',
+  },
+  {
+    name: 'South Park Bridge',
+    lat: 43.2326,
+    lng: -111.1189,
+    type: 'take-out',
+    description: 'Primary take-out for Snake River Canyon runs. Large parking area and boat ramp off US-26.',
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// Snake River Canyon sections
+export const sections: RiverSection[] = [
+  {
+    from: 'West Table Creek',
+    to: 'South Park Bridge',
+    miles: 8,
+    paddleTime: '2\u20133 hours',
+    class: 'III-IV',
+    notes: 'Classic Snake River Canyon whitewater run through Jackson Hole. Big water with Lunch Counter, Kahuna, and Rope rapids. Best at 8,000\u201316,000 CFS.',
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

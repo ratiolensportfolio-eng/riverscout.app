@@ -3,12 +3,42 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Kennebec River (ME) — geometry from USGS NHDPlus HR
 // 278 points, 111/111 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Harris Dam",
+    lat: 45.2846,
+    lng: -69.9920,
+    type: "put-in",
+    description: "Put-in below Harris Dam. Scheduled releases create reliable whitewater from spring through fall.",
+  },
+  {
+    name: "Magic Falls",
+    lat: 45.2500,
+    lng: -69.9902,
+    type: "access",
+    description: "Magic Falls \u2014 the signature Class IV rapid of the Kennebec. Big waves and hydraulics at higher flows.",
+  },
+  {
+    name: "The Forks",
+    lat: 45.1540,
+    lng: -69.9561,
+    type: "take-out",
+    description: "Take-out at The Forks, where the Dead River meets the Kennebec. Outfitter hub for northern Maine whitewater.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Harris Dam",
+    to: "The Forks",
+    miles: 12,
+    paddleTime: "4\u20135 hours",
+    class: "III-IV",
+    notes: "Premier dam-release whitewater run in Maine. Magic Falls is the crux rapid (Class IV). Reliable flows from scheduled releases. Most paddlers go with commercial outfitters.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

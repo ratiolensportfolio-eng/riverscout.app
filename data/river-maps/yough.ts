@@ -3,12 +3,57 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Youghiogheny River (PA) — geometry from USGS NHDPlus HR
 // 200 points, 171/171 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Confluence",
+    lat: 39.8153,
+    lng: -79.3649,
+    type: "put-in",
+    description: "Put-in for the Middle Yough at Confluence, PA. Easy access near town.",
+  },
+  {
+    name: "Ohiopyle Falls",
+    lat: 39.8692,
+    lng: -79.4955,
+    type: "portage",
+    description: "Mandatory portage around Ohiopyle Falls (Class VI). Carry river-left through the state park.",
+  },
+  {
+    name: "Ohiopyle Launch",
+    lat: 39.8707,
+    lng: -79.4901,
+    type: "put-in",
+    description: "Put-in for the Lower Yough below Ohiopyle Falls. Managed launch with scheduled entry times on busy days.",
+  },
+  {
+    name: "Bruner Run",
+    lat: 39.9653,
+    lng: -79.5210,
+    type: "take-out",
+    description: "Standard take-out for the Lower Yough.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Confluence",
+    to: "Ohiopyle Falls",
+    miles: 9,
+    paddleTime: "3\u20134 hours",
+    class: "I-II",
+    notes: "Gentle Middle Yough. Great for beginners and families. Scenic run through Ohiopyle State Park.",
+  },
+  {
+    from: "Ohiopyle Launch",
+    to: "Bruner Run",
+    miles: 7.5,
+    paddleTime: "3\u20134 hours",
+    class: "III-IV",
+    notes: "Pennsylvania\u2019s most popular whitewater run. Cucumber, Dimple Rock, River\u2019s End are standout rapids. Managed access system on summer weekends.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

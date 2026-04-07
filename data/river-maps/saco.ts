@@ -3,12 +3,49 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Saco River (NH) — geometry from USGS NHDPlus HR
 // 155 points, 155/157 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "North Conway",
+    lat: 44.0426,
+    lng: -71.1328,
+    type: "put-in",
+    description: "Put-in near North Conway, NH. Views of Mt. Washington on clear days.",
+  },
+  {
+    name: "Conway",
+    lat: 43.9838,
+    lng: -71.1173,
+    type: "access",
+    description: "Conway village access point. Midway stop on day trips.",
+  },
+  {
+    name: "Center Conway",
+    lat: 44.0004,
+    lng: -71.0505,
+    type: "access",
+    description: "Center Conway access near the NH/ME border.",
+  },
+  {
+    name: "Fryeburg ME",
+    lat: 44.0272,
+    lng: -70.9769,
+    type: "take-out",
+    description: "Take-out at Fryeburg, Maine. Sandy beaches and gentle meanders through farmland.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "North Conway",
+    to: "Fryeburg ME",
+    miles: 15,
+    paddleTime: "4\u20136 hours",
+    class: "I-II",
+    notes: "Most popular canoe day trip in New England. Sandy beaches, gentle current, and mountain views. Class I-II riffles in the upper stretch, flatwater meanders below Conway. Best July through September.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

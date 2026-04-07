@@ -3,12 +3,57 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // South Fork American River (CA) — geometry from USGS NHDPlus HR
 // 232 points, 112/200 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Chili Bar",
+    lat: 38.7941,
+    lng: -120.5995,
+    type: "put-in",
+    description: "Put-in for the South Fork American. Popular Class III day trip starts here.",
+  },
+  {
+    name: "Coloma (Marshall Gold Discovery SHP)",
+    lat: 38.7879,
+    lng: -120.6756,
+    type: "access",
+    description: "Mid-river access at Coloma, site of the 1848 gold discovery. River-left beach access.",
+  },
+  {
+    name: "Salmon Falls",
+    lat: 38.7829,
+    lng: -120.7789,
+    type: "access",
+    description: "Mid-point access dividing the upper run from the Gorge section.",
+  },
+  {
+    name: "Folsom Lake",
+    lat: 38.7654,
+    lng: -120.8076,
+    type: "take-out",
+    description: "Take-out where the South Fork enters Folsom Lake. Water level varies seasonally.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Chili Bar",
+    to: "Salmon Falls",
+    miles: 11,
+    paddleTime: "4\u20135 hours",
+    class: "III",
+    notes: "Classic California Class III. Meatgrinder, Troublemaker, and Satan\u2019s Cesspool are the marquee rapids. High volume in spring.",
+  },
+  {
+    from: "Salmon Falls",
+    to: "Folsom Lake",
+    miles: 5,
+    paddleTime: "2\u20133 hours",
+    class: "III-IV",
+    notes: "The Gorge section. Tighter canyon with bigger drops. Often requires higher flows to run cleanly. Take-out depends on lake level.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

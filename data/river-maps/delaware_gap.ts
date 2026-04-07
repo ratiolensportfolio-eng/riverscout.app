@@ -3,12 +3,49 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Delaware River (NJ) — geometry from USGS NHDPlus HR
 // 231 points, 98/98 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Milford",
+    lat: 41.3106,
+    lng: -74.7925,
+    type: "put-in",
+    description: "Put-in at Milford, PA. Northern gateway to the Delaware Water Gap National Recreation Area.",
+  },
+  {
+    name: "Dingmans Ferry",
+    lat: 41.2253,
+    lng: -74.8656,
+    type: "access",
+    description: "Dingmans Ferry access. Near Dingmans Falls, the tallest waterfall in Pennsylvania.",
+  },
+  {
+    name: "Bushkill",
+    lat: 41.0961,
+    lng: -74.9692,
+    type: "access",
+    description: "Bushkill access point. Close to Bushkill Falls, the \"Niagara of Pennsylvania.\"",
+  },
+  {
+    name: "Delaware Water Gap",
+    lat: 40.9691,
+    lng: -75.1308,
+    type: "take-out",
+    description: "Take-out at Delaware Water Gap. River cuts through Kittatinny Ridge between Mt. Minsi and Mt. Tammany.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Milford",
+    to: "Delaware Water Gap",
+    miles: 25,
+    paddleTime: "1\u20132 days",
+    class: "I-II",
+    notes: "Relaxed float through the Delaware Water Gap NRA. Gentle Class I-II riffles with long pools. Excellent multi-day camping on river islands and NPS sites.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

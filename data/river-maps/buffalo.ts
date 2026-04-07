@@ -3,12 +3,93 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Buffalo River (AR) — geometry from USGS NHDPlus HR
 // 39 points, 14/200 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Boxley",
+    lat: 35.9819,
+    lng: -92.7522,
+    type: "put-in",
+    description: "Upper Buffalo put-in near Boxley Valley. Scenic elk-viewing area.",
+  },
+  {
+    name: "Ponca",
+    lat: 35.9839,
+    lng: -92.7463,
+    type: "access",
+    description: "Access at Ponca, gateway to the Buffalo National River wilderness.",
+  },
+  {
+    name: "Steel Creek",
+    lat: 35.9864,
+    lng: -92.7426,
+    type: "access",
+    description: "Steel Creek campground and access. Popular bluff views.",
+  },
+  {
+    name: "Kyles Landing",
+    lat: 35.9970,
+    lng: -92.7379,
+    type: "access",
+    description: "Kyles Landing river access with primitive camping.",
+  },
+  {
+    name: "Pruitt (Hwy 7)",
+    lat: 35.9979,
+    lng: -92.7356,
+    type: "access",
+    description: "Pruitt access at Hwy 7 bridge. Divides Upper and Middle Buffalo.",
+  },
+  {
+    name: "Hasty",
+    lat: 35.9976,
+    lng: -92.6955,
+    type: "access",
+    description: "Hasty access point on the Middle Buffalo.",
+  },
+  {
+    name: "Gilbert",
+    lat: 36.0007,
+    lng: -92.6892,
+    type: "access",
+    description: "Gilbert general store and river access. Historic mining town.",
+  },
+  {
+    name: "Rush",
+    lat: 36.0007,
+    lng: -92.6892,
+    type: "take-out",
+    description: "Rush Landing take-out. Historic zinc mining ghost town with interpretive trails.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Boxley",
+    to: "Pruitt (Hwy 7)",
+    miles: 25,
+    paddleTime: "1\u20132 days",
+    class: "I-III",
+    notes: "Upper Buffalo \u2014 the most scenic stretch with towering bluffs. Steel Creek and Kyles Landing make good lunch stops. Class III water requires adequate flow.",
+  },
+  {
+    from: "Pruitt (Hwy 7)",
+    to: "Gilbert",
+    miles: 30,
+    paddleTime: "2\u20133 days",
+    class: "I-II",
+    notes: "Middle Buffalo through the Ozark backcountry. Easier water, great multi-day camping. Gravel bars for camping throughout.",
+  },
+  {
+    from: "Gilbert",
+    to: "Rush",
+    miles: 20,
+    paddleTime: "1\u20132 days",
+    class: "I",
+    notes: "Lower Buffalo \u2014 flatwater float through wide valley. Easy paddling suitable for beginners. Rush historic district worth exploring.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

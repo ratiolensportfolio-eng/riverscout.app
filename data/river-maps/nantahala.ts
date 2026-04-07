@@ -3,12 +3,42 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Nantahala River (NC) — geometry from USGS NHDPlus HR
 // 195 points, 86/86 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to riverPath geometry
+export const accessPoints: AccessPoint[] = [
+  {
+    name: "Ferebee Park",
+    lat: 35.1995,
+    lng: -83.6512,
+    type: "put-in",
+    description: "Upper put-in for the Nantahala. Cold dam-release water year-round.",
+  },
+  {
+    name: "Nantahala Falls",
+    lat: 35.3474,
+    lng: -83.5796,
+    type: "access",
+    description: "Class III finale rapid. Huge spectator area on river-left. Many paddlers take out here.",
+  },
+  {
+    name: "NOC (Nantahala Outdoor Center)",
+    lat: 35.3814,
+    lng: -83.5639,
+    type: "take-out",
+    description: "Take-out at the Nantahala Outdoor Center. Outfitter, restaurant, and gear shop on-site.",
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// River sections
+export const sections: RiverSection[] = [
+  {
+    from: "Ferebee Park",
+    to: "NOC (Nantahala Outdoor Center)",
+    miles: 8,
+    paddleTime: "3\u20134 hours",
+    class: "II-III",
+    notes: "One of the Southeast\u2019s most popular runs. Consistent dam-release flow keeps it runnable year-round. Cold water (45\u201350\u00b0F). Nantahala Falls at the end is the crux Class III.",
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

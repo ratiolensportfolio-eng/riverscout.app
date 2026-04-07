@@ -3,12 +3,50 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Middle Fork Flathead River (MT) — geometry from USGS NHDPlus HR
 // 155 points, 166/176 segments stitched
 
-// Access points — TO BE POPULATED with real GPS coordinates
-// Research put-in/take-out locations and add them here
-export const accessPoints: AccessPoint[] = []
+// Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
+export const accessPoints: AccessPoint[] = [
+  {
+    name: 'Schafer Meadows',
+    lat: 47.9962,
+    lng: -113.0583,
+    type: 'put-in',
+    description: 'Fly-in put-in at Schafer Meadows airstrip deep in the Bob Marshall Wilderness. No road access.',
+  },
+  {
+    name: 'Bear Creek',
+    lat: 48.1098,
+    lng: -113.3024,
+    type: 'access',
+    description: 'Mid-river access at Bear Creek confluence. Transition from wilderness float to canyon whitewater.',
+  },
+  {
+    name: 'West Glacier',
+    lat: 48.5024,
+    lng: -113.9309,
+    type: 'take-out',
+    description: 'Take-out at West Glacier near the Glacier National Park entrance. End of the Middle Fork run.',
+  },
+]
 
-// Sections — TO BE POPULATED with real distances and paddle times
-export const sections: RiverSection[] = []
+// Middle Fork Flathead sections
+export const sections: RiverSection[] = [
+  {
+    from: 'Schafer Meadows',
+    to: 'Bear Creek',
+    miles: 50,
+    paddleTime: '3\u20134 days',
+    class: 'II-III',
+    notes: 'Remote wilderness float through the Bob Marshall and Great Bear Wilderness areas. Crystal-clear water, grizzly country, excellent fishing. Fly-in access only.',
+  },
+  {
+    from: 'Bear Creek',
+    to: 'West Glacier',
+    miles: 44,
+    paddleTime: '2\u20133 days',
+    class: 'III-IV',
+    notes: 'Exciting whitewater canyon section along Glacier National Park"s southern boundary. Spruce Park, Jaws, and Bonecrusher rapids. Best at 5,000\u201315,000 CFS.',
+  },
+]
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [
