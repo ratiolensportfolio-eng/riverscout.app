@@ -8,7 +8,36 @@ export const STATES: StatesDB = {
     filters: ['all', 'lp', 'up', 'wild', 'nat', 'ww'],
     fL: { all: 'All', lp: 'Lower Peninsula', up: 'Upper Peninsula', wild: 'Wild & Scenic', nat: 'Natural River', ww: 'Whitewater' },
     rivers: [
-      {
+{
+        id: 'pine_mi', n: 'Pine River', lp: true, up: false, wild: true, nat: true, ww: false,
+        co: 'Lake / Osceola Co.', len: '60 mi', cls: 'I', opt: '150–350',
+        g: '04057510', avg: 248, histFlow: 230, mx: 238, my: 250, abbr: 'MI',
+        desc: "Michigan's premier whitewater river — the Pine runs cold, clear, and fast through the Manistee National Forest. Designated Wild & Scenic in 1978 among the first eight rivers in the eastern U.S. to receive that honor. Crystal spring-fed water stays below 65°F year-round, supporting one of Michigan's finest wild brook trout populations.",
+        desig: 'National Wild & Scenic River (1978) · Michigan Natural River',
+        secs: [
+          'Lincoln Bridge to Low Bridge — 12 mi, popular day trip, flatwater with occasional riffles',
+          'Low Bridge to Peterson Bridge — 11 mi, faster current, Class II rapids, most visited stretch',
+          'Peterson Bridge to Elm Flats — 9 mi, Class II–III, Pine River Rush and Silver Creek confluence',
+          'Elm Flats to Stronach Reservoir — 10 mi, mellow close-out, excellent campsites',
+        ],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-contact', title: "Odawa Homeland — 'Clear Water River'", text: "The Pine River watershed was central Odawa (Ottawa) territory. Its clear cold water and exceptional brook trout runs sustained communities for thousands of years. The river was a natural highway through the dense LP interior, connecting settlements in what is now Lake and Osceola counties. The Odawa name for the river emphasized its purity — a quality the spring-fed Pine has maintained to this day.", src: 'Michigan Historical Center; Little River Band of Ottawa Indians' }] },
+          { era: 'logging', entries: [{ yr: '1860s–1895', title: 'White Pine Drives on the Pine River', text: "The Pine River was a critical logging artery during Michigan's white pine era. Lumberjacks floated millions of board feet of white pine logs downstream each spring to mills at Muskegon and Manistee. By 1895 the great pines were gone — clear-cut from headwaters to mouth. What saved the river was the sandy, spring-fed streambed: unlike many LP rivers, the Pine rebounded quickly once logging pressure eased.", src: 'Michigan DNR Historical Records; Lake County Historical Society' }] },
+          { era: 'survey', entries: [{ yr: '1968', title: 'USGS Hydrological Survey — Michigan Trout Streams', text: "A landmark USGS study documented the Pine as one of Michigan's most significant coldwater streams — averaging below 65°F even in August due to the exceptional volume of groundwater springs entering from the Sandy soil of the Manistee National Forest. The study noted brook trout density comparable to rivers three times the size.", src: 'USGS Open-File Report (1968)' }, { yr: '1978', title: 'National Wild & Scenic River Designation', text: "Congress designated the Pine River a National Wild & Scenic River in 1978, one of only eight rivers east of the Mississippi to receive that honor in the original designation wave. The 26-mile protected corridor through the Manistee National Forest remains one of the most pristine river environments in the Midwest.", src: 'USFS Huron-Manistee National Forest; National Wild & Scenic Rivers Council' }] },
+          { era: 'modern', entries: [{ yr: '2019', title: 'Pine River Corridor Initiative', text: "The USFS Huron-Manistee initiated a comprehensive restoration study of the Pine River corridor, documenting 47 active cold-water springs entering the main stem — each maintaining water temperatures 10–15°F cooler than air temperature in summer. The study confirmed the Pine as one of Michigan's highest-priority brook trout conservation streams.", src: 'USFS Huron-Manistee National Forests (2019)' }] },
+        ],
+        docs: [{ t: 'Pine National Scenic River Management Plan', s: 'USFS Huron-Manistee', y: 2010, tp: 'Federal', pg: 145, url: 'https://www.rivers.gov/sites/rivers/files/documents/plans/pine-plan.pdf' }, { t: 'Pine River Natural River Plan', s: 'Michigan DNR', y: 1999, tp: 'Survey', pg: 58, url: 'https://mrwa.org/wp-content/uploads/repository/pineplan.pdf' }],
+        revs: [
+          { u: 'northernmichigan_paddle', d: 'Jul 2024', s: 5, t: "Peterson Bridge to Elm Flats at 320 cfs — Pine River Rush was rowdy and fun. Water cold enough to chill drinks and clear enough to count rocks at 8 feet. Best day on a Michigan river this year." },
+          { u: 'troutbum_lp', d: 'Jun 2024', s: 5, t: "Brook trout everywhere below Lincoln Bridge. Dry fly fishing at 180 cfs was stupid good. The Wild & Scenic designation shows — zero development, perfect riparian zone." },
+          { u: 'familyfloat_mi', d: 'Aug 2024', s: 4, t: "Low Bridge to Peterson with the kids at 200 cfs. Mild enough for beginners, beautiful forest canopy the whole way. One Class II rapid that woke everyone up." },
+        ],
+        outs: [
+          { n: 'Pine River Paddlesports Center', d: 'Full-service outfitter, shuttles, gear, camping', l: 'thepineriver.com' },
+          { n: 'Horina Canoe & Kayak Rental', d: 'Budget-friendly rentals, multiple access points', l: 'horinacanoe.com' },
+        ],
+      },
+            {
         id: 'ausable', n: 'Au Sable River', lp: true, up: false, wild: true, nat: true, ww: false,
         co: 'Crawford / Oscoda Co.', len: '140 mi', cls: 'I', opt: '200–800',
         g: '04137500', avg: 410, histFlow: 390, mx: 265, my: 254, abbr: 'MI',
@@ -57,35 +86,6 @@ export const STATES: StatesDB = {
         docs: [{ t: 'Muskegon River Watershed Management Plan', s: 'MRWA', y: 2003, tp: 'Survey', pg: 240 , url: 'https://mrwa.org/wp-content/uploads/repository/MuskegonManagementPlan.pdf'}],
         revs: [{ u: 'steelheaddan_mi', d: 'Mar 2024', s: 5, t: 'Croton in spring at 2,200 cfs — chrome steelhead stacked. Even the float between holes is beautiful.' }],
         outs: [{ n: 'Sawmill Canoe Rental', d: 'Day trips, family-friendly', l: 'sawmillcanoe.com' }],
-      },
-      {
-        id: 'pine_mi', n: 'Pine River', lp: true, up: false, wild: true, nat: true, ww: false,
-        co: 'Lake / Osceola Co.', len: '60 mi', cls: 'I', opt: '150–350',
-        g: '04057510', avg: 248, histFlow: 230, mx: 238, my: 250, abbr: 'MI',
-        desc: "Michigan's premier whitewater river — the Pine runs cold, clear, and fast through the Manistee National Forest. Designated Wild & Scenic in 1978 among the first eight rivers in the eastern U.S. to receive that honor. Crystal spring-fed water stays below 65°F year-round, supporting one of Michigan's finest wild brook trout populations.",
-        desig: 'National Wild & Scenic River (1978) · Michigan Natural River',
-        secs: [
-          'Lincoln Bridge to Low Bridge — 12 mi, popular day trip, flatwater with occasional riffles',
-          'Low Bridge to Peterson Bridge — 11 mi, faster current, Class II rapids, most visited stretch',
-          'Peterson Bridge to Elm Flats — 9 mi, Class II–III, Pine River Rush and Silver Creek confluence',
-          'Elm Flats to Stronach Reservoir — 10 mi, mellow close-out, excellent campsites',
-        ],
-        history: [
-          { era: 'native', entries: [{ yr: 'Pre-contact', title: "Odawa Homeland — 'Clear Water River'", text: "The Pine River watershed was central Odawa (Ottawa) territory. Its clear cold water and exceptional brook trout runs sustained communities for thousands of years. The river was a natural highway through the dense LP interior, connecting settlements in what is now Lake and Osceola counties. The Odawa name for the river emphasized its purity — a quality the spring-fed Pine has maintained to this day.", src: 'Michigan Historical Center; Little River Band of Ottawa Indians' }] },
-          { era: 'logging', entries: [{ yr: '1860s–1895', title: 'White Pine Drives on the Pine River', text: "The Pine River was a critical logging artery during Michigan's white pine era. Lumberjacks floated millions of board feet of white pine logs downstream each spring to mills at Muskegon and Manistee. By 1895 the great pines were gone — clear-cut from headwaters to mouth. What saved the river was the sandy, spring-fed streambed: unlike many LP rivers, the Pine rebounded quickly once logging pressure eased.", src: 'Michigan DNR Historical Records; Lake County Historical Society' }] },
-          { era: 'survey', entries: [{ yr: '1968', title: 'USGS Hydrological Survey — Michigan Trout Streams', text: "A landmark USGS study documented the Pine as one of Michigan's most significant coldwater streams — averaging below 65°F even in August due to the exceptional volume of groundwater springs entering from the Sandy soil of the Manistee National Forest. The study noted brook trout density comparable to rivers three times the size.", src: 'USGS Open-File Report (1968)' }, { yr: '1978', title: 'National Wild & Scenic River Designation', text: "Congress designated the Pine River a National Wild & Scenic River in 1978, one of only eight rivers east of the Mississippi to receive that honor in the original designation wave. The 26-mile protected corridor through the Manistee National Forest remains one of the most pristine river environments in the Midwest.", src: 'USFS Huron-Manistee National Forest; National Wild & Scenic Rivers Council' }] },
-          { era: 'modern', entries: [{ yr: '2019', title: 'Pine River Corridor Initiative', text: "The USFS Huron-Manistee initiated a comprehensive restoration study of the Pine River corridor, documenting 47 active cold-water springs entering the main stem — each maintaining water temperatures 10–15°F cooler than air temperature in summer. The study confirmed the Pine as one of Michigan's highest-priority brook trout conservation streams.", src: 'USFS Huron-Manistee National Forests (2019)' }] },
-        ],
-        docs: [{ t: 'Pine National Scenic River Management Plan', s: 'USFS Huron-Manistee', y: 2010, tp: 'Federal', pg: 145, url: 'https://www.rivers.gov/sites/rivers/files/documents/plans/pine-plan.pdf' }, { t: 'Pine River Natural River Plan', s: 'Michigan DNR', y: 1999, tp: 'Survey', pg: 58, url: 'https://mrwa.org/wp-content/uploads/repository/pineplan.pdf' }],
-        revs: [
-          { u: 'northernmichigan_paddle', d: 'Jul 2024', s: 5, t: "Peterson Bridge to Elm Flats at 320 cfs — Pine River Rush was rowdy and fun. Water cold enough to chill drinks and clear enough to count rocks at 8 feet. Best day on a Michigan river this year." },
-          { u: 'troutbum_lp', d: 'Jun 2024', s: 5, t: "Brook trout everywhere below Lincoln Bridge. Dry fly fishing at 180 cfs was stupid good. The Wild & Scenic designation shows — zero development, perfect riparian zone." },
-          { u: 'familyfloat_mi', d: 'Aug 2024', s: 4, t: "Low Bridge to Peterson with the kids at 200 cfs. Mild enough for beginners, beautiful forest canopy the whole way. One Class II rapid that woke everyone up." },
-        ],
-        outs: [
-          { n: 'Pine River Paddlesports Center', d: 'Full-service outfitter, shuttles, gear, camping', l: 'thepineriver.com' },
-          { n: 'Horina Canoe & Kayak Rental', d: 'Budget-friendly rentals, multiple access points', l: 'horinacanoe.com' },
-        ],
       },
       {
         id: 'pere_marquette', n: 'Pere Marquette River', lp: true, up: false, wild: true, nat: true, ww: false,
