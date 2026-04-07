@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ALL_RIVERS, STATES } from '@/data/rivers'
 import { fetchGaugeData } from '@/lib/usgs'
 import USMap from '@/components/maps/USMap'
+import AuthNav from '@/components/AuthNav'
 import type { FlowCondition } from '@/types'
 
 export const revalidate = 900
@@ -68,6 +69,7 @@ export default async function HomePage() {
           <Link href="/search" style={{ padding: '5px 10px', borderRadius: '20px', border: '.5px solid var(--bd2)', color: 'var(--tx2)', textDecoration: 'none' }}>Search</Link>
           <Link href="/alerts" style={{ padding: '5px 10px', borderRadius: '20px', border: '.5px solid var(--bd2)', color: 'var(--tx2)', textDecoration: 'none' }}>Flow Alerts</Link>
           <Link href="/outfitters" style={{ padding: '5px 10px', borderRadius: '20px', border: '.5px solid var(--bd2)', color: 'var(--tx2)', textDecoration: 'none' }}>For Outfitters</Link>
+          <AuthNav />
         </div>
       </nav>
 
