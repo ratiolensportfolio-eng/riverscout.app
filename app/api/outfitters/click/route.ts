@@ -2,14 +2,18 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createSupabaseClient } from '@/lib/supabase'
 
 // POST /api/outfitters/click — record a click on an outfitter listing
+// No personal data stored — just outfitter_id, river_id, source, timestamp
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { outfitterId, riverId } = body
+    const { outfitterId, riverId, source } = body
 
     if (!outfitterId) {
       return NextResponse.json({ error: 'outfitterId required' }, { status: 400 })
     }
+
+    const validSources = ['overview', 'outfitters_tab', 'flow_alert', 'search', 'guide_tab']
+    const cleanSource = validSources.includes(source) ? source : null
 
     const supabase = createSupabaseClient()
 
@@ -19,6 +23,7 @@ export async function POST(req: NextRequest) {
       .insert({
         outfitter_id: outfitterId,
         river_id: riverId || null,
+        source: cleanSource,
       })
 
     // Increment click counter on the outfitter

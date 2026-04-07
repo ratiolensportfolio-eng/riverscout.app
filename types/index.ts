@@ -187,10 +187,13 @@ export interface OutfitterListing {
 }
 
 // Matches public.outfitter_clicks table in Supabase
+export type ClickSource = 'overview' | 'outfitters_tab' | 'flow_alert' | 'search' | 'guide_tab'
+
 export interface OutfitterClick {
   id: string
   outfitter_id: string
   river_id: string | null
+  source: ClickSource | null
   clicked_at: string
 }
 

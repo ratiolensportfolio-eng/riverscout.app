@@ -29,8 +29,13 @@ create table public.outfitter_clicks (
   id uuid primary key default gen_random_uuid(),
   outfitter_id uuid references public.outfitters on delete cascade,
   river_id text,
+  source text check (source in ('overview','outfitters_tab','flow_alert','search','guide_tab')),
   clicked_at timestamptz default now()
 );
+
+-- Index for analytics queries
+create index if not exists idx_clicks_outfitter_date on public.outfitter_clicks(outfitter_id, clicked_at desc);
+create index if not exists idx_clicks_source on public.outfitter_clicks(source);
 
 alter table public.outfitters enable row level security;
 alter table public.outfitter_clicks enable row level security;
