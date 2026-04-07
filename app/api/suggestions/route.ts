@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createSupabaseClient } from '@/lib/supabase'
 import { isAdmin } from '@/lib/admin'
+import { sendEmail, improvementApprovedEmail, ADMIN_EMAIL } from '@/lib/email'
 
 // POST /api/suggestions — submit a correction suggestion
 export async function POST(req: NextRequest) {
@@ -98,41 +99,18 @@ export async function PATCH(req: NextRequest) {
       return NextResponse.json({ error: 'Failed to update suggestion' }, { status: 500 })
     }
 
-    // If approved, send email notification via Resend
+    // If approved, send email notification
     if (action === 'approved' && data?.[0]) {
       const s = data[0]
-      const resendKey = process.env.RESEND_API_KEY
-      if (resendKey) {
-        try {
-          await fetch('https://api.resend.com/emails', {
-            method: 'POST',
-            headers: {
-              'Authorization': `Bearer ${resendKey}`,
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              from: 'RiverScout <noreply@riverscout.app>',
-              to: 'outfitters@riverscout.app',
-              subject: `[Approved] Improvement for ${s.river_name}: ${s.field}`,
-              html: `
-                <h2>Approved River Improvement</h2>
-                <p><strong>River:</strong> ${s.river_name} (${s.state_key})</p>
-                <p><strong>Field:</strong> ${s.field}</p>
-                <p><strong>Current:</strong> ${s.current_value}</p>
-                <p><strong>Suggested:</strong> ${s.suggested_value}</p>
-                <p><strong>Reason:</strong> ${s.reason}</p>
-                ${s.source_url ? `<p><strong>Source:</strong> <a href="${s.source_url}">${s.source_url}</a></p>` : ''}
-                ${s.user_email ? `<p><strong>Submitted by:</strong> ${s.user_email}</p>` : ''}
-                <hr/>
-                <p style="color:#999;">This improvement was approved and needs to be applied to the database.</p>
-              `,
-            }),
-          })
-        } catch (emailErr) {
-          console.error('Resend email error:', emailErr)
-          // Don't fail the request if email fails
-        }
-      }
+      await sendEmail({
+        to: ADMIN_EMAIL,
+        subject: `[Approved] Improvement for ${s.river_name}: ${s.field}`,
+        html: improvementApprovedEmail(
+          s.river_name, s.state_key, s.field,
+          s.current_value, s.suggested_value, s.reason,
+          s.source_url, s.user_email,
+        ),
+      })
     }
 
     return NextResponse.json({ ok: true, suggestion: data?.[0] })
