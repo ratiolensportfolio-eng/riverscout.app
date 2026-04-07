@@ -57,21 +57,94 @@ interface ReportForm {
   stars: number
   text: string
   cfs: string
+  tripDate: string
+}
+
+interface UserReport {
+  id: string
+  author_name: string
+  rating: number
+  flow_cfs: number | null
+  trip_date: string | null
+  body: string
+  photos: string[]
+  created_at: string
 }
 
 export default function RiverTabs({ river, flow }: { river: River; flow: FlowData }) {
   const [tab, setTab] = useState<Tab>('Overview')
-  const [form, setForm] = useState<ReportForm>({ name: '', stars: 4, text: '', cfs: '' })
+  const [form, setForm] = useState<ReportForm>({ name: '', stars: 4, text: '', cfs: '', tripDate: '' })
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
+  const [photos, setPhotos] = useState<string[]>([])
+  const [uploading, setUploading] = useState(false)
+  const [userReports, setUserReports] = useState<UserReport[]>([])
+  const [loadingReports, setLoadingReports] = useState(false)
+
+  // Fetch user-submitted reports when Trip Reports tab is selected
+  const fetchReports = async () => {
+    setLoadingReports(true)
+    try {
+      const res = await fetch(`/api/trips?riverId=${river.id}`)
+      const data = await res.json()
+      if (data.reports) setUserReports(data.reports)
+    } catch { /* silently fail */ }
+    setLoadingReports(false)
+  }
+
+  // Upload a photo
+  async function handlePhotoUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const files = e.target.files
+    if (!files || files.length === 0) return
+    setUploading(true)
+    for (const file of Array.from(files)) {
+      const formData = new FormData()
+      formData.append('file', file)
+      formData.append('riverId', river.id)
+      try {
+        const res = await fetch('/api/trips/upload', { method: 'POST', body: formData })
+        const data = await res.json()
+        if (data.ok && data.url) {
+          setPhotos(prev => [...prev, data.url])
+        }
+      } catch { /* silently fail */ }
+    }
+    setUploading(false)
+    e.target.value = ''
+  }
 
   async function submitReport(e: React.FormEvent) {
     e.preventDefault()
     if (!form.name.trim() || !form.text.trim()) return
     setSubmitting(true)
-    // Stub — wire to Supabase later
-    await new Promise(r => setTimeout(r, 600))
-    setSubmitted(true)
+    setSubmitError('')
+    try {
+      const res = await fetch('/api/trips', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          riverId: river.id,
+          riverName: river.n,
+          authorName: form.name,
+          rating: form.stars,
+          flowCfs: form.cfs || null,
+          tripDate: form.tripDate || null,
+          text: form.text,
+          photos,
+        }),
+      })
+      const data = await res.json()
+      if (data.ok) {
+        setSubmitted(true)
+        setPhotos([])
+        fetchReports()
+      } else {
+        setSubmitError(data.error || 'Failed to submit report')
+      }
+    } catch {
+      setSubmitError('Network error — please try again')
+    }
     setSubmitting(false)
   }
 
@@ -222,11 +295,11 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
         {/* ── TRIP REPORTS ─────────────────────────────────── */}
         {tab === 'Trip Reports' && (
           <div>
-            {/* Existing reviews */}
+            {/* Hardcoded reviews from data */}
             {river.revs.length > 0 && (
               <div style={{ marginBottom: '20px' }}>
                 {river.revs.map((rev, i) => (
-                  <div key={i} style={{ padding: '11px 0', borderBottom: '.5px solid var(--bd)' }}>
+                  <div key={`hc-${i}`} style={{ padding: '11px 0', borderBottom: '.5px solid var(--bd)' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2px' }}>
                       <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', fontWeight: 500 }}>{rev.u}</span>
                       <span style={{ color: 'var(--am)', fontSize: '12px', letterSpacing: '2px' }}>{'★'.repeat(rev.s)}{'☆'.repeat(5 - rev.s)}</span>
@@ -238,6 +311,53 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
               </div>
             )}
 
+            {/* User-submitted reports from Supabase */}
+            {userReports.length > 0 && (
+              <div style={{ marginBottom: '20px' }}>
+                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--rv)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                  Community Reports
+                </div>
+                {userReports.map(report => (
+                  <div key={report.id} style={{ padding: '11px 0', borderBottom: '.5px solid var(--bd)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2px' }}>
+                      <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', fontWeight: 500 }}>{report.author_name}</span>
+                      <span style={{ color: 'var(--am)', fontSize: '12px', letterSpacing: '2px' }}>{'★'.repeat(report.rating)}{'☆'.repeat(5 - report.rating)}</span>
+                    </div>
+                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginBottom: '4px', display: 'flex', gap: '8px' }}>
+                      {report.trip_date && <span>{new Date(report.trip_date).toLocaleDateString()}</span>}
+                      {report.flow_cfs && <span>{report.flow_cfs.toLocaleString()} cfs</span>}
+                    </div>
+                    <p style={{ fontSize: '12.5px', color: 'var(--tx)', lineHeight: 1.68 }}>{report.body}</p>
+                    {report.photos.length > 0 && (
+                      <div style={{ display: 'flex', gap: '6px', marginTop: '8px', overflowX: 'auto' }}>
+                        {report.photos.map((url, pi) => (
+                          <a key={pi} href={url} target="_blank" rel="noopener noreferrer">
+                            <img src={url} alt="Trip photo" style={{ width: '100px', height: '75px', objectFit: 'cover', borderRadius: '4px', border: '.5px solid var(--bd)' }} />
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Load reports button */}
+            {userReports.length === 0 && !loadingReports && (
+              <button onClick={fetchReports} style={{
+                fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--rv)',
+                background: 'none', border: '.5px solid var(--rvmd)', borderRadius: 'var(--r)',
+                padding: '6px 14px', cursor: 'pointer', marginBottom: '14px',
+              }}>
+                Load community reports
+              </button>
+            )}
+            {loadingReports && (
+              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', marginBottom: '14px' }}>
+                Loading reports...
+              </div>
+            )}
+
             {/* Submit form */}
             <div style={{ background: 'var(--bg2)', borderRadius: 'var(--r)', padding: '14px', border: '.5px solid var(--bd)' }}>
               <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' }}>
@@ -245,90 +365,109 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
               </div>
               {submitted ? (
                 <div style={{ textAlign: 'center', padding: '20px 0' }}>
-                  <div style={{ fontSize: '24px', marginBottom: '6px' }}>🎉</div>
+                  <div style={{ fontSize: '24px', marginBottom: '6px' }}>&#127881;</div>
                   <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '15px', color: 'var(--rv)', marginBottom: '4px' }}>Thanks for the report!</div>
-                  <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>Your trip report helps the community.</div>
-                  <button onClick={() => { setSubmitted(false); setForm({ name: '', stars: 4, text: '', cfs: '' }) }}
+                  <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>Your trip report helps the paddling community.</div>
+                  <button onClick={() => { setSubmitted(false); setForm({ name: '', stars: 4, text: '', cfs: '', tripDate: '' }); setPhotos([]) }}
                     style={{ marginTop: '10px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--rv)', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}>
                     Add another
                   </button>
                 </div>
               ) : (
                 <form onSubmit={submitReport}>
-                  <label style={labelStyle}>
-                    Your name
-                    <input
-                      type="text"
-                      value={form.name}
-                      onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                      placeholder="Paddler name"
-                      required
-                      style={inputStyle}
-                    />
-                  </label>
-                  <label style={labelStyle}>
-                    Flow at time of trip (CFS)
-                    <input
-                      type="number"
-                      value={form.cfs}
-                      onChange={e => setForm(f => ({ ...f, cfs: e.target.value }))}
-                      placeholder={`Current: ${formatCfs(flow.cfs)}`}
-                      style={inputStyle}
-                    />
-                  </label>
-                  <div style={{ marginBottom: '10px' }}>
-                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '6px' }}>
-                      Rating
-                    </div>
-                    <div style={{ display: 'flex', gap: '4px' }}>
-                      {[1, 2, 3, 4, 5].map(n => (
-                        <button
-                          key={n}
-                          type="button"
-                          onClick={() => setForm(f => ({ ...f, stars: n }))}
-                          style={{
-                            fontSize: '18px',
-                            background: 'none',
-                            border: 'none',
-                            cursor: 'pointer',
-                            color: n <= form.stars ? 'var(--am)' : 'var(--bd2)',
-                            padding: '0 2px',
-                            lineHeight: 1,
-                          }}
-                        >
-                          ★
-                        </button>
-                      ))}
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                    <label style={labelStyle}>
+                      Your name
+                      <input type="text" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                        placeholder="Paddler name" required style={inputStyle} />
+                    </label>
+                    <label style={labelStyle}>
+                      Trip date
+                      <input type="date" value={form.tripDate} onChange={e => setForm(f => ({ ...f, tripDate: e.target.value }))}
+                        style={inputStyle} />
+                    </label>
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                    <label style={labelStyle}>
+                      Flow at time of trip (CFS)
+                      <input type="number" value={form.cfs} onChange={e => setForm(f => ({ ...f, cfs: e.target.value }))}
+                        placeholder={`Current: ${formatCfs(flow.cfs)}`} style={inputStyle} />
+                    </label>
+                    <div style={{ marginBottom: '10px' }}>
+                      <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '6px' }}>
+                        Rating
+                      </div>
+                      <div style={{ display: 'flex', gap: '4px' }}>
+                        {[1, 2, 3, 4, 5].map(n => (
+                          <button key={n} type="button" onClick={() => setForm(f => ({ ...f, stars: n }))}
+                            style={{ fontSize: '18px', background: 'none', border: 'none', cursor: 'pointer',
+                              color: n <= form.stars ? 'var(--am)' : 'var(--bd2)', padding: '0 2px', lineHeight: 1 }}>
+                            &#9733;
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   </div>
                   <label style={labelStyle}>
                     Trip notes
-                    <textarea
-                      value={form.text}
-                      onChange={e => setForm(f => ({ ...f, text: e.target.value }))}
-                      placeholder="Water conditions, hazards, highlights…"
-                      required
-                      rows={4}
-                      style={{ ...inputStyle, resize: 'vertical', fontFamily: 'Georgia, serif', lineHeight: 1.6 }}
-                    />
+                    <textarea value={form.text} onChange={e => setForm(f => ({ ...f, text: e.target.value }))}
+                      placeholder="Water conditions, hazards, highlights, put-in/take-out notes..."
+                      required rows={4}
+                      style={{ ...inputStyle, resize: 'vertical', fontFamily: 'Georgia, serif', lineHeight: 1.6 }} />
                   </label>
-                  <button
-                    type="submit"
-                    disabled={submitting}
+
+                  {/* Photo upload */}
+                  <div style={{ marginBottom: '12px' }}>
+                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '6px' }}>
+                      Photos (optional)
+                    </div>
+                    {photos.length > 0 && (
+                      <div style={{ display: 'flex', gap: '6px', marginBottom: '8px', flexWrap: 'wrap' }}>
+                        {photos.map((url, i) => (
+                          <div key={i} style={{ position: 'relative' }}>
+                            <img src={url} alt={`Upload ${i + 1}`} style={{ width: '80px', height: '60px', objectFit: 'cover', borderRadius: '4px', border: '.5px solid var(--bd)' }} />
+                            <button type="button" onClick={() => setPhotos(prev => prev.filter((_, j) => j !== i))}
+                              style={{ position: 'absolute', top: -4, right: -4, width: 16, height: 16, borderRadius: '50%',
+                                background: 'var(--dg)', color: '#fff', border: 'none', fontSize: '9px', cursor: 'pointer',
+                                display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}>
+                              x
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    <label style={{
+                      display: 'inline-flex', alignItems: 'center', gap: '6px', cursor: uploading ? 'wait' : 'pointer',
+                      fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--rv)',
+                      padding: '6px 12px', border: '.5px solid var(--rvmd)', borderRadius: 'var(--r)',
+                      background: 'var(--bg)', opacity: uploading ? 0.6 : 1,
+                    }}>
+                      {uploading ? 'Uploading...' : photos.length > 0 ? '+ Add more photos' : 'Upload photos'}
+                      <input type="file" accept="image/*" multiple onChange={handlePhotoUpload}
+                        disabled={uploading} style={{ display: 'none' }} />
+                    </label>
+                    {photos.length > 0 && (
+                      <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginLeft: '8px' }}>
+                        {photos.length} photo{photos.length !== 1 ? 's' : ''} attached
+                      </span>
+                    )}
+                  </div>
+
+                  {submitError && (
+                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--dg)', marginBottom: '8px' }}>
+                      {submitError}
+                    </div>
+                  )}
+
+                  <button type="submit" disabled={submitting}
                     style={{
-                      fontFamily: "'IBM Plex Mono', monospace",
-                      fontSize: '10px',
-                      background: 'var(--rv)',
-                      color: '#fff',
-                      border: 'none',
-                      borderRadius: 'var(--r)',
-                      padding: '9px 18px',
+                      fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
+                      background: 'var(--rv)', color: '#fff', border: 'none',
+                      borderRadius: 'var(--r)', padding: '9px 18px',
                       cursor: submitting ? 'wait' : 'pointer',
-                      letterSpacing: '.4px',
-                      opacity: submitting ? 0.7 : 1,
-                    }}
-                  >
-                    {submitting ? 'Submitting…' : 'Submit report'}
+                      letterSpacing: '.4px', opacity: submitting ? 0.7 : 1,
+                    }}>
+                    {submitting ? 'Submitting...' : 'Submit report'}
                   </button>
                 </form>
               )}
