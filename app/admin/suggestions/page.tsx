@@ -21,6 +21,8 @@ interface Suggestion {
   source_url: string | null
   status: string
   admin_notes: string | null
+  ai_confidence: 'high' | 'medium' | 'low' | null
+  ai_reasoning: string | null
   created_at: string
 }
 
@@ -193,6 +195,26 @@ export default function AdminSuggestions() {
             {s.user_email && (
               <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', marginBottom: '8px' }}>
                 Submitted by: {s.user_email}
+              </div>
+            )}
+
+            {/* AI Assessment */}
+            {s.ai_confidence && (
+              <div style={{
+                marginBottom: '12px', padding: '10px 12px', borderRadius: 'var(--r)',
+                background: s.ai_confidence === 'high' ? 'var(--rvlt)' : s.ai_confidence === 'low' ? 'var(--dglt)' : 'var(--amlt)',
+                border: `.5px solid ${s.ai_confidence === 'high' ? 'var(--rvmd)' : s.ai_confidence === 'low' ? 'var(--dg)' : 'var(--am)'}`,
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
+                  <span style={{ fontFamily: mono, fontSize: '9px', textTransform: 'uppercase', letterSpacing: '.5px',
+                    color: s.ai_confidence === 'high' ? 'var(--rv)' : s.ai_confidence === 'low' ? 'var(--dg)' : 'var(--am)',
+                  }}>
+                    AI Assessment · {s.ai_confidence} confidence
+                  </span>
+                </div>
+                <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx)', lineHeight: 1.5 }}>
+                  {s.ai_reasoning}
+                </div>
               </div>
             )}
 

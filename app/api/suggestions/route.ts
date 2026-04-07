@@ -3,6 +3,84 @@ import { createSupabaseClient } from '@/lib/supabase'
 import { isAdmin } from '@/lib/admin'
 import { sendEmail, improvementApprovedEmail, ADMIN_EMAIL } from '@/lib/email'
 
+// AI evaluation of a suggestion using Claude
+async function evaluateSuggestion(
+  riverName: string,
+  stateKey: string,
+  field: string,
+  currentValue: string,
+  suggestedValue: string,
+  reason: string,
+  sourceUrl: string | null,
+): Promise<{ confidence: 'high' | 'medium' | 'low'; reasoning: string }> {
+  const apiKey = process.env.ANTHROPIC_API_KEY
+  if (!apiKey) {
+    return { confidence: 'medium', reasoning: 'AI evaluation unavailable — no API key configured.' }
+  }
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 500,
+        messages: [{
+          role: 'user',
+          content: `You are a river data expert evaluating a user-submitted correction for the RiverScout paddling atlas. Evaluate whether this suggestion is plausible and accurate.
+
+River: ${riverName} (${stateKey.toUpperCase()})
+Field being corrected: ${field}
+Current value in our database: ${currentValue}
+User's suggested value: ${suggestedValue}
+User's reason: ${reason}
+${sourceUrl ? `Source provided: ${sourceUrl}` : 'No source URL provided.'}
+
+Evaluate:
+1. Is this suggestion plausible based on what you know about this river?
+2. Does the suggested value conflict with known facts?
+3. Is the user's reasoning sound?
+
+Respond in this exact JSON format:
+{"confidence": "high" or "medium" or "low", "reasoning": "Your 1-3 sentence assessment"}
+
+- "high" = suggestion is almost certainly correct, aligns with known data
+- "medium" = suggestion is plausible but needs verification
+- "low" = suggestion appears incorrect, conflicts with known facts, or is suspicious
+
+Be concise. Respond ONLY with the JSON object.`,
+        }],
+      }),
+    })
+
+    if (!res.ok) {
+      console.error('[AI] Claude API error:', res.status)
+      return { confidence: 'medium', reasoning: 'AI evaluation failed — API error.' }
+    }
+
+    const data = await res.json()
+    const text = data.content?.[0]?.text?.trim() || ''
+
+    // Parse the JSON response
+    try {
+      const parsed = JSON.parse(text)
+      const confidence = ['high', 'medium', 'low'].includes(parsed.confidence) ? parsed.confidence : 'medium'
+      const reasoning = typeof parsed.reasoning === 'string' ? parsed.reasoning.slice(0, 1000) : 'No reasoning provided.'
+      return { confidence, reasoning }
+    } catch {
+      // If Claude didn't return valid JSON, extract what we can
+      return { confidence: 'medium', reasoning: text.slice(0, 500) || 'AI returned unparseable response.' }
+    }
+  } catch (err) {
+    console.error('[AI] Evaluation error:', err)
+    return { confidence: 'medium', reasoning: 'AI evaluation failed — network error.' }
+  }
+}
+
 // POST /api/suggestions — submit a correction suggestion
 export async function POST(req: NextRequest) {
   try {
@@ -12,6 +90,12 @@ export async function POST(req: NextRequest) {
     if (!riverId || !field || !currentValue || !suggestedValue || !reason) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
+
+    // AI pre-evaluation
+    const ai = await evaluateSuggestion(
+      riverName || riverId, stateKey || '', field,
+      currentValue, suggestedValue, reason, sourceUrl || null,
+    )
 
     const supabase = createSupabaseClient()
 
@@ -29,6 +113,8 @@ export async function POST(req: NextRequest) {
         reason: reason.slice(0, 2000),
         source_url: sourceUrl || null,
         status: 'pending',
+        ai_confidence: ai.confidence,
+        ai_reasoning: ai.reasoning,
       })
       .select()
 

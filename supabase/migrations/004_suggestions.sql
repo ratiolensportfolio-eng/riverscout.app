@@ -13,6 +13,8 @@ create table if not exists public.suggestions (
   source_url text,            -- optional reference link
   status text not null default 'pending' check (status in ('pending', 'approved', 'rejected')),
   admin_notes text,
+  ai_confidence text check (ai_confidence in ('high', 'medium', 'low')),
+  ai_reasoning text,
   created_at timestamptz not null default now(),
   reviewed_at timestamptz
 );
