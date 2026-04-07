@@ -3597,6 +3597,47 @@ export function getState(key: string) {
   return STATES[key] ?? null
 }
 
+// SEO-friendly URL helpers
+// e.g. "Au Sable River" → "au-sable-river", "Michigan" → "michigan"
+export function toSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/['']/g, '')           // remove apostrophes
+    .replace(/\s*—\s*/g, '-')       // em dashes to hyphens
+    .replace(/[^a-z0-9]+/g, '-')    // non-alphanumeric to hyphens
+    .replace(/-+/g, '-')            // collapse multiple hyphens
+    .replace(/^-|-$/g, '')          // trim leading/trailing hyphens
+}
+
+export function getStateSlug(stateKey: string): string {
+  const state = STATES[stateKey]
+  return state ? toSlug(state.name) : stateKey
+}
+
+export function getRiverSlug(river: { n: string }): string {
+  let name = river.n
+  // Ensure "River" is in the slug for SEO
+  if (!name.toLowerCase().includes('river') && !name.toLowerCase().includes('creek') && !name.toLowerCase().includes('fork')) {
+    name = name + ' River'
+  }
+  return toSlug(name)
+}
+
+// Build the SEO URL path for a river: /rivers/michigan/au-sable-river
+export function getRiverPath(river: { n: string; stateKey?: string; id: string }): string {
+  const stateKey = river.stateKey || ALL_RIVERS.find(r => r.id === river.id)?.stateKey || ''
+  const stateSlug = getStateSlug(stateKey)
+  const riverSlug = getRiverSlug(river)
+  return `/rivers/${stateSlug}/${riverSlug}`
+}
+
+// Lookup river by state slug + river slug
+export function getRiverBySlug(stateSlug: string, riverSlug: string) {
+  return ALL_RIVERS.find(r => {
+    return getStateSlug(r.stateKey) === stateSlug && getRiverSlug(r) === riverSlug
+  }) ?? null
+}
+
 export function getFlowCondition(cfs: number, optRange: string): 'optimal' | 'low' | 'high' | 'flood' {
   const [low, high] = optRange.split('–').map(s => parseInt(s.replace(/,/g, '').trim()))
   if (isNaN(low) || isNaN(high)) return 'optimal'

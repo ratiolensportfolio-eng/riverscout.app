@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { getState, STATES } from '@/data/rivers'
+import { getState, STATES, getRiverPath } from '@/data/rivers'
 import { fetchGaugeData, formatCfs } from '@/lib/usgs'
 import type { FlowData } from '@/types'
 
@@ -73,7 +73,7 @@ export default async function StatePage({ params }: Props) {
             return (
               <Link
                 key={river.id}
-                href={`/rivers/${river.id}`}
+                href={getRiverPath(river)}
                 style={{
                   display: 'block', padding: '9px 12px',
                   borderBottom: '.5px solid var(--bd)',

@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
-import { ALL_RIVERS } from '@/data/rivers'
+import { ALL_RIVERS, getRiverPath } from '@/data/rivers'
 
 export default function SearchPage() {
   const [query, setQuery] = useState('')
@@ -72,7 +72,7 @@ export default function SearchPage() {
         {results.map(river => (
           <Link
             key={river.id}
-            href={`/rivers/${river.id}`}
+            href={getRiverPath(river)}
             style={{ display: 'block', padding: '9px 24px', borderBottom: '.5px solid var(--bd)', textDecoration: 'none', color: 'var(--tx)' }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px' }}>

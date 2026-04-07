@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ALL_RIVERS, STATES } from '@/data/rivers'
+import { ALL_RIVERS, STATES, getRiverPath } from '@/data/rivers'
 import { fetchGaugeData, formatCfs } from '@/lib/usgs'
 import AlertSubscriber from '@/components/alerts/AlertSubscriber'
 
@@ -114,7 +114,7 @@ export default async function AlertsPage() {
             return (
               <Link
                 key={river.id}
-                href={`/rivers/${river.id}`}
+                href={getRiverPath(river)}
                 style={{
                   display: 'block', textDecoration: 'none', color: 'var(--tx)',
                   background: 'var(--bg)', border: '.5px solid var(--bd)',
