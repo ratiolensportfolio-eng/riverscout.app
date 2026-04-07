@@ -1239,7 +1239,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
       { name: "Terrestrials", timing: "July–September" },
     ],
     runs: [],
-    guides: ["Pine Creek Outfitters", "Wolfe"s Sporting Goods"],
+    guides: ["Pine Creek Outfitters", "Wolfe's Sporting Goods"],
   },
 
   lehigh: {
@@ -1339,7 +1339,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
     ],
     hatches: [],
     runs: [],
-    guides: ["Shenandoah River Outfitters", "Murray"s Fly Shop"],
+    guides: ["Shenandoah River Outfitters", "Murray's Fly Shop"],
   },
 
   // ==========================================
@@ -1393,7 +1393,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
       { name: "Terrestrials", timing: "July–September" },
     ],
     runs: [],
-    guides: ["Nolichucky Gorge Campground", "Wahoo"s Adventures"],
+    guides: ["Nolichucky Gorge Campground", "Wahoo's Adventures"],
   },
 
   ocoee: {
