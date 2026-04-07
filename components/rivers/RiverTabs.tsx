@@ -6,9 +6,10 @@ import { formatCfs, trendArrow, celsiusToFahrenheit, isHypothermiaRisk } from '@
 
 const RiverMap = lazy(() => import('@/components/maps/RiverMap'))
 import { hasRiverMap, loadRiverMap } from '@/data/river-maps'
+import { FISHERIES } from '@/data/fisheries'
 import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
-const TABS = ['Overview', 'History', 'Trip Reports', 'Trip Planning', 'Maps & Guides', 'Documents'] as const
+const TABS = ['Overview', 'History', 'Trip Reports', 'Trip Planning', 'Fishing', 'Maps & Guides', 'Documents'] as const
 type Tab = typeof TABS[number]
 
 const ERA_LABELS: Record<string, string> = {
@@ -557,6 +558,140 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
             )}
           </div>
         )}
+
+        {/* ── FISHING ────────────────────────────────────────── */}
+        {tab === 'Fishing' && (() => {
+          const fish = FISHERIES[river.id]
+          if (!fish) return (
+            <EmptyState icon="&#x1F3A3;" label="Fisheries data coming soon" sub="Species, hatch charts, and run timing for this river will appear here." />
+          )
+
+          const mono = "'IBM Plex Mono', monospace"
+          const serif = "'Playfair Display', serif"
+
+          const speciesColors: Record<string, string> = {
+            resident: 'var(--rv)',
+            anadromous: 'var(--wt)',
+            warmwater: 'var(--am)',
+          }
+
+          return (
+            <div>
+              {/* Designations */}
+              {fish.designations.length > 0 && (
+                <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '14px' }}>
+                  {fish.designations.map((d, i) => (
+                    <span key={i} style={{
+                      fontFamily: mono, fontSize: '9px', padding: '4px 10px',
+                      borderRadius: '12px', background: 'var(--rvlt)', color: 'var(--rvdk)',
+                      border: '.5px solid var(--rvmd)',
+                    }}>{d}</span>
+                  ))}
+                </div>
+              )}
+
+              {/* Species */}
+              <div style={{ marginBottom: '16px' }}>
+                <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                  Species
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '8px' }}>
+                  {fish.species.map((sp, i) => (
+                    <div key={i} style={{
+                      padding: '8px 10px', background: 'var(--bg2)', borderRadius: 'var(--r)',
+                      border: `.5px solid ${sp.primary ? 'var(--rvmd)' : 'var(--bd)'}`,
+                    }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '2px' }}>
+                        <span style={{ width: 6, height: 6, borderRadius: '50%', background: speciesColors[sp.type], display: 'inline-block', flexShrink: 0 }} />
+                        <span style={{ fontFamily: serif, fontSize: '13px', fontWeight: 600 }}>{sp.name}</span>
+                        {sp.primary && <span style={{ fontFamily: mono, fontSize: '8px', color: 'var(--rv)', textTransform: 'uppercase' }}>Primary</span>}
+                      </div>
+                      <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'capitalize' }}>{sp.type}</div>
+                      {sp.notes && <div style={{ fontSize: '10px', color: 'var(--tx2)', marginTop: '2px' }}>{sp.notes}</div>}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Runs (Salmon/Steelhead) */}
+              {fish.runs.length > 0 && (
+                <div style={{ marginBottom: '16px' }}>
+                  <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                    Run Timing
+                  </div>
+                  {fish.runs.map((run, i) => (
+                    <div key={i} style={{ padding: '8px 10px', background: 'var(--bg2)', borderRadius: 'var(--r)', border: '.5px solid var(--bd)', marginBottom: '6px' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                        <span style={{ fontFamily: serif, fontSize: '13px', fontWeight: 600 }}>{run.species}</span>
+                        <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--wt)' }}>{run.timing}</span>
+                      </div>
+                      {run.peak && <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--rv)', marginTop: '2px' }}>Peak: {run.peak}</div>}
+                      {run.notes && <div style={{ fontSize: '10px', color: 'var(--tx2)', marginTop: '2px' }}>{run.notes}</div>}
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Hatch Calendar */}
+              {fish.hatches.length > 0 && (
+                <div style={{ marginBottom: '16px' }}>
+                  <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                    Hatch Calendar
+                  </div>
+                  <div style={{ border: '.5px solid var(--bd)', borderRadius: 'var(--r)', overflow: 'hidden' }}>
+                    {fish.hatches.map((h, i) => (
+                      <div key={i} style={{
+                        display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
+                        padding: '7px 10px', borderBottom: i < fish.hatches.length - 1 ? '.5px solid var(--bd)' : 'none',
+                        background: i % 2 === 0 ? 'var(--bg)' : 'var(--bg2)',
+                      }}>
+                        <div>
+                          <span style={{ fontFamily: mono, fontSize: '11px', fontWeight: 500 }}>{h.name}</span>
+                          {h.notes && <div style={{ fontSize: '9px', color: 'var(--tx2)', marginTop: '1px' }}>{h.notes}</div>}
+                        </div>
+                        <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--rv)', flexShrink: 0, marginLeft: '8px' }}>{h.timing}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Spawn Timing */}
+              {fish.spawning.length > 0 && (
+                <div style={{ marginBottom: '16px' }}>
+                  <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                    Spawn Timing
+                  </div>
+                  <div style={{ background: 'var(--amlt)', border: '.5px solid var(--am)', borderRadius: 'var(--r)', padding: '10px 12px' }}>
+                    <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--am)', marginBottom: '6px', fontWeight: 500 }}>
+                      Please avoid wading on spawning beds (redds)
+                    </div>
+                    {fish.spawning.map((s, i) => (
+                      <div key={i} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '3px' }}>
+                        <span style={{ fontFamily: mono, fontSize: '10px' }}>{s.species}</span>
+                        <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--am)' }}>{s.season}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Guide Services */}
+              {fish.guides.length > 0 && (
+                <div>
+                  <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                    Fishing Guides
+                  </div>
+                  {fish.guides.map((g, i) => (
+                    <div key={i} style={{ padding: '8px 10px', background: 'var(--bg2)', borderRadius: 'var(--r)', border: '.5px solid var(--bd)', marginBottom: '6px' }}>
+                      <span style={{ fontFamily: mono, fontSize: '11px', fontWeight: 500, color: 'var(--rvdk)' }}>{g}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )
+        })()}
 
         {/* ── MAPS & GUIDES ──────────────────────────────────── */}
         {tab === 'Maps & Guides' && (

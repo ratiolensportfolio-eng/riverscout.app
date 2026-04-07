@@ -94,6 +94,44 @@ export interface FlowData {
   fetchedAt: Date
 }
 
+// ── Fisheries Types ──────────────────────────────────────────────
+
+export interface FishSpecies {
+  name: string
+  type: 'resident' | 'anadromous' | 'warmwater'  // resident trout vs salmon/steelhead runs vs bass/etc
+  primary: boolean  // is this a primary target species
+  notes?: string
+}
+
+export interface SpawnTiming {
+  species: string
+  season: string      // e.g. "October–December"
+  notes?: string
+}
+
+export interface HatchEvent {
+  name: string        // e.g. "Hendrickson Mayfly"
+  timing: string      // e.g. "Late April – Mid May"
+  notes?: string
+}
+
+export interface RunTiming {
+  species: string     // e.g. "Chinook Salmon"
+  timing: string      // e.g. "September – November"
+  peak?: string       // e.g. "Mid October"
+  notes?: string
+}
+
+export interface RiverFisheries {
+  species: FishSpecies[]
+  designations: string[]        // e.g. ["Blue-Ribbon Trout Stream", "Catch & Release — flies only"]
+  optimalFishingCfs?: string    // only if verified
+  spawning: SpawnTiming[]
+  hatches: HatchEvent[]
+  runs: RunTiming[]             // salmon/steelhead run timing
+  guides: string[]              // guide service names (links hidden for now like outfitters)
+}
+
 // ── Auth / User Types ─────────────────────────────────────────────
 
 export interface UserProfile {
