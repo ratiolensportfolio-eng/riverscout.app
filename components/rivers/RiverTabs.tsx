@@ -687,28 +687,74 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
               {overviewIsPro ? (
                 historicalData && historicalData.length > 0 ? (
                   <div style={{ border: '.5px solid var(--bd)', borderRadius: 'var(--r)', overflow: 'hidden' }}>
-                    <div style={{ height: '160px', background: 'var(--bg2)', display: 'flex', alignItems: 'flex-end', padding: '12px 8px 8px', gap: '1px' }}>
+                    {/* Current vs average summary */}
+                    {(() => {
+                      const currentWeek = Math.floor((new Date().getTime() - new Date(new Date().getFullYear(), 0, 0).getTime()) / (86400000 * 7))
+                      const thisWeek = historicalData.find(w => w.week === currentWeek)
+                      const currentCfs = flow.cfs
+                      if (!thisWeek) return null
+                      const pctOfAvg = currentCfs ? Math.round((currentCfs / thisWeek.avg) * 100) : null
+                      const aboveBelow = pctOfAvg ? (pctOfAvg > 110 ? 'above' : pctOfAvg < 90 ? 'below' : 'near') : null
+                      return (
+                        <div style={{ padding: '12px 14px', borderBottom: '.5px solid var(--bd)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
+                          <div>
+                            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginBottom: '2px' }}>This week&apos;s 10-year average</div>
+                            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 700, color: 'var(--wt)' }}>{thisWeek.avg.toLocaleString()}</span>
+                            <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', marginLeft: '4px' }}>CFS</span>
+                            <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginLeft: '8px' }}>
+                              ({thisWeek.p10.toLocaleString()}–{thisWeek.p90.toLocaleString()} typical)
+                            </span>
+                          </div>
+                          {currentCfs && pctOfAvg && (
+                            <div style={{ textAlign: 'right' }}>
+                              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginBottom: '2px' }}>Current flow</div>
+                              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 700, color: aboveBelow === 'above' ? 'var(--am)' : aboveBelow === 'below' ? 'var(--lo)' : 'var(--rv)' }}>
+                                {currentCfs.toLocaleString()}
+                              </span>
+                              <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', marginLeft: '4px' }}>CFS</span>
+                              <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', marginLeft: '8px', color: aboveBelow === 'above' ? 'var(--am)' : aboveBelow === 'below' ? 'var(--lo)' : 'var(--rv)' }}>
+                                {pctOfAvg}% of avg
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      )
+                    })()}
+                    {/* Chart */}
+                    <div style={{ height: '140px', background: 'var(--bg2)', display: 'flex', alignItems: 'flex-end', padding: '10px 8px 6px', gap: '1px' }}>
                       {(() => {
-                        const maxAvg = Math.max(...historicalData.map(w => w.p90))
+                        const maxVal = Math.max(...historicalData.map(w => w.p90), flow.cfs || 0)
                         const currentWeek = Math.floor((new Date().getTime() - new Date(new Date().getFullYear(), 0, 0).getTime()) / (86400000 * 7))
                         return historicalData.map((w, i) => {
-                          const avgPct = maxAvg > 0 ? (w.avg / maxAvg) * 80 + 5 : 10
-                          const p90Pct = maxAvg > 0 ? (w.p90 / maxAvg) * 80 + 5 : 10
                           const isCurrent = w.week === currentWeek
+                          const avgPct = maxVal > 0 ? (w.avg / maxVal) * 82 + 3 : 10
+                          const rangePct = maxVal > 0 ? (w.p90 / maxVal) * 82 + 3 : 10
+                          const currentPct = (isCurrent && flow.cfs) ? (flow.cfs / maxVal) * 82 + 3 : 0
                           return (
-                            <div key={i} title={`${w.month} Wk${(w.week % 4) + 1}: avg ${w.avg.toLocaleString()} cfs (${w.p10.toLocaleString()}–${w.p90.toLocaleString()})`}
-                              style={{ flex: 1, position: 'relative', height: `${p90Pct}%`, minWidth: '2px' }}>
+                            <div key={i} title={`${w.month}: avg ${w.avg.toLocaleString()} cfs\n10th: ${w.p10.toLocaleString()} · 90th: ${w.p90.toLocaleString()}${isCurrent && flow.cfs ? `\nNow: ${flow.cfs.toLocaleString()} cfs` : ''}`}
+                              style={{ flex: 1, position: 'relative', height: '100%', minWidth: '2px' }}>
+                              {/* P10-P90 range bar */}
                               <div style={{
-                                position: 'absolute', bottom: 0, left: 0, right: 0,
-                                height: `${(avgPct / p90Pct) * 100}%`,
-                                background: isCurrent ? 'var(--rv)' : 'var(--wt)',
-                                borderRadius: '2px 2px 0 0', opacity: isCurrent ? 1 : 0.6,
+                                position: 'absolute', bottom: 0, left: '10%', right: '10%',
+                                height: `${rangePct}%`,
+                                background: isCurrent ? 'var(--rvlt)' : 'var(--bg3)',
+                                borderRadius: '2px 2px 0 0',
                               }} />
+                              {/* Average bar */}
                               <div style={{
-                                position: 'absolute', bottom: 0, left: 0, right: 0,
-                                height: '100%', background: isCurrent ? 'var(--rvlt)' : 'var(--wtlt)',
-                                borderRadius: '2px 2px 0 0', opacity: 0.3,
+                                position: 'absolute', bottom: 0, left: '15%', right: '15%',
+                                height: `${avgPct}%`,
+                                background: isCurrent ? 'var(--rvmd)' : 'var(--wtmd)',
+                                borderRadius: '2px 2px 0 0', opacity: 0.8,
                               }} />
+                              {/* Current flow marker */}
+                              {isCurrent && flow.cfs && (
+                                <div style={{
+                                  position: 'absolute', bottom: `${currentPct}%`, left: 0, right: 0,
+                                  height: '3px', background: flow.condition === 'optimal' ? 'var(--rv)' : flow.condition === 'high' ? 'var(--am)' : flow.condition === 'flood' ? 'var(--dg)' : 'var(--lo)',
+                                  borderRadius: '2px',
+                                }} />
+                              )}
                             </div>
                           )
                         })
@@ -717,10 +763,10 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                     <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 12px 6px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', color: 'var(--tx3)' }}>
                       {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map(m => <span key={m}>{m}</span>)}
                     </div>
-                    <div style={{ display: 'flex', gap: '12px', padding: '6px 12px 10px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px' }}>
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><span style={{ width: 8, height: 8, background: 'var(--wt)', borderRadius: '2px', opacity: 0.6 }} /> Avg CFS</span>
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><span style={{ width: 8, height: 8, background: 'var(--wtlt)', borderRadius: '2px' }} /> 10-90th pct</span>
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><span style={{ width: 8, height: 8, background: 'var(--rv)', borderRadius: '2px' }} /> Current week</span>
+                    <div style={{ display: 'flex', gap: '12px', padding: '4px 12px 10px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx2)' }}>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><span style={{ width: 8, height: 8, background: 'var(--wtmd)', borderRadius: '2px' }} /> 10-yr avg</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><span style={{ width: 8, height: 8, background: 'var(--bg3)', borderRadius: '2px' }} /> Typical range</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><span style={{ width: 10, height: 3, background: 'var(--rv)', borderRadius: '2px' }} /> Current</span>
                     </div>
                   </div>
                 ) : (
