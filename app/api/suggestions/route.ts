@@ -165,11 +165,74 @@ export async function PATCH(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 403 })
     }
 
-    if (!suggestionId || !['approved', 'rejected'].includes(action)) {
+    if (!suggestionId || !['approved', 'rejected', 'rollback'].includes(action)) {
       return NextResponse.json({ error: 'Invalid request' }, { status: 400 })
     }
 
     const supabase = createSupabaseClient()
+
+    // Handle rollback
+    if (action === 'rollback') {
+      // Get the original suggestion
+      const { data: original, error: fetchErr } = await supabase
+        .from('suggestions')
+        .select('*')
+        .eq('id', suggestionId)
+        .single()
+
+      if (fetchErr || !original) {
+        return NextResponse.json({ error: 'Suggestion not found' }, { status: 404 })
+      }
+
+      // Apply the rollback — update the river field back to the original value
+      const fieldMap: Record<string, string> = {
+        cls: 'class',
+        opt: 'optimal_cfs',
+        len: 'length',
+        desc: 'description',
+        desig: 'designations',
+        gauge: 'usgs_gauge',
+      }
+
+      const dbField = fieldMap[original.field]
+      if (dbField) {
+        const { error: updateErr } = await supabase
+          .from('rivers')
+          .update({ [dbField]: original.current_value, updated_at: new Date().toISOString() })
+          .eq('id', original.river_id)
+
+        if (updateErr) {
+          return NextResponse.json({ error: 'Failed to rollback river data: ' + updateErr.message }, { status: 500 })
+        }
+      }
+
+      // Update suggestion status to rolled_back
+      await supabase
+        .from('suggestions')
+        .update({
+          status: 'rolled_back',
+          admin_notes: (original.admin_notes || '') + '\n[Rolled back by admin at ' + new Date().toISOString() + ']',
+          reviewed_at: new Date().toISOString(),
+        })
+        .eq('id', suggestionId)
+
+      // Send rollback notification email
+      await sendEmail({
+        to: ADMIN_EMAIL,
+        subject: `[Rollback] ${original.river_name}: ${original.field} reverted`,
+        html: `
+          <h2>Rollback Confirmed</h2>
+          <p><strong>River:</strong> ${original.river_name} (${original.state_key.toUpperCase()})</p>
+          <p><strong>Field:</strong> ${original.field}</p>
+          <p><strong>Reverted from:</strong> ${original.suggested_value}</p>
+          <p><strong>Reverted to:</strong> ${original.current_value}</p>
+          <hr/>
+          <p style="color:#999;">This change was rolled back by an admin.</p>
+        `,
+      })
+
+      return NextResponse.json({ ok: true, action: 'rollback', river: original.river_name, field: original.field })
+    }
 
     const { data, error } = await supabase
       .from('suggestions')

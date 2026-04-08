@@ -60,6 +60,7 @@ export default function AdminSuggestions() {
   const [processing, setProcessing] = useState<string | null>(null)
   const [banner, setBanner] = useState<Banner | null>(null)
   const [failedIds, setFailedIds] = useState<Set<string>>(new Set())
+  const [rollbackConfirm, setRollbackConfirm] = useState<Suggestion | null>(null)
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
@@ -131,6 +132,44 @@ export default function AdminSuggestions() {
         type: 'error',
         message: `Network error — could not ${action} suggestion`,
         suggestionId,
+      })
+    }
+
+    setProcessing(null)
+  }
+
+  async function handleRollback(suggestion: Suggestion) {
+    setRollbackConfirm(null)
+    setProcessing(suggestion.id)
+    setBanner(null)
+
+    try {
+      const res = await fetch('/api/suggestions', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ suggestionId: suggestion.id, userId, action: 'rollback' }),
+      })
+      const data = await res.json()
+
+      if (data.ok) {
+        setSuggestions(prev => prev.filter(s => s.id !== suggestion.id))
+        setBanner({
+          type: 'success',
+          message: `Rolled back — ${suggestion.river_name} ${fieldLabels[suggestion.field] || suggestion.field} reverted to previous value`,
+          suggestionId: suggestion.id,
+        })
+      } else {
+        setBanner({
+          type: 'error',
+          message: data.error || 'Rollback failed',
+          suggestionId: suggestion.id,
+        })
+      }
+    } catch {
+      setBanner({
+        type: 'error',
+        message: 'Network error — rollback failed',
+        suggestionId: suggestion.id,
       })
     }
 
@@ -371,16 +410,83 @@ export default function AdminSuggestions() {
                 </div>
               )}
 
-              {/* Approved metadata */}
-              {filter === 'approved' && s.reviewed_at && (
-                <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--rv)', marginTop: '8px' }}>
-                  Deployed {new Date(s.reviewed_at).toLocaleDateString()} {new Date(s.reviewed_at).toLocaleTimeString()}
+              {/* Approved metadata + rollback */}
+              {filter === 'approved' && (
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '10px' }}>
+                  {s.reviewed_at && (
+                    <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--rv)' }}>
+                      Deployed {new Date(s.reviewed_at).toLocaleDateString()} {new Date(s.reviewed_at).toLocaleTimeString()}
+                    </div>
+                  )}
+                  <button onClick={() => setRollbackConfirm(s)}
+                    disabled={processing === s.id}
+                    style={{
+                      fontFamily: mono, fontSize: '10px', padding: '5px 14px', borderRadius: 'var(--r)',
+                      background: 'var(--bg)', color: 'var(--dg)', border: '.5px solid var(--dg)',
+                      cursor: processing === s.id ? 'wait' : 'pointer',
+                      opacity: processing === s.id ? 0.6 : 1,
+                    }}>
+                    {processing === s.id ? 'Rolling back...' : 'Rollback'}
+                  </button>
                 </div>
               )}
             </div>
           )
         })}
       </div>
+
+      {/* Rollback confirmation dialog */}
+      {rollbackConfirm && (
+        <div onClick={() => setRollbackConfirm(null)} style={{
+          position: 'fixed', inset: 0, background: 'rgba(0,0,0,.5)',
+          zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}>
+          <div onClick={e => e.stopPropagation()} style={{
+            background: 'var(--bg)', borderRadius: 'var(--rlg)', padding: '24px',
+            maxWidth: '440px', width: '90%', boxShadow: '0 8px 40px rgba(0,0,0,.25)',
+          }}>
+            <div style={{ fontFamily: serif, fontSize: '18px', fontWeight: 700, color: 'var(--dg)', marginBottom: '12px' }}>
+              Confirm Rollback
+            </div>
+            <div style={{ fontSize: '13px', color: 'var(--tx)', lineHeight: 1.6, marginBottom: '16px' }}>
+              This will revert <strong>{fieldLabels[rollbackConfirm.field] || rollbackConfirm.field}</strong> on <strong>{rollbackConfirm.river_name}</strong> from
+              &ldquo;{rollbackConfirm.suggested_value}&rdquo; back to &ldquo;{rollbackConfirm.current_value}&rdquo;.
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '16px' }}>
+              <div>
+                <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--rv)', textTransform: 'uppercase', marginBottom: '2px' }}>Will revert from</div>
+                <div style={{ fontFamily: mono, fontSize: '11px', padding: '6px 8px', background: 'var(--dglt)', borderRadius: '4px', border: '.5px solid var(--dg)', textDecoration: 'line-through' }}>
+                  {rollbackConfirm.suggested_value}
+                </div>
+              </div>
+              <div>
+                <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--rv)', textTransform: 'uppercase', marginBottom: '2px' }}>Will restore to</div>
+                <div style={{ fontFamily: mono, fontSize: '11px', padding: '6px 8px', background: 'var(--rvlt)', borderRadius: '4px', border: '.5px solid var(--rvmd)', fontWeight: 600 }}>
+                  {rollbackConfirm.current_value}
+                </div>
+              </div>
+            </div>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <button onClick={() => setRollbackConfirm(null)}
+                style={{
+                  flex: 1, padding: '10px', fontFamily: mono, fontSize: '12px',
+                  background: 'var(--bg)', color: 'var(--tx2)', border: '.5px solid var(--bd2)',
+                  borderRadius: 'var(--r)', cursor: 'pointer',
+                }}>
+                Cancel
+              </button>
+              <button onClick={() => handleRollback(rollbackConfirm)}
+                style={{
+                  flex: 1, padding: '10px', fontFamily: mono, fontSize: '12px', fontWeight: 500,
+                  background: 'var(--dg)', color: '#fff', border: 'none',
+                  borderRadius: 'var(--r)', cursor: 'pointer',
+                }}>
+                Yes, Rollback
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Spinner animation */}
       <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
