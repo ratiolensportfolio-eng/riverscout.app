@@ -49,7 +49,7 @@ export default function AdminChanges() {
     supabase.auth.getUser().then(({ data }) => {
       const uid = data.user?.id
       setUserId(uid ?? null)
-      setAuthorized(isAdmin(uid))
+      setAuthorized(isAdmin(uid, data.user?.email))
       setLoading(false)
     })
   }, [])
