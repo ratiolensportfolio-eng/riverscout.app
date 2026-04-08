@@ -3751,7 +3751,7 @@ export const STATES: StatesDB = {
         desig: 'Louisiana Natural and Scenic River',
         secs: ['Upper — Osyka to Kentwood, 30 mi, narrow piney woods', 'Middle — Kentwood to Amite, 25 mi, sandbars and riffles', 'Lower — Amite to Lake Pontchartrain, 25 mi, cypress swamp'],
         history: [
-          { era: 'native', entries: [{ yr: 'Pre-contact', title: "Tangipahoa People — "Corncob Gatherers"", text: "The Tangipahoa River takes its name from the Tangipahoa people, a small Muskogean-speaking tribe whose name translates roughly to 'corncob gatherers.' They inhabited the pine flatwoods and river bottoms of this region for centuries before European contact.", src: 'Louisiana Division of Archaeology; Tangipahoa Parish Historical Society' }] },
+          { era: 'native', entries: [{ yr: 'Pre-contact', title: 'Tangipahoa People — Corncob Gatherers', text: "The Tangipahoa River takes its name from the Tangipahoa people, a small Muskogean-speaking tribe whose name translates roughly to 'corncob gatherers.' They inhabited the pine flatwoods and river bottoms of this region for centuries before European contact.", src: 'Louisiana Division of Archaeology; Tangipahoa Parish Historical Society' }] },
           { era: 'modern', entries: [{ yr: '2014', title: 'Louisiana Natural and Scenic River Protection', text: "The Louisiana Department of Wildlife and Fisheries extended Natural and Scenic River protections to the upper Tangipahoa, preserving the sand-bottomed corridor from channelization and ensuring continued paddling access.", src: 'LDWF Natural and Scenic Rivers Program' }] },
         ],
         docs: [],
