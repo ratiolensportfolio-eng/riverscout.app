@@ -845,8 +845,11 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
         {/* ── FISHING ────────────────────────────────────────── */}
         {tab === 'Fishing' && (() => {
           const fish = FISHERIES[river.id]
-          if (!fish && stockingEvents.length === 0) return (
+          if (!fish && stockingLoaded && stockingEvents.length === 0) return (
             <EmptyState icon="&#x1F3A3;" label="Fisheries data coming soon" sub="Species, hatch charts, stocking reports, and run timing for this river will appear here." />
+          )
+          if (!fish && !stockingLoaded) return (
+            <div style={{ padding: '20px', textAlign: 'center', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>Loading...</div>
           )
 
           const mono = "'IBM Plex Mono', monospace"
