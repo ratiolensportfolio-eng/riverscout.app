@@ -5,10 +5,13 @@ import { STATES } from '@/data/rivers'
 import { FISHERIES } from '@/data/fisheries'
 import { RAPIDS } from '@/data/rapids'
 
-// POST /api/seed?userId=...&secret=...
+// GET or POST /api/seed?userId=...&secret=...
 // Seeds all river data from static files into Supabase tables
 // Admin-only, requires CRON_SECRET or admin userId
-export async function POST(req: NextRequest) {
+export async function GET(req: NextRequest) { return seed(req) }
+export async function POST(req: NextRequest) { return seed(req) }
+
+async function seed(req: NextRequest) {
   const userId = req.nextUrl.searchParams.get('userId')
   const secret = req.nextUrl.searchParams.get('secret')
   const cronSecret = process.env.CRON_SECRET
