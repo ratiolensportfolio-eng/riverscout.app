@@ -1080,11 +1080,11 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                           color: 'var(--tx2)', lineHeight: 1.6, textAlign: 'center',
                         }}>
                           No upcoming stockings currently scheduled.
-                          {dnrUrl && (
-                            <> Check the <a href={dnrUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--rv)' }}>
+                          {dnrUrl ? (
+                            <span> Check the <a href={String(dnrUrl)} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--rv)' }}>
                               {String(river.stateName)} DNR stocking page &#8599;
-                            </a> for the latest schedule.</>
-                          )}
+                            </a> for the latest schedule.</span>
+                          ) : null}
                         </div>
                       )}
                     </div>
