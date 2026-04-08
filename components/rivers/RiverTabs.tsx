@@ -206,7 +206,7 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
       <div style={{
         display: 'flex', borderBottom: '.5px solid var(--bd)',
         overflowX: 'auto', flexShrink: 0,
-      }} className="no-scrollbar">
+      }} className="no-scrollbar tab-bar">
         {TABS.map(t => (
           <button
             key={t}
@@ -279,7 +279,7 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
             ))}
 
             {/* Stats grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px', marginBottom: '12px' }}>
+            <div className="stats-grid" style={{ marginBottom: '12px' }}>
               {[
                 { n: river.len, l: 'Length' },
                 { n: `Class ${river.cls}`, l: 'Difficulty' },

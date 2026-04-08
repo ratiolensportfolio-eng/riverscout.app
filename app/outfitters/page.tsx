@@ -55,7 +55,7 @@ export default function OutfitterPortal() {
 
       {/* Pricing tiers */}
       <div style={{ padding: '0 28px 40px', maxWidth: '1100px', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+        <div className="tier-grid">
           {OUTFITTER_TIERS.map((tier) => {
             const colors = tierColors[tier.tier]
             const isPopular = tier.tier === 'featured'

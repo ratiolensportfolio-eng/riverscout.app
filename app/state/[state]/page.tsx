@@ -58,9 +58,9 @@ export default async function StatePage({ params }: Props) {
         </Link>
       </nav>
 
-      <div style={{ display: 'flex', height: 'calc(100vh - 44px)' }}>
+      <div className="state-layout">
         {/* Sidebar */}
-        <div style={{ width: '315px', flexShrink: 0, borderRight: '.5px solid var(--bd)', overflowY: 'auto' }}>
+        <div className="state-sidebar">
           <div style={{ padding: '10px 12px', borderBottom: '.5px solid var(--bd)' }}>
             <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 700, marginBottom: '3px' }}>
               {state.name}
@@ -141,7 +141,7 @@ export default async function StatePage({ params }: Props) {
         </div>
 
         {/* Main panel — interactive state map */}
-        <div style={{ flex: 1, position: 'relative' }}>
+        <div className="state-map">
           {(() => {
             const mapConfig = STATE_MAP_CONFIG[stateKey]
             const riverDots = state.rivers.map(river => {

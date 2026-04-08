@@ -80,3 +80,131 @@ body {
 .pulse-dot {
   animation: pulse 2s ease-in-out infinite;
 }
+
+/* ── Mobile responsive ─────────────────────────────── */
+
+/* State page: sidebar + map → stacked on mobile */
+.state-layout {
+  display: flex;
+  height: calc(100vh - 44px);
+}
+.state-sidebar {
+  width: 315px;
+  flex-shrink: 0;
+  border-right: .5px solid var(--bd);
+  overflow-y: auto;
+}
+.state-map {
+  flex: 1;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .state-layout {
+    flex-direction: column;
+    height: auto;
+    min-height: calc(100vh - 44px);
+  }
+  .state-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: .5px solid var(--bd);
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+  .state-map {
+    min-height: 300px;
+    height: 50vh;
+  }
+}
+
+/* Nav pills: horizontal scroll on mobile */
+.nav-pills {
+  display: flex;
+  gap: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+}
+@media (max-width: 640px) {
+  .nav-pills {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 4px;
+  }
+  .nav-pills::-webkit-scrollbar { display: none; }
+  .nav-pills > * {
+    flex-shrink: 0;
+  }
+}
+
+/* Tab bar: fade edge on mobile */
+.tab-bar {
+  position: relative;
+}
+.tab-bar::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 24px;
+  background: linear-gradient(to right, transparent, var(--bg));
+  pointer-events: none;
+  display: none;
+}
+@media (max-width: 640px) {
+  .tab-bar::after {
+    display: block;
+  }
+}
+
+/* Stats grid: 3 → 2 columns on mobile */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* River header: stack on mobile */
+.river-flow-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+@media (max-width: 480px) {
+  .river-flow-row {
+    gap: 6px;
+  }
+}
+
+/* Outfitter pricing: responsive grid */
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+@media (max-width: 640px) {
+  .tier-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Ensure touch targets are at least 44px */
+@media (max-width: 640px) {
+  button, a {
+    min-height: 36px;
+  }
+}
+
+/* Viewport meta tag support */
+@viewport {
+  width: device-width;
+  initial-scale: 1;
+}
