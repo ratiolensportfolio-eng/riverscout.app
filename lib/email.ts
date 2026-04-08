@@ -297,4 +297,244 @@ export function stockingAlertEmail(
 </body></html>`
 }
 
+// ── Hatch Alert Email Templates ──────────────────────────────
+
+// Template 1 — Temperature trigger alert
+export function hatchTempTriggerEmail(
+  riverName: string,
+  stateSlug: string,
+  riverSlug: string,
+  hatchName: string,
+  hatchDescription: string,
+  waterTempF: number,
+  triggerTempF: number,
+  cfs: number | null,
+  condition: string,
+  peakWindow: string,
+): string {
+  const condColor = condition === 'optimal' ? '#1D9E75' : condition === 'high' ? '#BA7517' : condition === 'flood' ? '#A32D2D' : '#666660'
+  const condLabel = condition === 'optimal' ? 'Optimal' : condition === 'high' ? 'High' : condition === 'flood' ? 'Flood' : condition === 'low' ? 'Low' : '—'
+  const riverUrl = `https://riverscout.app/rivers/${stateSlug}/${riverSlug}`
+
+  return `<!DOCTYPE html>
+<html><head><meta charset="utf-8" /></head>
+<body style="margin: 0; padding: 0; background: #ffffff; font-family: Georgia, serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 520px; margin: 0 auto; padding: 20px;">
+    <tr>
+      <td style="padding-bottom: 16px; border-bottom: 1px solid #e2e1d8;">
+        <span style="font-family: Georgia, serif; font-size: 20px; font-weight: 700; color: #085041;">
+          River<span style="color: #185FA5;">Scout</span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 24px 0;">
+        <div style="font-family: monospace; font-size: 10px; color: #185FA5; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;">
+          Hatch Alert — Temperature Trigger
+        </div>
+        <div style="font-family: Georgia, serif; font-size: 22px; font-weight: 700; color: #1a1a18; line-height: 1.3; margin-bottom: 16px;">
+          ${hatchName} conditions developing on ${riverName}
+        </div>
+        <p style="font-size: 15px; color: #1a1a18; line-height: 1.7; margin-bottom: 20px;">
+          Water temperature on the ${riverName} just crossed the ${hatchName} trigger threshold.
+        </p>
+
+        <table width="100%" cellpadding="0" cellspacing="0" style="background: #f6f5f2; border-radius: 8px; border: 1px solid #e2e1d8; margin-bottom: 20px;">
+          <tr><td style="padding: 16px;">
+            <div style="font-family: monospace; font-size: 10px; color: #aaa99a; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Current Conditions</div>
+            <div style="font-family: monospace; font-size: 13px; color: #1a1a18; margin-bottom: 6px;">
+              Water temp: <strong>${waterTempF}°F</strong> <span style="color: #1D9E75;">&#10003;</span>
+              <span style="color: #aaa99a;">(trigger: ${triggerTempF}°F)</span>
+            </div>
+            ${cfs !== null ? `<div style="font-family: monospace; font-size: 13px; color: #1a1a18; margin-bottom: 6px;">
+              Flow: <strong>${cfs.toLocaleString()} cfs</strong> —
+              <span style="color: ${condColor}; font-weight: 600;">${condLabel}</span>
+            </div>` : ''}
+          </td></tr>
+        </table>
+
+        <p style="font-size: 14px; color: #666660; line-height: 1.7; margin-bottom: 8px;">
+          ${hatchDescription}
+        </p>
+        <p style="font-family: monospace; font-size: 12px; color: #aaa99a; margin-bottom: 20px;">
+          Historical peak window: ${peakWindow}
+        </p>
+
+        <div style="text-align: center; margin: 24px 0;">
+          <a href="${riverUrl}" style="display: inline-block; padding: 12px 28px; background: #085041; color: #ffffff; font-family: monospace; font-size: 13px; text-decoration: none; border-radius: 6px;">
+            View ${riverName} Conditions &rarr;
+          </a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 16px 0 0; border-top: 1px solid #e2e1d8;">
+        <div style="font-family: monospace; font-size: 10px; color: #aaa99a; text-align: center; line-height: 1.6;">
+          You received this because you subscribed to ${hatchName} alerts for ${riverName} on
+          <a href="https://riverscout.app" style="color: #1D9E75;">RiverScout</a>.<br />
+          <a href="https://riverscout.app/alerts" style="color: #aaa99a;">Manage your alerts</a>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body></html>`
+}
+
+// Template 2 — Calendar window alert (sent N days before peak)
+export function hatchCalendarEmail(
+  riverName: string,
+  stateSlug: string,
+  riverSlug: string,
+  hatchName: string,
+  daysUntilPeak: number,
+  waterTempF: number | null,
+  triggerTempF: number | null,
+  cfs: number | null,
+  condition: string,
+  peakWindow: string,
+): string {
+  const condColor = condition === 'optimal' ? '#1D9E75' : condition === 'high' ? '#BA7517' : condition === 'flood' ? '#A32D2D' : '#666660'
+  const condLabel = condition === 'optimal' ? 'Optimal' : condition === 'high' ? 'High' : condition === 'flood' ? 'Flood' : condition === 'low' ? 'Low' : '—'
+  const riverUrl = `https://riverscout.app/rivers/${stateSlug}/${riverSlug}`
+  const tempStatus = triggerTempF && waterTempF
+    ? (waterTempF >= triggerTempF
+      ? `Water temp: <strong>${waterTempF}°F</strong> <span style="color: #1D9E75;">&#10003;</span> <span style="color: #aaa99a;">(trigger: ${triggerTempF}°F — met!)</span>`
+      : `Water temp: <strong>${waterTempF}°F</strong> <span style="color: #aaa99a;">(need ${triggerTempF}°F — ${triggerTempF - waterTempF}° away)</span>`)
+    : waterTempF ? `Water temp: <strong>${waterTempF}°F</strong>` : 'Water temp: not available'
+
+  return `<!DOCTYPE html>
+<html><head><meta charset="utf-8" /></head>
+<body style="margin: 0; padding: 0; background: #ffffff; font-family: Georgia, serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 520px; margin: 0 auto; padding: 20px;">
+    <tr>
+      <td style="padding-bottom: 16px; border-bottom: 1px solid #e2e1d8;">
+        <span style="font-family: Georgia, serif; font-size: 20px; font-weight: 700; color: #085041;">
+          River<span style="color: #185FA5;">Scout</span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 24px 0;">
+        <div style="font-family: monospace; font-size: 10px; color: #185FA5; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;">
+          Hatch Alert — ${daysUntilPeak} Days Away
+        </div>
+        <div style="font-family: Georgia, serif; font-size: 22px; font-weight: 700; color: #1a1a18; line-height: 1.3; margin-bottom: 16px;">
+          ${hatchName} season starts in ${daysUntilPeak} days on ${riverName}
+        </div>
+        <p style="font-size: 15px; color: #1a1a18; line-height: 1.7; margin-bottom: 20px;">
+          Here's where conditions stand today:
+        </p>
+
+        <table width="100%" cellpadding="0" cellspacing="0" style="background: #f6f5f2; border-radius: 8px; border: 1px solid #e2e1d8; margin-bottom: 20px;">
+          <tr><td style="padding: 16px;">
+            <div style="font-family: monospace; font-size: 13px; color: #1a1a18; margin-bottom: 6px;">
+              ${tempStatus}
+            </div>
+            ${cfs !== null ? `<div style="font-family: monospace; font-size: 13px; color: #1a1a18; margin-bottom: 6px;">
+              Flow: <strong>${cfs.toLocaleString()} cfs</strong> —
+              <span style="color: ${condColor}; font-weight: 600;">${condLabel}</span>
+            </div>` : ''}
+            <div style="font-family: monospace; font-size: 12px; color: #aaa99a; margin-top: 8px;">
+              Historical peak: ${peakWindow}
+            </div>
+          </td></tr>
+        </table>
+
+        <div style="text-align: center; margin: 24px 0;">
+          <a href="${riverUrl}" style="display: inline-block; padding: 12px 28px; background: #085041; color: #ffffff; font-family: monospace; font-size: 13px; text-decoration: none; border-radius: 6px;">
+            View Live ${riverName} Conditions &rarr;
+          </a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 16px 0 0; border-top: 1px solid #e2e1d8;">
+        <div style="font-family: monospace; font-size: 10px; color: #aaa99a; text-align: center; line-height: 1.6;">
+          You received this because you subscribed to ${hatchName} alerts for ${riverName} on
+          <a href="https://riverscout.app" style="color: #1D9E75;">RiverScout</a>.<br />
+          <a href="https://riverscout.app/alerts" style="color: #aaa99a;">Manage your alerts</a>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body></html>`
+}
+
+// Template 3 — Peak conditions alert
+export function hatchPeakEmail(
+  riverName: string,
+  stateSlug: string,
+  riverSlug: string,
+  hatchName: string,
+  waterTempF: number,
+  cfs: number | null,
+  condition: string,
+  peakWindow: string,
+  hatchNotes: string,
+): string {
+  const condColor = condition === 'optimal' ? '#1D9E75' : condition === 'high' ? '#BA7517' : '#666660'
+  const condLabel = condition === 'optimal' ? 'Optimal' : condition === 'high' ? 'High' : condition === 'flood' ? 'Flood' : condition === 'low' ? 'Low' : '—'
+  const riverUrl = `https://riverscout.app/rivers/${stateSlug}/${riverSlug}`
+
+  return `<!DOCTYPE html>
+<html><head><meta charset="utf-8" /></head>
+<body style="margin: 0; padding: 0; background: #ffffff; font-family: Georgia, serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 520px; margin: 0 auto; padding: 20px;">
+    <tr>
+      <td style="padding-bottom: 16px; border-bottom: 1px solid #e2e1d8;">
+        <span style="font-family: Georgia, serif; font-size: 20px; font-weight: 700; color: #085041;">
+          River<span style="color: #185FA5;">Scout</span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 24px 0;">
+        <div style="font-family: monospace; font-size: 10px; color: #1D9E75; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px;">
+          Peak Conditions — Go Now
+        </div>
+        <div style="font-family: Georgia, serif; font-size: 24px; font-weight: 700; color: #1a1a18; line-height: 1.3; margin-bottom: 16px;">
+          Peak ${hatchName} conditions on ${riverName}
+        </div>
+
+        <table width="100%" cellpadding="0" cellspacing="0" style="background: #E1F5EE; border-radius: 8px; border: 1px solid #9FE1CB; margin-bottom: 20px;">
+          <tr><td style="padding: 16px;">
+            <div style="font-family: monospace; font-size: 10px; color: #085041; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">All Indicators Green</div>
+            <div style="font-family: monospace; font-size: 13px; color: #1a1a18; margin-bottom: 6px;">
+              Water temp: <strong>${waterTempF}°F</strong> <span style="color: #1D9E75;">&#10003;</span>
+            </div>
+            ${cfs !== null ? `<div style="font-family: monospace; font-size: 13px; color: #1a1a18; margin-bottom: 6px;">
+              Flow: <strong>${cfs.toLocaleString()} cfs</strong>
+              <span style="color: ${condColor}; font-weight: 600;">${condLabel}</span> <span style="color: #1D9E75;">&#10003;</span>
+            </div>` : ''}
+            <div style="font-family: monospace; font-size: 13px; color: #1a1a18;">
+              Calendar: <strong>Peak window</strong> <span style="color: #1D9E75;">&#10003;</span>
+              <span style="color: #aaa99a;">(${peakWindow})</span>
+            </div>
+          </td></tr>
+        </table>
+
+        ${hatchNotes ? `<p style="font-size: 15px; color: #1a1a18; line-height: 1.7; margin-bottom: 20px; font-style: italic;">
+          ${hatchNotes}
+        </p>` : ''}
+
+        <div style="text-align: center; margin: 24px 0;">
+          <a href="${riverUrl}" style="display: inline-block; padding: 14px 32px; background: #1D9E75; color: #ffffff; font-family: monospace; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 6px; letter-spacing: .5px;">
+            View Current Conditions &rarr;
+          </a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 16px 0 0; border-top: 1px solid #e2e1d8;">
+        <div style="font-family: monospace; font-size: 10px; color: #aaa99a; text-align: center; line-height: 1.6;">
+          You received this because you subscribed to ${hatchName} alerts for ${riverName} on
+          <a href="https://riverscout.app" style="color: #1D9E75;">RiverScout</a>.<br />
+          <a href="https://riverscout.app/alerts" style="color: #aaa99a;">Manage your alerts</a>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body></html>`
+}
+
 export { ADMIN_EMAIL }
