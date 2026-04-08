@@ -10,6 +10,7 @@ import { hasRiverMap, loadRiverMap } from '@/data/river-maps'
 import { FISHERIES } from '@/data/fisheries'
 import { RAPIDS } from '@/data/rapids'
 import FishIcon from '@/components/icons/FishIcons'
+import { getHatchTrigger } from '@/lib/hatch-triggers'
 import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 const TABS = ['Overview', 'History', 'Trip Reports', 'Fishing', 'Maps & Guides', 'Documents'] as const
@@ -209,6 +210,14 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
   const [stockingSubmitting, setStockingSubmitting] = useState(false)
   const [stockingSubmitted, setStockingSubmitted] = useState(false)
   const [stockingError, setStockingError] = useState('')
+  // Hatch alerts state
+  interface HatchAlertSub { id: string; hatch_name: string; active: boolean }
+  const [hatchAlerts, setHatchAlerts] = useState<HatchAlertSub[]>([])
+  const [hatchAlertsLoaded, setHatchAlertsLoaded] = useState(false)
+  const [hatchAlertExpanded, setHatchAlertExpanded] = useState<string | null>(null)
+  const [hatchAlertSaving, setHatchAlertSaving] = useState<string | null>(null)
+  const [hatchAlertDaysBefore, setHatchAlertDaysBefore] = useState('7')
+
   const [stockingAlertOpen, setStockingAlertOpen] = useState(false)
   const [stockingAlertEmail, setStockingAlertEmail] = useState('')
   const [stockingAlertSpecies, setStockingAlertSpecies] = useState<string[]>(['All species'])
@@ -219,6 +228,16 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
   useEffect(() => {
     if (tab === 'Fishing' && !stockingLoaded) fetchStocking()
   }, [tab, stockingLoaded, fetchStocking])
+
+  // Fetch hatch alerts when Fishing tab is selected and user is signed in
+  useEffect(() => {
+    if (tab === 'Fishing' && stockingAlertEmail && !hatchAlertsLoaded) {
+      fetch(`/api/hatch-alerts?email=${encodeURIComponent(stockingAlertEmail)}&riverId=${river.id}`)
+        .then(r => r.json())
+        .then(d => { if (d.alerts) setHatchAlerts(d.alerts); setHatchAlertsLoaded(true) })
+        .catch(() => setHatchAlertsLoaded(true))
+    }
+  }, [tab, stockingAlertEmail, hatchAlertsLoaded, river.id])
 
   // Check auth + Pro status for stocking form
   useEffect(() => {
@@ -1157,26 +1176,164 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                 </div>
               )}
 
-              {/* Hatch Calendar */}
+              {/* Hatch Calendar with Alerts */}
               {fish && fish.hatches.length > 0 && (
                 <div style={{ marginBottom: '16px' }}>
-                  <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
-                    Hatch Calendar
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                    <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                      Hatch Calendar &amp; Alerts
+                    </div>
+                    {stockingAlertEmail && (
+                      <span style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)' }}>
+                        {hatchAlerts.length} alert{hatchAlerts.length !== 1 ? 's' : ''} set
+                      </span>
+                    )}
                   </div>
+                  {stockingAlertEmail && (
+                    <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', marginBottom: '10px', lineHeight: 1.6 }}>
+                      Get notified when conditions are right for each hatch. We monitor water temperature and seasonal timing.
+                    </div>
+                  )}
                   <div style={{ border: '.5px solid var(--bd)', borderRadius: 'var(--r)', overflow: 'hidden' }}>
-                    {fish.hatches.map((h, i) => (
-                      <div key={i} style={{
-                        display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
-                        padding: '7px 10px', borderBottom: i < fish.hatches.length - 1 ? '.5px solid var(--bd)' : 'none',
-                        background: i % 2 === 0 ? 'var(--bg)' : 'var(--bg2)',
-                      }}>
-                        <div>
-                          <span style={{ fontFamily: mono, fontSize: '11px', fontWeight: 500 }}>{h.name}</span>
-                          {h.notes && <div style={{ fontSize: '9px', color: 'var(--tx2)', marginTop: '1px' }}>{h.notes}</div>}
+                    {fish.hatches.map((h, i) => {
+                      const trigger = getHatchTrigger(h.name)
+                      const isAlertSet = hatchAlerts.some(a => a.hatch_name === h.name && a.active)
+                      const isExpanded = hatchAlertExpanded === h.name
+                      const isSaving = hatchAlertSaving === h.name
+
+                      return (
+                        <div key={i} style={{
+                          borderBottom: i < fish.hatches.length - 1 ? '.5px solid var(--bd)' : 'none',
+                          background: i % 2 === 0 ? 'var(--bg)' : 'var(--bg2)',
+                        }}>
+                          <div style={{
+                            display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
+                            padding: '9px 10px',
+                          }}>
+                            <div style={{ flex: 1 }}>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                <span style={{ fontFamily: mono, fontSize: '11px', fontWeight: 500 }}>{h.name}</span>
+                                {isAlertSet && <span style={{ color: 'var(--rv)', fontSize: '11px' }}>&#10003;</span>}
+                              </div>
+                              <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--rv)', marginTop: '2px' }}>
+                                {h.timing}
+                              </div>
+                              {trigger && (
+                                <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--wt)', marginTop: '2px' }}>
+                                  Trigger: {trigger.description}
+                                </div>
+                              )}
+                              {h.notes && <div style={{ fontSize: '9px', color: 'var(--tx2)', marginTop: '2px', fontStyle: 'italic' }}>{h.notes}</div>}
+                            </div>
+                            {/* Alert button */}
+                            <div style={{ flexShrink: 0, marginLeft: '8px' }}>
+                              {isAlertSet ? (
+                                <button onClick={() => {
+                                  const alert = hatchAlerts.find(a => a.hatch_name === h.name)
+                                  if (alert) {
+                                    fetch(`/api/hatch-alerts?id=${alert.id}`, { method: 'DELETE' })
+                                    setHatchAlerts(prev => prev.filter(a => a.id !== alert.id))
+                                  }
+                                }} style={{
+                                  fontFamily: mono, fontSize: '9px', color: 'var(--rv)',
+                                  background: 'var(--rvlt)', border: '.5px solid var(--rvmd)',
+                                  borderRadius: '4px', padding: '4px 8px', cursor: 'pointer',
+                                  display: 'flex', alignItems: 'center', gap: '3px',
+                                }}>
+                                  &#10003; Alert Set
+                                </button>
+                              ) : stockingAlertEmail ? (
+                                <button onClick={() => setHatchAlertExpanded(isExpanded ? null : h.name)} style={{
+                                  fontFamily: mono, fontSize: '9px', color: 'var(--wt)',
+                                  background: 'var(--wtlt)', border: '.5px solid var(--wtmd)',
+                                  borderRadius: '4px', padding: '4px 8px', cursor: 'pointer',
+                                }}>
+                                  Set Alert
+                                </button>
+                              ) : (
+                                <a href="/login" style={{
+                                  fontFamily: mono, fontSize: '9px', color: 'var(--tx3)',
+                                  textDecoration: 'underline',
+                                }}>
+                                  Sign in
+                                </a>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Expanded alert settings */}
+                          {isExpanded && (
+                            <div style={{
+                              padding: '10px 12px', borderTop: '.5px solid var(--bd)',
+                              background: 'var(--wtlt)',
+                            }}>
+                              <div style={{ fontFamily: mono, fontSize: '10px', fontWeight: 500, color: 'var(--wt)', marginBottom: '8px' }}>
+                                Alert settings for {h.name}
+                              </div>
+                              <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', marginBottom: '8px' }}>
+                                {trigger ? (
+                                  <>Notify when water temp hits {trigger.tempMinF}°F and during the {h.timing} window</>
+                                ) : (
+                                  <>Notify before the {h.timing} window</>
+                                )}
+                              </div>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+                                <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>Alert lead time:</span>
+                                <select value={hatchAlertDaysBefore} onChange={e => setHatchAlertDaysBefore(e.target.value)}
+                                  style={{ padding: '4px 8px', fontFamily: mono, fontSize: '10px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)' }}>
+                                  <option value="3">3 days before</option>
+                                  <option value="7">7 days before</option>
+                                  <option value="14">14 days before</option>
+                                </select>
+                              </div>
+                              <div style={{ display: 'flex', gap: '8px' }}>
+                                <button disabled={isSaving} onClick={async () => {
+                                  setHatchAlertSaving(h.name)
+                                  try {
+                                    const res = await fetch('/api/hatch-alerts', {
+                                      method: 'POST',
+                                      headers: { 'Content-Type': 'application/json' },
+                                      body: JSON.stringify({
+                                        userId: stockingUserId,
+                                        email: stockingAlertEmail,
+                                        riverId: river.id,
+                                        riverName: river.n,
+                                        stateKey: river.stateKey,
+                                        hatchName: h.name,
+                                        species: h.name,
+                                        notifyDaysBefore: parseInt(hatchAlertDaysBefore),
+                                        notifyOnTempTrigger: !!trigger,
+                                        notifyOnCalendar: true,
+                                      }),
+                                    })
+                                    const data = await res.json()
+                                    if (data.ok && data.alert) {
+                                      setHatchAlerts(prev => [...prev, { id: data.alert.id, hatch_name: h.name, active: true }])
+                                    }
+                                  } catch { /* ignore */ }
+                                  setHatchAlertSaving(null)
+                                  setHatchAlertExpanded(null)
+                                }} style={{
+                                  fontFamily: mono, fontSize: '10px', fontWeight: 500,
+                                  padding: '6px 16px', borderRadius: 'var(--r)',
+                                  background: 'var(--wt)', color: '#fff', border: 'none',
+                                  cursor: isSaving ? 'wait' : 'pointer', opacity: isSaving ? 0.6 : 1,
+                                }}>
+                                  {isSaving ? 'Saving...' : 'Save Alert'}
+                                </button>
+                                <button onClick={() => setHatchAlertExpanded(null)} style={{
+                                  fontFamily: mono, fontSize: '10px', padding: '6px 12px',
+                                  borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx3)',
+                                  border: '.5px solid var(--bd2)', cursor: 'pointer',
+                                }}>
+                                  Cancel
+                                </button>
+                              </div>
+                            </div>
+                          )}
                         </div>
-                        <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--rv)', flexShrink: 0, marginLeft: '8px' }}>{h.timing}</span>
-                      </div>
-                    ))}
+                      )
+                    })}
                   </div>
                 </div>
               )}
