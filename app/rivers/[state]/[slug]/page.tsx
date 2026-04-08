@@ -4,6 +4,7 @@ import { getRiverBySlug, getStateSlug, getRiverSlug, ALL_RIVERS } from '@/data/r
 import { fetchGaugeData, formatCfs, trendArrow, celsiusToFahrenheit, isHypothermiaRisk } from '@/lib/usgs'
 import RiverTabs from '@/components/rivers/RiverTabs'
 import SuggestCorrection from '@/components/SuggestCorrection'
+import SaveOffline from '@/components/SaveOffline'
 import DataConfidenceBanner from '@/components/rivers/DataConfidenceBanner'
 import { getDesignationBadges } from '@/lib/designations'
 import { RAPIDS } from '@/data/rapids'
@@ -162,7 +163,10 @@ export default async function RiverPage({ params }: Props) {
           <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)' }}>
             Optimal: {river.opt} CFS · USGS #{river.g}
           </div>
-          <SuggestCorrection riverId={river.id} riverName={river.n} stateKey={river.stateKey} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <SaveOffline riverId={river.id} riverName={river.n} gaugeId={river.g} stateSlug={state} riverSlug={slug} />
+            <SuggestCorrection riverId={river.id} riverName={river.n} stateKey={river.stateKey} />
+          </div>
         </div>
       </div>
 
