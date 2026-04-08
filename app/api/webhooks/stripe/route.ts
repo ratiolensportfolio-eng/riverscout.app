@@ -183,8 +183,9 @@ export async function POST(req: NextRequest) {
       console.log(`[STRIPE] Subscription updated: ${customerId} — status: ${sub.status}`)
 
       if (isProSubscription(sub)) {
-        const currentPeriodEnd = sub.current_period_end
-          ? new Date(sub.current_period_end * 1000).toISOString()
+        const periodEnd = sub.items.data[0]?.current_period_end
+        const currentPeriodEnd = periodEnd
+          ? new Date(periodEnd * 1000).toISOString()
           : null
 
         await supabase
