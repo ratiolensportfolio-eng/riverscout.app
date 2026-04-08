@@ -1082,7 +1082,7 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                           No upcoming stockings currently scheduled.
                           {dnrUrl && (
                             <> Check the <a href={dnrUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--rv)' }}>
-                              {river.stateName} DNR stocking page &#8599;
+                              {String(river.stateName)} DNR stocking page &#8599;
                             </a> for the latest schedule.</>
                           )}
                         </div>
