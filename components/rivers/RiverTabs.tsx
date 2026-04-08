@@ -1,13 +1,15 @@
 'use client'
 
-import { useState, useEffect, lazy, Suspense } from 'react'
+import { useState, useEffect, useCallback, lazy, Suspense } from 'react'
 import type { River, FlowData } from '@/types'
 import { formatCfs, trendArrow, celsiusToFahrenheit, isHypothermiaRisk } from '@/lib/usgs'
+import { supabase } from '@/lib/supabase'
 
 const RiverMap = lazy(() => import('@/components/maps/RiverMap'))
 import { hasRiverMap, loadRiverMap } from '@/data/river-maps'
 import { FISHERIES } from '@/data/fisheries'
 import { RAPIDS } from '@/data/rapids'
+import FishIcon from '@/components/icons/FishIcons'
 import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 const TABS = ['Overview', 'History', 'Trip Reports', 'Fishing', 'Maps & Guides', 'Documents'] as const
@@ -104,6 +106,70 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
   const riverHasMap = hasRiverMap(river.id)
   const [outfitters, setOutfitters] = useState<OutfitterListing[]>([])
   const [outfittersLoaded, setOutfittersLoaded] = useState(false)
+
+  // Stocking data
+  interface StockingEvent {
+    id: string
+    stocking_date: string
+    is_scheduled: boolean
+    species: string
+    quantity: number | null
+    size_category: string | null
+    size_inches: number | null
+    location_description: string | null
+    stocking_authority: string | null
+    source_url: string | null
+    verified: boolean
+  }
+  const [stockingEvents, setStockingEvents] = useState<StockingEvent[]>([])
+  const [stockingLoaded, setStockingLoaded] = useState(false)
+
+  const fetchStocking = useCallback(() => {
+    fetch(`/api/stocking?riverId=${river.id}`)
+      .then(r => r.json())
+      .then(data => {
+        if (data.events) setStockingEvents(data.events)
+        setStockingLoaded(true)
+      })
+      .catch(() => setStockingLoaded(true))
+  }, [river.id])
+
+  // Stocking form state
+  const [stockingUserId, setStockingUserId] = useState<string | null>(null)
+  const [userIsPro, setUserIsPro] = useState(false)
+  const [stockingForm, setStockingForm] = useState({
+    species: '', date: '', isScheduled: false, quantity: '',
+    sizeCategory: '', locationDesc: '', sourceUrl: '',
+  })
+  const [stockingSubmitting, setStockingSubmitting] = useState(false)
+  const [stockingSubmitted, setStockingSubmitted] = useState(false)
+  const [stockingError, setStockingError] = useState('')
+  const [stockingAlertOpen, setStockingAlertOpen] = useState(false)
+  const [stockingAlertEmail, setStockingAlertEmail] = useState('')
+  const [stockingAlertSpecies, setStockingAlertSpecies] = useState<string[]>(['All species'])
+  const [stockingAlertSubmitting, setStockingAlertSubmitting] = useState(false)
+  const [stockingAlertDone, setStockingAlertDone] = useState(false)
+
+  // Fetch stocking data when Fishing tab is selected
+  useEffect(() => {
+    if (tab === 'Fishing' && !stockingLoaded) fetchStocking()
+  }, [tab, stockingLoaded, fetchStocking])
+
+  // Check auth + Pro status for stocking form
+  useEffect(() => {
+    if (tab === 'Fishing') {
+      supabase.auth.getUser().then(({ data }) => {
+        setStockingUserId(data.user?.id ?? null)
+        if (data.user?.email) setStockingAlertEmail(data.user.email)
+        if (data.user?.id) {
+          fetch(`/api/pro/status?userId=${data.user.id}`)
+            .then(r => r.json())
+            .then(d => setUserIsPro(d.isPro ?? false))
+            .catch(() => {})
+        }
+      })
+    }
+  }, [tab])
 
   // Fetch outfitter listings from Supabase
   useEffect(() => {
@@ -484,6 +550,71 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                 ))}
               </div>
             )}
+            {/* 72-Hour Flow Forecast — Pro only */}
+            <div style={{ marginTop: '16px' }}>
+              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                72-Hour Flow Forecast
+              </div>
+              <div style={{ position: 'relative', borderRadius: 'var(--r)', overflow: 'hidden' }}>
+                <div style={{ filter: 'blur(5px)', pointerEvents: 'none', userSelect: 'none' }}>
+                  <div style={{ height: '120px', background: 'var(--bg2)', borderRadius: 'var(--r)', border: '.5px solid var(--bd)', display: 'flex', alignItems: 'flex-end', padding: '12px 16px', gap: '4px' }}>
+                    {[35, 42, 55, 68, 72, 65, 58, 50, 48, 52, 60, 70, 75, 72, 68].map((h, i) => (
+                      <div key={i} style={{ flex: 1, height: `${h}%`, background: 'var(--rvmd)', borderRadius: '2px 2px 0 0' }} />
+                    ))}
+                  </div>
+                </div>
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                  background: 'rgba(255,255,255,.6)', borderRadius: 'var(--r)',
+                }}>
+                  <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--rvdk)', marginBottom: '8px' }}>
+                    Upgrade to Pro for 72-hour flow forecasts
+                  </div>
+                  <a href="/pro" style={{
+                    fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', fontWeight: 500,
+                    padding: '6px 16px', borderRadius: 'var(--r)',
+                    background: 'var(--rvdk)', color: '#fff',
+                    textDecoration: 'none', letterSpacing: '.3px',
+                  }}>
+                    Upgrade to Pro &rarr;
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Historical Flow Analysis — Pro only */}
+            <div style={{ marginTop: '16px' }}>
+              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                Historical Flow Analysis
+              </div>
+              <div style={{ position: 'relative', borderRadius: 'var(--r)', overflow: 'hidden' }}>
+                <div style={{ filter: 'blur(5px)', pointerEvents: 'none', userSelect: 'none' }}>
+                  <div style={{ height: '120px', background: 'var(--bg2)', borderRadius: 'var(--r)', border: '.5px solid var(--bd)', display: 'flex', alignItems: 'flex-end', padding: '12px 16px', gap: '3px' }}>
+                    {[20, 25, 35, 50, 70, 85, 90, 80, 65, 45, 30, 22, 25, 35, 50, 65, 75, 80, 70, 55, 40, 28, 20, 18].map((h, i) => (
+                      <div key={i} style={{ flex: 1, height: `${h}%`, background: i < 12 ? 'var(--wtmd)' : 'var(--rvmd)', borderRadius: '2px 2px 0 0', opacity: 0.7 }} />
+                    ))}
+                  </div>
+                </div>
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                  background: 'rgba(255,255,255,.6)', borderRadius: 'var(--r)',
+                }}>
+                  <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--rvdk)', marginBottom: '8px' }}>
+                    Upgrade to Pro to see historical flow patterns
+                  </div>
+                  <a href="/pro" style={{
+                    fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', fontWeight: 500,
+                    padding: '6px 16px', borderRadius: 'var(--r)',
+                    background: 'var(--rvdk)', color: '#fff',
+                    textDecoration: 'none', letterSpacing: '.3px',
+                  }}>
+                    Upgrade to Pro &rarr;
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
@@ -714,8 +845,8 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
         {/* ── FISHING ────────────────────────────────────────── */}
         {tab === 'Fishing' && (() => {
           const fish = FISHERIES[river.id]
-          if (!fish) return (
-            <EmptyState icon="&#x1F3A3;" label="Fisheries data coming soon" sub="Species, hatch charts, and run timing for this river will appear here." />
+          if (!fish && stockingEvents.length === 0) return (
+            <EmptyState icon="&#x1F3A3;" label="Fisheries data coming soon" sub="Species, hatch charts, stocking reports, and run timing for this river will appear here." />
           )
 
           const mono = "'IBM Plex Mono', monospace"
@@ -730,7 +861,7 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
           return (
             <div>
               {/* Designations */}
-              {fish.designations.length > 0 && (
+              {fish && fish.designations.length > 0 && (
                 <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '14px' }}>
                   {fish.designations.map((d, i) => (
                     <span key={i} style={{
@@ -743,7 +874,7 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
               )}
 
               {/* Species */}
-              <div style={{ marginBottom: '16px' }}>
+              {fish && <div style={{ marginBottom: '16px' }}>
                 <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
                   Species
                 </div>
@@ -763,10 +894,10 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                     </div>
                   ))}
                 </div>
-              </div>
+              </div>}
 
               {/* Runs (Salmon/Steelhead) */}
-              {fish.runs.length > 0 && (
+              {fish && fish.runs.length > 0 && (
                 <div style={{ marginBottom: '16px' }}>
                   <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
                     Run Timing
@@ -785,7 +916,7 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
               )}
 
               {/* Hatch Calendar */}
-              {fish.hatches.length > 0 && (
+              {fish && fish.hatches.length > 0 && (
                 <div style={{ marginBottom: '16px' }}>
                   <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
                     Hatch Calendar
@@ -808,8 +939,425 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                 </div>
               )}
 
+              {/* ── Stocking Reports ─────────────────────────── */}
+              {stockingLoaded && (() => {
+                const now = new Date()
+                const d90 = new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000)
+                const recent = stockingEvents.filter(ev => !ev.is_scheduled && new Date(ev.stocking_date + 'T00:00:00') >= d90)
+                const scheduled = stockingEvents.filter(ev => ev.is_scheduled && new Date(ev.stocking_date + 'T00:00:00') >= now)
+
+                const stockingSourceUrls: Record<string, string> = {
+                  mi: 'https://www.michigan.gov/dnr/fishing/reports/stocking',
+                  pa: 'https://www.fishandboat.com/Fish/StockingSchedules',
+                  wv: 'https://www.wvdnr.gov/fishing/stocking.shtm',
+                  va: 'https://dwr.virginia.gov/fishing/trout-stocking-schedules/',
+                  nc: 'https://www.ncwildlife.org/fishing/trout-stocking-program',
+                  tn: 'https://www.tnwildlife.org/fishing/trout-stocking',
+                  co: 'https://cpw.state.co.us/thingstodo/Pages/FishingStocking.aspx',
+                  ca: 'https://www.wildlife.ca.gov/Fishing/Inland/Stocking',
+                  wa: 'https://wdfw.wa.gov/fishing/reports/stocking',
+                  or: 'https://myodfw.com/fishing/stocking-schedules',
+                  mt: 'https://myfwp.mt.gov/fwpPub/stockingSchedule',
+                  ky: 'https://fw.ky.gov/Fish/Pages/Stocking-Schedules.aspx',
+                  id: 'https://idfg.idaho.gov/fish/stocking',
+                  az: 'https://www.azgfd.com/fishing/stocking/',
+                }
+                const dnrUrl = stockingSourceUrls[river.stateKey]
+
+                const fmtDate = (iso: string) => {
+                  const dt = new Date(iso + 'T00:00:00')
+                  return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+                }
+
+                const sizeLabel = (ev: StockingEvent) => {
+                  const parts: string[] = []
+                  if (ev.quantity) parts.push(ev.quantity.toLocaleString())
+                  if (ev.size_category) parts.push(ev.size_category)
+                  if (ev.size_inches) parts.push(`(${ev.size_inches}\u2033)`)
+                  return parts.length > 0 ? parts.join(' ') : 'Unknown quantity'
+                }
+
+                const renderEvent = (ev: StockingEvent, i: number, total: number, isScheduledSection: boolean) => (
+                  <div key={ev.id} style={{
+                    padding: '10px 12px',
+                    borderBottom: i < total - 1 ? '.5px solid var(--bd)' : 'none',
+                    background: i % 2 === 0 ? 'var(--bg)' : 'var(--bg2)',
+                  }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <FishIcon species={ev.species} size={18} color="var(--wt)" />
+                        <span style={{ fontFamily: serif, fontSize: '13px', fontWeight: 600 }}>{ev.species}</span>
+                        {ev.verified && (
+                          <span className="verified-badge" title="Verified stocking event">&#10003;</span>
+                        )}
+                      </div>
+                      <span style={{ fontFamily: mono, fontSize: '10px', color: isScheduledSection ? 'var(--am)' : 'var(--tx3)', flexShrink: 0 }}>
+                        {isScheduledSection ? 'Scheduled ' : ''}{fmtDate(ev.stocking_date)}
+                      </span>
+                    </div>
+                    <div style={{ marginLeft: '25px', marginTop: '3px' }}>
+                      <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)' }}>
+                        {sizeLabel(ev)}
+                      </div>
+                      {ev.stocking_authority && (
+                        <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', marginTop: '1px' }}>
+                          Stocked by {ev.stocking_authority}
+                        </div>
+                      )}
+                      {ev.location_description && (
+                        <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', marginTop: '1px' }}>
+                          Location: {ev.location_description}
+                        </div>
+                      )}
+                      {isScheduledSection && (
+                        <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--am)', marginTop: '2px', fontStyle: 'italic' }}>
+                          Subject to change
+                        </div>
+                      )}
+                      {isScheduledSection && (
+                        <div style={{ display: 'flex', gap: '8px', marginTop: '5px', alignItems: 'center' }}>
+                          <button onClick={() => setStockingAlertOpen(true)} style={{
+                            fontFamily: mono, fontSize: '9px', color: 'var(--wt)',
+                            background: 'var(--wtlt)', border: '.5px solid var(--wtmd)',
+                            borderRadius: '4px', padding: '3px 8px', cursor: 'pointer',
+                          }}>
+                            Set Alert
+                          </button>
+                          {ev.source_url && (
+                            <a href={ev.source_url} target="_blank" rel="noopener noreferrer"
+                              style={{ fontFamily: mono, fontSize: '9px', color: 'var(--rv)' }}>
+                              View source &#8599;
+                            </a>
+                          )}
+                        </div>
+                      )}
+                      {!isScheduledSection && ev.source_url && (
+                        <a href={ev.source_url} target="_blank" rel="noopener noreferrer"
+                          style={{ fontFamily: mono, fontSize: '9px', color: 'var(--rv)', marginTop: '3px', display: 'inline-block' }}>
+                          View source &#8599;
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                )
+
+                return (
+                  <>
+                    {/* Subsection A — Recent Stockings */}
+                    <div style={{ marginBottom: '16px' }}>
+                      <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                        Recent Stockings
+                      </div>
+                      {recent.length > 0 ? (
+                        <div style={{ border: '.5px solid var(--bd)', borderRadius: 'var(--r)', overflow: 'hidden' }}>
+                          {recent.map((ev, i) => renderEvent(ev, i, recent.length, false))}
+                        </div>
+                      ) : (
+                        <div style={{
+                          padding: '14px', background: 'var(--bg2)', borderRadius: 'var(--r)',
+                          border: '.5px solid var(--bd)', fontFamily: mono, fontSize: '11px',
+                          color: 'var(--tx2)', lineHeight: 1.6, textAlign: 'center',
+                        }}>
+                          No stocking records in the past 90 days for this river.<br />
+                          Know about a recent stocking? Submit it below.
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Subsection B — Scheduled Stockings */}
+                    <div style={{ marginBottom: '16px' }}>
+                      <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                        Scheduled Stockings
+                      </div>
+                      {scheduled.length > 0 ? (
+                        <div style={{ border: '.5px solid var(--am)', borderRadius: 'var(--r)', overflow: 'hidden' }}>
+                          {scheduled.map((ev, i) => renderEvent(ev, i, scheduled.length, true))}
+                        </div>
+                      ) : (
+                        <div style={{
+                          padding: '14px', background: 'var(--bg2)', borderRadius: 'var(--r)',
+                          border: '.5px solid var(--bd)', fontFamily: mono, fontSize: '11px',
+                          color: 'var(--tx2)', lineHeight: 1.6, textAlign: 'center',
+                        }}>
+                          No upcoming stockings currently scheduled.
+                          {dnrUrl && (
+                            <> Check the <a href={dnrUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--rv)' }}>
+                              {river.stateName} DNR stocking page &#8599;
+                            </a> for the latest schedule.</>
+                          )}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Subsection C — Submit a Stocking Report */}
+                    <div style={{ marginBottom: '16px' }}>
+                      <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                        Know About a Stocking?
+                      </div>
+                      <div style={{
+                        border: '.5px solid var(--bd)', borderRadius: 'var(--r)',
+                        padding: '14px', background: 'var(--bg2)',
+                      }}>
+                        {stockingSubmitted ? (
+                          <div style={{ textAlign: 'center', padding: '10px 0' }}>
+                            <div style={{ fontSize: '20px', marginBottom: '6px' }}>&#10003;</div>
+                            <div style={{ fontFamily: serif, fontSize: '14px', fontWeight: 600, color: 'var(--rv)', marginBottom: '4px' }}>
+                              Thank you
+                            </div>
+                            <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx2)' }}>
+                              Stocking report submitted. It will appear after review.
+                            </div>
+                          </div>
+                        ) : !stockingUserId ? (
+                          <div style={{ textAlign: 'center', padding: '8px 0' }}>
+                            <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx2)', marginBottom: '10px' }}>
+                              Sign in to submit stocking reports and help the fishing community
+                            </div>
+                            <a href="/login" style={{
+                              fontFamily: mono, fontSize: '11px', fontWeight: 500,
+                              padding: '8px 20px', borderRadius: 'var(--r)',
+                              background: 'var(--rv)', color: '#fff',
+                              textDecoration: 'none', display: 'inline-block',
+                            }}>
+                              Sign In
+                            </a>
+                          </div>
+                        ) : (
+                          <form onSubmit={async (e) => {
+                            e.preventDefault()
+                            if (!stockingForm.species || !stockingForm.date) {
+                              setStockingError('Species and date are required')
+                              return
+                            }
+                            setStockingSubmitting(true)
+                            setStockingError('')
+                            try {
+                              const isGov = stockingForm.sourceUrl &&
+                                (/\.gov(\/|$)/.test(stockingForm.sourceUrl) || /\.state\.\w+\.us/.test(stockingForm.sourceUrl))
+                              const res = await fetch('/api/stocking', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                  riverId: river.id,
+                                  stateKey: river.stateKey,
+                                  stockingDate: stockingForm.date,
+                                  isScheduled: stockingForm.isScheduled,
+                                  species: stockingForm.species,
+                                  quantity: stockingForm.quantity ? parseInt(stockingForm.quantity) : null,
+                                  sizeCategory: stockingForm.sizeCategory || null,
+                                  locationDescription: stockingForm.locationDesc || null,
+                                  sourceUrl: stockingForm.sourceUrl || null,
+                                  userId: stockingUserId,
+                                  autoVerified: !!isGov,
+                                }),
+                              })
+                              const data = await res.json()
+                              if (data.ok) {
+                                setStockingSubmitted(true)
+                                fetchStocking()
+                              } else {
+                                setStockingError(data.error || 'Failed to submit')
+                              }
+                            } catch {
+                              setStockingError('Network error')
+                            }
+                            setStockingSubmitting(false)
+                          }}>
+                            <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx2)', marginBottom: '12px' }}>
+                              Help other anglers by submitting stocking information
+                            </div>
+
+                            <div style={{ display: 'grid', gridTemplateColumns: '80px 1fr', gap: '8px', alignItems: 'center' }}>
+                              <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>Species *</span>
+                              <select value={stockingForm.species}
+                                onChange={e => setStockingForm(f => ({ ...f, species: e.target.value }))}
+                                style={{ padding: '7px 8px', fontFamily: mono, fontSize: '11px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)' }}>
+                                <option value="">Select species...</option>
+                                {['Brown Trout', 'Rainbow Trout', 'Brook Trout', 'Cutthroat Trout', 'Lake Trout', 'Steelhead', 'Chinook Salmon', 'Coho Salmon', 'Atlantic Salmon', 'Walleye', 'Muskie', 'Smallmouth Bass', 'Largemouth Bass', 'Channel Catfish', 'Other'].map(s =>
+                                  <option key={s} value={s}>{s}</option>
+                                )}
+                              </select>
+
+                              <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>Date *</span>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                <input type="date" value={stockingForm.date}
+                                  onChange={e => setStockingForm(f => ({ ...f, date: e.target.value }))}
+                                  style={{ padding: '7px 8px', fontFamily: mono, fontSize: '11px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)', flex: 1 }} />
+                                <label style={{ display: 'flex', alignItems: 'center', gap: '4px', cursor: 'pointer', flexShrink: 0 }}>
+                                  <input type="checkbox" checked={stockingForm.isScheduled}
+                                    onChange={e => setStockingForm(f => ({ ...f, isScheduled: e.target.checked }))}
+                                    style={{ accentColor: 'var(--am)' }} />
+                                  <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--am)' }}>Scheduled</span>
+                                </label>
+                              </div>
+
+                              <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>Quantity</span>
+                              <input type="number" value={stockingForm.quantity} placeholder="e.g. 2000"
+                                onChange={e => setStockingForm(f => ({ ...f, quantity: e.target.value }))}
+                                style={{ padding: '7px 8px', fontFamily: mono, fontSize: '11px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)' }} />
+
+                              <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>Size</span>
+                              <select value={stockingForm.sizeCategory}
+                                onChange={e => setStockingForm(f => ({ ...f, sizeCategory: e.target.value }))}
+                                style={{ padding: '7px 8px', fontFamily: mono, fontSize: '11px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)' }}>
+                                <option value="">Select size (optional)</option>
+                                <option value="fingerling">Fingerling (2-4&quot;)</option>
+                                <option value="sub-catchable">Sub-catchable (4-6&quot;)</option>
+                                <option value="catchable">Catchable (9-11&quot;)</option>
+                                <option value="trophy">Trophy (14-16&quot;)</option>
+                                <option value="broodstock">Broodstock (18&quot;+)</option>
+                              </select>
+
+                              <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>Location</span>
+                              <input type="text" value={stockingForm.locationDesc} placeholder="Section or access point"
+                                onChange={e => setStockingForm(f => ({ ...f, locationDesc: e.target.value }))}
+                                style={{ padding: '7px 8px', fontFamily: mono, fontSize: '11px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)' }} />
+
+                              <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>Source</span>
+                              <input type="url" value={stockingForm.sourceUrl} placeholder="Link to official announcement"
+                                onChange={e => setStockingForm(f => ({ ...f, sourceUrl: e.target.value }))}
+                                style={{ padding: '7px 8px', fontFamily: mono, fontSize: '11px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)' }} />
+                            </div>
+
+                            {stockingError && <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--dg)', marginTop: '8px' }}>{stockingError}</div>}
+
+                            <button type="submit" disabled={stockingSubmitting} style={{
+                              marginTop: '12px', width: '100%', padding: '10px',
+                              fontFamily: mono, fontSize: '11px', fontWeight: 500,
+                              background: 'var(--rv)', color: '#fff', border: 'none',
+                              borderRadius: 'var(--r)', cursor: stockingSubmitting ? 'wait' : 'pointer',
+                              opacity: stockingSubmitting ? 0.6 : 1,
+                            }}>
+                              {stockingSubmitting ? 'Submitting...' : 'Submit Stocking Report'}
+                            </button>
+                          </form>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Stocking Alert Modal */}
+                    {stockingAlertOpen && (
+                      <div onClick={() => { setStockingAlertOpen(false); setStockingAlertDone(false) }} style={{
+                        position: 'fixed', inset: 0, background: 'rgba(0,0,0,.4)',
+                        zIndex: 100, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      }}>
+                        <div onClick={e => e.stopPropagation()} style={{
+                          background: 'var(--bg)', borderRadius: 'var(--rlg)',
+                          padding: '24px', maxWidth: '400px', width: '90%',
+                          boxShadow: '0 8px 40px rgba(0,0,0,.2)',
+                        }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+                            <div style={{ fontFamily: serif, fontSize: '16px', fontWeight: 700, color: 'var(--rvdk)' }}>
+                              Get notified when {river.n} is stocked
+                            </div>
+                            <button onClick={() => { setStockingAlertOpen(false); setStockingAlertDone(false) }} style={{
+                              background: 'none', border: 'none', fontSize: '16px', color: 'var(--tx3)', cursor: 'pointer',
+                            }}>&#10005;</button>
+                          </div>
+
+                          {!userIsPro && !stockingAlertDone ? (
+                            <div style={{ textAlign: 'center', padding: '12px 0' }}>
+                              <div style={{ fontSize: '18px', marginBottom: '8px' }}>&#9889;</div>
+                              <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--rvdk)', marginBottom: '4px', fontWeight: 500 }}>
+                                RiverScout Pro
+                              </div>
+                              <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx2)', marginBottom: '4px' }}>
+                                Stocking alerts are a Pro feature
+                              </div>
+                              <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)', marginBottom: '14px' }}>
+                                $4.99/month &middot; Cancel anytime
+                              </div>
+                              <a href="/pro" style={{
+                                display: 'inline-block', fontFamily: mono, fontSize: '11px', fontWeight: 500,
+                                padding: '9px 24px', borderRadius: 'var(--r)',
+                                background: 'var(--rvdk)', color: '#fff',
+                                textDecoration: 'none', letterSpacing: '.3px',
+                              }}>
+                                Upgrade to Pro &rarr;
+                              </a>
+                            </div>
+                          ) : stockingAlertDone ? (
+                            <div style={{ textAlign: 'center', padding: '12px 0' }}>
+                              <div style={{ fontSize: '20px', marginBottom: '6px' }}>&#10003;</div>
+                              <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--rv)', marginBottom: '8px' }}>
+                                Stocking alert set! We'll email you when this river is stocked.
+                              </div>
+                              <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)' }}>
+                                Stocking alerts are free during beta. They'll be part of RiverScout Pro ($4.99/mo) when it launches.
+                              </div>
+                            </div>
+                          ) : (
+                            <div>
+                              <label style={{ display: 'block', marginBottom: '12px' }}>
+                                <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', display: 'block', marginBottom: '4px' }}>Email</span>
+                                <input type="email" value={stockingAlertEmail}
+                                  onChange={e => setStockingAlertEmail(e.target.value)}
+                                  placeholder="you@email.com"
+                                  style={{ width: '100%', padding: '8px 10px', fontFamily: mono, fontSize: '12px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)', boxSizing: 'border-box' }} />
+                              </label>
+
+                              <div style={{ marginBottom: '14px' }}>
+                                <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', display: 'block', marginBottom: '6px' }}>Notify me about:</span>
+                                {['All species', 'Brown Trout', 'Rainbow Trout', 'Brook Trout', 'Salmon / Steelhead'].map(sp => (
+                                  <label key={sp} style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '3px 0', cursor: 'pointer' }}>
+                                    <input type="checkbox"
+                                      checked={stockingAlertSpecies.includes(sp) || (sp === 'All species' && stockingAlertSpecies.includes('All species'))}
+                                      onChange={e => {
+                                        if (sp === 'All species') {
+                                          setStockingAlertSpecies(e.target.checked ? ['All species'] : [])
+                                        } else {
+                                          setStockingAlertSpecies(prev => {
+                                            const without = prev.filter(s => s !== 'All species' && s !== sp)
+                                            return e.target.checked ? [...without, sp] : without
+                                          })
+                                        }
+                                      }}
+                                      style={{ accentColor: 'var(--rv)' }} />
+                                    <span style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx)' }}>{sp}</span>
+                                  </label>
+                                ))}
+                              </div>
+
+                              <button
+                                disabled={stockingAlertSubmitting || !stockingAlertEmail}
+                                onClick={async () => {
+                                  setStockingAlertSubmitting(true)
+                                  try {
+                                    const res = await fetch('/api/stocking/alerts', {
+                                      method: 'POST',
+                                      headers: { 'Content-Type': 'application/json' },
+                                      body: JSON.stringify({
+                                        email: stockingAlertEmail,
+                                        riverId: river.id,
+                                        stateKey: river.stateKey,
+                                        userId: stockingUserId,
+                                        speciesFilter: stockingAlertSpecies,
+                                      }),
+                                    })
+                                    const data = await res.json()
+                                    if (data.ok) setStockingAlertDone(true)
+                                  } catch { /* ignore */ }
+                                  setStockingAlertSubmitting(false)
+                                }}
+                                style={{
+                                  width: '100%', padding: '10px', fontFamily: mono, fontSize: '11px', fontWeight: 500,
+                                  background: 'var(--rv)', color: '#fff', border: 'none', borderRadius: 'var(--r)',
+                                  cursor: stockingAlertSubmitting ? 'wait' : 'pointer',
+                                  opacity: (stockingAlertSubmitting || !stockingAlertEmail) ? 0.6 : 1,
+                                }}>
+                                {stockingAlertSubmitting ? 'Setting alert...' : 'Set Stocking Alert'}
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </>
+                )
+              })()}
+
               {/* Spawn Timing */}
-              {fish.spawning.length > 0 && (
+              {fish && fish.spawning.length > 0 && (
                 <div style={{ marginBottom: '16px' }}>
                   <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
                     Spawn Timing
@@ -829,7 +1377,7 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
               )}
 
               {/* Guide Services */}
-              {fish.guides.length > 0 && (
+              {fish && fish.guides.length > 0 && (
                 <div>
                   <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
                     Fishing Guides

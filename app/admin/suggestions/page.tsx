@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import { isAdmin } from '@/lib/admin'
+import FishIcon from '@/components/icons/FishIcons'
 
 const mono = "'IBM Plex Mono', monospace"
 const serif = "'Playfair Display', serif"
@@ -53,16 +54,39 @@ const fieldLabels: Record<string, string> = {
   other: 'Other',
 }
 
+interface StockingReport {
+  id: string
+  river_id: string
+  state_key: string
+  stocking_date: string
+  is_scheduled: boolean
+  species: string
+  quantity: number | null
+  size_category: string | null
+  size_inches: number | null
+  location_description: string | null
+  stocking_authority: string | null
+  source_url: string | null
+  verified: boolean
+  created_at: string
+}
+
 export default function AdminSuggestions() {
   const [userId, setUserId] = useState<string | null>(null)
   const [authorized, setAuthorized] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [adminTab, setAdminTab] = useState<'suggestions' | 'stocking'>('suggestions')
   const [suggestions, setSuggestions] = useState<Suggestion[]>([])
   const [filter, setFilter] = useState<'pending' | 'approved' | 'rejected'>('pending')
   const [processing, setProcessing] = useState<string | null>(null)
   const [banner, setBanner] = useState<Banner | null>(null)
   const [failedIds, setFailedIds] = useState<Set<string>>(new Set())
   const [rollbackConfirm, setRollbackConfirm] = useState<Suggestion | null>(null)
+
+  // Stocking review state
+  const [stockingReports, setStockingReports] = useState<StockingReport[]>([])
+  const [stockingFilter, setStockingFilter] = useState<'unverified' | 'verified'>('unverified')
+  const [stockingProcessing, setStockingProcessing] = useState<string | null>(null)
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
@@ -92,6 +116,43 @@ export default function AdminSuggestions() {
   useEffect(() => {
     if (authorized) fetchSuggestions()
   }, [authorized, fetchSuggestions])
+
+  const fetchStocking = useCallback(async () => {
+    if (!userId) return
+    const res = await fetch(`/api/admin/stocking?userId=${userId}&status=${stockingFilter}`)
+    const data = await res.json()
+    if (data.reports) setStockingReports(data.reports)
+  }, [userId, stockingFilter])
+
+  useEffect(() => {
+    if (authorized && adminTab === 'stocking') fetchStocking()
+  }, [authorized, adminTab, fetchStocking])
+
+  async function handleStockingAction(reportId: string, action: 'verify' | 'reject') {
+    setStockingProcessing(reportId)
+    setBanner(null)
+    try {
+      const res = await fetch('/api/admin/stocking', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reportId, userId, action }),
+      })
+      const data = await res.json()
+      if (data.ok) {
+        setStockingReports(prev => prev.filter(r => r.id !== reportId))
+        setBanner({
+          type: 'success',
+          message: action === 'verify' ? 'Stocking report verified and published' : 'Stocking report rejected',
+          suggestionId: reportId,
+        })
+      } else {
+        setBanner({ type: 'error', message: data.error || 'Action failed', suggestionId: reportId })
+      }
+    } catch {
+      setBanner({ type: 'error', message: 'Network error', suggestionId: reportId })
+    }
+    setStockingProcessing(null)
+  }
 
   // Clear banner after 8 seconds
   useEffect(() => {
@@ -236,6 +297,22 @@ export default function AdminSuggestions() {
           </div>
         )}
 
+        {/* Top-level admin tabs */}
+        <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
+          {(['suggestions', 'stocking'] as const).map(t => (
+            <button key={t} onClick={() => setAdminTab(t)} style={{
+              fontFamily: mono, fontSize: '11px', padding: '7px 16px', borderRadius: 'var(--r)', cursor: 'pointer',
+              border: adminTab === t ? '.5px solid var(--rvmd)' : '.5px solid var(--bd2)',
+              background: adminTab === t ? 'var(--rvlt)' : 'var(--bg)',
+              color: adminTab === t ? 'var(--rvdk)' : 'var(--tx3)',
+              fontWeight: adminTab === t ? 600 : 400,
+            }}>
+              {t === 'suggestions' ? 'River Improvements' : 'Stocking Reports'}
+            </button>
+          ))}
+        </div>
+
+        {adminTab === 'suggestions' && (<>
         <h1 style={{ fontFamily: serif, fontSize: '22px', fontWeight: 700, color: 'var(--rvdk)', marginBottom: '4px' }}>
           River Improvements
         </h1>
@@ -469,6 +546,154 @@ export default function AdminSuggestions() {
           )
         })}
       </div>
+      </>)}
+
+      {/* ── Stocking Reports Tab ─────────────────────── */}
+      {adminTab === 'stocking' && (
+        <div>
+          <h1 style={{ fontFamily: serif, fontSize: '22px', fontWeight: 700, color: 'var(--rvdk)', marginBottom: '4px' }}>
+            Stocking Reports
+          </h1>
+          <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)', marginBottom: '16px' }}>
+            {stockingReports.length} {stockingFilter} report{stockingReports.length !== 1 ? 's' : ''}
+          </div>
+
+          <div style={{ display: 'flex', gap: '6px', marginBottom: '16px' }}>
+            {(['unverified', 'verified'] as const).map(s => (
+              <button key={s} onClick={() => setStockingFilter(s)} style={{
+                fontFamily: mono, fontSize: '10px', padding: '5px 12px', borderRadius: '12px', cursor: 'pointer',
+                border: stockingFilter === s ? '.5px solid var(--rvmd)' : '.5px solid var(--bd2)',
+                background: stockingFilter === s ? 'var(--rvlt)' : 'var(--bg)',
+                color: stockingFilter === s ? 'var(--rvdk)' : 'var(--tx3)',
+                textTransform: 'capitalize',
+              }}>
+                {s}
+              </button>
+            ))}
+          </div>
+
+          {stockingReports.length === 0 && (
+            <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx3)', padding: '40px 0', textAlign: 'center' }}>
+              No {stockingFilter} stocking reports
+            </div>
+          )}
+
+          {stockingReports.map(r => {
+            const isProcessing = stockingProcessing === r.id
+            const d = new Date(r.stocking_date + 'T00:00:00')
+            const dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+            const isGov = r.source_url && (/\.gov(\/|$)/.test(r.source_url) || /\.state\.\w+\.us/.test(r.source_url))
+
+            return (
+              <div key={r.id} style={{
+                border: isGov ? '.5px solid var(--rvmd)' : '.5px solid var(--bd)',
+                borderRadius: 'var(--rlg)', padding: '16px', marginBottom: '12px',
+                background: isGov ? 'var(--rvlt)' : 'var(--bg2)',
+              }}>
+                {isGov && (
+                  <div style={{
+                    fontFamily: mono, fontSize: '9px', color: 'var(--rv)', marginBottom: '8px',
+                    padding: '3px 8px', background: 'var(--rvlt)', border: '.5px solid var(--rvmd)',
+                    borderRadius: '4px', display: 'inline-block', letterSpacing: '.3px',
+                  }}>
+                    &#10003; Official .gov source — auto-verify recommended
+                  </div>
+                )}
+
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
+                  <div>
+                    <span style={{ fontFamily: serif, fontSize: '15px', fontWeight: 600, color: 'var(--rvdk)' }}>
+                      {r.river_id}
+                    </span>
+                    <span style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', marginLeft: '8px' }}>
+                      {r.state_key.toUpperCase()}
+                    </span>
+                  </div>
+                  <span style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)' }}>
+                    {new Date(r.created_at).toLocaleDateString()}
+                  </span>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '10px' }}>
+                  <div>
+                    <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', marginBottom: '2px' }}>Species</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontFamily: serif, fontSize: '14px', fontWeight: 600 }}>
+                      <FishIcon species={r.species} size={18} color="var(--wt)" />
+                      {r.species}
+                    </div>
+                  </div>
+                  <div>
+                    <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', marginBottom: '2px' }}>Date</div>
+                    <div style={{ fontFamily: mono, fontSize: '12px' }}>
+                      {dateStr}
+                      {r.is_scheduled && <span style={{ color: 'var(--am)', marginLeft: '6px' }}>(Scheduled)</span>}
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '10px' }}>
+                  <div>
+                    <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', marginBottom: '2px' }}>Quantity</div>
+                    <div style={{ fontFamily: mono, fontSize: '12px' }}>
+                      {r.quantity ? r.quantity.toLocaleString() : 'Unknown'}
+                      {r.size_category && <span style={{ color: 'var(--wt)', marginLeft: '6px' }}>({r.size_category})</span>}
+                    </div>
+                  </div>
+                  {r.stocking_authority && (
+                    <div>
+                      <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', marginBottom: '2px' }}>Authority</div>
+                      <div style={{ fontFamily: mono, fontSize: '12px' }}>{r.stocking_authority}</div>
+                    </div>
+                  )}
+                </div>
+
+                {r.location_description && (
+                  <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx2)', marginBottom: '8px' }}>
+                    Location: {r.location_description}
+                  </div>
+                )}
+
+                {r.source_url && (
+                  <div style={{ fontFamily: mono, fontSize: '10px', marginBottom: '10px' }}>
+                    <a href={r.source_url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--rv)' }}>
+                      Source: {r.source_url.length > 60 ? r.source_url.slice(0, 60) + '...' : r.source_url}
+                    </a>
+                  </div>
+                )}
+
+                {stockingFilter === 'unverified' && (
+                  <div style={{ display: 'flex', gap: '8px', marginTop: '12px' }}>
+                    <button onClick={() => handleStockingAction(r.id, 'verify')}
+                      disabled={isProcessing}
+                      style={{
+                        fontFamily: mono, fontSize: '11px', padding: '8px 20px', borderRadius: 'var(--r)',
+                        background: 'var(--rv)', color: '#fff', border: 'none',
+                        cursor: isProcessing ? 'wait' : 'pointer', opacity: isProcessing ? 0.6 : 1,
+                      }}>
+                      {isProcessing ? 'Processing...' : 'Verify & Publish'}
+                    </button>
+                    <button onClick={() => handleStockingAction(r.id, 'reject')}
+                      disabled={isProcessing}
+                      style={{
+                        fontFamily: mono, fontSize: '11px', padding: '8px 20px', borderRadius: 'var(--r)',
+                        background: 'var(--bg)', color: 'var(--dg)', border: '.5px solid var(--dg)',
+                        cursor: isProcessing ? 'wait' : 'pointer', opacity: isProcessing ? 0.6 : 1,
+                      }}>
+                      Reject
+                    </button>
+                  </div>
+                )}
+
+                {stockingFilter === 'verified' && (
+                  <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--rv)', marginTop: '8px' }}>
+                    &#10003; Verified and published
+                  </div>
+                )}
+              </div>
+            )
+          })}
+        </div>
+      )}
 
       {/* Rollback confirmation dialog */}
       {rollbackConfirm && (

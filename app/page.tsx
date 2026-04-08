@@ -84,6 +84,7 @@ export default async function HomePage() {
           <Link href="/alerts" style={{ padding: '5px 10px', borderRadius: '20px', border: '.5px solid var(--bd2)', color: 'var(--tx2)', textDecoration: 'none' }}>Alerts</Link>
           <Link href="/about/improvements" style={{ padding: '5px 10px', borderRadius: '20px', border: '.5px solid var(--bd2)', color: 'var(--tx2)', textDecoration: 'none' }}>Community</Link>
           <Link href="/outfitters" style={{ padding: '5px 10px', borderRadius: '20px', border: '.5px solid var(--bd2)', color: 'var(--tx2)', textDecoration: 'none' }}>Outfitters</Link>
+          <Link href="/pro" style={{ padding: '5px 10px', borderRadius: '20px', border: '.5px solid var(--rvmd)', color: 'var(--rvdk)', background: 'var(--rvlt)', textDecoration: 'none', fontWeight: 500 }}>Pro</Link>
           <AuthNav />
         </div>
       </nav>

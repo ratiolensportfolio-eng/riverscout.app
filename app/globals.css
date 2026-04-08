@@ -209,6 +209,13 @@ body {
   }
 }
 
+/* Pro pricing cards — stack on mobile */
+@media (max-width: 640px) {
+  .pro-pricing-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 /* Mission band — homepage community contribution section */
 .mission-band {
   padding: 60px 28px;

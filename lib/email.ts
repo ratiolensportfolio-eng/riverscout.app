@@ -198,4 +198,103 @@ export function improvementApprovedEmail(
 </body></html>`
 }
 
+export function stockingAlertEmail(
+  riverName: string,
+  stateName: string,
+  stateSlug: string,
+  riverSlug: string,
+  species: string,
+  quantity: number | null,
+  sizeCategory: string | null,
+  locationDescription: string | null,
+  stockingAuthority: string | null,
+  stockingDate: string,
+  cfs: number | null,
+  condition: string,
+  optRange: string,
+): string {
+  const conditionColor = condition === 'optimal' ? '#1D9E75'
+    : condition === 'high' ? '#BA7517'
+    : condition === 'flood' ? '#A32D2D'
+    : '#666660'
+  const conditionLabel = condition === 'optimal' ? 'Optimal'
+    : condition === 'high' ? 'High'
+    : condition === 'flood' ? 'Flood'
+    : condition === 'low' ? 'Low' : 'Unknown'
+
+  const qtyLine = quantity
+    ? `${quantity.toLocaleString()}${sizeCategory ? ` ${sizeCategory}` : ''}`
+    : sizeCategory || 'Unknown quantity'
+
+  return `<!DOCTYPE html>
+<html><head><meta charset="utf-8" /></head>
+<body style="margin: 0; padding: 0; background: #ffffff; font-family: Georgia, serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 520px; margin: 0 auto; padding: 20px;">
+    <tr>
+      <td style="padding-bottom: 16px; border-bottom: 1px solid #e2e1d8;">
+        <span style="font-family: Georgia, serif; font-size: 20px; font-weight: 700; color: #085041;">
+          River<span style="color: #185FA5;">Scout</span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 24px 0;">
+        <div style="font-family: monospace; font-size: 10px; color: #185FA5; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px;">
+          Stocking Alert
+        </div>
+        <div style="font-family: Georgia, serif; font-size: 22px; font-weight: 700; color: #1a1a18; line-height: 1.3; margin-bottom: 16px;">
+          ${riverName} was just stocked
+        </div>
+        <table width="100%" cellpadding="0" cellspacing="0" style="background: #f6f5f2; border-radius: 8px; border: 1px solid #e2e1d8;">
+          <tr>
+            <td style="padding: 16px;">
+              <div style="font-family: monospace; font-size: 12px; color: #1a1a18; margin-bottom: 6px;">
+                <strong>Species:</strong> ${species}
+              </div>
+              <div style="font-family: monospace; font-size: 12px; color: #1a1a18; margin-bottom: 6px;">
+                <strong>Quantity:</strong> ${qtyLine}
+              </div>
+              ${locationDescription ? `<div style="font-family: monospace; font-size: 12px; color: #1a1a18; margin-bottom: 6px;"><strong>Location:</strong> ${locationDescription}</div>` : ''}
+              ${stockingAuthority ? `<div style="font-family: monospace; font-size: 12px; color: #1a1a18; margin-bottom: 6px;"><strong>Stocked by:</strong> ${stockingAuthority}</div>` : ''}
+              <div style="font-family: monospace; font-size: 12px; color: #aaa99a;">
+                <strong>Date:</strong> ${new Date(stockingDate + 'T00:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+              </div>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    ${cfs !== null ? `<tr>
+      <td style="padding: 0 0 24px;">
+        <div style="background: #ffffff; border: 1px solid #e2e1d8; border-radius: 8px; padding: 14px 16px; display: flex; align-items: center; gap: 12px;">
+          <div style="font-family: monospace; font-size: 10px; color: #aaa99a; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Current Flow</div>
+          <div>
+            <span style="font-family: Georgia, serif; font-size: 22px; font-weight: 700; color: #1a1a18;">${cfs.toLocaleString()}</span>
+            <span style="font-family: monospace; font-size: 12px; color: #aaa99a;"> cfs</span>
+            <span style="font-family: monospace; font-size: 11px; color: ${conditionColor}; margin-left: 8px; font-weight: 600;">${conditionLabel}</span>
+          </div>
+          <div style="font-family: monospace; font-size: 11px; color: #aaa99a; margin-top: 2px;">Optimal: ${optRange} cfs</div>
+        </div>
+      </td>
+    </tr>` : ''}
+    <tr>
+      <td style="padding: 16px 0; text-align: center;">
+        <a href="https://riverscout.app/rivers/${stateSlug}/${riverSlug}" style="display: inline-block; padding: 12px 28px; background: #085041; color: #ffffff; font-family: monospace; font-size: 13px; font-weight: 500; text-decoration: none; border-radius: 6px; letter-spacing: .3px;">
+          Plan Your Trip &rarr;
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 16px 0 0; border-top: 1px solid #e2e1d8;">
+        <div style="font-family: monospace; font-size: 10px; color: #aaa99a; text-align: center; line-height: 1.6;">
+          You received this because you subscribed to stocking alerts for ${riverName} on
+          <a href="https://riverscout.app" style="color: #1D9E75;">RiverScout</a>.<br />
+          <a href="https://riverscout.app/alerts" style="color: #aaa99a;">Manage your alerts</a>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body></html>`
+}
+
 export { ADMIN_EMAIL }

@@ -208,6 +208,31 @@ export interface OutfitterTierConfig {
   features: string[]
 }
 
+// ── RiverScout Pro ───────────────────────────────────────────────
+
+export interface ProFeature {
+  icon: string
+  title: string
+  description: string
+  available: boolean  // true = shipped, false = coming soon
+}
+
+export const PRO_PRICE = {
+  monthly: 4.99,
+  yearly: 39.99,    // ~$3.33/mo
+}
+
+export const PRO_FEATURES: ProFeature[] = [
+  { icon: '\u26A1', title: 'Flow alerts', description: 'Email when your river hits optimal CFS', available: true },
+  { icon: '\uD83D\uDC1F', title: 'Stocking alerts', description: 'Email when your river is stocked', available: true },
+  { icon: '\uD83C\uDF0A', title: '72-hour flow forecast', description: 'See where CFS is heading before you drive', available: false },
+  { icon: '\uD83D\uDCF1', title: 'Offline river pages', description: 'Works without cell service', available: false },
+  { icon: '\uD83D\uDCC8', title: 'Historical flow analysis', description: '10-year CFS patterns by week', available: false },
+  { icon: '\uD83C\uDFAF', title: 'Custom optimal CFS ranges', description: 'Set your own ideal ranges per river', available: false },
+  { icon: '\uD83D\uDE80', title: 'Early access', description: 'New states and features before anyone else', available: true },
+  { icon: '\uD83C\uDF3F', title: 'Support conservation data', description: 'Fund independent river data for everyone', available: true },
+]
+
 export const OUTFITTER_TIERS: OutfitterTierConfig[] = [
   {
     tier: 'listed',
