@@ -947,6 +947,7 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                 const now = new Date()
                 const d90 = new Date(now.getTime() - 90 * 24 * 60 * 60 * 1000)
                 const recent = stockingEvents.filter(ev => !ev.is_scheduled && new Date(ev.stocking_date + 'T00:00:00') >= d90)
+                const historical = stockingEvents.filter(ev => !ev.is_scheduled && new Date(ev.stocking_date + 'T00:00:00') < d90)
                 const scheduled = stockingEvents.filter(ev => ev.is_scheduled && new Date(ev.stocking_date + 'T00:00:00') >= now)
 
                 const stockingSourceUrls: Record<string, string> = {
@@ -1091,6 +1092,18 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                         </div>
                       )}
                     </div>
+
+                    {/* Stocking History */}
+                    {historical.length > 0 && (
+                      <div style={{ marginBottom: '16px' }}>
+                        <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                          Stocking History
+                        </div>
+                        <div style={{ border: '.5px solid var(--bd)', borderRadius: 'var(--r)', overflow: 'hidden' }}>
+                          {historical.map((ev, i) => renderEvent(ev, i, historical.length, false))}
+                        </div>
+                      </div>
+                    )}
 
                     {/* Subsection C — Submit a Stocking Report */}
                     <div style={{ marginBottom: '16px' }}>
