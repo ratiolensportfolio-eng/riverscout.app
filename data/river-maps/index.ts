@@ -7,11 +7,6 @@ interface RiverMapData {
 }
 
 const registry: Record<string, () => Promise<RiverMapData>> = {
-  accessPoints: () => import('./accessPoints').then(m => ({
-    accessPoints: m.accessPoints,
-    sections: m.sections,
-    riverPath: m.riverPath,
-  })),
   american: () => import('./american').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
@@ -592,11 +587,6 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
-  riverPath: () => import('./riverPath').then(m => ({
-    accessPoints: m.accessPoints,
-    sections: m.sections,
-    riverPath: m.riverPath,
-  })),
   rogue: () => import('./rogue').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
@@ -628,11 +618,6 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     riverPath: m.riverPath,
   })),
   san_juan: () => import('./san_juan').then(m => ({
-    accessPoints: m.accessPoints,
-    sections: m.sections,
-    riverPath: m.riverPath,
-  })),
-  sections: () => import('./sections').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,

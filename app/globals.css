@@ -81,6 +81,19 @@ body {
   animation: pulse 2s ease-in-out infinite;
 }
 
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .pulse-dot {
+    animation: none;
+  }
+  .mission-cta:hover {
+    transform: none !important;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* ── Mobile responsive ─────────────────────────────── */
 
 /* State page: sidebar + map → stacked on mobile */
@@ -194,6 +207,58 @@ body {
   .tier-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Mission band — homepage community contribution section */
+.mission-band {
+  padding: 60px 28px;
+}
+.mission-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.mission-cta:hover {
+  transform: scale(1.04);
+}
+@media (max-width: 768px) {
+  .mission-band {
+    padding: 40px 20px;
+  }
+  .mission-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+/* Data confidence banner — fixed height to prevent layout shift */
+.confidence-banner {
+  min-height: 32px;
+}
+@media (max-width: 640px) {
+  .confidence-banner {
+    height: auto !important;
+    min-height: 32px;
+  }
+}
+
+/* Verified rapids badge */
+.verified-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--rvlt);
+  color: var(--rv);
+  font-size: 9px;
+  font-weight: 700;
+  flex-shrink: 0;
+  line-height: 1;
+  cursor: default;
+  border: .5px solid var(--rvmd);
 }
 
 /* Ensure touch targets are at least 44px */

@@ -6,6 +6,7 @@ import { STATE_MAP_CONFIG } from '@/data/state-centers'
 import { RIVER_COORDS } from '@/data/river-coordinates'
 import StateRiverMap from '@/components/maps/StateRiverMap'
 import { getDesignationBadges } from '@/lib/designations'
+import { RAPIDS } from '@/data/rapids'
 import type { FlowData, FlowCondition } from '@/types'
 
 export const revalidate = 900
@@ -85,8 +86,11 @@ export default async function StatePage({ params }: Props) {
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 600, marginBottom: '2px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '5px', fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 600, marginBottom: '2px' }}>
                     {river.n}
+                    {RAPIDS[river.id]?.length > 0 && (
+                      <span className="verified-badge" title="Rapids verified by local paddlers">&#10003;</span>
+                    )}
                   </div>
                   {/* Live CFS badge */}
                   {flow && flow.cfs !== null && (

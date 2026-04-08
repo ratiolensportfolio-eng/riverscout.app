@@ -4,7 +4,10 @@ import { getRiverBySlug, getStateSlug, getRiverSlug, ALL_RIVERS } from '@/data/r
 import { fetchGaugeData, formatCfs, trendArrow, celsiusToFahrenheit, isHypothermiaRisk } from '@/lib/usgs'
 import RiverTabs from '@/components/rivers/RiverTabs'
 import SuggestCorrection from '@/components/SuggestCorrection'
+import DataConfidenceBanner from '@/components/rivers/DataConfidenceBanner'
 import { getDesignationBadges } from '@/lib/designations'
+import { RAPIDS } from '@/data/rapids'
+import { createSupabaseServerClient } from '@/lib/supabase-server'
 import type { Metadata } from 'next'
 
 export const revalidate = 900
@@ -55,6 +58,22 @@ export default async function RiverPage({ params }: Props) {
   if (!river) notFound()
 
   const flow = await fetchGaugeData(river.g, river.opt)
+
+  // Check if rapids are verified (static data or Supabase)
+  let isVerified = !!(RAPIDS[river.id] && RAPIDS[river.id].length > 0)
+  if (!isVerified) {
+    try {
+      const supabase = await createSupabaseServerClient()
+      const { data: rapids } = await supabase
+        .from('river_rapids')
+        .select('id')
+        .eq('river_id', river.id)
+        .limit(1)
+      if (rapids && rapids.length > 0) isVerified = true
+    } catch {
+      // Supabase not configured or table doesn't exist — fall back to static only
+    }
+  }
 
   const condClass = {
     optimal: 'cond-opt',
@@ -146,6 +165,14 @@ export default async function RiverPage({ params }: Props) {
           <SuggestCorrection riverId={river.id} riverName={river.n} stateKey={river.stateKey} />
         </div>
       </div>
+
+      {/* Data confidence banner */}
+      <DataConfidenceBanner
+        riverId={river.id}
+        riverName={river.n}
+        stateKey={river.stateKey}
+        isVerified={isVerified}
+      />
 
       {/* Tabbed content — fills remaining height */}
       <RiverTabs river={river} flow={flow} />

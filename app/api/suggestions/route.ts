@@ -12,6 +12,7 @@ async function evaluateSuggestion(
   suggestedValue: string,
   reason: string,
   sourceUrl: string | null,
+  promptPrefix: string = '',
 ): Promise<{ confidence: 'high' | 'medium' | 'low'; reasoning: string }> {
   const apiKey = process.env.ANTHROPIC_API_KEY
   if (!apiKey) {
@@ -31,7 +32,7 @@ async function evaluateSuggestion(
         max_tokens: 500,
         messages: [{
           role: 'user',
-          content: `You are a river data expert evaluating a user-submitted correction for the RiverScout paddling atlas. Evaluate whether this suggestion is plausible and accurate.
+          content: `${promptPrefix}You are a river data expert evaluating a user-submitted correction for the RiverScout paddling atlas. Evaluate whether this suggestion is plausible and accurate.
 
 River: ${riverName} (${stateKey.toUpperCase()})
 Field being corrected: ${field}
@@ -85,42 +86,92 @@ Be concise. Respond ONLY with the JSON object.`,
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { riverId, riverName, stateKey, userId, userEmail, field, currentValue, suggestedValue, reason, sourceUrl } = body
+    const { riverId, riverName, stateKey, userId, userEmail, field, currentValue, suggestedValue, reason, sourceUrl, safetyData } = body
 
-    if (!riverId || !field || !currentValue || !suggestedValue || !reason) {
+    const isSafetyCritical = field === 'safe_cfs'
+
+    if (!riverId || !field || !suggestedValue || !reason) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
-    // AI pre-evaluation
+    // For non-safety fields, also require currentValue
+    if (!isSafetyCritical && !currentValue) {
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
+    }
+
+    // AI pre-evaluation (with enhanced prompt for safety-critical)
+    const safetyPromptPrefix = isSafetyCritical
+      ? 'This is a safety-critical submission about dangerous CFS levels. Weight your confidence assessment accordingly and flag any concerns. '
+      : ''
+
     const ai = await evaluateSuggestion(
       riverName || riverId, stateKey || '', field,
-      currentValue, suggestedValue, reason, sourceUrl || null,
+      currentValue || 'Not specified', suggestedValue, reason, sourceUrl || null,
+      safetyPromptPrefix,
     )
 
     const supabase = createSupabaseClient()
 
+    const insertData: Record<string, unknown> = {
+      river_id: riverId,
+      river_name: riverName || riverId,
+      state_key: stateKey || '',
+      user_id: userId || null,
+      user_email: userEmail || null,
+      field,
+      current_value: currentValue || 'Not specified',
+      suggested_value: suggestedValue,
+      reason: reason.slice(0, 2000),
+      source_url: sourceUrl || null,
+      status: 'pending',
+      ai_confidence: ai.confidence,
+      ai_reasoning: ai.reasoning,
+    }
+
+    // Tag safety-critical submissions
+    if (isSafetyCritical) {
+      insertData.ai_category = 'safety_critical'
+    }
+
     const { data, error } = await supabase
       .from('suggestions')
-      .insert({
-        river_id: riverId,
-        river_name: riverName || riverId,
-        state_key: stateKey || '',
-        user_id: userId || null,
-        user_email: userEmail || null,
-        field,
-        current_value: currentValue,
-        suggested_value: suggestedValue,
-        reason: reason.slice(0, 2000),
-        source_url: sourceUrl || null,
-        status: 'pending',
-        ai_confidence: ai.confidence,
-        ai_reasoning: ai.reasoning,
-      })
+      .insert(insertData)
       .select()
 
     if (error) {
       console.error('Suggestion insert error:', error)
       return NextResponse.json({ error: 'Failed to submit suggestion' }, { status: 500 })
+    }
+
+    // Send priority admin notification for safety-critical submissions
+    if (isSafetyCritical) {
+      const safetyInfo = safetyData
+        ? `<p><strong>Upper Safe Limit:</strong> ${safetyData.upperLimit} CFS</p>
+           <p><strong>Hazard:</strong> ${safetyData.hazard}</p>
+           <p><strong>Experience:</strong> ${safetyData.experience} trips</p>`
+        : ''
+
+      try {
+        await sendEmail({
+          to: ADMIN_EMAIL,
+          subject: `\u26A0 SAFETY CRITICAL suggestion \u2014 ${riverName || riverId}`,
+          html: `
+            <div style="border-left: 4px solid #A32D2D; padding: 16px; margin-bottom: 16px;">
+              <h2 style="color: #A32D2D; margin: 0 0 8px;">\u26A0 Safety Critical Submission</h2>
+              <p><strong>River:</strong> ${riverName || riverId} (${(stateKey || '').toUpperCase()})</p>
+              ${safetyInfo}
+              <p><strong>Reason:</strong> ${reason}</p>
+              <p><strong>Submitted by:</strong> ${userEmail || 'anonymous'}</p>
+              <p><strong>AI Assessment:</strong> ${ai.confidence} confidence — ${ai.reasoning}</p>
+              <hr/>
+              <p style="color: #A32D2D; font-weight: bold;">This submission affects paddler safety. Review immediately.</p>
+              <p><a href="https://riverscout.app/admin/suggestions">Review in Admin Dashboard &rarr;</a></p>
+            </div>
+          `,
+        })
+      } catch (emailErr) {
+        console.error('[SUGGESTIONS] Failed to send safety admin email:', emailErr)
+      }
     }
 
     return NextResponse.json({ ok: true, suggestion: data?.[0] })

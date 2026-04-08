@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { ALL_RIVERS, getRiverPath } from '@/data/rivers'
+import { RAPIDS } from '@/data/rapids'
 
 export default function SearchPage() {
   const [query, setQuery] = useState('')
@@ -77,7 +78,12 @@ export default function SearchPage() {
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px' }}>
               <div>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 600 }}>{river.n}</div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '5px', fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 600 }}>
+                  {river.n}
+                  {RAPIDS[river.id]?.length > 0 && (
+                    <span className="verified-badge" title="Rapids verified by local paddlers">&#10003;</span>
+                  )}
+                </div>
                 <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx2)', margin: '1px 0' }}>
                   {river.stateName} · {river.co}
                 </div>

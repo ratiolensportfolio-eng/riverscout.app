@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import { RAPIDS } from '@/data/rapids'
 
 interface FlowAlert {
   id: string
@@ -221,6 +222,9 @@ export default function AlertSubscriber({ rivers }: Props) {
                         }}
                       >
                         <span style={{ fontWeight: 500 }}>{r.name}</span>
+                        {RAPIDS[r.id]?.length > 0 && (
+                          <span className="verified-badge" title="Rapids verified by local paddlers" style={{ marginLeft: '4px' }}>&#10003;</span>
+                        )}
                         <span style={{ color: 'var(--tx3)', marginLeft: '6px' }}>{r.stateName}</span>
                         {r.cfs !== null && (
                           <span style={{

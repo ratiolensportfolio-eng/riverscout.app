@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ALL_RIVERS, STATES } from '@/data/rivers'
 import { fetchGaugeData } from '@/lib/usgs'
+import { createSupabaseServerClient } from '@/lib/supabase-server'
 import USMap from '@/components/maps/USMap'
 import AuthNav from '@/components/AuthNav'
 import type { FlowCondition } from '@/types'
@@ -45,6 +46,19 @@ export default async function HomePage() {
     else stateFlowMap[key] = 'low'
   }
 
+  // Fetch approved improvement count
+  let approvedCount = 0
+  try {
+    const supabase = await createSupabaseServerClient()
+    const { count } = await supabase
+      .from('suggestions')
+      .select('*', { count: 'exact', head: true })
+      .eq('status', 'approved')
+    approvedCount = count ?? 0
+  } catch {
+    // Supabase not configured — show zero-state
+  }
+
   // Count conditions across all rivers
   let totalOptimal = 0, totalHigh = 0, totalFlood = 0
   for (const sc of Object.values(stateConditions)) {
@@ -54,7 +68,7 @@ export default async function HomePage() {
   }
 
   return (
-    <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)', display: 'flex', flexDirection: 'column' }}>
+    <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)', display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
       {/* Nav */}
       <nav style={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -123,6 +137,76 @@ export default async function HomePage() {
       <div style={{ flex: 1, minHeight: 0, padding: '0 8px 8px', position: 'relative' }}>
         <USMap stateFlowMap={stateFlowMap} stateConditions={stateConditions} />
       </div>
+
+      {/* Mission band */}
+      <section className="mission-band" style={{
+        background: 'var(--rvdk)', color: '#fff', width: '100%', flexShrink: 0,
+      }}>
+        <div className="mission-inner" style={{ maxWidth: '1100px', margin: '0 auto' }}>
+          {/* Left column */}
+          <div>
+            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', opacity: 0.7, marginBottom: '16px' }}>
+              Built by Paddlers &nbsp;·&nbsp; Verified by Locals
+            </div>
+            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '17px', fontWeight: 600, lineHeight: 1.6, marginBottom: '16px', color: '#fff' }}>
+              RiverScout combines live USGS gauge data, historical records, and firsthand knowledge from outfitters and paddlers who know these rivers personally.
+            </p>
+            <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', lineHeight: 1.7, opacity: 0.7, margin: 0 }}>
+              Every river in our database is a starting point. The people who paddle them make them accurate.
+            </p>
+          </div>
+
+          {/* Right column */}
+          <div>
+            <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', lineHeight: 1.7, opacity: 0.85, marginBottom: '20px' }}>
+              We are currently focused on two priorities above all else:
+            </p>
+            <div style={{ marginBottom: '12px', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+              <span style={{ color: '#F5C242', flexShrink: 0, fontSize: '14px', marginTop: '1px' }}>&#9888;</span>
+              <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', lineHeight: 1.6 }}>Accurate rapid classifications</span>
+            </div>
+            <div style={{ marginBottom: '24px', display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+              <span style={{ color: '#F5C242', flexShrink: 0, fontSize: '14px', marginTop: '1px' }}>&#9888;</span>
+              <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', lineHeight: 1.6 }}>Safe CFS ranges for every skill level</span>
+            </div>
+            <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', lineHeight: 1.8, opacity: 0.75, marginBottom: '24px' }}>
+              These directly affect paddler safety. If you know a river — its real difficulty at different flows, its dangerous water levels, its hidden hazards — your local expertise is exactly what we need.
+            </p>
+            <Link href="/search" className="mission-cta" style={{
+              display: 'inline-block', padding: '11px 28px', borderRadius: 'var(--r)',
+              background: '#fff', color: 'var(--rvdk)',
+              fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', fontWeight: 500,
+              textDecoration: 'none', letterSpacing: '.3px',
+              transition: 'transform 0.15s ease',
+            }}>
+              Improve a River &rarr;
+            </Link>
+            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', opacity: 0.5, marginTop: '10px', letterSpacing: '.3px' }}>
+              All suggestions reviewed before going live
+            </div>
+          </div>
+        </div>
+
+        {/* Community counter */}
+        <div style={{
+          marginTop: '36px', paddingTop: '20px',
+          borderTop: '1px solid rgba(255,255,255,.12)',
+          textAlign: 'center',
+          fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px',
+          color: 'rgba(255,255,255,.6)', letterSpacing: '.3px',
+        }}>
+          {approvedCount > 0 ? (
+            <>
+              <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 700, color: '#fff' }}>
+                {approvedCount.toLocaleString()}
+              </span>
+              {' '}river improvement{approvedCount !== 1 ? 's' : ''} submitted by the RiverScout community
+            </>
+          ) : (
+            'Be the first to improve a river in your area'
+          )}
+        </div>
+      </section>
     </main>
   )
 }

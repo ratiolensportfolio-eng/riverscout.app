@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ALL_RIVERS, STATES, getRiverPath } from '@/data/rivers'
 import { fetchGaugeData, formatCfs } from '@/lib/usgs'
+import { RAPIDS } from '@/data/rapids'
 import AlertSubscriber from '@/components/alerts/AlertSubscriber'
 
 // Revalidate every 15 minutes
@@ -124,8 +125,11 @@ export default async function AlertsPage() {
                   ...(cond === 'flood' ? { borderColor: 'var(--dg)', background: 'var(--dglt)' } : {}),
                 }}
               >
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 600, marginBottom: '1px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '5px', fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 600, marginBottom: '1px' }}>
                   {river.n}
+                  {RAPIDS[river.id]?.length > 0 && (
+                    <span className="verified-badge" title="Rapids verified by local paddlers">&#10003;</span>
+                  )}
                 </div>
                 <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginBottom: '8px' }}>
                   {river.abbr} · Gauge {river.g}

@@ -19,6 +19,8 @@ const BADGE_DEFS: DesignationBadge[] = [
   { type: 'wilderness', label: 'Wilderness', color: '#1B5E20', bg: '#E8F5E9', border: '#81C784', icon: '🌿' },
   { type: 'natural_river', label: 'Natural River', color: '#00695C', bg: '#E0F2F1', border: '#80CBC4', icon: '🍃' },
   { type: 'scenic_river', label: 'Scenic River', color: '#3E2723', bg: '#EFEBE9', border: '#BCAAA4', icon: '🏔' },
+  { type: 'tu_conservation', label: 'TU Conservation', color: '#8B0000', bg: '#FFF0F0', border: '#E8A0A0', icon: '🐟' },
+  { type: 'aw_conservation', label: 'AW Stewardship', color: '#1A237E', bg: '#E8EAF6', border: '#9FA8DA', icon: '🛶' },
 ]
 
 export function getDesignationBadges(desig: string): DesignationBadge[] {
@@ -49,6 +51,12 @@ export function getDesignationBadges(desig: string): DesignationBadge[] {
   }
   if ((lower.includes('scenic river') || lower.includes('scenic waterway')) && !lower.includes('wild')) {
     badges.push(BADGE_DEFS.find(b => b.type === 'scenic_river')!)
+  }
+  if (lower.includes('trout unlimited') || lower.includes('tu conservation')) {
+    badges.push(BADGE_DEFS.find(b => b.type === 'tu_conservation')!)
+  }
+  if (lower.includes('american whitewater') || lower.includes('aw stewardship')) {
+    badges.push(BADGE_DEFS.find(b => b.type === 'aw_conservation')!)
   }
 
   return badges

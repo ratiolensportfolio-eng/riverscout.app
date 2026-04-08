@@ -23,6 +23,7 @@ interface Suggestion {
   admin_notes: string | null
   ai_confidence: 'high' | 'medium' | 'low' | null
   ai_reasoning: string | null
+  ai_category: string | null
   created_at: string
   reviewed_at: string | null
 }
@@ -34,6 +35,7 @@ interface Banner {
 }
 
 const fieldLabels: Record<string, string> = {
+  safe_cfs: '\u26A0 Safe CFS Limit (Safety Critical)',
   cls: 'Whitewater Class',
   opt: 'Optimal CFS',
   len: 'River Length',
@@ -75,7 +77,16 @@ export default function AdminSuggestions() {
     if (!userId) return
     const res = await fetch(`/api/suggestions?userId=${userId}&status=${filter}`)
     const data = await res.json()
-    if (data.suggestions) setSuggestions(data.suggestions)
+    if (data.suggestions) {
+      // Sort safety-critical suggestions to the top
+      const sorted = [...data.suggestions].sort((a: Suggestion, b: Suggestion) => {
+        const aIsSafety = a.ai_category === 'safety_critical' ? 0 : 1
+        const bIsSafety = b.ai_category === 'safety_critical' ? 0 : 1
+        if (aIsSafety !== bIsSafety) return aIsSafety - bIsSafety
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+      })
+      setSuggestions(sorted)
+    }
   }, [userId, filter])
 
   useEffect(() => {
@@ -268,18 +279,32 @@ export default function AdminSuggestions() {
         {suggestions.map(s => {
           const isProcessing = processing === s.id
           const hasFailed = failedIds.has(s.id)
+          const isSafety = s.ai_category === 'safety_critical'
 
           return (
             <div key={s.id} style={{
-              border: hasFailed ? '1px solid var(--dg)' : '.5px solid var(--bd)',
+              border: isSafety ? '2px solid var(--dg)' : hasFailed ? '1px solid var(--dg)' : '.5px solid var(--bd)',
               borderRadius: 'var(--rlg)',
               padding: '16px', marginBottom: '12px',
-              background: filter === 'approved' ? 'var(--rvlt)' : filter === 'rejected' ? 'var(--bg3)' : 'var(--bg2)',
+              background: isSafety && filter === 'pending' ? 'var(--dglt)' : filter === 'approved' ? 'var(--rvlt)' : filter === 'rejected' ? 'var(--bg3)' : 'var(--bg2)',
             }}>
+              {/* Safety-critical banner */}
+              {isSafety && (
+                <div style={{
+                  display: 'flex', alignItems: 'center', gap: '6px',
+                  fontFamily: mono, fontSize: '10px', fontWeight: 500, color: 'var(--dg)',
+                  padding: '6px 10px', marginBottom: '10px', borderRadius: 'var(--r)',
+                  background: 'rgba(163,45,45,.1)', border: '.5px solid var(--dg)',
+                  letterSpacing: '.3px', textTransform: 'uppercase',
+                }}>
+                  <span style={{ fontSize: '13px' }}>&#9888;</span>
+                  Safety Critical — Review Immediately
+                </div>
+              )}
               {/* Header */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
                 <div>
-                  <span style={{ fontFamily: serif, fontSize: '15px', fontWeight: 600, color: 'var(--rvdk)' }}>
+                  <span style={{ fontFamily: serif, fontSize: '15px', fontWeight: 600, color: isSafety ? 'var(--dg)' : 'var(--rvdk)' }}>
                     {s.river_name}
                   </span>
                   <span style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', marginLeft: '8px' }}>
