@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/alerts/check?key=${CRON_SECRET}",
+      "schedule": "*/15 * * * *"
+    }
+  ]
+}

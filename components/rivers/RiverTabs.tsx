@@ -66,6 +66,18 @@ interface ReportForm {
   tripDate: string
 }
 
+interface OutfitterListing {
+  id: string
+  business_name: string
+  description: string | null
+  website: string | null
+  phone: string | null
+  logo_url: string | null
+  cover_photo_url: string | null
+  tier: 'listed' | 'featured' | 'sponsored' | 'guide' | 'destination'
+  specialty_tags: string[]
+}
+
 interface UserReport {
   id: string
   author_name: string
@@ -90,6 +102,33 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
   const [riverMapData, setRiverMapData] = useState<{ accessPoints: AccessPoint[]; sections: RiverSection[]; riverPath: [number, number][] } | null>(null)
   const [riverMapLoading, setRiverMapLoading] = useState(false)
   const riverHasMap = hasRiverMap(river.id)
+  const [outfitters, setOutfitters] = useState<OutfitterListing[]>([])
+  const [outfittersLoaded, setOutfittersLoaded] = useState(false)
+
+  // Fetch outfitter listings from Supabase
+  useEffect(() => {
+    fetch(`/api/outfitters?riverId=${river.id}`)
+      .then(r => r.json())
+      .then(data => {
+        if (data.listings) setOutfitters(data.listings)
+        setOutfittersLoaded(true)
+      })
+      .catch(() => setOutfittersLoaded(true))
+  }, [river.id])
+
+  function trackClick(outfitterId: string, source: string) {
+    fetch('/api/outfitters/click', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ outfitterId, riverId: river.id, source }),
+    }).catch(() => {})
+  }
+
+  // Split outfitters by tier
+  const sponsored = outfitters.filter(o => o.tier === 'sponsored' || o.tier === 'destination')
+  const featured = outfitters.filter(o => o.tier === 'featured')
+  const listed = outfitters.filter(o => o.tier === 'listed')
+  const guides = outfitters.filter(o => o.tier === 'guide')
 
   // Fetch user-submitted reports when Trip Reports tab is selected
   const fetchReports = async () => {
@@ -197,6 +236,48 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
         {/* ── OVERVIEW ─────────────────────────────────────── */}
         {tab === 'Overview' && (
           <div>
+            {/* Sponsored outfitter — above the fold */}
+            {sponsored.map(o => (
+              <div key={o.id} style={{
+                marginBottom: '14px', padding: '14px', borderRadius: 'var(--rlg)',
+                background: 'linear-gradient(135deg, #E6F1FB, #E1F5EE)',
+                border: '1px solid var(--wt)', position: 'relative',
+              }}>
+                <span style={{
+                  position: 'absolute', top: '8px', right: '10px',
+                  fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', padding: '2px 8px',
+                  borderRadius: '8px', background: 'var(--wt)', color: '#fff',
+                  textTransform: 'uppercase', letterSpacing: '.5px',
+                }}>Sponsored</span>
+                {o.cover_photo_url && (
+                  <img src={o.cover_photo_url} alt={o.business_name}
+                    style={{ width: '100%', height: '120px', objectFit: 'cover', borderRadius: '6px', marginBottom: '10px' }} />
+                )}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' }}>
+                  {o.logo_url && (
+                    <img src={o.logo_url} alt="" style={{ width: '36px', height: '36px', borderRadius: '6px', objectFit: 'contain', border: '.5px solid var(--bd)' }} />
+                  )}
+                  <div>
+                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '15px', fontWeight: 700, color: '#042C53' }}>{o.business_name}</div>
+                    {o.phone && <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--wt)' }}>{o.phone}</div>}
+                  </div>
+                </div>
+                {o.description && <div style={{ fontSize: '12px', color: 'var(--tx2)', lineHeight: 1.55, marginBottom: '10px' }}>{o.description}</div>}
+                {o.website && (
+                  <a href={o.website.startsWith('http') ? o.website : `https://${o.website}`}
+                    target="_blank" rel="noopener noreferrer"
+                    onClick={() => trackClick(o.id, 'overview')}
+                    style={{
+                      display: 'inline-block', fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
+                      padding: '8px 18px', borderRadius: 'var(--r)',
+                      background: 'var(--wt)', color: '#fff', textDecoration: 'none', fontWeight: 500,
+                    }}>
+                    Book Now
+                  </a>
+                )}
+              </div>
+            ))}
+
             {/* Stats grid */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px', marginBottom: '12px' }}>
               {[
@@ -282,19 +363,123 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
             {/* Data Accuracy */}
             <DataAccuracy riverId={river.id} />
 
-            {/* Outfitters */}
-            {river.outs.length > 0 && (
-              <div>
-                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '7px' }}>
-                  Outfitters on this river
+            {/* Outfitters — tiered rendering */}
+            {(outfittersLoaded && (featured.length > 0 || listed.length > 0 || river.outs.length > 0)) && (
+              <div style={{ marginBottom: '14px' }}>
+                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                  Outfitters
                 </div>
-                {river.outs.map((out, i) => (
-                  <div key={i} style={{ border: '.5px dashed var(--bd2)', borderRadius: 'var(--r)', padding: '9px 11px', background: 'var(--bg2)', marginBottom: '8px' }}>
-                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.7px', marginBottom: '4px' }}>
-                      Outfitter
+
+                {/* Featured outfitters */}
+                {featured.map(o => (
+                  <div key={o.id} style={{
+                    border: '.5px solid var(--rvmd)', borderRadius: 'var(--r)',
+                    padding: '12px', background: 'var(--rvlt)', marginBottom: '8px', position: 'relative',
+                  }}>
+                    <span style={{
+                      position: 'absolute', top: '6px', right: '8px',
+                      fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', padding: '2px 6px',
+                      borderRadius: '6px', background: 'var(--rv)', color: '#fff',
+                      textTransform: 'uppercase', letterSpacing: '.5px',
+                    }}>Featured</span>
+                    {o.cover_photo_url && (
+                      <img src={o.cover_photo_url} alt={o.business_name}
+                        style={{ width: '100%', height: '80px', objectFit: 'cover', borderRadius: '4px', marginBottom: '8px' }} />
+                    )}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                      {o.logo_url && (
+                        <img src={o.logo_url} alt="" style={{ width: '28px', height: '28px', borderRadius: '4px', objectFit: 'contain' }} />
+                      )}
+                      <div>
+                        <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', fontWeight: 600, color: 'var(--rvdk)' }}>{o.business_name}</div>
+                        {o.phone && <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)' }}>{o.phone}</div>}
+                      </div>
                     </div>
+                    {o.description && <div style={{ fontSize: '11px', color: 'var(--tx2)', lineHeight: 1.5, marginBottom: '8px' }}>{o.description}</div>}
+                    {o.website && (
+                      <a href={o.website.startsWith('http') ? o.website : `https://${o.website}`}
+                        target="_blank" rel="noopener noreferrer"
+                        onClick={() => trackClick(o.id, 'outfitters_tab')}
+                        style={{
+                          fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
+                          color: 'var(--rv)', textDecoration: 'none',
+                        }}>
+                        {o.website.replace(/^https?:\/\//, '')} &rarr;
+                      </a>
+                    )}
+                  </div>
+                ))}
+
+                {/* Listed outfitters (from Supabase) */}
+                {listed.map(o => (
+                  <div key={o.id} style={{
+                    border: '.5px solid var(--bd)', borderRadius: 'var(--r)',
+                    padding: '9px 11px', background: 'var(--bg2)', marginBottom: '6px',
+                  }}>
+                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', fontWeight: 500, color: 'var(--rvdk)' }}>{o.business_name}</div>
+                    {o.website && (
+                      <a href={o.website.startsWith('http') ? o.website : `https://${o.website}`}
+                        target="_blank" rel="noopener noreferrer"
+                        onClick={() => trackClick(o.id, 'outfitters_tab')}
+                        style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--rv)', textDecoration: 'none' }}>
+                        {o.website.replace(/^https?:\/\//, '')}
+                      </a>
+                    )}
+                  </div>
+                ))}
+
+                {/* Seed outfitters (from static data — shown if no DB outfitters) */}
+                {outfitters.length === 0 && river.outs.map((out, i) => (
+                  <div key={`seed-${i}`} style={{
+                    border: '.5px dashed var(--bd2)', borderRadius: 'var(--r)',
+                    padding: '9px 11px', background: 'var(--bg2)', marginBottom: '6px',
+                  }}>
                     <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', fontWeight: 500, color: 'var(--rvdk)' }}>{out.n}</div>
                     <div style={{ fontSize: '11px', color: 'var(--tx2)', marginTop: '2px' }}>{out.d}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Local Guides — separate from outfitters */}
+            {guides.length > 0 && (
+              <div style={{ marginBottom: '14px' }}>
+                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--am)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                  Local Guides
+                </div>
+                {guides.map(g => (
+                  <div key={g.id} style={{
+                    border: '.5px solid var(--am)', borderRadius: 'var(--r)',
+                    padding: '10px 12px', background: 'var(--amlt)', marginBottom: '6px',
+                  }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                      <div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '3px' }}>
+                          {g.logo_url && <img src={g.logo_url} alt="" style={{ width: '24px', height: '24px', borderRadius: '50%' }} />}
+                          <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', fontWeight: 600, color: 'var(--am)' }}>{g.business_name}</span>
+                          <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', padding: '2px 6px', borderRadius: '6px', background: 'var(--am)', color: '#fff', textTransform: 'uppercase' }}>Guide</span>
+                        </div>
+                        {g.specialty_tags.length > 0 && (
+                          <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginBottom: '4px' }}>
+                            {g.specialty_tags.map((tag, i) => (
+                              <span key={i} style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', padding: '1px 5px', borderRadius: '4px', border: '.5px solid var(--am)', color: 'var(--am)' }}>{tag}</span>
+                            ))}
+                          </div>
+                        )}
+                        {g.description && <div style={{ fontSize: '11px', color: 'var(--tx2)', lineHeight: 1.5 }}>{g.description}</div>}
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', gap: '10px', marginTop: '6px' }}>
+                      {g.phone && <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>{g.phone}</span>}
+                      {g.website && (
+                        <a href={g.website.startsWith('http') ? g.website : `https://${g.website}`}
+                          target="_blank" rel="noopener noreferrer"
+                          onClick={() => trackClick(g.id, 'guide_tab')}
+                          style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--am)', textDecoration: 'none' }}>
+                          Contact &rarr;
+                        </a>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>
