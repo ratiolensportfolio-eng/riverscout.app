@@ -962,7 +962,7 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                   id: 'https://idfg.idaho.gov/fish/stocking',
                   az: 'https://www.azgfd.com/fishing/stocking/',
                 }
-                const dnrUrl = stockingSourceUrls[river.stateKey]
+                const dnrUrl = stockingSourceUrls[river.stateKey as string]
 
                 const fmtDate = (iso: string) => {
                   const dt = new Date(iso + 'T00:00:00')
