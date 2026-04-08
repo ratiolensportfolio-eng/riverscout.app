@@ -1,6 +1,8 @@
 // Inline SVG fish species icons — single-color silhouettes
 // Used in stocking reports, fishing tab, and species lists
 
+import React from 'react'
+
 const S = 20 // default size
 
 interface IconProps {
@@ -107,7 +109,7 @@ function GenericFish({ size = S, color = 'currentColor' }: IconProps) {
 }
 
 // Species name → icon component mapping
-const SPECIES_ICONS: Record<string, (props: IconProps) => JSX.Element> = {
+const SPECIES_ICONS: Record<string, (props: IconProps) => React.ReactNode> = {
   'brown trout': Trout,
   'rainbow trout': TroutClean,
   'brook trout': SmallTrout,
