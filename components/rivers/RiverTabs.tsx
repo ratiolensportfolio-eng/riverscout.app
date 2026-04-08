@@ -1122,6 +1122,117 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
 
           return (
             <div>
+              {/* Au Sable Hex Hatch Hero */}
+              {river.id === 'ausable' && (() => {
+                const hexHatch = fish?.hatches.find(h => h.name.toLowerCase().includes('hex'))
+                if (!hexHatch) return null
+                const trigger = getHatchTrigger(hexHatch.name)
+                const waterTempF = flow.tempC != null ? Math.round(flow.tempC * 9 / 5 + 32) : null
+                const triggerMet = trigger && waterTempF ? waterTempF >= trigger.tempMinF : false
+                const hexAlertSet = hatchAlerts.some(a => a.hatch_name === hexHatch.name && a.active)
+
+                return (
+                  <div style={{
+                    marginBottom: '20px', borderRadius: 'var(--rlg)', overflow: 'hidden',
+                    border: '.5px solid var(--rvmd)', background: 'var(--rvdk)', color: '#fff',
+                  }}>
+                    {/* Hero header */}
+                    <div style={{ padding: '20px 18px 16px' }}>
+                      <div style={{ fontFamily: mono, fontSize: '9px', letterSpacing: '2px', textTransform: 'uppercase', opacity: 0.6, marginBottom: '6px' }}>
+                        Michigan&apos;s Most Legendary Fishing Event
+                      </div>
+                      <div style={{ fontFamily: serif, fontSize: '22px', fontWeight: 700, marginBottom: '10px' }}>
+                        The Hex Hatch
+                      </div>
+                      <p style={{ fontFamily: mono, fontSize: '11px', opacity: 0.8, lineHeight: 1.7, marginBottom: '14px' }}>
+                        The Hexagenia limbata hatch on the Au Sable River is one of the largest mayfly hatches in North America. Trout that ignore flies all year gorge on the surface for two weeks in late June and early July.
+                      </p>
+
+                      {/* Live status */}
+                      <div style={{
+                        display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap',
+                        padding: '10px 14px', background: 'rgba(255,255,255,.1)', borderRadius: 'var(--r)',
+                        marginBottom: '14px',
+                      }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <div style={{
+                            width: 8, height: 8, borderRadius: '50%',
+                            background: triggerMet ? 'var(--rv)' : waterTempF && trigger ? 'var(--am)' : 'var(--tx3)',
+                          }} />
+                          <span style={{ fontFamily: mono, fontSize: '10px', fontWeight: 500 }}>
+                            {triggerMet ? 'CONDITIONS MET' : waterTempF && trigger && waterTempF >= trigger.tempMinF - 5 ? 'APPROACHING' : 'MONITORING'}
+                          </span>
+                        </div>
+                        {waterTempF !== null && (
+                          <span style={{ fontFamily: mono, fontSize: '10px', opacity: 0.8 }}>
+                            Water: {waterTempF}°F {trigger ? `(trigger: ${trigger.tempMinF}°F)` : ''}
+                          </span>
+                        )}
+                        {flow.cfs !== null && (
+                          <span style={{ fontFamily: mono, fontSize: '10px', opacity: 0.8 }}>
+                            Flow: {flow.cfs.toLocaleString()} cfs
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Alert button */}
+                      {hexAlertSet ? (
+                        <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--rvmd)', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          &#10003; Hex hatch alert set — we&apos;ll email you when conditions are right
+                        </span>
+                      ) : stockingAlertEmail && userIsPro ? (
+                        <button onClick={() => setHatchAlertExpanded(hexHatch.name)} style={{
+                          fontFamily: mono, fontSize: '11px', fontWeight: 500,
+                          padding: '9px 20px', borderRadius: 'var(--r)',
+                          background: '#fff', color: 'var(--rvdk)', border: 'none',
+                          cursor: 'pointer', letterSpacing: '.3px',
+                        }}>
+                          Set Hex Hatch Alert &rarr;
+                        </button>
+                      ) : stockingAlertEmail ? (
+                        <a href="/pro" style={{
+                          display: 'inline-block', fontFamily: mono, fontSize: '11px', fontWeight: 500,
+                          padding: '9px 20px', borderRadius: 'var(--r)',
+                          background: '#fff', color: 'var(--rvdk)', textDecoration: 'none',
+                          letterSpacing: '.3px',
+                        }}>
+                          Get Pro for Hex Alerts &rarr;
+                        </a>
+                      ) : (
+                        <a href="/login" style={{
+                          fontFamily: mono, fontSize: '10px', color: 'var(--rvmd)', textDecoration: 'underline',
+                        }}>
+                          Sign in to set a Hex hatch alert
+                        </a>
+                      )}
+                    </div>
+
+                    {/* Details sections */}
+                    <div style={{ padding: '0 18px 18px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                      <div>
+                        <div style={{ fontFamily: mono, fontSize: '9px', letterSpacing: '1px', textTransform: 'uppercase', opacity: 0.5, marginBottom: '4px' }}>Timing</div>
+                        <div style={{ fontFamily: mono, fontSize: '10px', opacity: 0.85, lineHeight: 1.6 }}>
+                          Begins when water temps reach 60–65°F, typically the third week of June. Lasts 2–3 weeks. Peak activity after dark — 10pm to 2am.
+                        </div>
+                      </div>
+                      <div>
+                        <div style={{ fontFamily: mono, fontSize: '9px', letterSpacing: '1px', textTransform: 'uppercase', opacity: 0.5, marginBottom: '4px' }}>What to Expect</div>
+                        <div style={{ fontFamily: mono, fontSize: '10px', opacity: 0.85, lineHeight: 1.6 }}>
+                          Hexagenia are enormous — size 4–6 hooks, pale yellow. Fish the spinner fall and dun emergence. Bring a headlamp, waders, and patience.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style={{ padding: '0 18px 16px' }}>
+                      <div style={{ fontFamily: mono, fontSize: '9px', letterSpacing: '1px', textTransform: 'uppercase', opacity: 0.5, marginBottom: '4px' }}>History</div>
+                      <div style={{ fontFamily: mono, fontSize: '10px', opacity: 0.75, lineHeight: 1.6 }}>
+                        Trout Unlimited was founded on the Au Sable in 1959 specifically to protect this fishery. The Hex hatch has drawn fly fishers from around the world for over a century.
+                      </div>
+                    </div>
+                  </div>
+                )
+              })()}
+
               {/* Designations */}
               {fish && fish.designations.length > 0 && (
                 <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '14px' }}>
