@@ -2,6 +2,7 @@
 // Used by both server and client components
 
 import { createSupabaseClient } from '@/lib/supabase'
+import { ADMIN_EMAILS } from '@/lib/admin'
 
 const FREE_ALERT_LIMIT = 3
 
@@ -9,9 +10,14 @@ export async function getUserPro(userId: string): Promise<boolean> {
   const supabase = createSupabaseClient()
   const { data } = await supabase
     .from('user_profiles')
-    .select('is_pro, pro_expires_at')
+    .select('is_pro, pro_expires_at, email')
     .eq('id', userId)
     .single()
+
+  // Admins always have Pro access
+  if (data?.email && ADMIN_EMAILS.includes(data.email.toLowerCase())) {
+    return true
+  }
 
   if (!data?.is_pro) return false
 
