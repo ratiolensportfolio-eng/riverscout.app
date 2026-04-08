@@ -546,7 +546,8 @@ export default function AdminSuggestions() {
           )
         })}
       </div>
-      </>)}
+      </>
+      )}
 
       {/* ── Stocking Reports Tab ─────────────────────── */}
       {adminTab === 'stocking' && (
