@@ -24,6 +24,13 @@ interface Suggestion {
   ai_confidence: 'high' | 'medium' | 'low' | null
   ai_reasoning: string | null
   created_at: string
+  reviewed_at: string | null
+}
+
+interface Banner {
+  type: 'success' | 'error'
+  message: string
+  suggestionId: string
 }
 
 const fieldLabels: Record<string, string> = {
@@ -51,6 +58,8 @@ export default function AdminSuggestions() {
   const [suggestions, setSuggestions] = useState<Suggestion[]>([])
   const [filter, setFilter] = useState<'pending' | 'approved' | 'rejected'>('pending')
   const [processing, setProcessing] = useState<string | null>(null)
+  const [banner, setBanner] = useState<Banner | null>(null)
+  const [failedIds, setFailedIds] = useState<Set<string>>(new Set())
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
@@ -72,14 +81,59 @@ export default function AdminSuggestions() {
     if (authorized) fetchSuggestions()
   }, [authorized, fetchSuggestions])
 
+  // Clear banner after 8 seconds
+  useEffect(() => {
+    if (banner) {
+      const t = setTimeout(() => setBanner(null), 8000)
+      return () => clearTimeout(t)
+    }
+  }, [banner])
+
   async function handleAction(suggestionId: string, action: 'approved' | 'rejected') {
+    const suggestion = suggestions.find(s => s.id === suggestionId)
+    if (!suggestion) return
+
     setProcessing(suggestionId)
-    await fetch('/api/suggestions', {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ suggestionId, userId, action }),
-    })
-    setSuggestions(prev => prev.filter(s => s.id !== suggestionId))
+    setBanner(null)
+
+    try {
+      const res = await fetch('/api/suggestions', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ suggestionId, userId, action }),
+      })
+      const data = await res.json()
+
+      if (data.ok) {
+        // Success
+        setSuggestions(prev => prev.filter(s => s.id !== suggestionId))
+        setFailedIds(prev => { const next = new Set(prev); next.delete(suggestionId); return next })
+
+        if (action === 'approved') {
+          setBanner({
+            type: 'success',
+            message: `Change deployed — ${suggestion.river_name} ${fieldLabels[suggestion.field] || suggestion.field} updated`,
+            suggestionId,
+          })
+        }
+      } else {
+        // Failure
+        setFailedIds(prev => new Set(prev).add(suggestionId))
+        setBanner({
+          type: 'error',
+          message: data.error || `Failed to ${action} suggestion`,
+          suggestionId,
+        })
+      }
+    } catch (err) {
+      setFailedIds(prev => new Set(prev).add(suggestionId))
+      setBanner({
+        type: 'error',
+        message: `Network error — could not ${action} suggestion`,
+        suggestionId,
+      })
+    }
+
     setProcessing(null)
   }
 
@@ -112,6 +166,26 @@ export default function AdminSuggestions() {
       </nav>
 
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '20px 28px' }}>
+        {/* Banner */}
+        {banner && (
+          <div style={{
+            padding: '12px 16px', borderRadius: 'var(--r)', marginBottom: '16px',
+            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+            background: banner.type === 'success' ? 'var(--rvlt)' : 'var(--dglt)',
+            border: `.5px solid ${banner.type === 'success' ? 'var(--rvmd)' : 'var(--dg)'}`,
+            color: banner.type === 'success' ? 'var(--rvdk)' : 'var(--dg)',
+          }}>
+            <div style={{ fontFamily: mono, fontSize: '12px', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ fontSize: '16px' }}>{banner.type === 'success' ? '\u2713' : '\u26A0'}</span>
+              {banner.message}
+            </div>
+            <button onClick={() => setBanner(null)} style={{
+              background: 'none', border: 'none', fontSize: '14px', cursor: 'pointer',
+              color: banner.type === 'success' ? 'var(--rv)' : 'var(--dg)',
+            }}>&times;</button>
+          </div>
+        )}
+
         <h1 style={{ fontFamily: serif, fontSize: '22px', fontWeight: 700, color: 'var(--rvdk)', marginBottom: '4px' }}>
           River Improvements
         </h1>
@@ -142,107 +216,174 @@ export default function AdminSuggestions() {
           </div>
         )}
 
-        {suggestions.map(s => (
-          <div key={s.id} style={{
-            border: '.5px solid var(--bd)', borderRadius: 'var(--rlg)',
-            padding: '16px', marginBottom: '12px', background: 'var(--bg2)',
-          }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
-              <div>
-                <span style={{ fontFamily: serif, fontSize: '15px', fontWeight: 600, color: 'var(--rvdk)' }}>
-                  {s.river_name}
-                </span>
-                <span style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', marginLeft: '8px' }}>
-                  {s.state_key.toUpperCase()}
-                </span>
-              </div>
-              <span style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)' }}>
-                {new Date(s.created_at).toLocaleDateString()}
-              </span>
-            </div>
+        {suggestions.map(s => {
+          const isProcessing = processing === s.id
+          const hasFailed = failedIds.has(s.id)
 
-            <div style={{ fontFamily: mono, fontSize: '10px', padding: '3px 8px', borderRadius: '4px', background: 'var(--bg3)', display: 'inline-block', marginBottom: '8px' }}>
-              {fieldLabels[s.field] || s.field}
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '8px' }}>
-              <div>
-                <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--dg)', textTransform: 'uppercase', marginBottom: '2px' }}>Current</div>
-                <div style={{ fontFamily: mono, fontSize: '11px', padding: '6px 8px', background: 'var(--dglt)', borderRadius: '4px', border: '.5px solid var(--dg)' }}>
-                  {s.current_value}
-                </div>
-              </div>
-              <div>
-                <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--rv)', textTransform: 'uppercase', marginBottom: '2px' }}>Suggested</div>
-                <div style={{ fontFamily: mono, fontSize: '11px', padding: '6px 8px', background: 'var(--rvlt)', borderRadius: '4px', border: '.5px solid var(--rvmd)' }}>
-                  {s.suggested_value}
-                </div>
-              </div>
-            </div>
-
-            <div style={{ fontSize: '12px', color: 'var(--tx2)', lineHeight: 1.5, marginBottom: '8px' }}>
-              <strong>Reason:</strong> {s.reason}
-            </div>
-
-            {s.source_url && (
-              <div style={{ fontFamily: mono, fontSize: '10px', marginBottom: '8px' }}>
-                <a href={s.source_url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--rv)' }}>
-                  Source: {s.source_url.slice(0, 60)}...
-                </a>
-              </div>
-            )}
-
-            {s.user_email && (
-              <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', marginBottom: '8px' }}>
-                Submitted by: {s.user_email}
-              </div>
-            )}
-
-            {/* AI Assessment */}
-            {s.ai_confidence && (
-              <div style={{
-                marginBottom: '12px', padding: '10px 12px', borderRadius: 'var(--r)',
-                background: s.ai_confidence === 'high' ? 'var(--rvlt)' : s.ai_confidence === 'low' ? 'var(--dglt)' : 'var(--amlt)',
-                border: `.5px solid ${s.ai_confidence === 'high' ? 'var(--rvmd)' : s.ai_confidence === 'low' ? 'var(--dg)' : 'var(--am)'}`,
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
-                  <span style={{ fontFamily: mono, fontSize: '9px', textTransform: 'uppercase', letterSpacing: '.5px',
-                    color: s.ai_confidence === 'high' ? 'var(--rv)' : s.ai_confidence === 'low' ? 'var(--dg)' : 'var(--am)',
-                  }}>
-                    AI Assessment · {s.ai_confidence} confidence
+          return (
+            <div key={s.id} style={{
+              border: hasFailed ? '1px solid var(--dg)' : '.5px solid var(--bd)',
+              borderRadius: 'var(--rlg)',
+              padding: '16px', marginBottom: '12px',
+              background: filter === 'approved' ? 'var(--rvlt)' : filter === 'rejected' ? 'var(--bg3)' : 'var(--bg2)',
+            }}>
+              {/* Header */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
+                <div>
+                  <span style={{ fontFamily: serif, fontSize: '15px', fontWeight: 600, color: 'var(--rvdk)' }}>
+                    {s.river_name}
+                  </span>
+                  <span style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', marginLeft: '8px' }}>
+                    {s.state_key.toUpperCase()}
                   </span>
                 </div>
-                <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx)', lineHeight: 1.5 }}>
-                  {s.ai_reasoning}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  {filter !== 'pending' && (
+                    <span style={{
+                      fontFamily: mono, fontSize: '9px', padding: '2px 8px', borderRadius: '8px',
+                      background: filter === 'approved' ? 'var(--rv)' : 'var(--dg)',
+                      color: '#fff', textTransform: 'uppercase',
+                    }}>
+                      {filter}
+                    </span>
+                  )}
+                  <span style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)' }}>
+                    {new Date(s.created_at).toLocaleDateString()}
+                  </span>
                 </div>
               </div>
-            )}
 
-            {filter === 'pending' && (
-              <div style={{ display: 'flex', gap: '8px', marginTop: '12px' }}>
-                <button onClick={() => handleAction(s.id, 'approved')}
-                  disabled={processing === s.id}
-                  style={{
-                    fontFamily: mono, fontSize: '11px', padding: '6px 16px', borderRadius: 'var(--r)',
-                    background: 'var(--rv)', color: '#fff', border: 'none', cursor: 'pointer',
-                    opacity: processing === s.id ? 0.6 : 1,
-                  }}>
-                  {processing === s.id ? '...' : 'Approve'}
-                </button>
-                <button onClick={() => handleAction(s.id, 'rejected')}
-                  disabled={processing === s.id}
-                  style={{
-                    fontFamily: mono, fontSize: '11px', padding: '6px 16px', borderRadius: 'var(--r)',
-                    background: 'var(--bg)', color: 'var(--dg)', border: '.5px solid var(--dg)', cursor: 'pointer',
-                    opacity: processing === s.id ? 0.6 : 1,
-                  }}>
-                  Reject
-                </button>
+              {/* Field badge */}
+              <div style={{ fontFamily: mono, fontSize: '10px', padding: '3px 8px', borderRadius: '4px', background: 'var(--bg3)', display: 'inline-block', marginBottom: '8px' }}>
+                {fieldLabels[s.field] || s.field}
               </div>
-            )}
-          </div>
-        ))}
+
+              {/* Values side by side */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '8px' }}>
+                <div>
+                  <div style={{ fontFamily: mono, fontSize: '9px', color: filter === 'approved' ? 'var(--tx3)' : 'var(--dg)', textTransform: 'uppercase', marginBottom: '2px' }}>
+                    {filter === 'approved' ? 'Previous' : 'Current'}
+                  </div>
+                  <div style={{
+                    fontFamily: mono, fontSize: '11px', padding: '6px 8px', borderRadius: '4px',
+                    background: filter === 'approved' ? 'var(--bg2)' : 'var(--dglt)',
+                    border: `.5px solid ${filter === 'approved' ? 'var(--bd)' : 'var(--dg)'}`,
+                    textDecoration: filter === 'approved' ? 'line-through' : 'none',
+                    color: filter === 'approved' ? 'var(--tx3)' : 'var(--tx)',
+                  }}>
+                    {s.current_value}
+                  </div>
+                </div>
+                <div>
+                  <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--rv)', textTransform: 'uppercase', marginBottom: '2px' }}>
+                    {filter === 'approved' ? 'Updated To' : 'Suggested'}
+                  </div>
+                  <div style={{
+                    fontFamily: mono, fontSize: '11px', padding: '6px 8px', borderRadius: '4px',
+                    background: 'var(--rvlt)', border: '.5px solid var(--rvmd)',
+                    fontWeight: filter === 'approved' ? 600 : 400,
+                  }}>
+                    {s.suggested_value}
+                  </div>
+                </div>
+              </div>
+
+              {/* Reason */}
+              <div style={{ fontSize: '12px', color: 'var(--tx2)', lineHeight: 1.5, marginBottom: '8px' }}>
+                <strong>Reason:</strong> {s.reason}
+              </div>
+
+              {/* Source URL */}
+              {s.source_url && (
+                <div style={{ fontFamily: mono, fontSize: '10px', marginBottom: '8px' }}>
+                  <a href={s.source_url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--rv)' }}>
+                    Source: {s.source_url.length > 60 ? s.source_url.slice(0, 60) + '...' : s.source_url}
+                  </a>
+                </div>
+              )}
+
+              {/* Submitter */}
+              {s.user_email && (
+                <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', marginBottom: '8px' }}>
+                  Submitted by: {s.user_email}
+                </div>
+              )}
+
+              {/* AI Assessment */}
+              {s.ai_confidence && (
+                <div style={{
+                  marginBottom: '12px', padding: '10px 12px', borderRadius: 'var(--r)',
+                  background: s.ai_confidence === 'high' ? 'var(--rvlt)' : s.ai_confidence === 'low' ? 'var(--dglt)' : 'var(--amlt)',
+                  border: `.5px solid ${s.ai_confidence === 'high' ? 'var(--rvmd)' : s.ai_confidence === 'low' ? 'var(--dg)' : 'var(--am)'}`,
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
+                    <span style={{
+                      fontFamily: mono, fontSize: '9px', textTransform: 'uppercase', letterSpacing: '.5px',
+                      color: s.ai_confidence === 'high' ? 'var(--rv)' : s.ai_confidence === 'low' ? 'var(--dg)' : 'var(--am)',
+                    }}>
+                      AI Assessment &middot; {s.ai_confidence} confidence
+                    </span>
+                  </div>
+                  <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx)', lineHeight: 1.5 }}>
+                    {s.ai_reasoning}
+                  </div>
+                </div>
+              )}
+
+              {/* Error flag for failed deployments */}
+              {hasFailed && filter === 'pending' && (
+                <div style={{
+                  fontFamily: mono, fontSize: '10px', color: 'var(--dg)', padding: '8px 10px',
+                  background: 'var(--dglt)', border: '.5px solid var(--dg)', borderRadius: 'var(--r)',
+                  marginBottom: '8px',
+                }}>
+                  Deployment failed — see error above
+                </div>
+              )}
+
+              {/* Action buttons */}
+              {filter === 'pending' && (
+                <div style={{ display: 'flex', gap: '8px', marginTop: '12px' }}>
+                  <button onClick={() => handleAction(s.id, 'approved')}
+                    disabled={isProcessing}
+                    style={{
+                      fontFamily: mono, fontSize: '11px', padding: '8px 20px', borderRadius: 'var(--r)',
+                      background: 'var(--rv)', color: '#fff', border: 'none', cursor: isProcessing ? 'wait' : 'pointer',
+                      opacity: isProcessing ? 0.6 : 1,
+                      display: 'flex', alignItems: 'center', gap: '6px',
+                    }}>
+                    {isProcessing ? (
+                      <>
+                        <span style={{ display: 'inline-block', width: 12, height: 12, border: '2px solid rgba(255,255,255,.3)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 0.6s linear infinite' }} />
+                        Deploying...
+                      </>
+                    ) : hasFailed ? 'Retry Deployment' : 'Approve & Deploy'}
+                  </button>
+                  <button onClick={() => handleAction(s.id, 'rejected')}
+                    disabled={isProcessing}
+                    style={{
+                      fontFamily: mono, fontSize: '11px', padding: '8px 20px', borderRadius: 'var(--r)',
+                      background: 'var(--bg)', color: 'var(--dg)', border: '.5px solid var(--dg)', cursor: isProcessing ? 'wait' : 'pointer',
+                      opacity: isProcessing ? 0.6 : 1,
+                    }}>
+                    Reject
+                  </button>
+                </div>
+              )}
+
+              {/* Approved metadata */}
+              {filter === 'approved' && s.reviewed_at && (
+                <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--rv)', marginTop: '8px' }}>
+                  Deployed {new Date(s.reviewed_at).toLocaleDateString()} {new Date(s.reviewed_at).toLocaleTimeString()}
+                </div>
+              )}
+            </div>
+          )
+        })}
       </div>
+
+      {/* Spinner animation */}
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
     </main>
   )
 }
