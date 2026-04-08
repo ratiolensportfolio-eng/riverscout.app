@@ -45,7 +45,7 @@ export default function AuthNav() {
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-      <Link href={`/profile/${profileUsername}`} style={{ display: 'flex', alignItems: 'center', gap: '6px', textDecoration: 'none' }}>
+      <Link href="/account" style={{ display: 'flex', alignItems: 'center', gap: '6px', textDecoration: 'none' }}>
         {avatar ? (
           <img src={avatar} alt={name} style={{ width: 22, height: 22, borderRadius: '50%', border: '.5px solid var(--bd2)' }} />
         ) : (
