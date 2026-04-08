@@ -545,13 +545,12 @@ export default function AdminSuggestions() {
             </div>
           )
         })}
-      </div>
-      </>
-      )}
+        </>
+        )}
 
-      {/* ── Stocking Reports Tab ─────────────────────── */}
-      {adminTab === 'stocking' && (
-        <div>
+        {/* ── Stocking Reports Tab ─────────────────────── */}
+        {adminTab === 'stocking' && (
+          <div>
           <h1 style={{ fontFamily: serif, fontSize: '22px', fontWeight: 700, color: 'var(--rvdk)', marginBottom: '4px' }}>
             Stocking Reports
           </h1>
@@ -751,6 +750,7 @@ export default function AdminSuggestions() {
 
       {/* Spinner animation */}
       <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      </div>
     </main>
   )
 }
