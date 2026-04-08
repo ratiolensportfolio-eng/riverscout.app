@@ -375,8 +375,8 @@ export default function USMap({ stateFlowMap, stateConditions }: Props) {
     </text>
   )
 
-  // Separate live vs coming-soon states
-  const liveIds = new Set(['WA', 'OR', 'CA', 'ID', 'MT', 'CO', 'AZ', 'MI', 'PA', 'WV', 'VA', 'KY', 'TN', 'NC'])
+  // All states with river data are live — only AK and HI are coming soon
+  const liveIds = new Set(Object.keys(STATES).map(k => k.toUpperCase()))
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
@@ -514,7 +514,7 @@ export default function USMap({ stateFlowMap, stateConditions }: Props) {
         )}
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
           <div style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#d8d4cc' }} />
-          Coming soon
+          AK/HI coming soon
         </div>
       </div>
     </div>
