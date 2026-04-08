@@ -88,6 +88,12 @@ export default function SuggestCorrection({ riverId, riverName, stateKey, initia
       setUserId(data.user?.id ?? null)
       setUserEmail(data.user?.email ?? null)
     })
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUserId(session?.user?.id ?? null)
+      setUserEmail(session?.user?.email ?? null)
+    })
+    return () => subscription.unsubscribe()
   }, [])
 
   const isSafetyCritical = form.field === 'safe_cfs'

@@ -157,19 +157,26 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
 
   // Check auth + Pro status for stocking form
   useEffect(() => {
-    if (tab === 'Fishing') {
-      supabase.auth.getUser().then(({ data }) => {
-        setStockingUserId(data.user?.id ?? null)
-        if (data.user?.email) setStockingAlertEmail(data.user.email)
-        if (data.user?.id) {
-          fetch(`/api/pro/status?userId=${data.user.id}`)
-            .then(r => r.json())
-            .then(d => setUserIsPro(d.isPro ?? false))
-            .catch(() => {})
-        }
-      })
+    function checkAuth(userId: string | undefined, email: string | undefined) {
+      setStockingUserId(userId ?? null)
+      if (email) setStockingAlertEmail(email)
+      if (userId) {
+        fetch(`/api/pro/status?userId=${userId}`)
+          .then(r => r.json())
+          .then(d => setUserIsPro(d.isPro ?? false))
+          .catch(() => {})
+      }
     }
-  }, [tab])
+
+    supabase.auth.getUser().then(({ data }) => {
+      checkAuth(data.user?.id, data.user?.email ?? undefined)
+    })
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      checkAuth(session?.user?.id, session?.user?.email ?? undefined)
+    })
+    return () => subscription.unsubscribe()
+  }, [])
 
   // Fetch outfitter listings from Supabase
   useEffect(() => {
