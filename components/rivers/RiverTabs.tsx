@@ -108,6 +108,27 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
   const [outfitters, setOutfitters] = useState<OutfitterListing[]>([])
   const [outfittersLoaded, setOutfittersLoaded] = useState(false)
 
+  // Weather state
+  interface RiverWeatherData {
+    current: { tempF: number; windSpeedMph: number; windDirection: string; shortForecast: string; precipChance: number; hasThunderstorm: boolean; hasRain: boolean } | null
+    todayHigh: number | null; todayLow: number | null
+    tomorrowHigh: number | null; tomorrowLow: number | null
+    sunrise: string | null; sunset: string | null
+    thunderstormRisk: boolean; rainNext24h: boolean
+  }
+  const [weather, setWeather] = useState<RiverWeatherData | null>(null)
+  const [weatherLoaded, setWeatherLoaded] = useState(false)
+
+  // Fetch weather on Overview tab
+  useEffect(() => {
+    if (tab === 'Overview' && !weatherLoaded) {
+      fetch(`/api/weather?riverId=${river.id}`)
+        .then(r => r.json())
+        .then(d => { if (d.current) setWeather(d); setWeatherLoaded(true) })
+        .catch(() => setWeatherLoaded(true))
+    }
+  }, [tab, weatherLoaded, river.id])
+
   // Pro features state
   interface WeeklyFlow { week: number; month: string; avg: number; median: number; p10: number; p90: number; min: number; max: number }
   interface ForecastPoint { time: string; cfs: number }
@@ -464,6 +485,50 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
             <p style={{ fontSize: '13px', color: 'var(--tx)', lineHeight: 1.78, marginBottom: '12px' }}>
               {river.desc}
             </p>
+
+            {/* Weather conditions */}
+            {weather?.current && (
+              <div style={{
+                marginBottom: '14px', padding: '12px 14px', borderRadius: 'var(--r)',
+                border: `.5px solid ${weather.thunderstormRisk ? 'var(--am)' : 'var(--bd)'}`,
+                background: weather.thunderstormRisk ? 'var(--amlt)' : 'var(--bg2)',
+              }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '6px' }}>
+                  <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                    Current Weather
+                  </div>
+                  {weather.sunrise && weather.sunset && (
+                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)' }}>
+                      &#9788; {weather.sunrise} — {weather.sunset}
+                    </div>
+                  )}
+                </div>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '4px' }}>
+                  <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '22px', fontWeight: 700, color: 'var(--tx)' }}>
+                    {weather.current.tempF}°F
+                  </span>
+                  <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--tx2)' }}>
+                    {weather.current.shortForecast}
+                  </span>
+                </div>
+                <div style={{ display: 'flex', gap: '12px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx2)', flexWrap: 'wrap' }}>
+                  {weather.current.windSpeedMph > 0 && (
+                    <span>Wind {weather.current.windSpeedMph} mph {weather.current.windDirection}</span>
+                  )}
+                  {weather.current.precipChance > 0 && (
+                    <span>{weather.current.precipChance}% precip</span>
+                  )}
+                  {weather.todayHigh !== null && weather.todayLow !== null && (
+                    <span>H {weather.todayHigh}° / L {weather.todayLow}°</span>
+                  )}
+                </div>
+                {weather.thunderstormRisk && (
+                  <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--am)', marginTop: '6px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <span style={{ fontSize: '12px' }}>&#9888;</span> Thunderstorm risk in the next 24 hours — check conditions before heading out
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Sections */}
             {river.secs.length > 0 && (
