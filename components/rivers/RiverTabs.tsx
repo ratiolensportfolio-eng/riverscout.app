@@ -107,6 +107,71 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
   const [outfitters, setOutfitters] = useState<OutfitterListing[]>([])
   const [outfittersLoaded, setOutfittersLoaded] = useState(false)
 
+  // Pro features state
+  interface WeeklyFlow { week: number; month: string; avg: number; median: number; p10: number; p90: number; min: number; max: number }
+  interface ForecastPoint { time: string; cfs: number }
+  const [overviewUserId, setOverviewUserId] = useState<string | null>(null)
+  const [overviewIsPro, setOverviewIsPro] = useState(false)
+  const [historicalData, setHistoricalData] = useState<WeeklyFlow[] | null>(null)
+  const [forecastData, setForecastData] = useState<ForecastPoint[] | null>(null)
+  const [forecastUnavailable, setForecastUnavailable] = useState(false)
+  const [customRange, setCustomRange] = useState<{ min_cfs: number; max_cfs: number } | null>(null)
+  const [customRangeMin, setCustomRangeMin] = useState('')
+  const [customRangeMax, setCustomRangeMax] = useState('')
+  const [customRangeSaving, setCustomRangeSaving] = useState(false)
+
+  // Check Pro status on mount for overview features
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data }) => {
+      const uid = data.user?.id ?? null
+      setOverviewUserId(uid)
+      if (uid) {
+        fetch(`/api/pro/status?userId=${uid}`)
+          .then(r => r.json())
+          .then(d => setOverviewIsPro(d.isPro ?? false))
+          .catch(() => {})
+        // Load custom CFS range
+        fetch(`/api/pro/cfs-range?userId=${uid}&riverId=${river.id}`)
+          .then(r => r.json())
+          .then(d => {
+            if (d.range) {
+              setCustomRange(d.range)
+              setCustomRangeMin(String(d.range.min_cfs))
+              setCustomRangeMax(String(d.range.max_cfs))
+            }
+          })
+          .catch(() => {})
+      }
+    })
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setOverviewUserId(session?.user?.id ?? null)
+    })
+    return () => subscription.unsubscribe()
+  }, [river.id])
+
+  // Fetch Pro data when Pro user views Overview
+  useEffect(() => {
+    if (overviewIsPro && tab === 'Overview') {
+      // Historical
+      if (!historicalData) {
+        fetch(`/api/pro/historical?gaugeId=${river.g}`)
+          .then(r => r.json())
+          .then(d => { if (d.weeks) setHistoricalData(d.weeks) })
+          .catch(() => {})
+      }
+      // Forecast
+      if (!forecastData && !forecastUnavailable) {
+        fetch(`/api/pro/forecast?gaugeId=${river.g}`)
+          .then(r => r.json())
+          .then(d => {
+            if (d.forecasts?.length > 0) setForecastData(d.forecasts)
+            else setForecastUnavailable(true)
+          })
+          .catch(() => setForecastUnavailable(true))
+      }
+    }
+  }, [overviewIsPro, tab, river.g, historicalData, forecastData, forecastUnavailable])
+
   // Stocking data
   interface StockingEvent {
     id: string
@@ -557,70 +622,191 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                 ))}
               </div>
             )}
-            {/* 72-Hour Flow Forecast — Pro only */}
+            {/* 72-Hour Flow Forecast */}
             <div style={{ marginTop: '16px' }}>
-              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
-                72-Hour Flow Forecast
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
+                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                  72-Hour Flow Forecast
+                </div>
+                {overviewIsPro && <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', color: 'var(--rv)', padding: '1px 5px', borderRadius: '3px', background: 'var(--rvlt)' }}>PRO</span>}
               </div>
-              <div style={{ position: 'relative', borderRadius: 'var(--r)', overflow: 'hidden' }}>
-                <div style={{ filter: 'blur(5px)', pointerEvents: 'none', userSelect: 'none' }}>
-                  <div style={{ height: '120px', background: 'var(--bg2)', borderRadius: 'var(--r)', border: '.5px solid var(--bd)', display: 'flex', alignItems: 'flex-end', padding: '12px 16px', gap: '4px' }}>
-                    {[35, 42, 55, 68, 72, 65, 58, 50, 48, 52, 60, 70, 75, 72, 68].map((h, i) => (
-                      <div key={i} style={{ flex: 1, height: `${h}%`, background: 'var(--rvmd)', borderRadius: '2px 2px 0 0' }} />
-                    ))}
+              {overviewIsPro ? (
+                forecastData && forecastData.length > 0 ? (
+                  <div style={{ border: '.5px solid var(--bd)', borderRadius: 'var(--r)', overflow: 'hidden' }}>
+                    <div style={{ height: '140px', background: 'var(--bg2)', display: 'flex', alignItems: 'flex-end', padding: '12px 16px 8px', gap: '2px' }}>
+                      {(() => {
+                        const maxCfs = Math.max(...forecastData.map(f => f.cfs))
+                        return forecastData.map((f, i) => {
+                          const pct = maxCfs > 0 ? (f.cfs / maxCfs) * 85 + 5 : 10
+                          return (
+                            <div key={i} title={`${new Date(f.time).toLocaleString()}: ${f.cfs.toLocaleString()} cfs`}
+                              style={{ flex: 1, height: `${pct}%`, background: 'var(--wt)', borderRadius: '2px 2px 0 0', opacity: 0.8, minWidth: '3px' }} />
+                          )
+                        })
+                      })()}
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 16px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)' }}>
+                      <span>Now</span>
+                      <span>+24h</span>
+                      <span>+48h</span>
+                      <span>+72h</span>
+                    </div>
+                  </div>
+                ) : forecastUnavailable ? (
+                  <div style={{ padding: '12px', background: 'var(--bg2)', borderRadius: 'var(--r)', border: '.5px solid var(--bd)', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', textAlign: 'center' }}>
+                    NWS forecast not available for this gauge
+                  </div>
+                ) : (
+                  <div style={{ padding: '12px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', textAlign: 'center' }}>Loading forecast...</div>
+                )
+              ) : (
+                <div style={{ position: 'relative', borderRadius: 'var(--r)', overflow: 'hidden' }}>
+                  <div style={{ filter: 'blur(5px)', pointerEvents: 'none', userSelect: 'none' }}>
+                    <div style={{ height: '120px', background: 'var(--bg2)', borderRadius: 'var(--r)', border: '.5px solid var(--bd)', display: 'flex', alignItems: 'flex-end', padding: '12px 16px', gap: '4px' }}>
+                      {[35, 42, 55, 68, 72, 65, 58, 50, 48, 52, 60, 70, 75, 72, 68].map((h, i) => (
+                        <div key={i} style={{ flex: 1, height: `${h}%`, background: 'var(--rvmd)', borderRadius: '2px 2px 0 0' }} />
+                      ))}
+                    </div>
+                  </div>
+                  <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,.6)' }}>
+                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--rvdk)', marginBottom: '8px' }}>Upgrade to Pro for 72-hour flow forecasts</div>
+                    <a href="/pro" style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', fontWeight: 500, padding: '6px 16px', borderRadius: 'var(--r)', background: 'var(--rvdk)', color: '#fff', textDecoration: 'none' }}>Upgrade to Pro &rarr;</a>
                   </div>
                 </div>
-                <div style={{
-                  position: 'absolute', inset: 0,
-                  display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                  background: 'rgba(255,255,255,.6)', borderRadius: 'var(--r)',
-                }}>
-                  <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--rvdk)', marginBottom: '8px' }}>
-                    Upgrade to Pro for 72-hour flow forecasts
-                  </div>
-                  <a href="/pro" style={{
-                    fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', fontWeight: 500,
-                    padding: '6px 16px', borderRadius: 'var(--r)',
-                    background: 'var(--rvdk)', color: '#fff',
-                    textDecoration: 'none', letterSpacing: '.3px',
-                  }}>
-                    Upgrade to Pro &rarr;
-                  </a>
-                </div>
-              </div>
+              )}
             </div>
 
-            {/* Historical Flow Analysis — Pro only */}
+            {/* Historical Flow Analysis */}
             <div style={{ marginTop: '16px' }}>
-              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
-                Historical Flow Analysis
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
+                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                  10-Year Flow Patterns
+                </div>
+                {overviewIsPro && <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', color: 'var(--rv)', padding: '1px 5px', borderRadius: '3px', background: 'var(--rvlt)' }}>PRO</span>}
               </div>
-              <div style={{ position: 'relative', borderRadius: 'var(--r)', overflow: 'hidden' }}>
-                <div style={{ filter: 'blur(5px)', pointerEvents: 'none', userSelect: 'none' }}>
-                  <div style={{ height: '120px', background: 'var(--bg2)', borderRadius: 'var(--r)', border: '.5px solid var(--bd)', display: 'flex', alignItems: 'flex-end', padding: '12px 16px', gap: '3px' }}>
-                    {[20, 25, 35, 50, 70, 85, 90, 80, 65, 45, 30, 22, 25, 35, 50, 65, 75, 80, 70, 55, 40, 28, 20, 18].map((h, i) => (
-                      <div key={i} style={{ flex: 1, height: `${h}%`, background: i < 12 ? 'var(--wtmd)' : 'var(--rvmd)', borderRadius: '2px 2px 0 0', opacity: 0.7 }} />
-                    ))}
+              {overviewIsPro ? (
+                historicalData && historicalData.length > 0 ? (
+                  <div style={{ border: '.5px solid var(--bd)', borderRadius: 'var(--r)', overflow: 'hidden' }}>
+                    <div style={{ height: '160px', background: 'var(--bg2)', display: 'flex', alignItems: 'flex-end', padding: '12px 8px 8px', gap: '1px' }}>
+                      {(() => {
+                        const maxAvg = Math.max(...historicalData.map(w => w.p90))
+                        const currentWeek = Math.floor((new Date().getTime() - new Date(new Date().getFullYear(), 0, 0).getTime()) / (86400000 * 7))
+                        return historicalData.map((w, i) => {
+                          const avgPct = maxAvg > 0 ? (w.avg / maxAvg) * 80 + 5 : 10
+                          const p90Pct = maxAvg > 0 ? (w.p90 / maxAvg) * 80 + 5 : 10
+                          const isCurrent = w.week === currentWeek
+                          return (
+                            <div key={i} title={`${w.month} Wk${(w.week % 4) + 1}: avg ${w.avg.toLocaleString()} cfs (${w.p10.toLocaleString()}–${w.p90.toLocaleString()})`}
+                              style={{ flex: 1, position: 'relative', height: `${p90Pct}%`, minWidth: '2px' }}>
+                              <div style={{
+                                position: 'absolute', bottom: 0, left: 0, right: 0,
+                                height: `${(avgPct / p90Pct) * 100}%`,
+                                background: isCurrent ? 'var(--rv)' : 'var(--wt)',
+                                borderRadius: '2px 2px 0 0', opacity: isCurrent ? 1 : 0.6,
+                              }} />
+                              <div style={{
+                                position: 'absolute', bottom: 0, left: 0, right: 0,
+                                height: '100%', background: isCurrent ? 'var(--rvlt)' : 'var(--wtlt)',
+                                borderRadius: '2px 2px 0 0', opacity: 0.3,
+                              }} />
+                            </div>
+                          )
+                        })
+                      })()}
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 12px 6px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', color: 'var(--tx3)' }}>
+                      {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map(m => <span key={m}>{m}</span>)}
+                    </div>
+                    <div style={{ display: 'flex', gap: '12px', padding: '6px 12px 10px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px' }}>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><span style={{ width: 8, height: 8, background: 'var(--wt)', borderRadius: '2px', opacity: 0.6 }} /> Avg CFS</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><span style={{ width: 8, height: 8, background: 'var(--wtlt)', borderRadius: '2px' }} /> 10-90th pct</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><span style={{ width: 8, height: 8, background: 'var(--rv)', borderRadius: '2px' }} /> Current week</span>
+                    </div>
+                  </div>
+                ) : (
+                  <div style={{ padding: '12px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', textAlign: 'center' }}>Loading historical data...</div>
+                )
+              ) : (
+                <div style={{ position: 'relative', borderRadius: 'var(--r)', overflow: 'hidden' }}>
+                  <div style={{ filter: 'blur(5px)', pointerEvents: 'none', userSelect: 'none' }}>
+                    <div style={{ height: '120px', background: 'var(--bg2)', borderRadius: 'var(--r)', border: '.5px solid var(--bd)', display: 'flex', alignItems: 'flex-end', padding: '12px 16px', gap: '3px' }}>
+                      {[20, 25, 35, 50, 70, 85, 90, 80, 65, 45, 30, 22, 25, 35, 50, 65, 75, 80, 70, 55, 40, 28, 20, 18].map((h, i) => (
+                        <div key={i} style={{ flex: 1, height: `${h}%`, background: 'var(--wtmd)', borderRadius: '2px 2px 0 0', opacity: 0.7 }} />
+                      ))}
+                    </div>
+                  </div>
+                  <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,.6)' }}>
+                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--rvdk)', marginBottom: '8px' }}>Upgrade to Pro to see historical flow patterns</div>
+                    <a href="/pro" style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', fontWeight: 500, padding: '6px 16px', borderRadius: 'var(--r)', background: 'var(--rvdk)', color: '#fff', textDecoration: 'none' }}>Upgrade to Pro &rarr;</a>
                   </div>
                 </div>
-                <div style={{
-                  position: 'absolute', inset: 0,
-                  display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                  background: 'rgba(255,255,255,.6)', borderRadius: 'var(--r)',
-                }}>
-                  <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--rvdk)', marginBottom: '8px' }}>
-                    Upgrade to Pro to see historical flow patterns
+              )}
+            </div>
+
+            {/* Custom Optimal CFS Range */}
+            <div style={{ marginTop: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
+                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                  Your Optimal Range
+                </div>
+                {overviewIsPro && <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', color: 'var(--rv)', padding: '1px 5px', borderRadius: '3px', background: 'var(--rvlt)' }}>PRO</span>}
+              </div>
+              {overviewIsPro ? (
+                <div style={{ border: '.5px solid var(--bd)', borderRadius: 'var(--r)', padding: '12px 14px', background: 'var(--bg2)' }}>
+                  {customRange && (
+                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--rv)', marginBottom: '8px' }}>
+                      Your range: {customRange.min_cfs.toLocaleString()}–{customRange.max_cfs.toLocaleString()} CFS
+                    </div>
+                  )}
+                  <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', marginBottom: '8px' }}>
+                    Default: {river.opt} CFS {customRange ? '· ' : ''}
+                    {!customRange && 'Set your personal preferred CFS range for flow alerts'}
                   </div>
-                  <a href="/pro" style={{
-                    fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', fontWeight: 500,
-                    padding: '6px 16px', borderRadius: 'var(--r)',
-                    background: 'var(--rvdk)', color: '#fff',
-                    textDecoration: 'none', letterSpacing: '.3px',
-                  }}>
+                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
+                    <input type="number" value={customRangeMin} onChange={e => setCustomRangeMin(e.target.value)}
+                      placeholder="Min" style={{ width: '80px', padding: '6px 8px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)' }} />
+                    <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>to</span>
+                    <input type="number" value={customRangeMax} onChange={e => setCustomRangeMax(e.target.value)}
+                      placeholder="Max" style={{ width: '80px', padding: '6px 8px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)' }} />
+                    <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>CFS</span>
+                    <button disabled={customRangeSaving || !customRangeMin || !customRangeMax}
+                      onClick={async () => {
+                        setCustomRangeSaving(true)
+                        try {
+                          const res = await fetch('/api/pro/cfs-range', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ userId: overviewUserId, riverId: river.id, minCfs: parseInt(customRangeMin), maxCfs: parseInt(customRangeMax) }),
+                          })
+                          const data = await res.json()
+                          if (data.ok) setCustomRange({ min_cfs: parseInt(customRangeMin), max_cfs: parseInt(customRangeMax) })
+                        } catch { /* ignore */ }
+                        setCustomRangeSaving(false)
+                      }}
+                      style={{
+                        fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', fontWeight: 500,
+                        padding: '6px 14px', borderRadius: 'var(--r)',
+                        background: 'var(--rv)', color: '#fff', border: 'none',
+                        cursor: customRangeSaving ? 'wait' : 'pointer',
+                        opacity: (customRangeSaving || !customRangeMin || !customRangeMax) ? 0.6 : 1,
+                      }}>
+                      {customRangeSaving ? 'Saving...' : customRange ? 'Update' : 'Save'}
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div style={{
+                  padding: '10px 14px', background: 'var(--rvlt)', border: '.5px solid var(--rvmd)',
+                  borderRadius: 'var(--r)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', flexWrap: 'wrap',
+                }}>
+                  <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--rvdk)' }}>
+                    Set your own optimal CFS range for personalized alerts
+                  </span>
+                  <a href="/pro" style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', fontWeight: 500, padding: '5px 14px', borderRadius: 'var(--r)', background: 'var(--rvdk)', color: '#fff', textDecoration: 'none', flexShrink: 0 }}>
                     Upgrade to Pro &rarr;
                   </a>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         )}
