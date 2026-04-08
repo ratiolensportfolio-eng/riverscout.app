@@ -232,9 +232,14 @@ export default function AdminSuggestions() {
           <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>
             {suggestions.length} {filter} suggestion{suggestions.length !== 1 ? 's' : ''}
           </div>
-          <Link href="/about/improvements" style={{ fontFamily: mono, fontSize: '10px', color: 'var(--rv)', textDecoration: 'none' }}>
-            View public log &rarr;
-          </Link>
+          <div style={{ display: 'flex', gap: '12px' }}>
+            <Link href="/admin/changes" style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', textDecoration: 'none' }}>
+              Change Log
+            </Link>
+            <Link href="/about/improvements" style={{ fontFamily: mono, fontSize: '10px', color: 'var(--rv)', textDecoration: 'none' }}>
+              Public log &rarr;
+            </Link>
+          </div>
         </div>
 
         {/* Filter tabs */}
