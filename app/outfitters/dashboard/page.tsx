@@ -42,6 +42,10 @@ export default function OutfitterDashboard() {
   const [error, setError] = useState('')
   const [outfitterId, setOutfitterId] = useState('')
   const [userId, setUserId] = useState('')
+  const [logoUrl, setLogoUrl] = useState<string | null>(null)
+  const [coverUrl, setCoverUrl] = useState<string | null>(null)
+  const [uploading, setUploading] = useState<'logo' | 'cover' | null>(null)
+  const [uploadMsg, setUploadMsg] = useState('')
 
   // In production, these would come from auth session
   // For now, manual input for demo
@@ -70,6 +74,52 @@ export default function OutfitterDashboard() {
       setError('Failed to load analytics')
     }
     setLoading(false)
+
+    // Fetch current images
+    try {
+      const { createClient } = await import('@supabase/supabase-js')
+      const sb = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      )
+      const { data: listing } = await sb
+        .from('outfitters')
+        .select('logo_url, cover_photo_url')
+        .eq('id', outfitterId)
+        .single()
+      if (listing) {
+        setLogoUrl(listing.logo_url)
+        setCoverUrl(listing.cover_photo_url)
+      }
+    } catch {}
+  }
+
+  async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>, type: 'logo' | 'cover') {
+    const file = e.target.files?.[0]
+    if (!file || !outfitterId) return
+    setUploading(type)
+    setUploadMsg('')
+
+    const formData = new FormData()
+    formData.append('file', file)
+    formData.append('outfitterId', outfitterId)
+    formData.append('type', type)
+
+    try {
+      const res = await fetch('/api/outfitters/upload', { method: 'POST', body: formData })
+      const data = await res.json()
+      if (data.ok) {
+        if (type === 'logo') setLogoUrl(data.url)
+        else setCoverUrl(data.url)
+        setUploadMsg(`${type === 'logo' ? 'Logo' : 'Cover photo'} updated!`)
+      } else {
+        setUploadMsg('Error: ' + (data.error || 'Upload failed'))
+      }
+    } catch {
+      setUploadMsg('Error: Network error')
+    }
+    setUploading(null)
+    e.target.value = ''
   }
 
   const maxDaily = analytics ? Math.max(...analytics.daily.map(d => d.count), 1) : 1
@@ -246,8 +296,75 @@ export default function OutfitterDashboard() {
               </div>
             </div>
 
+            {/* Manage Listing — Logo & Cover Photo */}
+            <div style={{ background: 'var(--bg2)', border: '.5px solid var(--bd)', borderRadius: 'var(--rlg)', padding: '16px', marginTop: '20px' }}>
+              <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' }}>
+                Manage Listing
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                {/* Logo upload */}
+                <div>
+                  <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', marginBottom: '6px' }}>Logo</div>
+                  {logoUrl ? (
+                    <div style={{ position: 'relative', marginBottom: '6px' }}>
+                      <img src={logoUrl} alt="Logo" style={{ width: '80px', height: '80px', objectFit: 'contain', borderRadius: '8px', border: '.5px solid var(--bd)' }} />
+                    </div>
+                  ) : (
+                    <div style={{ width: '80px', height: '80px', borderRadius: '8px', background: 'var(--bg3)', border: '.5px dashed var(--bd2)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '6px' }}>
+                      <span style={{ fontFamily: mono, fontSize: '20px', color: 'var(--tx3)' }}>R</span>
+                    </div>
+                  )}
+                  <label style={{
+                    display: 'inline-flex', alignItems: 'center', gap: '4px', cursor: uploading === 'logo' ? 'wait' : 'pointer',
+                    fontFamily: mono, fontSize: '9px', color: 'var(--rv)',
+                    padding: '4px 10px', border: '.5px solid var(--rvmd)', borderRadius: 'var(--r)',
+                    background: 'var(--bg)', opacity: uploading === 'logo' ? 0.6 : 1,
+                  }}>
+                    {uploading === 'logo' ? 'Uploading...' : logoUrl ? 'Change' : 'Upload Logo'}
+                    <input type="file" accept="image/*" disabled={uploading !== null}
+                      onChange={e => handleImageUpload(e, 'logo')}
+                      style={{ display: 'none' }} />
+                  </label>
+                  <div style={{ fontFamily: mono, fontSize: '8px', color: 'var(--tx3)', marginTop: '4px' }}>Max 5MB · Square recommended</div>
+                </div>
+
+                {/* Cover photo upload */}
+                <div>
+                  <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', marginBottom: '6px' }}>Cover Photo</div>
+                  {coverUrl ? (
+                    <div style={{ position: 'relative', marginBottom: '6px' }}>
+                      <img src={coverUrl} alt="Cover" style={{ width: '100%', height: '80px', objectFit: 'cover', borderRadius: '8px', border: '.5px solid var(--bd)' }} />
+                    </div>
+                  ) : (
+                    <div style={{ width: '100%', height: '80px', borderRadius: '8px', background: 'var(--bg3)', border: '.5px dashed var(--bd2)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '6px' }}>
+                      <span style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)' }}>No cover photo</span>
+                    </div>
+                  )}
+                  <label style={{
+                    display: 'inline-flex', alignItems: 'center', gap: '4px', cursor: uploading === 'cover' ? 'wait' : 'pointer',
+                    fontFamily: mono, fontSize: '9px', color: 'var(--rv)',
+                    padding: '4px 10px', border: '.5px solid var(--rvmd)', borderRadius: 'var(--r)',
+                    background: 'var(--bg)', opacity: uploading === 'cover' ? 0.6 : 1,
+                  }}>
+                    {uploading === 'cover' ? 'Uploading...' : coverUrl ? 'Change' : 'Upload Cover'}
+                    <input type="file" accept="image/*" disabled={uploading !== null}
+                      onChange={e => handleImageUpload(e, 'cover')}
+                      style={{ display: 'none' }} />
+                  </label>
+                  <div style={{ fontFamily: mono, fontSize: '8px', color: 'var(--tx3)', marginTop: '4px' }}>Max 10MB · 16:9 landscape recommended</div>
+                </div>
+              </div>
+
+              {uploadMsg && (
+                <div style={{ fontFamily: mono, fontSize: '10px', marginTop: '8px', color: uploadMsg.startsWith('Error') ? 'var(--dg)' : 'var(--rv)' }}>
+                  {uploadMsg}
+                </div>
+              )}
+            </div>
+
             {/* Refresh */}
-            <div style={{ textAlign: 'center' }}>
+            <div style={{ textAlign: 'center', marginTop: '16px' }}>
               <button onClick={fetchAnalytics}
                 style={{ fontFamily: mono, fontSize: '10px', color: 'var(--rv)', background: 'none', border: '.5px solid var(--rvmd)', borderRadius: 'var(--r)', padding: '6px 14px', cursor: 'pointer' }}>
                 Refresh Data
