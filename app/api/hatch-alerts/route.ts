@@ -46,6 +46,24 @@ export async function POST(req: NextRequest) {
 
     const supabase = createSupabaseClient()
 
+    // Hatch alerts are Pro-only
+    if (userId) {
+      const { data: profile } = await supabase
+        .from('user_profiles')
+        .select('is_pro, email')
+        .eq('id', userId)
+        .single()
+
+      // Allow admins
+      const isAdmin = profile?.email && ['paddle.rivers.us@gmail.com'].includes(profile.email.toLowerCase())
+      if (!profile?.is_pro && !isAdmin) {
+        return NextResponse.json({
+          error: 'pro_required',
+          message: 'Hatch alerts are a Pro feature. Upgrade for $4.99/month.',
+        }, { status: 403 })
+      }
+    }
+
     const { data, error } = await supabase
       .from('hatch_alerts')
       .upsert({

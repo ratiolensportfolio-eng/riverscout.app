@@ -217,6 +217,7 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
   const [hatchAlertExpanded, setHatchAlertExpanded] = useState<string | null>(null)
   const [hatchAlertSaving, setHatchAlertSaving] = useState<string | null>(null)
   const [hatchAlertDaysBefore, setHatchAlertDaysBefore] = useState('7')
+  const [hatchProPrompt, setHatchProPrompt] = useState<string | null>(null)
 
   const [stockingAlertOpen, setStockingAlertOpen] = useState(false)
   const [stockingAlertEmail, setStockingAlertEmail] = useState('')
@@ -1242,8 +1243,16 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                                 }}>
                                   &#10003; Alert Set
                                 </button>
-                              ) : stockingAlertEmail ? (
+                              ) : stockingAlertEmail && userIsPro ? (
                                 <button onClick={() => setHatchAlertExpanded(isExpanded ? null : h.name)} style={{
+                                  fontFamily: mono, fontSize: '9px', color: 'var(--wt)',
+                                  background: 'var(--wtlt)', border: '.5px solid var(--wtmd)',
+                                  borderRadius: '4px', padding: '4px 8px', cursor: 'pointer',
+                                }}>
+                                  Set Alert
+                                </button>
+                              ) : stockingAlertEmail ? (
+                                <button onClick={() => setHatchProPrompt(hatchProPrompt === h.name ? null : h.name)} style={{
                                   fontFamily: mono, fontSize: '9px', color: 'var(--wt)',
                                   background: 'var(--wtlt)', border: '.5px solid var(--wtmd)',
                                   borderRadius: '4px', padding: '4px 8px', cursor: 'pointer',
@@ -1261,7 +1270,41 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                             </div>
                           </div>
 
-                          {/* Expanded alert settings */}
+                          {/* Pro upgrade prompt for free users */}
+                          {hatchProPrompt === h.name && !userIsPro && (
+                            <div style={{
+                              padding: '14px', borderTop: '.5px solid var(--rvmd)',
+                              background: 'var(--rvlt)',
+                            }}>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
+                                <span style={{ fontSize: '13px' }}>&#9889;</span>
+                                <span style={{ fontFamily: mono, fontSize: '11px', fontWeight: 500, color: 'var(--rvdk)' }}>
+                                  Hatch Alerts — RiverScout Pro
+                                </span>
+                              </div>
+                              <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx)', lineHeight: 1.6, marginBottom: '10px' }}>
+                                Get notified the moment water temps hit the {h.name} trigger{river.n ? ` on the ${river.n}` : ''}.
+                              </div>
+                              <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', marginBottom: '12px', lineHeight: 1.5 }}>
+                                Includes all hatch alerts, stocking alerts, and unlimited flow alerts.
+                              </div>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                                <a href="/pro" style={{
+                                  fontFamily: mono, fontSize: '11px', fontWeight: 500,
+                                  padding: '8px 20px', borderRadius: 'var(--r)',
+                                  background: 'var(--rvdk)', color: '#fff',
+                                  textDecoration: 'none', letterSpacing: '.3px',
+                                }}>
+                                  Upgrade to Pro &rarr;
+                                </a>
+                                <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>
+                                  $4.99/month &middot; Cancel anytime
+                                </span>
+                              </div>
+                            </div>
+                          )}
+
+                          {/* Expanded alert settings (Pro users only) */}
                           {isExpanded && (
                             <div style={{
                               padding: '10px 12px', borderTop: '.5px solid var(--bd)',
