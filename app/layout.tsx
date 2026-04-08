@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'RiverScout — Paddle Every River in America',
-  description: 'Live USGS flow data, river history, trip reports, and outfitter listings for 40+ paddling rivers across 14 states.',
+  description: 'Live USGS flow data, interactive maps, hatch calendars, and trip reports for 375 paddling rivers across 48 states.',
   metadataBase: new URL('https://riverscout.app'),
   openGraph: {
     title: 'RiverScout — Paddle Every River in America',

@@ -228,8 +228,13 @@ export default function AdminSuggestions() {
         <h1 style={{ fontFamily: serif, fontSize: '22px', fontWeight: 700, color: 'var(--rvdk)', marginBottom: '4px' }}>
           River Improvements
         </h1>
-        <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)', marginBottom: '16px' }}>
-          {suggestions.length} {filter} suggestion{suggestions.length !== 1 ? 's' : ''}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+          <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>
+            {suggestions.length} {filter} suggestion{suggestions.length !== 1 ? 's' : ''}
+          </div>
+          <Link href="/about/improvements" style={{ fontFamily: mono, fontSize: '10px', color: 'var(--rv)', textDecoration: 'none' }}>
+            View public log &rarr;
+          </Link>
         </div>
 
         {/* Filter tabs */}
