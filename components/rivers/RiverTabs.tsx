@@ -7,6 +7,7 @@ import { formatCfs, trendArrow, celsiusToFahrenheit, isHypothermiaRisk } from '@
 const RiverMap = lazy(() => import('@/components/maps/RiverMap'))
 import { hasRiverMap, loadRiverMap } from '@/data/river-maps'
 import { FISHERIES } from '@/data/fisheries'
+import { RAPIDS } from '@/data/rapids'
 import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 const TABS = ['Overview', 'History', 'Trip Reports', 'Fishing', 'Maps & Guides', 'Documents'] as const
@@ -234,6 +235,45 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                 {river.secs.map((sec, i) => (
                   <div key={i} style={{ fontSize: '12px', color: 'var(--tx)', marginBottom: '5px', paddingLeft: '10px', borderLeft: '2px solid var(--rvmd)', lineHeight: 1.55 }}>
                     {sec}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Notable Rapids */}
+            {RAPIDS[river.id] && RAPIDS[river.id].length > 0 && (
+              <div style={{ marginBottom: '14px' }}>
+                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+                  Notable Rapids
+                </div>
+                {RAPIDS[river.id].map((rapid, i) => (
+                  <div key={i} style={{
+                    padding: '10px 12px', marginBottom: '6px',
+                    background: 'var(--bg2)', borderRadius: 'var(--r)',
+                    border: '.5px solid var(--bd)',
+                    borderLeft: `3px solid ${
+                      rapid.class.includes('V') ? 'var(--dg)' :
+                      rapid.class.includes('IV') ? 'var(--am)' :
+                      rapid.class.includes('III') ? 'var(--rv)' :
+                      'var(--wt)'
+                    }`,
+                  }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '3px' }}>
+                      <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 600, color: 'var(--rvdk)' }}>
+                        {rapid.name}
+                      </span>
+                      <span style={{
+                        fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', padding: '2px 6px',
+                        borderRadius: '4px', fontWeight: 600,
+                        color: rapid.class.includes('V') ? 'var(--dg)' : rapid.class.includes('IV') ? 'var(--am)' : 'var(--rv)',
+                        background: rapid.class.includes('V') ? 'var(--dglt)' : rapid.class.includes('IV') ? 'var(--amlt)' : 'var(--rvlt)',
+                      }}>
+                        Class {rapid.class}
+                      </span>
+                    </div>
+                    <div style={{ fontSize: '12px', color: 'var(--tx2)', lineHeight: 1.55 }}>
+                      {rapid.description}
+                    </div>
                   </div>
                 ))}
               </div>
