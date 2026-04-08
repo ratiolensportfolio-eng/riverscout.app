@@ -3885,7 +3885,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1960', title: "Ross Barnett Reservoir — Jackson's Water Supply", text: "The Ross Barnett Reservoir was completed in 1960 on the Pearl River north of Jackson, creating a 33,000-acre lake that serves as the capital city's primary water supply and a major recreation destination.", src: 'Pearl River Valley Water Supply District; Jackson Clarion-Ledger' }] },
         ],
         docs: [],
-        revs: [{ u: 'jackson_paddle_club', d: 'Apr 2025', s: 4, t: 'Pearl River below the reservoir at 2,000 cfs — wide, sandy, great fishing access. Mississippi's biggest river delivers.' }, { u: 'neshoba_kayaker', d: 'Mar 2025', s: 4, t: 'Upper Pearl near Philadelphia at 800 cfs — intimate, wooded, in the heart of Choctaw country. Meaningful paddle.' }],
+        revs: [{ u: 'jackson_paddle_club', d: 'Apr 2025', s: 4, t:"'Pearl River below the reservoir at 2,000 cfs — wide, sandy, great fishing access. Mississippi's biggest river delivers." }, { u: 'neshoba_kayaker', d: 'Mar 2025', s: 4, t: 'Upper Pearl near Philadelphia at 800 cfs — intimate, wooded, in the heart of Choctaw country. Meaningful paddle.' }],
         outs: [{ n: 'Pearl River Paddle Trails', d: 'Canoe and kayak access and shuttle service on the Pearl River', l: '' }],
       },
       {
@@ -3987,7 +3987,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1975', title: 'Sipsey Wilderness Designated', text: "Congress designated the 25,000-acre Sipsey Wilderness in 1975 — Alabama's first and only federally designated wilderness. The designation protected the Sipsey Fork canyon system and its old-growth forest from logging and development.", src: 'USFS Bankhead National Forest; Alabama Wilderness Alliance' }] },
         ],
         docs: [],
-        revs: [{ u: 'bama_wilderness_paddle', d: 'Mar 2025', s: 5, t: 'Sipsey Fork below Lewis Smith Dam at 600 cfs — cold tailwater, canyon walls, waterfall tributaries. Alabama's most wild and scenic paddle.' }, { u: 'bankhead_hiker', d: 'Feb 2025', s: 4, t: 'Sipsey Fork at 400 cfs — Class I–II riffles through the national forest. Spotted a red-cockaded woodpecker. Pristine.' }],
+        revs: [{ u: 'bama_wilderness_paddle', d: 'Mar 2025', s: 5, t:"'Sipsey Fork below Lewis Smith Dam at 600 cfs — cold tailwater, canyon walls, waterfall tributaries. Alabama's most wild and scenic paddle." }, { u: 'bankhead_hiker', d: 'Feb 2025', s: 4, t: 'Sipsey Fork at 400 cfs — Class I–II riffles through the national forest. Spotted a red-cockaded woodpecker. Pristine.' }],
         outs: [{ n: 'Sipsey Fork Outfitters', d: 'Kayak rentals and shuttle service for Sipsey Fork paddling', l: '' }],
       },
       {
@@ -4002,7 +4002,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2018', title: 'Alabama Scenic River Designation', text: "The Alabama legislature designated the Mulberry Fork as a state Scenic River, protecting its free-flowing character and outstanding recreational values from impoundment.", src: 'Alabama Department of Conservation and Natural Resources; Alabama Rivers Alliance' }] },
         ],
         docs: [],
-        revs: [{ u: 'bham_creek_boater', d: 'Mar 2025', s: 4, t: 'Mulberry Fork at 1,500 cfs after rain — Class II–III rapids through a gorgeous sandstone gorge. Birmingham's other whitewater river.' }, { u: 'cullman_kayaker', d: 'Feb 2025', s: 4, t: 'Mulberry at 800 cfs — fun Class II the whole way. Wooded corridor, no development, great winter paddle.' }],
+        revs: [{ u: 'bham_creek_boater', d: 'Mar 2025', s: 4, t:"'Mulberry Fork at 1,500 cfs after rain — Class II–III rapids through a gorgeous sandstone gorge. Birmingham's other whitewater river." }, { u: 'cullman_kayaker', d: 'Feb 2025', s: 4, t: 'Mulberry at 800 cfs — fun Class II the whole way. Wooded corridor, no development, great winter paddle.' }],
         outs: [{ n: 'Mulberry Fork Paddle Company', d: 'Kayak rentals and guided whitewater trips on the Mulberry Fork', l: '' }],
       },
       {
@@ -4017,7 +4017,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2002', title: 'Coosa River Basin Initiative — Conservation Partnership', text: "A coalition of conservation groups launched the Coosa River Basin Initiative to address water quality, endangered species protection, and public access on one of North America's most biodiverse — and most imperiled — river systems.", src: 'Coosa River Basin Initiative; Alabama Rivers Alliance' }] },
         ],
         docs: [],
-        revs: [{ u: 'central_al_paddle', d: 'Apr 2025', s: 4, t: 'Wetumpka shoals at 3,000 cfs — Class I–II rapids through the meteor impact crater. Paddling through a cosmic collision site is surreal.' }, { u: 'gadsden_kayaker', d: 'Mar 2025', s: 4, t: 'Coosa near Gadsden at 5,000 cfs — wide, powerful, good fishing. Central Alabama's big river delivers.' }],
+        revs: [{ u: 'central_al_paddle', d: 'Apr 2025', s: 4, t: 'Wetumpka shoals at 3,000 cfs — Class I–II rapids through the meteor impact crater. Paddling through a cosmic collision site is surreal.' }, { u: 'gadsden_kayaker', d: 'Mar 2025', s: 4, t:"'Coosa near Gadsden at 5,000 cfs — wide, powerful, good fishing. Central Alabama's big river delivers." }],
         outs: [{ n: 'Coosa River Adventures', d: 'Kayak and canoe rentals for Coosa River paddling', l: '' }],
       },
       {
@@ -4411,7 +4411,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2019', title: 'Elkhorn River Water Trail Designated', text: "Nebraska designated the Elkhorn as a state water trail, improving access points and signage along 200 miles. The trail has become one of the most popular multi-day paddling routes in the state, especially for families seeking gentle prairie river camping.", src: 'Nebraska Game and Parks Commission' }] },
         ],
         docs: [],
-        revs: [{ u: 'ne_family_float', d: 'Jul 2025', s: 5, t: 'Two days on the Elkhorn with the kids at 800 cfs — huge sandbars, gentle current, perfect family camping. Nebraska's best beginner river.' }, { u: 'elkhorn_regular', d: 'Aug 2025', s: 4, t: 'Norfolk to West Point stretch is underrated. Prairie views, good fishing, and virtually no crowds.' }],
+        revs: [{ u: 'ne_family_float', d: 'Jul 2025', s: 5, t:"'Two days on the Elkhorn with the kids at 800 cfs — huge sandbars, gentle current, perfect family camping. Nebraska's best beginner river." }, { u: 'elkhorn_regular', d: 'Aug 2025', s: 4, t: 'Norfolk to West Point stretch is underrated. Prairie views, good fishing, and virtually no crowds.' }],
         outs: [{ n: 'Elkhorn River Adventures', d: 'Canoe and kayak rentals, multi-day shuttle service', l: '' }],
       },
       {
@@ -4890,7 +4890,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Kiamichi River — Conservation Priority', text: "The Kiamichi has been identified as one of Oklahoma's highest-priority rivers for freshwater mussel conservation, supporting over 30 species including several federally endangered ones. The river's remote, undeveloped watershed has preserved exceptional water quality.", src: 'Oklahoma Department of Wildlife Conservation; USFWS' }] },
         ],
         docs: [],
-        revs: [{ u: 'ouachita_paddler', d: 'Apr 2025', s: 5, t: 'Upper Kiamichi at 600 cfs after spring rain — Class II rapids through dense Ouachita forest. No roads, no people, no cell service. Oklahoma's wildest river.' }, { u: 'ok_remote_explorer', d: 'May 2025', s: 4, t: 'Three days on the Kiamichi. Clear water, mussel beds visible on every gravel bar. Felt like paddling in the Ozarks, not Oklahoma.' }],
+        revs: [{ u: 'ouachita_paddler', d: 'Apr 2025', s: 5, t:"'Upper Kiamichi at 600 cfs after spring rain — Class II rapids through dense Ouachita forest. No roads, no people, no cell service. Oklahoma's wildest river." }, { u: 'ok_remote_explorer', d: 'May 2025', s: 4, t: 'Three days on the Kiamichi. Clear water, mussel beds visible on every gravel bar. Felt like paddling in the Ozarks, not Oklahoma.' }],
         outs: [{ n: 'Kiamichi Country Outfitters', d: 'Shuttle service, canoe and kayak rentals', l: '' }],
       },
       {
@@ -4905,7 +4905,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2021', title: 'Last Free-Flowing River Campaign', text: "Conservation groups launched a campaign to permanently protect the Glover as Oklahoma's last free-flowing river. The river supports over 50 fish species, 30 mussel species, and the endangered leopard darter — making it one of the most biodiverse small rivers in the southern United States.", src: 'The Nature Conservancy; Oklahoma Department of Wildlife Conservation' }] },
         ],
         docs: [],
-        revs: [{ u: 'ok_whitewater_crew', d: 'Mar 2025', s: 5, t: 'Glover River at 500 cfs — real whitewater, undammed, untouched. Class III drops through dense forest. Oklahoma's most important river for conservation.' }, { u: 'freeflowing_paddler', d: 'Apr 2025', s: 4, t: 'The last free-flowing river in Oklahoma lives up to the hype. Clear water, boulder gardens, and a feeling of wildness that's rare in this state.' }],
+        revs: [{ u: 'ok_whitewater_crew', d: 'Mar 2025', s: 5, t:"'Glover River at 500 cfs — real whitewater, undammed, untouched. Class III drops through dense forest. Oklahoma's most important river for conservation." }, { u: 'freeflowing_paddler', d: 'Apr 2025', s: 4, t:"'The last free-flowing river in Oklahoma lives up to the hype. Clear water, boulder gardens, and a feeling of wildness that's rare in this state." }],
         outs: [{ n: 'Glover River Outfitters', d: 'McCurtain County kayak and canoe rentals', l: '' }],
       },
       {
@@ -5731,7 +5731,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1880–1930', title: "Thread City Mills — Willimantic Industry", text: "The Natchaug and its tributaries powered textile mills in Willimantic — known as 'Thread City' for the American Thread Company. The mills shaped the region's economy for a century before declining in the mid-20th century.", src: 'Windham Textile & History Museum; Connecticut Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'quiet_corner_paddler', d: 'May 2025', s: 5, t: 'Natchaug State Forest section at 250 cfs — hemlock gorges and swimming holes. Diana Pool is magical. Connecticut's best-kept secret.' }, { u: 'ct_east_kayaker', d: 'Jun 2025', s: 4, t: 'Spring run at 400 cfs — Class I–II through the forest with no one around. Feels like Vermont in eastern Connecticut.' }],
+        revs: [{ u: 'quiet_corner_paddler', d: 'May 2025', s: 5, t:"'Natchaug State Forest section at 250 cfs — hemlock gorges and swimming holes. Diana Pool is magical. Connecticut's best-kept secret." }, { u: 'ct_east_kayaker', d: 'Jun 2025', s: 4, t: 'Spring run at 400 cfs — Class I–II through the forest with no one around. Feels like Vermont in eastern Connecticut.' }],
         outs: [{ n: 'Scott\'s Yankee Farmer', d: 'Local info and Natchaug State Forest access', l: '' }],
       },
       {
@@ -5761,7 +5761,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1913', title: "White Memorial Foundation — Connecticut's Conservation Pioneer", text: "Alain and May White established the White Memorial Foundation in 1913, protecting 4,000 acres of forest and wetland along the Bantam River. It remains Connecticut's largest nature center and one of the oldest conservation organizations in New England.", src: 'White Memorial Conservation Center; Litchfield Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'ct_nature_paddler', d: 'Jun 2025', s: 5, t: 'White Memorial section at 80 cfs — beaver lodges, great blue herons, painted turtles on every log. Connecticut's finest nature paddle.' }, { u: 'bantam_birder', d: 'May 2025', s: 4, t: 'Spring paddle at 120 cfs through the marsh — prothonotary warblers and wood ducks. Binoculars essential, not optional.' }],
+        revs: [{ u: 'ct_nature_paddler', d: 'Jun 2025', s: 5, t:"'White Memorial section at 80 cfs — beaver lodges, great blue herons, painted turtles on every log. Connecticut's finest nature paddle." }, { u: 'bantam_birder', d: 'May 2025', s: 4, t: 'Spring paddle at 120 cfs through the marsh — prothonotary warblers and wood ducks. Binoculars essential, not optional.' }],
         outs: [{ n: 'White Memorial Conservation Center', d: 'Bantam River access, nature programs, and trail maps', l: '' }],
       },
     ],
@@ -5989,7 +5989,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1993', title: "National Wild & Scenic Designation", text: "Congress designated the Maurice River and tributaries as a National Wild & Scenic River in 1993, recognizing exceptional ecological values including the globally significant Delaware Bay shorebird migration.", src: 'NPS; Citizens United to Protect the Maurice River' }] },
         ],
         docs: [],
-        revs: [{ u: 'shorebird_paddler', d: 'May 2025', s: 5, t: 'Maurice to Delaware Bay during shorebird week — millions of red knots and semipalmated sandpipers on the beach. Best wildlife paddle in New Jersey, maybe the East Coast.' }, { u: 'south_jersey_nature', d: 'Jun 2025', s: 4, t: 'Millville to Port Norris at 300 cfs — Wild & Scenic river with herons, eagles, and tidal marsh. Southern New Jersey's finest.' }],
+        revs: [{ u: 'shorebird_paddler', d: 'May 2025', s: 5, t: 'Maurice to Delaware Bay during shorebird week — millions of red knots and semipalmated sandpipers on the beach. Best wildlife paddle in New Jersey, maybe the East Coast.' }, { u: 'south_jersey_nature', d: 'Jun 2025', s: 4, t:"'Millville to Port Norris at 300 cfs — Wild & Scenic river with herons, eagles, and tidal marsh. Southern New Jersey's finest." }],
         outs: [{ n: 'Citizens United to Protect the Maurice River', d: 'Guided paddle tours and river stewardship events', l: '' }],
       },
       {
@@ -6004,7 +6004,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '2006', title: "National Wild & Scenic Designation", text: "Congress designated the Musconetcong a National Wild & Scenic River in 2006 — the result of decades of advocacy by the Musconetcong Watershed Association and local communities. The designation protects 24 miles of the river from development.", src: 'NPS; Musconetcong Watershed Association' }] },
         ],
         docs: [],
-        revs: [{ u: 'nj_trout_paddler', d: 'May 2025', s: 5, t: 'Hackettstown section at 200 cfs — wild browns in clear water, Class I–II riffles. New Jersey's best trout stream and paddle combined.' }, { u: 'musconetcong_local', d: 'Jun 2025', s: 4, t: 'Upper section at 150 cfs — Wild & Scenic river through the Highlands. Proof that New Jersey has legitimate natural treasures.' }],
+        revs: [{ u: 'nj_trout_paddler', d: 'May 2025', s: 5, t:"'Hackettstown section at 200 cfs — wild browns in clear water, Class I–II riffles. New Jersey's best trout stream and paddle combined." }, { u: 'musconetcong_local', d: 'Jun 2025', s: 4, t: 'Upper section at 150 cfs — Wild & Scenic river through the Highlands. Proof that New Jersey has legitimate natural treasures.' }],
         outs: [{ n: 'Musconetcong Watershed Association', d: 'River access guides and conservation paddle events', l: '' }],
       },
       {
