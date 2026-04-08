@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, lazy, Suspense } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import type { River, FlowData } from '@/types'
 import { formatCfs, trendArrow, celsiusToFahrenheit, isHypothermiaRisk } from '@/lib/usgs'
 

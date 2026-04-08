@@ -5,9 +5,14 @@ export const metadata: Metadata = {
   title: 'RiverScout — Paddle Every River in America',
   description: 'Live USGS flow data, interactive maps, hatch calendars, and trip reports for 375 paddling rivers across 48 states.',
   metadataBase: new URL('https://riverscout.app'),
+  icons: {
+    icon: '/icon.svg',
+  },
+  manifest: '/manifest.json',
+  themeColor: '#085041',
   openGraph: {
     title: 'RiverScout — Paddle Every River in America',
-    description: 'Live USGS flow data, river history, trip reports, and outfitter listings.',
+    description: 'Live USGS flow data, interactive maps, hatch calendars, and trip reports for 375 rivers across 48 states.',
     url: 'https://riverscout.app',
     siteName: 'RiverScout',
     type: 'website',

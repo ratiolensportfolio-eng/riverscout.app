@@ -1,0 +1,16 @@
+{
+  "name": "RiverScout — Paddle Every River in America",
+  "short_name": "RiverScout",
+  "description": "Live USGS flow data, interactive maps, hatch calendars, and trip reports for 375 paddling rivers across 48 states.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#085041",
+  "theme_color": "#085041",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
