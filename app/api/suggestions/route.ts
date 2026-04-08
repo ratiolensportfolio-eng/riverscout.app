@@ -130,21 +130,40 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// GET /api/suggestions?status=pending — fetch suggestions (admin only)
+// GET /api/suggestions?status=pending&userId=... — admin: fetch all suggestions by status
+// GET /api/suggestions?riverId=... — public: fetch approved changes for a river
 export async function GET(req: NextRequest) {
   const userId = req.nextUrl.searchParams.get('userId')
-  const status = req.nextUrl.searchParams.get('status') || 'pending'
+  const status = req.nextUrl.searchParams.get('status')
+  const riverId = req.nextUrl.searchParams.get('riverId')
 
+  const supabase = createSupabaseClient()
+
+  // Public: fetch approved changes for a specific river (for Data Accuracy section)
+  if (riverId && !userId) {
+    const { data, error } = await supabase
+      .from('suggestions')
+      .select('field, reviewed_at')
+      .eq('river_id', riverId)
+      .eq('status', 'approved')
+      .order('reviewed_at', { ascending: false })
+      .limit(20)
+
+    if (error) {
+      return NextResponse.json({ changes: [] })
+    }
+    return NextResponse.json({ changes: data || [] })
+  }
+
+  // Admin: fetch by status
   if (!isAdmin(userId || undefined)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 403 })
   }
 
-  const supabase = createSupabaseClient()
-
   const { data, error } = await supabase
     .from('suggestions')
     .select('*')
-    .eq('status', status)
+    .eq('status', status || 'pending')
     .order('created_at', { ascending: false })
     .limit(100)
 

@@ -279,6 +279,9 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
               </div>
             )}
 
+            {/* Data Accuracy */}
+            <DataAccuracy riverId={river.id} />
+
             {/* Outfitters */}
             {river.outs.length > 0 && (
               <div>
@@ -814,6 +817,117 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
         )}
 
       </div>
+    </div>
+  )
+}
+
+// ── Data Accuracy component ──────────────────────────────────────
+
+const accuracyFieldLabels: Record<string, string> = {
+  cls: 'Whitewater Class', opt: 'Optimal CFS Range', len: 'River Length',
+  desc: 'Description', desig: 'Designations', species: 'Fish Species',
+  hatches: 'Hatch Calendar', runs: 'Run Timing', spawning: 'Spawn Timing',
+  access_points: 'Access Points', sections: 'Sections', gauge: 'USGS Gauge',
+  outfitters: 'Outfitters', history: 'History', other: 'Other',
+}
+
+function relativeTime(dateStr: string): string {
+  const diff = Date.now() - new Date(dateStr).getTime()
+  const mins = Math.floor(diff / 60000)
+  const hours = Math.floor(diff / 3600000)
+  const days = Math.floor(diff / 86400000)
+  const weeks = Math.floor(days / 7)
+  if (mins < 60) return `${mins}m ago`
+  if (hours < 24) return `${hours}h ago`
+  if (days === 1) return 'yesterday'
+  if (days < 7) return `${days} days ago`
+  if (weeks < 5) return `${weeks} weeks ago`
+  return new Date(dateStr).toLocaleDateString()
+}
+
+function DataAccuracy({ riverId }: { riverId: string }) {
+  const [changes, setChanges] = useState<Array<{ field: string; reviewed_at: string }>>([])
+  const [loaded, setLoaded] = useState(false)
+  const [expanded, setExpanded] = useState(false)
+
+  useEffect(() => {
+    fetch(`/api/suggestions?riverId=${riverId}`)
+      .then(r => r.json())
+      .then(data => {
+        setChanges(data.changes || [])
+        setLoaded(true)
+      })
+      .catch(() => setLoaded(true))
+  }, [riverId])
+
+  if (!loaded) return null
+
+  const visible = expanded ? changes : changes.slice(0, 3)
+  const hasMore = changes.length > 3
+
+  return (
+    <div style={{ marginBottom: '14px' }}>
+      <div
+        onClick={() => changes.length > 0 ? setExpanded(!expanded) : null}
+        style={{
+          display: 'flex', alignItems: 'center', gap: '6px',
+          cursor: changes.length > 0 ? 'pointer' : 'default',
+          fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px',
+          color: 'var(--rv)', textTransform: 'uppercase', letterSpacing: '1px',
+          marginBottom: '6px',
+        }}
+      >
+        <span style={{ fontSize: '12px' }}>&#10003;</span>
+        Data Accuracy
+        {changes.length > 0 && (
+          <span style={{ fontSize: '9px', color: 'var(--tx3)', textTransform: 'none', letterSpacing: 0 }}>
+            ({changes.length} community improvement{changes.length !== 1 ? 's' : ''})
+          </span>
+        )}
+      </div>
+
+      {changes.length === 0 ? (
+        <div style={{
+          fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)',
+          padding: '8px 10px', background: 'var(--bg2)', borderRadius: 'var(--r)',
+          border: '.5px solid var(--bd)',
+        }}>
+          Data verified by RiverScout team
+        </div>
+      ) : (
+        <div style={{
+          padding: '8px 10px', background: 'var(--bg2)', borderRadius: 'var(--r)',
+          border: '.5px solid var(--bd)',
+        }}>
+          {visible.map((c, i) => (
+            <div key={i} style={{
+              fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx2)',
+              padding: '3px 0',
+              borderBottom: i < visible.length - 1 ? '.5px solid var(--bd)' : 'none',
+            }}>
+              <span style={{ color: 'var(--tx)' }}>{accuracyFieldLabels[c.field] || c.field}</span>
+              {' '}updated — community contribution — {' '}
+              <span style={{ color: 'var(--tx3)' }}>{relativeTime(c.reviewed_at)}</span>
+            </div>
+          ))}
+          {hasMore && !expanded && (
+            <button onClick={() => setExpanded(true)} style={{
+              fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--rv)',
+              background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0', marginTop: '2px',
+            }}>
+              View full history ({changes.length - 3} more)
+            </button>
+          )}
+          {expanded && hasMore && (
+            <button onClick={() => setExpanded(false)} style={{
+              fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)',
+              background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0', marginTop: '2px',
+            }}>
+              Show less
+            </button>
+          )}
+        </div>
+      )}
     </div>
   )
 }
