@@ -41,10 +41,11 @@ export default function AuthNav() {
 
   const avatar = user.user_metadata?.avatar_url
   const name = user.user_metadata?.full_name || user.email?.split('@')[0] || 'User'
+  const profileUsername = user.email?.split('@')[0] || 'user'
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-      <Link href="/outfitters/dashboard" style={{ display: 'flex', alignItems: 'center', gap: '6px', textDecoration: 'none' }}>
+      <Link href={`/profile/${profileUsername}`} style={{ display: 'flex', alignItems: 'center', gap: '6px', textDecoration: 'none' }}>
         {avatar ? (
           <img src={avatar} alt={name} style={{ width: 22, height: 22, borderRadius: '50%', border: '.5px solid var(--bd2)' }} />
         ) : (

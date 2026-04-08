@@ -124,7 +124,7 @@ export default async function ImprovementsPage({ searchParams }: Props) {
                 }}>
                   <div>
                     <div style={{ fontSize: '13px', color: 'var(--tx)', lineHeight: 1.5 }}>
-                      <span style={{ fontFamily: mono, fontSize: '11px', color: 'var(--rv)', fontWeight: 500 }}>{username}</span>
+                      <Link href={`/profile/${username}`} style={{ fontFamily: mono, fontSize: '11px', color: 'var(--rv)', fontWeight: 500, textDecoration: 'none' }}>{username}</Link>
                       {' '}improved{' '}
                       <span style={{ fontFamily: mono, fontSize: '11px', fontWeight: 500 }}>
                         {fieldLabels[item.field] || item.field}
