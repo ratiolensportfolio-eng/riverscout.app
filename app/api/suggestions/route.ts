@@ -253,6 +253,134 @@ export async function PATCH(req: NextRequest) {
       return NextResponse.json({ ok: true, action: 'rollback', river: original.river_name, field: original.field })
     }
 
+    // For approved: apply the change to the database FIRST (mission-critical)
+    if (action === 'approved') {
+      // Fetch the suggestion to get field details
+      const { data: suggestion, error: fetchErr } = await supabase
+        .from('suggestions')
+        .select('*')
+        .eq('id', suggestionId)
+        .single()
+
+      if (fetchErr || !suggestion) {
+        return NextResponse.json({ error: 'Suggestion not found' }, { status: 404 })
+      }
+
+      // MISSION-CRITICAL: Apply the change to the rivers table
+      const fieldMap: Record<string, string> = {
+        cls: 'class', opt: 'optimal_cfs', len: 'length',
+        desc: 'description', desig: 'designations', gauge: 'usgs_gauge',
+      }
+
+      const dbField = fieldMap[suggestion.field]
+      if (dbField) {
+        const { error: updateErr } = await supabase
+          .from('rivers')
+          .update({ [dbField]: suggestion.suggested_value, updated_at: new Date().toISOString() })
+          .eq('id', suggestion.river_id)
+
+        if (updateErr) {
+          // DATA UPDATE FAILED — do NOT mark as approved, return error
+          return NextResponse.json({
+            error: `Failed to update river data: ${updateErr.message}. Suggestion stays pending.`,
+          }, { status: 500 })
+        }
+      }
+
+      // Data update succeeded — now mark as approved (this should not fail, but if it does, the data is already correct)
+      const { error: statusErr } = await supabase
+        .from('suggestions')
+        .update({
+          status: 'approved',
+          admin_notes: adminNotes || null,
+          reviewed_at: new Date().toISOString(),
+        })
+        .eq('id', suggestionId)
+
+      if (statusErr) {
+        console.error('[SUGGESTIONS] Failed to update status after successful data change:', statusErr)
+        // Data is already updated — return success but note the status issue
+      }
+
+      // BEST-EFFORT: Get contributor stats for the email
+      let totalSubmitted = 0
+      let totalApproved = 0
+      let isFirstApproval = false
+
+      if (suggestion.user_email) {
+        try {
+          const { count: submitted } = await supabase
+            .from('suggestions')
+            .select('*', { count: 'exact', head: true })
+            .eq('user_email', suggestion.user_email)
+          totalSubmitted = submitted || 0
+
+          const { count: approved } = await supabase
+            .from('suggestions')
+            .select('*', { count: 'exact', head: true })
+            .eq('user_email', suggestion.user_email)
+            .eq('status', 'approved')
+          totalApproved = approved || 0
+
+          isFirstApproval = totalApproved === 1
+        } catch (statsErr) {
+          console.error('[SUGGESTIONS] Failed to fetch contributor stats:', statsErr)
+        }
+      }
+
+      // BEST-EFFORT: Send contributor notification email
+      if (suggestion.user_email) {
+        try {
+          const statsLine = totalSubmitted > 0
+            ? `<p style="font-family: monospace; font-size: 12px; color: #666;">Your stats: ${totalApproved} of ${totalSubmitted} improvements approved.</p>`
+            : ''
+          const firstTimeLine = isFirstApproval
+            ? `<p style="font-size: 16px; color: #1D9E75; font-weight: bold;">This is your first approved improvement — thank you for being a river steward!</p>`
+            : ''
+
+          await sendEmail({
+            to: suggestion.user_email,
+            subject: `Your improvement to ${suggestion.river_name} is live!`,
+            html: `
+              <div style="font-family: Georgia, serif; max-width: 520px; margin: 0 auto; padding: 20px;">
+                <div style="font-size: 20px; font-weight: 700; color: #085041; margin-bottom: 16px;">
+                  River<span style="color: #185FA5;">Scout</span>
+                </div>
+                ${firstTimeLine}
+                <p>Your improvement to <strong>${suggestion.river_name}</strong> has been reviewed and approved.</p>
+                <p><strong>Field:</strong> ${suggestion.field}</p>
+                <p><strong>Updated to:</strong> ${suggestion.suggested_value}</p>
+                ${statsLine}
+                <p style="color: #999; font-size: 12px; margin-top: 20px;">
+                  Thank you for helping keep RiverScout accurate for paddlers and anglers across America.
+                </p>
+              </div>
+            `,
+          })
+        } catch (emailErr) {
+          console.error('[SUGGESTIONS] Failed to send contributor email:', emailErr)
+        }
+      }
+
+      // BEST-EFFORT: Send admin confirmation email
+      try {
+        await sendEmail({
+          to: ADMIN_EMAIL,
+          subject: `[Approved] Improvement for ${suggestion.river_name}: ${suggestion.field}`,
+          html: improvementApprovedEmail(
+            suggestion.river_name, suggestion.state_key, suggestion.field,
+            suggestion.current_value, suggestion.suggested_value, suggestion.reason,
+            suggestion.source_url, suggestion.user_email,
+          ),
+        })
+      } catch (adminEmailErr) {
+        console.error('[SUGGESTIONS] Failed to send admin email:', adminEmailErr)
+      }
+
+      return NextResponse.json({ ok: true, suggestion })
+    }
+
+    // For rejected: just update status (no data changes needed)
     const { data, error } = await supabase
       .from('suggestions')
       .update({
@@ -265,20 +393,6 @@ export async function PATCH(req: NextRequest) {
 
     if (error) {
       return NextResponse.json({ error: 'Failed to update suggestion' }, { status: 500 })
-    }
-
-    // If approved, send email notification
-    if (action === 'approved' && data?.[0]) {
-      const s = data[0]
-      await sendEmail({
-        to: ADMIN_EMAIL,
-        subject: `[Approved] Improvement for ${s.river_name}: ${s.field}`,
-        html: improvementApprovedEmail(
-          s.river_name, s.state_key, s.field,
-          s.current_value, s.suggested_value, s.reason,
-          s.source_url, s.user_email,
-        ),
-      })
     }
 
     return NextResponse.json({ ok: true, suggestion: data?.[0] })
