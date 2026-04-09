@@ -26,6 +26,13 @@ const USGS_TO_NWS: Record<string, string> = {
   // Michigan — Muskegon (verified)
   '04121970': 'CROM4',  // Muskegon near Croton (Croton Dam)
 
+  // Michigan — Grand River (verified)
+  '04116000': 'IONM4',  // Grand River at Ionia
+
+  // Michigan — other (verified)
+  '04157005': 'SAGM4',  // Saginaw at Saginaw
+  '04156000': 'MIDM4',  // Tittabawassee at Midland
+
   // Montana (verified)
   '06043500': 'GLGM8',  // Gallatin near Gallatin Gateway
   '06192500': 'LIVM8',  // Yellowstone at Livingston
