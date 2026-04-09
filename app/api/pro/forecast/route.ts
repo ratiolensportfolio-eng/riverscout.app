@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { fetchNoaaJson } from '@/lib/noaa-fetch'
+import { createSupabaseClient } from '@/lib/supabase'
+
+export const dynamic = 'force-dynamic'
 
 // NWS AHPS river forecast API
 // Maps USGS gauge IDs to NWS location IDs (AHPS 5-char codes)
-// This is a subset — expand as needed
 const USGS_TO_NWS: Record<string, string> = {
   // Michigan
   '04137500': 'MIOM4',  // Au Sable at Mio
@@ -40,6 +43,8 @@ interface ForecastPoint {
   stage: number | null
 }
 
+const CACHE_TTL_MS = 30 * 60 * 1000 // 30 minutes
+
 // GET /api/pro/forecast?gaugeId=... — fetch 72-hour river forecast from NWS
 export async function GET(req: NextRequest) {
   const gaugeId = req.nextUrl.searchParams.get('gaugeId')
@@ -49,49 +54,94 @@ export async function GET(req: NextRequest) {
 
   const nwsId = USGS_TO_NWS[gaugeId]
   if (!nwsId) {
-    return NextResponse.json({ error: 'no_forecast', message: 'No NWS forecast available for this gauge' }, { status: 404 })
+    return NextResponse.json({
+      error: 'no_forecast',
+      message: 'No NWS forecast available for this gauge',
+    }, { status: 404 })
   }
 
-  // NWS AHPS XML-to-JSON endpoint
-  const url = `https://api.water.noaa.gov/nwps/v1/gauges/${nwsId}/stageflow/forecast`
-
+  // Check Supabase cache first (30-min TTL)
+  const supabase = createSupabaseClient()
+  let cached: { forecasts: ForecastPoint[]; fetched_at: string } | null = null
   try {
-    const res = await fetch(url, {
-      next: { revalidate: 3600 }, // 1hr cache
-      headers: { 'Accept': 'application/json' },
-    })
+    const { data } = await supabase
+      .from('forecast_cache')
+      .select('forecasts, fetched_at')
+      .eq('gauge_id', gaugeId)
+      .single()
+    cached = data
+  } catch { /* cache miss is fine */ }
 
-    if (!res.ok) {
-      // Try alternate endpoint format
-      const altUrl = `https://api.water.noaa.gov/nwps/v1/gauges/${nwsId.toLowerCase()}/stageflow/forecast`
-      const altRes = await fetch(altUrl, {
-        next: { revalidate: 3600 },
-        headers: { 'Accept': 'application/json' },
+  if (cached) {
+    const age = Date.now() - new Date(cached.fetched_at).getTime()
+    if (age < CACHE_TTL_MS) {
+      return NextResponse.json({
+        nwsId,
+        available: true,
+        forecasts: cached.forecasts,
+        cached: true,
+        cacheAge: Math.round(age / 1000),
       })
-
-      if (!altRes.ok) {
-        return NextResponse.json({ error: 'no_forecast', message: 'Forecast unavailable from NWS' }, { status: 404 })
-      }
-
-      const altJson = await altRes.json()
-      return parseForecast(altJson, nwsId)
     }
-
-    const json = await res.json()
-    return parseForecast(json, nwsId)
-  } catch (err) {
-    console.error('Forecast fetch error:', err)
-    return NextResponse.json({ error: 'Failed to fetch forecast' }, { status: 500 })
   }
+
+  // Fetch from NOAA with timeout + retry — never hangs
+  const url = `https://api.water.noaa.gov/nwps/v1/gauges/${nwsId}/stageflow/forecast`
+  const json = await fetchNoaaJson<Record<string, unknown>>(url, { timeoutMs: 10000, retries: 1 })
+
+  if (!json) {
+    // Fall back to stale cache if available
+    if (cached) {
+      return NextResponse.json({
+        nwsId,
+        available: true,
+        forecasts: cached.forecasts,
+        cached: true,
+        stale: true,
+        message: 'Showing cached forecast — NOAA temporarily unavailable',
+      })
+    }
+    return NextResponse.json({
+      error: 'unavailable',
+      message: 'Forecast temporarily unavailable',
+    }, { status: 503 })
+  }
+
+  const forecasts = parseForecast(json)
+
+  if (forecasts.length === 0) {
+    return NextResponse.json({
+      nwsId,
+      available: false,
+      message: 'Forecast data not available',
+      forecasts: [],
+    })
+  }
+
+  // Update cache
+  try {
+    await supabase
+      .from('forecast_cache')
+      .upsert({
+        gauge_id: gaugeId,
+        nws_id: nwsId,
+        forecasts,
+        fetched_at: new Date().toISOString(),
+      }, { onConflict: 'gauge_id' })
+  } catch { /* cache write failure is non-critical */ }
+
+  return NextResponse.json({
+    nwsId,
+    available: true,
+    forecasts,
+    generatedAt: new Date().toISOString(),
+  })
 }
 
-function parseForecast(json: Record<string, unknown>, nwsId: string) {
-  // NWS NWPS API returns forecast data in various formats
-  // Try to extract time-series flow predictions
+function parseForecast(json: Record<string, unknown>): ForecastPoint[] {
   const forecasts: ForecastPoint[] = []
 
   try {
-    // Handle the NWPS v1 format
     const data = json as Record<string, unknown>
     const projections = (data.projections || data.data || data.forecast) as Array<Record<string, unknown>> | undefined
 
@@ -113,23 +163,7 @@ function parseForecast(json: Record<string, unknown>, nwsId: string) {
         forecasts.push({ time, cfs: Math.round(flow), stage })
       }
     }
-  } catch {
-    // Parsing failed
-  }
+  } catch { /* parsing failed */ }
 
-  if (forecasts.length === 0) {
-    return NextResponse.json({
-      nwsId,
-      available: false,
-      message: 'Forecast data not available in expected format',
-      forecasts: [],
-    })
-  }
-
-  return NextResponse.json({
-    nwsId,
-    available: true,
-    forecasts,
-    generatedAt: new Date().toISOString(),
-  })
+  return forecasts
 }

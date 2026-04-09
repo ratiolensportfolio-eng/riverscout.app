@@ -3,6 +3,7 @@
 // GPS coordinates from data/river-coordinates.ts
 
 import SunCalc from 'suncalc'
+import { fetchExternalJson } from '@/lib/noaa-fetch'
 
 export interface HourlyForecast {
   time: string
@@ -77,50 +78,43 @@ async function getGrid(lat: number, lng: number): Promise<{ gridId: string; grid
   const key = `${lat},${lng}`
   if (gridCache.has(key)) return gridCache.get(key)!
 
-  try {
-    const res = await fetch(`https://api.weather.gov/points/${lat},${lng}`, {
-      headers: { 'User-Agent': 'RiverScout (riverscout.app, outfitters@riverscout.app)' },
-      cache: 'force-cache',
-    })
-    if (!res.ok) return null
+  const json = await fetchExternalJson<{ properties?: { gridId: string; gridX: number; gridY: number } }>(
+    `https://api.weather.gov/points/${lat},${lng}`,
+    { timeoutMs: 10000, retries: 1 }
+  )
+  if (!json) return null
 
-    const json = await res.json()
-    const props = json.properties
-    if (!props?.gridId) return null
+  const props = json.properties
+  if (!props?.gridId) return null
 
-    const grid = { gridId: props.gridId, gridX: props.gridX, gridY: props.gridY }
-    gridCache.set(key, grid)
-    return grid
-  } catch {
-    return null
-  }
+  const grid = { gridId: props.gridId, gridX: props.gridX, gridY: props.gridY }
+  gridCache.set(key, grid)
+  return grid
 }
 
 export async function fetchRiverWeather(lat: number, lng: number): Promise<RiverWeather | null> {
   const grid = await getGrid(lat, lng)
   if (!grid) return null
 
-  try {
-    const url = `https://api.weather.gov/gridpoints/${grid.gridId}/${grid.gridX},${grid.gridY}/forecast/hourly`
-    const res = await fetch(url, {
-      headers: { 'User-Agent': 'RiverScout (riverscout.app, outfitters@riverscout.app)' },
-      cache: 'no-store', // always fresh weather data
-    })
-    if (!res.ok) return null
+  interface HourlyPeriod {
+    startTime: string
+    temperature: number
+    temperatureUnit: string
+    windSpeed: string
+    windDirection: string
+    shortForecast: string
+    probabilityOfPrecipitation: { value: number | null }
+    relativeHumidity: { value: number | null }
+    dewpoint: { unitCode: string; value: number | null }
+    isDaytime: boolean
+  }
 
-    const json = await res.json()
-    const periods: Array<{
-      startTime: string
-      temperature: number
-      temperatureUnit: string
-      windSpeed: string
-      windDirection: string
-      shortForecast: string
-      probabilityOfPrecipitation: { value: number | null }
-      relativeHumidity: { value: number | null }
-      dewpoint: { unitCode: string; value: number | null }
-      isDaytime: boolean
-    }> = json.properties?.periods ?? []
+  const url = `https://api.weather.gov/gridpoints/${grid.gridId}/${grid.gridX},${grid.gridY}/forecast/hourly`
+  const json = await fetchExternalJson<{ properties?: { periods?: HourlyPeriod[] } }>(url, { timeoutMs: 10000, retries: 1 })
+  if (!json) return null
+
+  try {
+    const periods = json.properties?.periods ?? []
 
     if (periods.length === 0) return null
 
@@ -152,26 +146,23 @@ export async function fetchRiverWeather(lat: number, lng: number): Promise<River
     const sunriseStr = sun.sunrise ? sun.sunrise.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) : null
     const sunsetStr = sun.sunset ? sun.sunset.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) : null
 
-    // Fetch 7-day daily forecast
+    // Fetch 7-day daily forecast (timeout-safe)
     const dailyUrl = `https://api.weather.gov/gridpoints/${grid.gridId}/${grid.gridX},${grid.gridY}/forecast`
     let daily: DailyForecast[] = []
-    try {
-      const dailyRes = await fetch(dailyUrl, {
-        headers: { 'User-Agent': 'RiverScout (riverscout.app, outfitters@riverscout.app)' },
-        cache: 'no-store',
-      })
-      if (dailyRes.ok) {
-        const dailyJson = await dailyRes.json()
-        const dailyPeriods: Array<{
-          name: string
-          temperature: number
-          temperatureUnit: string
-          isDaytime: boolean
-          shortForecast: string
-          detailedForecast: string
-          windSpeed: string
-          probabilityOfPrecipitation: { value: number | null }
-        }> = dailyJson.properties?.periods ?? []
+    interface DailyPeriod {
+      name: string
+      temperature: number
+      temperatureUnit: string
+      isDaytime: boolean
+      shortForecast: string
+      detailedForecast: string
+      windSpeed: string
+      probabilityOfPrecipitation: { value: number | null }
+    }
+    const dailyJson = await fetchExternalJson<{ properties?: { periods?: DailyPeriod[] } }>(dailyUrl, { timeoutMs: 10000, retries: 1 })
+    if (dailyJson) {
+      try {
+        const dailyPeriods = dailyJson.properties?.periods ?? []
 
         daily = dailyPeriods.slice(0, 14).map(p => {
           const hasRain = detectRain(p.shortForecast) || detectRain(p.detailedForecast)
@@ -233,8 +224,8 @@ export async function fetchRiverWeather(lat: number, lng: number): Promise<River
             estimatedInches,
           }
         })
-      }
-    } catch { /* daily forecast optional */ }
+      } catch { /* parse failure ok */ }
+    }
 
     // Thunderstorm risk in next 24h
     const next24 = hourly.slice(0, 24)

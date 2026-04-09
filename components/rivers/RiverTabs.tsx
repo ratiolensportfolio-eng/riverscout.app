@@ -798,7 +798,7 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                   </div>
                 ) : forecastUnavailable ? (
                   <div style={{ padding: '12px', background: 'var(--bg2)', borderRadius: 'var(--r)', border: '.5px solid var(--bd)', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', textAlign: 'center' }}>
-                    NWS forecast not available for this gauge
+                    Forecast temporarily unavailable
                   </div>
                 ) : (
                   <div style={{ padding: '12px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', textAlign: 'center' }}>Loading forecast...</div>

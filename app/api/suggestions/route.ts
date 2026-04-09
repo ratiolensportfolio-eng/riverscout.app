@@ -19,9 +19,14 @@ async function evaluateSuggestion(
     return { confidence: 'medium', reasoning: 'AI evaluation unavailable — no API key configured.' }
   }
 
+  // 10s timeout via AbortController — never let Anthropic API hang
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), 10000)
+
   try {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
+      signal: controller.signal,
       headers: {
         'x-api-key': apiKey,
         'anthropic-version': '2023-06-01',
@@ -57,6 +62,7 @@ Be concise. Respond ONLY with the JSON object.`,
         }],
       }),
     })
+    clearTimeout(timer)
 
     if (!res.ok) {
       console.error('[AI] Claude API error:', res.status)
@@ -77,6 +83,11 @@ Be concise. Respond ONLY with the JSON object.`,
       return { confidence: 'medium', reasoning: text.slice(0, 500) || 'AI returned unparseable response.' }
     }
   } catch (err) {
+    clearTimeout(timer)
+    if (err instanceof Error && (err.name === 'AbortError' || err.message.includes('aborted'))) {
+      console.warn('[AI] Anthropic API timeout after 10s')
+      return { confidence: 'medium', reasoning: 'AI evaluation timed out — please review manually.' }
+    }
     console.error('[AI] Evaluation error:', err)
     return { confidence: 'medium', reasoning: 'AI evaluation failed — network error.' }
   }

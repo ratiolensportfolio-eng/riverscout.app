@@ -1,5 +1,6 @@
 import type { FlowData, FlowCondition, TrendDirection } from '@/types'
 import { getFlowCondition } from '@/data/rivers'
+import { fetchExternalJson } from '@/lib/noaa-fetch'
 
 const IV_BASE = 'https://waterservices.usgs.gov/nwis/iv/'
 const STAT_BASE = 'https://waterservices.usgs.gov/nwis/stat/'
@@ -19,11 +20,13 @@ interface USGSTimeSeries {
 export async function fetchGaugeData(gaugeId: string, optRange: string): Promise<FlowData> {
   const url = `${IV_BASE}?format=json&sites=${gaugeId}&parameterCd=00060,00010&siteStatus=active&period=P7D`
 
-  try {
-    const res = await fetch(url, { next: { revalidate: 900 } }) // 15 min cache
-    if (!res.ok) throw new Error(`USGS responded ${res.status}`)
+  const json = await fetchExternalJson<{ value?: { timeSeries?: USGSTimeSeries[] } }>(url, { timeoutMs: 10000, retries: 1 })
 
-    const json = await res.json()
+  if (!json) {
+    return { cfs: null, condition: 'loading', trend: null, trendDelta: null, trendDeltaPct: null, percentile: null, tempC: null, readings: [], fetchedAt: new Date() }
+  }
+
+  try {
     const series: USGSTimeSeries[] = json?.value?.timeSeries ?? []
 
     let cfs: number | null = null
@@ -87,16 +90,13 @@ export async function fetchPercentile(gaugeId: string): Promise<number | null> {
   const day = String(now.getDate()).padStart(2, '0')
   const url = `${STAT_BASE}?format=json&sites=${gaugeId}&statReportType=daily&statType=mean&parameterCd=00060`
 
+  const json = await fetchExternalJson<{ value?: { timeSeries?: Array<{ values?: Array<{ value?: Array<{ dateTime: string; value: string; statisticType: string }> }> }> } }>(url, { timeoutMs: 10000, retries: 1 })
+  if (!json) return null
+
   try {
-    const res = await fetch(url, { next: { revalidate: 86400 } }) // 24 hr cache
-    if (!res.ok) return null
-
-    const json = await res.json()
     const series = json?.value?.timeSeries?.[0]
-    const values: Array<{ dateTime: string; value: string; statisticType: string }> =
-      series?.values?.[0]?.value ?? []
+    const values = series?.values?.[0]?.value ?? []
 
-    // Find today's date entry
     const todayEntry = values.find(v => {
       const [, m, d] = v.dateTime.split('-')
       return m === month && d?.startsWith(day)
