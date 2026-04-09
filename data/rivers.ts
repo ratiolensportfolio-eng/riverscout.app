@@ -27,11 +27,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2019', title: 'Pine River Corridor Initiative', text: "The USFS Huron-Manistee initiated a comprehensive restoration study of the Pine River corridor, documenting 47 active cold-water springs entering the main stem — each maintaining water temperatures 10–15°F cooler than air temperature in summer. The study confirmed the Pine as one of Michigan's highest-priority brook trout conservation streams.", src: 'USFS Huron-Manistee National Forests (2019)' }] },
         ],
         docs: [{ t: 'Pine National Scenic River Management Plan', s: 'USFS Huron-Manistee', y: 2010, tp: 'Federal', pg: 145, url: 'https://www.rivers.gov/sites/rivers/files/documents/plans/pine-plan.pdf' }, { t: 'Pine River Natural River Plan', s: 'Michigan DNR', y: 1999, tp: 'Survey', pg: 58, url: 'https://mrwa.org/wp-content/uploads/repository/pineplan.pdf' }, { t: 'Pine River Area TU Chapter — Coldwater Conservation', s: 'Trout Unlimited', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.pineriverareatu.org/' }],
-        revs: [
-          { u: 'northernmichigan_paddle', d: 'Jul 2024', s: 5, t: "Peterson Bridge to Elm Flats at 320 cfs — Pine River Rush was rowdy and fun. Water cold enough to chill drinks and clear enough to count rocks at 8 feet. Best day on a Michigan river this year." },
-          { u: 'troutbum_lp', d: 'Jun 2024', s: 5, t: "Brook trout everywhere below Lincoln Bridge. Dry fly fishing at 180 cfs was stupid good. The Wild & Scenic designation shows — zero development, perfect riparian zone." },
-          { u: 'familyfloat_mi', d: 'Aug 2024', s: 4, t: "Low Bridge to Peterson with the kids at 200 cfs. Mild enough for beginners, beautiful forest canopy the whole way. One Class II rapid that woke everyone up." },
-        ],
+        revs: [],
         outs: [
           { n: 'Pine River Paddlesports Center', d: 'Full-service outfitter, shuttles, gear, camping', l: 'thepineriver.com' },
           { n: 'Horina Canoe & Kayak Rental', d: 'Budget-friendly rentals, multiple access points', l: 'horinacanoe.com' },
@@ -51,7 +47,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1959', title: 'Trout Unlimited Founded on the Au Sable', text: 'Concerned about declining trout from pollution and overfishing, anglers gathered near the Au Sable and founded Trout Unlimited, now 300,000 members strong. The Au Sable is the spiritual home of the modern coldwater conservation movement.', src: 'Trout Unlimited; Michigan DNR' }] },
         ],
         docs: [{ t: 'Au Sable River Natural River Plan', s: 'Michigan DNR', y: 2006, tp: 'Survey', pg: 210, url: 'https://www.michigan.gov/-/media/Project/Websites/dnr/Documents/Fisheries/NaturalRivers/AuSable_plan.pdf' }, { t: 'Au Sable River Assessment', s: 'Michigan DNR Fisheries', y: 2002, tp: 'Ecology', pg: 88, url: 'https://www.researchgate.net/publication/265100820_Au_Sable_River_Assessment' }, { t: 'Au Sable River Habitat Restoration — Lunker Structures', s: 'Trout Unlimited', y: 2024, tp: 'Conservation', pg: 1, url: 'https://prioritywaters.tu.org/michigan/' }, { t: 'Protecting the Au Sable — Climate Change Assessment', s: 'Trout Unlimited / Michigan State University', y: 2023, tp: 'Conservation', pg: 1, url: 'https://www.canr.msu.edu/news/protecting-the-au-sable-river' }],
-        revs: [{ u: 'paddle_mi_daily', d: 'Aug 2024', s: 5, t: 'Grayling to Mio in two days. Camped at Smith Bridge. Water gin-clear at 340 cfs. Watched a bald eagle take a trout 20 feet off my bow.' }, { u: 'graylingsup', d: 'Jul 2024', s: 5, t: 'Four browns before noon at 420 cfs. Perfect water, perfect day.' }],
+        revs: [],
         outs: [{ n: 'Carlisle Canoe Livery', d: 'Grayling-based, full service', l: 'carlislecanoes.com' }, { n: "Penrod's Au Sable", d: 'Rentals, shuttles, multiple put-ins', l: 'penrodsausable.com' }],
       },
       {
@@ -68,7 +64,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2022', title: 'Tippy Dam Steelhead — World-Record Territory', text: 'The tailwater below Tippy Dam has become one of the world\'s premier steelhead destinations. Fish exceeding 20 pounds move through in peak fall runs. The river hosts an estimated 15,000+ steelhead annually.', src: 'Michigan DNR Fisheries Division' }] },
         ],
         docs: [{ t: 'Reconnaissance of the Manistee River', s: 'USGS', y: 1968, tp: 'Survey', pg: 42 , url: 'https://pubs.usgs.gov/publication/70048280'}, { t: 'Manistee River Bank Stabilization — Helicopter Tree Placement', s: 'Trout Unlimited', y: 2024, tp: 'Conservation', pg: 1, url: 'https://prioritywaters.tu.org/michigan/' }],
-        revs: [{ u: 'chris_upmich', d: 'Sep 2024', s: 5, t: 'Three-day float from Mesick to Tippy. Best Michigan trip in 20 years. Clear at 650 cfs, incredible fall color.' }, { u: 'salmoncreek99', d: 'Oct 2024', s: 4, t: 'Below Tippy at 900 cfs — king salmon stacking. Epic.' }],
+        revs: [],
         outs: [{ n: 'Pine River Paddlesports Center', d: 'Lower Manistee trips and rentals', l: 'thepineriver.com' }],
       },
       {
@@ -84,7 +80,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2003', title: 'Muskegon River Watershed Management Plan', text: 'Multi-agency plan established long-term conservation goals. The river has seen significant ecological improvement over two decades of restoration.', src: 'Muskegon River Watershed Assembly' }] },
         ],
         docs: [{ t: 'Muskegon River Watershed Management Plan', s: 'MRWA', y: 2003, tp: 'Survey', pg: 240 , url: 'https://mrwa.org/wp-content/uploads/repository/MuskegonManagementPlan.pdf'}],
-        revs: [{ u: 'steelheaddan_mi', d: 'Mar 2024', s: 5, t: 'Croton in spring at 2,200 cfs — chrome steelhead stacked. Even the float between holes is beautiful.' }],
+        revs: [],
         outs: [{ n: 'Sawmill Canoe Rental', d: 'Day trips, family-friendly', l: 'sawmillcanoe.com' }],
       },
       {
@@ -99,7 +95,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1978', title: 'National Wild & Scenic River Designation', text: "Congress designated the Pere Marquette a National Wild & Scenic River in 1978, protecting 66 miles of the main branch. The designation recognized the river's outstanding fisheries, clear spring-fed water, and relatively undeveloped corridor through the Manistee National Forest.", src: 'USFS Huron-Manistee National Forest' }] },
         ],
         docs: [{ t: 'Pere Marquette River — A National Treasure', s: 'Trout Unlimited', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.tu.org/magazine/priority-waters/pere-marquette-river-a-national-treasure/' }],
-        revs: [{ u: 'flyrod_pm', d: 'Oct 2024', s: 5, t: 'Fall steelhead run at 680 cfs — hooked into a chrome hen that peeled 50 yards of line. The PM never disappoints.' }, { u: 'paddlecraft_mi', d: 'Aug 2024', s: 4, t: 'Bowman Bridge to Indian Bridge at 420 cfs. Gentle current, beautiful cedar-lined banks, perfect family float.' }],
+        revs: [],
         outs: [{ n: 'Baldwin Canoe Rental', d: 'Full-service outfitter on the upper Pere Marquette', l: '' }, { n: 'Pere Marquette Expeditions', d: 'Guided fishing and paddling trips', l: '' }],
       },
       {
@@ -114,7 +110,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2012–2020', title: 'Historic Dam Removals Restore the Boardman', text: "A landmark multi-agency effort removed three dams on the Boardman — Brown Bridge (2012), Boardman (2017), and Sabin (2020) — reconnecting 160 miles of river and tributaries for fish passage. It is one of Michigan's most successful river restoration projects.", src: 'Grand Traverse Conservation District; Michigan DNR' }] },
         ],
         docs: [{ t: 'Boardman River Dam Removal — 160 Miles Reconnected', s: 'Trout Unlimited', y: 2018, tp: 'Conservation', pg: 1, url: 'https://www.tu.org/magazine/import/tu-helping-with-boardman-dam-removal-in-michigan-2/' }],
-        revs: [{ u: 'tc_local_paddle', d: 'Jul 2024', s: 4, t: 'Paddled the lower stretch into town at 240 cfs. Amazing to see the river flowing free where dams used to be. Trout rising everywhere.' }, { u: 'kayak_northwest_mi', d: 'Sep 2024', s: 4, t: 'Upper Boardman is surprisingly remote for being so close to Traverse City. Beautiful fall color paddle.' }],
+        revs: [],
         outs: [{ n: 'Boardman River Outfitters', d: 'Kayak and canoe rentals near Traverse City', l: '' }, { n: 'Ranch Rudolf', d: 'Canoe and kayak livery on the upper Boardman', l: '' }],
       },
       {
@@ -129,7 +125,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1972', title: "Michigan's First Natural River Designation", text: "The Jordan became the first river designated under Michigan's Natural Rivers Act of 1970, setting the standard for river protection statewide. The designation restricts development along the corridor and preserves the river's wild character.", src: 'Michigan DNR Natural Rivers Program' }] },
         ],
         docs: [],
-        revs: [{ u: 'brooktrout_mi', d: 'Jun 2024', s: 5, t: 'Graves Crossing to Webster Bridge at 150 cfs — brook trout in every pool. The Jordan is as good as it gets in the LP.' }, { u: 'northwoods_canoe', d: 'Aug 2024', s: 4, t: 'Tight turns and overhanging cedars. Canoe skills required but the scenery is worth every stroke.' }],
+        revs: [],
         outs: [{ n: 'Jordan Valley Outfitters', d: 'Canoe and kayak rentals, shuttle service', l: '' }],
       },
       {
@@ -144,7 +140,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1973', title: 'Michigan Natural River Designation', text: "The Betsie was designated a Michigan Natural River, protecting its corridor from development and preserving the river's ecological value as a coldwater fishery and recreational resource.", src: 'Michigan DNR Natural Rivers Program' }] },
         ],
         docs: [],
-        revs: [{ u: 'benzie_paddler', d: 'Sep 2024', s: 4, t: 'Fall color float from Thompsonville at 220 cfs. Salmon splashing upstream the whole way. Ended near Frankfort with a Lake Michigan sunset.' }, { u: 'steelhead_betsie', d: 'Nov 2024', s: 5, t: 'Chrome steelhead stacking at 380 cfs. The Betsie is underrated.' }],
+        revs: [],
         outs: [{ n: 'Betsie River Canoes & Campground', d: 'Canoe and kayak rentals with riverside camping', l: '' }],
       },
       {
@@ -159,7 +155,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1970', title: 'Sleeping Bear Dunes National Lakeshore Established', text: "The creation of Sleeping Bear Dunes National Lakeshore in 1970 placed much of the lower Platte under federal protection, preserving the river's undeveloped corridor to Lake Michigan.", src: 'National Park Service' }] },
         ],
         docs: [],
-        revs: [{ u: 'sleepingbear_kayak', d: 'Jul 2024', s: 5, t: 'Platte to Lake Michigan at 120 cfs — water so clear you can see every pebble. The river mouth at Platte Bay is magical.' }, { u: 'salmon_run_mi', d: 'Oct 2024', s: 4, t: 'Coho jumping everywhere at 180 cfs. The fall run on the Platte is a Michigan tradition.' }],
+        revs: [],
         outs: [{ n: 'Riverside Canoes', d: 'Canoe and kayak rentals on the Platte River', l: '' }, { n: 'Platte River Campground', d: 'NPS campground with river access and Lake Michigan beach', l: '' }],
       },
       {
@@ -174,7 +170,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1963', title: 'Rifle River Recreation Area Established', text: "Michigan established the Rifle River Recreation Area, protecting 4,329 acres of forests, lakes, and river frontage. The area has become one of the most popular outdoor recreation destinations in Michigan's eastern LP.", src: 'Michigan DNR Parks & Recreation' }] },
         ],
         docs: [],
-        revs: [{ u: 'familyfloat_rifle', d: 'Jul 2024', s: 4, t: 'Selkirk to Sterling at 350 cfs with the whole family. Easy current, sandy bottom, great smallmouth fishing. Perfect beginner river.' }, { u: 'mi_bass_angler', d: 'Aug 2024', s: 4, t: 'Smallmouth on every bend at 280 cfs. The Rifle is an underappreciated gem.' }],
+        revs: [],
         outs: [{ n: 'Russell Canoe Livery', d: 'Canoe, kayak, and tube rentals on the Rifle River', l: '' }],
       },
       {
@@ -189,7 +185,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2016', title: 'National Water Trail Designation', text: 'The Huron River Water Trail was designated a National Water Trail by the U.S. Department of the Interior — the only one in Michigan. The 104-mile trail from Proud Lake to Lake Erie passes through diverse landscapes from rural wetlands to downtown Ann Arbor.', src: 'National Park Service; Huron River Watershed Council' }] },
         ],
         docs: [],
-        revs: [{ u: 'a2_paddler', d: 'Jun 2024', s: 4, t: 'Ann Arbor section at 500 cfs — paddled right through downtown. Herons, turtles, and coffee shops. Urban paddling at its finest.' }, { u: 'huron_water_trail', d: 'Sep 2024', s: 4, t: "Did four days on the National Water Trail. Surprisingly wild stretches between the towns. Michigan's most underrated long paddle." }],
+        revs: [],
         outs: [{ n: 'Argo Canoe Livery', d: 'City of Ann Arbor livery with Argo Cascades access', l: '' }, { n: 'Heavner Canoe Rental', d: 'Canoe and kayak rentals on the upper Huron', l: '' }],
       },
       {
@@ -204,7 +200,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2005', title: 'Flat River Watershed Conservation Plan', text: 'A multi-county conservation plan was established to protect water quality and restore fish habitat on the Flat River, with particular focus on the steelhead runs that migrate up from the Grand River.', src: 'Flat River Watershed Council' }] },
         ],
         docs: [],
-        revs: [{ u: 'centralmi_kayak', d: 'Jul 2024', s: 4, t: 'Belding to Fallasburg at 450 cfs. Paddled under the covered bridge and caught smallmouth on every riffle. Hidden gem.' }, { u: 'flatriver_angler', d: 'Apr 2024', s: 4, t: 'Spring steelhead at 600 cfs — fish stacking at every gravel bar. The Flat gets overlooked but the fishing is excellent.' }],
+        revs: [],
         outs: [{ n: 'Double R Ranch Resort', d: 'Canoe and kayak rentals on the Flat River', l: '' }],
       },
       {
@@ -219,7 +215,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2010', title: 'Thornapple River Watershed Management Plan', text: 'A comprehensive watershed plan was adopted to address agricultural runoff and improve water quality. Restoration efforts have focused on stabilizing streambanks and improving fish habitat throughout the corridor.', src: 'Thornapple River Watershed Council' }] },
         ],
         docs: [],
-        revs: [{ u: 'sw_michigan_paddle', d: 'Aug 2024', s: 4, t: 'Hastings to the Grand River at 600 cfs. Pastoral scenery, good bass fishing, and not another paddler in sight.' }, { u: 'thornapple_local', d: 'Jun 2024', s: 3, t: 'Solid local float at 450 cfs. Nothing flashy but peaceful and the smallmouth cooperated.' }],
+        revs: [],
         outs: [{ n: 'Thornapple River Livery', d: 'Canoe and kayak rentals in Hastings', l: '' }],
       },
       {
@@ -234,7 +230,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2014', title: "Named 'Most Beautiful Place in America' by Good Morning America", text: "Sleeping Bear Dunes — and the Crystal River flowing through it — gained national attention when voted the Most Beautiful Place in America. Visitation surged, making the Crystal one of Michigan's most popular short paddles.", src: 'Good Morning America (ABC); NPS Sleeping Bear Dunes' }] },
         ],
         docs: [],
-        revs: [{ u: 'glenarborlife', d: 'Jul 2024', s: 5, t: 'Two miles of the clearest water you will ever see. Teal blue over white sand. Get there early — it gets crowded by noon.' }, { u: 'sleeping_bear_fan', d: 'Aug 2024', s: 4, t: 'Short but absolutely stunning at 60 cfs. Bring a mask and snorkel — the underwater visibility is unreal.' }],
+        revs: [],
         outs: [{ n: 'Crystal River Outfitters', d: 'Kayak and tube rentals in Glen Arbor', l: '' }, { n: 'Sleeping Bear Surf & Kayak', d: 'Paddleboard and kayak rentals near the Crystal River', l: '' }],
       },
       {
@@ -249,7 +245,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1985', title: 'Wild Brook Trout Conservation', text: "Michigan DNR designated key stretches of the South Branch as catch-and-release brook trout water, protecting one of the Lower Peninsula's last self-sustaining native brook trout populations.", src: 'Michigan DNR Fisheries Division' }] },
         ],
         docs: [],
-        revs: [{ u: 'brooktrout_angler', d: 'Jun 2024', s: 5, t: "South Branch at 150 cfs — wild brookies in every bend. So much quieter than the main Au Sable. Don't tell anyone." }, { u: 'lp_canoe_life', d: 'Aug 2024', s: 4, t: 'Intimate paddle through state forest at 200 cfs. Deer, herons, and zero crowds.' }],
+        revs: [],
         outs: [{ n: 'South Branch Canoe Livery', d: 'Canoe and kayak rentals on the South Branch', l: '' }],
       },
       {
@@ -264,7 +260,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2000', title: 'Sturgeon Recovery in Black Lake', text: "The Black River-Black Lake system became a focal point for lake sturgeon restoration, with Michigan DNR and tribal partners working to rebuild populations of this ancient species.", src: 'Michigan DNR Fisheries Division' }] },
         ],
         docs: [],
-        revs: [{ u: 'northernlp_paddler', d: 'Jul 2024', s: 4, t: 'Clark Bridge to Black Lake at 340 cfs. Remote and wild — felt like the UP but in the Lower Peninsula.' }, { u: 'cheboygan_local', d: 'Aug 2024', s: 4, t: 'Great bass fishing at 400 cfs. One of the most underrated rivers in the northern LP.' }],
+        revs: [],
         outs: [{ n: 'Black River Canoe Outfitters', d: 'Canoe and kayak rentals in Cheboygan County', l: '' }],
       },
       {
@@ -279,7 +275,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2008', title: 'Cass River Greenway Initiative', text: 'Local communities established the Cass River Greenway to protect riparian corridors, improve water quality, and create recreational access along the river through the Thumb region.', src: 'Tuscola County Conservation District' }] },
         ],
         docs: [],
-        revs: [{ u: 'thumb_paddler', d: 'Jul 2024', s: 4, t: 'Cass City to Caro at 500 cfs. Easy family float through farm country. Kids loved it.' }, { u: 'mi_flatwater_fan', d: 'Aug 2024', s: 3, t: 'Gentle current at 400 cfs. Nothing flashy but a solid day on the water with the family.' }],
+        revs: [],
         outs: [{ n: 'Cass River Paddle Sports', d: 'Canoe and kayak rentals in Tuscola County', l: '' }],
       },
       {
@@ -294,7 +290,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2015', title: 'Chippewa River Water Trail Designation', text: "The Chippewa River Water Trail was established to promote recreational paddling and conservation awareness through central Michigan's communities.", src: 'Isabella County Parks & Recreation' }] },
         ],
         docs: [],
-        revs: [{ u: 'cmu_kayaker', d: 'Jun 2024', s: 4, t: 'Mt. Pleasant stretch at 300 cfs. Great campus-area paddle, good smallmouth on poppers.' }, { u: 'central_mi_float', d: 'Aug 2024', s: 4, t: 'Easy family float at 250 cfs. Nice mix of shade and open water through town.' }],
+        revs: [],
         outs: [{ n: 'Chippewa River Outfitters', d: 'Canoe and kayak rentals near Mt. Pleasant', l: '' }],
       },
       {
@@ -309,7 +305,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2010', title: 'Dowagiac River Habitat Restoration', text: 'Michigan DNR and Trout Unlimited partnered to restore in-stream habitat and remove barriers on the Dowagiac, improving fish passage and strengthening the brown trout population.', src: 'Michigan DNR; Trout Unlimited' }] },
         ],
         docs: [],
-        revs: [{ u: 'sw_mi_trout', d: 'May 2024', s: 5, t: 'Spring-fed perfection at 150 cfs. Brown trout rising to dry flies all afternoon. A southwest Michigan treasure.' }, { u: 'dowagiac_local', d: 'Jul 2024', s: 4, t: 'Small but beautiful at 120 cfs. Cold water even in July. Tight casting but worth every trout.' }],
+        revs: [],
         outs: [{ n: 'Dowagiac Creek Outfitters', d: 'Canoe and kayak rentals in Cass County', l: '' }],
       },
       {
@@ -324,7 +320,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2010', title: 'Enbridge Oil Spill and Recovery', text: "The Enbridge Line 6B pipeline rupture on July 25, 2010 released over 800,000 gallons of crude oil into the Kalamazoo River — one of the largest inland oil spills in U.S. history. A decade-long cleanup effort has significantly restored the river.", src: 'EPA; NTSB' }] },
         ],
         docs: [],
-        revs: [{ u: 'kzoo_paddler', d: 'Aug 2024', s: 4, t: 'Allegan to Saugatuck at 1,400 cfs. Beautiful lower river through the game area. Hard to believe the recovery after 2010.' }, { u: 'sw_michigan_kayak', d: 'Jul 2024', s: 4, t: 'Good family float at 1,200 cfs. Wide and forgiving, nice scenery in the lower stretch.' }],
+        revs: [],
         outs: [{ n: 'Kalamazoo River Outfitters', d: 'Canoe and kayak rentals in Allegan County', l: '' }],
       },
       {
@@ -339,7 +335,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2020', title: 'Steelhead Run Record Numbers', text: "The Little Manistee's steelhead run reached record numbers, with the DNR weir processing thousands of fish. The river's consistent cold water and gravel substrate make it ideal steelhead spawning habitat.", src: 'Michigan DNR Fisheries Division' }] },
         ],
         docs: [],
-        revs: [{ u: 'steelhead_maniac', d: 'Mar 2024', s: 5, t: 'Spring run at 250 cfs — chrome steelhead stacking at the weir. Best steelhead fishing in the state, period.' }, { u: 'lm_paddler', d: 'Jul 2024', s: 4, t: 'Quiet summer float at 200 cfs through the national forest. Beautiful and uncrowded.' }],
+        revs: [],
         outs: [{ n: 'Little Manistee River Outfitters', d: 'Canoe and kayak rentals in Lake County', l: '' }],
       },
       {
@@ -354,7 +350,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2012', title: 'Trout Habitat Restoration', text: 'Michigan DNR and Trout Unlimited completed a multi-year habitat restoration project on the Little Muskegon, adding in-stream structures and improving spawning gravel to support wild brook and brown trout populations.', src: 'Michigan DNR; Trout Unlimited' }] },
         ],
         docs: [],
-        revs: [{ u: 'quiet_water_mi', d: 'Jun 2024', s: 4, t: 'Morley to Croton at 180 cfs. Peaceful forest paddle with good trout. Zero other paddlers all day.' }, { u: 'trout_hunter_lp', d: 'Jul 2024', s: 4, t: 'Wild brookies and browns at 150 cfs. The Little Muskegon is a hidden gem for trout anglers.' }],
+        revs: [],
         outs: [{ n: 'Little Muskegon Paddle Co.', d: 'Canoe and kayak rentals in Mecosta County', l: '' }],
       },
       {
@@ -369,7 +365,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1990', title: "Lower Peninsula's Only Waterfall Protected", text: "Ocqueoc Falls — the only named waterfall in Michigan's Lower Peninsula — was preserved as a state forest campground and day-use area, protecting this unique natural feature for public enjoyment.", src: 'Michigan DNR Parks & Recreation' }] },
         ],
         docs: [],
-        revs: [{ u: 'falls_seeker_mi', d: 'Jul 2024', s: 4, t: "Paddled above the falls at 120 cfs then hiked down to see them. The LP's only waterfall — small but worth the trip." }, { u: 'presque_isle_local', d: 'Aug 2024', s: 4, t: 'Quiet little river at 100 cfs. Good brookies and total solitude in the northeastern LP.' }],
+        revs: [],
         outs: [{ n: 'Ocqueoc Outdoor Adventures', d: 'Canoe and kayak rentals in Presque Isle County', l: '' }],
       },
       {
@@ -384,7 +380,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1918', title: "Michigan's Elk Herd Reintroduced", text: "Seven Rocky Mountain elk were released in the Pigeon River Country in 1918, establishing what is now the only free-ranging elk herd east of the Mississippi — approximately 1,000 animals roaming the forest and river corridor.", src: 'Michigan DNR Wildlife Division' }] },
         ],
         docs: [],
-        revs: [{ u: 'elk_country_paddle', d: 'Sep 2024', s: 5, t: 'Pigeon Bridge run at 160 cfs. Saw three elk on the riverbank at dawn. Most wild feeling paddle in the LP, bar none.' }, { u: 'lp_wilderness_fan', d: 'Jul 2024', s: 4, t: 'Remote and beautiful at 180 cfs. Brook trout and total solitude in elk country.' }],
+        revs: [],
         outs: [{ n: 'Pigeon River Country Outfitters', d: 'Canoe and kayak rentals in Otsego County', l: '' }],
       },
       {
@@ -399,7 +395,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1953', title: 'Shiawassee National Wildlife Refuge Established', text: 'The U.S. Fish and Wildlife Service established the Shiawassee NWR at the confluence of the Shiawassee, Flint, Tittabawassee, and Cass rivers, protecting 9,800 acres of wetlands critical for migratory bird habitat.', src: 'U.S. Fish and Wildlife Service' }] },
         ],
         docs: [],
-        revs: [{ u: 'mi_birder_paddle', d: 'May 2024', s: 4, t: 'Lower Shiawassee at 420 cfs near the refuge. Bald eagles, herons, and waterfowl everywhere. Paddling and birding combined.' }, { u: 'midmichigan_kayak', d: 'Jul 2024', s: 4, t: 'Easy family float at 350 cfs. Gentle current and good shade through the farmland stretches.' }],
+        revs: [],
         outs: [{ n: 'Shiawassee River Paddle Co.', d: 'Canoe and kayak rentals in Shiawassee County', l: '' }],
       },
       {
@@ -414,7 +410,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1975', title: 'Michigan Natural River Designation', text: "The Sturgeon was designated a Michigan Natural River, protecting its corridor and preserving the fast-flowing character that makes it unique among LP rivers.", src: 'Michigan DNR Natural Rivers Program' }] },
         ],
         docs: [],
-        revs: [{ u: 'fast_water_mi', d: 'May 2024', s: 5, t: 'Wolverine to Rondo at 400 cfs — fastest water in the LP. Constant current, fun Class II riffles. A real workout.' }, { u: 'northern_lp_paddle', d: 'Jul 2024', s: 4, t: 'Good current at 250 cfs. More challenging than most LP rivers. Great for building skills.' }],
+        revs: [],
         outs: [{ n: 'Sturgeon River Paddlesports', d: 'Canoe and kayak rentals in Wolverine', l: '' }],
       },
       {
@@ -429,7 +425,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2000', title: 'Thunder Bay National Marine Sanctuary Designated', text: "NOAA designated the Thunder Bay National Marine Sanctuary at the river's mouth in Lake Huron, protecting over 100 shipwrecks in a 4,300-square-mile underwater preserve — one of the most significant collections of shipwrecks in the Great Lakes.", src: 'NOAA Thunder Bay National Marine Sanctuary' }] },
         ],
         docs: [],
-        revs: [{ u: 'alpena_kayaker', d: 'Aug 2024', s: 4, t: 'Hillman to Alpena at 380 cfs. Scenic forested paddle ending at the Lake Huron waterfront. Great weekend trip.' }, { u: 'ne_michigan_paddle', d: 'Jul 2024', s: 4, t: 'Nice current at 350 cfs. Combined the river paddle with a glass-bottom boat tour of the marine sanctuary. Perfect combo.' }],
+        revs: [],
         outs: [{ n: 'Thunder Bay River Outfitters', d: 'Canoe and kayak rentals in Alpena County', l: '' }],
       },
       {
@@ -444,7 +440,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2015', title: 'Steelhead and Salmon Restoration', text: 'Michigan DNR expanded steelhead and salmon stocking programs on the White River, building on the river\'s excellent cold-water habitat to create a productive Lake Michigan tributary fishery.', src: 'Michigan DNR Fisheries Division' }] },
         ],
         docs: [],
-        revs: [{ u: 'west_mi_steelhead', d: 'Mar 2024', s: 5, t: 'Spring steelhead run at 280 cfs — chrome fish stacking in every pool. The White River is a steelhead factory.' }, { u: 'hesperia_paddler', d: 'Jul 2024', s: 4, t: 'Quiet summer float at 200 cfs through the national forest. Clean water, good shade, and total peace.' }],
+        revs: [],
         outs: [{ n: 'White River Canoe Livery', d: 'Canoe and kayak rentals in Hesperia', l: '' }],
       },
       {
@@ -460,7 +456,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2012', title: 'National Wild & Scenic Designation', text: 'Congress added the Two Hearted to the National Wild & Scenic River system, permanently protecting one of the most undeveloped river corridors in the Great Lakes region.', src: 'USFS / NPS' }] },
         ],
         docs: [],
-        revs: [{ u: 'hemingway_was_right', d: 'Sep 2024', s: 5, t: 'Two days solo. No cell signal. Ended on a Lake Superior beach at sunset. Resets something in you.' }, { u: 'up_wilderness_nut', d: 'Aug 2024', s: 5, t: "Most remote feeling river I've paddled in Michigan. Moose tracks on every sandbar." }],
+        revs: [],
         outs: [{ n: 'Two Hearted River Canoe Trips', d: 'Remote UP expeditions', l: 'twoheartedcanoe.com' }],
       },
       {
@@ -561,7 +557,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Gauley Season Economic Impact — $30M+ Annually', text: 'WVU documented that the 22-weekend Gauley Season generates over $30 million annually for Nicholas and Fayette counties — remarkable for a 25-mile river in one of America\'s most rural regions.', src: 'WVU Bureau of Business and Economic Research (2023)' }] },
         ],
         docs: [{ t: 'Gauley River NRA Management Plan', s: 'NPS', y: 2000, tp: 'Federal', pg: 180, url: 'https://www.nps.gov/gari/learn/management/index.htm' }, { t: "Gauley River Access Management & Gauley Fest", s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/project/gauley-river-wv/' }],
-        revs: [{ u: 'kayakjed_wv', d: 'Oct 2024', s: 5, t: "Gauley at 2,600 cfs — Pillow Rock was stomping. Lost Paddle lived up to its name. Greatest paddling day of my life." }, { u: 'gauley_first_timer', d: 'Sep 2024', s: 5, t: "Sweet's Falls at the end was absolutely terrifying and perfect." }],
+        revs: [],
         outs: [{ n: 'ACE Adventure Resort', d: 'Gauley Season specialists since 1976', l: 'aceadventure.com' }, { n: 'Rivers Whitewater', d: 'Upper and Lower Gauley guided trips', l: 'riverswhitewater.com' }],
       },
       {
@@ -578,7 +574,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: "Bridge Day — World's Largest Rappel Event", text: 'The annual Bridge Day festival draws 80,000+ visitors for BASE jumping and rappelling from the 876-foot bridge above the river — the most dramatic overhead perspective of any American whitewater run.', src: 'Bridge Day Commission; NPS' }] },
         ],
         docs: [{ t: 'New River Gorge NP General Management Plan', s: 'NPS', y: 2012, tp: 'Federal', pg: 420, url: 'https://parkplanning.nps.gov/projectHome.cfm?projectID=11040' }, { t: 'New River Dries Flow Restoration — Hawks Nest Relicensing', s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/article/33829/' }],
-        revs: [{ u: 'nrg_regular', d: 'Sep 2024', s: 5, t: 'New at 4,200 cfs in fall — everything firing. Class III–IV with iconic bridge view.' }, { u: 'park_visitor', d: 'Jul 2024', s: 4, t: 'Upper New with kids — flat enough to float with gorge scenery. Perfect intro to WV rivers.' }],
+        revs: [],
         outs: [{ n: 'ACE Adventure Resort', d: 'New River Gorge specialists', l: 'aceadventure.com' }, { n: 'Class VI River Runners', d: 'New River Gorge guided trips', l: 'class-vi.com' }],
       },
       {
@@ -594,7 +590,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2016', title: 'Great Flood — Worst Disaster in WV History', text: 'The June 2016 floods were among the deadliest in WV history. The Greenbrier at Caldwell crested at 34 feet — more than 20 feet above flood stage — destroying bridges and riverside communities.', src: 'USGS; WV Emergency Management' }] },
         ],
         docs: [],
-        revs: [{ u: 'greenbrier_trail_paddler', d: 'Sep 2024', s: 5, t: 'Four days from Marlinton to Hinton — camped on gravel bars. WV at its most pure.' }, { u: 'pocahontas_local', d: 'Jul 2024', s: 4, t: 'Upper Greenbrier at 500 cfs — tiny, cold and clear. Caught brookies all day.' }],
+        revs: [],
         outs: [{ n: 'Greenbrier River Outfitters', d: 'Marlinton-based canoe and kayak rentals', l: 'greenbriveroutfitters.com' }],
       },
       {
@@ -610,7 +606,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2009', title: 'Friends of the Cheat — Acid Mine Drainage Cleanup', text: 'The Friends of the Cheat organization spent 20+ years recovering the river from devastating acid mine drainage that turned the Cheat orange and killed much of its aquatic life by the 1990s. The cleanup is considered one of the most successful river restoration efforts in Appalachian history.', src: 'Friends of the Cheat; WVU Research' }] },
         ],
         docs: [{ t: 'Cheat River Restoration Assessment', s: 'Friends of the Cheat', y: 2015, tp: 'Ecology', pg: 88 , url: 'https://dep.wv.gov/WWE/Programs/nonptsource/WBP/Documents/WP/CheatRiver_WBP.pdf'}],
-        revs: [{ u: 'cheat_canyon_regular', d: 'Apr 2024', s: 5, t: 'Cheat Canyon at 2,800 cfs — Big Nasty, High Falls, Coliseum all sending. 12 miles of Class III–IV with zero road access. WV is not for the timid.' }, { u: 'wv_spring_paddler', d: 'May 2024', s: 4, t: 'Canyon at 1,800 cfs — more technical at lower water, every line precise. Rappel Wall section was stunning.' }],
+        revs: [],
         outs: [{ n: 'Blackwater Outdoor Adventures', d: 'Cheat Canyon guided trips', l: 'blackwateroutdoor.com' }, { n: 'Cheat River Outfitters', d: 'Canyon shuttles and rentals', l: 'cheatriveroutfitters.com' }],
       },
       {
@@ -626,7 +622,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Arden Gorge — West Virginia\'s Hidden Gem', text: "The Tygart's Arden section has developed a devoted following among Mid-Atlantic whitewater paddlers seeking a remote Class III–IV experience without the crowds of the Gauley or New. The gorge walls rise 400 feet from the river.", src: 'American Whitewater; WV Rivers Coalition' }] },
         ],
         docs: [],
-        revs: [{ u: 'tygart_arden_devotee', d: 'Apr 2024', s: 5, t: 'Arden Gorge at 1,600 cfs — had the whole thing to ourselves. Ten miles of Class III–IV in a canyon nobody knows about. West Virginia keeps giving.' }, { u: 'wv_creek_chaser', d: 'Mar 2024', s: 4, t: 'Arden at higher flows, 2,400 cfs — flushing. Still did the whole gorge and saw one other boat all day. Remote West Virginia gem.' }],
+        revs: [],
         outs: [{ n: 'Elk River Touring Center', d: 'WV river trips including Tygart shuttles', l: 'ertc.com' }],
       },
       {
@@ -641,7 +637,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2016', title: 'Elk Reintroduction — Return of the Namesake', text: 'The West Virginia Division of Natural Resources began reintroducing Rocky Mountain elk to the upper Elk River watershed in 2016. By 2024, the herd had grown to over 100 animals — the first wild elk in the state in two centuries.', src: 'WV Division of Natural Resources; Rocky Mountain Elk Foundation' }] },
         ],
         docs: [],
-        revs: [{ u: 'wv_canoe_camper', d: 'Jun 2024', s: 4, t: 'Webster Springs to Sutton over three days at 600 cfs — saw elk on the banks twice. Gentle current, great campsites, zero crowds. The Elk is West Virginia\"s best-kept secret.' }, { u: 'elk_river_local', d: 'Aug 2024', s: 4, t: 'Clendenin stretch at 400 cfs — easy paddle, beautiful valley. Perfect for beginners and families wanting a real WV river experience.' }],
+        revs: [],
         outs: [{ n: 'Elk River Touring Center', d: 'Canoe and kayak rentals, shuttle service for Elk River trips', l: '' }],
       },
       {
@@ -656,7 +652,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1983', title: 'Cranberry Wilderness Designation', text: 'Congress designated the 35,864-acre Cranberry Wilderness in 1983, permanently protecting the headwaters of the Cranberry River. The wilderness contains one of the southernmost boreal ecosystems in North America.', src: 'USFS Monongahela National Forest; Wilderness Act Records' }] },
         ],
         docs: [],
-        revs: [{ u: 'monongahela_explorer', d: 'May 2024', s: 5, t: 'Cranberry at 250 cfs after spring rain — tiny but magical. Spruce-lined banks, cranberry bogs, water cold enough to numb your feet. Feels like paddling in northern Canada.' }, { u: 'wv_small_streams', d: 'Apr 2024', s: 4, t: 'Caught it at 400 cfs — rare window. Quick but gorgeous run through old-growth forest. Bring a spray skirt, the water is frigid year-round.' }],
+        revs: [],
         outs: [{ n: 'Elk River Touring Center', d: 'Shuttle service and local beta for Cranberry River trips', l: '' }],
       },
       {
@@ -671,7 +667,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2020', title: 'Meadow River Gorge — Expert Whitewater Discovery', text: 'The Meadow River Gorge has become a sought-after expert run among Appalachian whitewater paddlers. The rain-dependent nature of the run creates brief windows of intense Class III–IV action that draw creekers from across the Mid-Atlantic.', src: 'American Whitewater; WV Rivers Coalition' }] },
         ],
         docs: [],
-        revs: [{ u: 'wv_creeker', d: 'Mar 2024', s: 5, t: 'Meadow Gorge at 1,200 cfs after two days of rain — absolutely firing. Steep, continuous, technical. This is what WV creeking is all about.' }, { u: 'fayette_county_paddler', d: 'Apr 2024', s: 4, t: 'Upper Meadow at 500 cfs — mellow float through gorgeous farm country. Hard to believe the gorge downstream is Class IV. Two rivers in one.' }],
+        revs: [],
         outs: [{ n: 'ACE Adventure Resort', d: 'Whitewater trips and shuttles in Fayette County', l: '' }],
       },
       {
@@ -686,7 +682,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1994', title: 'Friends of the Cheat Founded — Acid Mine Recovery', text: "Friends of the Cheat was founded in response to the T&T Mine blowout of 1994, which devastated the lower river with acid mine drainage. Three decades of restoration have brought the Cheat back from one of the most polluted rivers in the East — smallmouth bass, musky, and paddlers have all returned. The Cheat River Festival each May is now one of the largest whitewater gatherings in the country.", src: 'Friends of the Cheat; WV Rivers Coalition' }] },
         ],
         docs: [],
-        revs: [{ u: 'cheat_canyon_classic', d: 'May 2024', s: 5, t: 'Cheat Canyon at 3,200 cfs — High Falls, Coliseum, Pete Morgan, all the hits. Classic eastern big water and the river is cleaner than it has been in my lifetime.' }, { u: 'cheatfest_veteran', d: 'May 2024', s: 5, t: 'Cheat Festival weekend at 2,800 cfs — perfect canyon flows. 30 years of the festival and the river keeps getting better.' }],
+        revs: [],
         outs: [{ n: 'Rivers Expeditions', d: 'Cheat Canyon whitewater trips from Albright', l: '' }],
       },
       {
@@ -701,7 +697,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1988', title: 'Bluestone National Scenic River Designated', text: "Congress designated the lower Bluestone as a National Scenic River in 1988, protecting 10.5 miles of the gorge within the national park system. The designation preserves one of the last wild gorge sections in southern West Virginia and links Pipestem Resort State Park to Bluestone Lake.", src: 'National Park Service; Bluestone National Scenic River' }] },
         ],
         docs: [],
-        revs: [{ u: 'bluestone_gorge_paddler', d: 'Jun 2024', s: 5, t: 'Pipestem tram down, Class II–III through the gorge at 800 cfs. Remote, clean, and the smallmouth fishing between rapids was outstanding.' }, { u: 'wv_wilderness_boater', d: 'May 2024', s: 4, t: 'Bluestone Gorge at 600 cfs — one of the most remote paddles in West Virginia. Feels like you are a hundred miles from anywhere.' }],
+        revs: [],
         outs: [{ n: 'Pipestem Resort State Park', d: 'Tram access and rentals for Bluestone Gorge', l: '' }],
       },
       {
@@ -716,7 +712,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1938', title: 'Tygart Dam and Flood Control', text: "Tygart Dam was completed in 1938 as one of the earliest major flood control projects in the Appalachian coalfields, following devastating floods in 1888 and 1935. The dam now provides scheduled recreational releases that make the Arden section one of the most reliable whitewater runs in West Virginia outside the Gauley.", src: 'US Army Corps of Engineers' }] },
         ],
         docs: [],
-        revs: [{ u: 'tygart_release_boater', d: 'Jun 2024', s: 5, t: 'Arden section on a 1,800 cfs release — solid Class IV with good play features. The release schedule makes this one of the most dependable runs in WV.' }, { u: 'valley_falls_gorge', d: 'Apr 2024', s: 5, t: 'Tygart Gorge below Valley Falls at 2,200 cfs — expert only. Committing and continuous, one of the best IV–V runs in the Mid-Atlantic.' }],
+        revs: [],
         outs: [{ n: 'Mountain State Adventures', d: 'Tygart River whitewater trips', l: '' }],
       },
       {
@@ -731,7 +727,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1994', title: 'Acid Mine Drainage Reversal', text: "For decades the North Branch was biologically dead from acid mine drainage. A coordinated federal-state treatment program using limestone neutralization beginning in 1994 restored water quality, and the Maryland and West Virginia DNRs began stocking trout in the tailwater below Jennings Randolph Dam. The river is now a Mid-Atlantic trophy trout destination and a model watershed recovery.", src: 'Maryland DNR; WV DEP' }] },
         ],
         docs: [],
-        revs: [{ u: 'tailwater_trout_md', d: 'Jul 2024', s: 5, t: 'North Branch below the dam — caught 15 wild rainbows 14–20 inches on nymphs. Hard to believe this river was dead 30 years ago. Conservation success story.' }, { u: 'barnum_release_paddler', d: 'Jun 2024', s: 4, t: 'Barnum release at 1,200 cfs — fun Class II–III, great warmup run. Cold water so wetsuit recommended even in summer.' }],
+        revs: [],
         outs: [{ n: 'Spring Creek Outfitter', d: 'North Branch Potomac trout guides', l: '' }],
       },
       {
@@ -746,7 +742,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2008', title: 'Cacapon Institute Watershed Protection', text: "The Cacapon Institute has spent decades documenting water quality and building conservation partnerships along the river. The Cacapon remains one of the cleanest rivers in the Chesapeake Bay watershed and is the subject of ongoing research into headwaters protection and forest-watershed health.", src: 'Cacapon Institute; Chesapeake Bay Foundation' }] },
         ],
         docs: [],
-        revs: [{ u: 'cacapon_smallmouth', d: 'Jul 2024', s: 5, t: 'Capon Bridge to Forks of Cacapon at 250 cfs — excellent smallmouth fishing and clear water the whole way. Saw bald eagles and river otters.' }, { u: 'eastern_panhandle_float', d: 'Aug 2024', s: 4, t: 'Quiet Class I float through farm country. Easy, beautiful, kid-friendly. One of WV best-kept secrets.' }],
+        revs: [],
         outs: [{ n: 'Cacapon River Outfitters', d: 'Kayak and canoe rentals for Cacapon trips', l: '' }],
       },
       {
@@ -761,7 +757,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2002', title: 'Shavers Fork Brook Trout Recovery', text: "The Mononghela National Forest and Trout Unlimited began a multi-year project to restore native brook trout habitat along Shavers Fork, addressing historic logging damage, acid deposition, and in-stream habitat. Brook trout numbers have rebounded significantly and the river remains a core refuge for wild native char in West Virginia.", src: 'USFS Monongahela NF; Trout Unlimited' }] },
         ],
         docs: [],
-        revs: [{ u: 'cheat_mtn_brookie', d: 'Jun 2024', s: 5, t: 'Upper Shavers Fork at 350 cfs — caught 20 native brookies on dries in a morning. Cold, clean, remote. The best brook trout water in the state.' }, { u: 'shavers_fork_paddler', d: 'May 2024', s: 4, t: 'Middle reach at 600 cfs — Class II–III through beautiful national forest. The scenic railroad running alongside adds to the backcountry feel.' }],
+        revs: [],
         outs: [{ n: 'Elk River Touring Center', d: 'Shavers Fork and Monongahela NF trip planning', l: '' }],
       },
       {
@@ -776,7 +772,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1983', title: 'Cranberry Wilderness Designation', text: "Congress designated the 35,864-acre Cranberry Wilderness in 1983, protecting the headwaters and main stem of the Williams River within one of the largest wilderness areas in the eastern U.S. The designation safeguards critical native brook trout habitat and some of the most remote country remaining in West Virginia.", src: 'USFS Monongahela NF; Wilderness Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'cranberry_brookie', d: 'Jul 2024', s: 5, t: 'Williams River at 180 cfs — wild native brook trout every cast on small dries. The Cranberry Wilderness backdrop makes this the best brook trout fishing in the East.' }, { u: 'mon_nf_paddler', d: 'May 2024', s: 4, t: 'Three Forks to Dyer at 300 cfs — tight technical Class II–III through hemlock canyon. Small river, big remote feel.' }],
+        revs: [],
         outs: [{ n: 'Cranberry Wilderness Backcountry', d: 'USFS ranger district for Williams River info', l: '' }],
       },
     ],
@@ -802,7 +798,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: '500,000+ Annual Rafters', text: 'The Arkansas now hosts over half a million commercial rafting passengers annually — the most commercially rafted river in North America — generating an estimated $75 million in annual economic impact.', src: 'Colorado River Outfitters Association' }] },
         ],
         docs: [{ t: 'Browns Canyon National Monument Management Plan', s: 'BLM/USFS', y: 2020, tp: 'Federal', pg: 290 , url: 'https://eplanning.blm.gov/public_projects/69924/200147053/20022482/250028686/BCNM_ROD_USFS_July2020-508_signed_opt.pdf'}, { t: "Arkansas River Access Protection & Browns Canyon Advocacy", s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/content/Project/view/id/122/' }],
-        revs: [{ u: 'ark_river_rat', d: 'Jun 2024', s: 5, t: 'Browns Canyon at 2,100 cfs — perfect. Big waves, no carnage, best Class III anywhere.' }, { u: 'royalgorge_raft', d: 'May 2024', s: 5, t: "Royal Gorge at 1,800 cfs — walls rising 1,000 feet over your head while you're in Class V. Unreal." }],
+        revs: [],
         outs: [{ n: 'Dvorak Expeditions', d: 'Arkansas River since 1969, all sections', l: 'dvorakexpeditions.com' }, { n: 'AVA Rafting', d: 'Browns Canyon specialists', l: 'avaraft.com' }],
       },
       {
@@ -817,7 +813,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1986', title: "Designated Colorado's Only Wild & Scenic River", text: "After years of advocacy concerned about proposed dams, Congress designated the Cache la Poudre as Colorado's first and only National Wild & Scenic River.", src: 'USFS Roosevelt National Forest; Colorado Wild' }, { yr: '2013', title: 'September Flood — Historic 500-Year Event', text: 'A catastrophic rainfall event sent the Poudre into extreme flood — over 6,000 cfs — destroying roads and access points throughout the canyon. The event reshaped portions of the riverbed.', src: 'USGS; Colorado Department of Transportation' }] },
         ],
         docs: [{ t: 'Cache la Poudre Wild & Scenic River Plan', s: 'USFS Roosevelt NF', y: 2004, tp: 'Federal', pg: 95 , url: 'https://rivers.gov/sites/rivers/files/documents/plans/cache-la-poudre-plan.pdf'}],
-        revs: [{ u: 'ftcollins_kayaker', d: 'Jun 2024', s: 5, t: 'Lower canyon at 600 cfs — continuous Class II–III, beautiful walls, 8 miles in 3 hours.' }, { u: 'poudre_local', d: 'May 2024', s: 5, t: 'Upper at 900 cfs during peak runoff — serious Class IV in spectacular Roosevelt NF canyon.' }],
+        revs: [],
         outs: [{ n: 'A-1 Wildwater', d: 'Poudre Canyon trips since 1971', l: 'a1wildwater.com' }],
       },
       {
@@ -833,7 +829,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2022', title: 'Yampa River Crisis — Record Low Flows', text: 'The Yampa experienced historic low flows in summer 2022 due to extended drought and upstream diversions, highlighting the vulnerability of the last free-flowing river in the Colorado system.', src: 'Colorado River Conservation Program; USGS' }] },
         ],
         docs: [],
-        revs: [{ u: 'dinosaur_nm_paddler', d: 'Jun 2024', s: 5, t: 'Yampa through Dinosaur at 4,500 cfs — Warm Springs was enormous. Fremont petroglyphs on the walls. Extraordinary.' }, { u: 'steamboat_local', d: 'Apr 2024', s: 4, t: 'Steamboat town run at 1,800 cfs in spring — great waves, hot springs nearby.' }],
+        revs: [],
         outs: [{ n: 'Adrift Adventures', d: 'Dinosaur NM multi-day Yampa trips', l: 'adrift.net' }, { n: 'OARS', d: 'Premium Yampa/Dinosaur expeditions', l: 'oars.com' }],
       },
       {
@@ -849,7 +845,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2022', title: 'Crystal River Conservation — Wild & Scenic Eligibility', text: "The Crystal River has been found eligible for Wild & Scenic designation. The Crystal River Caucus and Colorado Open Lands have protected over 20 miles of riparian corridor from development pressure as the Roaring Fork Valley grows.", src: 'Crystal River Caucus; Colorado Water Conservation Board (2022)' }] },
         ],
         docs: [],
-        revs: [{ u: 'elk_mountains_paddler', d: 'Jun 2024', s: 5, t: 'Crystal above Redstone at 380 cfs — continuous Class III in a canyon straight out of a painting. Marble walls, aspen groves, zero crowds. Colorado at its most underrated.' }, { u: 'carbondale_local_co', d: 'May 2024', s: 4, t: 'Lower Crystal at 250 cfs — technical Class II through Elk Mountain foothills. Best scenery-to-crowd ratio in Colorado.' }],
+        revs: [],
         outs: [{ n: 'Roaring Fork Conservancy', d: 'Crystal River guided paddle events', l: 'roaringfork.org' }, { n: 'Elk Mountain Guides', d: 'Upper Crystal trips from Marble', l: 'elkmountainguides.com' }],
       },
       {
@@ -865,7 +861,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1992', title: "I-70 Construction — The Most Expensive Highway Mile in U.S. History", text: "The I-70 highway through Glenwood Canyon, completed in 1992 after 12 years of construction, was the most expensive per-mile federal highway project in American history. Environmental protection requirements for the river during construction set new standards for federal transportation projects.", src: 'Colorado DOT; Federal Highway Administration' }] },
         ],
         docs: [],
-        revs: [{ u: 'glenwood_canyon_paddler', d: 'May 2024', s: 5, t: 'Canyon at 8,500 cfs in peak runoff — portaged Shoshone (the hydraulic is violent), then Class IV big water. The 1,800-foot walls above you are simply incomprehensible.' }, { u: 'colorado_river_rat', d: 'Jun 2024', s: 4, t: 'Grizzly Creek to Glenwood at 6,000 cfs — continuous Class III with I-70 invisible above the walls. This canyon is the Colorado River at its most dramatic.' }],
+        revs: [],
         outs: [{ n: 'Rock Gardens Rafting', d: 'Glenwood Canyon all levels, Glenwood Springs', l: 'rockgardensrafting.com' }, { n: 'Whitewater Rafting LLC', d: 'Colorado River Glenwood trips', l: 'glenwoodrafting.com' }],
       },
       {
@@ -880,7 +876,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1998', title: 'Gold Medal Designation — Trophy Trout Fishery', text: 'Colorado Parks and Wildlife designated the Blue River below Dillon Dam as Gold Medal trout water, recognizing its exceptional fishery. Cold tailwater releases from the reservoir maintain ideal temperatures year-round, producing brown trout exceeding 10 pounds.', src: 'Colorado Parks and Wildlife; Trout Unlimited' }] },
         ],
         docs: [],
-        revs: [{ u: 'summit_county_angler', d: 'Jul 2024', s: 5, t: 'Below Dillon at 350 cfs — sight-fished to 20-inch browns in gin-clear tailwater. The Blue is Gold Medal for a reason. Floated in a packraft between pools, perfect combo.' }, { u: 'breck_paddler', d: 'Jun 2024', s: 4, t: 'Green Mountain to Kremmling at 800 cfs — fun Class II–III canyon run with mountain views the entire way. Underrated Colorado float.' }],
+        revs: [],
         outs: [{ n: 'Breckenridge Outfitters', d: 'Blue River guided fishing and float trips', l: '' }],
       },
       {
@@ -895,7 +891,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2015', title: 'Roaring Fork Conservancy — Watershed Restoration', text: 'The Roaring Fork Conservancy completed a decade-long watershed restoration initiative, improving fish passage and streambank stability along 30 miles of river. The program has helped maintain the Roaring Fork as one of Colorado\"s healthiest mountain watersheds despite significant development pressure from Aspen.', src: 'Roaring Fork Conservancy; Colorado Parks and Wildlife' }] },
         ],
         docs: [],
-        revs: [{ u: 'aspen_kayaker', d: 'Jun 2024', s: 5, t: 'Carbondale to Glenwood at 2,500 cfs during peak runoff — continuous Class III with the Elk Mountains above. Best intermediate whitewater in Colorado with that Aspen scenery.' }, { u: 'roaring_fork_floater', d: 'Jul 2024', s: 4, t: 'Basalt to Carbondale at 1,200 cfs — mellow Class II float with Crystal River adding volume. Mt. Sopris looming the whole way. Gorgeous.' }],
+        revs: [],
         outs: [{ n: 'Blazing Adventures', d: 'Roaring Fork and Colorado River rafting from Aspen', l: '' }],
       },
       {
@@ -910,7 +906,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2001', title: 'Gold Medal Designation and the Vail Boom', text: 'Colorado Parks and Wildlife designated the Eagle River below Vail as Gold Medal trout water, recognizing an exceptional fishery that had rebounded from historic mining pollution. The designation helped balance development pressure from the Vail ski resort with conservation.', src: 'Colorado Parks and Wildlife; Eagle River Watershed Council' }] },
         ],
         docs: [],
-        revs: [{ u: 'vail_kayaker', d: 'Jun 2024', s: 5, t: 'Minturn section at 1,500 cfs — perfect intermediate Class III with Gore Range views. Easy I-70 access from Denver makes this our go-to after-work run.' }, { u: 'eagle_river_angler', d: 'Jul 2024', s: 4, t: 'Gold Medal section below Vail at 600 cfs — caught three browns over 18 inches. The Eagle has quietly become one of Colorado\"s best tailwater fisheries.' }],
+        revs: [],
         outs: [{ n: 'Lakota Guides', d: 'Eagle River rafting and fishing trips from Vail', l: '' }],
       },
       {
@@ -925,7 +921,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1992', title: 'I-70 Glenwood Canyon Interstate Completion', text: "The I-70 viaduct through Glenwood Canyon was completed in 1992 after 12 years of construction — often cited as one of the most elegant interstate engineering projects in the U.S. The canyon was preserved as a scenic area despite the road, and recreational river use has grown steadily since the highway opened access to Denver area boaters.", src: 'Colorado Department of Transportation; White River NF' }] },
         ],
         docs: [],
-        revs: [{ u: 'glenwood_commercial_boater', d: 'Jul 2024', s: 5, t: 'Shoshone at 5,500 cfs — Superstition and The Wall going big. Best commercial run in Colorado, period. Hot springs at the takeout seal the deal.' }, { u: 'front_range_daytripper', d: 'Jun 2024', s: 5, t: 'Glenwood Canyon at 4,200 cfs — classic Colorado River big water with limestone walls. Easy drive from Denver and worth every mile.' }],
+        revs: [],
         outs: [{ n: 'Rock Gardens Rafting', d: 'Glenwood Canyon commercial whitewater trips', l: '' }],
       },
       {
@@ -940,7 +936,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2001', title: 'Taylor River Gold Medal Designation', text: "Colorado Parks and Wildlife designated the Taylor River as Gold Medal trout water in 2001, recognizing an exceptional fishery fed by cold releases from Taylor Park Reservoir. The Hog Trough section routinely produces rainbow trout over 20 inches and has become one of the most famous trophy trout reaches in the Rocky Mountains.", src: 'Colorado Parks and Wildlife; Gunnison Gorge NCA' }] },
         ],
         docs: [],
-        revs: [{ u: 'taylor_hog_trough', d: 'Sep 2024', s: 5, t: 'Hog Trough at 400 cfs — landed a 24-inch rainbow on a mysis. Gold Medal designation is well-earned. Technical but unbelievable fishery.' }, { u: 'crested_butte_paddler', d: 'Jul 2024', s: 4, t: 'Taylor Canyon at 900 cfs — fun Class II–III through scenic canyon. Summer dam releases make this reliable all season.' }],
+        revs: [],
         outs: [{ n: 'Three Rivers Resort', d: 'Taylor River fishing and float trips from Almont', l: '' }],
       },
       {
@@ -955,7 +951,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1990s', title: 'Mysis Shrimp and Trophy Trout', text: "The introduction of mysis shrimp to Ruedi Reservoir unintentionally created one of the richest trout food sources in North America. Rainbow trout in the tailwater below the dam grow to enormous sizes feeding on shrimp flushed through — 20-inch fish are common and 30-inch fish are caught annually. The Fryingpan has become a pilgrimage water for fly fishers.", src: 'Colorado Parks and Wildlife; Roaring Fork Conservancy' }] },
         ],
         docs: [],
-        revs: [{ u: 'fryingpan_trophy', d: 'Oct 2024', s: 5, t: 'Toilet Bowl at 280 cfs — three 20-inch rainbows and one 26-inch beast on a mysis pattern. The best tailwater in the Rockies, hands down.' }, { u: 'aspen_fly_guide', d: 'Aug 2024', s: 5, t: 'Middle Fryingpan Gold Medal section — classic Colorado fly fishing. Technical fish, gin-clear water, trophy potential every cast.' }],
+        revs: [],
         outs: [{ n: 'Taylor Creek Fly Shop', d: 'Fryingpan River guides and fly shop from Basalt', l: '' }],
       },
       {
@@ -970,7 +966,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1996', title: 'South Platte Gold Medal Designation', text: "Colorado Parks and Wildlife designated multiple sections of the South Platte as Gold Medal trout water beginning in the 1990s, recognizing the Cheesman Canyon, Deckers, and Eleven Mile Canyon reaches as exceptional trophy trout fisheries. The designations have protected these waters through decades of Front Range growth and wildfire impacts.", src: 'Colorado Parks and Wildlife; Coalition for the Upper South Platte' }] },
         ],
         docs: [],
-        revs: [{ u: 'cheesman_canyon_technical', d: 'Sep 2024', s: 5, t: 'Cheesman Canyon — landed a 22-inch rainbow on a size 22 RS2. The most technical trout fishing in Colorado. Hike in, earn your fish.' }, { u: 'deckers_daytrip', d: 'Jun 2024', s: 4, t: 'Deckers at 600 cfs — fun Class II–III within an hour of Denver. Crowded but that is the price of accessibility.' }],
+        revs: [],
         outs: [{ n: 'Trouts Fly Fishing (Denver)', d: 'South Platte guide service and fly shop', l: '' }],
       },
       {
@@ -985,7 +981,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1986', title: 'Poudre Wild & Scenic Designation', text: "Congress designated 75 miles of the Cache la Poudre as Colorado's only National Wild & Scenic River in 1986. The designation protects the river corridor from Poudre Lake in Rocky Mountain National Park to the mouth of the canyon, blocking decades of proposed dam and diversion projects and preserving the state's finest long-distance whitewater run.", src: 'USFS Arapaho-Roosevelt NF; Save the Poudre' }] },
         ],
         docs: [],
-        revs: [{ u: 'poudre_canyon_boater', d: 'Jun 2024', s: 5, t: 'Mishawaka at 1,400 cfs — classic Poudre Canyon Class III–IV. Pineview Falls going off. The best canyon whitewater on the Front Range.' }, { u: 'big_south_expert', d: 'Jun 2024', s: 5, t: 'Big South at 800 cfs — committing Class V through wilderness. Colorado only Wild & Scenic delivers.' }],
+        revs: [],
         outs: [{ n: 'A Wanderlust Adventure', d: 'Poudre Canyon commercial rafting from Fort Collins', l: '' }],
       },
       {
@@ -1000,7 +996,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1999', title: 'Gunnison Gorge NCA Designation', text: "Congress established the Gunnison Gorge National Conservation Area in 1999, protecting 62,000 acres of BLM land including 14 miles of Gold Medal river below the Black Canyon. The designation preserved one of Colorado's finest backcountry river corridors and guaranteed public access to the Chukar trail put-in.", src: 'BLM Uncompahgre Field Office; Gunnison River Outfitters' }] },
         ],
         docs: [],
-        revs: [{ u: 'gunnison_gorge_multiday', d: 'Sep 2024', s: 5, t: 'Chukar to Pleasure Park over 3 days at 1,900 cfs — Gold Medal fishing, canyon camping, Class II–III rapids. Best Colorado river trip.' }, { u: 'black_canyon_tailwater', d: 'Jul 2024', s: 5, t: 'Gunnison Gorge fishing from the trail — caught 15 wild rainbows in an afternoon. Hike-in reward.' }],
+        revs: [],
         outs: [{ n: 'RIGS Adventure Company', d: 'Gunnison Gorge multi-day trips from Ridgway', l: '' }],
       },
       {
@@ -1015,7 +1011,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2013', title: 'Upper Colorado River SRMA Plan', text: "The BLM finalized a management plan for the Upper Colorado River Special Recreation Management Area in 2013, establishing fee structures, campsites, and access protections from Pumphouse through State Bridge. The plan recognized the Upper C as one of the most heavily used recreational rivers in Colorado and put resources toward managing that use sustainably.", src: 'BLM Kremmling Field Office; Colorado River Outfitters Association' }] },
         ],
         docs: [],
-        revs: [{ u: 'pumphouse_daytripper', d: 'Jul 2024', s: 5, t: 'Pumphouse to Radium at 1,800 cfs — perfect intermediate Class II–III. Needle Eye and Yarmony going at good water. My favorite Colorado day trip.' }, { u: 'summit_county_rafter', d: 'Aug 2024', s: 4, t: 'Upper C at 1,400 cfs — scenic, fun, and easy from I-70. Radium hot springs at the campground are a highlight.' }],
+        revs: [],
         outs: [{ n: 'Kremmling Rafting Co.', d: 'Upper Colorado River rafting from Pumphouse', l: '' }],
       },
     ],
@@ -1041,7 +1037,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Chinook Salmon Recovery — Hope in the Data', text: 'After decades of decline due to Snake River dams downstream, recent NOAA surveys showed increased Chinook returns to the Salmon watershed. The ongoing debate over Snake River dam removal would open over 900 miles of salmon habitat.', src: 'NOAA Fisheries; Save Our Wild Salmon' }] },
         ],
         docs: [{ t: 'Frank Church Wilderness River Management Plan', s: 'USFS Salmon-Challis NF', y: 2009, tp: 'Federal', pg: 220 , url: 'https://rivers.gov/carp/sites/rivers/files/documents/plans/salmon-wilderness-plan.pdf'}, { t: 'Middle Fork Salmon River Conservation & Access', s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/content/River/view/river-detail/618/main' }],
-        revs: [{ u: 'frank_church_vet', d: 'Jul 2024', s: 5, t: 'Six days self-support from Corn Creek to Vinegar Creek. No other groups for 4 days. 130 miles of rapids, walls, wildlife, and silence. Nothing else like it.' }, { u: 'salmon_river_guide', d: 'Jun 2024', s: 5, t: 'Main Salmon at 8,000 cfs in June — big water but classic. Clients from 7 states this season. All first-timers were converted for life.' }],
+        revs: [],
         outs: [{ n: 'Salmon River Experience', d: 'Main Salmon multi-day guided trips', l: 'salmonriverexperience.com' }, { n: 'Far & Away Adventures', d: 'Frank Church Wilderness expeditions', l: 'faraway.com' }, { n: 'ROW Adventures', d: 'Main Salmon oar trips and paddle trips', l: 'rowadventures.com' }],
       },
       {
@@ -1058,7 +1054,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Record High Water — Lochsa at 18,000 cfs', text: 'Spring 2024 saw the Lochsa push record-high flows following an above-average snowpack year. At 18,000+ cfs, the river was essentially unrunnable — riverside access was monitored for flooding along US-12.', src: 'USGS; Idaho Transportation Department' }] },
         ],
         docs: [{ t: 'Lochsa River Wild & Scenic River Management Plan', s: 'USFS Clearwater NF', y: 2002, tp: 'Federal', pg: 145 , url: 'https://rivers.gov/sites/rivers/files/2023-07/clearwater-plan.pdf'}, { t: 'Lochsa/Selway/Clearwater Basin Protection Campaign', s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/content/Article/view/article_id/nIufCO6a4pChhP4mL9ydQ/' }],
-        revs: [{ u: 'lochsa_annual', d: 'May 2024', s: 5, t: 'Lochsa at 3,800 cfs — 70 miles in two days with one camp. Every mile had something. Raw Prawn, Grim Reaper, Lochsa Falls — all Class V at that flow. Idaho is not playing.' }, { u: 'pnw_kayaker', d: 'Jun 2024', s: 4, t: 'Lower section at 2,400 cfs — Class III cruise after the upper beatdown. Beautiful canyon, zero crowds, highway surprisingly invisible.' }],
+        revs: [],
         outs: [{ n: 'Holiday River Expeditions', d: 'Lochsa multi-day guided trips', l: 'holidayexpeditions.com' }, { n: 'Cascade Raft & Kayak', d: 'Lochsa season specialist', l: 'cascaderaft.com' }],
       },
       {
@@ -1073,7 +1069,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2000s', title: 'North Fork Kayak Classic — Mecca for Elite Paddlers', text: "The North Fork Payette's Banks to Horseshoe Bend section became recognized as one of the premier Class IV–V roadside runs in the U.S. The annual North Fork Kayak Festival draws elite paddlers for competitions on the Cascade section.", src: 'American Whitewater; North Fork Kayak Festival' }] },
         ],
         docs: [],
-        revs: [{ u: 'nf_payette_local', d: 'May 2024', s: 5, t: 'Banks to Horseshoe Bend at 1,800 cfs — every rapid distinct, every line requiring full attention. Idaho kayaking at its finest.' }, { u: 'class5_chaser', d: 'Jun 2024', s: 4, t: 'Cascade section at 1,200 cfs — pulled out above Cascade Falls to scout. Ran it. Everything went white.' }],
+        revs: [],
         outs: [{ n: 'Cascade Raft & Kayak', d: 'North Fork Payette trips', l: 'cascaderaft.com' }, { n: 'Idaho Guide Service', d: 'Payette river float trips', l: 'idahoguideservice.com' }],
       },
       {
@@ -1089,7 +1085,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Private Permit Lottery — Most Coveted in America', text: "Permits for the Middle Fork are awarded by lottery; self-guided private trips for the best June–July launch dates can take 5+ years to win. Roughly 10,000 people float the Middle Fork annually — less than the Grand Canyon gets in a month.", src: 'USFS Salmon-Challis NF; American Whitewater (2024)' }] },
         ],
         docs: [{ t: 'Frank Church Wilderness River Management Plan', s: 'USFS Salmon-Challis NF', y: 1985, tp: 'Federal', pg: 280, url: 'https://www.rivers.gov/carp/sites/rivers/files/documents/plans/salmon-wilderness-plan.pdf' }],
-        revs: [{ u: 'middle_fork_pilgrim', d: 'Jul 2024', s: 5, t: "Six days Boundary Creek to Cache Bar. No roads for the first 28 miles. Impassable Canyon on Day 4 was the best whitewater of my life. Gray wolf 30 yards from camp on night two. Nothing else like this on earth." }, { u: 'frank_church_vet', d: 'Jun 2024', s: 5, t: "Flew into Boundary Creek in a Cessna, floated out five days later. 100 miles of altitude, wilderness, Class V, and silence. Every rapid has a name and a story." }],
+        revs: [],
         outs: [{ n: 'Middle Fork Rapid Transit', d: 'Middle Fork guided and fly-in expeditions', l: 'midforkrivertours.com' }, { n: 'Rocky Mountain River Tours', d: 'Middle Fork Salmon multi-day commercial trips', l: 'rmrt.com' }],
       },
       {
@@ -1105,7 +1101,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Deepest Gorge — 7,993 Feet', text: "Hells Canyon consistently measures 7,993 feet from the Seven Devils peaks to the Snake River, surpassing the Grand Canyon's deepest point by over 2,000 feet. The canyon hosts the densest bighorn sheep population in North America.", src: 'USFS Hells Canyon NRA; USGS National Elevation Dataset' }] },
         ],
         docs: [{ t: 'Hells Canyon NRA Wild & Scenic River Plan', s: 'USFS', y: 2003, tp: 'Federal', pg: 240 , url: 'https://www.fs.usda.gov/Internet/FSE_DOCUMENTS/fseprd584420.pdf'}],
-        revs: [{ u: 'hells_canyon_float', d: 'Jun 2024', s: 5, t: "Three days dam to Pittsburg Landing — Wild Sheep and Granite Creek both enormous at 32,000 cfs. Canyon walls don't stop. North America's deepest gorge and it shows every mile." }, { u: 'snake_river_wilderness', d: 'Jul 2024', s: 5, t: "Five-day oar trip. Nez Perce pictographs at Buffalo Eddy. Bighorn sheep on every wall. The canyon gets impossibly steep and then somehow gets steeper." }],
+        revs: [],
         outs: [{ n: 'Hells Canyon Adventures', d: 'Hells Canyon jet boat and raft trips, Oxbow OR', l: 'hellscanyonadventures.com' }, { n: 'OARS Hells Canyon', d: 'Multi-day Snake River oar and paddle trips', l: 'oars.com' }],
       },
       {
@@ -1120,7 +1116,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1968', title: 'Original Wild & Scenic Designation', text: 'The Selway was among the original eight rivers designated under the National Wild and Scenic Rivers Act of 1968. The permit system, one of the most restrictive in the country, has preserved the river\"s wilderness character for over five decades.', src: 'National Wild and Scenic Rivers System; USFS' }] },
         ],
         docs: [{ t: 'Selway River Wild & Scenic Protections Advocacy', s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/content/Article/view/article_id/nIufCO6a4pChhP4mL9ydQ/' }],
-        revs: [{ u: 'selway_permit_winner', d: 'Jul 2024', s: 5, t: 'Five days, Paradise to Lowell at 3,500 cfs. One launch per day means total solitude. Class III–IV rapids in old-growth forest with no sign of civilization. The best river trip in the Lower 48.' }, { u: 'idaho_wilderness_rafter', d: 'Jun 2024', s: 5, t: 'Won the lottery after seven years of applying. Worth every failed application. The Selway at 4,000 cfs is continuous whitewater through cathedral forest. Unforgettable.' }],
+        revs: [],
         outs: [{ n: 'OARS Idaho', d: 'Selway River permitted wilderness trips', l: '' }],
       },
       {
@@ -1135,7 +1131,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2015', title: 'Anderson Ranch Dam Releases — Whitewater Economy', text: 'Coordinated dam releases from Anderson Ranch Reservoir have transformed the South Fork Boise into a reliable summer whitewater destination, supporting a growing recreation economy. The consistent flows attract thousands of paddlers annually from the Boise metro area.', src: 'Bureau of Reclamation; Idaho Rivers United' }] },
         ],
         docs: [{ t: 'Boise River Fish Passage & Side Channel Restoration', s: 'Trout Unlimited / Ted Trueblood Chapter', y: 2024, tp: 'Conservation', pg: 1, url: 'https://tedtruebloodtu.org/conservation-projects/lower-boise-river/' }],
-        revs: [{ u: 'boise_kayaker', d: 'Jul 2024', s: 5, t: 'Dam release at 2,000 cfs — perfect Class III–IV all day. Warm water, basalt canyon, 45 minutes from downtown Boise. Best after-work whitewater in Idaho.' }, { u: 'sf_boise_regular', d: 'Aug 2024', s: 4, t: 'Danskin section at 1,200 cfs — great intermediate run with a few pushy Class III rapids. Reliable flows all summer thanks to the dam. Idaho\"s most accessible whitewater.' }],
+        revs: [],
         outs: [{ n: 'Idaho River Sports', d: 'South Fork Boise shuttles and gear rental', l: '' }],
       },
       {
@@ -1150,7 +1146,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2019', title: 'Selkirk Caribou — Last of Their Kind', text: 'The Selkirk Mountains above the Priest River watershed were home to the last remaining woodland caribou herd in the contiguous United States. Despite decades of conservation effort, the herd dwindled to near zero by 2019, making the Priest River corridor one of the last places these animals were seen in the Lower 48.', src: 'USFWS; Idaho Fish and Game' }] },
         ],
         docs: [],
-        revs: [{ u: 'north_idaho_paddler', d: 'Aug 2024', s: 4, t: 'Priest Lake to town at 1,200 cfs — gentle float through old-growth cedar forest. Saw two moose and countless osprey. North Idaho at its finest.' }, { u: 'panhandle_explorer', d: 'Jul 2024', s: 4, t: 'Full river float over two days at 800 cfs. Class I the entire way but the scenery is world-class. Selkirk Mountains rising above cedar forest. Bring binoculars.' }],
+        revs: [],
         outs: [{ n: 'Idaho Canoe Adventures', d: 'Priest River canoe and kayak rentals, shuttle service', l: '' }],
       },
       {
@@ -1165,7 +1161,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1982', title: "Henry's Fork Foundation — Angler-Led Conservation", text: "The Henry's Fork Foundation was established in 1984 by anglers to protect the river's world-class fishery. It has become one of the most successful river conservation organizations in the West, funding habitat restoration, water quality monitoring, and flow advocacy.", src: "Henry's Fork Foundation; Trout Unlimited" }] },
         ],
         docs: [{ t: "Henry's Fork Watershed Management Plan", s: "Henry's Fork Foundation", y: 2018, tp: 'Conservation', pg: 120, url: '' }],
-        revs: [{ u: 'henrys_fork_pilgrim', d: 'Jul 2024', s: 5, t: "Railroad Ranch at 900 cfs — 22-inch rainbows sipping PMDs on glass-flat water. Missed 12 fish before hooking one. Humbling and magnificent. The greatest dry fly fishing on earth." }, { u: 'spring_creek_devotee', d: 'Aug 2024', s: 5, t: "Big Springs section at 700 cfs — crystal spring water, massive rainbows visible at 20 feet. Harriman State Park is sacred ground for fly fishing." }],
+        revs: [],
         outs: [{ n: 'TroutHunter', d: "Henry's Fork fly shop and lodge, Island Park", l: 'trouthunt.com' }, { n: 'Henry\'s Fork Anglers', d: "Island Park-based guides and gear", l: 'henrysforkanglers.com' }],
       },
     ],
@@ -1190,7 +1186,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Wild Rogue Wilderness Float — 5,000+ Annual Visitors', text: 'The 40-mile Wild Rogue float consistently ranks among the top 10 wilderness river trips in the U.S. Permits are required May through October.', src: 'USFS Rogue River-Siskiyou National Forest' }] },
         ],
         docs: [{ t: 'Rogue Wild & Scenic River Management Plan', s: 'USFS Rogue-Siskiyou NF', y: 2011, tp: 'Federal', pg: 195 , url: 'https://rivers.gov/sites/rivers/files/documents/plans/rogue-plan.pdf'}, { t: 'Rogue River Dam Removal — Gold Ray, Gold Hill & Savage Rapids', s: 'American Whitewater', y: 2010, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/content/Project/view/id/rogue/' }],
-        revs: [{ u: 'wild_rogue_devotee', d: 'Jul 2024', s: 5, t: 'Wild Rogue at 2,800 cfs — 5 days, 40 miles, 8 Class III–IV rapids, a black bear on the bank at Whiskey Creek, and no cell signal. Best trip of my life.' }, { u: 'rogue_steelhead_guide', d: 'Nov 2024', s: 5, t: 'Lower Rogue in November — wild winter steelhead stacking below the bars. World-class fishery.' }],
+        revs: [],
         outs: [{ n: 'Rogue River Raft Trips', d: 'Wild Rogue permits and guided float trips', l: 'rogueriverrafttrips.com' }, { n: 'Oregon Whitewater Adventures', d: 'Grants Pass to Foster Bar', l: 'oregonwhitewater.com' }],
       },
       {
@@ -1206,7 +1202,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Deschutes River Alliance — Flow Restoration', text: 'After decades of effort, the Deschutes River Alliance and Confederated Tribes of Warm Springs reached a landmark agreement with Portland General Electric to increase minimum flows below Pelton-Round Butte dams, improving salmon passage.', src: 'Deschutes River Alliance; Confederated Tribes of Warm Springs (2023)' }] },
         ],
         docs: [{ t: 'Lower Deschutes River Management Plan', s: 'BLM Prineville District', y: 2011, tp: 'Federal', pg: 180 , url: 'https://www.blm.gov/or/districts/prineville/plans/files/lower_deschutes_rmp.pdf'}, { t: 'Deschutes Basin Habitat Restoration — Fish Passage & Water Quality', s: 'Trout Unlimited / Deschutes Redbands Chapter', y: 2024, tp: 'Conservation', pg: 1, url: 'https://deschutesredbands.org/' }],
-        revs: [{ u: 'maupin_local', d: 'Jul 2024', s: 5, t: 'Maupin section at 3,200 cfs — Whitehorse, Buckskin Mary, Colorado — classic Lower Deschutes at perfect water. Camped at Macks Canyon under a million stars.' }, { u: 'deschutes_trout_nerd', d: 'Jun 2024', s: 5, t: 'Sight-fished 20-inch rainbows from the raft for two days. The Lower Deschutes trout fishery is unreal.' }],
+        revs: [],
         outs: [{ n: 'All Star Rafting', d: 'Maupin-based Deschutes trips', l: 'allstarrafting.com' }, { n: 'Deschutes River Adventures', d: 'Full-day and multi-day floats', l: 'deschutesriveradventures.com' }],
       },
       {
@@ -1222,7 +1218,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2020', title: 'Holiday Farm Fire — Devastating and Recovering', text: 'The Holiday Farm Fire of September 2020 burned over 170,000 acres along the McKenzie corridor, destroying dozens of communities and dramatically altering the landscape. The river itself survived; the surrounding forest is in active recovery.', src: 'USFS; Oregon Department of Forestry (2020)' }] },
         ],
         docs: [{ t: 'McKenzie River Wild & Scenic River Plan', s: 'USFS Willamette NF', y: 2002, tp: 'Federal', pg: 125 , url: 'https://www.rivers.gov/sites/rivers/files/documents/plans/mckenzie-plan.pdf'}],
-        revs: [{ u: 'eugene_river_crew', d: 'Aug 2024', s: 5, t: 'Paradise to Finn Rock at 1,400 cfs — emerald green water, old-growth cedar, Class II–III waves. Perfect Oregon summer day.' }, { u: 'mckenzie_drift_guide', d: 'Sep 2024', s: 4, t: "Sight-fishing rainbows in the McKenzie's gin-clear water — they show like neon signs. Best trout visibility I've seen anywhere." }],
+        revs: [],
         outs: [{ n: 'Oregon Drift Boat Guide Service', d: 'McKenzie drift boat trips', l: 'oregondriftboat.com' }, { n: 'Lane County River Adventures', d: 'McKenzie canoe and kayak trips', l: 'laneriveradventures.com' }],
       },
       {
@@ -1238,7 +1234,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Serpentine Botany — More Endemics per Mile than Anywhere Temperate', text: "The Illinois River corridor contains more endemic plant species per square mile than almost any other temperate river canyon in North America. Serpentine and peridotite soils support hundreds of plants found nowhere else, drawing botanists from around the world.", src: 'Oregon State University Botany; Kalmiopsis Wilderness Foundation' }] },
         ],
         docs: [{ t: 'Illinois Wild & Scenic River Management Plan', s: 'USFS Rogue-Siskiyou NF', y: 2008, tp: 'Federal', pg: 145 , url: 'https://www.rivers.gov/sites/rivers/files/documents/plans/illinois-plan.pdf'}],
-        revs: [{ u: 'illinois_or_devotee', d: 'Apr 2024', s: 5, t: "Four days Oak Flat to Agness at 2,200 cfs — Preacher Falls beautiful and terrifying. Green Wall scout took 40 minutes. Saw a black bear every single day. Oregon's most committing run." }, { u: 'siskiyou_kayaker', d: 'Mar 2024', s: 5, t: "Hit it at 1,800 cfs after a good rain cycle. 28 miles with no exit — once you put in at Oak Flat the decision is made. Perfect canyon, perfect solitude." }],
+        revs: [],
         outs: [{ n: 'Oregon Outdoor Adventures', d: 'Illinois River guided multi-day trips', l: 'oregonoutdooradventures.com' }],
       },
       {
@@ -1254,7 +1250,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: "Zane Grey's River — Summer Steelhead Mecca", text: "Author and angler Zane Grey fished the North Umpqua's fly-fishing-only section above Steamboat Creek in the 1920s and wrote lovingly about it. The section has been fly-fishing-only since 1954, protecting one of the finest summer steelhead fisheries remaining in the Pacific Northwest.", src: 'North Umpqua Foundation; ODFW; Steamboat Inn Archives' }] },
         ],
         docs: [{ t: 'North Umpqua Wild & Scenic River Management Plan', s: 'USFS Umpqua NF', y: 2000, tp: 'Federal', pg: 130 , url: 'https://www.rivers.gov/sites/rivers/files/documents/plans/north-umpqua-plan.pdf'}],
-        revs: [{ u: 'north_umpqua_regular', d: 'Jul 2024', s: 5, t: 'Toketee to Horseshoe Bend at 2,400 cfs — emerald pools, basalt walls, steelhead visible in every tailout. The most beautiful volcanic river canyon in Oregon.' }, { u: 'umpqua_fly_guide', d: 'Aug 2024', s: 5, t: "Summer steelhead above Steamboat at 1,800 cfs — fish stacked in the deep green slots. Zane Grey would still recognize this river. The fly-only section is perfect." }],
+        revs: [],
         outs: [{ n: 'Steamboat Inn', d: 'North Umpqua fly fishing headquarters since 1957', l: 'thesteamboatinn.com' }, { n: 'Swiftwater Rafting', d: 'North Umpqua Narrows guided day trips', l: 'swiftwaterrafting.com' }],
       },
       {
@@ -1269,7 +1265,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1988', title: 'Wild & Scenic Designation — Protecting Oregon\"s Longest Free-Flowing River', text: 'Congress designated 147 miles of the John Day as Wild and Scenic in 1988, protecting the longest undammed river in Oregon from future development. The designation recognized the river\"s outstanding scenic, recreational, and paleontological values.', src: 'National Wild and Scenic Rivers System; BLM Prineville District' }] },
         ],
         docs: [],
-        revs: [{ u: 'john_day_floater', d: 'May 2024', s: 5, t: 'Service Creek to Clarno over four days at 2,500 cfs — Painted Hills glowing at sunset, bighorn sheep on the rimrock, zero other people after the first day. Oregon\"s best multiday float.' }, { u: 'high_desert_paddler', d: 'Apr 2024', s: 4, t: 'Clarno to Cottonwood at 3,000 cfs — Class II–III rapids through basalt canyon, fossil beds everywhere. The John Day is what eastern Oregon looks like when you leave the roads behind.' }],
+        revs: [],
         outs: [{ n: 'Service Creek Stage Stop', d: 'John Day River shuttle service and camping', l: '' }],
       },
       {
@@ -1284,7 +1280,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2011', title: 'Bob\"s Hole — World-Class River Surfing', text: 'Bob\"s Hole near Estacada has become one of the most famous river surf waves in North America, drawing playboaters from across the country. The wave forms at specific flows and has hosted multiple freestyle kayaking competitions.', src: 'American Whitewater; Oregon Kayak and Canoe Club' }] },
         ],
         docs: [],
-        revs: [{ u: 'portland_kayaker', d: 'Apr 2024', s: 5, t: 'Bob\"s Hole at 2,200 cfs — perfect wave, surfed for three hours. Twenty minutes from Portland. The Clackamas is the reason Portland is a kayaking city.' }, { u: 'clackamas_canyon_runner', d: 'Mar 2024', s: 4, t: 'Upper Clackamas at 1,500 cfs — continuous Class III–IV through old-growth forest. Felt like Idaho but an hour from the city. Stunning canyon run.' }],
+        revs: [],
         outs: [{ n: 'eNRG Kayaking', d: 'Clackamas River kayak instruction and guided trips', l: '' }],
       },
       {
@@ -1299,7 +1295,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2007', title: 'Marmot Dam Removal — River Reborn', text: 'The removal of Marmot Dam in 2007 was one of the largest dam removals in U.S. history at the time, reopening 100 miles of habitat for salmon and steelhead. The Sandy became a national model for river restoration through dam removal.', src: 'American Rivers; Sandy River Basin Watershed Council' }] },
         ],
         docs: [],
-        revs: [{ u: 'pdx_whitewater', d: 'May 2024', s: 5, t: 'Sandy Gorge at 1,800 cfs — continuous Class II–III with Mt. Hood visible above the canyon. Thirty minutes from my apartment in Portland. This river is why I moved here.' }, { u: 'sandy_river_regular', d: 'Mar 2024', s: 4, t: 'Dodge Park section at 1,000 cfs — perfect beginner-friendly float. Since Marmot Dam came out, the salmon are back in force. Saw steelhead jumping at every riffle.' }],
+        revs: [],
         outs: [{ n: 'Blue Sky Rafting', d: 'Sandy River guided rafting and kayak trips', l: '' }],
       },
     ],
@@ -1323,7 +1319,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Tumwater Canyon — Iconic Washington Whitewater', text: "Tumwater Canyon's Class III–IV rapids — Drunkard's Drop, Rock 'n Roll, and Granny's — attract thousands of whitewater paddlers annually. The canyon road (US-2) provides one of the most scenic shuttles in the Northwest.", src: 'Washington Kayak Club; American Whitewater' }] },
         ],
         docs: [],
-        revs: [{ u: 'tumwater_regular', d: 'May 2024', s: 5, t: "Tumwater at 3,800 cfs — Drunkard's Drop was a carnage-free session, everyone surfed Rock 'n Roll, Granny's put one swimmer in the river. Perfect WA spring day." }, { u: 'leavenworth_float', d: 'Jul 2024', s: 4, t: 'Leavenworth to Monitor section at 2,200 cfs — Class II family float through the orchard valley. Finished with schnitzel and beer. Could not be more Washington.' }],
+        revs: [],
         outs: [{ n: 'Leavenworth Outdoor Center', d: 'Wenatchee trips, rentals, instruction', l: 'leavenworthoutdoor.com' }, { n: 'Osprey Rafting', d: 'Tumwater Canyon guided trips', l: 'ospreyrafting.com' }],
       },
       {
@@ -1338,7 +1334,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2015', title: 'Methow Valley — Destination Recreation', text: "The Methow Valley has emerged as one of Washington's premier outdoor recreation destinations, with world-class cross-country skiing in winter and kayaking, hiking, and mountain biking in summer.", src: 'Methow Valley Sport Trails Association; Methow Salmon Recovery Foundation' }] },
         ],
         docs: [],
-        revs: [{ u: 'methow_valley_local', d: 'Jun 2024', s: 4, t: 'Mazama to Winthrop at 1,600 cfs — Class II through the most beautiful valley in Washington. Saw a black bear on the bank near Early Winters Creek.' }, { u: 'north_cascades_paddle', d: 'Jul 2024', s: 5, t: 'Twisp to Carlton at 1,100 cfs — actual Class II–III through a canyon section nobody knows about. Found our new home water.' }],
+        revs: [],
         outs: [{ n: 'Methow Valley Outdoor Adventures', d: 'River trips and instruction', l: 'methowvalleyoutdoor.com' }],
       },
       {
@@ -1355,7 +1351,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Bald Eagle Winter Gathering — Up to 500+ Eagles', text: 'The upper Skagit between Rockport and Marblemount hosts one of the largest winter bald eagle concentrations in the lower 48 — up to 500+ eagles gathering to feed on spawned-out chum salmon. The Skagit Eagles Fest draws birders and paddlers from across the Northwest.', src: 'Skagit Land Trust; Audubon Society of Western Washington' }] },
         ],
         docs: [{ t: 'Upper Skagit Wild & Scenic River Management Plan', s: 'Mount Baker-Snoqualmie NF', y: 2005, tp: 'Federal', pg: 175 , url: 'https://rivers.gov/sites/rivers/files/documents/plans/skagit-plan.pdf'}],
-        revs: [{ u: 'skagit_eagle_paddle', d: 'Feb 2024', s: 5, t: 'Floated the Rockport stretch in February — counted 47 bald eagles from the water in 6 miles. Pink salmon carcasses on every gravel bar. One of the most wildlife-rich floats I\'ve ever done.' }, { u: 'north_cascades_paddler', d: 'Jul 2024', s: 4, t: 'Upper Skagit below Newhalem at 6,000 cfs — fast Class II with 8,000-foot peaks dropping straight to the river. North Cascades are on another level.' }],
+        revs: [],
         outs: [{ n: 'Osprey River Adventures', d: 'Skagit eagle float trips', l: 'ospreyriveradventures.com' }, { n: 'Skagit River Kayak', d: 'Upper Skagit guided day trips', l: 'skagitkayak.com' }],
       },
       {
@@ -1370,7 +1366,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Gold Bar to Monroe — Most Commercially Paddled in Washington', text: "The Gold Bar to Monroe section is Washington's most commercially paddled whitewater corridor. Multiple outfitters run daily trips on Boulder Drop and Lunch Counter from April through June. The drive up US-2 through Stevens Pass provides some of Washington's most dramatic roadside river scenery.", src: 'Washington Kayak Club; American Whitewater' }] },
         ],
         docs: [],
-        revs: [{ u: 'sky_river_regular', d: 'May 2024', s: 5, t: 'Gold Bar at 5,200 cfs — Boulder Drop was a chaos of boulders and foam. Lunch Counter surfing wave had a line of kayaks waiting. Best Washington spring paddling.' }, { u: 'upper_sky_kayaker', d: 'Jun 2024', s: 4, t: 'Upper Sky above Index at 3,500 cfs — Class IV+ all day in a tight old-growth gorge. Nobody else out there. Washington keeps its secrets.' }],
+        revs: [],
         outs: [{ n: 'Orion Expeditions', d: 'Skykomish River raft trips from Gold Bar', l: 'orionexp.com' }, { n: 'RnR Whitewater', d: 'Upper and Lower Sky guided trips', l: 'rnrwhitewater.com' }],
       },
       {
@@ -1385,7 +1381,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Glacier Peak — Sauk Headwaters Wilderness', text: "Glacier Peak (10,541 ft) dominates the Sauk headwaters as the most remote of Washington's five major volcanoes. The river drains directly from Glacier Peak's glaciers. Pink and chum salmon stack in the lower Sauk each fall in one of the most accessible salmon runs in the North Cascades.", src: 'USFS Mt. Baker-Snoqualmie NF; Washington Trails Association' }] },
         ],
         docs: [],
-        revs: [{ u: 'sauk_fall_paddler', d: 'Oct 2024', s: 5, t: 'Darrington to Rockport at 4,000 cfs — pink salmon pushing through every riffle, eagles above, no other boats. Most wildlife-rich float in the Cascades.' }, { u: 'skagit_tributary_explorer', d: 'Jun 2024', s: 4, t: 'Upper Sauk near Darrington at 3,200 cfs — Class II with old-growth walls and Glacier Peak snowfields above. Pure North Cascades wilderness.' }],
+        revs: [],
         outs: [{ n: 'Cascades River Sports', d: 'Sauk and Skagit guided float trips', l: 'cascadesriversports.com' }],
       },
       {
@@ -1400,7 +1396,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2011', title: 'Condit Dam Removal — River Reborn', text: 'The explosive breach of Condit Dam in October 2011 was one of the most dramatic dam removals in American history, releasing a century of impounded sediment in minutes. Within two years, salmon had returned to the upper watershed for the first time since 1913. The removal became a national model for river restoration.', src: 'American Rivers; PacifiCorp; USGS' }] },
         ],
         docs: [],
-        revs: [{ u: 'gorge_kayaker', d: 'Jun 2024', s: 5, t: 'Husum Falls at 900 cfs — ran the 14-foot drop clean, then continuous Class IV below. Spring-fed and running year-round. The White Salmon is Washington\"s best expert run, period.' }, { u: 'white_salmon_regular', d: 'Aug 2024', s: 5, t: 'Middle section at 700 cfs — perfect summer flow. Since Condit Dam came out in 2011, this river is reborn. Salmon in the pools, eagles overhead, world-class whitewater.' }],
+        revs: [],
         outs: [{ n: 'Wet Planet Whitewater', d: 'White Salmon River rafting and kayak instruction', l: '' }],
       },
       {
@@ -1415,7 +1411,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Annual September Release — Whitewater Pilgrimage', text: 'The Tieton\"s annual September dam release has become a pilgrimage for Pacific Northwest paddlers. For three to four weeks, thousands of kayakers and rafters descend on the normally quiet Tieton valley. The event generates significant economic activity for Yakima County.', src: 'Bureau of Reclamation; American Whitewater' }] },
         ],
         docs: [],
-        revs: [{ u: 'tieton_september', d: 'Sep 2024', s: 5, t: 'Tieton at 2,200 cfs during the annual release — Flip-Flop lived up to its name, two rafts went over. Continuous Class III–IV for miles. The best three weeks of the year in Washington whitewater.' }, { u: 'yakima_kayaker', d: 'Sep 2024', s: 4, t: 'Caught the release at 1,800 cfs — perfect intermediate flow. Flip-Flop was manageable, rest of the run was continuous fun. Only runs in September, so mark your calendar.' }],
+        revs: [],
         outs: [{ n: 'River Riders', d: 'Tieton River September release rafting trips', l: '' }],
       },
       {
@@ -1430,7 +1426,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2020', title: 'Green River Gorge — Urban Wilderness Revival', text: 'King County\"s Green River Gorge Conservation Area has expanded to protect over 1,500 acres of old-growth forest and sandstone canyon. The gorge\"s proximity to Seattle (population 750,000) makes it one of the most accessible wilderness whitewater experiences in the country.', src: 'King County Parks; Washington Kayak Club' }] },
         ],
         docs: [],
-        revs: [{ u: 'seattle_kayaker', d: 'May 2024', s: 5, t: 'Green River Gorge at 1,800 cfs — continuous Class II–III through a sandstone canyon 45 minutes from my apartment in Capitol Hill. 300-foot walls, old-growth trees, zero cell service. Seattle\"s best-kept secret.' }, { u: 'gorge_regular_wa', d: 'Apr 2024', s: 4, t: 'Kanaskat to Flaming Geyser at 1,200 cfs — perfect intermediate run. The canyon is shockingly beautiful for being this close to the city. Saw a black bear on the bank.' }],
+        revs: [],
         outs: [{ n: 'Northwest Whitewater Association', d: 'Green River Gorge group trips and instruction', l: '' }],
       },
       {
@@ -1445,7 +1441,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2000', title: "Hanford Reach National Monument — Cold War Conservation", text: "President Clinton designated the Hanford Reach a National Monument in 2000. The 50-year nuclear exclusion zone inadvertently created the most pristine stretch of the Columbia River — home to the last significant wild fall Chinook run, with spawning counts exceeding 80,000 fish in peak years.", src: 'USFWS Hanford Reach National Monument; NOAA Fisheries' }] },
         ],
         docs: [{ t: 'Hanford Reach National Monument Comprehensive Conservation Plan', s: 'USFWS', y: 2008, tp: 'Federal', pg: 320, url: '' }],
-        revs: [{ u: 'hanford_reach_paddler', d: 'Sep 2024', s: 5, t: "Columbia at 110,000 cfs — the only free-flowing stretch of the whole river. White Bluffs glowing at sunset, Chinook salmon stacking on gravel bars by the thousands. Nothing else like this on the Columbia." }, { u: 'wa_big_water', d: 'Oct 2024', s: 4, t: "Paddled the Reach at 95,000 cfs — massive river, desert canyon, and the eerie knowledge that the nuclear reservation preserved this place. Accidental wilderness." }],
+        revs: [],
         outs: [{ n: 'Columbia Kayak Adventures', d: 'Hanford Reach guided paddle trips, Richland', l: '' }],
       },
     ],
@@ -1471,7 +1467,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Lower Yough — 250,000+ Annual Paddlers', text: 'The Lower Yough through Ohiopyle State Park hosts over 250,000 paddlers annually, making it the most commercially rafted river in the eastern United States.', src: 'Pennsylvania DCNR; Ohiopyle State Park Annual Report 2024' }] },
         ],
         docs: [{ t: 'Upper Youghiogheny Flow Regime Improvement', s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/regions/midatlantic/' }],
-        revs: [{ u: 'ohiopyle_regular', d: 'Jun 2024', s: 5, t: 'Lower Yough at 2,400 cfs — Cucumber, Railroad, and Dimple Rock all throwing big waves. Most reliable Class IV in the East.' }, { u: 'upper_yough_veteran', d: 'May 2024', s: 5, t: 'Upper Yough at 1,800 cfs with a crew of 6 kayakers. Gap Falls to National Run is as good as anything in the Northeast.' }],
+        revs: [],
         outs: [{ n: 'Ohiopyle State Park Outfitters', d: 'Lower Yough raft and kayak trips', l: 'ohiopyle.com' }, { n: 'Wilderness Voyageurs', d: 'Yough trips since 1964', l: 'wilderness-voyageurs.com' }, { n: 'White Water Adventurers', d: 'Lower, Middle and Upper Yough', l: 'wwaraft.com' }],
       },
       {
@@ -1487,7 +1483,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: "World's End State Park — Year-Round Recreation Hub", text: "World's End State Park on the upper Loyalsock hosts swimming, hiking, and paddling through some of the most dramatic scenery in Pennsylvania. The canyon walls rise over 500 feet from the creek.", src: 'Pennsylvania DCNR' }] },
         ],
         docs: [],
-        revs: [{ u: 'lycoming_paddler', d: 'Apr 2024', s: 5, t: "Loyalsock at 1,100 cfs — Loyalsock Falls and the gorge above World's End are extraordinary. Best kept secret in PA paddling." }, { u: 'pa_creek_chaser', d: 'May 2024', s: 4, t: 'Hit it at 700 cfs in May — still great. The hemlock gorge walls and crystal clear water are unlike anything else in the Mid-Atlantic.' }],
+        revs: [],
         outs: [{ n: 'Loyalsock Adventures', d: 'Guided creek trips and shuttles', l: 'loyalsockadventures.com' }],
       },
       {
@@ -1503,7 +1499,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2012', title: 'Pine Creek Rail-Trail — 62 Miles of Gorge Access', text: "The completion of the Pine Creek Rail-Trail on the former Jersey Shore, Pine Creek & Buffalo Railroad bed created a 62-mile pathway through the gorge, making Pine Creek uniquely accessible for paddle-and-bike combinations.", src: 'Pennsylvania Wilds; Rails-to-Trails Conservancy' }] },
         ],
         docs: [{ t: 'Pine Creek Corridor Management Plan', s: 'Tioga State Forest / PA DCNR', y: 2016, tp: 'Recreation', pg: 145 , url: 'https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/agencyoverview/fisheries-mgmt-plans/pine-creek-plan.pdf'}],
-        revs: [{ u: 'pa_grand_canyon_fan', d: 'Oct 2024', s: 5, t: 'Pine Creek at 900 cfs in fall color — gorge walls in red and orange, trail cyclists waving from the bank. Magical.' }, { u: 'spring_runoff_chaser', d: 'Apr 2024', s: 5, t: "April flood at 1,800 cfs — fast Class II through the canyon with walls towering overhead. Eastern paddling doesn't get grander than this." }],
+        revs: [],
         outs: [{ n: 'Pine Creek Outfitters', d: 'Gorge canoe trips and rail-trail shuttles', l: 'pinecreekoutfitters.com' }, { n: "Wolfe's General Store", d: 'Blackwell rentals and camping', l: 'wolfesgeneral.com' }],
       },
       {
@@ -1519,7 +1515,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1996', title: 'Wild & Scenic Designation — Protecting the Allegheny Forest River', text: 'Congress designated the Clarion as Wild & Scenic in 1996, recognizing the Cooksburg Gorge section and the remarkable ecological recovery of the Allegheny National Forest watershed. The river has rebounded from severe oil and gas pollution of the 19th and early 20th centuries.', src: 'USFS Allegheny NF; National Wild & Scenic Rivers (1996)' }] },
         ],
         docs: [{ t: 'Clarion Wild & Scenic River Management Plan', s: 'USFS Allegheny NF', y: 2001, tp: 'Federal', pg: 145 , url: 'https://www.fs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb5108032.pdf'}],
-        revs: [{ u: 'clarion_gorge_regular', d: 'May 2024', s: 5, t: 'Cooksburg Gorge at 900 cfs in spring — hemlock walls 300 feet high, Class II–III rapids all day, saw six herons and a river otter. Pennsylvania wild and hidden.' }, { u: 'allegheny_canoeist', d: 'Sep 2024', s: 4, t: 'Upper Clarion from Ridgway at 600 cfs — flat and easy but beautiful farm and forest valley. Two bald eagles at the same nest tree. The ANF at its most peaceful.' }],
+        revs: [],
         outs: [{ n: 'Clarion River Kayak and Canoe', d: 'Clarion River Gorge rentals and shuttles', l: 'clarionriverkayak.com' }, { n: 'Cook Forest State Park', d: 'Clarion access and camping, old growth forest', l: 'dcnr.pa.gov' }],
       },
       {
@@ -1535,7 +1531,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Lehigh Gorge Rail Trail — 26 Miles of Gorge Access', text: "The Lehigh Gorge Rail Trail on the former Central Railroad of New Jersey grade provides a 26-mile corridor parallel to the river, enabling unique paddle-and-bike combinations. USACE Francis Walter Dam releases create reliable whitewater conditions from April through October.", src: 'Pennsylvania DCNR; USACE' }] },
         ],
         docs: [],
-        revs: [{ u: 'lehigh_gorge_annual', d: 'Apr 2024', s: 5, t: 'White Haven to Jim Thorpe at 2,400 cfs on a dam release — 26 miles of Class III bouncing off the gorge walls, rail-trail bikers cheering from the bank. Best dam-release river in the East.' }, { u: 'jim_thorpe_local', d: 'May 2024', s: 4, t: 'Upper gorge at 1,800 cfs — fun Class II–III all day. The railroad grade trail is perfectly maintained. Finished with pierogies in Jim Thorpe.' }],
+        revs: [],
         outs: [{ n: 'Jim Thorpe River Adventures', d: 'Lehigh Gorge guided trips and rentals', l: 'jtraft.com' }, { n: 'Pocono Whitewater', d: 'Lehigh Gorge rafting since 1980', l: 'poconowhitewater.com' }],
       },
       {
@@ -1550,7 +1546,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1978', title: 'Wild & Scenic Designation — Protecting the Upper Delaware', text: "Congress designated 73.4 miles of the upper Delaware as Wild & Scenic in 1978, protecting one of the last free-flowing stretches of the river. The designation halted dam proposals that would have flooded the valley. Today the corridor supports one of the densest wintering bald eagle populations in the eastern U.S.", src: 'NPS Upper Delaware Scenic and Recreational River; National Wild & Scenic Rivers Council' }] },
         ],
         docs: [],
-        revs: [{ u: 'upper_delaware_paddler', d: 'Jul 2024', s: 5, t: "Hancock to Narrowsburg in two days — bald eagles on every bend, Class I riffles, zero development. The upper Delaware is the most underrated canoe trip in the Northeast." }, { u: 'pike_county_kayaker', d: 'Jun 2024', s: 4, t: "Milford to the Gap at 3,500 cfs — gentle Class I–II all day through spectacular bluffs. Perfect family river." }],
+        revs: [],
         outs: [{ n: 'Kittatinny Canoes', d: 'Upper Delaware rentals and shuttles since 1941', l: '' }],
       },
       {
@@ -1565,7 +1561,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1830s–1900', title: 'Susquehanna Lumber Rafts — The Great Drives', text: "The Susquehanna was Pennsylvania\"s primary lumber highway. Massive timber rafts up to 200 feet long were floated from the northern forests to Chesapeake Bay markets. The West Branch alone floated an estimated 300 million board feet annually at peak. The log drives ended by 1900 as the great forests were exhausted.", src: 'Lycoming County Historical Society; Pennsylvania Lumber Museum' }] },
         ],
         docs: [],
-        revs: [{ u: 'harrisburg_river_rat', d: 'Aug 2024', s: 4, t: "City Island at 12,000 cfs — surfable ledges right in downtown Harrisburg. The Susquehanna is a mile wide and a foot deep, as they say, but the city stretch delivers." }, { u: 'pa_big_water_paddler', d: 'Jun 2024', s: 4, t: "Sunbury to Harrisburg in three days — hundreds of islands, herons on every one. Pennsylvania\"s most overlooked canoe trip." }],
+        revs: [],
         outs: [{ n: 'Susquehanna River Trail Association', d: 'Susquehanna water trail maps and access', l: '' }],
       },
       {
@@ -1580,7 +1576,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1820s–1930s', title: 'Anthracite Coal — The Schuylkill Navigation', text: "The Schuylkill Navigation Company (chartered 1815) built a canal system to carry anthracite coal from the Schuylkill County mines to Philadelphia. By 1845 the Schuylkill was the primary artery for Pennsylvania\"s anthracite industry. Coal-era pollution devastated the river for over a century.", src: 'Schuylkill River Heritage Area; Berks County Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'schuylkill_trail_paddler', d: 'Sep 2024', s: 4, t: "Reading to Pottstown at 1,200 cfs — gentle Class I through farmland with the Schuylkill River Trail alongside. The river\"s recovery from coal-era pollution is remarkable." }, { u: 'philly_river_explorer', d: 'Oct 2024', s: 4, t: "Manayunk to Boathouse Row at 800 cfs — paddling into Philadelphia past the art museum. Schuylkill at its most urban and historic." }],
+        revs: [],
         outs: [{ n: 'Schuylkill River Greenways', d: 'Schuylkill River access and trail information', l: '' }],
       },
       {
@@ -1595,7 +1591,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2014', title: 'Juniata River Smallmouth Recovery', text: "The PA Fish and Boat Commission documented a strong recovery of smallmouth bass populations in the Juniata River following years of disease and recruitment failure on the main stem Susquehanna. The Juniata's cooler water, better riparian habitat, and less intensive agriculture have made it a stronghold for the species and a major draw for bass anglers.", src: 'PA Fish and Boat Commission; Susquehanna River Basin Commission' }] },
         ],
         docs: [],
-        revs: [{ u: 'juniata_smallie_hunter', d: 'Jul 2024', s: 5, t: 'Mount Union to Lewistown at 1,100 cfs — caught over 30 smallmouth in a day including several 18-inch fish. Best smallmouth river in PA, period.' }, { u: 'central_pa_paddler', d: 'Jun 2024', s: 5, t: 'Three day float from Huntingdon to Mifflintown — perfect Class I–II, beautiful water gaps, and great camping. Classic PA canoe trip.' }],
+        revs: [],
         outs: [{ n: 'Raystown Adventure Outfitters', d: 'Juniata River canoe and kayak trips', l: '' }],
       },
       {
@@ -1610,7 +1606,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1957', title: 'McConnells Mill State Park Established', text: "McConnells Mill State Park was established in 1957, permanently protecting the Slippery Rock Creek gorge and the historic 1868 McConnells Mill grist mill. The park preserves 2,546 acres of old-growth hemlock, sandstone cliffs, and whitewater, and remains one of the most popular state parks in western Pennsylvania.", src: 'Pennsylvania DCNR; McConnells Mill State Park' }] },
         ],
         docs: [],
-        revs: [{ u: 'mcconnells_mill_kayaker', d: 'Apr 2024', s: 5, t: 'Gorge section at 800 cfs — Class III–IV through the sandstone canyon with the old grist mill at the takeout. Best western PA whitewater run, period.' }, { u: 'western_pa_creeker', d: 'Mar 2024', s: 5, t: 'Slippery Rock at 1,200 cfs after spring rain — technical, beautiful, perfect intermediate water. Fall color here in October is unreal.' }],
+        revs: [],
         outs: [{ n: 'Kayak Pittsburgh', d: 'Slippery Rock Creek gorge trips and instruction', l: '' }],
       },
       {
@@ -1625,7 +1621,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2018', title: 'Pennsylvania River of the Year', text: "The Kiskiminetas was named Pennsylvania River of the Year in 2018, recognizing decades of cleanup from industrial and mine pollution. Once biologically dead, the river now supports smallmouth bass, musky, and a strong paddling community. The Kiski-Conemaugh Stream Team led much of the restoration work.", src: 'Pennsylvania DCNR; Kiski-Conemaugh Stream Team' }] },
         ],
         docs: [],
-        revs: [{ u: 'kiski_smallie', d: 'Aug 2024', s: 4, t: 'Saltsburg to Avonmore at 1,600 cfs — nice Class I–II float with surprisingly good smallmouth fishing. Hard to believe this river was dead 30 years ago.' }, { u: 'pa_river_recovery', d: 'Sep 2024', s: 4, t: 'Kiski river trail section — clean water, forested banks, and a good restoration story. Worth supporting.' }],
+        revs: [],
         outs: [{ n: 'Kiski-Conemaugh Riverkeeper', d: 'River access information and river advocacy', l: '' }],
       },
       {
@@ -1640,7 +1636,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1973', title: 'Lake Nockamixon and Scheduled Releases', text: "Lake Nockamixon was completed in 1973 for flood control and water supply, incorporating a scheduled release program that has made Tohickon Creek one of the most popular boatable whitewater runs in the Mid-Atlantic. The March and November releases are among the biggest boater gatherings on the East Coast outside of the Gauley.", src: 'PA DCNR; Philadelphia Canoe Club' }] },
         ],
         docs: [],
-        revs: [{ u: 'tohickon_release_regular', d: 'Nov 2024', s: 5, t: 'November release at 800 cfs — the best dam release on the East Coast outside the Gauley. Classic Class III–IV creek-style in the gorge with High Rocks at the takeout.' }, { u: 'philly_paddler', d: 'Mar 2024', s: 5, t: 'Tohickon spring release — 100+ boats on the water, great community, solid whitewater. A Mid-Atlantic pilgrimage.' }],
+        revs: [],
         outs: [{ n: 'Philadelphia Canoe Club', d: 'Tohickon Creek release day coordination', l: '' }],
       },
       {
@@ -1655,7 +1651,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2002', title: 'Little Juniata Wild Trout Designation', text: "The PA Fish and Boat Commission designated 15 miles of the Little Juniata as Class A wild trout water, recognizing the river's dense population of wild brown trout. The section between Tyrone and Spruce Creek has become a pilgrimage water for fly fishers seeking trophy browns in a technical limestone stream environment.", src: 'PA Fish and Boat Commission; Little Juniata River Association' }] },
         ],
         docs: [],
-        revs: [{ u: 'little_j_flyfisher', d: 'Jun 2024', s: 5, t: 'Spruce Creek reach — landed three wild browns over 18 inches on sulphurs. Best wild trout river in PA and one of the best limestone streams in the East.' }, { u: 'central_pa_flyfisher', d: 'May 2024', s: 5, t: 'Tyrone section at 220 cfs — green drake hatch was epic. Technical fish, perfect water, PA at its best.' }],
+        revs: [],
         outs: [{ n: 'Spruce Creek Outfitters', d: 'Little Juniata River fly fishing guides', l: '' }],
       },
       {
@@ -1670,7 +1666,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2014', title: 'Lackawaxen River Conservancy', text: "The Lackawaxen River Conservancy has led a long-running effort to protect the Lackawaxen's water quality and fisheries, partnering with Trout Unlimited and PA Fish and Boat on habitat restoration. The river's upper reaches now support a growing wild trout population, and the lower river remains one of the best smallmouth fisheries in northeast PA.", src: 'Lackawaxen River Conservancy; Trout Unlimited' }] },
         ],
         docs: [],
-        revs: [{ u: 'lackawaxen_trout', d: 'May 2024', s: 4, t: 'Hawley to Rowland at 400 cfs — wild brown trout and easy paddling. Zane Grey home at the end is a bonus.' }, { u: 'upper_delaware_paddler', d: 'Aug 2024', s: 4, t: 'Lackawaxen to Delaware confluence — good smallmouth fishing and historic canal remnants along the way. Quiet and beautiful.' }],
+        revs: [],
         outs: [{ n: 'Kittatinny Canoes', d: 'Lackawaxen and Upper Delaware trips', l: '' }],
       },
       {
@@ -1685,7 +1681,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1998', title: 'Kettle Creek Acid Mine Drainage Recovery', text: "Decades of abandoned mine drainage treatment work along Kettle Creek, coordinated by Trout Unlimited and PA DEP, reversed what had been a biologically impaired system. Kettle Creek now supports wild brook and brown trout throughout much of its length and is a centerpiece of PA Wilds conservation.", src: 'PA DEP; Trout Unlimited Kettle Creek Watershed Association' }] },
         ],
         docs: [],
-        revs: [{ u: 'pa_wilds_brookie', d: 'May 2024', s: 5, t: 'Upper Kettle Creek — wild brookies on every dry, absolute dark-sky wilderness. Best brook trout water in PA.' }, { u: 'susquehannock_paddler', d: 'Jun 2024', s: 4, t: 'Cross Fork to Kettle Creek SP at 180 cfs — intimate riffles through remote state forest. Elk sightings are a bonus.' }],
+        revs: [],
         outs: [{ n: 'Kettle Creek Outfitters', d: 'PA Wilds paddling and fly fishing from Cross Fork', l: '' }],
       },
     ],
@@ -1710,7 +1706,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Grizzly Bear Density — Highest in Lower 48', text: 'The Flathead valley and surrounding wildlands host the highest density of grizzly bears in the contiguous United States. Bear canisters and proper food storage are required on permitted river trips.', src: 'USFWS Grizzly Bear Recovery Program; Flathead NF' }] },
         ],
         docs: [{ t: 'Middle Fork Flathead Wild & Scenic River Management Plan', s: 'Flathead NF', y: 2004, tp: 'Federal', pg: 145 , url: 'https://www.rivers.gov/sites/rivers/files/documents/plans/flathead-plan.pdf'}],
-        revs: [{ u: 'glacier_boundary_paddler', d: 'Jul 2024', s: 5, t: 'Middle Fork at 4,800 cfs — flew into Schafer Meadows, 5-day float to West Glacier. Grizzly on the bank twice, mountain goats on cliffs above Spruce Park. Nothing else in the lower 48 compares.' }, { u: 'great_bear_vet', d: 'Aug 2024', s: 5, t: 'Upper section was biblical. No trail, no roads, no other groups. Just the river, the forest, and the mountains. And a griz eating berries 30 yards off the bank on Day 3.' }],
+        revs: [],
         outs: [{ n: 'Glacier Raft Company', d: 'Middle Fork Flathead trips, all levels', l: 'glacierraftco.com' }, { n: 'Wild River Adventures', d: 'Multi-day Middle Fork expeditions', l: 'wildrivermt.com' }],
       },
       {
@@ -1726,7 +1722,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1992', title: "'A River Runs Through It' — Montana's River in American Culture", text: "Robert Redford's 1992 film — based on Norman Maclean's novella and filmed partly on the Gallatin, Blackfoot, and Yellowstone rivers — placed Montana fly-fishing in the American imagination.", src: 'Norman Maclean Foundation; Redford Productions' }] },
         ],
         docs: [{ t: 'Gallatin Home Rivers Initiative — $250K+ Partnership', s: 'Trout Unlimited / Simms Fishing', y: 2021, tp: 'Conservation', pg: 1, url: 'https://www.tu.org/press-releases/simms-and-trout-unlimited-unite-to-protect-and-preserve-montanas-gallatin-river/' }],
-        revs: [{ u: 'big_sky_kayaker', d: 'Jun 2024', s: 5, t: 'Big Sky Canyon at 1,800 cfs — House Rock and Mad Mile both pumping. Snowcapped peaks above and crystal water below. Montana delivered.' }, { u: 'gallatin_fly_guide', d: 'Sep 2024', s: 5, t: 'Blue-ribbon brown trout float below Bozeman — 20-inch fish visible in every pool. Maclean would have wept.' }],
+        revs: [],
         outs: [{ n: 'Montana Whitewater', d: 'Gallatin Canyon rafting since 1976', l: 'montanawhitewater.com' }, { n: 'Geyser Whitewater', d: 'All Gallatin sections', l: 'geyserwhitewater.com' }],
       },
       {
@@ -1743,7 +1739,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1992', title: "Norman Maclean and 'A River Runs Through It'", text: "The Blackfoot River is the setting of Norman Maclean's 'A River Runs Through It' — the most celebrated piece of American river writing. Published posthumously and turned into a film, it placed the Blackfoot permanently in American literary and cultural consciousness.", src: 'Norman Maclean Foundation; University of Chicago Press' }] },
         ],
         docs: [{ t: 'Blackfoot River Fisheries Assessment', s: 'Montana FWP', y: 2020, tp: 'Ecology', pg: 85 , url: 'https://fwp.mt.gov/binaries/content/assets/fwp/conservation/fisheries-management/statewide-fisheries-management-plan-2023-2026/2.07_blackfoot-river-drainage.pdf'}],
-        revs: [{ u: 'maclean_water_pilgrim', d: 'Jul 2024', s: 5, t: 'Floated the Maclean water above Missoula. Every bend felt like a sentence from the book. Wild cutthroat rising to PMDs. Spiritual experience.' }, { u: 'blackfoot_local_mt', d: 'Jun 2024', s: 4, t: 'Middle Blackfoot at 2,800 cfs in June — continuous Class II with constant wildlife. Osprey, eagles, deer, and a black bear swimming across above Johnsrud.' }],
+        revs: [],
         outs: [{ n: 'Ten Spoon Winery & Vineyard', d: 'Blackfoot float-and-wine packages', l: 'tenspoon.com' }, { n: 'Missoula Paddleheads', d: 'Blackfoot canoe and kayak rentals', l: 'missoulapaddleheads.com' }],
       },
       {
@@ -1759,7 +1755,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2001', title: 'Upper Missouri River Breaks National Monument', text: "President Clinton designated 377,000 acres of the Upper Missouri Breaks as a National Monument in January 2001 — protecting the most intact stretch of the Lewis and Clark Trail and one of the last remaining shortgrass prairie ecosystems in North America.", src: 'BLM Montana; National Monuments Designation Record (2001)' }] },
         ],
         docs: [{ t: 'Upper Missouri National Wild & Scenic River Management Plan', s: 'BLM Montana', y: 2008, tp: 'Federal', pg: 245 , url: 'https://rivers.gov/sites/rivers/files/documents/plans/upper-missouri-plan.pdf'}, { t: 'Upper Missouri Breaks National Monument Resource Management Plan', s: 'BLM', y: 2008, tp: 'Federal', pg: 320 , url: 'https://npshistory.com/publications/blm/upper-missouri-river-breaks/rod-armp-2008.pdf'}],
-        revs: [{ u: 'lewis_clark_route_paddler', d: 'Jun 2024', s: 5, t: 'Fort Benton to Judith Landing in five days — pronghorn on every bench, white cliffs glowing at sunset, a golden eagle riding thermals above camp. I floated over Lewis and Clark\'s exact campsites. Humbling beyond description.' }, { u: 'breaks_wilderness_canoeist', d: 'Jul 2024', s: 5, t: "150 miles of Class I and not a moment of boredom. The landscape talks. No roads, no people for days at a time. Montana's secret masterpiece." }],
+        revs: [],
         outs: [{ n: 'Missouri River Canoe Company', d: 'Fort Benton-based Missouri Breaks trips', l: 'montanacanoe.com' }, { n: 'Upper Missouri River Guides', d: 'Lewis & Clark route canoe expeditions', l: 'uppermissouri.com' }],
       },
       {
@@ -1775,7 +1771,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Beartooth Highway — Gateway to the Upper Canyon', text: "US-212, the Beartooth Highway (called 'the most beautiful road in America' by Charles Kuralt), provides access to the upper Stillwater watershed. The highway's seasonal closure — typically mid-October to Memorial Day — concentrates paddling season on spring snowmelt.", src: 'Montana DOT; US Forest Service Custer-Gallatin NF' }] },
         ],
         docs: [],
-        revs: [{ u: 'beartooth_paddler', d: 'Jun 2024', s: 5, t: 'Stillwater canyon at 2,800 cfs — snowmelt, Class III walls, Beartooth peaks visible above. One of Montana\'s best-kept secrets. Zero other paddlers all day.' }, { u: 'columbus_mt_local', d: 'Jul 2024', s: 4, t: 'Lower Stillwater below Absaroka at 1,200 cfs — blue-ribbon rainbow trout in gin-clear water. The drift boat scene here rivals anything on the Yellowstone.' }],
+        revs: [],
         outs: [{ n: 'Absaroka Fly Fishing', d: 'Stillwater River guided float fishing', l: 'absarokaflyfishing.com' }, { n: 'Montana Wilderness Outfitters', d: 'Upper Stillwater canyon trips', l: 'montanawildernessoutfitters.com' }],
       },
       {
@@ -1790,7 +1786,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2022', title: 'Historic Flooding — 500-Year Event', text: "In June 2022 the Yellowstone experienced catastrophic flooding that destroyed roads and bridges in Yellowstone National Park and Paradise Valley. The flood reshaped the river channel in many areas and temporarily closed the park. Recovery efforts continue to reshape management of the river corridor.", src: 'USGS; NPS Yellowstone; Montana DNRC (2022)' }] },
         ],
         docs: [{ t: 'Yellowstone Basin Cutthroat Trout Recovery — Mill Creek Restoration', s: 'Trout Unlimited', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.tu.org/magazine/conservation/from-the-field/protecting-iconic-montana-streams-for-the-next-generation/' }],
-        revs: [{ u: 'paradise_valley_guide', d: 'Jul 2024', s: 5, t: "Gardiner to Livingston at 8,000 cfs — Yellowstone cutthroat in every run, Absaroka peaks above, and the longest undammed river in the lower 48. Montana\"s crown jewel." }, { u: 'montana_drift_boat', d: 'Aug 2024', s: 5, t: "Big Timber section at 5,000 cfs — brown trout to 24 inches on hoppers. The Yellowstone in late summer is everything fly fishing should be." }],
+        revs: [],
         outs: [{ n: 'Montana Fishing Company', d: 'Yellowstone River guided float fishing from Livingston', l: '' }],
       },
       {
@@ -1805,7 +1801,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Superfund to Surfing — Clark Fork Recovery', text: "The upper Clark Fork was once one of the most polluted rivers in America — devastated by a century of copper mining in Butte and Anaconda. A massive EPA Superfund cleanup, the largest in U.S. history, has restored the river. Missoula\"s Brennan\"s Wave surf park on the Clark Fork is now a symbol of the river\"s remarkable recovery.", src: 'EPA; Montana DEQ; Clark Fork Coalition (2024)' }] },
         ],
         docs: [],
-        revs: [{ u: 'missoula_river_rat', d: 'Jul 2024', s: 5, t: "Alberton Gorge at 6,000 cfs — 14 miles of Class II–III through a railroad canyon with no road access. Best day whitewater near Missoula." }, { u: 'clark_fork_kayaker', d: 'Aug 2024', s: 4, t: "Brennan\"s Wave at 4,000 cfs — surfing in downtown Missoula. The Clark Fork\"s comeback from Superfund to surf park is the best river recovery story in America." }],
+        revs: [],
         outs: [{ n: 'Montana River Expeditions', d: 'Alberton Gorge and Clark Fork guided trips', l: '' }],
       },
       {
@@ -1820,7 +1816,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Arctic Grayling Conservation — Last Lower-48 Population', text: "The Big Hole is home to the last remaining fluvial Arctic grayling population in the contiguous United States. A multi-agency conservation effort has stabilized the population, but the species remains a candidate for Endangered Species Act listing. The Big Hole\"s cold, clean water is critical to grayling survival.", src: 'Montana FWP; USFWS; Big Hole Watershed Committee (2023)' }] },
         ],
         docs: [],
-        revs: [{ u: 'big_hole_devotee', d: 'Jul 2024', s: 5, t: "Wisdom to Divide at 800 cfs — 10,000 bends through high mountain meadows, wild brown trout on every cast, Bitterroot peaks above. Montana at its most remote and beautiful." }, { u: 'grayling_seeker', d: 'Jun 2024', s: 4, t: "Upper Big Hole at 600 cfs — caught three Arctic grayling in an afternoon. The last wild population in the lower 48. Handle with care." }],
+        revs: [],
         outs: [{ n: 'Big Hole River Outfitters', d: 'Guided float fishing on the Big Hole from Melrose', l: '' }],
       },
       {
@@ -1835,7 +1831,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1959', title: "Hebgen Lake Earthquake — Quake Lake Created", text: "The 1959 Hebgen Lake earthquake (magnitude 7.3) triggered a massive landslide that dammed the Madison River, creating Quake Lake and killing 28 people. The earthquake fundamentally altered the upper Madison's hydrology and created the tailwater conditions that produce today's extraordinary trout fishery.", src: 'USGS; Earthquake Lake Visitor Center; Montana Historical Society' }] },
         ],
         docs: [{ t: 'Madison River Recreation Management Plan', s: 'Montana FWP', y: 2021, tp: 'Recreation', pg: 95, url: '' }],
-        revs: [{ u: 'madison_pilgrim', d: 'Aug 2024', s: 5, t: "The 50-mile riffle at 1,400 cfs — wild rainbows and browns in every seam. There is a reason this river is on every fly fisher's bucket list. The Madison delivers." }, { u: 'mt_drift_boat_guide', d: 'Sep 2024', s: 5, t: "Floated Varney Bridge to Ennis at 1,200 cfs — hopper-dropper all day. 40-fish day with multiple 20-inch browns. The Madison in September is perfection." }],
+        revs: [],
         outs: [{ n: 'Montana Troutfitters', d: 'Madison River guided float fishing from Bozeman', l: 'troutfitters.com' }, { n: 'The Tackle Shop', d: 'Madison River fly shop and guides, Ennis', l: 'thetackleshop.com' }],
       },
     ],
@@ -1861,7 +1857,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Nolichucky Gorge — Premier Appalachian Wilderness Float', text: 'The Nolichucky Gorge consistently ranks among the top 10 wilderness river experiences in the eastern U.S. Shuttles require driving over Unaka Mountain on a switchback road. The remoteness is the point.', src: 'American Whitewater; Appalachian Trail Conservancy' }] },
         ],
         docs: [],
-        revs: [{ u: 'appalachian_paddler', d: 'May 2024', s: 5, t: 'Nolichucky at 1,800 cfs — 26 miles through the deepest gorge in the East, no roads, no people. Quarter Mile, Roostertail, Island Creek Falls. The real deal.' }, { u: 'tn_river_devotee', d: 'Apr 2024', s: 5, t: 'First trip at 1,200 cfs. The shuttle drive over the mountain is an adventure in itself. The gorge walls above Quarter Mile were absolutely silent between the drops.' }],
+        revs: [],
         outs: [{ n: 'USA Raft', d: 'Nolichucky guided trips from Erwin TN', l: 'usaraft.com' }, { n: 'Nantahala Outdoor Center', d: 'Nolichucky and regional Appalachian rivers', l: 'noc.com' }],
       },
       {
@@ -1877,7 +1873,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Rock Climbing and Paddling — A Two-Sport Mecca', text: "The Obed's sandstone cliffs have become one of the premier rock climbing destinations in the Southeast alongside its whitewater reputation.", src: 'NPS Obed Wild & Scenic River; American Alpine Club' }] },
         ],
         docs: [{ t: 'Obed Wild & Scenic River Comprehensive Management Plan', s: 'NPS', y: 2004, tp: 'Federal', pg: 160 , url: 'https://www.rivers.gov/sites/rivers/files/documents/plans/obed-plan.pdf'}],
-        revs: [{ u: 'obed_when_it_rains', d: 'Mar 2024', s: 5, t: "Hit the Obed at 1,400 cfs after 3 days of rain. Obed Junction to Nemo — Class IV–V ledges in a gorgeous sandstone gorge. Tennessee's wild secret." }, { u: 'plateau_paddler_tn', d: 'Apr 2024', s: 4, t: "Clear Creek at 600 cfs — technical Class IV all day in the tightest gorge I've seen east of the Mississippi." }],
+        revs: [],
         outs: [{ n: 'Obed River Outfitters', d: 'Crossville-based guided Obed trips', l: 'obedriveroutfitters.com' }],
       },
       {
@@ -1894,7 +1890,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'TVA Dam Releases — Most Consistent Paddling in the Southeast', text: 'TVA Apalachia Dam releases create the most predictable Class II–III paddling in the Southeast. The Hiwassee is one of the few rivers in the region where you can call the TVA hotline, confirm a release schedule, and plan a trip days in advance.', src: 'TVA River Neighbors Program; American Whitewater' }] },
         ],
         docs: [],
-        revs: [{ u: 'hiwassee_weekly', d: 'Aug 2024', s: 5, t: 'Hiwassee at a TVA release of 1,800 cfs — clearest water in Tennessee, continuous Class II, cold tailwater. Best beginner to intermediate river in the Southeast.' }, { u: 'se_paddler', d: 'Jul 2024', s: 4, t: 'Families, rafters, kayakers, tubers — everyone coexists on the Hiwassee. The Cherokee NF setting makes it feel like a true wilderness float.' }],
+        revs: [],
         outs: [{ n: 'Hiwassee Outfitters', d: 'Reliance TN rentals and shuttles', l: 'hiwasseeoutfitters.com' }, { n: 'Nantahala Outdoor Center', d: 'Hiwassee guided trips', l: 'noc.com' }],
       },
       {
@@ -1910,7 +1906,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1996', title: "1996 Atlanta Olympics — Canoe/Kayak Events", text: "The Ocoee hosted the canoe/kayak events for the 1996 Atlanta Olympics — the first whitewater Olympic events held in the United States. The Olympic facility on the Upper Ocoee continues to host national and international competitions.", src: 'USOC; TVA; Cherokee NF' }] },
         ],
         docs: [{ t: 'Ocoee River Recreational Water Release Advocacy', s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/content/Wiki/regions:se:ongoing_projects' }],
-        revs: [{ u: 'ocoee_every_weekend', d: 'Jul 2024', s: 5, t: 'Middle Ocoee at 1,800 cfs — Double Suck, Table Saw, Diamond Splitter, and Broken Nose all on perfect line. The most reliable Class III–IV river in the Southeast.' }, { u: 'se_whitewater_circuit', d: 'May 2024', s: 4, t: 'Upper Olympic section at 1,400 cfs — the gate courses are still there. Five miles of technical Class IV and not a flat second.' }],
+        revs: [],
         outs: [{ n: 'Nantahala Outdoor Center', d: 'Ocoee guided raft trips', l: 'noc.com' }, { n: 'Ocoee Outdoors', d: 'Ducktown TN outfitter since 1985', l: 'ocoeeoutdoors.com' }],
       },
       {
@@ -1926,7 +1922,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2022', title: 'Most Biologically Diverse River — Conservation Priority', text: "The Duck River is home to 151 species of fish (more than in the entire country of England) and over 50 species of freshwater mussels. Conservation organizations have focused on the Duck as a global biodiversity priority. The Nature Conservancy lists it as one of the most important freshwater systems in the temperate world.", src: 'The Nature Conservancy; NatureServe; Tennessee Aquatic Biodiversity Program (2022)' }] },
         ],
         docs: [{ t: 'Duck River Watershed Management Plan', s: 'Tennessee Department of Environment and Conservation', y: 2020, tp: 'Survey', pg: 195 , url: 'https://www.tn.gov/content/dam/tn/environment/water/duck-river-watershed-planning-partnership/drwpp_initial-report-11-20-2025.pdf'}],
-        revs: [{ u: 'duck_river_local', d: 'Sep 2024', s: 5, t: "Middle Duck near Columbia at 1,200 cfs — Class I through limestone bluffs with cedar glades overhead. Freshwater mussels visible in every riffle. Tennessee's quietest treasure." }, { u: 'middle_tn_paddler', d: 'Oct 2024', s: 4, t: "Upper Duck at 800 cfs in fall — low and crystal clear. The biodiversity argument is real — counted 12 species of fish in one pool." }],
+        revs: [],
         outs: [{ n: 'Duck River Outfitters', d: 'Columbia TN canoe and kayak rentals', l: 'duckriveroutfitters.com' }, { n: 'Tennessee Canoe Livery', d: 'Duck River float trips, shuttles', l: 'tncanoelivery.com' }],
       },
       {
@@ -1941,7 +1937,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2000s', title: 'Pigeon River Recovery — From Dead River to Rafting Destination', text: "The Pigeon River was severely polluted by a Champion International paper mill in Canton, NC for decades — killing aquatic life for 70 miles downstream. EPA enforcement and mill upgrades in the 1990s have allowed dramatic recovery. Today the Pigeon supports thriving commercial rafting and improving fish populations.", src: 'EPA Region 4; Tennessee Wildlife Resources Agency' }] },
         ],
         docs: [],
-        revs: [{ u: 'hartford_rafter', d: 'Jun 2024', s: 5, t: "Upper Pigeon at 1,800 cfs on a dam release — Class III–IV all the way through with the Smokies rising above. Best commercial rafting in Tennessee." }, { u: 'smoky_mountain_paddler', d: 'Jul 2024', s: 4, t: "Hartford section at 1,200 cfs — consistent Class III with great play spots. The Pigeon\"s recovery from pollution is remarkable." }],
+        revs: [],
         outs: [{ n: 'Rafting in the Smokies', d: 'Hartford TN Pigeon River guided raft trips', l: '' }],
       },
       {
@@ -1956,7 +1952,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Elk River Springs — Biodiversity Hotspot', text: "The Elk River is fed by dozens of major limestone springs, including some of the largest in Tennessee. These springs sustain cold, clear baseflows that support exceptional mussel and fish diversity — over 70 species of fish and 30 species of mussels have been documented in the watershed.", src: 'Tennessee Wildlife Resources Agency; The Nature Conservancy (2023)' }] },
         ],
         docs: [],
-        revs: [{ u: 'elk_river_canoeist', d: 'May 2024', s: 4, t: "Fayetteville section at 600 cfs — spring-fed Class I through limestone bluffs and farmland. South-central Tennessee\"s quiet treasure." }, { u: 'tn_scenic_paddler', d: 'Apr 2024', s: 4, t: "Upper Elk at 400 cfs in spring — the water clarity from the limestone springs is incredible. Saw more herons than people." }],
+        revs: [],
         outs: [{ n: 'Elk River Canoe Rental', d: 'South-central Tennessee Elk River float trips', l: '' }],
       },
       {
@@ -1971,7 +1967,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Trophy Trout Tailwater — World-Class Fishery', text: "The Caney Fork below Great Falls Dam has developed into one of the finest trout tailwaters in the Southeast. Cold, oxygen-rich water from the dam\"s deep release sustains brown trout exceeding 20 pounds. The TWRA manages it as a trophy fishery with special regulations.", src: 'Tennessee Wildlife Resources Agency; USACE Center Hill Dam (2024)' }] },
         ],
         docs: [],
-        revs: [{ u: 'caney_fork_angler', d: 'Mar 2024', s: 5, t: "Below Great Falls at 800 cfs on a generation schedule — 20-inch brown trout on a sculpin pattern. The Caney Fork tailwater is southeastern trout fishing at its best." }, { u: 'cumberland_plateau_paddler', d: 'Apr 2024', s: 4, t: "Rock Island section at 600 cfs — scenic Class I through the plateau canyon. The Caney Fork above the lake is beautiful and underrated." }],
+        revs: [],
         outs: [{ n: 'Caney Fork Outdoors', d: 'Guided float fishing on the Caney Fork tailwater', l: '' }],
       },
     ],
@@ -1997,7 +1993,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: '500,000+ Annual Rafters — California\'s River Economy', text: "The South Fork American supports one of the largest commercial rafting industries in the U.S., with over 70 licensed outfitters and 500,000+ annual commercial passengers. The river generates over $100 million annually in economic impact for El Dorado County.", src: 'California Outdoor Recreation Alliance; American River Recreation Association' }] },
         ],
         docs: [{ t: 'South Fork American River Management Plan', s: 'Auburn State Recreation Area', y: 2019, tp: 'Recreation', pg: 165 , url: 'https://www.parks.ca.gov/?page_id=24325'}],
-        revs: [{ u: 'sf_american_regular', d: 'May 2024', s: 5, t: 'Gorge section at 2,800 cfs — Tunnel Chute was a fire hose. Best Gold Rush history float in the Sierra. Hydraulic mining scars visible on the cliffs all day.' }, { u: 'coloma_gold_rush', d: 'Jun 2024', s: 4, t: 'Chili Bar to Salmon Falls at 1,400 cfs — perfect summer intro run. Stopped at Marshall Gold Discovery site at lunch. Living history.' }],
+        revs: [],
         outs: [{ n: 'OARS American River', d: 'South Fork American trips', l: 'oars.com' }, { n: 'Whitewater Excitement', d: 'All South Fork sections', l: 'whitewaterexcitement.com' }, { n: 'American River Raft Rentals', d: 'Self-guided trips from Coloma', l: 'arrafts.com' }],
       },
       {
@@ -2014,7 +2010,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Hetch Hetchy Restoration Debate', text: 'The ongoing campaign to remove the Hetch Hetchy Dam and restore the valley continued in 2023. The engineering and political challenges remain enormous, but the ecological argument has gained mainstream traction.', src: 'Restore Hetch Hetchy; PPIC Water Policy Center' }] },
         ],
         docs: [{ t: 'Tuolumne Wild & Scenic River Management Plan', s: 'USFS Stanislaus NF', y: 2006, tp: 'Federal', pg: 190 , url: 'https://www.fs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb5126197.pdf'}],
-        revs: [{ u: 't_river_devotee', d: 'Jun 2024', s: 5, t: "Lumsden to Ward's at 900 cfs — Clavey Falls was a perfect horizon line. Muir Gorge at camp on night two with no other groups. Sierra Nevada at its most raw." }, { u: 'tuolumne_annual', d: 'May 2024', s: 5, t: 'Cherry Creek into the Grand Canyon at 1,200 cfs — the hardest and most beautiful 23 miles in California. Six Class V rapids and then Clavey as the finale.' }],
+        revs: [],
         outs: [{ n: 'OARS Tuolumne', d: 'Tuolumne River multi-day guided trips', l: 'oars.com' }, { n: 'All-Outdoors California Whitewater', d: 'Tuolumne sections', l: 'aorafting.com' }],
       },
       {
@@ -2030,7 +2026,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Exceptional Snowpack — Kern in Full Flood', text: 'The historic 2022–2023 Sierra Nevada snowpack sent the Kern River into extreme flood in spring 2023, with flows exceeding 10,000 cfs — far above the runnable range for any section.', src: 'USGS California WSC; National Weather Service' }] },
         ],
         docs: [{ t: 'Kern River Wild & Scenic River Management Plan', s: 'USFS Sequoia NF', y: 2009, tp: 'Federal', pg: 155 , url: 'https://www.rivers.gov/rivers/sites/rivers/files/documents/plans/kern-plan.pdf'}, { t: 'Kern River Hydropower Relicensing & Flow Gauge Installation', s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/regions/california/' }],
-        revs: [{ u: 'forks_kern_survivor', d: 'May 2024', s: 5, t: "Forks at 900 cfs — day 1 the river decides if you belong there. Lost a boat at Royal Flush. Recovered it. Nothing in North American kayaking is more committing." }, { u: 'lower_kern_regular', d: 'Aug 2024', s: 4, t: 'Lower Kern at 1,100 cfs — Lickety Split and Hari Kari both fun and honest Class IV. Best Southern California whitewater by far.' }],
+        revs: [],
         outs: [{ n: 'Kern River Outfitters', d: 'Kernville-based all levels', l: 'kernrafting.com' }, { n: 'Whitewater Voyages', d: 'Forks and Lower Kern trips', l: 'whitewatervoyages.com' }],
       },
       {
@@ -2047,7 +2043,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Salmon Recovery — Hoopa and Federal Partnership', text: 'A 2023 agreement between the Hoopa Valley Tribe, Bureau of Reclamation, and USFWS established new flow restoration targets for the Trinity River, the most significant step toward full salmon recovery since the 1990s restoration agreement.', src: 'Hoopa Valley Tribe; Bureau of Reclamation Trinity River Restoration Program (2023)' }] },
         ],
         docs: [],
-        revs: [{ u: 'trinity_gorge_devotee', d: 'Jun 2024', s: 5, t: 'Cedar Flat to Pigeon Point at 2,400 cfs — Canyon Creek, Zig Zag, and Hennessy rapids all clean. Trinity Alps peaks above, steelhead in every pool below. Best Northern California river.' }, { u: 'burnt_ranch_specialist', d: 'May 2024', s: 5, t: "Burnt Ranch Gorge at 1,800 cfs — 14-mile expert gorge, no road, no exit. The Trinity's hidden masterpiece." }],
+        revs: [],
         outs: [{ n: 'Trinity River Rafting', d: 'Trinity River gorge guided trips', l: 'trinityriverrafting.com' }, { n: 'Big Foot Rafting', d: 'Burnt Ranch Gorge and Trinity Alps expeditions', l: 'bigfootrafting.com' }],
       },
       {
@@ -2063,7 +2059,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2014', title: 'Yosemite Valley Plan — Restoring the Merced Floodplain', text: "NPS's Yosemite Valley Plan began restoring the Merced's natural floodplain in Yosemite Valley, removing developed facilities from the flood zone and allowing the river to meander more naturally — the first major floodplain restoration in a national park of this scale.", src: 'NPS Yosemite; Yosemite Merced Wild & Scenic River Management Plan (2014)' }] },
         ],
         docs: [{ t: 'Merced Wild & Scenic River Comprehensive Management Plan', s: 'NPS Yosemite', y: 2014, tp: 'Federal', pg: 280 , url: 'https://www.rivers.gov/sites/rivers/files/documents/plans/merced-plan.pdf'}],
-        revs: [{ u: 'merced_gorge_regular', d: 'May 2024', s: 5, t: 'Briceburg to Bagby at 2,400 cfs — Ned Bull, Gray\'s Grindstone, and Nightmare Island all hitting perfectly. Best expert Sierra Nevada canyon run outside the Tuolumne.' }, { u: 'yosemite_river_paddler', d: 'Jun 2024', s: 4, t: 'El Portal section at 1,800 cfs — Class III through Yosemite with the valley walls above. Half Dome visible at one bend. Surreal.' }],
+        revs: [],
         outs: [{ n: 'Zephyr Whitewater Expeditions', d: 'Merced River gorge raft and kayak trips', l: 'zrafting.com' }, { n: 'ARTA River Trips', d: 'Merced River guided trips', l: 'arta.org' }],
       },
       {
@@ -2078,7 +2074,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Largest Dam Removal in U.S. History', text: "In 2024, four Klamath River dams (Copco No. 1, Copco No. 2, Iron Gate, and J.C. Boyle) were removed — the largest dam removal project in U.S. history. The $500 million project reopened over 400 miles of salmon and steelhead habitat. Tribal nations celebrated the return of free-flowing water for the first time in over a century.", src: 'Klamath River Renewal Corporation; FERC; Yurok Tribe (2024)' }] },
         ],
         docs: [],
-        revs: [{ u: 'klamath_restoration_paddler', d: 'Sep 2024', s: 5, t: "Happy Camp to Weitchpec post-dam-removal at 2,400 cfs — salmon jumping in rapids that haven\"t been free-flowing in a century. History on the water." }, { u: 'norcal_whitewater_guide', d: 'Oct 2024', s: 5, t: "Ishi Pishi Falls section at 3,000 cfs — Class IV in Yurok territory, steelhead in every pool. The Klamath is reborn." }],
+        revs: [],
         outs: [{ n: 'Klamath River Outfitters', d: 'Guided Klamath River raft and fishing trips', l: '' }],
       },
       {
@@ -2093,7 +2089,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1983', title: 'New Melones Dam — The Fight to Save the Stanislaus', text: "The battle over New Melones Dam in the late 1970s and early 1980s was one of the most significant environmental fights in California history. Mark Dubois chained himself to rocks in the canyon to protest the dam. The original Camp 9 canyon was flooded, but the remaining river sections became symbols of river conservation.", src: 'American Rivers; Friends of the River; USBR' }] },
         ],
         docs: [],
-        revs: [{ u: 'stanislaus_camp9_regular', d: 'May 2024', s: 5, t: "Camp 9 at 1,500 cfs — Class III–IV through limestone canyon walls. The Stanislaus delivers Sierra whitewater without the multi-day commitment." }, { u: 'goodwin_canyon_paddler', d: 'Jun 2024', s: 4, t: "Goodwin Canyon at 800 cfs — compact Class III run below the dam. Perfect half-day Sierra foothill trip." }],
+        revs: [],
         outs: [{ n: 'Sunshine Rafting Adventures', d: 'Stanislaus River guided raft and kayak trips', l: '' }],
       },
       {
@@ -2108,7 +2104,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Potter Valley Project — Dam Removal and Eel River Restoration', text: "The proposed decommissioning of the Potter Valley Project (Scott Dam and Cape Horn Dam) would restore the Eel River\"s natural flow for the first time in over a century. The project is one of the largest dam removal efforts in California after the Klamath, with significant implications for salmon and steelhead recovery.", src: 'FERC; CalTrout; Friends of the Eel River (2024)' }] },
         ],
         docs: [],
-        revs: [{ u: 'eel_river_winter_paddler', d: 'Feb 2024', s: 5, t: "South Fork Eel at 3,000 cfs after a January rain — Class II–III through old-growth redwoods, steelhead jumping in every rapid. California\"s best winter river." }, { u: 'mendocino_kayaker', d: 'Mar 2024', s: 4, t: "Dos Rios section at 2,000 cfs — remote Class I–II through canyon country. The Eel is wild California at its most untouched." }],
+        revs: [],
         outs: [{ n: 'Redwood Adventures', d: 'Eel River guided paddle trips in Humboldt County', l: '' }],
       },
       {
@@ -2198,7 +2194,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1968', title: 'Middle Fork Designated Wild & Scenic', text: "The Middle Fork Feather was one of the eight original rivers designated under the National Wild & Scenic Rivers Act of 1968. The designation protects 108 miles through Plumas National Forest, including the dramatic Bald Rock Canyon, from damming and development.", src: 'USFS Plumas National Forest; National Wild & Scenic Rivers System' }] },
         ],
         docs: [],
-        revs: [{ u: 'sierra_creeker', d: 'May 2024', s: 5, t: 'Middle Fork at 2,200 cfs — Bald Rock Canyon was unreal. Clean granite, warm water, and huge rainbows rising to caddis every evening. The best wilderness whitewater in California.' }, { u: 'norcal_flyfisher', d: 'Jul 2024', s: 5, t: 'North Fork below Belden at 1,100 cfs — wild rainbows up to 18 inches. Class III whitewater makes the walk between runs worth it.' }],
+        revs: [],
         outs: [{ n: 'Tributary Whitewater Tours', d: 'Middle Fork Feather multi-day expeditions', l: '' }],
       },
       {
@@ -2213,7 +2209,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2019', title: 'Russian River Salmon Recovery', text: "After decades of decline, coordinated restoration work by the Russian River Watershed Association, NOAA, and local tribes has begun rebuilding coho salmon runs. Streamflow management and habitat improvements are showing measurable recovery, making the Russian a national model for watershed restoration.", src: 'NOAA Fisheries; Russian River Watershed Association' }] },
         ],
         docs: [],
-        revs: [{ u: 'sonoma_summer_paddler', d: 'Aug 2024', s: 5, t: 'Alexander Valley at 400 cfs — perfect summer float through vineyards. Beach stops every mile, warm water for swimming, and a few Class I riffles to keep it interesting.' }, { u: 'norcal_family', d: 'Jul 2024', s: 4, t: 'Guerneville to Monte Rio with kids at 300 cfs — mellow, beautiful, and easy. Pulled out at Johnson\"s Beach for lunch.' }],
+        revs: [],
         outs: [{ n: "Burke's Canoe Trips", d: 'Russian River canoe rentals and shuttles from Forestville', l: '' }],
       },
       {
@@ -2228,7 +2224,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1987', title: 'Kings River Wild & Scenic Designation', text: "Congress designated 81 miles of the Kings and its forks as a National Wild & Scenic River in 1987, permanently protecting the river corridor through Sequoia and Kings Canyon National Parks and Sierra National Forest. The designation blocked a long-proposed dam at Rodgers Crossing that would have flooded the Main Kings whitewater run.", src: 'USFS Sierra National Forest; American Rivers' }] },
         ],
         docs: [],
-        revs: [{ u: 'kings_canyon_kayaker', d: 'Jun 2024', s: 5, t: 'Main Kings at 3,200 cfs — big pushy Class III through granite walls. Banzai, Rooster Tail, and Mule Rock all going off. California spring at its finest.' }, { u: 'sierra_expedition', d: 'May 2024', s: 5, t: 'Upper Kings gorge at 2,800 cfs — committing, continuous, beautiful. The most remote whitewater I have paddled in the lower 48.' }],
+        revs: [],
         outs: [{ n: 'Kings River Expeditions', d: 'Main Kings rafting and multi-day trips', l: '' }],
       },
       {
@@ -2243,7 +2239,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2015', title: 'Napa River Restoration — Living River Project', text: "The Napa River Flood Protection Project — the first 'living river' flood control project in the U.S. — restored floodplain connectivity and native habitat along 6.9 miles of river through the city of Napa. Salmon and steelhead have returned, and the restored wetlands support more than 200 bird species.", src: 'Napa Flood Control District; Friends of the Napa River' }] },
         ],
         docs: [],
-        revs: [{ u: 'wine_country_paddler', d: 'Oct 2024', s: 4, t: 'Yountville to Napa at 180 cfs — quiet Class I through vineyards with wineries visible from the water. Perfect fall paddle, pulled out for lunch in downtown Napa.' }, { u: 'sfbay_kayaker', d: 'Sep 2024', s: 5, t: 'Tidal Napa from Kennedy Park — flatwater estuary with great birdlife, restored wetlands, and views back to Mount Saint Helena.' }],
+        revs: [],
         outs: [{ n: 'Napa Valley Paddle', d: 'Kayak rentals and guided wine country paddles', l: '' }],
       },
       {
@@ -2258,7 +2254,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2008', title: 'Truckee River Restoration Settlement', text: "The Truckee River Water Quality Settlement Agreement resolved a century of disputes over the river's water, committing federal, state, and tribal parties to minimum flows, water quality improvement, and habitat restoration. The agreement has helped rebuild Lahontan cutthroat trout populations and stabilized recreational flows.", src: 'Truckee Meadows Water Authority; Pyramid Lake Paiute Tribe' }] },
         ],
         docs: [],
-        revs: [{ u: 'tahoe_paddler', d: 'Jul 2024', s: 4, t: 'Tahoe City to River Ranch at 800 cfs — classic Class II through meadows with Lake Tahoe right behind you. Bike path alongside makes shuttle easy.' }, { u: 'i80_kayaker', d: 'Jun 2024', s: 4, t: 'Floriston section at 1,100 cfs — solid Class II–III, fun waves and easy access from I-80. Cold Sierra water even in June.' }],
+        revs: [],
         outs: [{ n: 'Truckee River Raft Company', d: 'Tahoe City to River Ranch raft rentals', l: '' }],
       },
       {
@@ -2273,7 +2269,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1981', title: 'Salmon River Wild & Scenic Designation', text: "Congress added the Salmon River to the National Wild & Scenic Rivers System in 1981, protecting the entire main stem and both forks through Klamath National Forest. The designation blocked proposed dams and preserved one of the last fully wild salmon and steelhead strongholds in California.", src: 'USFS Klamath National Forest; Salmon River Restoration Council' }] },
         ],
         docs: [],
-        revs: [{ u: 'cal_salmon_expert', d: 'May 2024', s: 5, t: 'Nordheimer at 1,800 cfs — Bloomer Falls, Last Chance, Freight Train all going off. Clearest whitewater in California and full-value Class V.' }, { u: 'klamath_kayaker', d: 'Jun 2024', s: 5, t: 'Lower Cal Salmon at 1,200 cfs — Class III–IV with wild steelhead in every pool. Worth the drive to Siskiyou County.' }],
+        revs: [],
         outs: [{ n: 'Otter Bar Lodge', d: 'Cal Salmon kayak school and guided trips', l: '' }],
       },
       {
@@ -2288,7 +2284,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2007', title: 'Pit River Hydroelectric Relicensing', text: "The FERC relicensing of Pacific Gas and Electric's Pit River hydroelectric project committed to improved minimum flows, trout habitat funding, and recreational access. The settlement recognized the Pit as one of California's premier wild trout fisheries and stabilized flows for fishing and paddling.", src: 'FERC; California Trout' }] },
         ],
         docs: [],
-        revs: [{ u: 'pit_river_flyfisher', d: 'Sep 2024', s: 5, t: 'Pit 3 at 800 cfs — caught 20 wild rainbows 14–18 inches in an afternoon. Wading is brutal but the fishing is unreal. Felt slipping mandatory.' }, { u: 'norcal_canyon_paddler', d: 'Aug 2024', s: 4, t: 'Pit 4 at 1,400 cfs — Class II–III through black volcanic walls. Unique and stunning canyon, easy to miss but worth the trip from I-5.' }],
+        revs: [],
         outs: [{ n: 'The Fly Shop (Redding)', d: 'Pit River wild trout guides and gear', l: '' }],
       },
     ],
@@ -2314,7 +2310,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'James River Association — 50 Years of Recovery', text: "After decades of severe pollution from DuPont Kepone contamination (1975), the James has made a remarkable recovery. The James River Association's 50th anniversary documented measurable improvements in water quality, fish populations, and recreational use.", src: 'James River Association; Virginia DEQ' }] },
         ],
         docs: [{ t: 'James River Scenic River Assessment', s: 'Virginia DCR', y: 2018, tp: 'Survey', pg: 140 , url: 'https://www.dcr.virginia.gov/recreational-planning/document/srreportjamesriver.pdf'}],
-        revs: [{ u: 'richmond_river_rat', d: 'Jun 2024', s: 5, t: 'Pipeline rapid at 4,200 cfs — surfing waves in downtown Richmond with the state capitol behind you. Best urban river in America, no debate.' }, { u: 'upper_james_canoeist', d: 'Sep 2024', s: 5, t: 'Five days from Iron Gate to Lynchburg — herons, eagles, bass, and not a single other boat for two days. The real Virginia.' }],
+        revs: [],
         outs: [{ n: 'Richmond Raft Company', d: 'James River urban whitewater', l: 'richmondraft.com' }, { n: 'James River Runners', d: 'Upper James canoe trips', l: 'jamesriverrunners.com' }],
       },
       {
@@ -2331,7 +2327,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Massive Fish Kill — Agricultural Runoff Crisis', text: 'The Shenandoah experienced a significant fish kill in summer 2024 linked to agricultural nutrient runoff — one of a series of events highlighting the tension between the valley\'s intensive poultry and cattle farming and the river\'s recreational and ecological health.', src: 'Virginia DEQ; Shenandoah Riverkeeper' }] },
         ],
         docs: [],
-        revs: [{ u: 'shenandoah_valley_paddler', d: 'Oct 2024', s: 5, t: 'South Fork at 1,400 cfs in fall color — Massanutten to the east, Blue Ridge to the west, hawks migrating overhead. The most beautiful valley in the East.' }, { u: 'harpers_ferry_bound', d: 'Sep 2024', s: 4, t: 'Three days Main Stem to Harpers Ferry. Every bend has a historical marker. Bull Falls at 2,000 cfs was a surprise Class III.' }],
+        revs: [],
         outs: [{ n: 'Downriver Canoe Company', d: 'Shenandoah South Fork trips', l: 'downriver.com' }, { n: 'Front Royal Canoe', d: 'Full Shenandoah Valley float trips', l: 'frontroyalcanoe.com' }],
       },
       {
@@ -2347,7 +2343,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Rappahannock Tribe Water Rights Advocacy', text: "The Rappahannock Tribe has been at the forefront of water quality advocacy on their ancestral river, working to reduce agricultural and development runoff that threatens the river's ecology and their cultural relationship with it.", src: 'Rappahannock Tribe; Chesapeake Bay Foundation' }] },
         ],
         docs: [],
-        revs: [{ u: 'unrepentant_piedmont_paddler', d: 'Apr 2024', s: 5, t: 'Remington to Kellys Ford at 1,200 cfs — herons, eagles, deer, bass. The Piedmont as it was before the highways.' }, { u: 'fredericksburg_falls_local', d: 'May 2024', s: 4, t: 'Fredericksburg falls at 2,400 cfs — Class III through the middle of a small city. Surreal.' }],
+        revs: [],
         outs: [{ n: 'Rappahannock River Campground', d: 'Canoe rentals and camping', l: 'canoecamp.com' }],
       },
       {
@@ -2363,7 +2359,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2020', title: 'New River Gorge — America\'s Newest National Park', text: "In December 2020 Congress redesignated the New River Gorge as a National Park, bringing major national attention to the New River's recreational and ecological values. Virginia paddlers now float toward a national park.", src: "NPS New River Gorge National Park; Governor of West Virginia's Office" }] },
         ],
         docs: [],
-        revs: [{ u: 'new_river_va_explorer', d: 'Sep 2024', s: 5, t: 'Narrows section at 3,200 cfs — Class III–IV through the Virginia gorge with the New River Trail above. The river is flowing upstream through a mountain range and you can feel it.' }, { u: 'giles_county_paddler', d: 'Oct 2024', s: 4, t: 'Claytor tailwater at 2,000 cfs in fall color — consistent Class II on beautiful water. The New River Valley is underrated by every paddler east of the Mississippi.' }],
+        revs: [],
         outs: [{ n: 'New River Outdoors', d: 'New River Virginia trips and rentals', l: 'newriveroutdoors.com' }, { n: 'Wild Virginia', d: 'New River Narrows guided kayak trips', l: 'wildvirginia.com' }],
       },
       {
@@ -2379,7 +2375,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Russell Fork Fall Festival — East Coast Extreme Kayaking', text: "The Russell Fork Fall Festival each October draws elite kayakers from across the country for the dam-release season. USACE coordinated October releases have created one of the most anticipated events on the eastern extreme kayaking calendar.", src: 'American Whitewater; Breaks Interstate Park (2023)' }] },
         ],
         docs: [],
-        revs: [{ u: 'russell_fork_survivor', d: 'Oct 2024', s: 5, t: "Breaks Canyon at 2,200 cfs on the October release — El Horendo puts you in the wall, Tower Falls drops you 12 feet. Nothing in the East is harder or more committing than this canyon." }, { u: 'appalachian_extremist', d: 'Oct 2024', s: 4, t: "El Horendo scouted for 25 minutes. Portaged Triple Drop at that flow. Still the best 8 miles of my life. The canyon walls are vertical and the river means business." }],
+        revs: [],
         outs: [{ n: 'Breaks Interstate Park', d: 'Breaks Canyon access and camping', l: 'breakspark.com' }, { n: 'Class VI River Runners', d: 'Russell Fork guided trips (WV-based)', l: 'class-vi.com' }],
       },
       {
@@ -2394,7 +2390,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Goshen Pass — Virginia\"s Whitewater Treasure', text: "Goshen Pass has been a beloved Virginia natural landmark for over 150 years. The 3-mile gorge section is managed as a State Natural Area and provides the best easily-accessible whitewater in the Shenandoah Valley. Spring rhododendron blooms along the gorge walls are legendary.", src: 'Virginia DCR; VMI; Rockbridge Area Conservation Council (2023)' }] },
         ],
         docs: [],
-        revs: [{ u: 'goshen_pass_regular', d: 'Apr 2024', s: 5, t: "Goshen Pass at 800 cfs in spring — Class II–III through the gorge with rhododendrons blooming on every wall. Virginia\"s most beautiful short whitewater run." }, { u: 'lexington_paddler', d: 'May 2024', s: 4, t: "Maury through Lexington at 500 cfs — Class I–II past VMI and W&L. History and paddling in one afternoon." }],
+        revs: [],
         outs: [{ n: 'Twin River Outfitters', d: 'Maury River and Goshen Pass rentals from Lexington', l: '' }],
       },
       {
@@ -2409,7 +2405,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Gathright Dam Tailwater — Trophy Trout Destination', text: "The Jackson River tailwater below Gathright Dam has become one of the finest trout fisheries in the Mid-Atlantic. Cold, oxygen-rich water from the dam\"s deep release sustains trophy brown trout exceeding 20 inches. Special regulation sections protect the fishery.", src: 'Virginia DWR; USACE Gathright Dam (2024)' }] },
         ],
         docs: [],
-        revs: [{ u: 'jackson_river_angler', d: 'Mar 2024', s: 5, t: "Below Gathright at 350 cfs — brown trout to 22 inches on nymphs. The Jackson tailwater is Virginia\"s best-kept trout secret." }, { u: 'highland_county_paddler', d: 'May 2024', s: 4, t: "Upper Jackson at 400 cfs — gentle Class I–II through the Allegheny Highlands. Remote Virginia mountain paddling at its finest." }],
+        revs: [],
         outs: [{ n: 'Highland Adventures', d: 'Jackson River guided float fishing and paddling', l: '' }],
       },
       {
@@ -2424,7 +2420,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Smoke Hole Canyon — East Coast Wilderness Paddling', text: "Smoke Hole Canyon has become one of the most sought-after wilderness paddling experiences in the eastern U.S. The 25-mile roadless gorge section requires multi-day commitment and Class III skills. American Whitewater lists it as one of the premier remote paddling experiences in the Appalachians.", src: 'American Whitewater; USFS Monongahela NF (2023)' }] },
         ],
         docs: [],
-        revs: [{ u: 'smoke_hole_explorer', d: 'Apr 2024', s: 5, t: "Smoke Hole Canyon at 800 cfs in three days — 1,000-foot walls, Class II–III rapids, cave camps, zero other people. The most remote river experience east of the Mississippi." }, { u: 'south_branch_paddler', d: 'May 2024', s: 4, t: "Upper South Branch at 500 cfs — Class I–II through Pendleton County mountain country. Wild trout in every pool." }],
+        revs: [],
         outs: [{ n: 'Smoke Hole Outfitters', d: 'South Branch Potomac guided canyon trips', l: '' }],
       },
     ],
@@ -2450,7 +2446,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Big South Fork Trail System — Multi-Sport Mecca', text: 'The Big South Fork now hosts over 200 miles of hiking, 130 miles of horse trails, and the river corridor — making it one of the most diverse outdoor recreation destinations in the eastern U.S.', src: 'NPS Big South Fork NRRA Annual Report 2023' }] },
         ],
         docs: [{ t: 'Big South Fork NRRA General Management Plan', s: 'NPS', y: 2008, tp: 'Federal', pg: 240 , url: 'https://www.nps.gov/biso/learn/management/generalmanagementplan.htm'}],
-        revs: [{ u: 'bsf_gorge_explorer', d: 'Oct 2024', s: 5, t: 'Station Camp to Blue Heron at 1,200 cfs — camped at the base of 500-foot sandstone walls. Found arrowheads on the gravel bar at camp. Blue Heron coal complex rose out of the fog in the morning. Extraordinary.' }, { u: 'cumberland_multi_day', d: 'May 2024', s: 5, t: "Four days through the Big South Fork — no roads, no sounds but the river and the birds. The most remote feeling I've had east of the Mississippi." }],
+        revs: [],
         outs: [{ n: 'Sheltowee Trace Outfitters', d: 'Big South Fork guided and unguided trips', l: 'ky-rafting.com' }, { n: 'Outdoor Adventure Rafting', d: 'Cumberland River whitewater', l: 'outdooradventurerafting.com' }],
       },
       {
@@ -2466,7 +2462,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: "World-Class Rock Climbing — Miguel's Pizza and the Gorge Economy", text: "The Red River Gorge has become one of the top 5 sport climbing destinations in North America, drawing climbers from around the world to its sandstone faces. Miguel's Pizza — a climber campground and institution — has become a beloved cultural anchor for the climbing and paddling community.", src: "American Alpine Club; Red River Gorge Climbers Coalition" }] },
         ],
         docs: [],
-        revs: [{ u: 'red_river_gorge_native', d: 'Apr 2024', s: 5, t: 'Red River at 600 cfs in spring — hemlock walls, natural arches above the water, no one else on the river. The gorge has a silence that gets inside you.' }, { u: 'arch_country_paddler', d: 'Oct 2024', s: 4, t: 'Fall color in the gorge at 400 cfs — the red and orange reflected in every pool. Hiked out to Natural Bridge after take-out. Magic.' }],
+        revs: [],
         outs: [{ n: 'Rough Trail Canoe', d: 'Red River Gorge canoe trips and rentals', l: 'roughtrailcanoe.com' }, { n: "Miguel's Pizza & Rock Climbing", d: 'Camping, community hub for gorge visitors', l: 'miguelspizza.com' }],
       },
       {
@@ -2483,7 +2479,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2019', title: 'Mammoth Cave — 420+ Miles of Surveyed Passage', text: 'As of 2019, cavers have surveyed over 420 miles of passage in the Mammoth Cave system — making it by far the longest known cave in the world. New passages continue to be mapped annually.', src: 'Cave Research Foundation; NPS Mammoth Cave' }] },
         ],
         docs: [{ t: 'Mammoth Cave NP General Management Plan', s: 'NPS', y: 2014, tp: 'Federal', pg: 280 , url: 'https://www.nps.gov/maca/learn/management/upload/MACA-General-Management-Plan-WebVersion.pdf'}],
-        revs: [{ u: 'mammoth_cave_canoeist', d: 'Sep 2024', s: 5, t: 'Green River through the park at 700 cfs — water so clear you can see the gravel 8 feet down. Two days inside the park boundary with no roads in sight. Paddling over the world\'s longest cave.' }, { u: 'green_river_ky_local', d: 'Jul 2024', s: 4, t: 'Below Brownsville at 1,200 cfs — wide, easy current, endless wildlife. The cave springs keep it cold and clear even in July.' }],
+        revs: [],
         outs: [{ n: 'Green River Canoe Rental', d: 'Mammoth Cave area canoe trips', l: 'mammothcavecanoe.com' }, { n: 'Mammoth Cave Adventures', d: 'Park canoe concession', l: 'mammothcaveadventures.com' }],
       },
       {
@@ -2499,7 +2495,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1993', title: "Wild & Scenic Designation — Kentucky's Most Remote Gorge", text: 'Congress designated the Rockcastle as Wild & Scenic in 1993, protecting the Clifty Wilderness gorge section. The designation established the Rockcastle as one of only two National Wild & Scenic Rivers entirely within Kentucky.', src: 'USFS Daniel Boone NF; Wild & Scenic Rivers Act (1993)' }] },
         ],
         docs: [],
-        revs: [{ u: 'rockcastle_gorge_paddler', d: 'Apr 2024', s: 5, t: 'Bee Rock section at 800 cfs — sandstone walls 300 feet high, Class II–III all day, zero other paddlers. Kentucky\'s best-kept paddling secret.' }, { u: 'ky_canyon_explorer', d: 'May 2024', s: 5, t: 'Round Stone to Bee Rock at 600 cfs — looked up from the river and rock climbers were 200 feet above me on the walls. The Rockcastle does not disappoint.' }],
+        revs: [],
         outs: [{ n: 'Sheltowee Trace Outfitters', d: 'Rockcastle River guided canoe and kayak trips', l: 'ky-rafting.com' }],
       },
       {
@@ -2515,7 +2511,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: "Lexington's Urban Greenway — Bluegrass Creek Conservation", text: "The Elkhorn Creek and South Elkhorn watershed have been targets of an active urban stream conservation effort in Lexington and Fayette County. The creek provides critical wildlife corridor habitat connecting the remaining rural Bluegrass to Lexington's suburbs.", src: 'Fayette County; Kentucky Waterways Alliance (2024)' }] },
         ],
         docs: [],
-        revs: [{ u: 'bluegrass_canoeist', d: 'May 2024', s: 5, t: 'Georgetown to Midway at 350 cfs — spring bluebells lining the banks, thoroughbreds in the pastures above the palisades, herons at every bend. Bluegrass Kentucky at its absolute finest.' }, { u: 'lex_river_explorer', d: 'Apr 2024', s: 4, t: "South Elkhorn at 500 cfs in April — limestone walls, farm bridge shadows, and spring wildflowers. You'd never know Lexington is 15 minutes away." }],
+        revs: [],
         outs: [{ n: 'Elkhorn Canoe Trips', d: 'Versailles-based Elkhorn Creek rentals', l: 'elkhorncanoe.com' }],
       },
       {
@@ -2530,7 +2526,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2018', title: 'Camp Nelson National Monument — Civil War Heritage', text: "Camp Nelson, a major Civil War supply depot and African American recruitment center on the Kentucky River, was designated a National Monument in 2018. The site tells the story of 10,000 African American soldiers who enlisted in the Union Army at this location.", src: 'NPS Camp Nelson National Monument; Kentucky Historical Society (2018)' }] },
         ],
         docs: [],
-        revs: [{ u: 'palisades_paddler', d: 'Jun 2024', s: 5, t: "Camp Nelson to Harrodsburg at 2,000 cfs — 300-foot limestone palisades, bourbon distillery views from the water, Class I all day. Kentucky\"s most underrated river." }, { u: 'ky_river_explorer', d: 'Sep 2024', s: 4, t: "Palisades section at 1,500 cfs in fall — limestone walls glowing orange in autumn light. Zero whitewater, maximum scenery." }],
+        revs: [],
         outs: [{ n: 'Shaker Village Riverboat', d: 'Kentucky River Palisades access and tours', l: '' }],
       },
       {
@@ -2545,7 +2541,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1782', title: 'Battle of Blue Licks — Last Battle of the Revolution', text: "The Battle of Blue Licks (August 19, 1782) was the last major engagement of the American Revolution. A force of British-allied Native warriors and Loyalists defeated Kentucky militia on the Licking River. Daniel Boone\"s son Israel was killed in the battle. The site is now a state park.", src: 'Blue Licks Battlefield State Resort Park; Kentucky Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'licking_river_paddler', d: 'May 2024', s: 4, t: "Blue Licks section at 800 cfs — Class I through Daniel Boone country, past the battlefield and salt lick springs. Kentucky history from the water." }, { u: 'ne_ky_canoeist', d: 'Jun 2024', s: 4, t: "Upper Licking at 500 cfs — gentle Class I–II through rolling hills and farmland. Northeastern Kentucky at its most peaceful." }],
+        revs: [],
         outs: [{ n: 'Blue Licks Canoe Livery', d: 'Licking River canoe and kayak rentals', l: '' }],
       },
       {
@@ -2560,7 +2556,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Karst Springs — Cold-Water Refuge', text: "Russell Creek\"s spring-fed flow makes it one of the most consistent small streams in central Kentucky. The limestone springs maintain water temperatures below 65°F in summer, supporting a coldwater fish community unusual for this latitude. The creek is increasingly recognized as an important tributary to the Green River watershed.", src: 'Kentucky Division of Water; Green River Conservancy (2023)' }] },
         ],
         docs: [],
-        revs: [{ u: 'small_creek_paddler_ky', d: 'Apr 2024', s: 4, t: "Russell Creek at 300 cfs after spring rain — clear spring-fed water through farm country and cave country. South-central Kentucky\"s hidden gem." }, { u: 'green_river_tributary_explorer', d: 'May 2024', s: 4, t: "Upper Russell at 200 cfs — intimate Class I–II through karst landscape. Springs entering from both banks. Magical small-stream paddling." }],
+        revs: [],
         outs: [{ n: 'Green River Canoeing', d: 'Russell Creek and Green River area paddle trips', l: '' }],
       },
     ],
@@ -2586,7 +2582,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: '500,000+ Annual Visitors — Most Commercial River in the East', text: 'The Nantahala Gorge hosts over 500,000 paddlers annually, making it the most commercially paddled river in the eastern United States. The NOC complex generates over $40 million in annual economic impact for Swain County.', src: 'NOC Annual Report 2024; Swain County Economic Development' }] },
         ],
         docs: [{ t: 'Nantahala River Flow Agreement — 230+ Annual Releases', s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/content/Wiki/regions:se:ongoing_projects' }],
-        revs: [{ u: 'noc_regular', d: 'Jul 2024', s: 5, t: 'Nantahala at 850 cfs — cold, fast, perfect. Nantahala Falls at the end threw me out. Back in the boat. Worth every second.' }, { u: 'eastern_whitewater_fan', d: 'Jun 2024', s: 5, t: 'Best intro to eastern whitewater. The gorge walls, the cold water, the NOC at the end — this is what got me into paddling.' }],
+        revs: [],
         outs: [{ n: 'Nantahala Outdoor Center', d: 'NOC — eastern whitewater institution since 1972', l: 'noc.com' }, { n: 'Rolling Thunder River Company', d: 'Nantahala gorge raft trips', l: 'rollingthunderrafting.com' }],
       },
       {
@@ -2603,7 +2599,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2012', title: 'Headwaters Opened to Paddling — 38 Years Later', text: 'For 38 years after Wild & Scenic designation, paddling was prohibited above Highway 28. In 2012, after years of advocacy by American Whitewater, the USFS opened the upper Chattooga to paddling — one of the most significant access victories in recent paddling history.', src: 'American Whitewater; USFS Chattooga Wild & Scenic River Management (2012)' }] },
         ],
         docs: [{ t: 'Chattooga Wild & Scenic River Study Report', s: 'USFS', y: 1974, tp: 'Federal', pg: 210, url: 'https://rivers.gov/sites/rivers/files/2023-01/chattooga-study.pdf' }, { t: 'Chattooga Headwaters Access Campaign (1995–2012)', s: 'American Whitewater', y: 2012, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/content/Project/view/id/chattooga/' }],
-        revs: [{ u: 'section_iv_devotee', d: 'May 2024', s: 5, t: 'Chattooga Section IV at 1,100 cfs — Five Falls all running perfectly. Crack-in-the-Rock scared me appropriately. The wild river forest is as beautiful as any in the East.' }, { u: 'deliverance_country_paddler', d: 'Apr 2024', s: 5, t: 'Upper Section III at 900 cfs — Bull Sluice thundering. Walked out into Sumter NF with no roads visible. Exactly as wild as the film suggests.' }],
+        revs: [],
         outs: [{ n: 'Nantahala Outdoor Center', d: 'Chattooga Section III and IV trips', l: 'noc.com' }, { n: 'Southeastern Expeditions', d: 'Chattooga guided rafting', l: 'southeasternexpeditions.com' }],
       },
       {
@@ -2619,7 +2615,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Asheville River Arts District — Urban River Renaissance', text: "The French Broad corridor through Asheville's River Arts District has become a national model for urban river revitalization. Former industrial warehouses along the riverbank have been converted to studios, breweries, and restaurants.", src: 'Asheville River Arts District; French Broad Riverkeeper' }] },
         ],
         docs: [{ t: 'French Broad River — Craggy Dam Removal Campaign', s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanrivers.org/craggy-dam-removal/' }],
-        revs: [{ u: 'hot_springs_pilgrim', d: 'Sep 2024', s: 5, t: 'Hot Springs section at 1,400 cfs — class II through the gorge, pulled out at the springs, soaked for an hour, back in the boat. NC at its finest.' }, { u: 'asheville_river_art', d: 'Jul 2024', s: 4, t: 'French Broad through the RAD at 2,200 cfs — murals on the warehouse walls above the river, breweries at the takeout. A new kind of river experience.' }],
+        revs: [],
         outs: [{ n: 'Nantahala Outdoor Center', d: 'French Broad gorge section trips', l: 'noc.com' }, { n: 'French Broad River Outfitters', d: 'Hot Springs section canoe and kayak', l: 'frenchbroadriveroutfitters.com' }],
       },
       {
@@ -2635,7 +2631,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: "The Green Race — World's Premier Creek Race", text: "The Green Race continues annually in November, drawing the world's fastest creek racers including Olympic slalom competitors who specifically train on the Narrows. Gorilla rapid has become the most-documented single whitewater rapid in social media history.", src: 'American Whitewater; Paddling Magazine (2024)' }] },
         ],
         docs: [{ t: 'Green River Corridor Assessment', s: 'Polk County; NC DEQ', y: 2017, tp: 'Survey', pg: 65 , url: 'https://www.deq.nc.gov/water-quality/planning/bpu/broad/broad-basin-plans/2008-plan/green-river/download'}],
-        revs: [{ u: 'green_race_competitor', d: 'Nov 2024', s: 5, t: "The Narrows at 350 cfs — Gorilla and Sunshine of Your Love both clean. The Green is the best 6 miles in eastern creek kayaking, bar none. November Race was everything." }, { u: 'nc_creek_kayaker', d: 'May 2024', s: 4, t: "Narrows at 280 cfs — more technical at lower water, every line precise. Chief and Sunshine both nasty. Watched three swimmers at Gorilla in a two-hour sesh." }],
+        revs: [],
         outs: [{ n: 'Headwaters Outfitters', d: 'Green River area paddling and camping', l: 'headwatersoutfitters.com' }],
       },
       {
@@ -2651,7 +2647,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Watauga Gorge — High Country Kayaking Destination', text: 'The Watauga Gorge section has developed a devoted following among High Country kayakers and Appalachian State University paddling community. TVA dam release coordination has improved predictability of runnable flows.', src: 'American Whitewater; Appalachian Outdoors Club' }] },
         ],
         docs: [{ t: 'Watauga River Watershed Study', s: 'North Carolina DEQ', y: 2018, tp: 'Survey', pg: 78 , url: 'https://www.deq.nc.gov/water-quality/planning/bpu/watauga/watauga-plans/2018-plan/2018-watauga-executive-summary/download'}],
-        revs: [{ u: 'high_country_kayaker', d: 'Apr 2024', s: 5, t: 'Hampton to Siam at 700 cfs — Watauga Gorge all day through rhododendron walls. Class III–IV in a canyon that feels like it belongs in West Virginia. NC High Country secret.' }, { u: 'boone_nc_paddler', d: 'May 2024', s: 4, t: 'TVA release section at 500 cfs — consistent Class II–III, beautiful high mountain scenery. The Watauga gives the Blue Ridge its reputation.' }],
+        revs: [],
         outs: [{ n: 'High Country Paddlers', d: 'Watauga and local High Country rivers', l: 'highcountrypaddlers.com' }, { n: 'NOC High Country', d: 'Watauga River trips from Boone', l: 'noc.com' }],
       },
       {
@@ -2666,7 +2662,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Black Mountains Watershed — Headwaters Conservation', text: "The NC Nolichucky headwaters drain the Black Mountains, the highest range east of the Mississippi. Conservation efforts focus on protecting the cold, clean headwater streams that sustain native brook trout and feed the river system through the gorge into Tennessee.", src: 'Pisgah National Forest; NC Wildlife Resources Commission (2023)' }] },
         ],
         docs: [],
-        revs: [{ u: 'nc_nolichucky_paddler', d: 'Apr 2024', s: 4, t: "Burnsville section at 800 cfs — Class II–III through the Black Mountain foothills. The NC side of the Nolichucky is the warm-up before the Tennessee gorge." }, { u: 'blue_ridge_kayaker', d: 'May 2024', s: 4, t: "Upper Nolichucky at 600 cfs — mountain valley Class II with Mount Mitchell visible. Beautiful Blue Ridge paddling." }],
+        revs: [],
         outs: [{ n: 'Blue Ridge Paddling', d: 'NC Nolichucky section rentals and shuttles', l: '' }],
       },
       {
@@ -2681,7 +2677,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Tuckasegee Blueway — Western NC Paddle Trail', text: "The Tuckasegee River Blueway has been developed as a marked paddle trail through Jackson County, with improved access points, signage, and dam-release coordination. The river is increasingly promoted as western North Carolina\"s most family-friendly whitewater destination.", src: 'Jackson County Parks and Recreation; NC Wildlife Resources Commission (2024)' }] },
         ],
         docs: [],
-        revs: [{ u: 'tuck_river_regular', d: 'Jun 2024', s: 5, t: "Dillsboro section at 1,200 cfs on a dam release — Class II–III through town with the Smokies behind. The Tuck is WNC\"s most fun intermediate river." }, { u: 'sylva_kayaker', d: 'Jul 2024', s: 4, t: "Sylva to Dillsboro at 800 cfs — Class I–II family float through a charming mountain town. Western Carolina at its best." }],
+        revs: [],
         outs: [{ n: 'Tuckasegee Outfitters', d: 'Tuckasegee River kayak and tube rentals from Dillsboro', l: '' }],
       },
       {
@@ -2696,7 +2692,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1964', title: 'Linville Gorge Wilderness — First Eastern Wilderness', text: "Linville Gorge was designated a Wilderness Area in 1964 under the original Wilderness Act — one of the first wilderness areas established in the eastern United States. The designation permanently protects the gorge from development and road-building, preserving one of the most rugged and wild landscapes in the Appalachians.", src: 'USFS Pisgah National Forest; Wilderness Act (1964)' }] },
         ],
         docs: [],
-        revs: [{ u: 'linville_gorge_expert', d: 'Mar 2024', s: 5, t: "Linville Gorge at 400 cfs after spring rain — Class IV–V through the wilderness canyon. Portaged the big drop, ran everything else. The most committing run in North Carolina." }, { u: 'blue_ridge_creek_paddler', d: 'Apr 2024', s: 4, t: "Below the gorge at 300 cfs — Class I–III transitioning out of the canyon toward Lake James. Beautiful even outside the expert section." }],
+        revs: [],
         outs: [{ n: 'Linville Gorge Adventures', d: 'Guided Linville Gorge wilderness paddle trips', l: '' }],
       },
       {
@@ -2711,7 +2707,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1916', title: 'Pisgah National Forest Established', text: "Pisgah National Forest — including the Davidson River watershed — was established in 1916 from lands purchased from the Vanderbilt estate, making it the first national forest in the eastern U.S. The Davidson River became a centerpiece of southern Appalachian trout fisheries management and today hosts the Pisgah Center for Wildlife Education and state fish hatchery.", src: 'USFS Pisgah National Forest; NC Wildlife Resources Commission' }] },
         ],
         docs: [],
-        revs: [{ u: 'davidson_technical', d: 'Jun 2024', s: 5, t: 'Pisgah Center reach — trophy trout that have seen every fly ever tied. Caught a 22-inch brown on a midge in gin-clear water. Technical and rewarding.' }, { u: 'brevard_flyfisher', d: 'Sep 2024', s: 4, t: 'Upper Davidson at 150 cfs — wild rainbows on small dries. Beautiful mountain stream through national forest.' }],
+        revs: [],
         outs: [{ n: 'Davidson River Outfitters', d: 'Davidson River fly fishing guides and gear from Pisgah Forest', l: '' }],
       },
       {
@@ -2726,7 +2722,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1942', title: 'Nantahala Dam and Powerhouse', text: "The completion of Nantahala Dam in 1942 created Nantahala Lake and diverted the river's upper flow into a tunnel to the Nantahala powerhouse, establishing the famous dam release whitewater reach below. The Upper Nantahala above the powerhouse returned to a rain-dependent character, preserving a wilder alternative to the crowded gorge section below.", src: 'USFS Nantahala NF; Duke Energy' }] },
         ],
         docs: [],
-        revs: [{ u: 'upper_nanty_expert', d: 'Apr 2024', s: 5, t: 'Upper Nantahala at 900 cfs after two days of rain — tight technical Class III–IV through hardwood canyon. Much more committing than the gorge below. Worth chasing the water.' }, { u: 'rain_chaser_wnc', d: 'Mar 2024', s: 4, t: 'Upper Nanty on a rare flush — solid creek run in the shadow of Nantahala Lake. Felt like a real wilderness paddle.' }],
+        revs: [],
         outs: [{ n: 'Nantahala Outdoor Center', d: 'Nantahala River trips and whitewater instruction', l: '' }],
       },
       {
@@ -2741,7 +2737,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2017', title: 'Cherokee Cultural Landscape Initiative', text: "Kituwah — the sacred Cherokee mother town on the Little Tennessee — was returned to the Eastern Band of Cherokee Indians in 1996. The Cherokee Cultural Landscape Initiative has since worked to protect the Little Tennessee's corridor and preserve the ancient Cherokee town sites along the river. The valley is one of the most culturally significant river landscapes in the eastern U.S.", src: 'Eastern Band of Cherokee Indians; Land Trust for the Little Tennessee' }] },
         ],
         docs: [],
-        revs: [{ u: 'little_t_smallmouth', d: 'Jun 2024', s: 5, t: 'Franklin to Fontana at 1,500 cfs — caught 20+ smallmouth including several over 15 inches. Best smallmouth river in western NC and beautiful Cherokee country.' }, { u: 'kituwah_historian', d: 'Jul 2024', s: 5, t: 'Paddling past Kituwah — the mother town of the Cherokee. The cultural history of this river is unmatched in the eastern U.S.' }],
+        revs: [],
         outs: [{ n: 'Smoky Mountain River Experience', d: 'Little Tennessee paddle and fishing trips', l: '' }],
       },
       {
@@ -2756,7 +2752,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2000', title: 'Roanoke River Paddle Camping Platforms', text: "The Roanoke River Partners launched a system of backcountry paddle camping platforms on the lower Roanoke in 2000 — elevated sleeping platforms built into the bottomland swamp forest, accessible only by boat. The 137-mile paddle trail from Halifax to the Albemarle Sound is one of the most unique multi-day paddling experiences in the eastern U.S.", src: 'Roanoke River Partners; US Fish and Wildlife Service' }] },
         ],
         docs: [],
-        revs: [{ u: 'weldon_striper', d: 'Apr 2024', s: 5, t: 'Weldon striper run in April — landed 12 stripers in a morning including an 18-pound rockfish. Best striped bass fishing on the East Coast.' }, { u: 'bottomland_camper', d: 'Oct 2024', s: 5, t: 'Three nights on the Roanoke paddle camping platforms — the most unique backcountry trip in the South. Cypress swamps, bears, owls, and total solitude.' }],
+        revs: [],
         outs: [{ n: 'Roanoke River Partners', d: 'Lower Roanoke paddle trail platforms and logistics', l: '' }],
       },
       {
@@ -2771,7 +2767,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2019', title: 'Black River Ancient Bald Cypress Discovery', text: "Scientists from the University of Arkansas announced in 2019 that bald cypress trees in the Black River — a Cape Fear tributary — included specimens dated over 2,600 years old, making them among the oldest trees east of the Rocky Mountains and the oldest known wetland trees in the world. The discovery elevated protection priorities for the lower Cape Fear system.", src: 'Nature Conservancy; University of Arkansas Tree-Ring Lab' }] },
         ],
         docs: [],
-        revs: [{ u: 'cape_fear_kayak_angler', d: 'Sep 2024', s: 5, t: 'Lower Cape Fear kayak fishing — caught redfish, flounder, and a 24-inch largemouth in a morning. Great coastal plain kayak fishing destination.' }, { u: 'black_river_cypress', d: 'Oct 2024', s: 5, t: 'Black River tributary — paddling past 2,000-year-old bald cypress trees in tannin-stained water. Cathedral-like and humbling.' }],
+        revs: [],
         outs: [{ n: 'Mahanaim Adventures', d: 'Lower Cape Fear and Black River paddle trips from Wilmington', l: '' }],
       },
       {
@@ -2786,7 +2782,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2013', title: 'Neuse River Trail Greenway Completion', text: "The 33-mile Neuse River Trail greenway was completed in 2013, creating a paved multi-use trail along the Neuse River from Falls Lake to the Johnston County line. The trail has connected hundreds of thousands of Triangle-area residents to the river and helped build a paddling community around the Neuse's urban reaches.", src: 'City of Raleigh; Neuse Riverkeeper Foundation' }] },
         ],
         docs: [],
-        revs: [{ u: 'raleigh_paddler', d: 'Jul 2024', s: 5, t: 'Falls Lake to Anderson Point at 900 cfs — surprisingly wild for an urban river with good wildlife and solid Class I paddling. Neuse Trail along the river makes shuttle easy.' }, { u: 'neuse_catfish', d: 'Aug 2024', s: 4, t: 'Smithfield area at 1,400 cfs — huge blue catfish and flathead catfish fishery. Great kayak angling.' }],
+        revs: [],
         outs: [{ n: 'Frog Hollow Outdoors', d: 'Neuse River kayak rentals and guided trips from Raleigh', l: '' }],
       },
       {
@@ -2801,7 +2797,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2010', title: 'Haw River Assembly and Paddle Trail', text: "The Haw River Assembly — founded in 1982 — successfully advocated for the creation of the Haw River Trail, a 110-mile paddle and land trail system running from the headwaters near Greensboro to Jordan Lake. The trail has transformed the Haw into a regional recreation destination while building a conservation constituency for one of the Triangle's most important rivers.", src: 'Haw River Assembly; NC State Parks' }] },
         ],
         docs: [],
-        revs: [{ u: 'triangle_paddler', d: 'May 2024', s: 5, t: 'Saxapahaw to Bynum at 900 cfs — perfect Class I–II day trip 30 minutes from Chapel Hill. Fun ledges at Saxapahaw dam and beautiful hardwood bluffs.' }, { u: 'haw_river_runner', d: 'Apr 2024', s: 4, t: 'Bynum to Jordan Lake at 700 cfs — classic Triangle paddle. The Haw is our local treasure.' }],
+        revs: [],
         outs: [{ n: 'Haw River Canoe and Kayak Company', d: 'Haw River rentals and shuttles from Saxapahaw', l: '' }],
       },
     ],
@@ -2827,7 +2823,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Private Permit Wait — 12 Years', text: 'The National Park Service lottery for a private Grand Canyon river permit has a wait time exceeding 12 years as of 2024. Commercial trips operate under a separate allocation. Roughly 25,000 people run the canyon annually.', src: 'NPS Grand Canyon River Permits Office (2024)' }] },
         ],
         docs: [{ t: 'Colorado River Management Plan', s: 'NPS Grand Canyon', y: 2006, tp: 'Federal', pg: 420, url: 'https://www.nps.gov/grca/learn/management/upload/CRMPIF_s.pdf' }, { t: 'Colorado River Ecosystem Science Program', s: 'USGS Grand Canyon Monitoring', y: 2023, tp: 'Ecology', pg: 310, url: 'https://www.nps.gov/grca/learn/management/riv_mgt.htm' }],
-        revs: [{ u: 'grand_canyon_veteran', d: 'Sep 2024', s: 5, t: 'Lava Falls at 14,000 cfs — stood on the scout rock and watched the hydraulic for 40 minutes before committing. Nothing in North American paddling comes close to this canyon.' }, { u: 'first_time_commercial', d: 'Aug 2024', s: 5, t: 'Motor rig commercial trip. Even with that context the scale of what you\'re looking at is incomprehensible. Every camp was in a different geological era.' }],
+        revs: [],
         outs: [{ n: 'OARS Grand Canyon', d: 'Premium Grand Canyon oar and motor trips', l: 'oars.com' }, { n: 'Arizona Raft Adventures', d: 'All Grand Canyon trip styles', l: 'azraft.com' }, { n: 'Grand Canyon Expeditions', d: 'Motor and oar trips since 1969', l: 'gcex.com' }],
       },
       {
@@ -2843,7 +2839,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Tribal Permit Revenue — Conservation Through Recreation', text: 'The White Mountain Apache Tribe generated over $2 million annually from recreation permits in the Salt River Canyon, including paddling, camping, and fishing. The tribe has used permit revenue to fund riparian restoration and cultural site protection.', src: 'White Mountain Apache Tribe Recreation Department' }] },
         ],
         docs: [],
-        revs: [{ u: 'phoenix_salt_regular', d: 'Mar 2024', s: 5, t: 'Salt at 2,400 cfs in March — walls turning gold in the morning light, egrets on every bank. The desert canyon whitewater experience you didn\'t know existed 2 hours from Phoenix.' }, { u: 'desert_paddler_az', d: 'Feb 2024', s: 4, t: 'Lower Salt at 1,800 cfs — class III–IV in a 2,000-foot canyon with nobody else for 40 miles. Remember the tribal permit — they check.' }],
+        revs: [],
         outs: [{ n: 'Desert Voyager', d: 'Salt River Canyon guided trips', l: 'desertvoyager.com' }, { n: 'Arizona Outdoor Fun', d: 'Salt River multi-day expeditions', l: 'arizonaoutdoorfun.com' }],
       },
       {
@@ -2859,7 +2855,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: "Arizona's Last Undammed River — Ongoing Threats", text: "Development pressure from the Phoenix metro area's expansion into Yavapai County continues to threaten Verde River flows through increasing groundwater depletion. The Verde Watershed Association and Yavapai-Apache Nation have been at the forefront of defending minimum flows.", src: 'Verde Watershed Association; Yavapai-Apache Nation (2024)' }] },
         ],
         docs: [{ t: 'Verde River Watershed Assessment', s: 'Arizona DEQ', y: 2020, tp: 'Ecology', pg: 165 , url: 'https://legacy.azdeq.gov/environ/water/assessment/download/verde.pdf'}],
-        revs: [{ u: 'verde_valley_regular', d: 'Feb 2024', s: 5, t: 'Verde at 800 cfs in February — bald eagles on every cottonwood, 70°F air, desert walls turning red at sunset. The only river like this in the American Southwest.' }, { u: 'desert_river_watcher', d: 'Dec 2023', s: 4, t: 'Upper Verde near Clarkdale at 400 cfs — low but floatable. Otter seen at river mile 12. Three pairs of nesting eagles visible from the water.' }],
+        revs: [],
         outs: [{ n: 'Verde Adventures', d: 'Verde River canoe and kayak trips', l: 'verdeadventures.com' }, { n: 'Sedona Adventure Tours', d: 'Verde Valley paddling', l: 'sedonaadventuretours.com' }],
       },
       {
@@ -2874,7 +2870,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1987', title: "Slide Rock State Park Established", text: "Arizona established Slide Rock State Park along Oak Creek, preserving the historic Pendley Homestead and the natural sandstone waterslide that had drawn visitors for decades.", src: 'Arizona State Parks' }] },
         ],
         docs: [],
-        revs: [{ u: 'sedona_paddler', d: 'Mar 2024', s: 5, t: "Oak Creek at 200 cfs after spring rains — the red rock walls glowing in afternoon light. Gentle float but the scenery is unmatched anywhere in Arizona." }, { u: 'az_creek_walker', d: 'Feb 2024', s: 4, t: 'Oak Creek near Slide Rock at 150 cfs — low but beautiful. Perfect for a mellow paddle through cathedral-scale red rock.' }],
+        revs: [],
         outs: [{ n: 'Sedona Adventure Tours', d: 'Oak Creek guided paddling experiences', l: '' }],
       },
       {
@@ -2889,7 +2885,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2010', title: "Tribal Fisheries Restoration", text: "The White Mountain Apache Tribe partnered with U.S. Fish & Wildlife to restore native Apache trout populations in the Black River headwaters, removing non-native species from key tributaries.", src: 'White Mountain Apache Tribe; USFWS' }] },
         ],
         docs: [],
-        revs: [{ u: 'az_mountain_paddler', d: 'Jun 2024', s: 4, t: "Black River at 600 cfs in June — cool mountain water while Phoenix bakes at 115. Pine forests and Apache trout. A completely different Arizona." }, { u: 'reservation_angler', d: 'Jul 2024', s: 4, t: 'Black River at 400 cfs — tribal permit required but worth it. Native trout in a ponderosa canyon. Stunning.' }],
+        revs: [],
         outs: [{ n: 'White Mountain Apache Outfitters', d: 'Black River guided fishing and paddling', l: '' }],
       },
       {
@@ -2904,7 +2900,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1990', title: "Gila Box Riparian NCA Designated", text: "Congress designated the Gila Box Riparian National Conservation Area in 1990, protecting 23,000 acres of desert canyon and riparian habitat along the Gila River and Bonita Creek.", src: 'BLM Safford Field Office; Congressional Record (1990)' }] },
         ],
         docs: [],
-        revs: [{ u: 'gila_box_explorer', d: 'Mar 2024', s: 5, t: "Gila Box at 800 cfs in March — hot springs in the canyon walls, bighorn sheep on the cliffs. Class II–III desert whitewater with nobody else around." }, { u: 'se_az_paddler', d: 'Feb 2024', s: 4, t: 'Gila Box at 500 cfs — lower flows but the canyon scenery is spectacular. Soaked in the hot springs at mile 12.' }],
+        revs: [],
         outs: [{ n: 'Gila Box Outfitters', d: 'Guided Gila Box canyon trips', l: '' }],
       },
       {
@@ -2919,7 +2915,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2015', title: "Greenlee County Conservation Efforts", text: "Conservation groups partnered with the Apache-Sitgreaves National Forest to protect riparian habitat along the San Francisco River, focusing on native fish species and cottonwood gallery restoration.", src: 'Apache-Sitgreaves National Forest; Arizona Game & Fish' }] },
         ],
         docs: [],
-        revs: [{ u: 'greenlee_explorer', d: 'Apr 2024', s: 4, t: "San Francisco River at 300 cfs in April — remote and beautiful. Didn't see another person for two days. Eastern Arizona at its finest." }, { u: 'az_backcountry', d: 'Mar 2024', s: 4, t: 'San Francisco near Clifton at 200 cfs — gentle float through a surprisingly deep canyon. Great birding.' }],
+        revs: [],
         outs: [{ n: 'Eastern Arizona Outfitters', d: 'San Francisco River guided trips', l: '' }],
       },
       {
@@ -2934,7 +2930,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2016', title: "Permit System Established", text: "The Forest Service established a permit system for Fossil Creek access due to overwhelming visitor demand following dam removal. The permit requirement runs April through October.", src: 'Coconino National Forest; Tonto National Forest' }] },
         ],
         docs: [],
-        revs: [{ u: 'fossil_creek_fan', d: 'May 2024', s: 5, t: "Fossil Creek at 46 cfs — constant spring flow, 72-degree water, turquoise travertine pools. Get the permit early, it sells out fast." }, { u: 'az_wild_rivers', d: 'Jun 2024', s: 5, t: 'Fossil Creek is a gem. The travertine formations are unlike anything else in Arizona. Small creek but the Wild & Scenic designation is well deserved.' }],
+        revs: [],
         outs: [{ n: 'Fossil Creek Adventures', d: 'Guided Fossil Creek canyon experiences', l: '' }],
       },
     ],
@@ -2959,7 +2955,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2009', title: "Snake River Headwaters Wild & Scenic Designation", text: "Congress designated portions of the Snake River headwaters above Jackson Lake as Wild & Scenic. The Alpine Canyon section remains a candidate for future designation, protected primarily by its location within the Bridger-Teton National Forest.", src: 'National Wild & Scenic Rivers System; Bridger-Teton National Forest' }] },
         ],
         docs: [{ t: 'Snake River Headwaters Comprehensive Management Plan', s: 'Bridger-Teton NF', y: 2014, tp: 'Federal', pg: 220 , url: 'https://rivers.gov/apps/sites/rivers/files/documents/plans/snake-headwaters-plan-usfs.pdf'}],
-        revs: [{ u: 'jackson_paddler', d: 'Jul 2024', s: 5, t: "Alpine Canyon at 8,500 cfs in July — Lunch Counter and Big Kahuna were massive. Cutthroat rising in the eddies between rapids. There is nowhere else you get Teton views with Class IV water." }, { u: 'teton_river_rat', d: 'Aug 2024', s: 4, t: 'Snake at 6,000 cfs — perfect August level. Osprey diving on every bend. The canyon walls glow orange at sunset.' }],
+        revs: [],
         outs: [{ n: 'Dave Hansen Whitewater', d: 'Jackson Hole Snake River guided trips', l: 'davehansenwhitewater.com' }, { n: 'Mad River Boat Trips', d: 'Alpine Canyon whitewater and scenic floats', l: 'mad-river.com' }],
       },
       {
@@ -2975,7 +2971,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1962', title: "Flaming Gorge Dam — Tailwater Transformation", text: "Completion of Flaming Gorge Dam transformed the Green River below it into a world-class cold-water fishery. The 40°F dam releases created ideal trout habitat where warm desert water once flowed.", src: 'Bureau of Reclamation; Wyoming Game & Fish' }] },
         ],
         docs: [],
-        revs: [{ u: 'gorge_angler', d: 'Jun 2024', s: 5, t: 'Red Canyon section at 1,600 cfs — 22-inch brown on a woolly bugger below Mother-in-Law rapid. The canyon walls are cathedral-scale.' }, { u: 'wy_float_fisher', d: 'Sep 2024', s: 4, t: "Green below the dam at 1,200 cfs — perfect wade-fishing flows. Dry fly heaven through Red Canyon." }],
+        revs: [],
         outs: [{ n: 'Flaming Gorge Resort', d: 'Green River float trips and fly-fishing guides', l: 'flaminggorgeresort.com' }, { n: 'Old Moe Guide Service', d: 'Trophy trout float trips below Flaming Gorge Dam', l: 'oldmoeguideservice.com' }],
       },
       {
@@ -2991,7 +2987,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2015', title: "Blue-Ribbon Trout Stream Designation", text: "Wyoming Game & Fish designated the North Platte through Northgate Canyon a Blue-Ribbon Trout Stream, recognizing its exceptional wild brown and rainbow trout populations. The designation triggered enhanced habitat protections and catch-and-release regulations.", src: 'Wyoming Game & Fish Department (2015)' }] },
         ],
         docs: [],
-        revs: [{ u: 'platte_angler', d: 'Aug 2024', s: 5, t: "Northgate Canyon at 1,100 cfs — floated 15 miles without seeing another soul. Three browns over 20 inches. This is what Wyoming fishing should be." }, { u: 'carbon_co_local', d: 'Jul 2024', s: 4, t: 'North Platte near Saratoga at 1,800 cfs — higher water but the meadow section was gorgeous. Pronghorn on every bend.' }],
+        revs: [],
         outs: [{ n: 'Great Rocky Mountain Outfitters', d: 'North Platte float fishing from Saratoga', l: 'grmofly.com' }, { n: "Hack's Tackle & Outfitters", d: 'Guided float trips, Northgate Canyon', l: 'hackstackle.com' }],
       },
       {
@@ -3006,7 +3002,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2000', title: "Wind River Canyon Scenic Byway", text: "Wyoming designated the highway through Wind River Canyon a state scenic byway, recognizing the extraordinary geological exposure — formations spanning from Precambrian to Cretaceous visible in a single canyon drive.", src: 'Wyoming Department of Transportation; Wyoming Geological Survey' }] },
         ],
         docs: [],
-        revs: [{ u: 'wind_river_paddler', d: 'Jul 2024', s: 5, t: "Wind River Canyon at 1,800 cfs — paddling through 2.5 billion years of rock. The geology alone is worth the trip. Class II–III rapids keep it interesting." }, { u: 'fremont_co_local', d: 'Jun 2024', s: 4, t: 'Wind River at 2,500 cfs in June — higher water, bigger rapids. The canyon walls are immense. Hot springs in Thermopolis at the takeout.' }],
+        revs: [],
         outs: [{ n: 'Wind River Canyon Outfitters', d: 'Wind River guided whitewater and fishing', l: '' }],
       },
       {
@@ -3021,7 +3017,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2018', title: "Shoshone River Trail Development", text: "Park County and the city of Cody developed a river trail system along the Shoshone, improving public access for fishing, paddling, and wildlife viewing along the Yellowstone gateway corridor.", src: 'Park County; City of Cody' }] },
         ],
         docs: [],
-        revs: [{ u: 'cody_angler', d: 'Aug 2024', s: 4, t: "Shoshone below Buffalo Bill Dam at 1,500 cfs — cold, clear tailwater with big cutthroat. Cody is a great base for Yellowstone and river time." }, { u: 'yellowstone_paddler', d: 'Jul 2024', s: 4, t: 'Shoshone through Cody at 2,000 cfs — mellow float with Absaroka views. Perfect rest day between Yellowstone adventures.' }],
+        revs: [],
         outs: [{ n: 'Cody Wyoming Adventures', d: 'Shoshone River fishing and float trips', l: '' }],
       },
       {
@@ -3036,7 +3032,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2015', title: "Hoback River Conservation Easement", text: "The Wyoming Game & Fish Department and the Jackson Hole Land Trust secured conservation easements along the lower Hoback River, protecting critical wildlife habitat and public river access in the rapidly developing Jackson Hole corridor.", src: 'Wyoming Game & Fish; Jackson Hole Land Trust' }] },
         ],
         docs: [],
-        revs: [{ u: 'jackson_local', d: 'Jun 2024', s: 5, t: "Hoback at 2,000 cfs in June — great alternative to the Snake when the canyon is crowded. Class II–III through a beautiful mountain canyon." }, { u: 'teton_paddler', d: 'Jul 2024', s: 4, t: 'Hoback at 1,200 cfs — fun intermediate run. Osprey and moose along the banks. Easy shuttle from Jackson.' }],
+        revs: [],
         outs: [{ n: 'Jackson Hole Whitewater', d: 'Hoback River guided trips', l: '' }],
       },
       {
@@ -3051,7 +3047,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2008', title: "Mining Threat Resolved", text: "A proposed gold mine near the headwaters of the Clarks Fork was permanently blocked through a land exchange brokered by the Beartooth Alliance, protecting the watershed from acid mine drainage.", src: 'Beartooth Alliance; Shoshone National Forest' }] },
         ],
         docs: [],
-        revs: [{ u: 'expert_wy_kayaker', d: 'Jul 2024', s: 5, t: "Clarks Fork at 1,500 cfs — The Box is no joke. Continuous Class V in a granite gorge. This is a serious expert run. Scouting is mandatory." }, { u: 'absaroka_paddler', d: 'Jun 2024', s: 5, t: 'Clarks Fork at 2,200 cfs in June — high water makes the big drops enormous. Only for experienced Class V paddlers. The canyon is breathtaking.' }],
+        revs: [],
         outs: [{ n: 'Beartooth Whitewater', d: 'Clarks Fork guided expert kayak clinics', l: '' }],
       },
       {
@@ -3066,7 +3062,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2012', title: "Greys River Road Controversy", text: "Conservation groups successfully challenged a proposal to pave the Greys River Road, preserving the valley's remote character. The unpaved road limits access and maintains the backcountry feel.", src: 'Bridger-Teton National Forest; Wyoming Outdoor Council' }] },
         ],
         docs: [],
-        revs: [{ u: 'greys_river_elk', d: 'Sep 2024', s: 5, t: "Greys River at 500 cfs in September — elk bugling on every hillside. Floated 20 miles without seeing another boat. This is backcountry Wyoming at its best." }, { u: 'lincoln_co_angler', d: 'Jul 2024', s: 4, t: 'Greys at 1,200 cfs — good summer flows. Cutthroat trout in every pool. Moose at the put-in. Remote and beautiful.' }],
+        revs: [],
         outs: [{ n: 'Greys River Outfitters', d: 'Backcountry float fishing on the Greys', l: '' }],
       },
     ],
@@ -3091,7 +3087,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1990', title: "BLM Wilderness Study Area Designation", text: "The BLM designated Desolation Canyon a Wilderness Study Area, providing interim protections for over 300,000 acres of canyon wilderness. The designation recognized the area as one of the largest unroaded landscapes in the lower 48 states.", src: 'BLM Price Field Office; Utah Wilderness Coalition'}] },
         ],
         docs: [{ t: 'Desolation Canyon Wilderness Study Area Management Plan', s: 'BLM', y: 2008, tp: 'Federal', pg: 175 , url: 'https://www.blm.gov/visit/desolation-canyon'}],
-        revs: [{ u: 'desert_river_rat', d: 'Jun 2024', s: 5, t: "Six days through Desolation at 4,500 cfs — perfect June level. Fremont rock art at every camp, bighorn sheep on the cliffs, and nobody else for 84 miles. This is the real deal." }, { u: 'utah_canyoneer', d: 'May 2024', s: 5, t: 'Deso at 7,000 cfs in May — bigger water than expected. Three Fords and Coal Creek rapids were genuine Class III. Camp at Firewater Canyon was otherworldly.' }],
+        revs: [],
         outs: [{ n: 'Holiday River Expeditions', d: 'Desolation Canyon multi-day guided trips', l: 'bikeraft.com' }, { n: 'OARS', d: 'Green River Desolation Canyon expeditions', l: 'oars.com' }],
       },
       {
@@ -3107,7 +3103,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1983', title: "BLM River Recreation Management Plan", text: "The BLM established a permit system for the San Juan River, recognizing its significance as one of the premier desert river trips in the Southwest. The management plan balanced recreation with protection of irreplaceable archaeological resources.", src: 'BLM Monticello Field Office (1983)' }] },
         ],
         docs: [{ t: 'San Juan River Habitat Improvement — Pagosa Springs Partnership', s: 'Trout Unlimited', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.tu.org/magazine/conservation/watersmart-the-smartest-water-program-youve-never-heard-about/' }],
-        revs: [{ u: 'monument_valley_paddler', d: 'Apr 2024', s: 5, t: "San Juan at 1,800 cfs in April — perfect spring level. Puebloan ruins at River House were breathtaking. The Goosenecks section is geology on a scale that makes you feel very small." }, { u: 'desert_float_nm', d: 'Mar 2024', s: 4, t: 'Mexican Hat to Clay Hills at 800 cfs — low but floatable. Had to line one rapid. The ruins and rock art make this trip unforgettable.' }],
+        revs: [],
         outs: [{ n: 'Wild Rivers Expeditions', d: 'San Juan River guided trips from Bluff', l: 'riversandruin.com' }, { n: 'Four Corners River Sports', d: 'San Juan River rentals and shuttles', l: 'fourcornersriversports.com' }],
       },
       {
@@ -3123,7 +3119,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1964', title: "Canyonlands National Park Established", text: "President Lyndon Johnson signed the bill creating Canyonlands National Park, permanently protecting the Confluence and Cataract Canyon. The park encompasses 337,598 acres of canyon wilderness at the heart of the Colorado Plateau.", src: 'National Park Service; Congressional Record (1964)' }] },
         ],
         docs: [{ t: 'Canyonlands National Park River Management Plan', s: 'NPS', y: 2015, tp: 'Federal', pg: 200 , url: 'https://www.nps.gov/cany/learn/management/index.htm'}],
-        revs: [{ u: 'cataract_veteran', d: 'Jun 2024', s: 5, t: "Cataract at 25,000 cfs in June — Big Drop 2 was the largest rapid I have ever run. Waves over 15 feet. Absolutely world-class expedition whitewater in the heart of Canyonlands." }, { u: 'moab_river_guide', d: 'May 2024', s: 5, t: 'Cataract at 14,000 cfs — perfect May level. The Confluence is a spiritual place. Four days from Mineral Bottom through the Big Drops. Nothing else like it in North America.' }],
+        revs: [],
         outs: [{ n: 'Sheri Griffith Expeditions', d: 'Cataract Canyon multi-day whitewater trips', l: 'griffithexp.com' }, { n: 'Tag-A-Long Expeditions', d: 'Cataract Canyon and Canyonlands river trips', l: 'tagalong.com' }],
       },
       {
@@ -3138,7 +3134,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2013', title: "Provo River Restoration Project", text: "The Provo River Restoration Project re-meandered 10 miles of the middle Provo, removing channelization from the 1940s and restoring natural floodplain habitat. Trout populations doubled within five years.", src: 'Utah Division of Wildlife Resources; Provo River Watershed Council' }] },
         ],
         docs: [],
-        revs: [{ u: 'heber_angler', d: 'Sep 2024', s: 5, t: "Middle Provo at 350 cfs — perfect fall flows. Brown trout spawning run was incredible. The restoration project transformed this river." }, { u: 'wasatch_paddler', d: 'Jun 2024', s: 4, t: 'Provo River through Heber Valley at 600 cfs — gentle float with Wasatch views. World-class trout water with easy access from Salt Lake.' }],
+        revs: [],
         outs: [{ n: 'Park City Fly Fishing', d: 'Provo River guided fly fishing floats', l: '' }],
       },
       {
@@ -3153,7 +3149,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2016', title: "Weber River Blue-Ribbon Fishery", text: "Utah Division of Wildlife Resources designated sections of the Weber River as Blue-Ribbon fishery, recognizing the exceptional brown trout populations in the upper river and canyon sections.", src: 'Utah Division of Wildlife Resources' }] },
         ],
         docs: [],
-        revs: [{ u: 'ogden_angler', d: 'Jul 2024', s: 4, t: "Weber Canyon at 1,200 cfs — fun Class II–III whitewater with good trout fishing in the pools between rapids. Easy day trip from Ogden." }, { u: 'summit_co_paddler', d: 'Jun 2024', s: 4, t: 'Upper Weber near Oakley at 800 cfs — beautiful meadow float through ranch country. Big browns under the cutbanks.' }],
+        revs: [],
         outs: [{ n: 'Weber River Outfitters', d: 'Guided fishing and paddling on the Weber', l: '' }],
       },
       {
@@ -3168,7 +3164,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2009', title: "Logan Canyon Scenic Byway Designation", text: "Logan Canyon was designated a National Scenic Byway, recognizing the outstanding natural beauty of the limestone canyon, the Logan River corridor, and the surrounding Bear River Range.", src: 'Federal Highway Administration; Utah Department of Transportation' }] },
         ],
         docs: [],
-        revs: [{ u: 'cache_valley_angler', d: 'Aug 2024', s: 4, t: "Logan River at 200 cfs — late summer flows but the canyon is gorgeous. Limestone cliffs and clear water. Great dry fly fishing." }, { u: 'usu_paddler', d: 'May 2024', s: 4, t: 'Logan River at 500 cfs during spring runoff — the canyon section is beautiful and the Class I–II water is perfect for beginners.' }],
+        revs: [],
         outs: [{ n: 'Cache Valley Anglers', d: 'Logan River guided fishing and paddling', l: '' }],
       },
       {
@@ -3183,7 +3179,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1984', title: "McPhee Dam — The Dolores Transformed", text: "McPhee Dam, completed in 1984, dramatically reduced flows in the Dolores River, making multi-day trips possible only in high snowmelt years. The dam remains one of the most controversial water projects in Colorado and Utah.", src: 'Bureau of Reclamation; Dolores River Boating Advocates' }] },
         ],
         docs: [],
-        revs: [{ u: 'dolores_river_rat', d: 'May 2024', s: 5, t: "Dolores at 3,000 cfs — a big water year! Slickrock Canyon was spectacular. Class III–IV rapids in a 1,000-foot sandstone gorge. This trip only happens every few years." }, { u: 'desert_canyon_paddler', d: 'Apr 2024', s: 4, t: 'Dolores at 1,500 cfs — lower but runnable. Ponderosa Gorge was beautiful. Check the McPhee release schedule — this river is feast or famine.' }],
+        revs: [],
         outs: [{ n: 'Dvorak Expeditions', d: 'Dolores River multi-day canyon trips', l: '' }],
       },
       {
@@ -3198,7 +3194,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1985', title: "BLM Permit System Established", text: "The BLM established a permit system for Westwater Canyon to manage the growing demand for this accessible one-day whitewater run near Moab. The canyon remains one of the most popular permitted river runs in the West.", src: 'BLM Moab Field Office' }] },
         ],
         docs: [],
-        revs: [{ u: 'moab_boater', d: 'Jun 2024', s: 5, t: "Westwater at 10,000 cfs — Funnel Falls and Room of Doom were massive. The black Precambrian walls make this canyon feel ancient. Best single-day whitewater in Utah." }, { u: 'co_river_runner', d: 'May 2024', s: 4, t: 'Westwater at 6,000 cfs — perfect May level. Skull rapid was big but clean. Get your BLM permit early — weekends fill fast.' }],
+        revs: [],
         outs: [{ n: 'Moab Adventure Center', d: 'Westwater Canyon guided rafting trips', l: '' }],
       },
     ],
@@ -3223,7 +3219,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2013', title: "Rio Grande del Norte National Monument", text: "President Obama designated 242,555 acres of the Taos Plateau volcanic field and Rio Grande gorge as Rio Grande del Norte National Monument, permanently protecting the Taos Box and surrounding landscape.", src: 'Presidential Proclamation (2013); BLM New Mexico' }] },
         ],
         docs: [{ t: 'Rio Grande Wild & Scenic River Management Plan', s: 'BLM', y: 2012, tp: 'Federal', pg: 185 , url: 'https://www.rivers.gov/sites/rivers/files/documents/plans/rio-grande-plan.pdf'}],
-        revs: [{ u: 'taos_kayaker', d: 'May 2024', s: 5, t: "Taos Box at 1,500 cfs in May — perfect spring runoff level. The 800-foot basalt walls are otherworldly. Soaked in Manby Hot Springs at mile 5. This is the best single-day whitewater in the Southwest." }, { u: 'rio_grande_regular', d: 'Jun 2024', s: 4, t: 'Taos Box at 2,200 cfs — pushy water through the gorge. Powerline rapid was big. The hot springs were worth every portage to get there.' }],
+        revs: [],
         outs: [{ n: 'Far Flung Adventures', d: 'Taos Box guided whitewater trips', l: 'farflung.com' }, { n: 'New Mexico River Adventures', d: 'Rio Grande Taos Box expeditions', l: 'newmexicoriveradventures.com' }],
       },
       {
@@ -3239,7 +3235,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2012', title: "Rio Chama Wilderness River Management", text: "The Santa Fe National Forest updated the Rio Chama management plan, establishing a permit system to protect the wilderness character of the canyon. Scheduled dam releases from El Vado provide reliable whitewater flows during the summer season.", src: 'Santa Fe National Forest; BLM Taos Field Office (2012)' }] },
         ],
         docs: [{ t: 'Rio Chama Wild & Scenic River Management Plan', s: 'Santa Fe NF', y: 2012, tp: 'Federal', pg: 150 , url: 'https://rivers.gov/sites/rivers/files/documents/plans/rio-chama-plan.pdf'}],
-        revs: [{ u: 'chama_floater', d: 'Jul 2024', s: 5, t: "Rio Chama at 800 cfs on a scheduled release — two nights in the canyon with walls turning every shade of red and gold. The Monastery of Christ in the Desert at mile 22 is surreal. Pure O'Keeffe country." }, { u: 'santa_fe_paddler', d: 'Jun 2024', s: 4, t: "Chama at 500 cfs — lower but beautiful. Had to line one rocky rapid. The canyon color palette is unlike anything else in New Mexico." }],
+        revs: [],
         outs: [{ n: 'Far Flung Adventures', d: 'Rio Chama wilderness float trips', l: 'farflung.com' }, { n: 'New Wave Rafting', d: 'Rio Chama multi-day guided trips', l: 'newwaverafting.com' }],
       },
       {
@@ -3255,7 +3251,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2020', title: "Gila River Diversion Defeated", text: "After decades of proposals to divert the Gila River for downstream agriculture and municipal use, the New Mexico Interstate Stream Commission officially abandoned the controversial Gila diversion project in 2020, protecting the river's free-flowing character through the wilderness.", src: 'New Mexico Interstate Stream Commission (2020); Gila Conservation Coalition' }] },
         ],
         docs: [],
-        revs: [{ u: 'gila_wilderness_hiker', d: 'Oct 2024', s: 5, t: "Gila at 180 cfs in October — low but magical. Hot springs at every bend, Mogollon cliff dwellings glowing in the morning light. You are walking in Aldo Leopold's footsteps. This is where wilderness began." }, { u: 'nm_desert_paddler', d: 'Apr 2024', s: 4, t: "Gila at 400 cfs on spring snowmelt — best flows of the year. Three days from the cliff dwellings to Sapillo Creek. Soaked in Jordan Hot Springs for an hour. The most remote river in the lower 48." }],
+        revs: [],
         outs: [{ n: 'Gila Hike & Bike', d: 'Gila River wilderness packrafting trips', l: 'gilahikeandbike.com' }],
       },
       {
@@ -3270,7 +3266,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1990', title: "Pecos Wilderness Expansion", text: "Congress expanded the Pecos Wilderness to 223,667 acres, protecting the headwaters of the Pecos River and ensuring the watershed's pristine character for future generations.", src: 'Santa Fe National Forest; Wilderness Act Amendments (1990)' }] },
         ],
         docs: [],
-        revs: [{ u: 'pecos_angler', d: 'Sep 2024', s: 5, t: "Upper Pecos at 180 cfs — mountain trout water in the Sangre de Cristos. Clear, cold, and beautiful. The wilderness headwaters are as pristine as it gets." }, { u: 'santa_fe_hiker', d: 'Jul 2024', s: 4, t: 'Pecos below Cowles at 250 cfs — gentle creek float through gorgeous mountain forest. Pack a fly rod.' }],
+        revs: [],
         outs: [{ n: 'Pecos River Guide Service', d: 'Guided fishing and paddling on the Pecos', l: '' }],
       },
       {
@@ -3285,7 +3281,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2016', title: "Red River Water Quality Restoration", text: "A multi-agency effort to address legacy mining contamination in the Red River watershed resulted in significant water quality improvements. Abandoned mine reclamation projects in the Questa mining district reduced heavy metal loading.", src: 'EPA; New Mexico Environment Department; Carson National Forest' }] },
         ],
         docs: [],
-        revs: [{ u: 'taos_creek_boater', d: 'May 2024', s: 4, t: "Red River at 350 cfs during spring runoff — fun Class II–III creek run through Carson NF. Short season but worth catching." }, { u: 'nm_mountain_paddler', d: 'Jun 2024', s: 4, t: 'Red River at 200 cfs — lower but still fun. The canyon section below town has great rapids for its size.' }],
+        revs: [],
         outs: [{ n: 'Taos Mountain Outfitters', d: 'Red River guided paddling and fishing', l: '' }],
       },
       {
@@ -3300,7 +3296,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2015', title: "Transfer to National Park Service", text: "The Valles Caldera National Preserve was transferred from the Valles Caldera Trust to the National Park Service in 2015, ensuring long-term protection and public access to the caldera and its streams.", src: 'NPS; Congressional Record (2014)' }] },
         ],
         docs: [],
-        revs: [{ u: 'valles_caldera_visitor', d: 'Aug 2024', s: 5, t: "San Antonio Creek at 50 cfs — tiny but magical. Paddling through a volcanic caldera with elk grazing on the meadow edges. Nowhere else like this." }, { u: 'nm_creek_explorer', d: 'Jul 2024', s: 4, t: 'San Antonio Creek in the Valles Caldera at 40 cfs — more of a wade than a paddle but the setting is extraordinary. Volcanic springs feed the creek year-round.' }],
+        revs: [],
         outs: [{ n: 'Valles Caldera Outfitters', d: 'Guided creek experiences in the caldera', l: '' }],
       },
       {
@@ -3315,7 +3311,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2009', title: "Sabinoso Wilderness Designated", text: "Congress designated 16,030 acres of the Sabinoso Canyon along the Canadian River as wilderness, protecting one of the most remote and least-visited canyon landscapes in New Mexico.", src: 'BLM Taos Field Office; Congressional Record (2009)' }] },
         ],
         docs: [],
-        revs: [{ u: 'ne_nm_explorer', d: 'Apr 2024', s: 4, t: "Canadian River through Sabinoso Canyon at 300 cfs — remote and beautiful. Basalt walls, golden eagles overhead. This is New Mexico most people never see." }, { u: 'plains_paddler', d: 'May 2024', s: 4, t: 'Canadian River at 500 cfs on spring runoff — gentle float through the high plains. Pronghorn everywhere. Total solitude.' }],
+        revs: [],
         outs: [{ n: 'High Plains River Trips', d: 'Canadian River guided canyon floats', l: '' }],
       },
       {
@@ -3330,7 +3326,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1993', title: "Jemez National Recreation Area", text: "Congress established the Jemez National Recreation Area within the Santa Fe National Forest, protecting the volcanic landscape, hot springs, and river corridor of the Jemez Mountains.", src: 'Santa Fe National Forest; Congressional Record (1993)' }] },
         ],
         docs: [],
-        revs: [{ u: 'jemez_hot_springs', d: 'Oct 2024', s: 5, t: "Jemez River at 100 cfs — small creek but the hot springs along the way make it magical. Red rock canyon walls and volcanic geology everywhere." }, { u: 'abq_paddler', d: 'Apr 2024', s: 4, t: 'Jemez at 200 cfs on spring snowmelt — best flows of the year. The canyon section is beautiful. Stop at the hot springs — you earned it.' }],
+        revs: [],
         outs: [{ n: 'Jemez Valley Adventures', d: 'Guided Jemez River and hot springs trips', l: '' }],
       },
     ],
@@ -3355,7 +3351,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2012', title: 'Katahdin Woods and Waters National Monument Campaign', text: "Roxanne Quimby's donation of 87,500 acres along the East Branch led to the establishment of Katahdin Woods and Waters National Monument in 2016, further protecting the greater Penobscot watershed.", src: 'NPS; Elliotsville Foundation' }] },
         ],
         docs: [{ t: 'Penobscot River Restoration — Veazie & Great Works Dam Removal', s: 'Trout Unlimited / Penobscot River Restoration Trust', y: 2013, tp: 'Conservation', pg: 1, url: 'https://kenlockwood.tu.org/tu-projects/penobscot-river-restoration' }],
-        revs: [{ u: 'katahdin_paddler', d: 'Jul 2024', s: 5, t: 'Ripogenus Gorge at 3,200 cfs — Cribwork was enormous, Exterminator lived up to its name. Katahdin towering above the whole run. Best whitewater in New England.' }, { u: 'maine_ww_crew', d: 'Aug 2024', s: 4, t: "West Branch at 2,000 cfs — more technical at lower flows but still big. The gorge walls and Katahdin views don't get old." }],
+        revs: [],
         outs: [{ n: 'New England Outdoor Center', d: 'Penobscot West Branch specialists, Millinocket', l: 'neoc.com' }, { n: 'North Country Rivers', d: 'Guided Penobscot rafting trips', l: 'northcountryrivers.com' }],
       },
       {
@@ -3371,7 +3367,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1966', title: "America's First State Wild and Scenic Waterway", text: "Maine designated the Allagash as the nation's first state-administered Wild and Scenic waterway in 1966, two years before the federal Wild & Scenic Rivers Act. The 92-mile corridor has been managed as wilderness ever since.", src: 'Maine Bureau of Parks and Lands; National Wild & Scenic Rivers Council' }] },
         ],
         docs: [{ t: 'Allagash Wilderness Waterway Management Plan', s: 'Maine Bureau of Parks and Lands', y: 2012, tp: 'Recreation', pg: 195 , url: 'https://www.maine.gov/dacf/parks/get_involved/planning_and_acquisition/management_plans/docs/AWW_Final_mgt_plan_2012.pdf'}],
-        revs: [{ u: 'northwoods_canoe', d: 'Aug 2024', s: 5, t: 'Seven days from Chamberlain to Allagash Village. Saw 14 moose and two people. Brook trout on every cast. This is what wilderness means.' }, { u: 'allagash_repeat', d: 'Jul 2024', s: 5, t: "Third trip down the Allagash. Churchill Dam to Long Lake at 500 cfs — Chase Rapids were perfect. Maine's greatest treasure." }],
+        revs: [],
         outs: [{ n: 'Allagash Canoe Trips', d: 'Full-service Allagash guided expeditions', l: 'allagashcanoetrips.com' }, { n: 'Pelletier Loggers Family Restaurant & Campground', d: 'Allagash shuttle and logistics', l: 'pelletierloggers.com' }],
       },
       {
@@ -3387,7 +3383,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1976', title: "Birth of Maine's Rafting Industry", text: "Commercial whitewater rafting began on the Kennebec in the mid-1970s, transforming The Forks from a dying logging village into New England's premier whitewater destination. Today over 50,000 rafters run the Kennebec annually.", src: 'Maine Professional River Outfitters Association' }] },
         ],
         docs: [{ t: 'Kennebec Gorge Recreational Flow Negotiations', s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/content/River/view/river-detail/438/flow' }],
-        revs: [{ u: 'forks_local', d: 'Jul 2024', s: 5, t: "Kennebec at 6,000 cfs release — Magic Falls was massive. Best commercial raft trip in New England, hands down." }, { u: 'ne_whitewater_fan', d: 'Aug 2024', s: 4, t: 'First time on the Kennebec at 3,500 cfs. Magic Falls scared me half to death. Signing up again next summer.' }],
+        revs: [],
         outs: [{ n: 'Crab Apple Whitewater', d: 'Kennebec and Penobscot rafting, The Forks', l: 'crabapplewhitewater.com' }, { n: 'Northern Outdoors', d: 'The Forks resort and rafting since 1976', l: 'northernoutdoors.com' }],
       },
       {
@@ -3402,7 +3398,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1775', title: "Arnold Expedition — March to Quebec", text: "Benedict Arnold's 1775 expedition to attack Quebec followed the Dead River through this same corridor. The soldiers endured brutal conditions in the wilderness, and many perished along the Dead River's swampy banks before reaching Canada.", src: 'NPS; Maine Historical Society; Kenneth Roberts, Arundel (1929)' }] },
         ],
         docs: [],
-        revs: [{ u: 'ne_dam_release', d: 'May 2024', s: 5, t: 'Flagstaff release at 5,000 cfs — Grand Falls was enormous. Sixteen miles of nonstop big water. The Dead River lives up to the hype.' }, { u: 'maine_ww_addict', d: 'Jun 2024', s: 5, t: 'Dead River at 3,500 cfs — continuous Class III–IV all day. Pair it with the Kennebec the next day for the ultimate Maine whitewater weekend.' }],
+        revs: [],
         outs: [{ n: 'Crab Apple Whitewater', d: 'Dead River and Kennebec rafting, The Forks', l: 'crabapplewhitewater.com' }, { n: 'Northern Outdoors', d: 'Dead River dam-release trips and lodging', l: 'northernoutdoors.com' }],
       },
       {
@@ -3417,7 +3413,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1984', title: "St. Croix International Waterway Commission", text: "The United States and Canada established the St. Croix International Waterway Commission to jointly manage the border river corridor, balancing recreation, conservation, and the interests of the Passamaquoddy Nation.", src: 'St. Croix International Waterway Commission; Maine Bureau of Parks and Lands' }] },
         ],
         docs: [{ t: 'St. Croix International Waterway Management Plan', s: 'St. Croix International Waterway Commission', y: 2010, tp: 'Federal', pg: 180 , url: 'https://www.stcroix.org/management-plan'}],
-        revs: [{ u: 'downeast_canoe', d: 'Jul 2024', s: 5, t: 'Vanceboro to Grand Falls over four days at 1,200 cfs — moose at every bend, bald eagles, total solitude. The most underrated canoe trip in New England.' }, { u: 'maine_border_paddle', d: 'Aug 2024', s: 4, t: 'St. Croix at 800 cfs — remote, wild, and virtually unknown. Camping on islands between the US and Canada. Magical.' }],
+        revs: [],
         outs: [{ n: 'Sunrise Canoe and Kayak', d: 'St. Croix River trips and Downeast Maine outfitting', l: 'sunrisecanoeandkayak.com' }],
       },
       {
@@ -3432,7 +3428,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1900s', title: "Rangeley Lakes — Fly Fishing Capital of the East", text: "By the early 1900s, the Rangeley Lakes region — and the Rapid River in particular — had become the fly fishing capital of the eastern United States. The world-record brook trout (over 8 pounds) were taken from these waters, drawing wealthy sportsmen from Boston and New York to remote sporting camps.", src: 'Rangeley Lakes Region Historical Society; Maine Inland Fisheries & Wildlife' }] },
         ],
         docs: [],
-        revs: [{ u: 'rangeley_fly_fisher', d: 'Jun 2024', s: 5, t: "Rapid River at 600 cfs — landlocked salmon in every pool. Catch-and-release only, crystal clear, ice-cold. The most hallowed water in New England." }, { u: 'maine_wilderness_angler', d: 'Jul 2024', s: 5, t: "Three miles of perfection. Brook trout and salmon stacked in the runs. Remote, pristine, and absolutely sacred. Bring your A-game." }],
+        revs: [],
         outs: [{ n: 'Lakewood Camps', d: 'Historic sporting camp on Middle Dam, Rapid River access', l: '' }],
       },
       {
@@ -3447,7 +3443,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2009', title: "Dam Removals — Atlantic Salmon Restoration", text: "Federal and state agencies removed multiple dams on the Machias River system beginning in 2009, reopening over 40 miles of Atlantic salmon habitat. The Machias is one of eight Maine rivers designated as critical habitat for endangered Atlantic salmon.", src: 'NOAA Fisheries; Maine DMR; Atlantic Salmon Federation' }] },
         ],
         docs: [],
-        revs: [{ u: 'downeast_wilderness_paddle', d: 'Jul 2024', s: 5, t: "Four days from Fifth Machias Lake to tidewater at 500 cfs — moose, eagles, and total solitude through the blueberry barrens. Downeast Maine at its most remote." }, { u: 'machias_salmon_watch', d: 'Aug 2024', s: 4, t: "Lower Machias at 400 cfs — watched Atlantic salmon jumping at the old dam sites. The restoration is working. Historic river." }],
+        revs: [],
         outs: [{ n: 'Sunrise Canoe and Kayak', d: 'Machias River trips and Downeast Maine outfitting', l: '' }],
       },
       {
@@ -3462,7 +3458,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1850s–1960s', title: "North Woods Timber Industry", text: "The Seboeis River corridor was logged extensively during Maine's timber era, with log drives running the river each spring. The surrounding timberlands remain commercially managed today, and access to the river is through private logging road networks controlled by timber companies.", src: 'Maine Forest Service; Penobscot County Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'north_woods_paddler', d: 'Jun 2024', s: 5, t: "Seboeis at 500 cfs — continuous Class II–III through the North Woods. Brook trout in every pool. Saw moose three times. This is the real Maine." }, { u: 'me_backcountry_kayaker', d: 'Jul 2024', s: 4, t: "Remote, bumpy logging roads to the put-in, then 30 miles of wilderness whitewater. The Seboeis is not for beginners but it rewards the effort." }],
+        revs: [],
         outs: [{ n: 'North Maine Woods Inc.', d: 'Access permits and gate information for North Woods rivers', l: '' }],
       },
     ],
@@ -3487,7 +3483,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1892', title: 'Adirondack Park — Forever Wild', text: "The creation of the Adirondack Park in 1892 and the 'Forever Wild' clause in the New York State Constitution (1894) permanently protected the Hudson River Gorge corridor from development.", src: 'New York State Constitution, Article XIV; Adirondack Park Agency' }] },
         ],
         docs: [],
-        revs: [{ u: 'adirondack_paddler', d: 'May 2024', s: 5, t: 'Hudson Gorge at 4,500 cfs in spring runoff — Blue Ledge was thundering, no road access for 17 miles. Hardest part is believing this is the same river that runs through Manhattan.' }, { u: 'northeast_ww', d: 'Apr 2024', s: 5, t: 'Gorge at 3,200 cfs — continuous Class III–IV with Adirondack wilderness on every side. Best whitewater run east of West Virginia.' }],
+        revs: [],
         outs: [{ n: 'Hudson River Rafting Company', d: 'Hudson Gorge specialists, North Creek', l: 'hudsonriverrafting.com' }, { n: 'Wild Waters Outdoor Center', d: 'Adirondack Hudson Gorge trips', l: 'wildwaters.net' }],
       },
       {
@@ -3503,7 +3499,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2010', title: 'Whitewater Recreation Revival', text: "The Black River's whitewater sections have experienced a recreation renaissance as paddlers discover the reliable dam-controlled flows and challenging gorge runs.", src: 'American Whitewater; NYS DEC' }] },
         ],
         docs: [],
-        revs: [{ u: 'black_river_local', d: 'Jun 2024', s: 5, t: "Watertown gorge at 2,800 cfs — continuous Class III–IV for miles. Dam releases keep it running all summer. New York's best-kept whitewater secret." }, { u: 'adk_creek_boater', d: 'May 2024', s: 4, t: 'Lyons Falls section at 1,500 cfs — technical Class IV with real consequences. Adirondack gorge scenery is stunning.' }],
+        revs: [],
         outs: [{ n: 'Adirondack River Outfitters', d: 'Black River whitewater trips', l: 'aronthecreek.com' }],
       },
       {
@@ -3518,7 +3514,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1980s', title: 'Salmon Stocking Program — World-Class Fishery', text: "New York's aggressive salmon and steelhead stocking program transformed the Salmon River into one of the premier fall fishing destinations in North America. Chinook salmon exceeding 30 pounds run the river each October.", src: 'NYS DEC Fisheries Division; Salmon River Fish Hatchery' }] },
         ],
         docs: [],
-        revs: [{ u: 'salmon_river_angler', d: 'Oct 2024', s: 5, t: 'Fall Chinook run at 1,200 cfs — fish stacked in every pool from Altmar to Pulaski. Hooked a 28-pound king on a swung fly. World-class fishery.' }, { u: 'ny_kayak_fish', d: 'Sep 2024', s: 4, t: 'Gorge section at 900 cfs — fun Class III whitewater with salmon jumping all around the boat. Unique experience.' }],
+        revs: [],
         outs: [{ n: 'Whitaker Falls Fly Shop', d: 'Salmon River guiding and gear, Altmar', l: 'whitakerfalls.com' }, { n: 'Fat Nancy\'s Tackle Shop', d: 'Salmon River fishing headquarters, Pulaski', l: 'fatnancys.com' }],
       },
       {
@@ -3533,7 +3529,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1850s–1910', title: "Adirondack Logging and the Moose River", text: "The Moose River was a major log-driving corridor during the Adirondack timber boom. Spruce and hemlock were floated downstream to mills at Lyons Falls and Port Leyden. The river's steep gradient and narrow gorges made log drives dangerous and unpredictable.", src: 'Adirondack Museum; Lewis County Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'adk_creeker', d: 'Apr 2024', s: 5, t: 'Bottom Moose at 1,500 cfs — Crystal Falls, Fowlersville Falls, Agers Falls in sequence. Best Class IV–V run in the Northeast.' }, { u: 'ny_expert_kayak', d: 'May 2024', s: 5, t: 'Spring runoff at 2,000 cfs — the Moose was absolutely firing. Fowlersville Falls is a must-run drop. Adirondack whitewater at its finest.' }],
+        revs: [],
         outs: [{ n: 'Adirondack River Outfitters', d: 'Moose River whitewater trips and instruction', l: 'aronthecreek.com' }],
       },
       {
@@ -3548,7 +3544,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1978', title: "National Wild & Scenic River Designation", text: "Congress designated the Upper Delaware a component of the National Wild and Scenic Rivers System in 1978. The NPS manages the 73-mile corridor, protecting one of the last free-flowing stretches of the Delaware.", src: 'NPS Upper Delaware Scenic and Recreational River; National Wild & Scenic Rivers Council' }] },
         ],
         docs: [{ t: 'Upper Delaware Scenic and Recreational River Management Plan', s: 'NPS', y: 2010, tp: 'Federal', pg: 250 , url: 'https://www.nps.gov/upde/learn/management/planning.htm'}, { t: 'Delaware River Restoration Initiative — Brook Trout Conservation', s: 'Trout Unlimited', y: 2024, tp: 'Conservation', pg: 1, url: 'https://prioritywaters.tu.org/delaware-river-basin/' }],
-        revs: [{ u: 'catskills_paddler', d: 'Jun 2024', s: 5, t: 'Hancock to Callicoon at 3,500 cfs — twelve bald eagles in one day. The Upper Delaware is the best scenic float in the Northeast.' }, { u: 'family_canoe_ny', d: 'Jul 2024', s: 4, t: 'Callicoon to Barryville with the kids at 2,500 cfs — gentle current, gravel-bar lunch stops, eagle nests on the cliffs. Perfect family river.' }],
+        revs: [],
         outs: [{ n: "Lander's River Trips", d: 'Upper Delaware canoe and kayak rentals since 1955', l: 'landersrivertrips.com' }, { n: 'Kittatinny Canoes', d: 'Multi-day Upper Delaware trips and camping', l: 'kittatinny.com' }],
       },
       {
@@ -3563,7 +3559,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1924', title: "NYC Watershed — Ashokan Reservoir and Shandaken Tunnel", text: "New York City completed the Ashokan Reservoir on the Esopus in 1915 and the Shandaken Tunnel in 1924, diverting Schoharie Reservoir water into the Esopus via the Shandaken Portal. This engineering created the portal releases that sustain the creek's flow and trout fishery year-round.", src: 'NYC DEP; Catskill Center for Conservation and Development' }] },
         ],
         docs: [],
-        revs: [{ u: 'catskills_fly_angler', d: 'May 2024', s: 5, t: "Portal release at 600 cfs — brown trout rising in every pool below Phoenicia. The Esopus is the best trout stream in the Catskills and it's not close." }, { u: 'hudson_valley_kayaker', d: 'Jun 2024', s: 4, t: "Shandaken to Phoenicia at 800 cfs — fun Class II–III through the hemlock gorge. Great Catskills day trip." }],
+        revs: [],
         outs: [{ n: 'Town Tinker Tube Rental', d: 'Tubing, kayak, and canoe rentals on Esopus Creek, Phoenicia', l: '' }],
       },
       {
@@ -3578,7 +3574,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1930', title: "Great Sacandaga Lake — Flood Control Reservoir", text: "New York State completed the Conklingville Dam in 1930, creating Great Sacandaga Lake — then the largest man-made lake in the world — to control flooding on the Hudson River. The dam transformed the middle Sacandaga and created tailwater paddling opportunities below.", src: 'New York Power Authority; Hudson River Basin Commission' }] },
         ],
         docs: [],
-        revs: [{ u: 'adirondack_boater', d: 'Apr 2024', s: 5, t: "Upper Sacandaga at 1,500 cfs in spring runoff — continuous Class III–IV through the gorge. Best whitewater day in the southern Adirondacks." }, { u: 'ny_kayak_club', d: 'May 2024', s: 4, t: "Wells section at 800 cfs — fun Class II–III with mountain scenery. Accessible and reliable spring whitewater. Love the Sacandaga." }],
+        revs: [],
         outs: [{ n: 'Adirondack Rafting Company', d: 'Guided whitewater trips and kayak rentals on the Sacandaga', l: '' }],
       },
       {
@@ -3593,7 +3589,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '2000', title: "Northern Forest Canoe Trail — 740-Mile Water Route", text: "The Northern Forest Canoe Trail, completed in stages beginning in 2000, follows the Raquette River through the Adirondacks as part of a 740-mile water route from Old Forge, New York, to Fort Kent, Maine. The Raquette section is one of the trail's most iconic stretches.", src: 'Northern Forest Canoe Trail; Adirondack Park Agency' }] },
         ],
         docs: [],
-        revs: [{ u: 'adirondack_through_paddler', d: 'Jul 2024', s: 5, t: "Five days from Long Lake to Piercefield — carries, camps, and Class II–III rapids through the Adirondack wilderness. The Raquette is the quintessential Adirondack canoe trip." }, { u: 'nfct_section_hiker', d: 'Aug 2024', s: 4, t: "Raquette section of the Northern Forest Canoe Trail at 1,200 cfs — lake crossings, portages, and river running. Old-school Adirondack adventure." }],
+        revs: [],
         outs: [{ n: 'Raquette River Outfitters', d: 'Canoe and kayak rentals, shuttle service for Raquette River trips', l: '' }],
       },
       {
@@ -3608,7 +3604,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1890s', title: "Theodore Gordon — Father of American Dry Fly Fishing", text: "Theodore Gordon adapted British dry fly techniques to American waters on the Beaverkill in the 1890s, effectively inventing American dry fly fishing. His Quill Gordon fly, developed for Beaverkill hatches, remains one of the most iconic patterns in fly fishing. The stream became the spiritual center of American fly tying and angling tradition.", src: 'American Museum of Fly Fishing; Catskill Fly Fishing Center and Museum' }] },
         ],
         docs: [{ t: 'Catskill Fly Fishing Center and Museum Collection', s: 'CFFCM', y: 2024, tp: 'Heritage', pg: 1, url: '' }],
-        revs: [{ u: 'catskill_traditionalist', d: 'May 2024', s: 5, t: "Beaverkill at 200 cfs — fished Junction Pool at dusk with a Quill Gordon. Wild brown trout rising to Hendricksons. Standing where Theodore Gordon invented American dry fly fishing. Transcendent." }, { u: 'beaverkill_regular', d: 'Jun 2024', s: 5, t: "Upper Beaverkill at 150 cfs — brook trout in the pocket water, brown trout in the pools. The birthplace of American fly fishing still delivers." }],
+        revs: [],
         outs: [{ n: 'Beaverkill Angler', d: 'Beaverkill and Willowemoc fly fishing guides, Roscoe NY', l: 'beaverkillangler.com' }, { n: 'Dette Trout Flies', d: 'Hand-tied Catskill dry flies since 1928, Roscoe NY', l: '' }],
       },
     ],
@@ -3633,7 +3629,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1974', title: 'National Wild & Scenic River Designation', text: "Congress designated the Chattooga as a Wild & Scenic River in 1974, partially in response to the visibility generated by Deliverance.", src: 'USFS; National Wild & Scenic Rivers System' }] },
         ],
         docs: [],
-        revs: [{ u: 'se_creek_boater', d: 'Mar 2024', s: 5, t: 'Section IV at 1,400 cfs — Five Falls was absolutely firing. The Southeast at its wildest.' }, { u: 'chattooga_regular', d: 'Apr 2024', s: 5, t: 'Ran Section IV at 800 cfs — more technical at lower water but still intense. Bull Sluice never disappoints.' }],
+        revs: [],
         outs: [{ n: 'Southeastern Expeditions', d: 'Chattooga rafting since 1972, Clayton GA', l: 'southeasternexpeditions.com' }, { n: 'Wildwater Chattooga', d: 'Section III and IV guided trips', l: 'wildwaterchattooga.com' }],
       },
       {
@@ -3648,7 +3644,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1978', title: 'Chattahoochee River NRA — Urban National Park', text: "President Carter signed legislation creating the Chattahoochee River National Recreation Area in 1978, protecting 48 miles of river corridor through metro Atlanta. The park hosts over 3 million visitors annually.", src: 'NPS Chattahoochee River NRA; Georgia Conservancy' }] },
         ],
         docs: [{ t: 'Chattahoochee River NRA General Management Plan', s: 'NPS', y: 2009, tp: 'Federal', pg: 280 , url: 'https://npshistory.com/publications/chat/gmp-eis-2009.pdf'}, { t: 'Chattahoochee Wild Trout Improvement — Crayfish Creek Restoration', s: 'Trout Unlimited / Upper Chattahoochee Chapter', y: 2019, tp: 'Conservation', pg: 1, url: 'https://ucctu.org/conservation/embrace-a-stream-projects/' }],
-        revs: [{ u: 'atl_river_paddler', d: 'Jun 2024', s: 4, t: 'Buford Dam to Roswell at 1,200 cfs — cold tailwater through NPS parkland in the middle of Atlanta. Surreal.' }, { u: 'hooch_tuber', d: 'Jul 2024', s: 4, t: "Tubing from Powers Island at 800 cfs — Atlanta's best summer tradition. The Hooch is a treasure." }],
+        revs: [],
         outs: [{ n: 'Shoot the Hooch', d: 'Chattahoochee tubing and kayak rentals', l: 'shootthehooch.com' }, { n: 'High Country Outfitters', d: 'Atlanta paddling gear and Chattahoochee trips', l: 'highcountryoutfitters.com' }],
       },
       {
@@ -3663,7 +3659,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2015', title: "Georgia's Top Trout Stream", text: "The Toccoa tailwater has been recognized as one of Georgia's premier trout fisheries. Cold dam releases maintain water temperatures ideal for both brown and rainbow trout year-round.", src: 'Georgia DNR Wildlife Resources Division; Trout Unlimited Georgia' }] },
         ],
         docs: [],
-        revs: [{ u: 'blueridge_angler', d: 'May 2024', s: 5, t: 'Toccoa tailwater at 400 cfs — caught a 20-inch brown on a dry fly below the dam. Best trout stream in Georgia.' }, { u: 'ga_mountain_paddler', d: 'Jun 2024', s: 4, t: 'Deep Hole section at 800 cfs — fun Class II–III with gorgeous Blue Ridge scenery. Perfect day trip from Atlanta.' }],
+        revs: [],
         outs: [{ n: 'Toccoa Valley Outfitters', d: 'Toccoa River fly fishing guides and gear', l: 'toccoavalleyoutfitters.com' }, { n: 'Rolling Thunder River Company', d: 'Toccoa River tubing and kayak rentals', l: 'rollingthunderrivercompany.com' }],
       },
       {
@@ -3678,7 +3674,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2005', title: "Oconee River Greenway — Athens Embraces Its River", text: "The city of Athens developed the Oconee River Greenway, transforming neglected industrial riverfront into a multi-use trail and paddle access corridor that connects the University of Georgia campus to downstream parkland.", src: 'Athens-Clarke County Leisure Services; Oconee River Greenway Commission' }] },
         ],
         docs: [],
-        revs: [{ u: 'athens_paddler', d: 'Apr 2024', s: 4, t: 'Athens greenway section at 1,200 cfs — easy Class I–II through a beautiful college town. Largemouth bass on every other cast.' }, { u: 'ga_piedmont_float', d: 'May 2024', s: 4, t: 'Barnett Shoals to Milledgeville over two days at 800 cfs — quiet Piedmont paddling with great campsites on sandbars.' }],
+        revs: [],
         outs: [{ n: 'Big Dogs on the River', d: 'Athens-based canoe and kayak rentals', l: 'bigdogsontheriver.com' }],
       },
       {
@@ -3693,7 +3689,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1829–1838', title: "Georgia Gold Rush and Cherokee Removal", text: "The discovery of gold near Dahlonega in 1829 — along the upper Etowah — triggered America's first gold rush and accelerated the forced removal of the Cherokee Nation on the Trail of Tears in 1838.", src: 'Dahlonega Gold Museum; Georgia Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'north_ga_paddler', d: 'Mar 2024', s: 4, t: 'Dahlonega to Dawsonville at 600 cfs — mountain-fed water, easy rapids, gorgeous north Georgia scenery. Great spring float.' }, { u: 'etowah_explorer', d: 'Apr 2024', s: 4, t: 'Canton section at 1,000 cfs — visited Etowah Mounds on the way. Paddling through 1,000 years of history.' }],
+        revs: [],
         outs: [{ n: 'Appalachian Outfitters', d: 'Dahlonega-based kayak rentals and Etowah trips', l: 'appalachianoutfitters.com' }],
       },
       {
@@ -3708,7 +3704,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1940', title: "Amicalola Falls State Park Established", text: "Georgia established Amicalola Falls State Park in 1940, preserving the tallest cascading waterfall east of the Mississippi. The park serves as the southern approach to Springer Mountain, the Appalachian Trail's southern terminus.", src: 'Georgia State Parks; Appalachian Trail Conservancy' }] },
         ],
         docs: [],
-        revs: [{ u: 'ga_creeking', d: 'Mar 2024', s: 5, t: "Amicalola below the falls at 600 cfs after rain — continuous Class III–IV through the gorge. Steep, technical, and absolutely gorgeous north Georgia creek running." }, { u: 'appalachian_paddler', d: 'Feb 2024', s: 4, t: "Amicalola at 400 cfs — tight and technical with mountain laurel overhead. Short run but high quality. Check the gauge and go when it rains." }],
+        revs: [],
         outs: [{ n: 'North Georgia Paddle Sports', d: 'Kayak rentals and guided creek trips near Dawsonville', l: '' }],
       },
       {
@@ -3723,7 +3719,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2008', title: "Shoal Bass Conservation — Endemic Species Protection", text: "Georgia DNR initiated a comprehensive shoal bass conservation program on the Broad River, recognizing the species as endemic to a handful of Georgia and Alabama rivers. The Broad River population is considered critical to the species' long-term survival.", src: 'Georgia DNR Wildlife Resources Division; American Fisheries Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'ne_ga_angler', d: 'Apr 2024', s: 5, t: "Carlton section at 500 cfs — granite shoals, shoal bass on every ledge. This fish exists nowhere else on earth. The Broad River is a Georgia treasure." }, { u: 'piedmont_paddler_ga', d: 'May 2024', s: 4, t: "Danielsville to Carlton at 700 cfs — gentle Class I–II over granite, pastoral farmland, easy and beautiful. Northeast Georgia's best-kept secret." }],
+        revs: [],
         outs: [{ n: 'Broad River Outpost', d: 'Canoe and kayak rentals for Broad River float trips, Carlton', l: '' }],
       },
       {
@@ -3738,7 +3734,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1977', title: "Carters Lake Dam Completed", text: "The U.S. Army Corps of Engineers completed Carters Dam on the Coosawattee River in 1977, creating Carters Lake — one of the deepest reservoirs in the Southeast. The cold tailwater below the dam transformed the lower river into a year-round trout fishery.", src: 'USACE; Georgia DNR Wildlife Resources Division' }] },
         ],
         docs: [],
-        revs: [{ u: 'north_ga_trout', d: 'Mar 2024', s: 4, t: "Carters Dam tailwater at 400 cfs — cold, clear water and stocked trout year-round. Great wade fishing and easy paddling below the dam." }, { u: 'ga_mountain_kayaker', d: 'Apr 2024', s: 4, t: "Upper Coosawattee above the lake at 600 cfs — fun Class II–III through the mountain valley. Remote and beautiful north Georgia creek." }],
+        revs: [],
         outs: [{ n: 'Carters Lake Marina', d: 'Kayak rentals and tailwater access near Carters Dam', l: '' }],
       },
     ],
@@ -3763,7 +3759,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1968', title: "Original Wild & Scenic Designation", text: "The St. Croix was among the first eight rivers in the nation designated under the Wild & Scenic Rivers Act, signed by President Johnson on October 2, 1968. The designation permanently protected the upper river corridor from damming and development.", src: 'National Park Service — St. Croix National Scenic Riverway' }] },
         ],
         docs: [{ t: 'St. Croix National Scenic Riverway General Management Plan', s: 'NPS', y: 2013, tp: 'Federal', pg: 280 , url: 'https://www.nps.gov/sacn/learn/management/upload/SACN_1998_GMP-508.pdf'}],
-        revs: [{ u: 'northstar_paddler', d: 'Jul 2024', s: 5, t: 'Upper St. Croix three-day canoe trip at 3,200 cfs — incredible boreal forest, bald eagles everywhere. The Dalles gorge section is jaw-dropping.' }, { u: 'mn_wi_border_rat', d: 'Aug 2024', s: 4, t: 'Taylors Falls to Osceola at 5,000 cfs — perfect flow, sandbar lunch stops, saw otters playing in the rapids.' }],
+        revs: [],
         outs: [{ n: 'Wild River Outfitters', d: 'Full-service canoe and kayak rentals on the upper St. Croix', l: 'wildriveroutfitters.com' }, { n: 'Taylors Falls Canoe Rental', d: 'Day trips through the Dalles and lower St. Croix', l: 'taylorsfallscanoe.com' }],
       },
       {
@@ -3778,7 +3774,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1978', title: "BWCAW Wilderness Act", text: "Congress passed the Boundary Waters Canoe Area Wilderness Act, establishing the most-visited wilderness area in the United States. The 1.1-million-acre BWCAW prohibits motorized watercraft on most lakes and limits daily entry permits, preserving one of the last truly wild landscapes in the eastern U.S.", src: 'USFS Superior National Forest; Friends of the Boundary Waters Wilderness' }] },
         ],
         docs: [],
-        revs: [{ u: 'bwca_junkie', d: 'Aug 2024', s: 5, t: 'Seven days on the Kawishiwi loop. Northern lights on night three, moose at dawn on night five. This is why we paddle.' }, { u: 'portage_queen', d: 'Jul 2024', s: 5, t: 'Kawishiwi entry to Lake Polly at 350 cfs — river sections swift and clear. Caught walleye and smallmouth every evening. Pure wilderness.' }],
+        revs: [],
         outs: [{ n: 'Kawishiwi Lodge & Outfitters', d: 'BWCAW canoe outfitting, permits, and gear', l: 'kawishiwi.com' }],
       },
       {
@@ -3793,7 +3789,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1870s–1900s', title: "Sandstone Quarries and Log Drives", text: "The Kettle River gorge became the center of a booming sandstone quarrying industry. Banning, Minnesota — now a ghost town within the state park — was a thriving quarry community until a devastating fire and the 1894 Hinckley firestorm disrupted the industry. The ruins of the quarry works are still visible from the river.", src: 'Banning State Park Interpretive Center; Pine County Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'mn_whitewater', d: 'Apr 2024', s: 5, t: "Hell's Gate at 1,800 cfs in spring runoff — continuous Class III+ through the gorge with the old quarry ruins on either side. Best whitewater in Minnesota, hands down." }, { u: 'kayak_sandstone', d: 'May 2024', s: 4, t: 'Banning section at 900 cfs — fun intermediate run. Blueberry Slide and Dragon Tooth are legit rapids. Beautiful sandstone canyon.' }],
+        revs: [],
         outs: [{ n: 'Banning State Park Paddle Shop', d: 'Seasonal kayak rentals and shuttle service at the park', l: 'dnr.state.mn.us/state_parks/banning' }],
       },
       {
@@ -3808,7 +3804,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1880s–1920s', title: "Lumber Capital of the World — Duluth Boom", text: "The St. Louis River drove Duluth's rise as a lumber and shipping powerhouse. Millions of board feet of white and red pine were floated down the river to sawmills at its mouth. The Thomson Dam, built in 1907 for hydropower, permanently altered the river's flow regime.", src: 'St. Louis County Historical Society; Minnesota Power Archives' }] },
         ],
         docs: [],
-        revs: [{ u: 'duluth_whitewater', d: 'May 2024', s: 5, t: "Jay Cooke gorge at 3,000 cfs — continuous Class III+ over tilted slate ledges. The Thomson section is world-class when it's running. Best whitewater within city limits in the Midwest." }, { u: 'north_shore_kayak', d: 'Jun 2024', s: 4, t: "Upper St. Louis from Forbes — two days of remote flatwater through boreal forest. Moose tracks on every portage. Minnesota's overlooked gem." }],
+        revs: [],
         outs: [{ n: 'Spirit of the Land Outfitters', d: 'St. Louis River kayak rentals and guided trips from Duluth', l: 'spiritoftheland.com' }],
       },
       {
@@ -3823,7 +3819,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1870s–1900s', title: "Pine Timber and River Drives", text: "The Crow Wing River carried vast quantities of white pine timber to the Mississippi during Minnesota's logging era. Nimrod, Sebeka, and other small towns along the river were built around the lumber industry. After the timber was cut, the river corridor slowly recovered its pine forest character.", src: 'Wadena County Historical Society; Minnesota Forestry Archives' }] },
         ],
         docs: [],
-        revs: [{ u: 'mn_family_canoe', d: 'Jul 2024', s: 5, t: "Three days from Huntersville to Nimrod with the kids — sandy campsites, easy current, bald eagles overhead. This is what Minnesota canoeing is all about." }, { u: 'crow_wing_angler', d: 'Aug 2024', s: 4, t: "Smallmouth bass fishing the Crow Wing at 500 cfs — caught a dozen on streamers. Pine-lined banks and barely another paddler in sight." }],
+        revs: [],
         outs: [{ n: 'Crow Wing Crest Lodge', d: 'Canoe and kayak rentals on the upper Crow Wing', l: 'crowwingcrestlodge.com' }, { n: 'Huntersville Outfitters', d: 'Multi-day canoe trip outfitting and shuttle service', l: 'huntersvilleoutfitters.com' }],
       },
       {
@@ -3838,7 +3834,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1984', title: "Root River State Trail Established", text: "Minnesota converted the abandoned Chicago Great Western Railway corridor along the Root River into the Root River State Trail — 42 miles of paved trail connecting Fountain, Lanesboro, Whalan, and Houston. The trail transformed Lanesboro from a declining farm town into a thriving arts and outdoor recreation destination.", src: 'Minnesota DNR; Lanesboro Arts Center' }] },
         ],
         docs: [],
-        revs: [{ u: 'driftless_mn_paddler', d: 'Jun 2024', s: 5, t: "Chatfield to Lanesboro at 400 cfs — limestone bluffs around every bend, spring-fed creeks entering from both sides. The Driftless Area is Minnesota's best-kept secret." }, { u: 'lanesboro_kayaker', d: 'Jul 2024', s: 4, t: "Lanesboro section at 600 cfs — paddled in the morning, biked the trail in the afternoon. Great pie at the Lanesboro bakery. Perfect Minnesota weekend." }],
+        revs: [],
         outs: [{ n: 'Root River Outfitters', d: 'Canoe, kayak, and tube rentals in Lanesboro', l: '' }],
       },
       {
@@ -3853,7 +3849,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1880s–1920s', title: "North Woods Logging — Cloquet Fire of 1918", text: "The Cloquet River corridor was heavily logged during Minnesota's pine era. On October 12, 1918, the devastating Cloquet Fire swept through the logged-over landscape, killing 453 people and destroying the town of Cloquet. The fire remains one of the worst natural disasters in Minnesota history.", src: 'Minnesota Historical Society; Carlton County Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'mn_wilderness_paddler', d: 'Jul 2024', s: 5, t: "Four days on the Cloquet from Island Lake at 600 cfs — moose at dawn, loons at dusk, wolves howling at night. BWCAW-quality wilderness without the permit lottery." }, { u: 'duluth_canoe_club', d: 'Aug 2024', s: 4, t: "Indian Lake to Alden Lake at 500 cfs — boreal forest corridor, Class I–II riffles, excellent walleye fishing. Northern Minnesota at its finest." }],
+        revs: [],
         outs: [{ n: 'Cloquet Valley Outfitters', d: 'Multi-day canoe trip outfitting and shuttle service', l: '' }],
       },
       {
@@ -3868,7 +3864,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1975', title: "Wild & Scenic Study River", text: "Congress authorized a study of the Cannon River for potential inclusion in the National Wild and Scenic Rivers System. Though not ultimately designated, the study raised awareness and led to state-level protections including the Cannon River Wilderness Area near Cannon Falls.", src: 'NPS; Minnesota DNR' }] },
         ],
         docs: [],
-        revs: [{ u: 'twin_cities_paddler', d: 'Jun 2024', s: 4, t: "Northfield to Cannon Falls at 500 cfs — wooded bluffs, gentle current, great birding. Best day paddle within an hour of the Twin Cities." }, { u: 'cannon_river_regular', d: 'Jul 2024', s: 4, t: "Faribault section at 400 cfs — easy family float past Carleton and St. Olaf colleges. Stop in Northfield for lunch. Classic Minnesota." }],
+        revs: [],
         outs: [{ n: 'Cannon River Canoe Rental', d: 'Canoe and kayak rentals for Cannon River day trips, Cannon Falls', l: '' }],
       },
     ],
@@ -3892,7 +3888,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1975', title: "Menominee Restoration Act and Wolf River Protection", text: "After the disastrous federal termination policy (1961) nearly destroyed the tribe, the Menominee Restoration Act of 1973 restored federal recognition. The tribe subsequently fought off a proposed Exxon copper-zinc mine that would have devastated the Wolf River watershed, preserving the river for future generations.", src: 'Menominee Historic Preservation Department; Wisconsin Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'wolfriver_ww', d: 'May 2024', s: 5, t: "Ducknest to Gilmore's at 2,200 cfs — absolutely ripping. The old-growth forest on the Menominee Reservation is unreal. Feels like paddling through a cathedral." }, { u: 'wi_paddle_club', d: 'Jun 2024', s: 4, t: 'Hollister section at 1,000 cfs — perfect Class II–III for our intermediate group. Big Smokey Falls portage is worth the walk just for the view.' }],
+        revs: [],
         outs: [{ n: 'Shotgun Eddy Rafting', d: 'Wolf River whitewater rafting and kayak trips', l: 'shotguneddy.com' }, { n: 'Wolf River Trips & Campground', d: 'Canoe and kayak rentals with riverside camping', l: 'wolfrivertrips.com' }],
       },
       {
@@ -3907,7 +3903,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1968', title: "National Scenic Riverway Designation", text: "The Namekagon was included in the original St. Croix National Scenic Riverway designation, one of the first components of the National Wild & Scenic Rivers System. The NPS manages the corridor, maintaining 54 river campsites accessible only by water.", src: 'National Park Service — St. Croix National Scenic Riverway'}] },
         ],
         docs: [],
-        revs: [{ u: 'northwoods_canoe', d: 'Jul 2024', s: 5, t: 'Hayward to Trego over three days at 400 cfs — perfect northwoods trip. NPS campsites are well-maintained, water is crystal clear. Saw a timber wolf cross the river at dusk.' }, { u: 'cable_paddler', d: 'Aug 2024', s: 4, t: 'Headwaters section from the dam at 300 cfs — intimate and quiet. Kingfishers and great blue herons every hundred yards. Outstanding fishing for smallmouth bass.' }],
+        revs: [],
         outs: [{ n: 'Namekagon Paddle & Bike', d: 'Canoe and kayak rentals, shuttle service along the Namekagon', l: 'namekagonpaddleandbike.com' }],
       },
       {
@@ -3922,7 +3918,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1871', title: "The Great Peshtigo Fire — Deadliest in American History", text: "On October 8, 1871 — the same night as the Great Chicago Fire — a firestorm swept the Peshtigo River valley, killing an estimated 1,500–2,500 people. Fueled by logging slash and drought, the fire generated tornado-force winds. Many survivors escaped only by submerging in the river itself. It remains the deadliest wildfire in recorded American history.", src: 'Peshtigo Fire Museum; Wisconsin Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'wisco_creek_boat', d: 'May 2024', s: 5, t: 'Roaring Rapids at 1,800 cfs — Terminal Surfer was a beast. Five-Foot Falls clean line, then continuous Class IV to the takeout. Best whitewater day in Wisconsin.' }, { u: 'midwest_class_v', d: 'Apr 2024', s: 4, t: 'Peshtigo at 2,500 cfs — big and pushy. Horserace Rapids was a full-on freight train. Not for the faint of heart. Wear your drysuit.' }],
+        revs: [],
         outs: [{ n: "Kosir's Rapid Rafts", d: 'Guided whitewater rafting on the Peshtigo and Menominee rivers', l: 'kosirsrapidrafts.com' }],
       },
       {
@@ -3937,7 +3933,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1870s–1920s', title: "White Pine Drives on the Flambeau", text: "The Flambeau was one of Wisconsin's great log-driving rivers, with millions of board feet of white and red pine floated downstream to sawmills. The old-growth hemlock stands that survive today were spared because hemlock was considered worthless lumber — an accident of economics that preserved some of the last virgin forest in the Great Lakes.", src: 'Flambeau River State Forest Archives; Price County Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'wi_northwoods_kayak', d: 'Jun 2024', s: 5, t: "Three days on the North Fork from Nine Mile Creek — Class II–III rapids through old-growth hemlocks. Camped on sand bars, saw otters and eagles. Best multi-day river trip in Wisconsin." }, { u: 'flambeau_regular', d: 'Jul 2024', s: 4, t: "Oxbo to Cedar Rapids at 1,200 cfs — fun Class II the whole way. The hemlock groves are cathedral-like. Bring your fishing rod for the smallmouth." }],
+        revs: [],
         outs: [{ n: 'Flambeau River Lodge', d: 'North Fork Flambeau canoe and kayak outfitting, riverside camping', l: 'flambeauriverlodge.com' }],
       },
       {
@@ -3952,7 +3948,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2000', title: "Kickapoo Valley Reserve — Dam That Never Was", text: "In 2000, the U.S. Army Corps of Engineers transferred the 8,569-acre La Farge Dam site to a joint state-Ho-Chunk partnership, creating the Kickapoo Valley Reserve. The dam, authorized in 1962 and partially constructed, was never completed due to environmental opposition — making the reserve a monument to river preservation.", src: 'Kickapoo Valley Reserve; Wisconsin DNR; Ho-Chunk Nation' }] },
         ],
         docs: [],
-        revs: [{ u: 'driftless_paddler_wi', d: 'Jul 2024', s: 5, t: "Ontario to Rockton at 400 cfs — 300-foot sandstone bluffs around every bend. The Kickapoo earns the crookedest river title. Perfect family float." }, { u: 'kickapoo_canoe_regular', d: 'Aug 2024', s: 4, t: "La Farge section through the Kickapoo Valley Reserve — bald eagles, sandhill cranes, and bluffs the whole way. Bring a cooler and take your time." }],
+        revs: [],
         outs: [{ n: "Drifty's Canoe Rental", d: 'Kickapoo River canoe and kayak trips from Ontario', l: 'driftyscanoe.com' }, { n: "Mr. Duck's Canoe Rental", d: 'Family float trips on the Kickapoo, La Farge', l: 'mrducks.com' }],
       },
       {
@@ -3967,7 +3963,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1850s–1900s', title: "Pine Timber and Cranberry Bogs", text: "The Black River was a major logging artery during Wisconsin's pine era. After the timber was cut, the sandy marshlands were converted to cranberry bogs — the Black River corridor now produces a significant portion of Wisconsin's cranberry crop, the state's largest fruit crop.", src: 'Wisconsin Historical Society; Black River Falls Area Chamber of Commerce' }] },
         ],
         docs: [],
-        revs: [{ u: 'wi_whitewater_paddler', d: 'May 2024', s: 4, t: "Hatfield Dam to Black River Falls at 1,200 cfs — fun Class II–III through sandstone gorges. Wisconsin whitewater that most people don't know about." }, { u: 'cranberry_country_canoe', d: 'Jun 2024', s: 4, t: "Below Black River Falls at 800 cfs — gentle float through cranberry country. Red bogs on both sides of the river in fall. Uniquely Wisconsin." }],
+        revs: [],
         outs: [{ n: 'Black River State Forest', d: 'Campgrounds, river access, and trail information', l: '' }],
       },
       {
@@ -3982,7 +3978,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1933', title: "Chequamegon-Nicolet National Forest Established", text: "The federal government established the Nicolet National Forest (now Chequamegon-Nicolet) in 1933, protecting the Pine River corridor and surrounding Northwoods from further logging and development after decades of unsustainable timber harvest.", src: 'USFS Chequamegon-Nicolet National Forest; Wisconsin DNR' }] },
         ],
         docs: [],
-        revs: [{ u: 'northwoods_paddler_wi', d: 'Jun 2024', s: 5, t: "Pine River through the national forest at 250 cfs — old-growth hemlocks, wild brookies, and not another person for two days. This is Wisconsin's most remote paddle." }, { u: 'ne_wi_kayaker', d: 'Jul 2024', s: 4, t: "Goodman section at 200 cfs — narrow and intimate, pine-lined banks, cold water. Bring a fly rod for brook trout." }],
+        revs: [],
         outs: [{ n: 'Chequamegon-Nicolet NF Ranger Station', d: 'River access maps, camping permits, and conditions', l: '' }],
       },
       {
@@ -3997,7 +3993,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1989', title: "Lower Wisconsin State Riverway Established", text: "Wisconsin established the Lower Wisconsin State Riverway in 1989, protecting 92 miles of the river from Sauk City to the Mississippi River as one of the longest undammed stretches in the Midwest. The Riverway prohibits new development visible from the water.", src: 'Wisconsin DNR; Lower Wisconsin State Riverway Board' }] },
         ],
         docs: [],
-        revs: [{ u: 'wi_river_regular', d: 'Jul 2024', s: 5, t: "Sauk City to Spring Green over two days at 5,000 cfs — massive sandbars, bald eagles on every snag, and the biggest sky in Wisconsin. The Lower Wisconsin Riverway is canoe camping perfection." }, { u: 'dells_paddler', d: 'Aug 2024', s: 4, t: "Wisconsin Dells section at 6,000 cfs — sandstone canyon carved by glacial floods. Dramatic scenery you wouldn't expect in Wisconsin." }],
+        revs: [],
         outs: [{ n: 'Wisconsin River Outings', d: 'Canoe and kayak rentals for Lower Wisconsin Riverway trips', l: '' }],
       },
     ],
@@ -4021,7 +4017,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2005', title: "Driftless Area Conservation Initiative", text: "A multi-state conservation partnership recognized the Driftless Area as one of the most ecologically unique landscapes in the Midwest. The Upper Iowa River corridor became a focal point for coldwater habitat restoration, native trout recovery, and sustainable agriculture practices on the surrounding karst landscape.", src: 'USFWS Driftless Area National Wildlife Refuge; Iowa DNR' }] },
         ],
         docs: [],
-        revs: [{ u: 'driftless_paddler', d: 'Jun 2024', s: 5, t: 'Kendallville to Bluffton at 500 cfs — 400-foot limestone bluffs towering over the river. Spotted a peregrine falcon nesting on the cliff face. Best day paddle in Iowa by a mile.' }, { u: 'decorah_angler', d: 'Jul 2024', s: 4, t: 'Trout fishing the cold tributaries near Decorah at low water. Wild browns in every pool. The Driftless Area is a hidden gem.' }],
+        revs: [],
         outs: [{ n: 'Hruska Canoe Livery', d: 'Upper Iowa River canoe and kayak rentals from Kendallville to Decorah', l: 'hruskacanoelivery.com' }, { n: "Randy's Bluffton Store", d: 'Shuttle service, camping, and river info at Bluffton', l: 'blufftoniowa.com' }],
       },
       {
@@ -4036,7 +4032,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1935', title: "Yellow River State Forest Established", text: "Iowa acquired the core of what would become Yellow River State Forest during the Great Depression, when marginal farmland was returned to forest. The Civilian Conservation Corps (CCC) planted thousands of trees and built the infrastructure that still serves the forest today. It has grown to 8,500 acres — Iowa's largest state forest.", src: 'Iowa DNR Forestry Division; CCC Legacy Project' }] },
         ],
         docs: [],
-        revs: [{ u: 'iowa_trout_bum', d: 'May 2024', s: 4, t: 'Paint Creek at 150 cfs — wild brown trout in every pool. The forest is gorgeous in spring. Feels like you left Iowa entirely.' }, { u: 'quiet_water_ia', d: 'Jun 2024', s: 4, t: 'Yellow River through the state forest at 200 cfs — narrow, wooded, peaceful. Saw a barred owl at dusk. Best overnight paddle spot in Iowa.' }],
+        revs: [],
         outs: [{ n: 'Yellow River State Forest Office', d: 'Camping permits, trail maps, and river conditions', l: 'iowadnr.gov/Places-to-Go/State-Forests/Yellow-River' }],
       },
       {
@@ -4052,7 +4048,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '2010', title: "Maquoketa River Water Trail Designation", text: "Iowa DNR designated the Maquoketa as an official state water trail, establishing access points, signage, and a paddling guide covering 150 miles from Backbone to the Mississippi.", src: 'Iowa DNR Water Trails Program' }] },
         ],
         docs: [],
-        revs: [{ u: 'backbone_kayaker', d: 'May 2024', s: 5, t: 'Backbone gorge at 800 cfs — the 90-foot bluffs are unreal for Iowa. Class II–III rapids through the canyon with great eddy service. Hidden gem of Midwest paddling.' }, { u: 'prairie_paddler_ia', d: 'Jul 2024', s: 4, t: 'Manchester to Monticello at 1,000 cfs — fun Class I–II riffles, good smallmouth fishing, scenic farmland valley. Easy two-day float.' }],
+        revs: [],
         outs: [{ n: 'Backbone State Park', d: 'Camping, cabins, and river access in the gorge area', l: 'iowadnr.gov/Places-to-Go/State-Parks/Backbone' }, { n: 'Maquoketa River Paddle Sports', d: 'Kayak and canoe rentals for water trail sections', l: 'maquoketariverpaddlesports.com' }],
       },
       {
@@ -4067,7 +4063,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2008', title: 'Great Flood of 2008 — Cedar River Devastation', text: "The Cedar River reached historic flood levels in June 2008, inundating downtown Cedar Rapids under 10 feet of water. The disaster reshaped Iowa's approach to floodplain management and led to the largest urban flood mitigation project in state history.", src: 'USGS; City of Cedar Rapids' }] },
         ],
         docs: [],
-        revs: [{ u: 'cedar_valley_paddle', d: 'Jun 2024', s: 4, t: 'Waterloo to La Porte City at 2,000 cfs — wide, easy Class I with great smallmouth fishing. Cedar River water trail is well-marked and accessible.' }, { u: 'ia_river_runner', d: 'Jul 2024', s: 4, t: 'Palisades-Kepler section near Cedar Rapids at 1,500 cfs — limestone bluffs and wooded islands. Surprisingly scenic for a prairie river.' }],
+        revs: [],
         outs: [{ n: 'Cedar Valley Paddlesports', d: 'Kayak and canoe rentals for Cedar River water trail', l: '' }],
       },
       {
@@ -4082,7 +4078,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2016', title: 'Des Moines Water Trails Vision', text: "The city of Des Moines launched a $117 million Water Trails plan to transform the downtown river corridor with whitewater features, portage routes around low-head dams, and riverfront parks — one of the most ambitious urban river restoration projects in America.", src: 'Des Moines Water Trails; City of Des Moines' }] },
         ],
         docs: [],
-        revs: [{ u: 'dsm_urban_paddle', d: 'Aug 2024', s: 4, t: 'Downtown Des Moines water trail at 3,000 cfs — the new dam bypasses make the capital city section actually paddleable. Urban river revival at its finest.' }, { u: 'ledges_hiker', d: 'Jun 2024', s: 5, t: 'Ledges State Park section at 2,500 cfs — sandstone canyon walls rising 100 feet above the river. Best scenery on the Des Moines by far.' }],
+        revs: [],
         outs: [{ n: 'Des Moines Water Trails Outfitters', d: 'Kayak rentals and guided urban paddles on the Des Moines River', l: '' }],
       },
       {
@@ -4097,7 +4093,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2015', title: 'Wapsipinicon Water Trail Designation', text: "Iowa DNR designated the Wapsipinicon as an official state water trail, establishing access points and signage along 225 miles from Independence to the Mississippi River.", src: 'Iowa DNR Water Trails Program' }] },
         ],
         docs: [],
-        revs: [{ u: 'wapsi_paddler', d: 'May 2024', s: 4, t: 'Quasqueton to Troy Mills at 600 cfs — limestone bluffs, riffles, great smallmouth water. Underrated Iowa paddle.' }, { u: 'jones_co_kayak', d: 'Jul 2024', s: 4, t: 'Wapsipinicon State Park section at 400 cfs — wooded bluffs and easy Class I riffles. Perfect day trip near Anamosa.' }],
+        revs: [],
         outs: [{ n: 'Wapsipinicon Paddle Rentals', d: 'Canoe and kayak rentals for Wapsipinicon water trail sections', l: '' }],
       },
       {
@@ -4112,7 +4108,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2019', title: 'Turkey River Water Trail Expansion', text: "Iowa DNR expanded the Turkey River Water Trail with new access points and camping areas, connecting 160 miles from Cresco to the Mississippi River at the Driftless Area's edge.", src: 'Iowa DNR Water Trails Program; Clayton County Conservation' }] },
         ],
         docs: [],
-        revs: [{ u: 'driftless_explorer', d: 'Jun 2024', s: 5, t: 'Elkader to Garber at 500 cfs — 300-foot limestone bluffs, eagles soaring overhead. This stretch rivals the Upper Iowa for scenery.' }, { u: 'ne_iowa_paddle', d: 'Jul 2024', s: 4, t: 'Motor Mill to Elkport at 400 cfs — historic stone mill ruins, wooded bluffs, great smallmouth fishing. Quiet and scenic.' }],
+        revs: [],
         outs: [{ n: 'Turkey River Canoe Rental', d: 'Canoe and kayak shuttle service for Turkey River water trail', l: '' }],
       },
       {
@@ -4127,7 +4123,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1964', title: 'Volga River State Recreation Area Established', text: "Iowa established the 5,500-acre Volga River State Recreation Area, creating one of the largest blocks of public land in northeast Iowa and preserving the Volga River corridor for recreation and conservation.", src: 'Iowa DNR; Fayette County Conservation Board' }] },
         ],
         docs: [],
-        revs: [{ u: 'volga_valley_kayak', d: 'May 2024', s: 4, t: 'Volga River SRA at 200 cfs — small and intimate, wooded bluffs, perfect for a quiet morning paddle. Northeast Iowa gem.' }, { u: 'fayette_co_paddle', d: 'Jun 2024', s: 3, t: 'Lower Volga at 150 cfs — a bit scrappy at low water but peaceful scenery through the farm valley. Good trout stream tributaries.' }],
+        revs: [],
         outs: [{ n: 'Volga River SRA Office', d: 'Camping permits, trail maps, and river access information', l: '' }],
       },
     ],
@@ -4152,7 +4148,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2020', title: "Big Spring — Largest in North America", text: "Hydrological studies confirmed Big Spring as the largest single-outlet spring in North America, averaging 286 million gallons per day. The spring's aquifer extends across four counties, making it one of the most significant karst groundwater systems on the continent.", src: 'USGS Missouri Water Science Center; NPS' }] },
         ],
         docs: [{ t: 'Ozark National Scenic Riverways General Management Plan', s: 'NPS', y: 2014, tp: 'Federal', pg: 320 , url: 'https://parkplanning.nps.gov/showFile.cfm?sfid=197677&projectID=15793'}],
-        revs: [{ u: 'ozark_spring_chaser', d: 'Jun 2024', s: 5, t: 'Akers to Pulltite at 800 cfs — swam in three springs, water so clear you can count pebbles at 15 feet. Big Spring is otherworldly. Best float in Missouri.' }, { u: 'stl_weekend_paddler', d: 'Jul 2024', s: 5, t: 'Montauk to Cedar Grove at 600 cfs — caught rainbow trout on every riffle. Spring-fed water stays cold even in July. National treasure.' }],
+        revs: [],
         outs: [{ n: 'Akers Ferry Canoe Rental', d: 'Current River canoe, kayak, and tube rentals with NPS camping', l: 'akersferrycanoe.com' }, { n: 'Jadwin Canoe Rental', d: 'Multi-day float trip outfitter on the Current and Jacks Fork', l: 'jadwincanoe.com' }],
       },
       {
@@ -4167,7 +4163,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1968', title: "Original Wild & Scenic Designation", text: "The Eleven Point was one of the original eight rivers designated under the National Wild & Scenic Rivers Act of 1968. Its inclusion alongside the St. Croix, Middle Fork Salmon, and other iconic rivers reflects the extraordinary quality of the Eleven Point corridor — often called the most pristine river east of the Rockies.", src: 'USFS Mark Twain National Forest; National Wild & Scenic Rivers Council' }] },
         ],
         docs: [{ t: 'Eleven Point Wild & Scenic River Management Plan', s: 'USFS Mark Twain NF', y: 2005, tp: 'Federal', pg: 148 , url: 'https://rivers.gov/documents/plans/eleven-point-management-direction.pdf'}],
-        revs: [{ u: 'wildscenic_mo', d: 'May 2024', s: 5, t: 'Greer Crossing to Riverton at 450 cfs — the most pristine river I have paddled east of the Rockies. No crowds, no development, just Ozark bluffs and spring-fed water. Greer Spring is jaw-dropping.' }, { u: 'ozark_solitude', d: 'Jun 2024', s: 5, t: 'Three-day float, Thomasville to 142. Saw one other canoe in three days. Old-growth shortleaf pines on the bluffs. This is what the Ozarks looked like 200 years ago.' }],
+        revs: [],
         outs: [{ n: 'Eleven Point Canoe Rental', d: 'Float trips and shuttles on the Eleven Point', l: 'elevenpointcanoe.com' }],
       },
       {
@@ -4183,7 +4179,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1980', title: "Millstream Gardens Conservation Area", text: "The Missouri Department of Conservation established Millstream Gardens Conservation Area to protect the most dramatic whitewater reach on the St. Francis. The area preserves exposed Precambrian rhyolite — the oldest rock in Missouri — and provides public access to the state's premier whitewater run.", src: 'Missouri Department of Conservation' }] },
         ],
         docs: [],
-        revs: [{ u: 'mo_whitewater', d: 'Mar 2024', s: 5, t: "Millstream Gardens at 1,200 cfs — Cat's Eye was pumping, Double Drop was huge. Paddling through billion-year-old rock formations. Best whitewater in Missouri and it's not close." }, { u: 'stl_kayak_club', d: 'Apr 2024', s: 4, t: 'Silver Mines to Millstream at 700 cfs — fun Class II warm-up before the main event. The rhyolite gorge is visually stunning. Bring a helmet and a roll.' }],
+        revs: [],
         outs: [{ n: 'Millstream Gardens Access', d: 'Free public access maintained by Missouri Dept of Conservation', l: 'mdc.mo.gov/discover-nature/places/millstream-gardens-ca' }],
       },
       {
@@ -4198,7 +4194,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1964', title: "Ozark National Scenic Riverways — First National Riverway", text: "The Jacks Fork and Current River became the nation's first federally protected riverway in 1964, establishing the precedent for the National Wild & Scenic Rivers Act four years later. Alley Spring and its iconic red mill became symbols of Ozark heritage preservation.", src: 'National Park Service; Ozark National Scenic Riverways Archives' }] },
         ],
         docs: [],
-        revs: [{ u: 'ozark_float_trips', d: 'May 2024', s: 5, t: "Two days on the Jacks Fork from Buck Hollow — bluffs around every bend, springs pouring out of the hillside, and not another soul for miles. This is the real Ozarks." }, { u: 'mo_canoe_club', d: 'Jun 2024', s: 4, t: "Alley Spring to Eminence at 350 cfs — the spring itself is jaw-dropping. Crystal water the whole float. Quieter than the Current and just as beautiful." }],
+        revs: [],
         outs: [{ n: 'Jacks Fork Canoe Rental', d: 'NPS-authorized canoe and kayak outfitter, Eminence', l: 'jacksforkcanoe.com' }, { n: 'Alley Spring Outfitters', d: 'Float trips and camping near Alley Spring', l: 'alleyspringoutfitters.com' }],
       },
       {
@@ -4213,7 +4209,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1978', title: "Meramec Dam Defeated — River Preserved", text: "In a landmark 1978 referendum, Missouri voters overwhelmingly rejected a proposed Army Corps of Engineers dam on the Meramec at Times Beach. The vote preserved the free-flowing character of the river and became a turning point for river conservation in the Midwest.", src: 'Missouri Historical Society; Open Space Council of St. Louis' }] },
         ],
         docs: [],
-        revs: [{ u: 'stl_river_runner', d: 'May 2024', s: 5, t: "Meramec Spring to the state park at 1,500 cfs — spring-fed clarity, fun Class II riffles, and Onondaga Cave at the takeout. Best day trip from St. Louis, hands down." }, { u: 'mo_weekend_float', d: 'Jun 2024', s: 4, t: "Upper Meramec from Steelville at 2,000 cfs — legitimate Class II–III drops in the first few miles. The Meramec has more whitewater than people think." }],
+        revs: [],
         outs: [{ n: 'Meramec State Park Canoe Rental', d: 'Canoe and kayak rentals at the state park, Sullivan', l: 'mostateparks.com/park/meramec-state-park' }, { n: 'Ozark Outdoors Riverfront Resort', d: 'Meramec River float trips, camping, and cabins near Leasburg', l: 'ozarkoutdoors.net' }],
       },
       {
@@ -4228,7 +4224,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1720–1972', title: "Missouri Lead Belt — Two Centuries of Mining", text: "The Big River corridor was the center of Missouri's lead mining industry for over 250 years. The St. Joe Lead Company and its successors extracted millions of tons of lead, leaving a legacy of mine tailings and contamination that cleanup efforts continue to address.", src: 'Missouri DNR; Lead Belt Regional Museum' }] },
         ],
         docs: [],
-        revs: [{ u: 'mo_ozark_paddler', d: 'May 2024', s: 4, t: "Washington State Park section at 600 cfs — petroglyphs on the bluffs, clear water, fun Class I–II riffles. The Big River has cleaned up nicely." }, { u: 'stl_day_tripper', d: 'Jun 2024', s: 4, t: "Cedar Hill to Byrnes Mill at 800 cfs — easy float, great smallmouth fishing, surprisingly scenic for being so close to St. Louis." }],
+        revs: [],
         outs: [{ n: 'Big River Canoe Rental', d: 'Canoe and kayak rentals for Big River float trips, Cedar Hill', l: '' }],
       },
       {
@@ -4243,7 +4239,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1808', title: "Lewis and Clark Expedition — Gasconade Mouth Noted", text: "The Lewis and Clark Expedition noted the Gasconade River's mouth on the Missouri River during their 1804 westward journey. The Gasconade was already known as a significant interior waterway and was later surveyed for potential navigation improvement.", src: 'Lewis and Clark Journals; Missouri Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'gasconade_regular', d: 'Jun 2024', s: 5, t: "Jerome to Gasconade over three days at 800 cfs — gravel bars, limestone bluffs, smallmouth on every cast. The Gasconade is the most underrated float in Missouri." }, { u: 'mo_canoe_camper', d: 'Jul 2024', s: 4, t: "Waynesville section at 500 cfs — spring-fed clear water, fun riffles, and nobody else on the river. This is what Missouri floating should be." }],
+        revs: [],
         outs: [{ n: 'Gasconade Hills Resort', d: 'Canoe and kayak rentals, riverside camping on the Gasconade', l: '' }],
       },
       {
@@ -4258,7 +4254,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1995', title: "Blue-Ribbon Trout Stream Designation", text: "Missouri designated the North Fork a Blue-Ribbon Trout Stream, recognizing its exceptional coldwater fishery sustained by massive spring inputs. The North Fork supports wild rainbow and brown trout populations with some of the highest densities in the Ozarks.", src: 'Missouri Department of Conservation; Trout Unlimited' }] },
         ],
         docs: [],
-        revs: [{ u: 'ozark_fly_fisher', d: 'Apr 2024', s: 5, t: "Twin Bridges to Dawt Mill at 400 cfs — Blue Spring pumping crystal water into the main stem. Caught browns on nymphs all day. The North Fork is Missouri's best trout stream, no contest." }, { u: 'mo_spring_paddler', d: 'May 2024', s: 4, t: "Dawt Mill section at 600 cfs — gorgeous Ozark scenery, cold clear water even in May. Historic Dawt Mill is worth the stop. Bring a fly rod." }],
+        revs: [],
         outs: [{ n: 'Dawt Mill Resort', d: 'Historic mill, canoe rentals, and riverside camping on the North Fork', l: '' }],
       },
     ],
@@ -4283,7 +4279,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2015', title: "Elk Restoration Success — Boxley Valley Herd", text: "Arkansas Game & Fish Commission's elk restoration program, which reintroduced Rocky Mountain elk to the Buffalo River headwaters in the 1980s, has produced a thriving herd of over 500 animals in the Boxley Valley. The morning mist over Boxley with elk grazing alongside the Buffalo has become an iconic Arkansas image.", src: 'Arkansas Game & Fish Commission; Buffalo National River NPS' }] },
         ],
         docs: [{ t: 'Buffalo River Management Plan', s: 'NPS', y: 1996, tp: 'Federal', pg: 290, url: 'https://rivers.gov/sites/rivers/files/documents/plans/buffalo-plan.pdf' }, { t: 'Buffalo National River Foundation Document', s: 'NPS', y: 2018, tp: 'Federal', pg: 88, url: 'https://npshistory.com/publications/foundation-documents/buff-fd-2018.pdf' }],
-        revs: [{ u: 'ozark_paddler_ar', d: 'Apr 2024', s: 5, t: 'Ponca to Pruitt at 1,200 cfs — Big Bluff towering 500 feet above, Class II–III rapids, and a bald eagle circling overhead. This is why they saved it from the dam. America deserves this river.' }, { u: 'buffalo_multi_day', d: 'May 2024', s: 5, t: 'Five days from Steel Creek to Gilbert at 800 cfs. Gravel bar camping every night, stars like you would not believe. Saw elk at dawn in Boxley. Best river trip in the South.' }],
+        revs: [],
         outs: [{ n: 'Buffalo Outdoor Center', d: 'Full-service outfitter with cabins, canoe/kayak rentals, and zip lines at Ponca', l: 'buffaloriver.com' }, { n: 'Lost Valley Canoe & Lodging', d: 'Upper Buffalo float trips and riverside cabins near Ponca', l: 'lostvalleycanoe.com' }],
       },
       {
@@ -4298,7 +4294,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1988', title: "Cossatot River State Park Established", text: "Arkansas established Cossatot River State Park — Natural Area to protect 12 miles of the river corridor, including Cossatot Falls and the surrounding old-growth forest. The park preserves one of the most ecologically diverse river corridors in the Ouachita Mountains.", src: 'Arkansas State Parks; Arkansas Natural Heritage Commission' }] },
         ],
         docs: [],
-        revs: [{ u: 'ar_class_v', d: 'Mar 2024', s: 5, t: 'Cossatot at 1,500 cfs after spring rains — Cossatot Falls was terrifying and beautiful. Continuous Class IV below. Best whitewater day in Arkansas, maybe the whole South.' }, { u: 'ouachita_kayaker', d: 'Feb 2024', s: 4, t: 'Sandbar section at 600 cfs — technical Class III–IV through the boulder gardens. Remote, challenging, and gorgeous Ouachita Mountain scenery. Check the gauge before you drive.' }],
+        revs: [],
         outs: [{ n: 'Cossatot River State Park — Natural Area', d: 'River access, camping, and trail information', l: 'arkansasstateparks.com/cossatotriver' }],
       },
       {
@@ -4314,7 +4310,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '2010', title: "Mulberry River Watershed Restoration", text: "A multi-agency partnership launched a comprehensive watershed restoration initiative addressing gravel mining, riparian buffer restoration, and water quality improvement. The Mulberry has seen measurable improvements in clarity and aquatic habitat since the program began.", src: 'Arkansas Game & Fish Commission; USFS; The Nature Conservancy' }] },
         ],
         docs: [],
-        revs: [{ u: 'ar_whitewater_club', d: 'Apr 2024', s: 5, t: 'Wolf Pen to Turner Bend at 1,500 cfs — perfect Class II–III water. Every rapid is fun, the forest is blooming, and Turner Bend campground is the best river takeout in the Ozarks.' }, { u: 'weekend_ozark_paddler', d: 'Mar 2024', s: 4, t: 'Mulberry at 800 cfs after rains — caught it just right. Continuous riffles and Class II drops with spring wildflowers on every hillside. Check the gauge and be ready to go when it rains.' }],
+        revs: [],
         outs: [{ n: 'Turner Bend Outfitter', d: 'Mulberry River canoe and kayak rentals, camping, and a riverside general store', l: 'turnerbend.com' }, { n: "Byrd's Adventure Center", d: 'Float trips, camping, and cabins on the Mulberry', l: 'byrdsadventurecenter.com' }],
       },
       {
@@ -4329,7 +4325,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1973', title: "War Eagle Mill Restoration", text: "The historic War Eagle Mill, originally built in 1832 and destroyed multiple times by war and flood, was reconstructed in 1973 as a working water-powered grist mill. It remains the only operating undershot waterwheel mill in the country and hosts the annual War Eagle Craft Fair, drawing over 100,000 visitors.", src: 'War Eagle Mill; Madison County Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'nwa_paddler', d: 'Apr 2024', s: 5, t: "Hindsville to War Eagle Mill at 600 cfs after spring rains — crystal water, limestone bluffs, and the old mill at the takeout. Best short float in northwest Arkansas." }, { u: 'ozark_creek_chaser', d: 'Mar 2024', s: 4, t: "War Eagle at 400 cfs — scrapy but pretty. You have to catch it right after rain. The bluffs above the mill are gorgeous." }],
+        revs: [],
         outs: [{ n: 'War Eagle Creek Outfitters', d: 'Canoe and kayak rentals with shuttle service near Hindsville', l: 'wareaglecreekoutfitters.com' }],
       },
       {
@@ -4344,7 +4340,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1988', title: "Big Piney Creek Natural Area Designation", text: "The Arkansas Natural Heritage Commission designated Big Piney Creek as a Natural Area, recognizing the outstanding water quality and biological diversity of the watershed. The creek supports diverse aquatic life including the Ozark hellbender salamander and smallmouth bass fishery.", src: 'Arkansas Natural Heritage Commission; Ozark National Forest' }] },
         ],
         docs: [],
-        revs: [{ u: 'ar_creek_boater', d: 'Mar 2024', s: 5, t: "Hector to Long Pool at 1,200 cfs — nonstop Class II–III through the canyon. Sandstone walls, clear green water, and no one else out there. This is Arkansas whitewater at its best." }, { u: 'ozark_weekend_warrior', d: 'Apr 2024', s: 4, t: "Big Piney at 800 cfs — caught it on the drop. Fun Class II+ the whole way with a few legit Class III ledges. Check the gauge and go when it rains." }],
+        revs: [],
         outs: [{ n: 'Ozark Outdoor Supply', d: 'Kayak and canoe rentals for Big Piney Creek trips from Hector', l: 'ozarkoutdoorsupply.com' }, { n: 'Long Pool Recreation Area', d: 'USFS campground and river access at the takeout', l: 'fs.usda.gov/recarea/ozark/recarea/?recid=10983' }],
       },
       {
@@ -4359,7 +4355,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1987', title: "Arkansas Natural State Scenic River Designation", text: "Arkansas designated the Kings River a Natural State Scenic River in 1987, recognizing its outstanding water quality, scenic beauty, and ecological significance as one of the last undammed rivers in the Ozark Highlands.", src: 'Arkansas Natural Heritage Commission; Arkansas Game & Fish Commission' }] },
         ],
         docs: [],
-        revs: [{ u: 'ozark_paddler_ar', d: 'Mar 2024', s: 5, t: "Boston to Trigger Gap at 800 cfs — continuous Class II–III through the canyon. Bluffs, clear water, and not another soul in sight. The Kings is Arkansas's best-kept whitewater secret." }, { u: 'nwa_weekend_float', d: 'Apr 2024', s: 4, t: "Trigger Gap section at 500 cfs — fun Class II riffles, great smallmouth fishing, beautiful Ozark scenery. Perfect spring float." }],
+        revs: [],
         outs: [{ n: 'Kings River Outfitters', d: 'Canoe and kayak rentals for Kings River float trips', l: '' }],
       },
       {
@@ -4374,7 +4370,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1975', title: "Ozark Highlands Trail Corridor", text: "The Ozark Highlands Trail, completed in sections beginning in 1975, crosses Illinois Bayou multiple times through the Ozark National Forest. The trail and creek together form one of the premier backcountry recreation corridors in Arkansas.", src: 'Ozark National Forest; Ozark Highlands Trail Association' }] },
         ],
         docs: [],
-        revs: [{ u: 'ar_creek_runner', d: 'Feb 2024', s: 5, t: "Illinois Bayou at 1,000 cfs after winter rain — nonstop Class II–III for miles through the canyon. Sandstone bluffs, clear water, total wilderness feel. Check the gauge and go." }, { u: 'pope_co_paddler', d: 'Mar 2024', s: 4, t: "Hector section at 600 cfs — technical and fun. The bayou drops fast through the Ozark Highlands. Great creek when it's running." }],
+        revs: [],
         outs: [{ n: 'Ozark Outdoor Supply', d: 'Kayak rentals and shuttle service for Illinois Bayou trips', l: '' }],
       },
       {
@@ -4389,7 +4385,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1972', title: "DeGray Lake Impoundment — Lower Caddo Transformed", text: "The U.S. Army Corps of Engineers completed DeGray Dam in 1972, impounding the lower Caddo River to create DeGray Lake. The upper river above the reservoir remains free-flowing and provides the best paddling on the Caddo.", src: 'USACE; DeGray Lake State Park' }] },
         ],
         docs: [],
-        revs: [{ u: 'ouachita_float_trip', d: 'Apr 2024', s: 4, t: "Glenwood to Amity at 500 cfs — gentle current through pine-covered hills. Saw deer, turkeys, and a bald eagle. The Caddo is the most underrated float in Arkansas." }, { u: 'caddo_gap_kayaker', d: 'May 2024', s: 4, t: "Above Caddo Gap at 300 cfs — narrow, intimate, beautiful mountain water. Ouachita Mountain scenery without the crowds of the Buffalo." }],
+        revs: [],
         outs: [{ n: 'Caddo River Camping and Canoe Rental', d: 'Float trip outfitting and riverside camping, Glenwood', l: '' }],
       },
     ],
@@ -4415,7 +4411,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2006', title: 'Atchafalaya National Heritage Area Designated', text: "Congress designated the Atchafalaya National Heritage Area in 2006, recognizing the basin's extraordinary cultural and ecological significance — home to Cajun and Creole communities, 300+ bird species, and the largest contiguous bottomland hardwood forest in the United States.", src: 'NPS; Atchafalaya National Heritage Area Commission' }] },
         ],
         docs: [{ t: 'Atchafalaya Basin Floodway System Project', s: 'USACE', y: 2010, tp: 'Federal', pg: 340 , url: 'https://www.mvn.usace.army.mil/portals/56/docs/pao/brochures/atchafalayabasinproject.pdf'}],
-        revs: [{ u: 'cajun_paddle_co', d: 'Mar 2025', s: 5, t: "Henderson Swamp at 120,000 cfs basin flow — cypress knees everywhere, alligators on every log. There is nothing else like the Atchafalaya in America." }, { u: 'bayou_explorer', d: 'Nov 2024', s: 4, t: 'Two days in the upper basin with a GPS. Got lost three times. Saw ivory-billed woodpecker habitat and a dozen gators. Bring bug spray.' }],
+        revs: [],
         outs: [{ n: 'Atchafalaya Basin Landing', d: 'Guided swamp tours and kayak rentals, Henderson', l: 'atchafalayabasinlanding.com' }, { n: 'Pack & Paddle', d: 'Lafayette-based outfitter, basin trips', l: 'packpaddle.com' }],
       },
       {
@@ -4430,7 +4426,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1980', title: 'Bogue Chitto NWR Established', text: 'The U.S. Fish and Wildlife Service established the 36,000-acre Bogue Chitto National Wildlife Refuge along the lower river, protecting bottomland hardwood forests critical to Louisiana black bear recovery.', src: 'USFWS Bogue Chitto NWR' }] },
         ],
         docs: [{ t: 'Bogue Chitto NWR Comprehensive Conservation Plan', s: 'USFWS', y: 2008, tp: 'Federal', pg: 145 , url: 'https://www.fws.gov/sites/default/files/documents/Bogue%20Chitto_2011_CCP.pdf'}],
-        revs: [{ u: 'nola_paddler', d: 'Apr 2025', s: 5, t: "Best sandbars in Louisiana at 800 cfs. Crystal clear for a blackwater river. Louisiana's best kept paddling secret." }, { u: 'piney_woods_kayak', d: 'Mar 2025', s: 4, t: 'Franklinton section at 1,400 cfs — mild Class II riffles and gorgeous sand beaches. Perfect weekend float.' }],
+        revs: [],
         outs: [{ n: 'Bogue Chitto Tubing Center', d: 'Rentals and shuttles, Franklinton', l: 'boguechittowater.com' }],
       },
       {
@@ -4445,7 +4441,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2018', title: 'Louisiana Natural and Scenic River Designation', text: 'The Louisiana Department of Wildlife and Fisheries designated Whiskey Chitto Creek as a Natural and Scenic River, protecting the corridor from channelization and development that has degraded so many Louisiana waterways.', src: 'LDWF Natural and Scenic Rivers Program' }] },
         ],
         docs: [],
-        revs: [{ u: 'swla_kayaker', d: 'May 2025', s: 5, t: 'Mittie section at 400 cfs — clear water, white sand, longleaf pines overhead. Best hidden gem in Louisiana.' }, { u: 'acadiana_paddle', d: 'Apr 2025', s: 4, t: 'Upper Whiskey Chitto at 600 cfs after rain. Mild riffles and beautiful piney woods the whole way.' }],
+        revs: [],
         outs: [{ n: 'Whiskey Chitto Canoe Rental', d: 'Shuttle service and canoe rentals, Mittie', l: 'whiskeychittocanoe.com' }],
       },
       {
@@ -4460,7 +4456,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2010', title: 'Tchefuncte River Blueway Trail', text: "St. Tammany Parish established the Tchefuncte River Blueway Trail with marked access points and signage, making it one of the most organized paddling trails on the Northshore.", src: 'St. Tammany Parish Government; Louisiana Office of State Parks' }] },
         ],
         docs: [],
-        revs: [{ u: 'northshore_paddle', d: 'Apr 2025', s: 4, t: 'Covington section at 200 cfs — gentle blackwater, cypress canopy, perfect family float. The Tchefuncte is Northshore paddling at its best.' }, { u: 'mandeville_kayak', d: 'Mar 2025', s: 4, t: 'Upper Tchefuncte at 300 cfs after rain — piney woods corridor, tea-colored water, turtles on every log. Easy and beautiful.' }],
+        revs: [],
         outs: [{ n: 'Tchefuncte River Kayak Rentals', d: 'Kayak and canoe rentals on the Northshore', l: '' }],
       },
       {
@@ -4475,7 +4471,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2016', title: 'Great Flood of 2016 — Amite River Devastation', text: "The Amite River reached catastrophic flood levels in August 2016, inundating tens of thousands of homes in the Baton Rouge metro area. The disaster reshaped Louisiana's approach to floodplain management and led to major watershed restoration efforts.", src: "USGS; Louisiana Governor's Office of Homeland Security" }] },
         ],
         docs: [],
-        revs: [{ u: 'br_paddle_club', d: 'Mar 2025', s: 4, t: 'Upper Amite at 600 cfs — sandy bottom, forested banks, good smallmouth fishing. Surprisingly wild for being so close to Baton Rouge.' }, { u: 'livingston_kayak', d: 'Feb 2025', s: 3, t: 'Denham Springs section at 1,200 cfs — wide and a bit murky but accessible and easy. Good beginner river.' }],
+        revs: [],
         outs: [{ n: 'Amite River Canoe Company', d: 'Canoe and kayak rentals for Amite River paddling', l: '' }],
       },
       {
@@ -4490,7 +4486,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2014', title: 'Louisiana Natural and Scenic River Protection', text: "The Louisiana Department of Wildlife and Fisheries extended Natural and Scenic River protections to the upper Tangipahoa, preserving the sand-bottomed corridor from channelization and ensuring continued paddling access.", src: 'LDWF Natural and Scenic Rivers Program' }] },
         ],
         docs: [],
-        revs: [{ u: 'florida_parish_paddle', d: 'Apr 2025', s: 4, t: 'Kentwood to Amite at 400 cfs — white sandbars, longleaf pines, clear-running blackwater. Great sandbars for lunch stops.' }, { u: 'tangipahoa_local', d: 'Mar 2025', s: 4, t: 'Upper Tangipahoa at 300 cfs — narrow and intimate through the pine woods. Saw a river otter family. Peaceful paddle.' }],
+        revs: [],
         outs: [{ n: 'Tangipahoa River Adventures', d: 'Kayak rentals and shuttle service for Tangipahoa River', l: '' }],
       },
       {
@@ -4505,7 +4501,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1994', title: 'Big Branch Marsh NWR Established', text: "The U.S. Fish and Wildlife Service established the 18,000-acre Big Branch Marsh National Wildlife Refuge along the lower Bayou Lacombe corridor, protecting critical habitat for migratory birds and the Louisiana black bear.", src: 'USFWS Big Branch Marsh NWR' }] },
         ],
         docs: [],
-        revs: [{ u: 'northshore_naturalist', d: 'Mar 2025', s: 4, t: 'Bayou Lacombe at 80 cfs — cypress tunnel paddling at its finest. Herons, turtles, and silence. Perfect half-day escape from New Orleans.' }, { u: 'nola_kayak_club', d: 'Feb 2025', s: 4, t: 'Lower Lacombe into Big Branch Marsh at 100 cfs — the transition from cypress bayou to open marsh is magical. Bring binoculars for the birds.' }],
+        revs: [],
         outs: [{ n: 'Bayou Lacombe Paddle Shop', d: 'Kayak rentals and guided bayou tours on the Northshore', l: '' }],
       },
       {
@@ -4520,7 +4516,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2019', title: 'Comite River Diversion Canal Project', text: "The Army Corps of Engineers began construction of the Comite River Diversion Canal, a major flood control project designed to reduce flooding in the Baton Rouge metro area following the devastating 2016 floods.", src: 'USACE New Orleans District; The Advocate' }] },
         ],
         docs: [],
-        revs: [{ u: 'br_urban_paddle', d: 'Feb 2025', s: 3, t: 'Upper Comite at 300 cfs — sandy bottom, wooded banks, saw a deer and several turtles. Not bad for a Baton Rouge suburb paddle.' }, { u: 'zachary_kayaker', d: 'Mar 2025', s: 3, t: 'Comite near Zachary at 200 cfs — easy float, accessible put-ins. Nothing spectacular but a solid after-work paddle option.' }],
+        revs: [],
         outs: [{ n: 'Comite River Kayak Rentals', d: 'Kayak and canoe rentals for Comite River paddling near Baton Rouge', l: '' }],
       },
     ],
@@ -4545,7 +4541,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2020', title: 'Black Creek Wilderness Expansion', text: "Conservation groups secured additional protections for the Black Creek corridor, expanding the wilderness buffer around Mississippi's most ecologically significant stream.", src: 'Mississippi Sierra Club; USFS' }] },
         ],
         docs: [{ t: 'Black Creek Wild & Scenic River Management Plan', s: 'USFS De Soto NF', y: 2005, tp: 'Federal', pg: 120 , url: 'https://rivers.gov/sites/rivers/files/2023-01/black-creek-study-deis.pdf'}],
-        revs: [{ u: 'magnolia_paddler', d: 'Mar 2025', s: 5, t: "Fairley Bridge to Moody Landing in two days at 500 cfs. Camped on a white sandbar under longleaf pines. Mississippi's best river, no contest." }, { u: 'hattiesburg_kayak', d: 'Feb 2025', s: 4, t: 'Day trip from Fairley Bridge at 700 cfs. Tea-colored water, white sand, zero people. Felt like paddling through time.' }],
+        revs: [],
         outs: [{ n: 'Black Creek Canoe Rental', d: 'Shuttles and rentals, Brooklyn MS', l: 'blackcreekcanoe.com' }],
       },
       {
@@ -4560,7 +4556,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2015', title: "Mississippi's Premier Paddling Destination", text: "Okatoma Creek has become Mississippi's most-paddled waterway, drawing thousands of visitors annually to Seminary and Sanford. Local outfitters have operated continuously since the 1970s, making the Okatoma corridor one of rural Mississippi's most reliable tourism economies.", src: 'Mississippi Department of Wildlife, Fisheries and Parks' }] },
         ],
         docs: [],
-        revs: [{ u: 'seminary_local', d: 'Apr 2025', s: 5, t: 'Seminary to Sanford at 500 cfs — perfect level. Mild rapids, gorgeous sandbars, best day trip in Mississippi.' }, { u: 'jackson_kayaker', d: 'Mar 2025', s: 4, t: "Okatoma at 350 cfs — a bit scrappy but still Mississippi's most fun canoe stream. Great for families." }],
+        revs: [],
         outs: [{ n: 'Okatoma Outdoor Post', d: 'Full-service canoe and kayak outfitter, Seminary', l: 'okatomacanoe.com' }],
       },
       {
@@ -4575,7 +4571,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2012', title: 'Wolf River Conservation District Established', text: "Stone and Harrison counties established the Wolf River Conservation District to protect the river's exceptional water quality and longleaf pine corridor from development pressure along the rapidly growing Mississippi Gulf Coast.", src: 'Wolf River Conservation District; Mississippi Forestry Commission' }] },
         ],
         docs: [{ t: 'Wolf River Watershed Management Plan', s: 'MDEQ', y: 2014, tp: 'Ecology', pg: 88 , url: 'https://www.mdeq.ms.gov/wp-content/uploads/2025/07/Wolf_River_Watershed_Plan_2009.pdf'}],
-        revs: [{ u: 'gulfcoast_paddle', d: 'Feb 2025', s: 5, t: 'McHenry to Landon at 300 cfs — blackwater magic. White sand, cypress knees, turtles everywhere. Pristine.' }, { u: 'biloxi_kayak', d: 'Jan 2025', s: 4, t: "Wolf River at 200 cfs — low but still beautiful. Mississippi's quietest, prettiest paddle." }],
+        revs: [],
         outs: [{ n: 'Wolf River Canoes', d: 'Kayak and canoe rentals, Perkinston', l: 'wolfrivercanoes.com' }],
       },
       {
@@ -4590,7 +4586,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2015', title: 'De Soto National Forest Longleaf Restoration', text: "The U.S. Forest Service expanded longleaf pine restoration efforts in De Soto National Forest along the Bowie Creek corridor, working to restore the fire-dependent ecosystem that once dominated the southeastern coastal plain.", src: 'USFS De Soto National Forest; Longleaf Alliance' }] },
         ],
         docs: [],
-        revs: [{ u: 'pinebelt_paddler', d: 'Mar 2025', s: 4, t: 'Bowie Creek at 250 cfs — narrow, wild, white sandbars on every bend. Small stream magic in the piney woods.' }, { u: 'hattiesburg_kayak2', d: 'Feb 2025', s: 4, t: 'Upper Bowie at 300 cfs after rain — tea-colored water, longleaf pines overhead, Class I–II riffles. Short but sweet.' }],
+        revs: [],
         outs: [{ n: 'Bowie Creek Outfitters', d: 'Kayak rentals and shuttle service for Bowie Creek paddling', l: '' }],
       },
       {
@@ -4605,7 +4601,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2010', title: 'Pascagoula River Basin Conservation', text: "Conservation organizations identified the Leaf River as critical to the health of the Pascagoula — the largest unimpounded river system in the lower 48 states. Watershed protection efforts expanded along the Leaf's corridor.", src: 'The Nature Conservancy; Mississippi Wildlife Federation' }] },
         ],
         docs: [],
-        revs: [{ u: 'ms_canoe_trail', d: 'Apr 2025', s: 4, t: 'Ellisville to Hattiesburg at 800 cfs — wide sandbars, great camping, excellent catfish and bass. Two-day float in the Pine Belt.' }, { u: 'leaf_river_local', d: 'Mar 2025', s: 4, t: 'Upper Leaf at 500 cfs — narrower and more intimate than expected. Beautiful piney woods corridor.' }],
+        revs: [],
         outs: [{ n: 'Leaf River Paddle Company', d: 'Canoe and kayak rentals for Leaf River paddling', l: '' }],
       },
       {
@@ -4620,7 +4616,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1960', title: "Ross Barnett Reservoir — Jackson's Water Supply", text: "The Ross Barnett Reservoir was completed in 1960 on the Pearl River north of Jackson, creating a 33,000-acre lake that serves as the capital city's primary water supply and a major recreation destination.", src: 'Pearl River Valley Water Supply District; Jackson Clarion-Ledger' }] },
         ],
         docs: [],
-        revs: [{ u: 'jackson_paddle_club', d: 'Apr 2025', s: 4, t:"'Pearl River below the reservoir at 2,000 cfs — wide, sandy, great fishing access. Mississippi's biggest river delivers." }, { u: 'neshoba_kayaker', d: 'Mar 2025', s: 4, t: 'Upper Pearl near Philadelphia at 800 cfs — intimate, wooded, in the heart of Choctaw country. Meaningful paddle.' }],
+        revs: [],
         outs: [{ n: 'Pearl River Paddle Trails', d: 'Canoe and kayak access and shuttle service on the Pearl River', l: '' }],
       },
       {
@@ -4635,7 +4631,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1850s', title: "Dunn's Falls — Mississippi's Historic Waterfall", text: "Dunn's Falls, a 65-foot cascade on a Chunky River tributary, powered a grist mill built by John Dunn in the 1850s. The restored mill site and waterfall are now a county park and one of the only true waterfalls in Mississippi.", src: 'Newton County Historical Society; Mississippi Department of Archives and History' }] },
         ],
         docs: [],
-        revs: [{ u: 'ms_hidden_gems', d: 'Mar 2025', s: 4, t: "Chunky River at 300 cfs — rocky riffles, piney woods, and a side trip to Dunn's Falls. Mississippi has a waterfall and a fun river to go with it." }, { u: 'newton_co_paddle', d: 'Feb 2025', s: 4, t: 'Upper Chunky at 200 cfs — Class I–II shoals, clear water over rock. Different from the typical Mississippi blackwater experience.' }],
+        revs: [],
         outs: [{ n: 'Chunky River Outfitters', d: 'Kayak rentals and shuttle service for Chunky River paddling', l: '' }],
       },
       {
@@ -4650,7 +4646,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2012', title: 'National Forest Watershed Protection', text: "The U.S. Forest Service identified Tallahala Creek as a priority watershed within Bienville National Forest, implementing riparian buffer zones and longleaf pine restoration along the creek corridor.", src: 'USFS Bienville National Forest; Mississippi Forestry Commission' }] },
         ],
         docs: [],
-        revs: [{ u: 'ms_backcountry', d: 'Mar 2025', s: 4, t: 'Tallahala Creek at 250 cfs — two days of total solitude through the national forest. White sandbars, pine ridges, no one in sight.' }, { u: 'laurel_paddler', d: 'Feb 2025', s: 3, t: 'Lower Tallahala at 200 cfs — wider and slower but still peaceful. Good sandbar camping near Laurel.' }],
+        revs: [],
         outs: [{ n: 'Tallahala Creek Paddle Service', d: 'Shuttle service and access information for Tallahala Creek paddling', l: '' }],
       },
     ],
@@ -4675,7 +4671,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2022', title: 'Canyon Rim Trail Expansion', text: "The NPS completed a major expansion of the Canyon Rim trail system, opening new overlooks and connecting trailheads along the preserve's 22-mile scenic drive.", src: 'NPS Little River Canyon National Preserve' }] },
         ],
         docs: [{ t: 'Little River Canyon National Preserve General Management Plan', s: 'NPS', y: 2009, tp: 'Federal', pg: 220 , url: 'https://www.nps.gov/liri/learn/management/index.htm'}],
-        revs: [{ u: 'bama_ww_kayak', d: 'Mar 2025', s: 5, t: "Canyon run at 800 cfs — Chair Factory Shoals was pumping. Deepest canyon east of the Rockies and it's in Alabama. Mind blown." }, { u: 'lookout_mtn_paddle', d: 'Feb 2025', s: 4, t: "Little River at 500 cfs — technical and beautiful. The NPS preserve keeps the canyon pristine." }],
+        revs: [],
         outs: [{ n: 'Little River Outfitters', d: 'Kayak rentals and canyon shuttles, Fort Payne', l: 'littleriveroutfitters.com' }],
       },
       {
@@ -4691,7 +4687,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: "Cahaba Lily Festival — Alabama's Botanical Wonder", text: 'The annual Cahaba Lily Festival celebrates the spectacular May bloom of Hymenocallis coronaria on the Cahaba shoals — the largest remaining population of this rare lily species, drawing thousands of visitors to the river.', src: 'Cahaba River Society; USFWS' }] },
         ],
         docs: [{ t: 'Cahaba River Watershed Restoration Plan', s: 'USFWS/ADEM', y: 2015, tp: 'Ecology', pg: 195 , url: 'https://www.adem.alabama.gov/programs/water/nps/files/CahabaBMP.pdf'}],
-        revs: [{ u: 'bham_river_rat', d: 'May 2025', s: 5, t: "Cahaba lily shoals at 1,200 cfs in peak bloom — thousands of white lilies erupting from the shoals. Most biodiverse river per mile in North America and it's 20 minutes from Birmingham." }, { u: 'cahaba_conservancy', d: 'Apr 2025', s: 4, t: 'Middle Cahaba float at 800 cfs — spotted a flattened musk turtle and three species of darter in one riffle. This river is a living museum.' }],
+        revs: [],
         outs: [{ n: 'Cahaba Canoe Launch', d: 'Shelby County access and rentals', l: 'cahabacanoe.com' }],
       },
       {
@@ -4707,7 +4703,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: "Birmingham's Whitewater Renaissance", text: "The Locust Fork has become the centerpiece of Birmingham's growing outdoor recreation identity, with local paddling clubs reporting record participation and Blount County benefiting from paddlesport tourism.", src: 'Alabama Rivers Alliance; Birmingham Canoe Club' }] },
         ],
         docs: [],
-        revs: [{ u: 'bham_whitewater', d: 'Mar 2025', s: 5, t: "Swann Bridge to Nectar at 1,800 cfs — real whitewater 45 minutes from Birmingham. Powell Falls was a solid Class IV drop. Alabama's best kept whitewater secret." }, { u: 'locust_fork_local', d: 'Feb 2025', s: 4, t: 'Upper run at 1,000 cfs — technical Class III with beautiful bluffs. Blount County delivers.' }],
+        revs: [],
         outs: [{ n: 'Swann Bridge Canoe Launch', d: 'Put-in access and informal shuttles, Cleveland AL', l: 'blountcountyparks.com' }],
       },
       {
@@ -4722,7 +4718,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1975', title: 'Sipsey Wilderness Designated', text: "Congress designated the 25,000-acre Sipsey Wilderness in 1975 — Alabama's first and only federally designated wilderness. The designation protected the Sipsey Fork canyon system and its old-growth forest from logging and development.", src: 'USFS Bankhead National Forest; Alabama Wilderness Alliance' }] },
         ],
         docs: [],
-        revs: [{ u: 'bama_wilderness_paddle', d: 'Mar 2025', s: 5, t:"'Sipsey Fork below Lewis Smith Dam at 600 cfs — cold tailwater, canyon walls, waterfall tributaries. Alabama's most wild and scenic paddle." }, { u: 'bankhead_hiker', d: 'Feb 2025', s: 4, t: 'Sipsey Fork at 400 cfs — Class I–II riffles through the national forest. Spotted a red-cockaded woodpecker. Pristine.' }],
+        revs: [],
         outs: [{ n: 'Sipsey Fork Outfitters', d: 'Kayak rentals and shuttle service for Sipsey Fork paddling', l: '' }],
       },
       {
@@ -4737,7 +4733,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2018', title: 'Alabama Scenic River Designation', text: "The Alabama legislature designated the Mulberry Fork as a state Scenic River, protecting its free-flowing character and outstanding recreational values from impoundment.", src: 'Alabama Department of Conservation and Natural Resources; Alabama Rivers Alliance' }] },
         ],
         docs: [],
-        revs: [{ u: 'bham_creek_boater', d: 'Mar 2025', s: 4, t:"'Mulberry Fork at 1,500 cfs after rain — Class II–III rapids through a gorgeous sandstone gorge. Birmingham's other whitewater river." }, { u: 'cullman_kayaker', d: 'Feb 2025', s: 4, t: 'Mulberry at 800 cfs — fun Class II the whole way. Wooded corridor, no development, great winter paddle.' }],
+        revs: [],
         outs: [{ n: 'Mulberry Fork Paddle Company', d: 'Kayak rentals and guided whitewater trips on the Mulberry Fork', l: '' }],
       },
       {
@@ -4752,7 +4748,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2002', title: 'Coosa River Basin Initiative — Conservation Partnership', text: "A coalition of conservation groups launched the Coosa River Basin Initiative to address water quality, endangered species protection, and public access on one of North America's most biodiverse — and most imperiled — river systems.", src: 'Coosa River Basin Initiative; Alabama Rivers Alliance' }] },
         ],
         docs: [],
-        revs: [{ u: 'central_al_paddle', d: 'Apr 2025', s: 4, t: 'Wetumpka shoals at 3,000 cfs — Class I–II rapids through the meteor impact crater. Paddling through a cosmic collision site is surreal.' }, { u: 'gadsden_kayaker', d: 'Mar 2025', s: 4, t:"'Coosa near Gadsden at 5,000 cfs — wide, powerful, good fishing. Central Alabama's big river delivers." }],
+        revs: [],
         outs: [{ n: 'Coosa River Adventures', d: 'Kayak and canoe rentals for Coosa River paddling', l: '' }],
       },
       {
@@ -4767,7 +4763,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1956', title: 'Horseshoe Bend National Military Park', text: "The National Park Service established Horseshoe Bend National Military Park on the Tallapoosa River, preserving the site of Andrew Jackson's decisive 1814 victory over the Red Stick Creek — a battle that reshaped the American Southeast.", src: 'NPS Horseshoe Bend NMP; Alabama Historical Commission' }] },
         ],
         docs: [],
-        revs: [{ u: 'tallapoosa_paddler', d: 'Apr 2025', s: 4, t: 'Horseshoe Bend section at 1,500 cfs — paddling through the national military park is a powerful experience. Rocky shoals and history everywhere.' }, { u: 'al_piedmont_kayak', d: 'Mar 2025', s: 4, t: 'Upper Tallapoosa at 800 cfs — fun Class I–II shoals through the Piedmont. Underrated Alabama river.' }],
+        revs: [],
         outs: [{ n: 'Tallapoosa River Outfitters', d: 'Canoe and kayak rentals for Tallapoosa River paddling', l: '' }],
       },
       {
@@ -4782,7 +4778,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1938', title: 'Wheeler National Wildlife Refuge Established', text: "The U.S. Fish and Wildlife Service established Wheeler National Wildlife Refuge in 1938 along the Tennessee River and its tributaries, including Flint Creek. The refuge hosts the largest wintering population of sandhill cranes in the Southeast.", src: 'USFWS Wheeler NWR; Alabama Ornithological Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'wheeler_birder', d: 'Mar 2025', s: 4, t: 'Flint Creek through Wheeler NWR at 100 cfs — saw sandhill cranes, herons, and eagles. Short paddle but incredible birding.' }, { u: 'decatur_family_paddle', d: 'Feb 2025', s: 4, t: 'Flint Creek at 80 cfs — gentle, easy, perfect for kids. The wildlife refuge adds a special dimension to a family float.' }],
+        revs: [],
         outs: [{ n: 'Flint Creek Paddle Rentals', d: 'Kayak and canoe rentals near Wheeler National Wildlife Refuge', l: '' }],
       },
     ],
@@ -4806,7 +4802,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1970', title: 'Ichetucknee Springs State Park Established', text: "Florida acquired the Ichetucknee corridor and established the state park in 1970, rescuing the springs from commercial development. The park now manages over 200,000 visitors annually while maintaining the river's pristine water quality.", src: 'Florida State Parks; DEP' }] },
         ],
         docs: [],
-        revs: [{ u: 'springs_paddler', d: 'Jul 2024', s: 5, t: 'Ichetucknee at 310 cfs — crystal clear, 72 degrees, turtles and fish everywhere. Six miles of the most beautiful spring water in Florida.' }, { u: 'fl_nature_lover', d: 'Jun 2024', s: 5, t: 'Headspring to Dampier Landing in 2 hours. The water clarity is unreal — you can see every blade of eelgrass on the bottom.' }],
+        revs: [],
         outs: [{ n: 'Ichetucknee Springs State Park', d: 'Tube and kayak rentals, shuttle service', l: 'floridastateparks.org' }],
       },
       {
@@ -4821,7 +4817,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2020', title: "Fossil Capital of Florida", text: "The Peace River has become internationally known for fossil hunting. Pleistocene-era shark teeth, mammoth molars, and other prehistoric remains erode from the riverbanks, drawing amateur paleontologists from around the world.", src: 'Florida Museum of Natural History; Peace River Fossil Hunters' }] },
         ],
         docs: [{ t: 'Peace River Comprehensive Watershed Management Plan', s: 'SWFWMD', y: 2017, tp: 'Ecology', pg: 195 , url: 'http://polk.wateratlas.usf.edu/upload/documents/PEACE%20RIVER%20CWM%20PART1.pdf'}],
-        revs: [{ u: 'fossil_paddler_fl', d: 'Feb 2025', s: 5, t: 'Bowling Green to Arcadia at 500 cfs — found two megalodon teeth and a mammoth bone fragment in one trip. The Peace River is a time machine.' }, { u: 'centralfl_canoe', d: 'Jan 2025', s: 4, t: 'Upper Peace at 300 cfs — narrow, shady, alligators everywhere. Great winter paddle when the north is frozen.' }],
+        revs: [],
         outs: [{ n: 'Canoe Outpost — Peace River', d: 'Full-service canoe and kayak rentals, Arcadia', l: 'canoeoutpost.com' }],
       },
       {
@@ -4836,7 +4832,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1985', title: "Florida's First National Wild & Scenic River", text: "Congress designated the Northwest Fork of the Loxahatchee as a National Wild and Scenic River in 1985 — the first river in Florida to receive that protection. The designation recognized the extraordinary ecological value of an undeveloped river corridor in one of America's fastest-growing regions.", src: 'NPS; Loxahatchee River District' }] },
         ],
         docs: [{ t: 'Loxahatchee River Preservation Initiative', s: 'Loxahatchee River District', y: 2019, tp: 'Ecology', pg: 110 , url: 'https://lrpi.us/'}],
-        revs: [{ u: 'se_florida_paddle', d: 'Mar 2025', s: 5, t: 'Riverbend Park to Jonathan Dickinson at 100 cfs — ancient cypress, manatees, and total wilderness 20 minutes from Jupiter. Unbelievable.' }, { u: 'jupiter_kayaker', d: 'Feb 2025', s: 4, t: "Loxahatchee at 80 cfs — narrow, shaded, prehistoric-feeling. Florida's best-kept paddling secret in Palm Beach County." }],
+        revs: [],
         outs: [{ n: 'Canoe Outfitters of Florida', d: 'Loxahatchee River kayak and canoe rentals', l: 'canoeoutfittersofflorida.com' }],
       },
       {
@@ -4852,7 +4848,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2000', title: 'Suwannee River Wilderness Trail Established', text: "Florida's Office of Greenways and Trails established the 207-mile Suwannee River Wilderness Trail with river camps spaced every 8–12 miles, creating one of the finest long-distance paddling trails in the Southeast.", src: 'Florida DEP Office of Greenways and Trails' }] },
         ],
         docs: [{ t: 'Suwannee River Basin Surface Water Improvement Plan', s: 'SRWMD', y: 2017, tp: 'Hydrology', pg: 280 , url: 'https://www.mysuwanneeriver.com/DocumentCenter/View/12027/Suwannee-River-Basin-SWIM-Plan'}],
-        revs: [{ u: 'expedition_paddler', d: 'Mar 2025', s: 5, t: "Five days from White Springs to the Gulf at 5,200 cfs. Spring runs pouring turquoise water into dark tannic main stem. Stephen Foster's river delivers." }, { u: 'suwannee_springs', d: 'Feb 2025', s: 4, t: 'Branford section at 8,000 cfs — wide and powerful. Springs visible as blue windows in the dark water. Manatees at Manatee Springs.' }],
+        revs: [],
         outs: [{ n: 'Suwannee River Wilderness Trail', d: 'State-managed river camps and access', l: 'floridastateparks.org/suwannee' }, { n: 'American Canoe Adventures', d: 'Multi-day Suwannee trips, White Springs', l: 'aca1.com' }],
       },
       {
@@ -4868,7 +4864,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Wild & Scenic River Study Initiated', text: "Congress authorized a study evaluating the Wekiva River for National Wild and Scenic River designation, recognizing its extraordinary ecological values and the urgency of protecting a spring-fed river surrounded by one of America's fastest-growing metro areas.", src: 'NPS; Wekiva River Basin Commission' }] },
         ],
         docs: [],
-        revs: [{ u: 'orlando_nature_paddle', d: 'Apr 2025', s: 5, t: "Wekiwa Springs to Katie Landing at 200 cfs — crystal water, cypress canopy, saw two manatees and an otter. This is 15 minutes from Disney World." }, { u: 'centralfl_kayak', d: 'Mar 2025', s: 4, t: "Wekiva at 180 cfs — narrow, shaded, pristine. Hard to believe you're in metro Orlando. Bring polarized glasses to see the springs." }],
+        revs: [],
         outs: [{ n: 'Wekiva Island', d: 'Kayak and paddleboard rentals, Longwood', l: 'wekivaisland.com' }],
       },
       {
@@ -4883,7 +4879,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1990', title: "Rainbow Springs State Park Established", text: "Florida acquired the former Rainbow Springs tourist attraction and established Rainbow Springs State Park, protecting the headspring and upper river corridor from residential development that had begun to encroach on the spring basin.", src: 'Florida State Parks; SWFWMD' }] },
         ],
         docs: [],
-        revs: [{ u: 'ocala_paddle_daily', d: 'Mar 2025', s: 5, t: "Rainbow River at 310 cfs — visibility to the bottom everywhere, turtles stacked on every log, manatees in the headspring. Six miles of pure Florida magic." }, { u: 'spring_run_kayaker', d: 'Feb 2025', s: 4, t: "KP Hole upstream paddle at 300 cfs — current is gentle enough to paddle against. Crystal water, aquatic plants waving below. Bring a mask and snorkel." }],
+        revs: [],
         outs: [{ n: 'Rainbow River Kayak Adventures', d: 'Kayak and canoe rentals at KP Hole County Park', l: '' }],
       },
       {
@@ -4898,7 +4894,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1936', title: "Hillsborough River State Park — CCC Legacy", text: "The Civilian Conservation Corps built Hillsborough River State Park in 1936, one of Florida's original state parks. The park preserves the only Class II rapids in Florida — a limestone shelf that creates genuine whitewater in an otherwise flat state.", src: 'Florida State Parks; CCC Legacy Foundation' }] },
         ],
         docs: [],
-        revs: [{ u: 'tampa_paddler', d: 'Apr 2025', s: 5, t: "Hillsborough River SP at 400 cfs — actual rapids in Florida! Class II over the limestone shelf. Plus gators, otters, and cypress canopy. Tampa's best outdoor secret." }, { u: 'pasco_kayaker', d: 'Mar 2025', s: 4, t: "Crystal Springs to the state park at 300 cfs — spring-fed headwaters, narrow and shady. Saw seven gators and a river otter family." }],
+        revs: [],
         outs: [{ n: 'Canoe Escape', d: 'Hillsborough River kayak and canoe rentals, Thonotosassa', l: '' }],
       },
       {
@@ -4913,7 +4909,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1935', title: "O'Leno State Park — CCC Legacy at the River Sink", text: "The CCC built O'Leno State Park around the Santa Fe River sink in the 1930s, preserving the geological wonder where the river disappears underground. The park is one of Florida's oldest and most geologically significant.", src: 'Florida State Parks; CCC Legacy Foundation' }] },
         ],
         docs: [],
-        revs: [{ u: 'ginnie_springs_diver', d: 'Mar 2025', s: 5, t: "Santa Fe below River Rise at 500 cfs — springs pumping crystal water into the main stem every quarter mile. Paddled past Ginnie, Blue, and Poe springs. Unreal clarity." }, { u: 'north_fl_paddler', d: 'Apr 2025', s: 4, t: "Above the sink at 400 cfs — tannic blackwater, cypress canopy, then the river just disappears into a hole. Resurfaces three miles later as a completely different river. Florida geology is wild." }],
+        revs: [],
         outs: [{ n: 'Santa Fe River Paddling', d: 'Kayak and canoe rentals for Santa Fe River trips, High Springs', l: '' }],
       },
     ],
@@ -4938,7 +4934,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2012', title: 'Headwaters Reopened to Paddling', text: 'After decades of closure, the USFS reopened the Chattooga headwaters above SC 28 to paddling, ending a controversial ban that had restricted access to the upper river since 1976.', src: 'American Whitewater; USFS' }] },
         ],
         docs: [],
-        revs: [{ u: 'se_whitewater', d: 'Apr 2025', s: 5, t: "Section IV at 1,200 cfs — Five Fingers, Corkscrew, Jawbone all firing. The Chattooga is the Southeast's greatest whitewater run, full stop." }, { u: 'oconee_paddler', d: 'Mar 2025', s: 5, t: 'Section III at 800 cfs — Earls Ford to Bull Sluice. Perfect Class III–IV day. Wild and Scenic for a reason.' }],
+        revs: [],
         outs: [{ n: 'Wildwater Chattooga', d: 'Guided Section III and IV trips', l: 'wildwaterchattooga.com' }, { n: 'Chattooga Ridge Outfitters', d: 'Shuttles and kayak rentals, Long Creek SC', l: 'chattoogaridge.com' }],
       },
       {
@@ -4954,7 +4950,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2020', title: "Columbia's Urban Whitewater Renaissance", text: "Columbia has embraced the Saluda as the centerpiece of its outdoor recreation identity, with the Three Rivers Greenway and Saluda Riverwalk providing urban access to genuine Class III–IV whitewater.", src: 'City of Columbia Parks and Recreation; Three Rivers Greenway' }] },
         ],
         docs: [{ t: 'Lower Saluda River Scenic River Corridor Plan', s: 'SC DNR', y: 2015, tp: 'Recreation', pg: 78 , url: 'https://www.dnr.sc.gov/water/river/pdf/LowerSaludaPlanComplete.pdf'}],
-        revs: [{ u: 'cola_kayaker', d: 'Apr 2025', s: 5, t: "Saluda at 1,800 cfs dam release — Class III–IV whitewater with the Columbia skyline in the background. Best urban paddling in the Southeast." }, { u: 'midlands_paddle', d: 'Mar 2025', s: 4, t: 'Saluda Shoals section at 900 cfs — mellow Class II–III, perfect for beginners. Cold water from the dam bottom even in summer.' }],
+        revs: [],
         outs: [{ n: 'River Runner Outdoor Center', d: 'Kayak rentals and instruction, Columbia', l: 'shopriverrunner.com' }],
       },
       {
@@ -4970,7 +4966,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2010', title: 'Edisto River Canoe and Kayak Trail', text: "South Carolina established the Edisto River Canoe and Kayak Trail with designated landings and primitive campsites, creating the Lowcountry's premier multi-day paddling experience.", src: 'SC DNR; Edisto River Alliance' }] },
         ],
         docs: [{ t: 'Edisto River Basin Plan', s: 'SC DHEC', y: 2019, tp: 'Ecology', pg: 165 , url: 'https://des.sc.gov/programs/bureau-water/hydrology/water-planning/river-basin-planning/edisto-basin-planning'}],
-        revs: [{ u: 'lowcountry_paddler', d: 'Apr 2025', s: 5, t: "Three days on the Edisto at 1,000 cfs — longest free-flowing blackwater river in North America. Spanish moss, cypress knees, alligators, absolute Lowcountry perfection." }, { u: 'charleston_canoe', d: 'Mar 2025', s: 4, t: "Givhans Ferry section at 800 cfs — old rice plantation dikes visible from the water. The Edisto's history runs as deep as its tannins." }],
+        revs: [],
         outs: [{ n: 'Carolina Heritage Outfitters', d: 'Multi-day Edisto trips with treehouse camping', l: 'canoesc.com' }],
       },
       {
@@ -4985,7 +4981,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2008', title: 'Broad River Scenic River Designation', text: "South Carolina designated sections of the Broad River as a State Scenic River, protecting the Piedmont corridor's outstanding recreational and ecological values.", src: 'SC DNR; Broad River Alliance' }] },
         ],
         docs: [],
-        revs: [{ u: 'upstate_sc_paddle', d: 'Apr 2025', s: 4, t: 'Broad River near Lockhart at 2,000 cfs — wide, rocky, Class I–II shoals the whole way. Great smallmouth fishing.' }, { u: 'cola_broad_river', d: 'Mar 2025', s: 4, t: 'Lower Broad approaching Columbia at 3,000 cfs — scenic Piedmont river with good access points. Solid day trip.' }],
+        revs: [],
         outs: [{ n: 'Broad River Outfitters', d: 'Kayak and canoe rentals for Broad River paddling', l: '' }],
       },
       {
@@ -5000,7 +4996,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2003', title: 'Congaree National Park Established', text: "Congress elevated Congaree National Monument to full National Park status in 2003, recognizing the 26,000-acre old-growth bottomland hardwood forest as one of the most ecologically significant landscapes in North America.", src: 'NPS Congaree National Park; South Carolina Conservation League' }] },
         ],
         docs: [],
-        revs: [{ u: 'cola_nature_paddle', d: 'Apr 2025', s: 5, t: 'Congaree River through the national park at 5,000 cfs — paddling beneath champion loblolly pines and bald cypress. Old-growth floodplain magic.' }, { u: 'midlands_naturalist', d: 'Mar 2025', s: 4, t: 'Congaree at 3,000 cfs — Cedar Creek canoe trail in the park is otherworldly. Biggest trees in the Southeast.' }],
+        revs: [],
         outs: [{ n: 'Congaree National Park Canoe Access', d: 'Park-managed canoe and kayak access to Cedar Creek trail', l: '' }],
       },
       {
@@ -5015,7 +5011,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2010', title: 'Little River Scenic River Designation', text: "South Carolina designated upper sections of the Little River as a State Scenic River, protecting the Piedmont corridor from development and ensuring continued public access for paddling.", src: 'SC DNR; Upstate Forever' }] },
         ],
         docs: [],
-        revs: [{ u: 'anderson_kayaker', d: 'Apr 2025', s: 4, t: 'Little River in Anderson County at 400 cfs — rocky shoals, wooded banks, easy Class I–II. Perfect upstate day trip.' }, { u: 'laurens_paddle', d: 'Mar 2025', s: 3, t: 'Little River at 300 cfs — a bit low but still enjoyable. Quiet Piedmont paddling through farm country.' }],
+        revs: [],
         outs: [{ n: 'Little River Paddle Rentals', d: 'Kayak and canoe rentals for Little River paddling in upstate SC', l: '' }],
       },
       {
@@ -5030,7 +5026,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2000', title: 'Waccamaw National Wildlife Refuge Established', text: "The U.S. Fish and Wildlife Service established the Waccamaw National Wildlife Refuge to protect over 50,000 acres of bottomland hardwood and cypress-tupelo swamp along the river — critical habitat for black bears, swallow-tailed kites, and migratory waterfowl.", src: 'USFWS Waccamaw NWR; Georgetown County' }] },
         ],
         docs: [],
-        revs: [{ u: 'grand_strand_paddle', d: 'Apr 2025', s: 5, t: 'Waccamaw through the NWR at 800 cfs — ancient cypress, Spanish moss, blackwater magic. Rivals the Edisto for best Lowcountry paddle.' }, { u: 'conway_kayaker', d: 'Mar 2025', s: 4, t: 'Conway to Bucksport at 600 cfs — gorgeous cypress-tupelo swamp corridor. Saw a swallow-tailed kite. Stunning.' }],
+        revs: [],
         outs: [{ n: 'Waccamaw River Paddle Trails', d: 'Kayak and canoe access and guided tours on the Waccamaw River', l: '' }],
       },
       {
@@ -5045,7 +5041,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2015', title: 'Tyger River Foundation — Mill Heritage Trail', text: "The Tyger River Foundation launched efforts to document and preserve the historic textile mill ruins along the river, creating a unique paddling trail that combines natural beauty with industrial archaeology from South Carolina's textile era.", src: 'Tyger River Foundation; Spartanburg County' }] },
         ],
         docs: [],
-        revs: [{ u: 'spartanburg_paddle', d: 'Apr 2025', s: 4, t: 'Tyger River at 500 cfs — rocky shoals, old mill ruins, and wooded banks. The crumbling dams and stone foundations add a haunting beauty.' }, { u: 'upstate_heritage', d: 'Mar 2025', s: 4, t: 'Middle Tyger at 400 cfs — Class I–II riffles past textile mill ruins. Unique combination of nature and history.' }],
+        revs: [],
         outs: [{ n: 'Tyger River Paddle Company', d: 'Kayak rentals and guided heritage paddles on the Tyger River', l: '' }],
       },
       {
@@ -5060,7 +5056,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1974', title: 'Chattooga Wild & Scenic Designation', text: "Just two years after the release of the 1972 film 'Deliverance' made the Chattooga famous, Congress designated the river as a National Wild & Scenic River in 1974 — one of the first such designations in the Southeast. The designation permanently protected 57 miles of the river from damming and development, preserving the deep South's finest free-flowing whitewater.", src: 'USFS Sumter National Forest; American Whitewater' }] },
         ],
         docs: [],
-        revs: [{ u: 'deliverance_expert', d: 'Apr 2024', s: 5, t: 'Section IV at 1,600 cfs — Seven Foot Falls, Woodall Shoals, and the Five Falls sequence. The most legendary whitewater run in the Southeast. Committing and unforgettable.' }, { u: 'chattooga_section_3', d: 'May 2024', s: 5, t: 'Section III at 1,200 cfs — classic intermediate Class III–IV. Bull Sluice at the bottom is rowdy. Perfect southeastern whitewater day.' }],
+        revs: [],
         outs: [{ n: 'Nantahala Outdoor Center', d: 'Chattooga River commercial trips from the Chattooga Outpost', l: '' }],
       },
       {
@@ -5075,7 +5071,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1997', title: 'Sumter National Forest Enoree Ranger District', text: "The Sumter National Forest's Enoree-Long Cane Ranger District continues to manage the middle reaches of the Enoree River as a backcountry corridor with minimal development. The forested reach provides a relatively undisturbed habitat for wildlife and a quiet paddling destination in the increasingly developed upstate Piedmont.", src: 'USFS Sumter National Forest' }] },
         ],
         docs: [],
-        revs: [{ u: 'enoree_explorer', d: 'Jun 2024', s: 4, t: 'Sumter NF reach at 500 cfs — peaceful Class I through deep hardwood forest. Hardly saw another boat. Great bass fishing.' }, { u: 'upcountry_paddler', d: 'May 2024', s: 4, t: 'Middle Enoree at 600 cfs — quiet, pretty, and well-suited for a solo multi-day. One of SC\"s best hidden paddle trips.' }],
+        revs: [],
         outs: [{ n: 'Palmetto Outdoor Center', d: 'Enoree River paddle information and trip planning', l: '' }],
       },
       {
@@ -5090,7 +5086,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1994', title: 'Lynches Designated SC Scenic River', text: "The South Carolina Department of Natural Resources designated 54 miles of the Lynches River as a State Scenic River in 1994 — the second such designation in the state. The designation has helped protect one of the finest remaining blackwater river corridors in the Southeast and supports growing paddling and eco-tourism use.", src: 'SC DNR Scenic Rivers Program' }] },
         ],
         docs: [],
-        revs: [{ u: 'lowcountry_blackwater', d: 'May 2024', s: 5, t: 'Lynches River State Park section — paddling through cypress swamps with Spanish moss dripping. Saw alligators, turtles, and prothonotary warblers. Classic lowcountry.' }, { u: 'pee_dee_paddler', d: 'Oct 2024', s: 5, t: 'Multi-day Lynches trip — camped on sand bars and paddled blackwater swamp forest. The best blackwater paddle in SC.' }],
+        revs: [],
         outs: [{ n: 'Lynches River State Park', d: 'Kayak rentals and river access for blackwater trips', l: '' }],
       },
       {
@@ -5105,7 +5101,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2014', title: 'Wateree River Blue Trail Designation', text: "American Rivers and the Congaree Riverkeeper designated the Wateree River as a Blue Trail in 2014, creating a paddle trail with improved access and signage from the Lake Wateree tailrace to the Santee River confluence. The Blue Trail has helped build paddling interest in one of SC's most under-utilized big-water fisheries.", src: 'American Rivers; Congaree Riverkeeper' }] },
         ],
         docs: [],
-        revs: [{ u: 'wateree_striper_kayak', d: 'Mar 2024', s: 5, t: 'Wateree tailrace in March — landed a 15-pound striped bass from the kayak. Best striper kayak fishing in SC.' }, { u: 'camden_paddler', d: 'Aug 2024', s: 4, t: 'Camden to Manchester at 2,500 cfs — wide slow river with great catfish and bass fishing. Historic Revolutionary War sites along the way.' }],
+        revs: [],
         outs: [{ n: 'Palmetto Outdoor Center', d: 'Wateree River kayak fishing and paddle trip logistics', l: '' }],
       },
       {
@@ -5120,7 +5116,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2006', title: 'Great Pee Dee Paddle Trail Development', text: "The Great Pee Dee Paddle Trail was developed through partnerships between Pee Dee Land Trust, SC DNR, and local communities to create access sites, signage, and camping along the middle and lower river. The trail has helped elevate the Pee Dee as a multi-day paddling destination and support conservation of its unique blackwater swamp ecosystems.", src: 'Pee Dee Land Trust; SC DNR' }] },
         ],
         docs: [],
-        revs: [{ u: 'pee_dee_catfish', d: 'Jul 2024', s: 5, t: 'Cheraw to Society Hill at 4,800 cfs — trophy blue catfish and flathead cat fishing. Landed two over 40 pounds. Big water, big fish.' }, { u: 'sc_lowcountry_multiday', d: 'Oct 2024', s: 5, t: 'Four-day Pee Dee trip through lowcountry swamps — sandbar camping, alligators, and incredible solitude. One of the best multi-days in the South.' }],
+        revs: [],
         outs: [{ n: 'Pee Dee Land Trust', d: 'Pee Dee Paddle Trail information and river access', l: '' }],
       },
       {
@@ -5135,7 +5131,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Black River National Wild & Scenic Designation', text: "Congress designated 70 miles of the Black River as a National Wild & Scenic River in 2023, making it South Carolina's second Wild & Scenic River after the Chattooga. The designation protects a critical blackwater ecosystem including ancient bald cypress, bottomland hardwoods, and some of the cleanest blackwater habitat remaining in the Southeast.", src: 'American Rivers; Winyah Rivers Alliance' }] },
         ],
         docs: [],
-        revs: [{ u: 'black_river_wildscenic', d: 'Nov 2024', s: 5, t: 'Middle Black River at 350 cfs — paddling through Wild & Scenic corridor past ancient cypress. Dark water, no sound but birds, incredible wilderness experience.' }, { u: 'lowcountry_cypress', d: 'Apr 2024', s: 5, t: 'Black River Water Trail — best blackwater paddle in South Carolina. The Wild & Scenic designation was long overdue.' }],
+        revs: [],
         outs: [{ n: 'Black River Outdoors Center', d: 'Black River blackwater paddle trips from Georgetown', l: '' }],
       },
       {
@@ -5150,7 +5146,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1998', title: 'Lumber River Wild & Scenic Designation', text: "Congress designated 81 miles of the Lumber River in North Carolina as a National Wild & Scenic River in 1998, protecting one of the finest blackwater river corridors in the eastern U.S. and recognizing the river's cultural significance to the Lumbee Tribe. The South Carolina reach of the Lumber is protected as part of the SC Paddle Trail system.", src: 'NC DNR; Lumber River State Park' }] },
         ],
         docs: [],
-        revs: [{ u: 'lumbee_homeland', d: 'Sep 2024', s: 5, t: 'Lumber River State Park section — cypress swamps, blackwater, and paddling through Lumbee tribal homelands. Culturally and ecologically unique.' }, { u: 'cross_state_lumber', d: 'Oct 2024', s: 4, t: 'NC to SC multi-day Lumber River paddle — blackwater wilderness and great sandbar camping. Worth the logistics.' }],
+        revs: [],
         outs: [{ n: 'Lumber River State Park', d: 'Lumber River paddle access and multi-day trip information', l: '' }],
       },
     ],
@@ -5175,7 +5171,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: "Nebraska's Most Popular Canoe River", text: "The Niobrara draws over 60,000 paddlers annually, making it the most visited recreational river in the Great Plains. The spring-fed water stays cool even in August, and the 200-foot Smith Falls — Nebraska's tallest — remains the signature attraction.", src: 'NPS; Nebraska Game and Parks Commission' }] },
         ],
         docs: [{ t: 'Niobrara National Scenic River Management Plan', s: 'NPS', y: 2006, tp: 'Federal', pg: 220 , url: 'https://rivers.gov/sites/rivers/files/documents/plans/niobrara-plan.pdf'}],
-        revs: [{ u: 'sandhills_paddler', d: 'Jul 2025', s: 5, t: 'Smith Falls to Berry Bridge at 900 cfs — waterfalls pouring off the canyon walls every half mile. Best prairie river in America.' }, { u: 'ne_canoe_family', d: 'Aug 2025', s: 5, t: 'Three-day float with the kids. Camped on sandbars, hiked to fossil beds. The Niobrara delivers every time.' }],
+        revs: [],
         outs: [{ n: 'Sunny Brook Camp', d: 'Full-service Niobrara outfitter, cabins and camping', l: 'sunnybrookcamp.com' }, { n: 'Graham Canoe Outfitters', d: 'Canoe and kayak rentals, shuttle service', l: 'grahamcanoeoutfitters.com' }],
       },
       {
@@ -5190,7 +5186,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1820', title: "Long Expedition — 'The Great Desert'", text: "Stephen Long's 1820 expedition labeled the Sandhills region the 'Great American Desert,' discouraging settlement for decades. The Dismal River's name reflects early explorers' grim assessment of the treeless, windswept landscape.", src: 'Smithsonian Institution; Nebraska State Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'sandhill_explorer', d: 'Jun 2025', s: 5, t: 'Two days on the Dismal at 160 cfs. Crystal water, total silence, no one for miles. This is what Nebraska looked like before fences.' }, { u: 'prairie_trout', d: 'Sep 2025', s: 4, t: 'Brown trout in the upper Dismal are spooky in that clear water. Landed three on tiny dries. Remote and magical.' }],
+        revs: [],
         outs: [{ n: 'Sandhills Motel & Outfitters', d: 'Dunning-based, access permits and local knowledge', l: 'sandhillsmotel.com' }],
       },
       {
@@ -5206,7 +5202,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2025', title: "500,000 Cranes — World's Largest Bird Migration", text: "Each March, roughly 500,000 Sandhill Cranes — 80% of the world's population — converge on an 80-mile stretch of the Platte near Grand Island. The spectacle draws 100,000+ visitors annually and is considered the greatest wildlife migration in North America.", src: 'Audubon Rowe Sanctuary; Crane Trust' }] },
         ],
         docs: [{ t: 'Platte River Recovery Implementation Program', s: 'USFWS', y: 2006, tp: 'Federal', pg: 340 , url: 'https://platteriverprogram.org/sites/default/files/2025-10/prrip-2006feis-volume-2.pdf'}],
-        revs: [{ u: 'crane_watcher_ne', d: 'Mar 2025', s: 5, t: 'Paddled the Platte at sunrise during crane season — 50,000 birds lifted off the sandbars around us. Life-changing.' }, { u: 'prairie_paddler', d: 'Jul 2025', s: 3, t: 'Summer Platte at 3,200 cfs is wide and shallow. You will drag. Best experienced during crane migration or higher water.' }],
+        revs: [],
         outs: [{ n: 'Crane Trust Nature & Visitor Center', d: 'Guided Platte River experiences during crane season', l: 'cranetrust.org' }],
       },
       {
@@ -5221,7 +5217,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1986', title: 'Calamus Reservoir Completed', text: "The Bureau of Reclamation completed Calamus Dam in 1986, creating a 5,124-acre reservoir for irrigation. The cold tailwater below the dam unexpectedly created one of Nebraska's best trout fisheries — a spring-fed stream made even colder by deep-release dam flows.", src: 'Bureau of Reclamation; Nebraska Game and Parks Commission' }] },
         ],
         docs: [],
-        revs: [{ u: 'sandhills_angler', d: 'Aug 2025', s: 5, t: 'Below Calamus Dam at 180 cfs — crystal water, brown trout sipping midges. Felt like a Montana spring creek dropped in the Nebraska Sandhills.' }, { u: 'ne_paddler_quiet', d: 'Jul 2025', s: 4, t: 'Floated the upper Calamus through open Sandhills meadows. Total silence, clear water, no one around. Magical prairie solitude.' }],
+        revs: [],
         outs: [{ n: 'Calamus Outfitters', d: 'Sandhills ranch-based canoe and kayak access', l: '' }],
       },
       {
@@ -5236,7 +5232,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1860s–1880s', title: 'Homestead Era — Sodbusters on the Loup', text: "The Homestead Act brought thousands of settlers to the Loup River valley in the 1860s–1880s. The treeless prairie forced homesteaders to build sod houses from the river's thick prairie turf. The Loup valley became one of Nebraska's most productive agricultural regions.", src: 'Nebraska State Historical Society; Howard County Museum' }] },
         ],
         docs: [],
-        revs: [{ u: 'ne_braided_river', d: 'Jun 2025', s: 4, t: 'Loup River at 1,200 cfs — endless braided channels, sandbars for lunch stops. Classic Nebraska prairie river experience.' }, { u: 'central_ne_kayak', d: 'Jul 2025', s: 3, t: 'Wide and shallow in summer. Pick your channels carefully or you will drag. Beautiful cottonwood shade on the banks.' }],
+        revs: [],
         outs: [{ n: 'Loup River Canoe Rentals', d: 'Seasonal canoe and kayak rentals, shuttle service', l: '' }],
       },
       {
@@ -5251,7 +5247,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2019', title: 'Elkhorn River Water Trail Designated', text: "Nebraska designated the Elkhorn as a state water trail, improving access points and signage along 200 miles. The trail has become one of the most popular multi-day paddling routes in the state, especially for families seeking gentle prairie river camping.", src: 'Nebraska Game and Parks Commission' }] },
         ],
         docs: [],
-        revs: [{ u: 'ne_family_float', d: 'Jul 2025', s: 5, t:"'Two days on the Elkhorn with the kids at 800 cfs — huge sandbars, gentle current, perfect family camping. Nebraska's best beginner river." }, { u: 'elkhorn_regular', d: 'Aug 2025', s: 4, t: 'Norfolk to West Point stretch is underrated. Prairie views, good fishing, and virtually no crowds.' }],
+        revs: [],
         outs: [{ n: 'Elkhorn River Adventures', d: 'Canoe and kayak rentals, multi-day shuttle service', l: '' }],
       },
       {
@@ -5266,7 +5262,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1869', title: 'Battle of Summit Springs', text: "The last major conflict between U.S. forces and Cheyenne Dog Soldiers occurred near the Republican River in 1869. The battle ended Cheyenne resistance on the central Plains and opened the river valley to homesteaders within a decade.", src: 'Colorado Historical Society; Nebraska State Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'sw_nebraska_explore', d: 'May 2025', s: 4, t: 'Republican River below McCook at 400 cfs — surprising canyon scenery through the prairie. Nobody knows about this river.' }, { u: 'plains_paddler', d: 'Jun 2025', s: 3, t: 'Low water in summer makes it tough. Best in spring or after rains. When it flows, the canyon sections are genuinely scenic.' }],
+        revs: [],
         outs: [{ n: 'Harlan County Reservoir Marina', d: 'Boat access, camping, local river information', l: '' }],
       },
       {
@@ -5281,7 +5277,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1905', title: 'USGS Sandhills Groundwater Survey', text: "Early USGS surveys documented the extraordinary groundwater system feeding the Middle Loup — springs emerging from the Ogallala Aquifer at consistent temperatures and flow rates year-round. The surveys established the Sandhills as one of the greatest groundwater reserves in the Western Hemisphere.", src: 'USGS Water Resources Division' }] },
         ],
         docs: [],
-        revs: [{ u: 'sandhills_clear_water', d: 'Jul 2025', s: 5, t: 'Middle Loup near Dunning at 350 cfs — water so clear it looks like you are floating on air. Spring-fed perfection in the heart of the Sandhills.' }, { u: 'ne_trout_seeker', d: 'Aug 2025', s: 4, t: 'Brown trout in the upper Middle Loup are real. Cold, clear water and no pressure. A Sandhills secret.' }],
+        revs: [],
         outs: [{ n: 'Sandhills River Trips', d: 'Dunning-based outfitter, canoe and kayak rentals', l: '' }],
       },
     ],
@@ -5306,7 +5302,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1991', title: 'Missouri National Recreational River Designation', text: "Congress designated this reach a National Recreational River, recognizing the 59-mile stretch below Fort Randall Dam as one of the last free-flowing, unchannelized segments of the Missouri — the river Lewis and Clark would still recognize.", src: 'NPS Missouri National Recreational River' }] },
         ],
         docs: [{ t: 'Missouri National Recreational River General Management Plan', s: 'NPS', y: 1999, tp: 'Federal', pg: 280 , url: 'https://rivers.gov/sites/rivers/files/documents/plans/missouri-plan-nps.pdf'}],
-        revs: [{ u: 'missouri_sd_paddler', d: 'Aug 2025', s: 5, t: 'Three-day float below Fort Randall — camped on enormous sandbars both nights. Caught walleye for dinner. Lewis and Clark vibes.' }, { u: 'prairie_explorer', d: 'Jun 2025', s: 4, t: 'Wide, powerful river at 22,000 cfs. Stay near shore. Incredible birdlife — pelicans, bald eagles, terns nesting on every bar.' }],
+        revs: [],
         outs: [{ n: 'Missouri River Expeditions', d: 'Multi-day guided trips, canoe and kayak rentals', l: 'missouririverexpeditions.com' }],
       },
       {
@@ -5321,7 +5317,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1862', title: 'Homestead Act and Dakota War', text: "The Homestead Act of 1862 opened the Big Sioux valley to white settlement. The simultaneous Dakota War in Minnesota drove surviving Dakota people westward, forever altering the river corridor's cultural landscape.", src: 'South Dakota State Historical Society' }] },
         ],
         docs: [{ t: 'Big Sioux River Watershed Assessment', s: 'SD DENR', y: 2014, tp: 'Ecology', pg: 155 , url: 'https://danr.sd.gov/Conservation/WatershedProtection/TMDL/docs/TableDocs/tmdl_bigsiouxcentral.pdf'}],
-        revs: [{ u: 'sioux_falls_kayaker', d: 'May 2025', s: 4, t: 'Palisades section at 1,200 cfs — gorgeous quartzite walls, mild Class II riffles. Best day trip near Sioux Falls.' }, { u: 'prairie_river_rat', d: 'Jul 2025', s: 4, t: 'Brandon to Canton at 2,400 cfs — wide prairie water, big sky, saw a dozen great blue herons.' }],
+        revs: [],
         outs: [{ n: 'Palisades State Park', d: 'Canoe and kayak access, camping', l: 'gfp.sd.gov' }, { n: 'Falls Overlook Kayaks', d: 'Sioux Falls urban paddle rentals', l: 'fallsoverlockkayaks.com' }],
       },
       {
@@ -5337,7 +5333,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2020', title: 'Badlands Paddling — Remote Prairie Expedition', text: "A small but growing community of expedition paddlers has begun documenting multi-day Cheyenne River trips through the Badlands. The river remains one of the least-paddled waterways of its size in the United States.", src: 'American Whitewater; South Dakota GFP' }] },
         ],
         docs: [{ t: 'Cheyenne River Basin Water Quality Assessment', s: 'SD DENR', y: 2018, tp: 'Hydrology', pg: 120 , url: 'https://danr.sd.gov/Conservation/WatershedProtection/ReportsPublications/uppercheyennefinalreport.pdf'}],
-        revs: [{ u: 'badlands_expedition', d: 'May 2025', s: 4, t: 'Five days from Rapid City to the Wall. Badlands formations rising from the banks. Saw no one. Bring extra water — this river runs silty.' }, { u: 'sd_river_explorer', d: 'Jun 2025', s: 3, t: 'Remote and wild but not easy. Low water, sandbars everywhere. You earn every mile on the Cheyenne.' }],
+        revs: [],
         outs: [{ n: 'Badlands Adventure Outfitters', d: 'Expedition planning and shuttle service', l: 'badlandsadventure.com' }],
       },
       {
@@ -5352,7 +5348,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1876', title: 'Black Hills Gold Rush', text: "The discovery of gold in the Black Hills triggered an illegal rush into Lakota treaty lands. Miners flooded up Spearfish Creek and its tributaries, establishing the town of Spearfish in 1876. The resulting conflict led to the Great Sioux War and the Battle of Little Bighorn.", src: 'South Dakota State Historical Society; NPS' }] },
         ],
         docs: [],
-        revs: [{ u: 'blackhills_kayaker', d: 'Jun 2025', s: 5, t: 'Spearfish Canyon at 150 cfs — Bridal Veil Falls pouring off the canyon wall, crystal water over limestone. Best creek paddle in the Dakotas.' }, { u: 'sd_trout_angler', d: 'Jul 2025', s: 4, t: 'Brown trout in Spearfish Creek are wary but worth the effort. Gorgeous canyon setting, cold water all summer.' }],
+        revs: [],
         outs: [{ n: 'Spearfish Canyon Lodge', d: 'Creek access, lodging, local paddling information', l: '' }],
       },
       {
@@ -5367,7 +5363,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1972', title: 'Rapid City Flood — 238 Lives Lost', text: "On June 9, 1972, Rapid Creek flooded catastrophically after 15 inches of rain fell in six hours over the Black Hills. The flood killed 238 people and destroyed 1,335 homes. The disaster led to the creation of the Rapid City greenway — the floodplain was converted to parkland rather than rebuilt, creating the urban paddling corridor enjoyed today.", src: 'USGS; City of Rapid City' }] },
         ],
         docs: [],
-        revs: [{ u: 'rc_urban_paddle', d: 'Jul 2025', s: 4, t: 'Rapid Creek through downtown at 120 cfs — trout rising under the bridge, Class I–II riffles, lunch at a riverside restaurant. Urban paddling done right.' }, { u: 'pactola_tailwater', d: 'Aug 2025', s: 5, t: 'Below Pactola Dam at 200 cfs — cold, clear tailwater with big browns. Best trout fishing within an hour of Mount Rushmore.' }],
+        revs: [],
         outs: [{ n: 'Black Hills Paddleboard & Kayak', d: 'Rapid Creek kayak rentals and shuttle service', l: '' }],
       },
       {
@@ -5382,7 +5378,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1880s', title: 'Great Dakota Boom — Railroad and Settlement', text: "The 'Great Dakota Boom' of the 1880s brought railroads and thousands of homesteaders to the James River valley. Towns like Aberdeen, Huron, and Mitchell sprang up along the river, transforming the prairie into one of America's most productive agricultural regions.", src: 'South Dakota State Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'james_river_long', d: 'Jun 2025', s: 4, t: 'Three days on the James below Huron at 600 cfs — slow, winding, and deeply peaceful. Prairie meanders that go on forever. Bring patience and a good book for camp.' }, { u: 'sd_prairie_paddle', d: 'Jul 2025', s: 3, t: 'The James is not exciting but it is genuine prairie river paddling. Low banks, big sky, and the occasional pelican colony.' }],
+        revs: [],
         outs: [{ n: 'James River Canoe Trail', d: 'Access point information and seasonal conditions', l: '' }],
       },
       {
@@ -5397,7 +5393,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1890', title: 'Wounded Knee and the Ghost Dance', text: "The Wounded Knee Massacre of December 29, 1890, occurred along a tributary of the White River on the Pine Ridge Reservation. U.S. troops killed approximately 300 Lakota men, women, and children — the last major conflict of the American Indian Wars.", src: 'NPS; Oglala Sioux Tribe' }] },
         ],
         docs: [],
-        revs: [{ u: 'badlands_white_river', d: 'May 2025', s: 4, t: 'White River through the Badlands at 300 cfs — otherworldly landscape, chalky water, no one for days. This is expedition paddling at its most remote.' }, { u: 'sd_wild_explorer', d: 'Jun 2025', s: 3, t: 'Remote and challenging. Silty water, few access points, and you need permission on reservation land. But the landscape is extraordinary.' }],
+        revs: [],
         outs: [{ n: 'Badlands River Expeditions', d: 'Guided White River trips, reservation permits arranged', l: '' }],
       },
       {
@@ -5412,7 +5408,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1804', title: 'Lewis and Clark at Spirit Mound', text: "Lewis, Clark, and ten men hiked to Spirit Mound on August 25, 1804, finding 'a handsom Prairie' but no little devils. Clark documented the 'emence Plains' visible from the summit — the first recorded European visit to the site. Spirit Mound Historic Prairie is now a state preserve.", src: 'Journals of Lewis and Clark; South Dakota GFP' }] },
         ],
         docs: [],
-        revs: [{ u: 'se_sd_paddler', d: 'Jun 2025', s: 4, t: 'Vermillion River at 250 cfs — gentle prairie paddle past Spirit Mound. Stopped to hike the Lewis and Clark trail. Quiet and historic.' }, { u: 'usd_kayak_club', d: 'May 2025', s: 4, t: 'Great little river near campus. Easy Class I, good fishing, and nobody seems to know about it outside Vermillion.' }],
+        revs: [],
         outs: [{ n: 'Vermillion River Outfitters', d: 'Seasonal kayak and canoe rentals, local conditions', l: '' }],
       },
     ],
@@ -5437,7 +5433,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: 'Paddling the Badlands — A Growing Expedition', text: "The Little Missouri has gained recognition among expedition paddlers as one of America's great undiscovered river trips. Spring snowmelt provides the best flows through the Badlands, with feral horses, bison, and elk visible from the water.", src: 'American Whitewater; ND Parks and Recreation' }] },
         ],
         docs: [],
-        revs: [{ u: 'badlands_paddler_nd', d: 'May 2025', s: 5, t: 'South Unit at 800 cfs after spring rain — Badlands rising on both sides, wild horses on the ridgeline. This is the real North Dakota.' }, { u: 'tr_national_park', d: 'Apr 2025', s: 4, t: 'Elkhorn Ranch section at 400 cfs. Remote, silty, and absolutely wild. Bison 50 yards from the canoe. Pack everything you need.' }],
+        revs: [],
         outs: [{ n: 'Little Missouri River Outfitters', d: 'Medora-based, Badlands expeditions', l: 'littlemissouririver.com' }],
       },
       {
@@ -5453,7 +5449,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2009', title: 'National Scenic Byway Designation', text: "The Sheyenne River Valley was designated a National Scenic Byway, recognizing the corridor's exceptional scenic, natural, and cultural qualities — the only National Scenic Byway in North Dakota.", src: 'Federal Highway Administration; ND DOT' }] },
         ],
         docs: [],
-        revs: [{ u: 'nd_prairie_paddle', d: 'Jun 2025', s: 4, t: 'Fort Ransom to Lisbon in two days at 500 cfs — gorgeous tallgrass banks, deer everywhere. Best paddling in eastern ND.' }, { u: 'grassland_kayaker', d: 'Jul 2025', s: 4, t: 'Sheyenne through the National Grassland at 380 cfs — slow and peaceful. Prairie wildflowers wall to wall.' }],
+        revs: [],
         outs: [{ n: 'Fort Ransom State Park', d: 'Canoe access, camping, shuttle information', l: 'parkrec.nd.gov' }],
       },
       {
@@ -5469,7 +5465,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2019', title: 'Knife River Indian Villages — Living Heritage', text: "The NPS Knife River Indian Villages site preserves three major Hidatsa village sites and hosts annual cultural events with the Three Affiliated Tribes. The reconstructed earth lodge on site is one of the most visited attractions in North Dakota.", src: 'NPS Knife River Indian Villages NHS' }] },
         ],
         docs: [],
-        revs: [{ u: 'lewis_clark_paddler', d: 'Jul 2025', s: 5, t: 'Four days Garrison Dam to Bismarck. Stopped at Knife River villages — stood where Sacagawea joined the expedition. Big river, big history.' }, { u: 'nd_walleye_kayak', d: 'Aug 2025', s: 4, t: 'Below Garrison Dam at 16,000 cfs — cold, clear tailwater. Caught walleye from the kayak all day. Incredible fishery.' }],
+        revs: [],
         outs: [{ n: 'Missouri River Adventures', d: 'Multi-day guided Missouri River trips', l: 'missouriveradventures.com' }, { n: 'Cross Ranch State Park', d: 'River access, camping, nature preserve', l: 'parkrec.nd.gov' }],
       },
       {
@@ -5484,7 +5480,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1812', title: 'Pembina — First European Settlement in North Dakota', text: "The Pembina settlement, established at the river's confluence with the Red River, was the first European community in what became North Dakota. Scottish and Metis settlers from the Selkirk Colony arrived in 1812, establishing a fur trading post that anchored the region for decades.", src: 'North Dakota Heritage Center; State Historical Society of North Dakota' }] },
         ],
         docs: [],
-        revs: [{ u: 'nd_gorge_paddler', d: 'Jun 2025', s: 5, t: 'Pembina Gorge at 250 cfs — 150-foot wooded canyon walls in North Dakota. Could not believe I was in ND. Best hidden paddle in the state.' }, { u: 'pembina_explorer', d: 'Jul 2025', s: 4, t: 'Spring paddle through the gorge at 500 cfs. Hardwood forest, wildflowers, deer everywhere. Nothing else like it in North Dakota.' }],
+        revs: [],
         outs: [{ n: 'Pembina Gorge Recreation Area', d: 'River access, camping, trail information', l: '' }],
       },
       {
@@ -5499,7 +5495,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1874', title: "Fort Abraham Lincoln — Custer's Last Post", text: "Lt. Col. George Custer commanded Fort Abraham Lincoln at the Heart River's mouth from 1873 until his departure for the Little Bighorn in 1876. The fort was the staging point for Custer's Black Hills Expedition and his fatal Seventh Cavalry campaign.", src: 'NPS; North Dakota Heritage Center' }] },
         ],
         docs: [],
-        revs: [{ u: 'heart_river_nd', d: 'Jun 2025', s: 4, t: 'Heart River below Dickinson Dam at 300 cfs — pleasant prairie paddle, good smallmouth fishing. Ended at Fort Lincoln — stood where Custer left for Little Bighorn.' }, { u: 'mandan_kayaker', d: 'Jul 2025', s: 3, t: 'Lower Heart is mellow and slow. Nice for a quiet afternoon paddle but not much whitewater. Good fishing though.' }],
+        revs: [],
         outs: [{ n: 'Fort Abraham Lincoln State Park', d: 'River access, camping, historic site tours', l: '' }],
       },
       {
@@ -5514,7 +5510,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1804', title: 'Lewis and Clark Meet Sacagawea', text: "The Corps of Discovery wintered near the Knife River villages in 1804–1805. Here they met Sacagawea, a young Shoshone woman living among the Hidatsa, who would guide the expedition to the Pacific. The Knife River villages were the largest population center on the northern Plains.", src: 'Journals of Lewis and Clark; NPS Knife River Indian Villages NHS' }] },
         ],
         docs: [],
-        revs: [{ u: 'knife_river_history', d: 'Jul 2025', s: 5, t: 'Paddled the Knife past the Indian Villages at 120 cfs — small river, huge history. Walked the earth lodge reconstructions afterward. Lewis and Clark country.' }, { u: 'nd_small_rivers', d: 'Aug 2025', s: 4, t: 'Upper Knife is tiny but scenic. Prairie canyon, cottonwoods, and total solitude. Bring a light boat for shallow spots.' }],
+        revs: [],
         outs: [{ n: 'Knife River Indian Villages NHS', d: 'River access, cultural tours, earth lodge visits', l: '' }],
       },
       {
@@ -5529,7 +5525,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2016', title: 'Standing Rock and the Dakota Access Pipeline', text: "The Cannonball River and its confluence with the Missouri became the center of the largest Native American protest in modern history when the Standing Rock Sioux Tribe opposed the Dakota Access Pipeline. Thousands gathered at the Sacred Stone Camp near the Cannonball's mouth in 2016–2017.", src: 'Standing Rock Sioux Tribe; U.S. Army Corps of Engineers' }] },
         ],
         docs: [],
-        revs: [{ u: 'standing_rock_paddle', d: 'Jun 2025', s: 4, t: 'Cannonball River at 100 cfs — remote prairie, round concretions on every gravel bar. You need tribal permission and local knowledge. Worth the effort.' }, { u: 'nd_expedition_kayak', d: 'May 2025', s: 3, t: 'Low and slow in late spring. Bring a light boat and plenty of water. The isolation is the point — vast, empty, beautiful prairie.' }],
+        revs: [],
         outs: [{ n: 'Standing Rock Tourism', d: 'Reservation access permits, cultural tours, river information', l: '' }],
       },
     ],
@@ -5553,7 +5549,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1996', title: 'Tallgrass Prairie National Preserve Established', text: "Congress established the Tallgrass Prairie National Preserve near Cottonwood Falls — the only unit of the National Park system dedicated to the tallgrass prairie ecosystem. Less than 4% of the original tallgrass remains, almost all of it in the Flint Hills.", src: 'NPS Tallgrass Prairie National Preserve'}] },
         ],
         docs: [{ t: 'Flint Hills Tallgrass Prairie Conservation Assessment', s: 'TNC / NPS', y: 2010, tp: 'Ecology', pg: 210 , url: 'https://npshistory.com/publications/tapr/nrr-2019-2043.pdf'}],
-        revs: [{ u: 'flinthills_paddler', d: 'May 2025', s: 5, t: 'South Fork at 600 cfs after a spring burn — black hills turning green around us. Paddling through the last tallgrass on earth. Humbling.' }, { u: 'ks_canoe_club', d: 'Apr 2025', s: 4, t: 'Chase County section at 400 cfs — rocky riffles, limestone ledges, prairie as far as you can see. Kansas at its finest.' }],
+        revs: [],
         outs: [{ n: 'Flint Hills Trail Outfitters', d: 'Cottonwood Falls-based, canoe and kayak rentals', l: 'flinthillstrail.com' }],
       },
       {
@@ -5569,7 +5565,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2019', title: 'Kansas River Water Trail — 170 Miles of Public Access', text: "Kansas designated the entire 170-mile Kaw as a state water trail, installing access points, signage, and camping platforms. The effort transformed the river from a forgotten waterway to a growing paddling destination.", src: 'Friends of the Kaw; Kansas Department of Wildlife and Parks' }] },
         ],
         docs: [],
-        revs: [{ u: 'kaw_river_paddler', d: 'Jun 2025', s: 4, t: 'Lawrence to DeSoto at 4,800 cfs — surprisingly scenic for a prairie river through a college town. Bald eagles, great blue herons, sandbars for lunch.' }, { u: 'topeka_kayaker', d: 'Jul 2025', s: 3, t: 'Topeka section at 8,000 cfs — big water, muddy, powerful. Respect the Kaw at high flows.' }],
+        revs: [],
         outs: [{ n: 'Kansas Riverkeeper', d: 'Paddling guides, access maps, group floats', l: 'kansasriver.org' }],
       },
       {
@@ -5584,7 +5580,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Flint Hills Paddling Renaissance', text: "A growing paddling community has rediscovered Kansas's Flint Hills rivers, with the Fall River emerging as a favorite for its reliable flows, scenic prairie setting, and solitude. The river remains virtually unknown outside Kansas.", src: 'Kansas Canoe and Kayak Association' }] },
         ],
         docs: [],
-        revs: [{ u: 'ks_hidden_gem', d: 'May 2025', s: 5, t: 'Below the dam at 500 cfs — clear tailwater, limestone shelves, prairie wildflowers. Had the whole river to myself. Kansas keeps secrets.' }, { u: 'flinthills_fisher', d: 'Jun 2025', s: 4, t: 'Excellent smallmouth below the dam. Floated and fished for 8 miles without seeing another soul.' }],
+        revs: [],
         outs: [{ n: 'Fall River State Park', d: 'River access, camping, boat ramp', l: 'ksoutdoors.com' }],
       },
       {
@@ -5599,7 +5595,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1859', title: 'Chase County Seat — Cottonwood Falls', text: "Cottonwood Falls was established in 1859, taking its name from the river and the cottonwood trees lining its banks. The town's 1873 limestone courthouse, built from local Flint Hills stone, is the oldest courthouse still in use in Kansas.", src: 'Chase County Historical Society; Kansas State Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'flinthills_paddler_ks', d: 'May 2025', s: 5, t: 'Cottonwood River through Chase County at 500 cfs — limestone ledges, tallgrass to the horizon, spring wildflowers. The most beautiful paddle in Kansas.' }, { u: 'ks_prairie_canoe', d: 'Apr 2025', s: 4, t: 'After a spring burn, the blackened hills turn green around you as you paddle. Cottonwood Falls for lunch. Pure Flint Hills magic.' }],
+        revs: [],
         outs: [{ n: 'Cottonwood Falls Outfitters', d: 'Canoe and kayak rentals, Flint Hills shuttle service', l: '' }],
       },
       {
@@ -5614,7 +5610,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1821–1880', title: 'Santa Fe Trail — Council Grove Crossing', text: "Council Grove on the Neosho was the last reliable timber, water, and supply point before the 800-mile crossing of the open prairie on the Santa Fe Trail. Traders gathered here to organize wagon trains and repair equipment under the famous Council Oak.", src: 'NPS Santa Fe National Historic Trail; Kansas State Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'neosho_paddler', d: 'May 2025', s: 4, t: 'Council Grove to Emporia at 800 cfs — Santa Fe Trail history, limestone riffles, and beautiful Flint Hills transition. The longest river in Kansas deserves more paddlers.' }, { u: 'ks_river_trail', d: 'Jun 2025', s: 4, t: 'Neosho water trail is well-marked and accessible. Good Class I–II riffles at moderate flows. Kansas paddling at its best.' }],
+        revs: [],
         outs: [{ n: 'Neosho River Water Trail Association', d: 'Access maps, conditions, group paddles', l: '' }],
       },
       {
@@ -5629,7 +5625,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1867', title: 'Solomon Valley Homestead Rush', text: "After the Civil War, homesteaders flooded the Solomon River valley. The railroad arrived in the 1870s, and the valley became one of Kansas's most productive wheat regions. Towns like Beloit, Minneapolis, and Solomon grew up along the river.", src: 'Kansas State Historical Society; Mitchell County Museum' }] },
         ],
         docs: [],
-        revs: [{ u: 'solomon_valley_paddle', d: 'Jun 2025', s: 4, t: 'Below Glen Elder Dam at 400 cfs — clear tailwater, good channel catfish, prairie bluffs. Quiet Kansas river paddling.' }, { u: 'ks_wheat_country', d: 'Jul 2025', s: 3, t: 'Solomon River is mellow and slow in summer. Good for a peaceful float through wheat country. Not exciting but genuinely relaxing.' }],
+        revs: [],
         outs: [{ n: 'Glen Elder State Park Marina', d: 'Boat access, camping, tailwater fishing information', l: '' }],
       },
       {
@@ -5644,7 +5640,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1868', title: 'Smoky Hill Trail — Butterfield Overland Despatch', text: "The Smoky Hill Trail along the river was the most direct route from Kansas to Denver but also the most dangerous, crossing contested Cheyenne territory. The Butterfield Overland Despatch operated stagecoaches along the route from 1865–1870, with frequent attacks forcing eventual abandonment.", src: 'Kansas State Historical Society; NPS' }] },
         ],
         docs: [],
-        revs: [{ u: 'western_ks_expedition', d: 'May 2025', s: 4, t: 'Upper Smoky Hill near Castle Rock at 200 cfs — chalk formations rising from the prairie, total isolation. Western Kansas is wildly underrated.' }, { u: 'ks_long_distance', d: 'Jun 2025', s: 3, t: 'Low water is the challenge on the Smoky Hill. Spring is best. When it flows, the chalk bluff sections are genuinely dramatic.' }],
+        revs: [],
         outs: [{ n: 'Castle Rock Outfitters', d: 'Western Kansas river access and shuttle service', l: '' }],
       },
       {
@@ -5659,7 +5655,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1858', title: 'Marais des Cygnes Massacre — Bleeding Kansas', text: "On May 19, 1858, pro-slavery Border Ruffians captured eleven free-state men near the Marais des Cygnes and shot them in a ravine, killing five. The Marais des Cygnes Massacre was one of the bloodiest events of 'Bleeding Kansas' and hardened northern resolve against slavery.", src: 'NPS; Kansas State Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'eastern_ks_paddle', d: 'May 2025', s: 5, t: 'Marais des Cygnes through the NWR at 600 cfs — bald eagles, herons, bottomland forest canopy. Best birding paddle in Kansas, hands down.' }, { u: 'ks_civil_war_history', d: 'Apr 2025', s: 4, t: 'Stopped at the massacre site and the NWR. Paddled through hardwood forest that feels more like Missouri than Kansas. Beautiful and haunting.' }],
+        revs: [],
         outs: [{ n: 'Marais des Cygnes Paddling Club', d: 'Group floats, access information, seasonal conditions', l: '' }],
       },
     ],
@@ -5684,7 +5680,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: "Oklahoma's Most Paddled River — 300,000 Annually", text: "The Illinois River draws an estimated 300,000 recreational visitors annually, generating over $20 million for the Tahlequah economy. Water quality battles between Oklahoma and upstream Arkansas poultry operations have reached the U.S. Supreme Court.", src: 'Oklahoma Scenic Rivers Commission; Oklahoma Tourism' }] },
         ],
         docs: [{ t: 'Illinois River Watershed Management Plan', s: 'Oklahoma Scenic Rivers Commission', y: 2012, tp: 'Ecology', pg: 175 , url: 'https://conservation.ok.gov/wp-content/uploads/2021/07/Illinois-River-Watershed-Based-Plan-2011.pdf'}],
-        revs: [{ u: 'ok_river_runner', d: 'Jul 2025', s: 4, t: 'Tenkiller to Tahlequah at 800 cfs — classic Oklahoma float. Limestone bluffs, clear water, mild rapids. Busy on weekends but worth it.' }, { u: 'cherokee_paddler', d: 'Jun 2025', s: 5, t: 'Upper Illinois at 1,500 cfs after rain — real whitewater, Class III rapids, and nobody up there. The secret section.' }],
+        revs: [],
         outs: [{ n: 'War Eagle Floats', d: 'Full-service Illinois River outfitter', l: 'wareaglefloats.com' }, { n: 'Sparrowhawk Camp', d: 'Canoe and kayak rentals, riverside camping', l: 'sparrowhawkcamp.com' }],
       },
       {
@@ -5700,7 +5696,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: "Oklahoma's Trout Capital", text: "The Lower Mountain Fork is stocked with over 100,000 rainbow and brown trout annually. Beavers Bend State Park is the most-visited state park in Oklahoma, drawing over a million visitors per year.", src: 'Oklahoma Department of Wildlife Conservation; Oklahoma Tourism' }] },
         ],
         docs: [],
-        revs: [{ u: 'ok_trout_bum', d: 'Nov 2025', s: 5, t: 'Presbyterian Falls at 400 cfs — Class III fun and trout rising everywhere. Cold, clear, and completely unexpected for Oklahoma.' }, { u: 'beavers_bend_fan', d: 'Oct 2025', s: 4, t: 'Family float through Beavers Bend at 300 cfs. Kids caught rainbow trout. The Ouachita Mountains are stunning in fall color.' }],
+        revs: [],
         outs: [{ n: 'Beavers Bend Fly Shop', d: 'Guided trout trips, fly fishing instruction', l: 'bfrods.com' }, { n: 'Mountain Fork Outfitters', d: 'Kayak and canoe rentals, shuttles', l: 'mountainforkoutfitters.com' }],
       },
       {
@@ -5715,7 +5711,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2022', title: "Oklahoma's Hidden Spring Creek", text: "The Blue River has gained national attention as one of the finest spring-fed streams in the southern Plains. The Oklahoma Department of Wildlife Conservation manages a public fishing and paddling area, and the Chickasaw Nation has invested in watershed protection.", src: 'ODWC; Chickasaw Nation Industries' }] },
         ],
         docs: [],
-        revs: [{ u: 'blue_river_regular', d: 'Sep 2025', s: 5, t: 'Blue River at 200 cfs — spring water so clear you forget you are in Oklahoma. Trout rising to dry flies in September. Magic.' }, { u: 'arbuckle_explorer', d: 'Jul 2025', s: 4, t: 'Connerville section at 150 cfs — intimate, rocky, beautiful. Bring felt-soled shoes for the limestone.' }],
+        revs: [],
         outs: [{ n: 'Blue River Fishing Area', d: 'ODWC public access, camping, fishing permits', l: 'wildlifedepartment.com' }],
       },
       {
@@ -5730,7 +5726,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: 'Kiamichi River — Conservation Priority', text: "The Kiamichi has been identified as one of Oklahoma's highest-priority rivers for freshwater mussel conservation, supporting over 30 species including several federally endangered ones. The river's remote, undeveloped watershed has preserved exceptional water quality.", src: 'Oklahoma Department of Wildlife Conservation; USFWS' }] },
         ],
         docs: [],
-        revs: [{ u: 'ouachita_paddler', d: 'Apr 2025', s: 5, t:"'Upper Kiamichi at 600 cfs after spring rain — Class II rapids through dense Ouachita forest. No roads, no people, no cell service. Oklahoma's wildest river." }, { u: 'ok_remote_explorer', d: 'May 2025', s: 4, t: 'Three days on the Kiamichi. Clear water, mussel beds visible on every gravel bar. Felt like paddling in the Ozarks, not Oklahoma.' }],
+        revs: [],
         outs: [{ n: 'Kiamichi Country Outfitters', d: 'Shuttle service, canoe and kayak rentals', l: '' }],
       },
       {
@@ -5745,7 +5741,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2021', title: 'Last Free-Flowing River Campaign', text: "Conservation groups launched a campaign to permanently protect the Glover as Oklahoma's last free-flowing river. The river supports over 50 fish species, 30 mussel species, and the endangered leopard darter — making it one of the most biodiverse small rivers in the southern United States.", src: 'The Nature Conservancy; Oklahoma Department of Wildlife Conservation' }] },
         ],
         docs: [],
-        revs: [{ u: 'ok_whitewater_crew', d: 'Mar 2025', s: 5, t:"'Glover River at 500 cfs — real whitewater, undammed, untouched. Class III drops through dense forest. Oklahoma's most important river for conservation." }, { u: 'freeflowing_paddler', d: 'Apr 2025', s: 4, t:"'The last free-flowing river in Oklahoma lives up to the hype. Clear water, boulder gardens, and a feeling of wildness that's rare in this state." }],
+        revs: [],
         outs: [{ n: 'Glover River Outfitters', d: 'McCurtain County kayak and canoe rentals', l: '' }],
       },
       {
@@ -5760,7 +5756,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1977', title: 'Oklahoma Scenic Rivers Act', text: "Baron Fork Creek was designated an Oklahoma Scenic River under the 1977 Scenic Rivers Act, protecting it alongside the Illinois River. The designation recognized the creek's exceptional water quality, scenic beauty, and recreational value.", src: 'Oklahoma Scenic Rivers Commission' }] },
         ],
         docs: [],
-        revs: [{ u: 'baron_fork_regular', d: 'May 2025', s: 5, t: 'Baron Fork below Natural Falls at 300 cfs — clear Ozark water, Class II riffles, gorgeous forest canopy. Less crowded than the Illinois and just as beautiful.' }, { u: 'cherokee_nation_paddle', d: 'Jun 2025', s: 4, t: 'Easy day paddle from the park at 200 cfs. Perfect for families, clear water, and Natural Falls is worth the side trip.' }],
+        revs: [],
         outs: [{ n: 'Baron Fork Float Trips', d: 'Canoe and kayak rentals, Adair County shuttle', l: '' }],
       },
       {
@@ -5775,7 +5771,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1989', title: 'Tallgrass Prairie Preserve — 2,500 Bison', text: "The Nature Conservancy established the Tallgrass Prairie Preserve in Osage County, eventually growing to 40,000 acres with a herd of 2,500 bison. The preserve along the Caney River is the largest protected tallgrass prairie in the world.", src: 'The Nature Conservancy; Osage Nation' }] },
         ],
         docs: [],
-        revs: [{ u: 'tallgrass_paddler', d: 'May 2025', s: 5, t: 'Caney River through the Tallgrass Prairie Preserve at 400 cfs — bison grazing on the banks, bluestem grass taller than the kayak. Paddling through the last great prairie.' }, { u: 'ok_prairie_explorer', d: 'Jun 2025', s: 4, t: 'Gentle paddle through bison country. Not technical but the setting is extraordinary. Spring burns make the views even more dramatic.' }],
+        revs: [],
         outs: [{ n: 'Tallgrass Prairie Preserve Visitor Center', d: 'River access information, bison tour schedules', l: '' }],
       },
       {
@@ -5790,7 +5786,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1868', title: "Battle of the Washita — Custer's Dawn Attack", text: "On November 27, 1868, Lt. Col. George Custer led the 7th Cavalry in a dawn attack on a Cheyenne village led by Peace Chief Black Kettle on the Washita River. Black Kettle, who had survived the Sand Creek Massacre four years earlier, was killed along with an estimated 40–150 Cheyenne. The site is now a National Historic Park.", src: 'NPS Washita Battlefield NHS; Cheyenne and Arapaho Tribes' }] },
         ],
         docs: [],
-        revs: [{ u: 'washita_history_paddle', d: 'Apr 2025', s: 4, t: 'Paddled past the Washita Battlefield at 500 cfs. Stopped to walk the memorial. Heavy history on a quiet prairie river. The NPS site is exceptional.' }, { u: 'western_ok_paddler', d: 'May 2025', s: 3, t: 'Washita is wide, sandy, and slow in western Oklahoma. Best after spring rains. The Battlefield NHS alone is worth the trip.' }],
+        revs: [],
         outs: [{ n: 'Washita NWR Visitor Center', d: 'River access, wildlife viewing, battlefield tours', l: '' }],
       },
     ],
@@ -5830,7 +5826,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1821–1860', title: "Stephen F. Austin's Colony — Cradle of Texas", text: "Stephen F. Austin established the first Anglo-American colony in Texas along the lower Brazos in 1821. The river valley became the agricultural and political heart of the Republic of Texas, with cotton plantations lining the bottomlands.", src: 'Texas State Historical Association; Brazoria County Historical Museum' }] },
         ],
         docs: [],
-        revs: [{ u: 'tx_river_explorer', d: 'Mar 2025', s: 4, t: 'Possum Kingdom tailwater at 1,200 cfs — gorgeous limestone canyon, bald eagles, great camping on gravel bars. The Brazos most Texans never see.' }, { u: 'palo_pinto_paddler', d: 'Apr 2025', s: 4, t: 'Two-day float below PK Dam at 800 cfs — quiet, scenic, and wild. Longest river in Texas and it still has solitude.' }],
+        revs: [],
         outs: [{ n: 'Possum Kingdom State Park', d: 'TPWD campground and water access', l: 'tpwd.texas.gov' }, { n: 'Brazos River Paddling Trail', d: 'TPWD mapped trail with access points', l: 'tpwd.texas.gov/fishboat/boat/paddlingtrails/brazos' }],
       },
       {
@@ -5845,7 +5841,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2012', title: "San Marcos River Foundation — Conservation and Access", text: "The San Marcos River Foundation has led conservation efforts to protect water quality and endangered species including the Texas blind salamander and San Marcos gambusia, while maintaining public paddling access through the university town.", src: 'San Marcos River Foundation; U.S. Fish & Wildlife Service' }] },
         ],
         docs: [{ t: 'Edwards Aquifer Habitat Conservation Plan — San Marcos Springs', s: 'USFWS / Edwards Aquifer Authority', y: 2013, tp: 'Ecology', pg: 175 , url: 'https://www.edwardsaquifer.net/pdf/Final_HCP.pdf'}],
-        revs: [{ u: 'sanmarcos_local', d: 'Jun 2025', s: 5, t: 'Spring Lake to Rio Vista at 170 cfs — 72-degree crystal water, visibility to the bottom everywhere. Best urban paddle in Texas.' }, { u: 'hillcountry_kayaker', d: 'May 2025', s: 4, t: 'San Marcos headsprings are unreal — you can see every pebble 15 feet down. Short but sweet paddle through a fun college town.' }],
+        revs: [],
         outs: [{ n: 'TG Canoes', d: 'San Marcos River kayak and canoe rentals', l: 'tgcanoes.com' }],
       },
       {
@@ -5861,7 +5857,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: "Tubing Capital of the World — 1 Million Visitors", text: "The Guadalupe River through New Braunfels draws over one million tubers annually, making it the most-visited recreational waterway in Texas. The economic impact exceeds $100 million for the New Braunfels/Gruene corridor.", src: 'New Braunfels Chamber of Commerce; Texas Parks and Wildlife' }] },
         ],
         docs: [{ t: 'Guadalupe River Basin Water Quality Assessment', s: 'TCEQ', y: 2018, tp: 'Hydrology', pg: 145 , url: 'https://www.tceq.texas.gov/waterquality/assessment/02twqi/basins/guadalupe.html'}],
-        revs: [{ u: 'hill_country_paddler', d: 'Apr 2025', s: 5, t: 'Above Canyon Lake at 500 cfs — real Hill Country canyon paddling. Bald cypress, Class II–III rapids, no crowds. The Guadalupe most people never see.' }, { u: 'tx_tuber', d: 'Jul 2025', s: 4, t: 'Gruene to New Braunfels at 350 cfs — tubes, cold beer, and Gruene Hall afterward. Peak Texas summer.' }],
+        revs: [],
         outs: [{ n: 'Gruene River Company', d: 'Tubing, kayaking, and rafting outfitter', l: 'gruenerivercompany.com' }, { n: 'Rockin R River Rides', d: 'New Braunfels tubing and kayak rentals', l: 'rockinr.com' }],
       },
       {
@@ -5877,7 +5873,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2024', title: "Texas's Last Wild River", text: "Conservation groups rank the Devils River as the most ecologically intact river in Texas. Spring flows from the Edwards-Trinity Aquifer maintain year-round clarity, and the remote canyon supports species found nowhere else in the state.", src: 'Devils River Conservancy; Texas Parks and Wildlife' }] },
         ],
         docs: [{ t: 'Devils River Watershed Protection Plan', s: 'Devils River Conservancy / TPWD', y: 2019, tp: 'Ecology', pg: 130 , url: 'https://tpwd.texas.gov/state-parks/devils-river/Documents/working-group-report-2'}],
-        revs: [{ u: 'devils_river_permit', d: 'Mar 2025', s: 5, t: 'Three days Baker Crossing to Amistad at 200 cfs — clearest water I have ever paddled. Dolan Falls is a legitimate Class III. This river is sacred.' }, { u: 'tx_expedition_paddler', d: 'Nov 2025', s: 5, t: 'The most pristine river corridor left in the lower 48. Period. Get the permit, do the trip, tell no one.' }],
+        revs: [],
         outs: [{ n: 'Devils River State Natural Area', d: 'TPWD permit required, limited daily access', l: 'tpwd.texas.gov' }],
       },
       {
@@ -5892,7 +5888,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1971', title: "Town Lake Renamed Lady Bird Lake", text: "Austin's Town Lake — the dammed section of the Colorado through downtown — was renamed Lady Bird Lake in 2007 to honor Lady Bird Johnson's beautification efforts. The lake and surrounding trail system have become Austin's most iconic outdoor space, hosting over a million paddlers annually.", src: 'Austin Parks and Recreation; Lady Bird Johnson Wildflower Center' }] },
         ],
         docs: [],
-        revs: [{ u: 'atx_paddleboard', d: 'Mar 2025', s: 5, t: "Lady Bird Lake at sunrise — downtown skyline reflecting off the water, bats under the Congress Bridge, paddleboarded past the bald eagle nest. Austin's best free activity." }, { u: 'hillcountry_canoe', d: 'Apr 2025', s: 4, t: "Above Tom Miller Dam at 800 cfs — Hill Country limestone cliffs, clear green water, and surprisingly wild for being inside city limits." }],
+        revs: [],
         outs: [{ n: 'Texas Rowing Center', d: 'Kayak, canoe, and SUP rentals on Lady Bird Lake', l: '' }],
       },
       {
@@ -5907,7 +5903,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1847', title: "German Settlement — Mason and Llano Counties", text: "German immigrants established settlements along the Llano River in the 1840s, drawn by the spring-fed water and fertile bottomlands. The German heritage persists in Mason, Castell, and other small towns along the river.", src: 'Texas State Historical Association; Handbook of Texas' }] },
         ],
         docs: [],
-        revs: [{ u: 'hillcountry_tuber', d: 'Jun 2025', s: 5, t: "Junction to Mason at 300 cfs — spring-fed, crystal clear, pink granite bottom. Best tubing river in Texas. Cold beer and warm granite." }, { u: 'tx_fly_angler', d: 'May 2025', s: 4, t: "Llano below Mason at 200 cfs — Guadalupe bass on poppers over granite shoals. Classic Hill Country." }],
+        revs: [],
         outs: [{ n: 'Llano River Adventures', d: 'Tubing, kayak, and canoe rentals on the Llano River', l: '' }],
       },
       {
@@ -5922,7 +5918,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1852', title: "Bandera — Cowboy Capital of the World", text: "Polish and German settlers established Bandera on the Medina River in 1852. The town became a staging point for cattle drives on the Western Trail to Kansas, earning its enduring nickname as the Cowboy Capital of the World.", src: 'Bandera County Historical Commission; Frontier Times Museum' }] },
         ],
         docs: [],
-        revs: [{ u: 'bandera_local', d: 'May 2025', s: 4, t: "Above Medina Lake at 100 cfs — tiny but gorgeous. Cypress-lined limestone canyon, clear spring water, total solitude. The Medina most people never see." }, { u: 'sa_weekend_paddler', d: 'Jun 2025', s: 4, t: "Bandera section at 80 cfs — fun little tubing run through town. Cold Lone Star at the takeout. Hill Country at its best." }],
+        revs: [],
         outs: [{ n: 'Medina River Company', d: 'Tubing and kayak rentals in Bandera, TX', l: '' }],
       },
       {
@@ -6022,7 +6018,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2004', title: "Reno Whitewater Park — Urban River Revival", text: "Reno constructed a whitewater park in the downtown Truckee River channel, transforming the river from a neglected urban waterway into a recreation destination. The park hosts kayak competitions and introduced thousands of new paddlers to the sport.", src: 'City of Reno Parks & Recreation' }] },
         ],
         docs: [{ t: 'Truckee River Operating Agreement', s: 'Bureau of Reclamation', y: 2008, tp: 'Federal', pg: 320 , url: 'https://www.usbr.gov/mp/troa/final/troa_final_09-08_full.pdf'}],
-        revs: [{ u: 'tahoe_paddler', d: 'May 2025', s: 4, t: 'Reno whitewater park at 800 cfs during snowmelt — surprisingly fun urban run with Sierra views.' }, { u: 'nv_kayak', d: 'Jun 2025', s: 4, t: 'Tahoe City to Truckee at 600 cfs — cold, clear Sierra water. Short season but worth it.' }],
+        revs: [],
         outs: [{ n: 'Truckee River Raft Company', d: 'Tahoe City floats and kayak rentals', l: 'truckeeriverraft.com' }],
       },
       {
@@ -6037,7 +6033,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1859–1880', title: "Comstock Lode — Silver Rush Devastation", text: "The discovery of the Comstock Lode in 1859 triggered massive deforestation of the Sierra slopes above the Carson River to timber the Virginia City mines. The river ran with sawmill waste and mine tailings for decades.", src: 'Nevada State Museum; Comstock Historic District' }] },
         ],
         docs: [{ t: 'Carson River Watershed Assessment', s: 'Carson Water Subconservancy District', y: 2015, tp: 'Survey', pg: 145 , url: 'https://www.cwsd.org/upper-carson-river-watershed-management-plan-a-voluntary-commitment/'}],
-        revs: [{ u: 'sierra_paddler', d: 'May 2025', s: 4, t: 'Markleeville Canyon at 350 cfs — tight Class II–III in a gorgeous volcanic gorge. Short window in May–June.' }, { u: 'carson_valley_local', d: 'Apr 2025', s: 3, t: 'Lower Carson below Gardnerville at 200 cfs — mellow float through cottonwood groves. Bring binoculars for raptors.' }],
+        revs: [],
         outs: [{ n: 'Carson River Resort', d: 'Float trips and camping, Mexican Dam put-in', l: 'carsonriverresort.com' }],
       },
       {
@@ -6052,7 +6048,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1841–1869', title: "Oregon and California Trails — Emigrant Lifeline", text: "The Humboldt River was the only reliable water source for hundreds of miles across the Great Basin. An estimated 250,000 emigrants followed the river westward between 1841 and 1869. The California Trail Interpretive Center near Elko preserves this history.", src: 'California Trail Interpretive Center (BLM); Oregon-California Trails Association' }] },
         ],
         docs: [{ t: 'Humboldt River Basin Water Resources Assessment', s: 'Nevada Division of Water Resources', y: 2012, tp: 'Hydrology', pg: 180 , url: 'https://ndep.nv.gov/water/rivers-streams-lakes/special-reports/humboldt-basin-studies'}],
-        revs: [{ u: 'basin_explorer', d: 'Jun 2025', s: 3, t: 'Floated the upper Humboldt near Elko at 400 cfs — wide desert river, pronghorn on the banks, total solitude. Not whitewater but deeply Nevada.' }, { u: 'nv_history_paddler', d: 'May 2025', s: 4, t: 'Emigrant trail corridor near Carlin at 250 cfs — wagon ruts still visible on the bluffs above. Paddling through history.' }],
+        revs: [],
         outs: [{ n: 'Elko Guide Service', d: 'Humboldt River float trips and Great Basin expeditions', l: 'elkoguideservice.com' }],
       },
       {
@@ -6067,7 +6063,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2019', title: "Walker River State Recreation Area — New Desert Park", text: "Nevada established the Walker River State Recreation Area, the state's newest state park, to protect and provide public access to a key stretch of the Walker River corridor.", src: 'Nevada Division of State Parks' }] },
         ],
         docs: [],
-        revs: [{ u: 'nv_desert_paddler', d: 'May 2025', s: 4, t: 'Walker River at 150 cfs during spring runoff — cottonwoods, sagebrush desert, and silence. Desert river paddling at its most Nevada.' }, { u: 'lahontan_seeker', d: 'Jun 2025', s: 3, t: 'Floated near Yerington at 100 cfs — low but fishable. Caught a Lahontan cutthroat. Worth every mile of dirt road.' }],
+        revs: [],
         outs: [{ n: 'Walker River Outfitters', d: 'Float trips and fishing guides, Smith Valley', l: '' }],
       },
       {
@@ -6082,7 +6078,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2015', title: "Trophy Brown Trout Fishery — National Recognition", text: "The East Walker gained national recognition as one of the top trophy brown trout rivers in the American West, with fish exceeding 10 pounds regularly caught in the tailwater sections below Bridgeport Reservoir.", src: 'Nevada Department of Wildlife; Fly Fisherman Magazine' }] },
         ],
         docs: [],
-        revs: [{ u: 'east_walker_devotee', d: 'Oct 2025', s: 5, t: 'East Walker below the reservoir at 50 cfs — sight-fished a 24-inch brown on a size 20 midge. Trophy trout water in the desert. World-class.' }, { u: 'nv_fly_fisher', d: 'Nov 2025', s: 5, t: 'Fall fishing at 40 cfs — spawning browns visible on every gravel bar. Catch and release only. Handle with care.' }],
+        revs: [],
         outs: [{ n: 'Ken\'s Sporting Goods', d: 'East Walker River fly fishing guides and gear, Bridgeport', l: '' }],
       },
       {
@@ -6097,7 +6093,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1964', title: "Jarbidge Wilderness — One of the Original Wilderness Areas", text: "The Jarbidge Wilderness was designated in 1964 under the original Wilderness Act, protecting 113,000 acres of some of the most remote mountain terrain in the lower 48 states.", src: 'Humboldt-Toiyabe National Forest; Wilderness Act (1964)' }] },
         ],
         docs: [],
-        revs: [{ u: 'nevada_wilderness_seeker', d: 'Jul 2025', s: 5, t: 'Jarbidge canyon at 50 cfs — two days and did not see another human. Bull trout in the pools, mountain goats on the cliffs. Nevada has wilderness most people will never find.' }, { u: 'remote_creek_angler', d: 'Aug 2025', s: 4, t: 'Upper Jarbidge at 30 cfs — small water, native fish, total isolation. The drive in takes three hours on dirt. Worth it.' }],
+        revs: [],
         outs: [{ n: 'Jarbidge Outdoor Adventures', d: 'Guided trips to the Jarbidge Wilderness', l: '' }],
       },
       {
@@ -6112,7 +6108,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2009', title: "Bruneau-Jarbidge WSA — Desert Canyon Protection", text: "The Bruneau-Jarbidge Rivers Wilderness Study Area protects over 89,000 acres of desert canyon along the Bruneau and Jarbidge rivers, one of the most remote and ecologically intact desert canyon systems in the American West.", src: 'BLM Idaho; American Whitewater' }] },
         ],
         docs: [],
-        revs: [{ u: 'desert_canyon_paddler', d: 'Apr 2025', s: 5, t: 'Bruneau at 800 cfs — three days through 800-foot rhyolite walls. Class III–IV in a setting that belongs on another planet. Best desert river trip in America.' }, { u: 'owyhee_explorer', d: 'May 2025', s: 5, t: 'Hit the window at 500 cfs — narrow and technical through the deep canyon. Hot springs camps both nights. Otherworldly.' }],
+        revs: [],
         outs: [{ n: 'Bruneau River Guides', d: 'Permitted guided trips through the Bruneau Canyon', l: '' }],
       },
     ],
@@ -6136,7 +6132,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1969', title: "The River That Caught Fire — Birth of the EPA", text: "The Cuyahoga River fire of June 22, 1969 became the defining image of American environmental crisis. Though not the first time the river burned, the 1969 fire galvanized public opinion and helped pass the Clean Water Act (1972) and create the EPA (1970).", src: 'EPA; Ohio History Connection; Time Magazine (Aug. 1, 1969)' }] },
         ],
         docs: [{ t: 'Cuyahoga River Restoration Assessment', s: 'NPS / Ohio EPA', y: 2019, tp: 'Ecology', pg: 180 , url: 'https://www.nps.gov/cuva/learn/cuyahoga-river-restoration.htm'}],
-        revs: [{ u: 'cleveland_paddler', d: 'Jul 2025', s: 4, t: 'Peninsula to Brecksville through CVNP at 600 cfs — herons, deer, and nobody else on the water. Hard to believe this is 20 minutes from downtown Cleveland.' }, { u: 'cuyahoga_comeback', d: 'Aug 2025', s: 5, t: "Bald eagles fishing from the banks of the river that used to catch fire. The comeback story of American rivers." }],
+        revs: [],
         outs: [{ n: 'Cuyahoga Valley Scenic Railroad', d: 'Bike-and-paddle shuttle via scenic train', l: 'cvsr.org' }],
       },
       {
@@ -6151,7 +6147,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1972', title: "Ohio Scenic Rivers Act — Mohican Protected", text: "The Mohican was among the first rivers protected under Ohio's Scenic Rivers Act, preserving the gorge and old-growth hemlock stands that make it unique.", src: 'Ohio DNR Scenic Rivers Program' }] },
         ],
         docs: [{ t: 'Mohican River Corridor Management Plan', s: 'Ohio DNR', y: 2010, tp: 'Recreation', pg: 85 , url: 'https://dam.assets.ohio.gov/image/upload/ohiodnr.gov/documents/natural-areas/SR-studies/MohicanSRStudy.pdf'}],
-        revs: [{ u: 'ohio_canoe_country', d: 'Jun 2025', s: 5, t: 'Clear Fork at 500 cfs — hemlock gorge is otherworldly. Best paddling in Ohio, full stop.' }, { u: 'mohican_regular', d: 'May 2025', s: 4, t: 'Spring run at 900 cfs through the gorge — Class III ledges woke up the whole group. Outstanding.' }],
+        revs: [],
         outs: [{ n: "Mohican Adventures", d: 'Canoe, kayak, and tube rentals, Loudonville', l: 'mohicanadventures.com' }, { n: "Pleasant Hill Canoe Livery", d: 'Clear Fork and Mohican trips', l: 'pleasanthillcanoe.com' }],
       },
       {
@@ -6166,7 +6162,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1973', title: "Ohio's First National Scenic River", text: "The Little Miami became Ohio's first National Scenic River in 1973, permanently protecting the corridor from damming and ensuring public access.", src: 'NPS National Scenic Rivers System; Little Miami Inc.' }] },
         ],
         docs: [],
-        revs: [{ u: 'cincy_paddler', d: 'Jul 2025', s: 5, t: 'John Bryan gorge at 800 cfs — limestone walls, clear water, easy Class II. Bike shuttle back on the trail. Perfect system.' }, { u: 'dayton_canoe', d: 'Jun 2025', s: 4, t: 'Xenia to Morrow — long mellow float through farm country. Saw kingfishers the whole way.' }],
+        revs: [],
         outs: [{ n: 'Little Miami Canoe Rental', d: 'Multiple put-ins from Spring Valley to Morrow', l: 'littlemiamicanoe.com' }],
       },
       {
@@ -6181,7 +6177,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1974', title: "Ohio Scenic River Designation", text: "The Grand River received Ohio Scenic River status in 1974, protecting the gorge section and riparian corridor from development. Steelhead trout restoration in the 1980s transformed the lower Grand into one of the Great Lakes region's premier fly-fishing destinations.", src: 'Ohio DNR Division of Natural Areas; Ohio Scenic Rivers Program' }] },
         ],
         docs: [{ t: 'Grand River Watershed Action Plan', s: 'Ohio DNR', y: 2008, tp: 'Ecology', pg: 178 , url: 'https://dam.assets.ohio.gov/image/upload/epa.ohio.gov/Portals/35/nps/WAPs/GrandRLower.pdf'}],
-        revs: [{ u: 'ne_ohio_paddler', d: 'Apr 2025', s: 5, t: "Harpersfield Gorge at 1,500 cfs — shale ledge drops and a covered bridge at the takeout. Best spring whitewater day in northeast Ohio." }, { u: 'grand_river_angler', d: 'Nov 2024', s: 4, t: "Steelhead run on the lower Grand in November — chrome-bright fish in every pool. The Grand is Ohio's best-kept secret." }],
+        revs: [],
         outs: [{ n: 'Grand River Canoe Livery', d: 'Kayak and canoe rentals on the middle Grand River', l: 'grandrivercanoe.com' }],
       },
       {
@@ -6196,7 +6192,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1800s–1900s', title: "Coal, Iron, and the Hocking Canal", text: "The Hocking Valley was the center of Ohio's coal and iron industries in the 19th century. The Hocking Canal (1838) and later the Hocking Valley Railway moved coal from mines near Nelsonville to markets in Columbus and beyond. The industrial heritage is visible in restored company towns and the Hocking Valley Scenic Railway.", src: 'Ohio History Connection; Hocking Valley Scenic Railway' }] },
         ],
         docs: [{ t: 'Hocking River Watershed Action Plan', s: 'Ohio EPA', y: 2012, tp: 'Ecology', pg: 156 , url: 'https://dam.assets.ohio.gov/image/upload/epa.ohio.gov/Portals/35/tmdl/HockingRiverTMDL_final_aug09_wo_app.pdf'}],
-        revs: [{ u: 'hocking_hills_kayak', d: 'Jun 2025', s: 4, t: "Logan to Nelsonville at 500 cfs — gentle float through Hocking Hills country. Stopped at Conkle's Hollow for a hike. Perfect weekend combo." }, { u: 'athens_paddler', d: 'May 2025', s: 4, t: "Nelsonville to Athens — easy Class I through the hills. Great college-town takeout with breweries. Ohio's most relaxed river day." }],
+        revs: [],
         outs: [{ n: 'Hocking Hills Canoe Livery', d: 'Canoe and kayak rentals with Hocking Hills trip options', l: 'hockinghillscanoelivery.com' }, { n: 'Hocking Hills Adventures', d: 'Guided kayak trips and shuttle service, Logan', l: 'hockinghillsadventures.com' }],
       },
       {
@@ -6211,7 +6207,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1974', title: "Ohio Scenic River Designation", text: "Ohio designated the Vermilion River a State Scenic River in 1974, protecting the corridor's sandstone gorges, hemlock stands, and water quality from development pressure in north-central Ohio.", src: 'Ohio DNR Division of Natural Areas and Preserves' }] },
         ],
         docs: [],
-        revs: [{ u: 'north_ohio_paddler', d: 'May 2025', s: 4, t: "Mill Hollow section at 400 cfs — sandstone cliffs, hemlocks, and smallmouth on every cast. Ohio's best-kept scenic river secret." }, { u: 'vermilion_kayaker', d: 'Jun 2025', s: 4, t: "Wakeman to the lake at 600 cfs — gentle current through the gorge, then a fun run into the harbor. Great day trip from Cleveland." }],
+        revs: [],
         outs: [{ n: 'Vermilion River Reservation', d: 'Lorain County Metro Parks, kayak access and trails', l: '' }],
       },
       {
@@ -6226,7 +6222,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1969', title: "Ohio Scenic River Designation", text: "Ohio designated the Mad River a State Scenic River in 1969, one of the earliest designations in the state. The river's exceptional spring-fed water quality and trout fishery were key factors in the protection.", src: 'Ohio DNR Division of Natural Areas and Preserves' }] },
         ],
         docs: [],
-        revs: [{ u: 'dayton_fly_fisher', d: 'Apr 2025', s: 5, t: "Mad River at 350 cfs in April — spring-fed and crystal clear while every other Ohio river is muddy. Caught browns on dry flies. The best trout stream in Ohio, period." }, { u: 'western_oh_paddler', d: 'May 2025', s: 4, t: "West Liberty to Springfield at 500 cfs — easy float through green farmland with surprisingly cold, clear water. Unique for Ohio." }],
+        revs: [],
         outs: [{ n: 'Mad River Outfitters', d: 'Fly fishing guided trips and kayak access on the Mad River', l: '' }],
       },
       {
@@ -6241,7 +6237,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1827–1850', title: "Ohio & Erie Canal — Industrial Revolution Corridor", text: "The Ohio & Erie Canal, completed along the Tuscarawas in 1832, connected Lake Erie to the Ohio River and transformed Ohio from frontier to industrial powerhouse. Canal towns like Bolivar, Zoar, and Dover grew up along the river, and the restored towpath now serves as a hiking and biking trail.", src: 'Ohio History Connection; Ohio & Erie Canalway Association' }] },
         ],
         docs: [],
-        revs: [{ u: 'canal_history_paddler', d: 'Jun 2025', s: 4, t: "Bolivar to Zoar at 1,200 cfs — paddled past the old canal locks and stopped at Zoar Village. Ohio history from the water. Peaceful and fascinating." }, { u: 'tuscarawas_kayak', d: 'Jul 2025', s: 3, t: "Dover to Coshocton at 1,800 cfs — wide and slow but the scenery improves downstream. Bring a fishing rod for channel cats." }],
+        revs: [],
         outs: [{ n: 'Tuscarawas River Water Trail', d: 'Access maps and launch information, Tuscarawas County', l: '' }],
       },
       {
@@ -6340,7 +6336,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1836–1847', title: "Whitewater Canal — Indiana's Failed Waterway", text: "Indiana built the Whitewater Canal parallel to the river as part of the 1836 Internal Improvements Act. Financial collapse left the canal incomplete, though a restored section at Metamora still operates as a state historic site.", src: 'Indiana State Museum; Metamora Canal Boat' }] },
         ],
         docs: [{ t: 'Whitewater River Watershed Management Plan', s: 'Indiana DEM', y: 2012, tp: 'Survey', pg: 140 , url: 'https://www.in.gov/idem/nps/resources/watershed-management-plans/whitewater-river-wmp-3-119/'}],
-        revs: [{ u: 'hoosier_paddler', d: 'Apr 2025', s: 4, t: 'Metamora section at 1,000 cfs — limestone ledge drops every half mile. Best whitewater in Indiana.' }, { u: 'in_creek_boater', d: 'Mar 2025', s: 4, t: 'Spring run at 1,800 cfs — pushy Class III in spots. The Whitewater earns its name.' }],
+        revs: [],
         outs: [{ n: 'Whitewater Canoe Rental', d: 'Brookville-based trips and shuttles', l: 'whitewatercanoe.com' }],
       },
       {
@@ -6355,7 +6351,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1976', title: "Indiana Natural & Scenic River Designation", text: "Sugar Creek was among the first rivers designated under Indiana's Natural, Scenic, and Recreational River System, protecting the corridor through covered bridge country.", src: 'Indiana DNR Division of Outdoor Recreation' }] },
         ],
         docs: [{ t: 'Sugar Creek Watershed Management Plan', s: 'Indiana DEM', y: 2008, tp: 'Ecology', pg: 110 , url: 'https://www.in.gov/idem/nps/resources/watershed-management-plans/sugar-creek-wmp-7-81/'}],
-        revs: [{ u: 'covered_bridge_canoe', d: 'Jun 2025', s: 5, t: 'Shades to Turkey Run at 600 cfs — sandstone bluffs, three covered bridges, and canyon side hikes. Peak Indiana.' }, { u: 'indy_weekend_paddler', d: 'May 2025', s: 4, t: 'Sugar Creek at 400 cfs — mellow float through beautiful farm-to-forest scenery. Perfect family river.' }],
+        revs: [],
         outs: [{ n: 'Sugar Creek Canoe Rental', d: 'Turkey Run area, family trips', l: 'sugarcreekcanoe.com' }],
       },
       {
@@ -6370,7 +6366,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1973', title: "Indiana's First Natural & Scenic River", text: "The Blue River became the first river designated under Indiana's new Natural, Scenic, and Recreational River System — a landmark moment for Hoosier conservation.", src: 'Indiana DNR Division of Outdoor Recreation' }] },
         ],
         docs: [],
-        revs: [{ u: 'southern_indiana_paddle', d: 'Jun 2025', s: 5, t: 'Fredericksburg to White Cloud at 350 cfs — gin-clear spring water over limestone. Best-kept secret in Indiana.' }, { u: 'blue_river_regular', d: 'Jul 2025', s: 4, t: 'Summer float at 250 cfs — some wading required but the swimming holes make up for it. Beautiful karst country.' }],
+        revs: [],
         outs: [{ n: 'Cave Country Canoes', d: 'Blue River trips from Milltown', l: 'cavecountrycanoes.com' }],
       },
       {
@@ -6385,7 +6381,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1811', title: "Battle of Tippecanoe — 'Tippecanoe and Tyler Too'", text: "The 1811 Battle of Tippecanoe near the river's confluence with the Wabash destroyed Prophetstown and launched William Henry Harrison's political career. The battle cry 'Tippecanoe and Tyler Too' won the 1840 presidential election.", src: 'Tippecanoe Battlefield National Historic Landmark; Indiana Historical Bureau' }] },
         ],
         docs: [],
-        revs: [{ u: 'hoosier_river_rat', d: 'Jun 2025', s: 5, t: 'Tippecanoe River State Park section at 800 cfs — sandbars for lunch, forested bluffs, and a bald eagle escort. Best multi-day paddle in Indiana.' }, { u: 'in_flatwater_fan', d: 'Jul 2025', s: 4, t: 'Monterey to Delphi over two days at 600 cfs — gentle current, great camping on gravel bars. The Tippecanoe is the real deal.' }],
+        revs: [],
         outs: [{ n: 'Tippecanoe River Outfitters', d: 'Canoe and kayak rentals near Winamac', l: '' }],
       },
       {
@@ -6400,7 +6396,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1966', title: "Muscatatuck NWR — Midwest Birding Destination", text: "Muscatatuck National Wildlife Refuge, established in 1966 along the river, protects 7,800 acres of wetlands and forest. The refuge hosts over 280 bird species and is one of the premier birding destinations in Indiana.", src: 'USFWS Muscatatuck NWR' }] },
         ],
         docs: [],
-        revs: [{ u: 'southern_in_paddler', d: 'May 2025', s: 4, t: 'Vernon section at 350 cfs — limestone bluffs and clear water. Quiet and scenic. Southern Indiana at its best.' }, { u: 'in_birding_kayaker', d: 'Jun 2025', s: 4, t: 'Paddled near Muscatatuck NWR at 250 cfs — wood ducks, herons, and a pileated woodpecker. Great wildlife paddle.' }],
+        revs: [],
         outs: [{ n: 'Muscatatuck Outfitters', d: 'Canoe and kayak rentals, Vernon area', l: '' }],
       },
       {
@@ -6415,7 +6411,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2015', title: "Eel River Watershed Restoration", text: "Multi-county watershed restoration efforts have improved water quality and fish habitat along the Eel River, with particular focus on reducing agricultural runoff and restoring riparian buffers.", src: 'Indiana DEM; Eel River Watershed Council' }] },
         ],
         docs: [],
-        revs: [{ u: 'ne_indiana_paddler', d: 'Jun 2025', s: 4, t: 'North Manchester stretch at 350 cfs — easy meanders, good smallmouth on poppers. Peaceful day on an underrated river.' }, { u: 'eel_river_local', d: 'Jul 2025', s: 3, t: 'Gentle float at 250 cfs through farm country. Not flashy but a solid local paddle with surprisingly wild stretches.' }],
+        revs: [],
         outs: [{ n: 'Eel River Canoe Rental', d: 'Canoe and kayak rentals near North Manchester', l: '' }],
       },
       {
@@ -6430,7 +6426,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2018', title: "Wildcat Creek Greenway — Recreation Revival", text: "Local communities developed the Wildcat Creek Greenway to promote paddling access and riparian conservation, creating new put-ins and improving water quality along the creek.", src: 'Tippecanoe County Parks; Indiana DNR' }] },
         ],
         docs: [],
-        revs: [{ u: 'hoosier_ww_seeker', d: 'Apr 2025', s: 4, t: 'Wildcat at 400 cfs after spring rain — rocky Class II ledges the whole way. Best whitewater near Lafayette.' }, { u: 'indiana_creek_paddler', d: 'May 2025', s: 4, t: 'Burlington section at 300 cfs — fun riffles and small drops. Not Colorado but great for Indiana.' }],
+        revs: [],
         outs: [{ n: 'Wildcat Creek Outfitters', d: 'Canoe and kayak rentals near Lafayette', l: '' }],
       },
     ],
@@ -6454,7 +6450,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1981', title: "National Wild & Scenic Designation", text: "The Vermilion became Illinois's only National Wild & Scenic River, protecting 17 miles of canyon from Oglesby to LaSalle.", src: 'NPS National Wild & Scenic Rivers System' }] },
         ],
         docs: [],
-        revs: [{ u: 'chicago_paddler', d: 'Apr 2025', s: 5, t: 'Vermilion at 500 cfs — actual whitewater in Illinois. Sandstone canyons and Class III ledges. Worth the drive from Chicago.' }, { u: 'il_surprise', d: 'May 2025', s: 4, t: 'Never expected real rapids in this state. The Vermilion canyon section is legit.' }],
+        revs: [],
         outs: [{ n: 'Heritage Harbor Sports', d: 'Vermilion River kayak rentals, Ottawa IL', l: 'heritageharborsports.com' }],
       },
       {
@@ -6469,7 +6465,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1996', title: "Ramsar Wetland of International Importance", text: "The Cache River wetlands were designated a Ramsar Wetland of International Importance, recognizing the ancient cypress swamp ecosystem as globally significant.", src: 'Ramsar Convention; IDNR' }] },
         ],
         docs: [],
-        revs: [{ u: 'swamp_paddler_il', d: 'Oct 2025', s: 5, t: 'Lower Cache through the cypress swamp at 200 cfs — thousand-year-old trees rising from black water. Illinois has a bayou and nobody knows.' }, { u: 'nature_kayaker', d: 'Nov 2025', s: 4, t: 'Flatwater through the cypress at low flow — prothonotary warblers and barred owls. Magical place.' }],
+        revs: [],
         outs: [{ n: 'Shawnee Forest Outfitters', d: 'Cache River paddle tours, seasonal', l: 'shawneeforestoutfitters.com' }],
       },
       {
@@ -6484,7 +6480,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1853–1917', title: "The Great Kankakee Marsh Destroyed", text: "Between 1853 and 1917, the 500,000-acre Kankakee Marsh was systematically drained for agriculture. Over 240 miles of river was channelized into straight ditches — one of the greatest ecological losses in Midwestern history.", src: 'Indiana DNR; Kankakee River Basin Commission' }] },
         ],
         docs: [],
-        revs: [{ u: 'chicago_escape_paddler', d: 'Jun 2025', s: 5, t: 'Kankakee River SP at 1,500 cfs — sandstone canyon with waterfalls on the tributaries. Best day trip from Chicago.' }, { u: 'kankakee_regular', d: 'Jul 2025', s: 4, t: 'Momence to the state park at 1,800 cfs — easy float, great birding, surprisingly pretty for this close to the city.' }],
+        revs: [],
         outs: [{ n: "Reed's Canoe Trips", d: 'Kankakee River State Park area, Kankakee IL', l: 'reedscanoetrips.com' }, { n: 'Chicagoland Canoe Base', d: 'Kankakee trip planning and gear', l: 'chicagolandcanoebase.com' }],
       },
       {
@@ -6583,7 +6579,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1850–1960', title: "Paper Mills and Pollution — Berlin's Industrial Legacy", text: "The Androscoggin was one of the most polluted rivers in America by the mid-20th century, fouled by paper mills in Berlin, NH and Rumford, ME. The Clean Water Act transformed it from an open sewer to one of New England's finest paddling rivers.", src: 'NH DES; Androscoggin River Watershed Council' }] },
         ],
         docs: [],
-        revs: [{ u: 'nh_moose_paddler', d: 'Sep 2025', s: 5, t: 'Thirteen Mile Woods at 1,500 cfs — four moose in one day. Camped on a gravel bar with no one else for miles. New England wilderness at its best.' }, { u: 'whitemtn_kayaker', d: 'Jun 2025', s: 4, t: 'Errol to Pontook at 2,200 cfs — continuous Class II–III with White Mountain views. Excellent.' }],
+        revs: [],
         outs: [{ n: 'Saco Bound / Northern Waters', d: 'Androscoggin canoe trips from Errol', l: 'sacobound.com' }],
       },
       {
@@ -6598,7 +6594,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2023', title: "River Stewardship — Saco Watershed Council", text: "The Saco River Corridor Commission has protected the river's recreational character for decades, managing camping impacts and preserving public access on the most heavily used river in New England.", src: 'Saco River Corridor Commission; AMC' }] },
         ],
         docs: [{ t: 'Saco River Corridor Management Plan', s: 'Saco River Corridor Commission', y: 2015, tp: 'Recreation', pg: 95 , url: 'https://www.des.nh.gov/sites/g/files/ehbemt341/files/documents/saco-swift-plan.pdf'}],
-        revs: [{ u: 'new_england_tradition', d: 'Jul 2025', s: 5, t: 'Three days from North Conway to Fryeburg — sandbar camping, swimming, Mt. Washington views. The New England river trip.' }, { u: 'saco_summer', d: 'Aug 2025', s: 4, t: 'Center Conway to Fryeburg at 1,200 cfs — warm water, sandy beaches, and covered bridges. Brought the whole family.' }],
+        revs: [],
         outs: [{ n: 'Saco Bound', d: 'New England canoe institution since 1969, Center Conway', l: 'sacobound.com' }, { n: 'Canal Bridge Canoes', d: 'Saco River trips from North Conway', l: 'canalbridgecanoes.com' }],
       },
       {
@@ -6613,7 +6609,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1880–1920', title: "J.E. Henry and the East Branch — Clearcutting the Pemigewasset Wilderness", text: "Lumber baron J.E. Henry built a logging railroad up the East Branch and clear-cut the entire Pemigewasset Wilderness. A devastating forest fire in 1907 burned the slash, creating a moonscape. The area has since recovered into the 45,000-acre Pemigewasset Wilderness — the largest in New Hampshire.", src: 'USFS White Mountain NF; NH Historical Society' }] },
         ],
         docs: [{ t: 'Pemigewasset River Corridor Assessment', s: 'NH DES', y: 2012, tp: 'Survey', pg: 85 , url: 'https://lakesrpc.nh.gov/wp-content/uploads/2025/08/Pemi-River-Corridor-Mgment-Plan-2013.pdf'}],
-        revs: [{ u: 'whitemtn_paddler', d: 'May 2025', s: 5, t: 'Lincoln to Woodstock at 1,200 cfs during spring runoff — Franconia Ridge towers above Class II rapids. Peak New Hampshire.' }, { u: 'pemi_local', d: 'Jun 2025', s: 4, t: 'Plymouth section at 900 cfs — easy Class I–II through farm country with mountain views. Great after-work run.' }],
+        revs: [],
         outs: [{ n: 'Outback Kayak', d: 'Pemigewasset and Merrimack River trips, Lincoln NH', l: 'outbackkayak.com' }],
       },
       {
@@ -6628,7 +6624,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '2012', title: "America's First National Blueway", text: "The Connecticut River was designated America's first National Blueway by the Department of the Interior in 2012, recognizing 410 miles of paddling heritage from the Canadian border to Long Island Sound.", src: 'Department of the Interior; Connecticut River Conservancy' }] },
         ],
         docs: [],
-        revs: [{ u: 'upper_valley_paddler', d: 'Jul 2025', s: 5, t: 'Three days from Woodsville to Hanover at 5,000 cfs — big gentle river, covered bridges, Dartmouth on the banks. Peak New England canoe tripping.' }, { u: 'nh_vt_border_run', d: 'Aug 2025', s: 4, t: 'Lancaster section at 4,000 cfs — pastoral farmland, eagle sightings, and the White Mountains in the distance. Effortless paddling.' }],
+        revs: [],
         outs: [{ n: 'North Star Canoe Rentals', d: 'Connecticut River trips from Cornish NH, multi-day specialists', l: '' }],
       },
       {
@@ -6643,7 +6639,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1820–1920', title: "Textile Revolution — America's Industrial River", text: "The Merrimack powered the American textile revolution. Mills at Lowell, Lawrence, and Manchester transformed the river into the most industrialized waterway in America. By the mid-20th century, the Merrimack was severely polluted — the Clean Water Act sparked a remarkable recovery.", src: 'Manchester Historic Association; Lowell NHP' }] },
         ],
         docs: [],
-        revs: [{ u: 'concord_paddler', d: 'Jun 2025', s: 4, t: 'Concord to Hooksett at 2,500 cfs — paddled right past the State House dome. Class I riffles and recovering urban river. Surprisingly scenic.' }, { u: 'merrimack_comeback', d: 'Jul 2025', s: 4, t: 'Manchester section at 3,000 cfs — the old mill city looks great from the river. Eagles and osprey where there used to be nothing but pollution.' }],
+        revs: [],
         outs: [{ n: 'Merrimack River Watershed Council', d: 'Guided paddles and access information, Concord NH', l: '' }],
       },
       {
@@ -6658,7 +6654,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1870–1910', title: "Swift River Railroad — Harvesting the White Mountains", text: "A logging railroad ran up the Swift River valley, clear-cutting the mountain slopes. The devastating fires that followed prompted creation of the White Mountain National Forest in 1918, preserving the watershed for future generations.", src: 'USFS White Mountain NF; Conway Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'kanc_kayaker', d: 'May 2025', s: 5, t: 'Bear Notch to Albany at 600 cfs after rain — continuous Class II–III with Kancamagus scenery. Swimming at Lower Falls afterward. Perfect White Mountain day.' }, { u: 'swift_swimmer', d: 'Jul 2025', s: 4, t: 'Rocky Gorge section at 400 cfs — granite swimming holes and easy rapids. Families everywhere but still beautiful.' }],
+        revs: [],
         outs: [{ n: 'Saco Bound', d: 'Swift River access and White Mountain paddle trips', l: '' }],
       },
       {
@@ -6673,7 +6669,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2011', title: "Tropical Storm Irene — Devastating Floods", text: "Tropical Storm Irene in August 2011 turned the Ellis River into a destructive torrent, washing out roads and covered bridges in Jackson. The flood reshaped the river channel and prompted major flood resilience investments in the village.", src: 'Town of Jackson; NH DES' }] },
         ],
         docs: [],
-        revs: [{ u: 'jackson_local', d: 'May 2025', s: 5, t: 'Pinkham to Jackson at 500 cfs — steep Class III drops with covered bridges and mountain views. Short but intense White Mountain paddling.' }, { u: 'ww_new_england', d: 'Apr 2025', s: 4, t: 'Spring melt at 700 cfs — continuous Class II–III through granite. Cold water, fast action. Bring a drysuit in April.' }],
+        revs: [],
         outs: [{ n: 'Jackson Ski Touring Foundation', d: 'Local river access info and seasonal conditions, Jackson NH', l: '' }],
       },
       {
@@ -6688,7 +6684,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2004', title: "Contoocook River Greenway — Conservation Corridor", text: "Local conservation groups established the Contoocook River Greenway to protect riparian habitat and public access along the river, preserving eight covered bridges and numerous put-in points for paddlers.", src: 'Contoocook River Local Advisory Committee; NH DES' }] },
         ],
         docs: [],
-        revs: [{ u: 'nh_covered_bridge', d: 'Jun 2025', s: 5, t: 'Peterborough to Henniker at 400 cfs — paddled under four covered bridges in one day. Gentle current, beautiful New England scenery. Family favorite.' }, { u: 'contoocook_local', d: 'Jul 2025', s: 4, t: 'Henniker section at 300 cfs — easy Class I through farm country. Stopped at the Railroad Bridge for lunch. Classic central NH.' }],
+        revs: [],
         outs: [{ n: 'Contoocook River Canoe Company', d: 'Canoe and kayak rentals, Henniker NH', l: '' }],
       },
     ],
@@ -6712,7 +6708,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1979', title: "West River Race — New England Whitewater Institution", text: "The West River Race, held during scheduled dam releases, became one of the defining events of northeastern whitewater culture. Paddlers from six states converge for the fall releases.", src: 'American Whitewater; Vermont Paddlers Club' }] },
         ],
         docs: [],
-        revs: [{ u: 'vt_ww_classic', d: 'Sep 2025', s: 5, t: 'West River release at 1,200 cfs — Jamaica section was firing. Class III–IV waves big enough to surf. The fall classic.' }, { u: 'northeast_kayaker', d: 'Oct 2025', s: 4, t: 'Fall release weekend at 900 cfs — perfect intermediate run with peak Vermont foliage on every bank.' }],
+        revs: [],
         outs: [{ n: 'Vermont Canoe & Kayak', d: 'West River release weekends, rentals and shuttles', l: 'vermontcanoe.com' }],
       },
       {
@@ -6727,7 +6723,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2011', title: "Hurricane Irene — Transforming Vermont Rivers", text: "Tropical Storm Irene in August 2011 caused catastrophic flooding on the Lamoille and nearly every Vermont river, destroying bridges and roads. The flood reshaped river channels and led to major investments in flood resilience across the state.", src: 'Vermont Agency of Natural Resources; USGS' }] },
         ],
         docs: [{ t: 'Lamoille River Corridor Assessment', s: 'VT ANR', y: 2014, tp: 'Survey', pg: 110 , url: 'https://dec.vermont.gov/sites/dec/files/wsm/mapp/docs/pl_basin7.finalplan.pdf'}],
-        revs: [{ u: 'vt_river_paddler', d: 'Jun 2025', s: 5, t: 'Morrisville to Johnson at 1,000 cfs — covered bridges, dairy farms, Green Mountain views. Vermont in a canoe.' }, { u: 'fairfax_gorge_fan', d: 'May 2025', s: 4, t: 'Fairfax Gorge at 1,400 cfs — legitimate Class III whitewater in a beautiful gorge. Best spring run in Vermont.' }],
+        revs: [],
         outs: [{ n: 'Umiak Outdoor Outfitters', d: 'Lamoille River canoe and kayak trips, Stowe', l: 'umiak.com' }],
       },
       {
@@ -6742,7 +6738,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2011', title: "Hurricane Irene — Catastrophic Flooding", text: "Tropical Storm Irene in August 2011 turned the White River into a destructive torrent, washing out Route 107 and devastating towns along its course. The flood reshaped the river channel and spurred major investments in Vermont flood resilience.", src: 'Vermont Agency of Natural Resources; USGS' }] },
         ],
         docs: [{ t: 'White River Watershed Assessment', s: 'White River Partnership', y: 2015, tp: 'Ecology', pg: 125 , url: 'https://dec.vermont.gov/sites/dec/files/documents/mp_WaterQualityAssessmentReport_Basin9_WhiteRiver_2016-12.pdf'}],
-        revs: [{ u: 'vt_paddler_life', d: 'May 2025', s: 5, t: 'Rochester to Bethel at 900 cfs — covered bridges, dairy farms, Green Mountain views. The quintessential Vermont paddle.' }, { u: 'white_river_local', d: 'Jun 2025', s: 4, t: 'Granville section at 1,400 cfs after rain — pushy Class III with mountain scenery. Best spring run in central Vermont.' }],
+        revs: [],
         outs: [{ n: 'Clearwater Sports', d: 'White River canoe and kayak rentals, Waitsfield', l: 'clearwatersports.com' }, { n: 'Umiak Outdoor Outfitters', d: 'Multi-river Vermont trips including the White', l: 'umiak.com' }],
       },
       {
@@ -6757,7 +6753,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2011', title: "Hurricane Irene — Montpelier Underwater", text: "Tropical Storm Irene in August 2011 caused catastrophic flooding on the Winooski, inundating downtown Montpelier under several feet of water. The flood caused over $100 million in damage and fundamentally reshaped Vermont's approach to flood resilience.", src: 'Vermont Agency of Natural Resources; USGS' }] },
         ],
         docs: [],
-        revs: [{ u: 'vt_capital_paddler', d: 'Jun 2025', s: 5, t: 'Waterbury to Bolton at 1,500 cfs — Class II–III through gorgeous Green Mountain gorges. Best whitewater day trip near Burlington.' }, { u: 'winooski_local', d: 'Jul 2025', s: 4, t: 'Montpelier section at 800 cfs — paddled past the golden dome of the State House. Urban paddling Vermont-style.' }],
+        revs: [],
         outs: [{ n: 'Umiak Outdoor Outfitters', d: 'Winooski River trips and rentals, Stowe area', l: '' }],
       },
       {
@@ -6772,7 +6768,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1856', title: "Orvis — America's Fly Fishing Heritage", text: "Charles F. Orvis founded the Orvis Company in Manchester, Vermont in 1856, establishing the Battenkill as the spiritual home of American fly fishing. The Orvis rod shop and American Museum of Fly Fishing remain in Manchester today.", src: 'Orvis Company; American Museum of Fly Fishing' }] },
         ],
         docs: [],
-        revs: [{ u: 'battenkill_angler', d: 'Jun 2025', s: 5, t: 'Manchester to Arlington at 350 cfs — crystal water over marble and gravel. Caught three wild browns on dries. The most beautiful trout stream in America.' }, { u: 'vt_scenic_paddler', d: 'Jul 2025', s: 4, t: 'Canoed the Arlington section at 300 cfs — covered bridges, dairy farms, Norman Rockwell country. Idyllic Vermont.' }],
+        revs: [],
         outs: [{ n: 'Battenkill Canoe', d: 'Battenkill canoe trips and inn-to-inn paddling, Arlington VT', l: '' }],
       },
       {
@@ -6787,7 +6783,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1943', title: "Missisquoi National Wildlife Refuge", text: "The U.S. Fish & Wildlife Service established the Missisquoi NWR at the river's delta on Lake Champlain, protecting 6,729 acres of wetland habitat critical to migratory waterfowl on the Atlantic Flyway.", src: 'USFWS Missisquoi NWR; Vermont Audubon' }] },
         ],
         docs: [],
-        revs: [{ u: 'kingdom_paddler', d: 'Jul 2025', s: 5, t: 'Richford to Swanton at 800 cfs — two days through dairy country to the wildlife refuge. Great blue herons everywhere. Northern Vermont at its finest.' }, { u: 'birder_paddler_vt', d: 'Jun 2025', s: 4, t: 'Missisquoi delta section — osprey, bitterns, and nesting bald eagles. Best birding paddle in Vermont.' }],
+        revs: [],
         outs: [{ n: 'Vermont Canoe & Kayak', d: 'Missisquoi River trips and northern Vermont paddling', l: '' }],
       },
       {
@@ -6802,7 +6798,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2011', title: "Hurricane Irene — Valley Devastation", text: "Tropical Storm Irene devastated the Mad River Valley in August 2011, destroying roads, bridges, and homes along the river corridor. The flood reshaped the channel and prompted a complete rethinking of floodplain management in the valley.", src: 'Town of Waitsfield; Vermont Agency of Natural Resources' }] },
         ],
         docs: [],
-        revs: [{ u: 'mad_river_local', d: 'May 2025', s: 5, t: 'Warren to Waitsfield at 600 cfs after spring rain — Class II–III through covered bridges with ski trails visible on the ridgeline. Peak Vermont.' }, { u: 'vt_ww_spring', d: 'Apr 2025', s: 4, t: 'Spring melt at 900 cfs — continuous Class III through the gorge section. Cold but worth it. Mad River Glen was still open on the mountain above.' }],
+        revs: [],
         outs: [{ n: 'Clearwater Sports', d: 'Mad River Valley paddle trips and rentals, Waitsfield', l: '' }],
       },
       {
@@ -6817,7 +6813,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1840–1900', title: "Vermont Marble — Otter Creek Industry", text: "The marble quarries of Rutland and Proctor made Otter Creek the center of Vermont's marble industry. Vermont marble built the U.S. Supreme Court building and the Lincoln Memorial. The quarry heritage shapes the landscape along the creek today.", src: 'Vermont Marble Museum; Rutland Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'vt_flatwater_paddler', d: 'Jun 2025', s: 5, t: 'Brandon to Middlebury at 500 cfs — gentle current through dairy farms with Green Mountain views. Stopped at Middlebury Falls for lunch. Classic Vermont.' }, { u: 'otter_creek_birder', d: 'Jul 2025', s: 4, t: 'Lower section through the wetlands — great blue herons, osprey, and beaver lodges. Best flatwater birding paddle in Vermont.' }],
+        revs: [],
         outs: [{ n: 'Vermont Canoe & Kayak', d: 'Otter Creek paddle trips from Middlebury', l: '' }],
       },
     ],
@@ -6841,7 +6837,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2000', title: "GE PCB Cleanup — New England's Largest Superfund Project", text: "The Housatonic has been the subject of one of New England's largest environmental cleanups after General Electric discharged PCBs from its Pittsfield, MA plant for decades. The EPA-ordered restoration continues today.", src: 'EPA Housatonic River Site; CT DEEP' }] },
         ],
         docs: [{ t: "Housatonic River Watershed Management Plan", s: 'Housatonic Valley Association', y: 2012, tp: 'Ecology', pg: 160 , url: 'https://rivers.gov/sites/rivers/files/2023-01/housatonic-study.pdf'}],
-        revs: [{ u: 'litchfield_paddler', d: 'May 2025', s: 5, t: "Bull's Bridge at 1,200 cfs — Class III gorge with the covered bridge above you. Connecticut's best whitewater day." }, { u: 'ct_scenic_paddler', d: 'Jun 2025', s: 4, t: 'Kent to Cornwall at 800 cfs — pastoral perfection. Covered bridges and Litchfield Hills scenery.' }],
+        revs: [],
         outs: [{ n: 'Clarke Outdoors', d: "Housatonic canoe and kayak since 1978, West Cornwall", l: 'clarkeoutdoors.com' }],
       },
       {
@@ -6856,7 +6852,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1994', title: "National Wild & Scenic Designation — Upper Farmington", text: "Congress designated the upper 14 miles of the Farmington as a National Wild & Scenic River in 1994, protecting the premier trout stream and paddling corridor in Connecticut.", src: 'NPS; Farmington River Watershed Association' }] },
         ],
         docs: [{ t: 'Farmington River Wild & Scenic Management Plan', s: 'Farmington River Coordinating Committee', y: 2011, tp: 'Federal', pg: 88 , url: 'https://rivers.gov/carp/apps/sites/rivers/files/documents/plans/farmington-upper-plan.pdf'}],
-        revs: [{ u: 'ct_fly_paddle', d: 'Jun 2025', s: 5, t: 'Upper Farmington at 400 cfs — Wild & Scenic section with brown trout rising everywhere. Paddled and fished the same day.' }, { u: 'tariffville_regular', d: 'Apr 2025', s: 4, t: 'Tariffville Gorge at 700 cfs — real Class III whitewater 20 minutes from Hartford. After-work sessions all spring.' }],
+        revs: [],
         outs: [{ n: 'Collinsville Canoe & Kayak', d: 'Farmington River rentals and lessons, Canton', l: 'collinsvillecanoe.com' }],
       },
       {
@@ -6871,7 +6867,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '2012', title: "Connecticut River National Blueway — First in America", text: "The Connecticut River was designated America's first National Blueway in 2012, recognizing 410 miles of paddling heritage from the Canadian border to Long Island Sound.", src: 'Department of the Interior; Connecticut River Conservancy' }] },
         ],
         docs: [],
-        revs: [{ u: 'ct_river_paddler', d: 'Jun 2025', s: 5, t: 'Hartford to Middletown at 12,000 cfs — big wide river, osprey everywhere, historic river towns on every bend. Iconic New England paddling.' }, { u: 'tidelands_kayaker', d: 'Jul 2025', s: 4, t: 'Essex to Old Saybrook on the tide — salt marsh, herons, Long Island Sound. Bring a tide chart and sunscreen.' }],
+        revs: [],
         outs: [{ n: 'Hurd State Park Canoe/Kayak', d: 'Connecticut River access and camping, East Hampton', l: 'ct.gov/deep' }, { n: 'Connecticut River Expeditions', d: 'Guided paddle tours, Essex', l: 'ctriverquest.com' }],
       },
       {
@@ -6886,7 +6882,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1991', title: "Atlantic Salmon Restoration", text: "The Connecticut River Atlantic Salmon Commission launched restoration efforts on the Salmon River, stocking fry and improving fish passage. Though full restoration remains elusive, the river supports seasonal returns of sea-run Atlantic salmon.", src: 'CT DEEP; Connecticut River Atlantic Salmon Commission' }] },
         ],
         docs: [],
-        revs: [{ u: 'ct_hidden_gem', d: 'May 2025', s: 5, t: 'Day Pond to Comstock Bridge at 200 cfs — paddled under the last covered bridge in the area. Surprisingly wild for central Connecticut.' }, { u: 'salmon_river_angler', d: 'Oct 2025', s: 4, t: 'Fall run at 300 cfs — Atlantic salmon stacking below the dam. Incredible sight in Connecticut.' }],
+        revs: [],
         outs: [{ n: 'Main Stream Canoe Corporation', d: 'Salmon River and Connecticut River trips', l: '' }],
       },
       {
@@ -6901,7 +6897,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2015', title: "River Revival — Quinnipiac Watershed Association", text: "Decades of cleanup efforts transformed the Quinnipiac from one of Connecticut's most polluted rivers to a viable recreation corridor. The Quinnipiac River Watershed Association leads ongoing restoration and water quality monitoring.", src: 'Quinnipiac River Watershed Association; CT DEEP' }] },
         ],
         docs: [],
-        revs: [{ u: 'ct_urban_paddler', d: 'Jun 2025', s: 4, t: 'Wallingford to North Haven at 200 cfs — Sleeping Giant rising above the river. The cleanup is working — herons and osprey everywhere.' }, { u: 'quinnipiac_local', d: 'Jul 2025', s: 4, t: 'Upper section at 150 cfs — gentle paddle through recovering riparian habitat. Not pristine, but getting better every year.' }],
+        revs: [],
         outs: [{ n: 'Quinnipiac River Watershed Association', d: 'Guided paddle events and river access info', l: '' }],
       },
       {
@@ -6916,7 +6912,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1880–1930', title: "Thread City Mills — Willimantic Industry", text: "The Natchaug and its tributaries powered textile mills in Willimantic — known as 'Thread City' for the American Thread Company. The mills shaped the region's economy for a century before declining in the mid-20th century.", src: 'Windham Textile & History Museum; Connecticut Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'quiet_corner_paddler', d: 'May 2025', s: 5, t:"'Natchaug State Forest section at 250 cfs — hemlock gorges and swimming holes. Diana Pool is magical. Connecticut's best-kept secret." }, { u: 'ct_east_kayaker', d: 'Jun 2025', s: 4, t: 'Spring run at 400 cfs — Class I–II through the forest with no one around. Feels like Vermont in eastern Connecticut.' }],
+        revs: [],
         outs: [{ n: 'Scott\'s Yankee Farmer', d: 'Local info and Natchaug State Forest access', l: '' }],
       },
       {
@@ -6931,7 +6927,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1987', title: "Bald Eagle Wintering — Shepaug Dam", text: "The Shepaug Dam tailwater became one of the Northeast's most important bald eagle wintering sites. Connecticut DEEP established a regulated viewing area that hosts thousands of visitors each winter to observe eagles fishing below the dam.", src: 'CT DEEP Wildlife Division; Connecticut Audubon Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'litchfield_explorer', d: 'Apr 2025', s: 5, t: 'Washington section at 180 cfs — bald eagles soaring above, covered bridge ahead, Litchfield Hills all around. Connecticut at its most beautiful.' }, { u: 'shepaug_birder', d: 'Feb 2025', s: 4, t: 'Winter eagle viewing below the dam — counted 14 bald eagles in one afternoon. Incredible wildlife spectacle in Connecticut.' }],
+        revs: [],
         outs: [{ n: 'Clarke Outdoors', d: 'Shepaug River and Litchfield Hills paddle trips', l: '' }],
       },
       {
@@ -6946,7 +6942,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1913', title: "White Memorial Foundation — Connecticut's Conservation Pioneer", text: "Alain and May White established the White Memorial Foundation in 1913, protecting 4,000 acres of forest and wetland along the Bantam River. It remains Connecticut's largest nature center and one of the oldest conservation organizations in New England.", src: 'White Memorial Conservation Center; Litchfield Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'ct_nature_paddler', d: 'Jun 2025', s: 5, t:"'White Memorial section at 80 cfs — beaver lodges, great blue herons, painted turtles on every log. Connecticut's finest nature paddle." }, { u: 'bantam_birder', d: 'May 2025', s: 4, t: 'Spring paddle at 120 cfs through the marsh — prothonotary warblers and wood ducks. Binoculars essential, not optional.' }],
+        revs: [],
         outs: [{ n: 'White Memorial Conservation Center', d: 'Bantam River access, nature programs, and trail maps', l: '' }],
       },
     ],
@@ -6970,7 +6966,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1985', title: "Wood-Pawcatuck Wild & Scenic Study", text: "The Wood and Pawcatuck rivers were studied for National Wild & Scenic designation, recognizing their ecological significance as the best remaining examples of southern New England river habitat.", src: 'NPS Wild & Scenic Rivers Program; Wood-Pawcatuck Watershed Association' }] },
         ],
         docs: [],
-        revs: [{ u: 'ri_paddle_small', d: 'May 2025', s: 5, t: 'Arcadia section at 150 cfs — tight and technical Class I–II through old-growth forest. Rhode Island wilderness is real.' }, { u: 'smallest_state_paddler', d: 'Jun 2025', s: 4, t: 'Wood River spring run at 200 cfs — best paddling in RI. Tea-colored water over granite ledges. Short but sweet.' }],
+        revs: [],
         outs: [{ n: 'Quaker Lane Bait & Tackle', d: 'Local info and gear for Wood River access', l: 'quakerlanebait.com' }],
       },
       {
@@ -6985,7 +6981,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '2019', title: "National Wild & Scenic Designation", text: "The Pawcatuck and Wood rivers were designated National Wild & Scenic Rivers in 2019 as part of the Wood-Pawcatuck Watershed Protection Act, protecting over 60 miles of river corridor in southern New England.", src: 'NPS; Senator Jack Reed Office' }] },
         ],
         docs: [{ t: 'Wood-Pawcatuck Wild & Scenic River Management Plan', s: 'NPS / Wood-Pawcatuck Wild & Scenic Rivers', y: 2021, tp: 'Federal', pg: 120 , url: 'https://rivers.gov/sites/rivers/files/documents/plans/wood-pawcatuck-plan.pdf'}],
-        revs: [{ u: 'ri_ct_border_paddler', d: 'Jun 2025', s: 4, t: 'Upper Pawcatuck at 300 cfs — cedar swamps to open meadows. Start in RI, end in CT. Charming little Wild & Scenic gem.' }, { u: 'estuary_kayaker', d: 'Jul 2025', s: 4, t: 'Tidal section from Westerly — osprey, herons, salt marsh channels. Bring a tide chart.' }],
+        revs: [],
         outs: [{ n: 'Kayak Centre of Rhode Island', d: 'Pawcatuck and coastal RI paddle tours', l: 'kayakcentre.com' }],
       },
       {
@@ -7000,7 +6996,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1793', title: "Slater Mill — American Industrial Revolution Begins", text: "Samuel Slater built the first successful water-powered textile mill in America on the Blackstone River at Pawtucket in 1793. The river powered over 100 mills by the 1830s, transforming the valley into the cradle of American industry.", src: 'NPS Blackstone River Valley NHP; Slater Mill Historic Site' }] },
         ],
         docs: [],
-        revs: [{ u: 'ri_heritage_paddler', d: 'May 2025', s: 4, t: 'Woonsocket to Central Falls at 500 cfs — old mills and dams every mile. Paddling through the Industrial Revolution.' }, { u: 'blackstone_local', d: 'Jun 2025', s: 4, t: 'Spring run at 800 cfs — the river has come a long way. Clean enough for paddling now, herons and osprey returning.' }],
+        revs: [],
         outs: [{ n: 'Blackstone Valley Tourism Council', d: 'Paddle guides and river access information', l: 'blackstonevalleytourismcouncil.com' }, { n: 'Blackstone Valley Paddle Club', d: 'Group trips and community paddles', l: 'bvpaddle.org' }],
       },
       {
@@ -7015,7 +7011,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1988', title: "Great Swamp Management Area — Wetland Protection", text: "Rhode Island DEM expanded protection of the Great Swamp, recognizing 3,349 acres as the state's most important freshwater wetland ecosystem. The Chipuxet flows through the heart of this protected landscape.", src: 'RI DEM; URI Department of Natural Resources' }] },
         ],
         docs: [],
-        revs: [{ u: 'ri_swamp_paddler', d: 'May 2025', s: 4, t: 'Great Swamp section at 50 cfs — tiny stream through vast wetland. Wood ducks and painted turtles. Short but unique.' }, { u: 'uri_kayaker', d: 'Jun 2025', s: 4, t: 'Chipuxet near campus at low flow — beautiful wetland paddle minutes from URI. Rhode Island wilderness in miniature.' }],
+        revs: [],
         outs: [{ n: 'Kayak Centre of Rhode Island', d: 'Chipuxet and southern RI paddle info', l: '' }],
       },
       {
@@ -7030,7 +7026,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1750–1850', title: "Colonial Mills — Water-Powered Industry", text: "Small water-powered mills lined the Hunt River during the colonial era — grist mills, sawmills, and textile operations. Stone dam remnants and mill foundations remain visible along the stream today.", src: 'East Greenwich Preservation Society; RI Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'east_greenwich_paddler', d: 'May 2025', s: 4, t: 'Hunt River at 60 cfs — peaceful Class I through suburban forest. Old mill dams and stone walls. A nice surprise in developed Kent County.' }, { u: 'ri_micro_paddle', d: 'Jun 2025', s: 3, t: 'Low flow at 30 cfs — dragged a bit in spots but the forest canopy is lovely. Best as a spring run after rain.' }],
+        revs: [],
         outs: [{ n: 'Rhode Island Canoe & Kayak Association', d: 'Hunt River trip info and local paddle community', l: '' }],
       },
       {
@@ -7045,7 +7041,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1772', title: "Gaspee Affair — Prelude to Revolution", text: "In June 1772, Rhode Island colonists boarded and burned the British revenue schooner HMS Gaspee at the mouth of the Pawtuxet River — one of the first acts of violent resistance against British rule and a direct precursor to the American Revolution.", src: 'Gaspee Days Committee; RI Historical Society' }] },
         ],
         docs: [],
-        revs: [{ u: 'ri_history_paddler', d: 'Jun 2025', s: 4, t: 'West Warwick to Cranston at 250 cfs — old mills and stone dams every half mile. Paddling through Rhode Island history.' }, { u: 'pawtuxet_local', d: 'Jul 2025', s: 4, t: 'Lower section at 200 cfs — ends at Pawtuxet Village where they burned the Gaspee. History lesson on the water.' }],
+        revs: [],
         outs: [{ n: 'Rhode Island Canoe & Kayak Association', d: 'Pawtuxet River paddle guides and group trips', l: '' }],
       },
       {
@@ -7060,7 +7056,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2010', title: "Ten Mile River Greenway", text: "East Providence and the state of Rhode Island developed the Ten Mile River Greenway, combining a multi-use trail with river restoration to create a recreational corridor through the city's urban core.", src: 'City of East Providence; RI DEM' }] },
         ],
         docs: [],
-        revs: [{ u: 'ep_local_paddler', d: 'Jun 2025', s: 3, t: 'Ten Mile at 100 cfs — nice greenway paddle through East Providence. Not wilderness but the tidal section has good birding.' }, { u: 'ri_tidal_kayaker', d: 'Jul 2025', s: 4, t: 'Tidal section at high tide — Providence skyline views and great egrets in the marsh. Urban nature paddling.' }],
+        revs: [],
         outs: [{ n: 'Narrow River Kayaks', d: 'East Bay and tidal river paddle tours', l: '' }],
       },
       {
@@ -7075,7 +7071,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1994', title: "WaterFire — Urban River Renaissance", text: "Artist Barnaby Evans created WaterFire in 1994 — bonfires floating on the Woonasquatucket and Providence rivers in downtown Providence. The installation became an international sensation, symbolizing the city's renaissance and the river's recovery from industrial pollution.", src: 'WaterFire Providence; Providence Foundation' }] },
         ],
         docs: [],
-        revs: [{ u: 'pvd_river_paddler', d: 'Jul 2025', s: 4, t: 'Johnston to downtown Providence at 80 cfs — paddled right into WaterFire setup at Waterplace Park. Urban river paddling at its most unique.' }, { u: 'woonasquatucket_local', d: 'Jun 2025', s: 4, t: 'Upper section at 100 cfs — the cleanup is remarkable. Fish and herons where there used to be nothing. Providence should be proud.' }],
+        revs: [],
         outs: [{ n: 'Providence Kayak Company', d: 'Downtown Providence and Woonasquatucket paddle tours', l: '' }],
       },
     ],
@@ -7099,7 +7095,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1965', title: "Tocks Island Dam Defeated — NRA Created Instead", text: "The proposed Tocks Island Dam would have flooded 37 miles of the Delaware valley. Massive public opposition defeated the project, and Congress created the Delaware Water Gap NRA in 1965 instead — a landmark conservation victory.", src: 'NPS DEWA; Delaware River Basin Commission' }] },
         ],
         docs: [],
-        revs: [{ u: 'nyc_escape_paddler', d: 'Jul 2025', s: 5, t: 'Dingmans to Bushkill at 5,000 cfs — two days on the Delaware with NPS campgrounds. Best weekend escape from NYC.' }, { u: 'gap_paddler_nj', d: 'Jun 2025', s: 4, t: 'Through the Water Gap at 4,500 cfs — Class II–III where the river punches through Kittatinny Ridge. Dramatic.' }],
+        revs: [],
         outs: [{ n: 'Adventure Sports', d: 'Delaware Water Gap canoe and raft trips since 1975', l: 'adventuresport.com' }, { n: 'Kittatinny Canoes', d: 'Largest Delaware River outfitter, multiple bases', l: 'kittatinny.com' }],
       },
       {
@@ -7114,7 +7110,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1766–1850', title: "Batsto Iron Works — Revolution-Era Industry", text: "Batsto Village operated iron furnaces fueled by Pine Barrens charcoal from 1766 through the American Revolution, producing munitions for the Continental Army. The restored village is now a state historic site within Wharton State Forest.", src: 'NJ State Parks; Batsto Citizens Committee' }] },
         ],
         docs: [{ t: 'Pinelands Comprehensive Management Plan', s: 'Pinelands Commission', y: 2014, tp: 'Federal', pg: 450 , url: 'https://www.nj.gov/pinelands/cmp/CMP.pdf'}],
-        revs: [{ u: 'pinelands_paddler', d: 'May 2025', s: 5, t: 'Batsto River at 120 cfs — black tea water through white cedar cathedral. One of the most unique paddles on the East Coast.' }, { u: 'nj_nature_kayaker', d: 'Jun 2025', s: 4, t: 'Wading River on a Tuesday — not a soul. Pine Barrens wilderness 60 miles from Philadelphia.' }],
+        revs: [],
         outs: [{ n: 'Pinelands Adventures', d: 'Wharton State Forest paddle tours, official concessionaire', l: 'pinelandsadventures.com' }],
       },
       {
@@ -7129,7 +7125,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1750–1830', title: "Pine Barrens Iron and Glass — Colonial Industry", text: "The Mullica River corridor supported iron furnaces and glassworks powered by Pine Barrens charcoal and sand. Batsto and Atsion villages were centers of Revolution-era munitions production. The restored villages are now Wharton State Forest historic sites.", src: 'NJ State Parks; Batsto Citizens Committee' }] },
         ],
         docs: [{ t: 'Mullica River Watershed Management Plan', s: 'Pinelands Commission', y: 2014, tp: 'Ecology', pg: 160 , url: 'https://www.nj.gov/pinelands/infor/reports/Mullica%20River%20Basin%20Report.pdf'}],
-        revs: [{ u: 'pinebarrens_purist', d: 'May 2025', s: 5, t: 'Atsion to Pleasant Mills at 200 cfs — black tea water through white cedar cathedral. Pristine. One of the most unique paddles on the East Coast.' }, { u: 'nj_wild_rivers', d: 'Apr 2025', s: 4, t: 'Spring run at 350 cfs — river moves well, no crowds on a weekday. Pine Barrens solitude an hour from Philadelphia.' }],
+        revs: [],
         outs: [{ n: 'Pinelands Adventures', d: 'Mullica River paddle tours, Wharton State Forest', l: 'pinelandsadventures.com' }, { n: 'Mick-a-Do Canoe Rental', d: 'Mullica and Wading River trips', l: 'mickado.com' }],
       },
       {
@@ -7144,7 +7140,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2002', title: "Paulins Kill Valley Trail — Rail-to-Trail", text: "The abandoned New York, Susquehanna & Western rail corridor along the Paulins Kill was converted to a 27-mile multi-use trail, providing paddle access and connecting communities along the river valley.", src: 'Kittatinny Valley State Park; NJ DEP' }] },
         ],
         docs: [],
-        revs: [{ u: 'nw_nj_paddler', d: 'May 2025', s: 5, t: 'Newton to Blairstown at 250 cfs — spring-fed and crystal clear. Class I–II through limestone country. This is not the New Jersey you imagine.' }, { u: 'paulinskill_trout', d: 'Jun 2025', s: 4, t: 'Upper section at 200 cfs — wild browns in clear water. Best trout stream and paddle combo in New Jersey.' }],
+        revs: [],
         outs: [{ n: 'Kittatinny Canoes', d: 'Paulins Kill and Delaware River trips, Blairstown area', l: '' }],
       },
       {
@@ -7159,7 +7155,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1834', title: "Delaware & Raritan Canal — Engineering Marvel", text: "The Delaware & Raritan Canal, completed in 1834, paralleled the Raritan River for much of its course, connecting the Delaware River to New Brunswick. The canal operated until 1932 and is now a state park and greenway.", src: 'D&R Canal State Park; NJ DEP' }] },
         ],
         docs: [],
-        revs: [{ u: 'central_nj_paddler', d: 'Jun 2025', s: 4, t: 'Raritan to New Brunswick at 1,000 cfs — the urban canoe trail is legit. Osprey, herons, and surprisingly green banks through the suburbs.' }, { u: 'raritan_greenway', d: 'Jul 2025', s: 4, t: 'D&R Canal section — flat water, towpath for biking, Revolutionary War history. Central Jersey has more to offer than the Turnpike.' }],
+        revs: [],
         outs: [{ n: 'Raritan Riverkeeper', d: 'Guided paddle events and river access information', l: '' }],
       },
       {
@@ -7174,7 +7170,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1993', title: "National Wild & Scenic Designation", text: "Congress designated the Maurice River and tributaries as a National Wild & Scenic River in 1993, recognizing exceptional ecological values including the globally significant Delaware Bay shorebird migration.", src: 'NPS; Citizens United to Protect the Maurice River' }] },
         ],
         docs: [],
-        revs: [{ u: 'shorebird_paddler', d: 'May 2025', s: 5, t: 'Maurice to Delaware Bay during shorebird week — millions of red knots and semipalmated sandpipers on the beach. Best wildlife paddle in New Jersey, maybe the East Coast.' }, { u: 'south_jersey_nature', d: 'Jun 2025', s: 4, t:"'Millville to Port Norris at 300 cfs — Wild & Scenic river with herons, eagles, and tidal marsh. Southern New Jersey's finest." }],
+        revs: [],
         outs: [{ n: 'Citizens United to Protect the Maurice River', d: 'Guided paddle tours and river stewardship events', l: '' }],
       },
       {
@@ -7189,7 +7185,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '2006', title: "National Wild & Scenic Designation", text: "Congress designated the Musconetcong a National Wild & Scenic River in 2006 — the result of decades of advocacy by the Musconetcong Watershed Association and local communities. The designation protects 24 miles of the river from development.", src: 'NPS; Musconetcong Watershed Association' }] },
         ],
         docs: [],
-        revs: [{ u: 'nj_trout_paddler', d: 'May 2025', s: 5, t:"'Hackettstown section at 200 cfs — wild browns in clear water, Class I–II riffles. New Jersey's best trout stream and paddle combined." }, { u: 'musconetcong_local', d: 'Jun 2025', s: 4, t: 'Upper section at 150 cfs — Wild & Scenic river through the Highlands. Proof that New Jersey has legitimate natural treasures.' }],
+        revs: [],
         outs: [{ n: 'Musconetcong Watershed Association', d: 'River access guides and conservation paddle events', l: '' }],
       },
       {
@@ -7204,7 +7200,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1992', title: "National Wild & Scenic Designation", text: "Congress designated the Great Egg Harbor River and 17 tributaries as a National Wild & Scenic River in 1992, protecting 129 miles of pristine Pine Barrens waterway — one of the largest Wild & Scenic designations in the East.", src: 'NPS; Great Egg Harbor Watershed Association' }] },
         ],
         docs: [],
-        revs: [{ u: 'pinebarrens_explorer', d: 'May 2025', s: 5, t: 'New Brooklyn to Penny Pot at 200 cfs — black tea water through white cedar cathedral. Wild & Scenic and it shows. Pine Barrens perfection.' }, { u: 'great_egg_paddler', d: 'Jun 2025', s: 4, t: 'Mays Landing section at 300 cfs — wider river with osprey and eagle nests. The tidal transition to salt marsh is beautiful.' }],
+        revs: [],
         outs: [{ n: 'Palace Restaurant & Kayak Rentals', d: 'Great Egg Harbor River trips from Mays Landing', l: '' }],
       },
     ],
@@ -7228,7 +7224,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1777', title: "Battle of Brandywine — Largest Engagement of the Revolution", text: "The Battle of Brandywine on September 11, 1777 was the largest single-day engagement of the American Revolution. British forces under Howe flanked Washington's army along the creek, leading to the fall of Philadelphia.", src: 'Brandywine Battlefield State Park; NPS' }] },
         ],
         docs: [{ t: 'Brandywine Creek Watershed Assessment', s: 'Brandywine Conservancy', y: 2018, tp: 'Ecology', pg: 110 , url: 'https://documents.dnrec.delaware.gov/Watershed/Wetlands/Assessments/Brandywine-Watershed-Condition-Report.pdf'}],
-        revs: [{ u: 'wyeth_country_paddler', d: 'Apr 2025', s: 5, t: "Chadds Ford section at 400 cfs — Class II ledges through Wyeth's landscape. Paddling through American art history." }, { u: 'de_creek_runner', d: 'Mar 2025', s: 4, t: 'Brandywine at 600 cfs after rain — pushy Class III over bedrock ledges. Short but excellent.' }],
+        revs: [],
         outs: [{ n: 'Wilderness Canoe Trips', d: 'Brandywine Creek kayak and canoe rentals', l: 'wildernesscanoetrips.com' }],
       },
       {
@@ -7243,7 +7239,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1993', title: "St. Jones Reserve — NOAA Estuarine Research", text: "The St. Jones Reserve was designated a NOAA National Estuarine Research Reserve, recognizing the tidal river as a critical research site for understanding Delaware Bay estuary ecology.", src: 'NOAA NERRS; Delaware DNREC' }] },
         ],
         docs: [{ t: 'St. Jones River Watershed Management Plan', s: 'Delaware DNREC', y: 2015, tp: 'Ecology', pg: 85 , url: 'https://documents.dnrec.delaware.gov/swc/district/Documents/NPS/St-Jones-Watershed-Plan.pdf'}],
-        revs: [{ u: 'de_estuary_paddler', d: 'May 2025', s: 4, t: 'St. Jones tidal section at high tide — horseshoe crabs spawning, red knots everywhere. Paddle through a nature documentary.' }, { u: 'dover_kayaker', d: 'Jun 2025', s: 3, t: 'Dover Greenway section — mellow tidal paddle. Time it with the tide or you are walking.' }],
+        revs: [],
         outs: [{ n: 'First State Paddle', d: 'Dover Greenway and St. Jones guided tours', l: 'firststatepaddle.com' }],
       },
       {
@@ -7258,7 +7254,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1802', title: "Du Pont Gunpowder Mills — Industrial Dynasty Begins", text: "E.I. du Pont established his gunpowder works along the Brandywine at its confluence with the Christina in 1802, founding the industrial dynasty that would shape Delaware for two centuries. The Hagley Museum preserves the original mill complex.", src: 'Hagley Museum and Library; Delaware Historical Society' }] },
         ],
         docs: [{ t: 'Christina River Watershed Management Plan', s: 'Delaware DNREC', y: 2016, tp: 'Ecology', pg: 95 , url: 'https://documents.dnrec.delaware.gov/swc/district/Documents/Plans-and-Strategies/A-I-Plans/Christina-Watershed-Plan.pdf'}],
-        revs: [{ u: 'de_urban_paddler', d: 'May 2025', s: 4, t: 'Wilmington Riverfront section at high tide — surprisingly pleasant urban paddle past the old mills and new development. First State heritage on the water.' }, { u: 'christina_kayaker', d: 'Jun 2025', s: 3, t: 'Newark to Wilmington at 350 cfs — mellow Class I through suburbs. Not wilderness but historically interesting with Hagley Museum as the takeout.' }],
+        revs: [],
         outs: [{ n: 'Wilderness Canoe Trips', d: 'Christina and Brandywine Creek rentals', l: 'wildernesscanoetrips.com' }],
       },
       {
@@ -7273,7 +7269,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2000', title: "National Wild & Scenic River Designation", text: "Congress designated White Clay Creek as a National Wild and Scenic River in 2000, protecting the entire watershed — one of the most comprehensive Wild and Scenic designations ever enacted, covering over 190 miles of streams.", src: 'NPS; White Clay Creek Wild & Scenic River Management Committee' }] },
         ],
         docs: [],
-        revs: [{ u: 'de_creek_paddler', d: 'Apr 2025', s: 4, t: 'Thompson Bridge section at 150 cfs — gentle Class I through forest. Smallmouth on every riffle. A gem hiding in suburban Delaware.' }, { u: 'wild_scenic_de', d: 'May 2025', s: 4, t: 'Spring paddle at 200 cfs after rain — beautiful wooded valley, herons and kingfishers everywhere. Underrated Wild and Scenic creek.' }],
+        revs: [],
         outs: [{ n: 'Wilderness Canoe Trips', d: 'White Clay Creek kayak rentals', l: 'wildernesscanoetrips.com' }],
       },
       {
@@ -7288,7 +7284,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2010', title: "Wild Trout in Suburban Delaware", text: "Delaware DNREC confirmed self-sustaining wild brown trout populations in Red Clay Creek — a remarkable finding for a suburban watershed. Conservation efforts have focused on riparian buffer protection and stormwater management.", src: 'Delaware DNREC Fish & Wildlife; Trout Unlimited' }] },
         ],
         docs: [],
-        revs: [{ u: 'de_trout_angler', d: 'Mar 2025', s: 4, t: 'Wild brown trout in suburban Delaware — waded Red Clay at 80 cfs and caught three on nymphs. Nobody believes this creek holds trout.' }, { u: 'newcastle_paddler', d: 'Apr 2025', s: 3, t: 'Yorklyn section at 120 cfs — tight and scrappy but fun. Needs a little rain to float cleanly.' }],
+        revs: [],
         outs: [{ n: 'First State Paddle', d: 'Red Clay Creek guided tours and rentals', l: 'firststatepaddle.com' }],
       },
       {
@@ -7303,7 +7299,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2005', title: "Nanticoke Watershed Alliance — Conservation Priority", text: "The Nanticoke was identified as one of the highest-priority conservation watersheds in the Chesapeake Bay basin, with extensive wetland protection efforts preserving the river's remarkably undeveloped character.", src: 'Nanticoke Watershed Alliance; The Nature Conservancy' }] },
         ],
         docs: [],
-        revs: [{ u: 'delmarva_kayaker', d: 'May 2025', s: 5, t: 'Nanticoke tidal section at high tide — cypress swamps, bald eagles, and total solitude. The wildest river on Delmarva.' }, { u: 'chesapeake_paddler', d: 'Jun 2025', s: 4, t: 'Seaford to Woodland at 200 cfs — transition from creek to tidal marsh. Prothonotary warblers and great blue herons the whole way.' }],
+        revs: [],
         outs: [{ n: 'Nanticoke River Kayak', d: 'Guided paddle tours on the Nanticoke', l: '' }],
       },
       {
@@ -7318,7 +7314,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1963', title: "Prime Hook National Wildlife Refuge Established", text: "The establishment of Prime Hook NWR along the lower Broadkill protected over 10,000 acres of tidal marsh, freshwater wetlands, and uplands — creating one of the premier migratory bird stopover habitats on the Atlantic Flyway.", src: 'USFWS Prime Hook NWR' }] },
         ],
         docs: [],
-        revs: [{ u: 'lewes_kayaker', d: 'Jun 2025', s: 4, t: 'Broadkill from Milton at high tide — gentle tidal paddle through salt marsh. Ospreys nesting on every channel marker. Delaware coast at its quietest.' }, { u: 'prime_hook_birder', d: 'May 2025', s: 4, t: 'Paddled into Prime Hook NWR from the Broadkill — ibis, egrets, and a peregrine falcon. Best birding paddle in Delaware.' }],
+        revs: [],
         outs: [{ n: 'Quest Kayak', d: 'Broadkill River and Delaware Bay paddle tours', l: 'questkayak.com' }],
       },
     ],
@@ -7342,7 +7338,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1985', title: "Upper Yough — Birth of Eastern Creek Boating", text: "The Upper Yough became the crucible of eastern U.S. expert kayaking in the 1980s. Precision Rafting and other outfitters pioneered commercial Class V trips, and the run became the training ground for a generation of world-class paddlers.", src: 'American Whitewater; Garrett County Chamber of Commerce' }] },
         ],
         docs: [],
-        revs: [{ u: 'upperyough_devotee', d: 'May 2025', s: 5, t: 'Upper Yough at 800 cfs — Meat Cleaver, National Falls, Triple Drop all sending. Best Class IV–V east of the Rockies.' }, { u: 'md_ww_paddler', d: 'Apr 2025', s: 5, t: 'Sang Run release at 600 cfs — more technical at lower water, every move precise. This run demands respect.' }],
+        revs: [],
         outs: [{ n: 'Precision Rafting', d: 'Upper Yough specialists since 1985, Friendsville', l: 'precisionrafting.com' }],
       },
       {
@@ -7357,7 +7353,7 @@ export const STATES: StatesDB = {
           { era: 'logging', entries: [{ yr: '1785', title: "George Washington's Patowmack Canal — First American Canal", text: "George Washington founded the Patowmack Company in 1785 to build canals around Great Falls — one of the first infrastructure projects in the new nation. The canal ruins are visible from the Virginia side today.", src: 'NPS Great Falls Park; George Washington Papers, Library of Congress' }] },
         ],
         docs: [{ t: 'Potomac River Comprehensive Plan', s: 'Interstate Commission on the Potomac River Basin', y: 2018, tp: 'Federal', pg: 280 , url: 'https://www.potomacriver.org/wp-content/uploads/2018/06/Potomac_Comprehensive_Plan.pdf'}],
-        revs: [{ u: 'dc_whitewater', d: 'Apr 2025', s: 5, t: 'Mather Gorge at 6,000 cfs — Class III big water with the DC skyline downstream. Most surreal paddling location in America.' }, { u: 'greatfalls_expert', d: 'Mar 2025', s: 5, t: 'Ran the falls line at 4,500 cfs — the Spout, S-Turn, Charlie Horse. World-class whitewater 15 minutes from the White House.' }],
+        revs: [],
         outs: [{ n: 'Liquid Adventures', d: 'Potomac kayak instruction and Great Falls trips', l: 'liquidadventures.com' }, { n: 'Calleva', d: 'Potomac River kayak and canoe programs, Poolesville', l: 'calleva.org' }],
       },
       {
@@ -7372,7 +7368,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1989', title: "ICF Whitewater World Championships — Savage River", text: "The Savage River hosted the 1989 ICF Canoe Slalom World Championships, putting this remote Maryland creek on the international whitewater map. The course remains a training site for U.S. Olympic slalom paddlers.", src: 'International Canoe Federation; American Canoe Association' }] },
         ],
         docs: [],
-        revs: [{ u: 'md_expert_creek', d: 'Apr 2025', s: 5, t: 'Savage at 500 cfs release — continuous Class IV–V through a remote gorge. World Championship course lives up to the reputation.' }, { u: 'savage_slalom', d: 'May 2025', s: 5, t: 'Release day at 400 cfs — technical and relentless. Best expert creek run in the Mid-Atlantic outside the Upper Yough.' }],
+        revs: [],
         outs: [{ n: 'Precision Rafting', d: 'Savage River guided trips during releases, Friendsville', l: 'precisionrafting.com' }],
       },
       {
@@ -7387,7 +7383,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1988', title: "Gold Medal Trout Stream Designation", text: "Maryland DNR designated the Gunpowder Falls tailwater as a Gold Medal Trout Stream, recognizing its exceptional wild brown trout population sustained by cold dam releases from Prettyboy Reservoir.", src: 'Maryland DNR Fisheries; Trout Unlimited Maryland' }] },
         ],
         docs: [],
-        revs: [{ u: 'baltimore_fly_angler', d: 'May 2025', s: 5, t: 'Gunpowder tailwater at 80 cfs — 18-inch wild browns sipping sulphurs. Gold Medal trout water 30 minutes from Baltimore. Incredible.' }, { u: 'md_trout_bum', d: 'Apr 2025', s: 5, t: 'Prettyboy to Falls Road — caught a dozen wild browns on dry flies. Best trout stream in the Mid-Atlantic.' }],
+        revs: [],
         outs: [{ n: 'Backwater Angler', d: 'Gunpowder Falls fly shop and guided trips, Monkton', l: 'backwaterangler.com' }],
       },
       {
@@ -7402,7 +7398,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '2010', title: "Patuxent River Restoration — Chesapeake Bay Priority", text: "The Patuxent was identified as a priority restoration watershed under the Chesapeake Bay Agreement, with major investments in riparian buffers, stormwater management, and nutrient reduction.", src: 'Chesapeake Bay Program; Patuxent Riverkeeper' }] },
         ],
         docs: [],
-        revs: [{ u: 'md_piedmont_paddler', d: 'May 2025', s: 4, t: 'Patuxent State Park section at 180 cfs — forested valley feels wild despite being between DC and Baltimore. Great blue herons and kingfishers all day.' }, { u: 'jug_bay_kayaker', d: 'Jun 2025', s: 4, t: 'Jug Bay tidal section at high tide — freshwater marsh, ospreys, and river otters. Best wildlife paddle near the capital.' }],
+        revs: [],
         outs: [{ n: 'Patuxent Paddle Company', d: 'Guided Patuxent River paddle trips', l: '' }],
       },
       {
@@ -7417,7 +7413,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1864', title: "Battle of Monocacy — 'The Battle That Saved Washington'", text: "The Battle of Monocacy on July 9, 1864 delayed Confederate General Jubal Early's advance on Washington, DC by a critical day, allowing Union reinforcements to arrive and save the capital. The battlefield is preserved along the river.", src: 'NPS Monocacy National Battlefield' }] },
         ],
         docs: [],
-        revs: [{ u: 'frederick_paddler', d: 'May 2025', s: 4, t: 'Monocacy through the battlefield at 350 cfs — gentle paddle past where the Confederates nearly took Washington. History on every bank.' }, { u: 'md_scenic_paddler', d: 'Jun 2025', s: 4, t: 'Ceresville section at 500 cfs — easy Class I through piedmont farmland. Catawba Bridge to Buckeystown is the sweet spot.' }],
+        revs: [],
         outs: [{ n: 'Monocacy Canoe Club', d: 'Community-based paddling trips on the Monocacy', l: '' }],
       },
       {
@@ -7432,7 +7428,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1862', title: "Battle of Antietam — Bloodiest Day in American History", text: "The Battle of Antietam on September 17, 1862 resulted in 22,717 casualties — the bloodiest single day in American history. The creek and its stone bridges, including Burnside Bridge, were central to the fighting. The battlefield is the most intact Civil War landscape in America.", src: 'NPS Antietam National Battlefield' }] },
         ],
         docs: [],
-        revs: [{ u: 'antietam_angler', d: 'Apr 2025', s: 4, t: "Antietam Creek below the battlefield at 100 cfs — wild brown trout in limestone spring water. Waded past Burnside Bridge. History and fly fishing don't get better than this." }, { u: 'md_spring_creek', d: 'May 2025', s: 4, t: 'Upper Antietam at 80 cfs — technical nymphing on a beautiful limestone creek. Small stream, big browns.' }],
+        revs: [],
         outs: [{ n: 'South Mountain Outfitters', d: 'Antietam Creek fly fishing guides and gear', l: '' }],
       },
     ],
@@ -7456,7 +7452,7 @@ export const STATES: StatesDB = {
           { era: 'modern', entries: [{ yr: '1990', title: "Whitewater Releases Negotiated — FERC Relicensing", text: "Scheduled whitewater releases on the Deerfield were negotiated during the FERC dam relicensing process in the 1990s, guaranteeing recreational flows that transformed the Deerfield into New England's most reliable whitewater destination.", src: 'American Whitewater; New England FLOW' }] },
         ],
         docs: [{ t: 'Deerfield River Watershed Assessment', s: 'Franklin Regional Council of Governments', y: 2014, tp: 'Ecology', pg: 130 , url: 'https://frcog.org/wp-content/uploads/2018/01/Deerfield-Watershed-Based-Plan-part-1.pdf'}, { t: 'Deerfield River Hydropower Relicensing — 106 Annual Releases Secured', s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/content/Article/view/article_id/YQBDfHlOcZNNJJyPd41uh' }],
-        revs: [{ u: 'berkshire_paddler', d: 'Jul 2025', s: 5, t: 'Fife Brook release at 800 cfs — continuous Class II–III through the Berkshires. New England whitewater at its most reliable.' }, { u: 'dryway_devotee', d: 'May 2025', s: 5, t: 'Dryway at 1,200 cfs — serious Class IV in a gorgeous gorge. Best whitewater in Massachusetts.' }],
+        revs: [],
         outs: [{ n: 'Zoar Outdoor', d: 'Deerfield River whitewater since 1990, Charlemont', l: 'zoaroutdoor.com' }, { n: 'Crab Apple Whitewater', d: 'Deerfield and Millers River trips', l: 'crabapplewhitewater.com' }],
       },
       {
@@ -7471,7 +7467,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1993', title: "Massachusetts's First National Wild & Scenic River", text: "Congress designated the Westfield River as the first National Wild & Scenic River in Massachusetts, protecting 45 miles of the North, Middle, and West branches.", src: 'NPS; Westfield River Wild & Scenic Advisory Committee' }] },
         ],
         docs: [{ t: 'Westfield River Wild & Scenic Stewardship Plan', s: 'Westfield River Watershed Association', y: 2010, tp: 'Federal', pg: 95 , url: 'https://westfieldriverwildscenic.org/files/custom/assets/pdfs/2-1-7-Westfield-River-Stewardship-Plan.pdf'}],
-        revs: [{ u: 'chesterfield_gorge_paddler', d: 'Apr 2025', s: 5, t: 'North Branch through Chesterfield Gorge at 700 cfs — granite walls and Class III ledge drops. Best spring run in Massachusetts.' }, { u: 'ma_wild_scenic', d: 'May 2025', s: 4, t: 'West Branch at 500 cfs — mellower than the North but beautiful Berkshire foothill scenery. Good intermediate run.' }],
+        revs: [],
         outs: [{ n: 'Berkshire East Canoe & Kayak', d: 'Westfield River trips and instruction, Charlemont', l: 'berkshireeast.com' }],
       },
       {
@@ -7486,7 +7482,7 @@ export const STATES: StatesDB = {
           { era: 'survey', entries: [{ yr: '1839', title: "Thoreau's Week on the Concord and Merrimack Rivers", text: "Henry David Thoreau and his brother John paddled the Concord and Merrimack rivers in 1839. Thoreau's account, published in 1849 as 'A Week on the Concord and Merrimack Rivers,' became one of the foundational texts of American nature writing.", src: 'Thoreau Society; Concord Free Public Library' }] },
         ],
         docs: [{ t: 'Concord River Assessment and Restoration Plan', s: 'OARS (Organization for the Assabet, Sudbury and Concord Rivers)', y: 2017, tp: 'Ecology', pg: 110 , url: 'https://www.rivers.gov/sites/rivers/files/documents/plans/suasco-river-conservation-plan.pdf'}],
-        revs: [{ u: 'concord_literary_paddler', d: 'Jun 2025', s: 5, t: "Egg Rock to Old North Bridge at 250 cfs — paddled where Thoreau paddled. Great blue herons, lily pads, and the bridge where the Revolution began. Transcendent." }, { u: 'great_meadows_kayaker', d: 'Jul 2025', s: 4, t: 'Great Meadows NWR section at 200 cfs — flatwater through the refuge. Osprey, bitterns, and turtles on every log. Gentle and gorgeous.' }],
+        revs: [],
         outs: [{ n: 'South Bridge Boat House', d: 'Concord River canoe and kayak rentals, downtown Concord', l: 'southbridgeboathouse.com' }, { n: 'OARS River Tours', d: 'Guided Concord River paddle trips', l: 'oars.org' }],
       },
     ],
