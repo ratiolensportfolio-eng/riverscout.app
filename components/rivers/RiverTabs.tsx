@@ -553,7 +553,18 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                             {d.tempF}°
                           </div>
                           <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', color: 'var(--tx2)', lineHeight: 1.3, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                            {d.shortForecast.length > 12 ? d.shortForecast.slice(0, 11) + '…' : d.shortForecast}
+                            {(() => {
+                              // Override misleading NOAA text when it contradicts precip %
+                              const text = d.shortForecast
+                              const lower = text.toLowerCase()
+                              if (d.precipChance >= 70 && (lower.includes('slight') || lower.includes('partly'))) {
+                                return d.hasThunderstorm ? 'T-Storms' : 'Rain Likely'
+                              }
+                              if (d.precipChance >= 50 && lower.includes('slight')) {
+                                return d.hasThunderstorm ? 'Chance T-St…' : 'Chance Rain'
+                              }
+                              return text.length > 12 ? text.slice(0, 11) + '…' : text
+                            })()}
                           </div>
                           {d.precipChance > 0 && (
                             <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', color: 'var(--wt)', marginTop: '2px' }}>
