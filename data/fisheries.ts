@@ -1771,4 +1771,2459 @@ export const FISHERIES: Record<string, RiverFisheries> = {
     runs: [],
     guides: ["Suwannee River Fishing Guide", "Anderson\"s Outdoor Adventures"],
   },
+
+  // ── Michigan (additional rivers) ──────────────────────────────────────
+
+  ausable_sb: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Brook Trout', type: 'resident', primary: false },
+    ],
+    designations: ['Michigan Blue-Ribbon Trout Stream'],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Hendrickson', timing: 'Late April – Mid May' },
+      { name: 'Caddis', timing: 'May–June' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July' },
+      { name: 'Trico', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  black_cheboygan: {
+    species: [
+      { name: 'Brook Trout', type: 'resident', primary: true },
+      { name: 'Brown Trout', type: 'resident', primary: false },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brook Trout', season: 'September–November' },
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–June' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  cass: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+      { name: 'Rock Bass', type: 'warmwater', primary: false },
+    ],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  chippewa_mi: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Brook Trout', type: 'resident', primary: false },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–June' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  crystal_mi: {
+    species: [
+      { name: 'Brook Trout', type: 'resident', primary: true },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–June' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  dowagiac: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Steelhead', type: 'anadromous', primary: false },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–June' },
+      { name: 'Sulfur', timing: 'Late May – June' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  kalamazoo: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Steelhead', type: 'anadromous', primary: false },
+      { name: 'Brown Trout', type: 'resident', primary: false },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–June' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  little_manistee: {
+    species: [
+      { name: 'Steelhead', type: 'anadromous', primary: true },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: false },
+      { name: 'Brown Trout', type: 'resident', primary: false },
+    ],
+    designations: ['Michigan Blue-Ribbon Trout Stream'],
+    spawning: [
+      { species: 'Steelhead', season: 'March–May' },
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–June' },
+    ],
+    runs: [
+      { species: 'Steelhead', timing: 'March–May', peak: 'April' },
+      { species: 'Chinook Salmon', timing: 'September–October', peak: 'Late September' },
+    ],
+    guides: [],
+  },
+
+  little_muskegon: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Brook Trout', type: 'resident', primary: false },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–June' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  ocqueoc: {
+    species: [
+      { name: 'Brook Trout', type: 'resident', primary: true },
+      { name: 'Brown Trout', type: 'resident', primary: false },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brook Trout', season: 'September–November' },
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–June' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  pigeon_mi: {
+    species: [
+      { name: 'Brook Trout', type: 'resident', primary: true },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–June' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  shiawassee: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Walleye', type: 'warmwater', primary: false },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+    ],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  sturgeon_lp: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Source of Michigan\'s brown trout strain' },
+      { name: 'Brook Trout', type: 'resident', primary: false },
+    ],
+    designations: ['Michigan Blue-Ribbon Trout Stream'],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Hendrickson', timing: 'Late April – Mid May' },
+      { name: 'Caddis', timing: 'May–June' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  thunder_bay: {
+    species: [
+      { name: 'Atlantic Salmon', type: 'anadromous', primary: true },
+      { name: 'Steelhead', type: 'anadromous', primary: false },
+      { name: 'Brown Trout', type: 'resident', primary: false },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'Atlantic Salmon', timing: 'September–October', peak: 'Late September' },
+    ],
+    guides: [],
+  },
+
+  white_mi: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Steelhead', type: 'anadromous', primary: false },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–June' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  big_manistee_lake: {
+    species: [
+      { name: 'Brook Trout', type: 'resident', primary: true },
+      { name: 'Brown Trout', type: 'resident', primary: false },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brook Trout', season: 'September–November' },
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–June' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  sturgeon_mi: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Brook Trout', type: 'resident', primary: false },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–June' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  rogue_mi: {
+    species: [
+      { name: 'Steelhead', type: 'anadromous', primary: true },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: false },
+      { name: 'Brown Trout', type: 'resident', primary: false },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'Steelhead', timing: 'March–May', peak: 'April' },
+      { species: 'Chinook Salmon', timing: 'September–October', peak: 'Late September' },
+    ],
+    guides: [],
+  },
+
+  maple_mi: {
+    species: [
+      { name: 'Brook Trout', type: 'resident', primary: true },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–June' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  coldwater_mi: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: false },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  // ── West Virginia ─────────────────────────────────────────────────────
+
+  elk_wv: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Muskie', type: 'warmwater', primary: false },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+    ],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  greenbrier: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Brown Trout', type: 'resident', primary: false, notes: 'Upper river' },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Tributaries' },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–June' },
+      { name: 'March Brown', timing: 'May–June' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  tygart: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Walleye', type: 'warmwater', primary: false },
+      { name: 'Muskie', type: 'warmwater', primary: false },
+    ],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  south_branch: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: false },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–June' },
+      { name: 'Sulfur', timing: 'Late May – June' },
+      { name: 'Green Drake', timing: 'Late May – Early June' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  // ── Pennsylvania (additional rivers) ──────────────────────────────────
+
+  clarion: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Muskie', type: 'warmwater', primary: false },
+    ],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  delaware_pa: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Wild, self-sustaining population — famous tailwater' },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+    ],
+    designations: ['National Wild & Scenic River'],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Rainbow Trout', season: 'March–May' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Hendrickson', timing: 'Late April – Mid May' },
+      { name: 'Caddis', timing: 'May–June' },
+      { name: 'Green Drake', timing: 'Late May – Early June' },
+      { name: 'Sulfur', timing: 'Late May – June' },
+      { name: 'Trico', timing: 'July–September' },
+      { name: 'Isonychia', timing: 'June–July, September–October' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  loyalsock: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Brook Trout', type: 'resident', primary: false },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–June' },
+      { name: 'March Brown', timing: 'May–June' },
+      { name: 'Sulfur', timing: 'Late May – June' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  schuylkill: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+    ],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  susquehanna: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true, notes: 'World-class smallmouth fishery — best in the East' },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+      { name: 'Walleye', type: 'warmwater', primary: false },
+      { name: 'Muskie', type: 'warmwater', primary: false },
+    ],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  // ── New York (additional rivers) ──────────────────────────────────────
+
+  black_ny: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Brown Trout', type: 'resident', primary: false, notes: 'Upper river' },
+      { name: 'Steelhead', type: 'anadromous', primary: false, notes: 'Fall run from Lake Ontario' },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'Steelhead', timing: 'October–November', peak: 'Late October' },
+    ],
+    guides: [],
+  },
+
+  delaware_ny: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Wild, self-sustaining — legendary tailwater' },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+    ],
+    designations: ['National Wild & Scenic River'],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Rainbow Trout', season: 'March–May' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Hendrickson', timing: 'Late April – Mid May' },
+      { name: 'Caddis', timing: 'May–June' },
+      { name: 'March Brown', timing: 'May–June' },
+      { name: 'Green Drake', timing: 'Late May – Early June' },
+      { name: 'Sulfur', timing: 'Late May – June' },
+      { name: 'Isonychia', timing: 'June–July, September–October' },
+      { name: 'Trico', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  esopus: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Rainbow Trout', season: 'March–May' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Hendrickson', timing: 'Late April – Mid May' },
+      { name: 'Caddis', timing: 'May–June' },
+      { name: 'March Brown', timing: 'May–June' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  moose_ny: {
+    species: [
+      { name: 'Brook Trout', type: 'resident', primary: true },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–June' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  raquette: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Upper river' },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  sacandaga: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Brook Trout', type: 'resident', primary: false },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–June' },
+      { name: 'March Brown', timing: 'May–June' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  beaverkill: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Brook Trout', type: 'resident', primary: false },
+    ],
+    designations: ['Birthplace of American Fly Fishing'],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Hendrickson', timing: 'Late April – Mid May' },
+      { name: 'Caddis', timing: 'May–June' },
+      { name: 'March Brown', timing: 'May–June' },
+      { name: 'Green Drake', timing: 'Late May – Early June' },
+      { name: 'Sulfur', timing: 'Late May – June' },
+      { name: 'Isonychia', timing: 'June–July, September–October' },
+      { name: 'Trico', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  // ── COLORADO ─────────────────────────────────────────
+  blue_co: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: ['Gold Medal Water'],
+    spawning: [{ species: 'Brown Trout', season: 'October–November' }],
+    hatches: [{ name: 'Midge', timing: 'Year-round' }, { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–November' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'Hopper/Dropper', timing: 'July–September' }],
+    runs: [], guides: [],
+  },
+  eagle: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: ['Gold Medal Water'],
+    spawning: [{ species: 'Brown Trout', season: 'October–November' }],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May, September–October' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Stonefly (Golden Stone)', timing: 'June–July' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'Hopper/Dropper', timing: 'July–September' }],
+    runs: [], guides: [],
+  },
+  dolores: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Stonefly', timing: 'June–July' }],
+    runs: [], guides: [],
+  },
+  roaring_fork: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: ['Gold Medal Water'],
+    spawning: [{ species: 'Brown Trout', season: 'October–November' }],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May, September–October' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Green Drake', timing: 'Late June – July' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'Hopper/Dropper', timing: 'July–September' }],
+    runs: [], guides: [],
+  },
+  crystal: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }],
+    runs: [], guides: [],
+  },
+  westwater: {
+    species: [{ name: 'Channel Catfish', type: 'warmwater', primary: true }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ── MONTANA ──────────────────────────────────────────
+  big_hole: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Arctic Grayling', type: 'resident', primary: false, notes: 'Last native fluvial population in lower 48' }],
+    designations: ['Montana Blue-Ribbon Trout Stream'],
+    spawning: [{ species: 'Brown Trout', season: 'October–November' }],
+    hatches: [{ name: 'Skwala Stonefly', timing: 'March–April' }, { name: 'Blue-Winged Olive', timing: 'April–May, September–October' }, { name: 'Salmonfly', timing: 'June–July' }, { name: 'Golden Stonefly', timing: 'June–July' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'Hopper/Dropper', timing: 'July–September' }],
+    runs: [], guides: [],
+  },
+  clark_fork: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Bull Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [{ species: 'Brown Trout', season: 'October–November' }],
+    hatches: [{ name: 'Skwala Stonefly', timing: 'March–April' }, { name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Salmonfly', timing: 'June–July' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'Hopper/Dropper', timing: 'July–September' }],
+    runs: [], guides: [],
+  },
+  flathead: {
+    species: [{ name: 'Westslope Cutthroat', type: 'resident', primary: true }, { name: 'Bull Trout', type: 'resident', primary: false }],
+    designations: ['National Wild & Scenic River'],
+    spawning: [{ species: 'Westslope Cutthroat', season: 'May–June' }],
+    hatches: [{ name: 'Salmonfly', timing: 'June–July' }, { name: 'Golden Stonefly', timing: 'June–July' }, { name: 'Caddis', timing: 'June–August' }],
+    runs: [], guides: [],
+  },
+  missouri_mt: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: ['Montana Blue-Ribbon Trout Stream'],
+    spawning: [{ species: 'Brown Trout', season: 'October–November' }],
+    hatches: [{ name: 'Midge', timing: 'Year-round' }, { name: 'Blue-Winged Olive', timing: 'March–May, September–November' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'Trico', timing: 'July–September' }],
+    runs: [], guides: [],
+  },
+  stillwater: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Yellowstone Cutthroat', type: 'resident', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Golden Stonefly', timing: 'June–July' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'Hopper/Dropper', timing: 'July–September' }],
+    runs: [], guides: [],
+  },
+  yellowstone: {
+    species: [{ name: 'Yellowstone Cutthroat', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: ['Montana Blue-Ribbon Trout Stream'],
+    spawning: [{ species: 'Yellowstone Cutthroat', season: 'May–June' }],
+    hatches: [{ name: 'Skwala Stonefly', timing: 'March–April' }, { name: 'Blue-Winged Olive', timing: 'April–May, September–October' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Salmonfly', timing: 'June–July', notes: 'Legendary hatch on the Yellowstone' }, { name: 'Golden Stonefly', timing: 'June–July' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'Hopper/Dropper', timing: 'July–September' }],
+    runs: [], guides: [],
+  },
+  madison: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: ['Montana Blue-Ribbon Trout Stream'],
+    spawning: [{ species: 'Brown Trout', season: 'October–November' }, { species: 'Rainbow Trout', season: 'March–May' }],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May, September–October' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Salmonfly', timing: 'June–July' }, { name: 'Golden Stonefly', timing: 'June–July' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'Hopper/Dropper', timing: 'July–September', notes: 'Prime dry fly season on the 50-mile riffle' }, { name: 'October Caddis', timing: 'September–October' }],
+    runs: [], guides: [],
+  },
+
+  // ── IDAHO ────────────────────────────────────────────
+  hells_canyon: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'White Sturgeon', type: 'resident', primary: false }, { name: 'Steelhead', type: 'anadromous', primary: false }],
+    designations: [], spawning: [], hatches: [],
+    runs: [{ species: 'Steelhead', timing: 'September–March' }],
+    guides: [],
+  },
+  henrys_fork: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Large wild rainbows in the Railroad Ranch section' }, { name: 'Brown Trout', type: 'resident', primary: false }, { name: 'Cutthroat Trout', type: 'resident', primary: false }],
+    designations: ['Blue-Ribbon Trout Stream', 'Harriman State Park'],
+    spawning: [{ species: 'Rainbow Trout', season: 'March–May' }],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May, September–October' }, { name: 'Green Drake', timing: 'June', notes: 'The signature hatch — selective fish on flat water' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'Caddis', timing: 'June–August' }, { name: 'Trico', timing: 'July–September', notes: 'Heavy spinner falls on the Ranch' }, { name: 'Callibaetis', timing: 'July–August' }, { name: 'Hopper/Dropper', timing: 'July–September' }],
+    runs: [], guides: [],
+  },
+  payette: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Bull Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  priest: {
+    species: [{ name: 'Cutthroat Trout', type: 'resident', primary: true }, { name: 'Bull Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Caddis', timing: 'May–June' }, { name: 'Stonefly', timing: 'June–July' }],
+    runs: [], guides: [],
+  },
+  selway: {
+    species: [{ name: 'Westslope Cutthroat', type: 'resident', primary: true }, { name: 'Steelhead', type: 'anadromous', primary: false }],
+    designations: ['National Wild & Scenic River'],
+    spawning: [{ species: 'Westslope Cutthroat', season: 'May–June' }],
+    hatches: [{ name: 'Salmonfly', timing: 'June–July' }, { name: 'Golden Stonefly', timing: 'June–July' }, { name: 'Caddis', timing: 'June–August' }],
+    runs: [{ species: 'Steelhead', timing: 'August–October' }],
+    guides: [],
+  },
+  sf_boise: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: ['Idaho Gold Medal Waters'],
+    spawning: [{ species: 'Brown Trout', season: 'October–November' }],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May, September–October' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'Hopper/Dropper', timing: 'July–September' }],
+    runs: [], guides: [],
+  },
+
+  // ── OREGON ───────────────────────────────────────────
+  clackamas: {
+    species: [{ name: 'Steelhead', type: 'anadromous', primary: true }, { name: 'Chinook Salmon', type: 'anadromous', primary: false }, { name: 'Coho Salmon', type: 'anadromous', primary: false }],
+    designations: [], spawning: [], hatches: [],
+    runs: [{ species: 'Winter Steelhead', timing: 'December–April' }, { species: 'Spring Chinook', timing: 'April–June' }],
+    guides: [],
+  },
+  illinois_or: {
+    species: [{ name: 'Steelhead', type: 'anadromous', primary: true }, { name: 'Chinook Salmon', type: 'anadromous', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [], hatches: [],
+    runs: [{ species: 'Winter Steelhead', timing: 'December–March' }],
+    guides: [],
+  },
+  john_day: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Steelhead', type: 'anadromous', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [],
+    hatches: [{ name: 'Caddis', timing: 'May–June' }, { name: 'Golden Stonefly', timing: 'June–July' }],
+    runs: [{ species: 'Summer Steelhead', timing: 'September–November' }],
+    guides: [],
+  },
+  mckenzie: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Native redside rainbow' }, { name: 'Spring Chinook', type: 'anadromous', primary: false }],
+    designations: ['Oregon Blue-Ribbon'],
+    spawning: [{ species: 'Rainbow Trout', season: 'March–May' }],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'October Caddis', timing: 'September–November' }, { name: 'Green Drake', timing: 'Late May – June' }],
+    runs: [], guides: [],
+  },
+
+  // ── WASHINGTON ────────────────────────────────────────
+  green_wa: {
+    species: [{ name: 'Steelhead', type: 'anadromous', primary: true }, { name: 'Chinook Salmon', type: 'anadromous', primary: false }],
+    designations: [], spawning: [], hatches: [],
+    runs: [{ species: 'Winter Steelhead', timing: 'December–April' }],
+    guides: [],
+  },
+  methow: {
+    species: [{ name: 'Steelhead', type: 'anadromous', primary: true }, { name: 'Spring Chinook', type: 'anadromous', primary: false }, { name: 'Bull Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [], hatches: [],
+    runs: [{ species: 'Summer Steelhead', timing: 'August–November' }],
+    guides: [],
+  },
+  sauk: {
+    species: [{ name: 'Steelhead', type: 'anadromous', primary: true }, { name: 'Bull Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [], hatches: [],
+    runs: [{ species: 'Winter Steelhead', timing: 'December–April' }],
+    guides: [],
+  },
+  skykomish: {
+    species: [{ name: 'Steelhead', type: 'anadromous', primary: true }, { name: 'Chinook Salmon', type: 'anadromous', primary: false }, { name: 'Coho Salmon', type: 'anadromous', primary: false }],
+    designations: [], spawning: [], hatches: [],
+    runs: [{ species: 'Winter Steelhead', timing: 'December–April' }, { species: 'Fall Chinook', timing: 'September–November' }],
+    guides: [],
+  },
+  wenatchee: {
+    species: [{ name: 'Steelhead', type: 'anadromous', primary: true }, { name: 'Spring Chinook', type: 'anadromous', primary: false }, { name: 'Bull Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [], hatches: [],
+    runs: [{ species: 'Summer Steelhead', timing: 'July–November' }],
+    guides: [],
+  },
+  white_salmon: {
+    species: [{ name: 'Steelhead', type: 'anadromous', primary: true }, { name: 'Spring Chinook', type: 'anadromous', primary: false }],
+    designations: [], spawning: [], hatches: [],
+    runs: [{ species: 'Winter Steelhead', timing: 'December–April' }],
+    guides: [],
+  },
+  columbia: {
+    species: [{ name: 'Fall Chinook Salmon', type: 'anadromous', primary: true, notes: 'Last wild fall Chinook run on the Columbia' }, { name: 'Steelhead', type: 'anadromous', primary: false }, { name: 'White Sturgeon', type: 'resident', primary: false }, { name: 'Walleye', type: 'warmwater', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: ['Hanford Reach National Monument'], spawning: [], hatches: [],
+    runs: [{ species: 'Fall Chinook', timing: 'September–November' }],
+    guides: [],
+  },
+  tieton: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }],
+    runs: [], guides: [],
+  },
+
+  // ── CALIFORNIA ───────────────────────────────────────
+  american: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Steelhead', type: 'anadromous', primary: false }, { name: 'Chinook Salmon', type: 'anadromous', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Caddis', timing: 'April–June' }, { name: 'Stonefly', timing: 'May–June' }],
+    runs: [{ species: 'Fall Chinook', timing: 'October–December' }, { species: 'Steelhead', timing: 'January–March' }],
+    guides: [],
+  },
+  eel: {
+    species: [{ name: 'Steelhead', type: 'anadromous', primary: true }, { name: 'Chinook Salmon', type: 'anadromous', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [], hatches: [],
+    runs: [{ species: 'Winter Steelhead', timing: 'December–March' }],
+    guides: [],
+  },
+  klamath: {
+    species: [{ name: 'Steelhead', type: 'anadromous', primary: true }, { name: 'Chinook Salmon', type: 'anadromous', primary: false }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [], hatches: [],
+    runs: [{ species: 'Fall Chinook', timing: 'September–November' }, { species: 'Steelhead', timing: 'November–March' }],
+    guides: [],
+  },
+  merced: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: ['Yosemite National Park'], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }],
+    runs: [], guides: [],
+  },
+  stanislaus: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }],
+    runs: [], guides: [],
+  },
+  trinity: {
+    species: [{ name: 'Steelhead', type: 'anadromous', primary: true }, { name: 'Chinook Salmon', type: 'anadromous', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [],
+    hatches: [{ name: 'Caddis', timing: 'April–June' }, { name: 'October Caddis', timing: 'September–November' }],
+    runs: [{ species: 'Fall Chinook', timing: 'September–November' }, { species: 'Winter Steelhead', timing: 'December–March' }],
+    guides: [],
+  },
+  tuolumne: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'Golden Stonefly', timing: 'June–July' }],
+    runs: [], guides: [],
+  },
+  sacramento: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }, { name: 'Chinook Salmon', type: 'anadromous', primary: false }, { name: 'Steelhead', type: 'anadromous', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'October Caddis', timing: 'September–November', notes: 'Best fall dry fly action' }],
+    runs: [{ species: 'Winter Chinook', timing: 'April–July' }, { species: 'Fall Chinook', timing: 'September–November' }],
+    guides: [],
+  },
+  yuba: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Stonefly', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  cache_creek: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Sacramento Pikeminnow', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  mokelumne: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Chinook Salmon', type: 'anadromous', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }],
+    runs: [{ species: 'Fall Chinook', timing: 'October–December' }],
+    guides: [],
+  },
+  smith: {
+    species: [{ name: 'Steelhead', type: 'anadromous', primary: true, notes: 'Last major undammed river in California' }, { name: 'Chinook Salmon', type: 'anadromous', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [], hatches: [],
+    runs: [{ species: 'Winter Steelhead', timing: 'December–March' }],
+    guides: [],
+  },
+
+  // ── NEVADA ───────────────────────────────────────────
+  walker: {
+    species: [{ name: 'Lahontan Cutthroat Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }],
+    runs: [], guides: [],
+  },
+  east_walker: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true, notes: 'Trophy browns to 10 lbs' }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [{ species: 'Brown Trout', season: 'October–November' }],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May, September–October' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'Hopper/Dropper', timing: 'July–September' }],
+    runs: [], guides: [],
+  },
+  carson: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  jarbidge: {
+    species: [{ name: 'Bull Trout', type: 'resident', primary: true }, { name: 'Redband Trout', type: 'resident', primary: false }],
+    designations: ['Wilderness'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  bruneau: {
+    species: [{ name: 'Redband Trout', type: 'resident', primary: true }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  humboldt: {
+    species: [{ name: 'Lahontan Cutthroat Trout', type: 'resident', primary: true, notes: 'Native but rare' }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  truckee: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }, { name: 'Lahontan Cutthroat Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [{ species: 'Rainbow Trout', season: 'March–May' }],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May, September–October' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'October Caddis', timing: 'September–November' }],
+    runs: [], guides: [],
+  },
+
+  // ── UTAH ─────────────────────────────────────────────
+  provo: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: ['Utah Blue-Ribbon Fishery'],
+    spawning: [{ species: 'Brown Trout', season: 'October–November' }],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May, September–October' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'Hopper/Dropper', timing: 'July–September' }],
+    runs: [], guides: [],
+  },
+  logan: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Cutthroat Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }],
+    runs: [], guides: [],
+  },
+  weber: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }],
+    runs: [], guides: [],
+  },
+
+  // ── WYOMING ──────────────────────────────────────────
+  clarks_fork: {
+    species: [{ name: 'Yellowstone Cutthroat', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: ['National Wild & Scenic River'],
+    spawning: [{ species: 'Yellowstone Cutthroat', season: 'May–June' }],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Golden Stonefly', timing: 'June–July' }, { name: 'Pale Morning Dun', timing: 'June–August' }],
+    runs: [], guides: [],
+  },
+  greys: {
+    species: [{ name: 'Cutthroat Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }],
+    runs: [], guides: [],
+  },
+  hoback: {
+    species: [{ name: 'Cutthroat Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }],
+    runs: [], guides: [],
+  },
+  shoshone: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Cutthroat Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }],
+    runs: [], guides: [],
+  },
+  wind_river: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Cutthroat Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }],
+    runs: [], guides: [],
+  },
+
+  // ── NEW MEXICO ───────────────────────────────────────
+  canadian_nm: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  jemez: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  pecos_nm: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Rio Grande Cutthroat', type: 'resident', primary: false, notes: 'Native subspecies in upper reaches' }],
+    designations: ['Pecos Wilderness'], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }],
+    runs: [], guides: [],
+  },
+  red_river_nm: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+
+  // ── ARIZONA ──────────────────────────────────────────
+  black_az: {
+    species: [{ name: 'Apache Trout', type: 'resident', primary: true, notes: 'Arizona state fish — native and threatened' }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: ['White Mountain Apache Reservation'], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  fossil_creek: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }],
+    designations: ['National Wild & Scenic River'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  gila_box: {
+    species: [{ name: 'Gila Trout', type: 'resident', primary: true, notes: 'Federally threatened — native to Gila watershed' }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  oak_creek: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }],
+    runs: [], guides: [],
+  },
+  salt_river: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Yellow Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  san_francisco_az: {
+    species: [{ name: 'Gila Trout', type: 'resident', primary: true }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: ['Gila National Forest'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  verde: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // ALABAMA
+  // ============================================================
+  cahaba: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Spotted Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: ['National Wildlife Refuge (lower)'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  coosa: {
+    species: [{ name: 'Spotted Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  flint_al: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  little_river_al: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Spotted Bass', type: 'warmwater', primary: false }],
+    designations: ['Little River Canyon National Preserve'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  locust_fork: {
+    species: [{ name: 'Spotted Bass', type: 'warmwater', primary: true }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  mulberry_al: {
+    species: [{ name: 'Spotted Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  sipsey_fork: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: ['Bankhead National Forest'],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'February–April' }, { name: 'Caddis', timing: 'March–May' }, { name: 'Sulfur', timing: 'April–June' }],
+    runs: [], guides: [],
+  },
+  tallapoosa: {
+    species: [{ name: 'Spotted Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // ARKANSAS
+  // ============================================================
+  big_piney: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Longear Sunfish', type: 'warmwater', primary: false }, { name: 'Rock Bass', type: 'warmwater', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  caddo: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Longear Sunfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  cossatot: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Longear Sunfish', type: 'warmwater', primary: false }, { name: 'Rock Bass', type: 'warmwater', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  illinois_bayou: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Longear Sunfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  kings_ar: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Rock Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  mulberry: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Longear Sunfish', type: 'warmwater', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  war_eagle: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // COLORADO
+  // ============================================================
+  glenwood: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Mountain Whitefish', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Stonefly', timing: 'May–July' }, { name: 'PMD (Pale Morning Dun)', timing: 'June–August' }],
+    runs: [], guides: [],
+  },
+
+  // ============================================================
+  // CONNECTICUT
+  // ============================================================
+  bantam: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Hendrickson', timing: 'April–May' }, { name: 'Caddis', timing: 'April–June' }],
+    runs: [], guides: [],
+  },
+  connecticut: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'American Shad', type: 'anadromous', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [{ species: 'American Shad', timing: 'May–June' }],
+    guides: [],
+  },
+  natchaug: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Hendrickson', timing: 'April–May' }, { name: 'Caddis', timing: 'April–June' }],
+    runs: [], guides: [],
+  },
+  quinnipiac: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }],
+    runs: [], guides: [],
+  },
+  salmon_ct: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Brook Trout', type: 'resident', primary: false }, { name: 'Atlantic Salmon', type: 'anadromous', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Hendrickson', timing: 'April–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Sulfur', timing: 'May–June' }],
+    runs: [{ species: 'Atlantic Salmon', timing: 'October–November' }],
+    guides: [],
+  },
+  shepaug: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Hendrickson', timing: 'April–May' }, { name: 'Caddis', timing: 'April–June' }],
+    runs: [], guides: [],
+  },
+
+  // ============================================================
+  // DELAWARE
+  // ============================================================
+  brandywine: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Sulfur', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  broadkill: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Bluegill', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  christina: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  nanticoke: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'White Perch', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  red_clay: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Sulfur', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  st_jones: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  white_clay: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Sulfur', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+
+  // ============================================================
+  // FLORIDA
+  // ============================================================
+  hillsborough: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Bluegill', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  ichetucknee: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Bluegill', type: 'warmwater', primary: false }, { name: 'Redear Sunfish', type: 'warmwater', primary: false }],
+    designations: ['Ichetucknee Springs State Park'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  loxahatchee: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Snook', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  peace: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Bluegill', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  rainbow: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Bluegill', type: 'warmwater', primary: false }, { name: 'Mullet', type: 'warmwater', primary: false }],
+    designations: ['Rainbow Springs State Park'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  santa_fe: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Bluegill', type: 'warmwater', primary: false }, { name: 'Redear Sunfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  wekiva: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Bluegill', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: ['Wekiwa Springs State Park'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // GEORGIA
+  // ============================================================
+  amicalola: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'February–April' }, { name: 'Caddis', timing: 'March–May' }],
+    runs: [], guides: [],
+  },
+  broad_ga: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  coosawattee: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'February–April' }, { name: 'Caddis', timing: 'March–May' }],
+    runs: [], guides: [],
+  },
+  etowah: {
+    species: [{ name: 'Spotted Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  oconee: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // ILLINOIS
+  // ============================================================
+  apple_il: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  cache_il: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  des_plaines: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  fox_il: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Walleye', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  kankakee: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Walleye', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  mackinaw: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  sangamon: {
+    species: [{ name: 'Channel Catfish', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  vermilion_il: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: ['National Wild & Scenic River (Middle Fork)'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // INDIANA
+  // ============================================================
+  blue_in: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  eel_in: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  muscatatuck: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  sugar_creek: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  tippecanoe: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  whitewater_in: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  wildcat_in: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Rock Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // IOWA
+  // ============================================================
+  cedar_ia: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Walleye', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  des_moines: {
+    species: [{ name: 'Walleye', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  maquoketa: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Walleye', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  turkey: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Sulfur', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  upper_iowa: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Hendrickson', timing: 'April–May' }],
+    runs: [], guides: [],
+  },
+  volga: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }],
+    runs: [], guides: [],
+  },
+  wapsipinicon: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Walleye', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  yellow_ia: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Brook Trout', type: 'resident', primary: false }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }],
+    runs: [], guides: [],
+  },
+
+  // ============================================================
+  // KANSAS
+  // ============================================================
+  cottonwood: {
+    species: [{ name: 'Channel Catfish', type: 'warmwater', primary: true }, { name: 'Flathead Catfish', type: 'warmwater', primary: false }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  fall_river_ks: {
+    species: [{ name: 'Channel Catfish', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  flint_hills: {
+    species: [{ name: 'Channel Catfish', type: 'warmwater', primary: true }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  kaw: {
+    species: [{ name: 'Channel Catfish', type: 'warmwater', primary: true }, { name: 'Flathead Catfish', type: 'warmwater', primary: false }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  marais: {
+    species: [{ name: 'Channel Catfish', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  neosho: {
+    species: [{ name: 'Channel Catfish', type: 'warmwater', primary: true }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  smoky_hill: {
+    species: [{ name: 'Channel Catfish', type: 'warmwater', primary: true }, { name: 'Flathead Catfish', type: 'warmwater', primary: false }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  solomon: {
+    species: [{ name: 'Channel Catfish', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Walleye', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // KENTUCKY
+  // ============================================================
+  elkhorn: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  kentucky: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Muskellunge', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  licking: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Spotted Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  red_river: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Longear Sunfish', type: 'warmwater', primary: false }],
+    designations: ['Red River Gorge Geological Area'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  rockcastle: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  russell_ky: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // LOUISIANA
+  // ============================================================
+  amite: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  atchafalaya: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Blue Catfish', type: 'warmwater', primary: false }, { name: 'Flathead Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: ['Atchafalaya National Wildlife Refuge'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  bogue_chitto: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  comite: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  lacombe: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Bluegill', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  tangipahoa: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  tchefuncte: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  whiskey_chitto: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // MAINE
+  // ============================================================
+  allagash: {
+    species: [{ name: 'Brook Trout', type: 'resident', primary: true }, { name: 'Lake Trout', type: 'resident', primary: false }, { name: 'Landlocked Salmon', type: 'resident', primary: false }],
+    designations: ['National Wild & Scenic River'],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'May–June' }, { name: 'Caddis', timing: 'May–July' }, { name: 'Hex (Hexagenia)', timing: 'June–July' }],
+    runs: [], guides: [],
+  },
+  dead_river: {
+    species: [{ name: 'Brook Trout', type: 'resident', primary: true }, { name: 'Landlocked Salmon', type: 'resident', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'May–June' }, { name: 'Caddis', timing: 'May–July' }],
+    runs: [], guides: [],
+  },
+  machias: {
+    species: [{ name: 'Atlantic Salmon', type: 'anadromous', primary: true }, { name: 'Brook Trout', type: 'resident', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Caddis', timing: 'May–July' }],
+    runs: [{ species: 'Atlantic Salmon', timing: 'June–October' }],
+    guides: [],
+  },
+  rapid_me: {
+    species: [{ name: 'Brook Trout', type: 'resident', primary: true }, { name: 'Landlocked Salmon', type: 'resident', primary: true }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'May–June' }, { name: 'Caddis', timing: 'May–July' }, { name: 'Hex (Hexagenia)', timing: 'June–July' }],
+    runs: [], guides: [],
+  },
+  seboeis: {
+    species: [{ name: 'Brook Trout', type: 'resident', primary: true }, { name: 'Landlocked Salmon', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'May–June' }, { name: 'Caddis', timing: 'May–July' }],
+    runs: [], guides: [],
+  },
+  st_croix_me: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Atlantic Salmon', type: 'anadromous', primary: false }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [{ species: 'Atlantic Salmon', timing: 'June–October' }],
+    guides: [],
+  },
+
+  // ============================================================
+  // MARYLAND
+  // ============================================================
+  antietam_creek: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Sulfur', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  gunpowder: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: ['Catch & Release — flies and artificials only (tailwater section)'],
+    spawning: [{ species: 'Brown Trout', season: 'October–December' }],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Hendrickson', timing: 'April–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Sulfur', timing: 'May–June' }, { name: 'Trico', timing: 'July–September' }],
+    runs: [], guides: [],
+  },
+  monocacy: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  patuxent: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Chain Pickerel', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  potomac: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  savage: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Brook Trout', type: 'resident', primary: false }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: ['Delayed Harvest — catch & release section'],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Sulfur', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  yough_md: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Sulfur', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+
+  // ============================================================
+  // MASSACHUSETTS
+  // ============================================================
+  concord: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Chain Pickerel', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  westfield: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Brook Trout', type: 'resident', primary: false }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Hendrickson', timing: 'April–May' }, { name: 'Caddis', timing: 'April–June' }],
+    runs: [], guides: [],
+  },
+
+  // ============================================================
+  // MINNESOTA
+  // ============================================================
+  cannon: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  cloquet: {
+    species: [{ name: 'Walleye', type: 'warmwater', primary: true }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }, { name: 'Northern Pike', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  crow_wing: {
+    species: [{ name: 'Walleye', type: 'warmwater', primary: true }, { name: 'Northern Pike', type: 'warmwater', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  kawishiwi: {
+    species: [{ name: 'Walleye', type: 'warmwater', primary: true }, { name: 'Northern Pike', type: 'warmwater', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }, { name: 'Lake Trout', type: 'resident', primary: false }],
+    designations: ['Boundary Waters Canoe Area Wilderness'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  kettle: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Walleye', type: 'warmwater', primary: false }, { name: 'Northern Pike', type: 'warmwater', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  root: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Brook Trout', type: 'resident', primary: false }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Hendrickson', timing: 'April–May' }],
+    runs: [], guides: [],
+  },
+  st_croix: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Walleye', type: 'warmwater', primary: false }, { name: 'Northern Pike', type: 'warmwater', primary: false }, { name: 'Muskellunge', type: 'warmwater', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  st_louis_mn: {
+    species: [{ name: 'Walleye', type: 'warmwater', primary: true }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }, { name: 'Northern Pike', type: 'warmwater', primary: false }, { name: 'Steelhead', type: 'anadromous', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [{ species: 'Steelhead', timing: 'April–May' }],
+    guides: [],
+  },
+
+  // ============================================================
+  // MISSISSIPPI
+  // ============================================================
+  black_creek_ms: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  bowie: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  chunky: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  leaf: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  okatoma: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  pearl: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Flathead Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  tallahala: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  wolf_ms: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // MISSOURI
+  // ============================================================
+  big_mo: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  eleven_point: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: ['National Wild & Scenic River'],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Sulfur', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  gasconade: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  jacks_fork: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Longear Sunfish', type: 'warmwater', primary: false }],
+    designations: ['Ozark National Scenic Riverways'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  meramec: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  north_fork_white: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Sulfur', timing: 'May–June' }, { name: 'Midge', timing: 'November–March' }],
+    runs: [], guides: [],
+  },
+  st_francis: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // NEBRASKA
+  // ============================================================
+  calamus: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Trico', timing: 'July–September' }],
+    runs: [], guides: [],
+  },
+  dismal: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Trico', timing: 'July–September' }],
+    runs: [], guides: [],
+  },
+  elkhorn_ne: {
+    species: [{ name: 'Channel Catfish', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Walleye', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  loup: {
+    species: [{ name: 'Channel Catfish', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Walleye', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  middle_loup: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Northern Pike', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  niobrara: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: ['National Wild & Scenic River'],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Trico', timing: 'July–September' }],
+    runs: [], guides: [],
+  },
+  platte: {
+    species: [{ name: 'Channel Catfish', type: 'warmwater', primary: true }, { name: 'Walleye', type: 'warmwater', primary: false }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  republican: {
+    species: [{ name: 'Channel Catfish', type: 'warmwater', primary: true }, { name: 'Walleye', type: 'warmwater', primary: false }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // NEW HAMPSHIRE
+  // ============================================================
+  androscoggin: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Brook Trout', type: 'resident', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Hendrickson', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  connecticut_nh: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Hendrickson', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  contoocook: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Brook Trout', type: 'resident', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  ellis: {
+    species: [{ name: 'Brook Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  merrimack: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'American Shad', type: 'anadromous', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [{ species: 'American Shad', timing: 'May–June' }],
+    guides: [],
+  },
+  pemi: {
+    species: [{ name: 'Brook Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Hendrickson', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  swift_nh: {
+    species: [{ name: 'Brook Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+
+  // ============================================================
+  // NEW JERSEY
+  // ============================================================
+  great_egg: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Chain Pickerel', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  maurice: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  mullica: {
+    species: [{ name: 'Chain Pickerel', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  musconetcong: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: ['National Wild & Scenic River'],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Hendrickson', timing: 'April–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Sulfur', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  paulins_kill: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Hendrickson', timing: 'April–May' }, { name: 'Caddis', timing: 'April–June' }],
+    runs: [], guides: [],
+  },
+  raritan: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Caddis', timing: 'April–June' }],
+    runs: [], guides: [],
+  },
+  wharton: {
+    species: [{ name: 'Chain Pickerel', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: ['Wharton State Forest / Pinelands National Reserve'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // NEW MEXICO
+  // ============================================================
+  san_antonio: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'PMD (Pale Morning Dun)', timing: 'June–August' }],
+    runs: [], guides: [],
+  },
+
+  // ============================================================
+  // NORTH CAROLINA
+  // ============================================================
+  green_nc: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'February–April' }, { name: 'Caddis', timing: 'March–May' }],
+    runs: [], guides: [],
+  },
+  linville: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: ['Linville Gorge Wilderness'],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'February–April' }, { name: 'Caddis', timing: 'March–May' }, { name: 'Sulfur', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  nolichucky_nc: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Caddis', timing: 'March–May' }],
+    runs: [], guides: [],
+  },
+  tuckasegee: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'February–April' }, { name: 'Caddis', timing: 'March–May' }, { name: 'Sulfur', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  watauga: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'February–April' }, { name: 'Caddis', timing: 'March–May' }, { name: 'Sulfur', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+
+  // ============================================================
+  // NORTH DAKOTA
+  // ============================================================
+  cannonball: {
+    species: [{ name: 'Walleye', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Northern Pike', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  heart: {
+    species: [{ name: 'Walleye', type: 'warmwater', primary: true }, { name: 'Northern Pike', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  knife: {
+    species: [{ name: 'Walleye', type: 'warmwater', primary: true }, { name: 'Northern Pike', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  little_missouri: {
+    species: [{ name: 'Channel Catfish', type: 'warmwater', primary: true }, { name: 'Walleye', type: 'warmwater', primary: false }, { name: 'Northern Pike', type: 'warmwater', primary: false }],
+    designations: ['Theodore Roosevelt National Park'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  missouri_nd: {
+    species: [{ name: 'Walleye', type: 'warmwater', primary: true }, { name: 'Northern Pike', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  pembina: {
+    species: [{ name: 'Walleye', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Northern Pike', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  sheyenne: {
+    species: [{ name: 'Walleye', type: 'warmwater', primary: true }, { name: 'Northern Pike', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // OHIO
+  // ============================================================
+  chagrin: {
+    species: [{ name: 'Steelhead', type: 'anadromous', primary: true }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Caddis', timing: 'April–June' }],
+    runs: [{ species: 'Steelhead', timing: 'October–April' }],
+    guides: [],
+  },
+  cuyahoga: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: ['Cuyahoga Valley National Park'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  grand_oh: {
+    species: [{ name: 'Steelhead', type: 'anadromous', primary: true }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [{ species: 'Steelhead', timing: 'October–April' }],
+    guides: [],
+  },
+  hocking: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  kokosing: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  little_miami: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  mad_oh: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Sulfur', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  maumee: {
+    species: [{ name: 'Walleye', type: 'warmwater', primary: true }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  mohican: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  olentangy: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  scioto: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Saugeye', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  tuscarawas: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  vermilion_oh: {
+    species: [{ name: 'Steelhead', type: 'anadromous', primary: true }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [{ species: 'Steelhead', timing: 'October–April' }],
+    guides: [],
+  },
+
+  // ============================================================
+  // OKLAHOMA
+  // ============================================================
+  baron_fork: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Longear Sunfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  blue_ok: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'February–April' }, { name: 'Caddis', timing: 'March–May' }],
+    runs: [], guides: [],
+  },
+  caney: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  glover: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  kiamichi: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  mountain_fork: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'February–April' }, { name: 'Caddis', timing: 'March–May' }, { name: 'Midge', timing: 'November–March' }],
+    runs: [], guides: [],
+  },
+  washita: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // OREGON
+  // ============================================================
+  sandy: {
+    species: [{ name: 'Steelhead', type: 'anadromous', primary: true }, { name: 'Chinook Salmon', type: 'anadromous', primary: false }, { name: 'Coho Salmon', type: 'anadromous', primary: false }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: ['National Wild & Scenic River'],
+    spawning: [],
+    hatches: [{ name: 'Caddis', timing: 'April–June' }, { name: 'Stonefly', timing: 'May–July' }, { name: 'Blue-Winged Olive', timing: 'March–May' }],
+    runs: [{ species: 'Steelhead', timing: 'December–April' }, { species: 'Chinook Salmon', timing: 'March–June' }, { species: 'Coho Salmon', timing: 'September–November' }],
+    guides: [],
+  },
+
+  // ============================================================
+  // RHODE ISLAND
+  // ============================================================
+  blackstone: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  chipuxet: {
+    species: [{ name: 'Brook Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }],
+    runs: [], guides: [],
+  },
+  hunt: {
+    species: [{ name: 'Brook Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }],
+    runs: [], guides: [],
+  },
+  pawcatuck: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Chain Pickerel', type: 'warmwater', primary: false }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  pawtuxet: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  ten_mile: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Chain Pickerel', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  wood_ri: {
+    species: [{ name: 'Brook Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Hendrickson', timing: 'April–May' }, { name: 'Caddis', timing: 'April–June' }],
+    runs: [], guides: [],
+  },
+  woonasquatucket: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Bluegill', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // SOUTH CAROLINA
+  // ============================================================
+  broad_sc: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  chattooga_sc: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: ['National Wild & Scenic River'],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'February–April' }, { name: 'Caddis', timing: 'March–May' }],
+    runs: [], guides: [],
+  },
+  congaree: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }, { name: 'Flathead Catfish', type: 'warmwater', primary: false }],
+    designations: ['Congaree National Park'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  edisto: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Redbreast Sunfish', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  little_sc: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Bluegill', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  saluda: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }, { name: 'Striped Bass', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'February–April' }, { name: 'Caddis', timing: 'March–May' }, { name: 'Midge', timing: 'November–March' }],
+    runs: [], guides: [],
+  },
+  tyger_sc: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Bluegill', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  waccamaw: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Redbreast Sunfish', type: 'warmwater', primary: false }, { name: 'Bowfin', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // SOUTH DAKOTA
+  // ============================================================
+  big_sioux: {
+    species: [{ name: 'Walleye', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  cheyenne_sd: {
+    species: [{ name: 'Walleye', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Northern Pike', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  james_sd: {
+    species: [{ name: 'Walleye', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Northern Pike', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  missouri_sd: {
+    species: [{ name: 'Walleye', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Northern Pike', type: 'warmwater', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  rapid_creek: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'PMD (Pale Morning Dun)', timing: 'June–July' }, { name: 'Trico', timing: 'July–September' }],
+    runs: [], guides: [],
+  },
+  spearfish: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: ['Spearfish Canyon'],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Stonefly', timing: 'May–July' }],
+    runs: [], guides: [],
+  },
+  vermillion_sd: {
+    species: [{ name: 'Channel Catfish', type: 'warmwater', primary: true }, { name: 'Walleye', type: 'warmwater', primary: false }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  white_sd: {
+    species: [{ name: 'Walleye', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Northern Pike', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // TENNESSEE
+  // ============================================================
+  caney_fork: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'February–April' }, { name: 'Caddis', timing: 'March–May' }, { name: 'Sulfur', timing: 'May–June' }, { name: 'Midge', timing: 'November–March' }],
+    runs: [], guides: [],
+  },
+  duck_river: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  elk_tn: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Spotted Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  obeds: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Longear Sunfish', type: 'warmwater', primary: false }],
+    designations: ['National Wild & Scenic River'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  pigeon_tn: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // TEXAS
+  // ============================================================
+  big_bend: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Blue Catfish', type: 'warmwater', primary: false }],
+    designations: ['Big Bend National Park', 'National Wild & Scenic River'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  blanco: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Guadalupe Bass', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  brazos: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Flathead Catfish', type: 'warmwater', primary: false }, { name: 'Blue Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  colorado_tx: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Guadalupe Bass', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  comal: {
+    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+  devils_river: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: ['Devils River State Natural Area'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  frio: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Guadalupe Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  llano: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Guadalupe Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  medina: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Guadalupe Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  nueces: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Guadalupe Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  sabine: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Channel Catfish', type: 'warmwater', primary: false }, { name: 'Blue Catfish', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  san_marcos: {
+    species: [{ name: 'Largemouth Bass', type: 'warmwater', primary: true }, { name: 'Guadalupe Bass', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // UTAH
+  // ============================================================
+  cataract: {
+    species: [{ name: 'Channel Catfish', type: 'warmwater', primary: true }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: ['Canyonlands National Park'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // VERMONT
+  // ============================================================
+  battenkill: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Brook Trout', type: 'resident', primary: false }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [{ species: 'Brown Trout', season: 'October–November' }],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Hendrickson', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'March Brown', timing: 'May–June' }, { name: 'Sulfur', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  lamoille: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Hendrickson', timing: 'April–May' }],
+    runs: [], guides: [],
+  },
+  mad_vt: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Brook Trout', type: 'resident', primary: false }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Hendrickson', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  missisquoi: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  otter_creek: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  white_vt: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Hendrickson', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Sulfur', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  winooski: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+
+  // ============================================================
+  // VIRGINIA
+  // ============================================================
+  jackson_va: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Sulfur', timing: 'May–June' }, { name: 'March Brown', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  maury: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Redbreast Sunfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  newriver_va: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Muskellunge', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  rappahannock: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Largemouth Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  russell_fork: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // WEST VIRGINIA
+  // ============================================================
+  cranberry: {
+    species: [{ name: 'Brook Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
+    designations: ['Cranberry Wilderness'],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Sulfur', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  meadow: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+
+  // ============================================================
+  // WISCONSIN
+  // ============================================================
+  black_wi: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Walleye', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  flambeau: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Walleye', type: 'warmwater', primary: false }, { name: 'Muskellunge', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  kickapoo: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Brook Trout', type: 'resident', primary: false }, { name: 'Smallmouth Bass', type: 'warmwater', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Hendrickson', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  namekagon: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Muskellunge', type: 'warmwater', primary: false }, { name: 'Walleye', type: 'warmwater', primary: false }],
+    designations: ['National Wild & Scenic River (St. Croix National Scenic Riverway)'], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  peshtigo: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Walleye', type: 'warmwater', primary: false }, { name: 'Northern Pike', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  pine_wi: {
+    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Brook Trout', type: 'resident', primary: false }],
+    designations: [],
+    spawning: [],
+    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }],
+    runs: [], guides: [],
+  },
+  wisconsin: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Walleye', type: 'warmwater', primary: false }, { name: 'Muskellunge', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
+  wolf_wi: {
+    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Walleye', type: 'warmwater', primary: false }, { name: 'Muskellunge', type: 'warmwater', primary: false }, { name: 'Sturgeon', type: 'resident', primary: false }],
+    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+  },
 }
