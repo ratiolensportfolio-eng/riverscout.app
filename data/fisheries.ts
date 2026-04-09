@@ -2465,24 +2465,11 @@ export const FISHERIES: Record<string, RiverFisheries> = {
     hatches: [{ name: 'Skwala Stonefly', timing: 'March–April' }, { name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Salmonfly', timing: 'June–July' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'Hopper/Dropper', timing: 'July–September' }],
     runs: [], guides: [],
   },
-  flathead: {
-    species: [{ name: 'Westslope Cutthroat', type: 'resident', primary: true }, { name: 'Bull Trout', type: 'resident', primary: false }],
-    designations: ['National Wild & Scenic River'],
-    spawning: [{ species: 'Westslope Cutthroat', season: 'May–June' }],
-    hatches: [{ name: 'Salmonfly', timing: 'June–July' }, { name: 'Golden Stonefly', timing: 'June–July' }, { name: 'Caddis', timing: 'June–August' }],
-    runs: [], guides: [],
-  },
   missouri_mt: {
     species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }],
     designations: ['Montana Blue-Ribbon Trout Stream'],
     spawning: [{ species: 'Brown Trout', season: 'October–November' }],
     hatches: [{ name: 'Midge', timing: 'Year-round' }, { name: 'Blue-Winged Olive', timing: 'March–May, September–November' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'Trico', timing: 'July–September' }],
-    runs: [], guides: [],
-  },
-  stillwater: {
-    species: [{ name: 'Brown Trout', type: 'resident', primary: true }, { name: 'Rainbow Trout', type: 'resident', primary: false }, { name: 'Yellowstone Cutthroat', type: 'resident', primary: false }],
-    designations: [], spawning: [],
-    hatches: [{ name: 'Blue-Winged Olive', timing: 'April–May' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Golden Stonefly', timing: 'June–July' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'Hopper/Dropper', timing: 'July–September' }],
     runs: [], guides: [],
   },
   yellowstone: {
@@ -2560,13 +2547,6 @@ export const FISHERIES: Record<string, RiverFisheries> = {
     runs: [{ species: 'Summer Steelhead', timing: 'September–November' }],
     guides: [],
   },
-  mckenzie: {
-    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Native redside rainbow' }, { name: 'Spring Chinook', type: 'anadromous', primary: false }],
-    designations: ['Oregon Blue-Ribbon'],
-    spawning: [{ species: 'Rainbow Trout', season: 'March–May' }],
-    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'October Caddis', timing: 'September–November' }, { name: 'Green Drake', timing: 'Late May – June' }],
-    runs: [], guides: [],
-  },
 
   // ── WASHINGTON ────────────────────────────────────────
   green_wa: {
@@ -2591,12 +2571,6 @@ export const FISHERIES: Record<string, RiverFisheries> = {
     species: [{ name: 'Steelhead', type: 'anadromous', primary: true }, { name: 'Chinook Salmon', type: 'anadromous', primary: false }, { name: 'Coho Salmon', type: 'anadromous', primary: false }],
     designations: [], spawning: [], hatches: [],
     runs: [{ species: 'Winter Steelhead', timing: 'December–April' }, { species: 'Fall Chinook', timing: 'September–November' }],
-    guides: [],
-  },
-  wenatchee: {
-    species: [{ name: 'Steelhead', type: 'anadromous', primary: true }, { name: 'Spring Chinook', type: 'anadromous', primary: false }, { name: 'Bull Trout', type: 'resident', primary: false }],
-    designations: [], spawning: [], hatches: [],
-    runs: [{ species: 'Summer Steelhead', timing: 'July–November' }],
     guides: [],
   },
   white_salmon: {
@@ -2638,29 +2612,10 @@ export const FISHERIES: Record<string, RiverFisheries> = {
     runs: [{ species: 'Fall Chinook', timing: 'September–November' }, { species: 'Steelhead', timing: 'November–March' }],
     guides: [],
   },
-  merced: {
-    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }],
-    designations: ['Yosemite National Park'], spawning: [],
-    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }],
-    runs: [], guides: [],
-  },
   stanislaus: {
     species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }],
     designations: [], spawning: [],
     hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }],
-    runs: [], guides: [],
-  },
-  trinity: {
-    species: [{ name: 'Steelhead', type: 'anadromous', primary: true }, { name: 'Chinook Salmon', type: 'anadromous', primary: false }],
-    designations: ['National Wild & Scenic River'], spawning: [],
-    hatches: [{ name: 'Caddis', timing: 'April–June' }, { name: 'October Caddis', timing: 'September–November' }],
-    runs: [{ species: 'Fall Chinook', timing: 'September–November' }, { species: 'Winter Steelhead', timing: 'December–March' }],
-    guides: [],
-  },
-  tuolumne: {
-    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }],
-    designations: ['National Wild & Scenic River'], spawning: [],
-    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May' }, { name: 'Caddis', timing: 'April–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'Golden Stonefly', timing: 'June–July' }],
     runs: [], guides: [],
   },
   sacramento: {
@@ -2725,13 +2680,6 @@ export const FISHERIES: Record<string, RiverFisheries> = {
   humboldt: {
     species: [{ name: 'Lahontan Cutthroat Trout', type: 'resident', primary: true, notes: 'Native but rare' }, { name: 'Brown Trout', type: 'resident', primary: false }],
     designations: [], spawning: [], hatches: [], runs: [], guides: [],
-  },
-  truckee: {
-    species: [{ name: 'Rainbow Trout', type: 'resident', primary: true }, { name: 'Brown Trout', type: 'resident', primary: false }, { name: 'Lahontan Cutthroat Trout', type: 'resident', primary: false }],
-    designations: [],
-    spawning: [{ species: 'Rainbow Trout', season: 'March–May' }],
-    hatches: [{ name: 'Blue-Winged Olive', timing: 'March–May, September–October' }, { name: 'Caddis', timing: 'May–June' }, { name: 'Pale Morning Dun', timing: 'June–August' }, { name: 'October Caddis', timing: 'September–November' }],
-    runs: [], guides: [],
   },
 
   // ── UTAH ─────────────────────────────────────────────
