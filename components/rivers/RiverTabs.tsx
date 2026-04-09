@@ -24,6 +24,10 @@ const RiverMap = dynamic(() => import('@/components/maps/RiverMap'), {
 import { hasRiverMap, loadRiverMap } from '@/data/river-maps'
 // FISHERIES (~4200 lines, ~150 kB) is dynamically imported when the user
 // clicks the Fishing tab. See `loadFisheries` below.
+// `hasFisheries` is a lightweight Set lookup used to hide the Fishing tab
+// entirely for rivers without fisheries data — no need to pay the 150 kB
+// cost just to decide whether to render the tab.
+import { hasFisheries } from '@/data/fisheries-keys'
 import { RAPIDS } from '@/data/rapids'
 import FishIcon from '@/components/icons/FishIcons'
 import { getHatchTrigger } from '@/lib/hatch-triggers'
@@ -358,8 +362,12 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
     }).catch(() => {})
   }
 
-  // Split outfitters by tier
-  const sponsored = outfitters.filter(o => o.tier === 'sponsored' || o.tier === 'destination')
+  // Split outfitters by tier. Destinations render above sponsored on the
+  // Overview tab (highest tier at $499/mo → top placement); they share the
+  // same card layout but get a distinct "Destination Sponsor" badge.
+  const destinations = outfitters.filter(o => o.tier === 'destination')
+  const sponsored = outfitters.filter(o => o.tier === 'sponsored')
+  const overviewTop = [...destinations, ...sponsored]
   const featured = outfitters.filter(o => o.tier === 'featured')
   const listed = outfitters.filter(o => o.tier === 'listed')
   const guides = outfitters.filter(o => o.tier === 'guide')
@@ -441,7 +449,7 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
         display: 'flex', borderBottom: '.5px solid var(--bd)',
         overflowX: 'auto', flexShrink: 0,
       }} className="no-scrollbar tab-bar">
-        {TABS.map(t => (
+        {TABS.filter(t => t !== 'Fishing' || hasFisheries(river.id)).map(t => (
           <button
             key={t}
             onClick={() => setTab(t)}
@@ -470,19 +478,24 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
         {/* ── OVERVIEW ─────────────────────────────────────── */}
         {tab === 'Overview' && (
           <div>
-            {/* Sponsored outfitter — above the fold */}
-            {sponsored.map(o => (
+            {/* Sponsored + Destination outfitters — above the fold */}
+            {overviewTop.map(o => (
               <div key={o.id} style={{
                 marginBottom: '14px', padding: '14px', borderRadius: 'var(--rlg)',
-                background: 'linear-gradient(135deg, #E6F1FB, #E1F5EE)',
-                border: '1px solid var(--wt)', position: 'relative',
+                background: o.tier === 'destination'
+                  ? 'linear-gradient(135deg, #F3ECFB, #E9F1FB)'
+                  : 'linear-gradient(135deg, #E6F1FB, #E1F5EE)',
+                border: o.tier === 'destination' ? '1px solid #6E4BB4' : '1px solid var(--wt)',
+                position: 'relative',
               }}>
                 <span style={{
                   position: 'absolute', top: '8px', right: '10px',
                   fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', padding: '2px 8px',
-                  borderRadius: '8px', background: 'var(--wt)', color: '#fff',
+                  borderRadius: '8px',
+                  background: o.tier === 'destination' ? '#6E4BB4' : 'var(--wt)',
+                  color: '#fff',
                   textTransform: 'uppercase', letterSpacing: '.5px',
-                }}>Sponsored</span>
+                }}>{o.tier === 'destination' ? 'Destination Sponsor' : 'Sponsored'}</span>
                 {o.cover_photo_url && (
                   <img src={o.cover_photo_url} alt={o.business_name} loading="lazy" decoding="async"
                     style={{ width: '100%', height: '120px', objectFit: 'cover', borderRadius: '6px', marginBottom: '10px' }} />
@@ -760,8 +773,16 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                   <div key={o.id} style={{
                     border: '.5px solid var(--bd)', borderRadius: 'var(--r)',
                     padding: '9px 11px', background: 'var(--bg2)', marginBottom: '6px',
+                    position: 'relative',
                   }}>
-                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', fontWeight: 500, color: 'var(--rvdk)' }}>{o.business_name}</div>
+                    <span style={{
+                      position: 'absolute', top: '6px', right: '8px',
+                      fontFamily: "'IBM Plex Mono', monospace", fontSize: '7px',
+                      padding: '1px 5px', borderRadius: '5px',
+                      background: 'var(--bg3, #e8e8e8)', color: 'var(--tx3)',
+                      textTransform: 'uppercase', letterSpacing: '.4px',
+                    }}>Listed</span>
+                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', fontWeight: 500, color: 'var(--rvdk)', paddingRight: '46px' }}>{o.business_name}</div>
                     {o.website && (
                       <a href={o.website.startsWith('http') ? o.website : `https://${o.website}`}
                         target="_blank" rel="noopener noreferrer"
