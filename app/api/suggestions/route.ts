@@ -256,12 +256,10 @@ export async function PATCH(req: NextRequest) {
 
       // Apply the rollback — update the river field back to the original value
       const fieldMap: Record<string, string> = {
-        cls: 'class',
-        opt: 'optimal_cfs',
-        len: 'length',
-        desc: 'description',
-        desig: 'designations',
-        gauge: 'usgs_gauge',
+        cls: 'class', opt: 'optimal_cfs', len: 'length',
+        desc: 'description', desig: 'designations', gauge: 'usgs_gauge',
+        sections: 'sections', access_points: 'sections',
+        safe_cfs: 'optimal_cfs',
       }
 
       const dbField = fieldMap[original.field]
@@ -321,6 +319,8 @@ export async function PATCH(req: NextRequest) {
       const fieldMap: Record<string, string> = {
         cls: 'class', opt: 'optimal_cfs', len: 'length',
         desc: 'description', desig: 'designations', gauge: 'usgs_gauge',
+        sections: 'sections', access_points: 'sections',
+        safe_cfs: 'optimal_cfs',
       }
 
       const dbField = fieldMap[suggestion.field]

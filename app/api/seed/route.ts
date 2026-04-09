@@ -88,6 +88,130 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ ok: true, step: 'rapids', count })
   }
 
+  // Step: seed ALL states automatically
+  if (step === 'all') {
+    const stateKeys = Object.keys(STATES)
+    const results: Array<{ state: string; rivers: number; ok: boolean }> = []
+
+    // Seed states table first
+    for (const [key, state] of Object.entries(STATES)) {
+      await supabase.from('states').upsert({
+        key, name: state.name, abbr: state.abbr, label: state.label,
+        filters: state.filters, filter_labels: state.fL,
+      }, { onConflict: 'key' })
+    }
+
+    // Seed each state's rivers
+    for (const stateKey of stateKeys) {
+      const state = STATES[stateKey]
+      let stateErrors = 0
+
+      for (const r of state.rivers) {
+        const flags: Record<string, boolean> = {}
+        for (const [k, v] of Object.entries(r)) { if (typeof v === 'boolean') flags[k] = v }
+
+        const { error } = await supabase.from('rivers').upsert({
+          id: r.id, state_key: stateKey, name: r.n, county: r.co, length: r.len,
+          class: r.cls, optimal_cfs: r.opt, usgs_gauge: r.g, avg_cfs: r.avg,
+          hist_flow: r.histFlow, map_x: r.mx, map_y: r.my, description: r.desc,
+          designations: r.desig, sections: r.secs || [], filter_flags: flags,
+        }, { onConflict: 'id' })
+        if (error) stateErrors++
+
+        // History
+        await supabase.from('river_history').delete().eq('river_id', r.id)
+        if (r.history) {
+          let so = 0
+          for (const era of r.history) {
+            for (const entry of era.entries) {
+              await supabase.from('river_history').insert({
+                river_id: r.id, era: era.era, year: entry.yr, title: entry.title,
+                body: entry.text, source: entry.src, sort_order: so++,
+              })
+            }
+          }
+        }
+
+        // Docs
+        await supabase.from('river_documents').delete().eq('river_id', r.id)
+        for (const doc of (r.docs || [])) {
+          await supabase.from('river_documents').insert({
+            river_id: r.id, title: doc.t, source: doc.s, year: doc.y,
+            doc_type: doc.tp, pages: doc.pg, url: doc.url || null,
+          })
+        }
+
+        // Reviews
+        await supabase.from('river_reviews').delete().eq('river_id', r.id).eq('is_seed', true)
+        for (const rev of (r.revs || [])) {
+          await supabase.from('river_reviews').insert({
+            river_id: r.id, username: rev.u, review_date: rev.d, stars: rev.s, body: rev.t, is_seed: true,
+          })
+        }
+
+        // Outfitters
+        await supabase.from('river_outfitters').delete().eq('river_id', r.id).eq('is_seed', true)
+        for (const out of (r.outs || [])) {
+          await supabase.from('river_outfitters').insert({
+            river_id: r.id, name: out.n, description: out.d, link: out.l || '', is_seed: true,
+          })
+        }
+      }
+
+      results.push({ state: stateKey, rivers: state.rivers.length, ok: stateErrors === 0 })
+    }
+
+    // Also seed fisheries
+    for (const [riverId, fish] of Object.entries(FISHERIES)) {
+      await supabase.from('river_species').delete().eq('river_id', riverId)
+      for (const sp of (fish.species || [])) {
+        await supabase.from('river_species').insert({ river_id: riverId, name: sp.name, species_type: sp.type, is_primary: sp.primary, notes: sp.notes || null })
+      }
+      await supabase.from('river_hatches').delete().eq('river_id', riverId)
+      let ho = 0
+      for (const h of (fish.hatches || [])) {
+        await supabase.from('river_hatches').insert({ river_id: riverId, name: h.name, timing: h.timing, notes: h.notes || null, sort_order: ho++ })
+      }
+      await supabase.from('river_spawning').delete().eq('river_id', riverId)
+      for (const s of (fish.spawning || [])) {
+        await supabase.from('river_spawning').insert({ river_id: riverId, species: s.species, season: s.season, notes: s.notes || null })
+      }
+      await supabase.from('river_runs').delete().eq('river_id', riverId)
+      for (const r of (fish.runs || [])) {
+        await supabase.from('river_runs').insert({ river_id: riverId, species: r.species, timing: r.timing, peak: r.peak || null, notes: r.notes || null })
+      }
+      await supabase.from('river_guides').delete().eq('river_id', riverId)
+      for (const g of (fish.guides || [])) {
+        await supabase.from('river_guides').insert({ river_id: riverId, name: g })
+      }
+    }
+
+    // Seed rapids
+    for (const [riverId, rapids] of Object.entries(RAPIDS)) {
+      await supabase.from('river_rapids').delete().eq('river_id', riverId)
+      let so = 0
+      for (const rapid of rapids) {
+        await supabase.from('river_rapids').insert({
+          river_id: riverId, name: rapid.name, class: rapid.class,
+          lat: rapid.lat, lng: rapid.lng, description: rapid.description,
+          mile: rapid.mile || null, sort_order: so++,
+        })
+      }
+    }
+
+    const totalRivers = results.reduce((s, r) => s + r.rivers, 0)
+    const failedStates = results.filter(r => !r.ok).length
+    return NextResponse.json({
+      ok: failedStates === 0,
+      states: results.length,
+      totalRivers,
+      fisheries: Object.keys(FISHERIES).length,
+      rapids: Object.keys(RAPIDS).length,
+      failedStates,
+      results,
+    })
+  }
+
   // Seed a single state's rivers
   if (stateParam) {
     const state = STATES[stateParam]
