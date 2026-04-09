@@ -46,6 +46,13 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   greenbrier: [38.10, -80.25],
   cheat: [39.48, -79.85],
   tygart: [39.15, -80.05],
+  cheat_narrows: [39.52, -79.78],
+  bluestone: [37.55, -80.92],
+  tygart_wv: [39.32, -80.18],
+  north_branch: [39.45, -78.98],
+  cacapon: [39.42, -78.32],
+  shavers_fork: [38.92, -79.62],
+  williams_wv: [38.45, -80.42],
 
   // Colorado
   arkansas: [38.72, -106.10],
@@ -53,6 +60,13 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   yampa: [40.48, -106.83],
   crystal: [39.20, -107.22],
   glenwood: [39.55, -107.32],
+  colorado_glenwood: [39.55, -107.32],
+  taylor: [38.82, -106.92],
+  frying_pan: [39.40, -106.82],
+  south_platte: [39.18, -105.32],
+  cache_la_poudre: [40.68, -105.22],
+  gunnison_main: [38.82, -107.92],
+  colorado_pumphouse: [39.92, -106.50],
 
   // Idaho
   salmon: [45.18, -113.90],
@@ -83,6 +97,13 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   pinecreek: [41.62, -77.45],
   clarion: [41.32, -79.15],
   lehigh: [40.85, -75.72],
+  juniata: [40.48, -77.35],
+  slippery_rock: [40.95, -80.18],
+  kiski: [40.62, -79.55],
+  tohickon: [40.45, -75.18],
+  little_juniata: [40.62, -78.18],
+  lackawaxen: [41.48, -75.05],
+  kettle_creek_pa: [41.55, -77.92],
 
   // Montana
   flathead: [48.25, -113.55],
@@ -110,6 +131,13 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   cache_creek: [38.72, -122.15],
   mokelumne: [38.22, -120.72],
   smith: [41.82, -124.08],
+  feather: [39.78, -121.32],
+  russian: [38.62, -122.85],
+  kings: [36.78, -118.92],
+  napa: [38.42, -122.32],
+  truckee_ca: [39.18, -120.18],
+  salmon_ca: [41.38, -123.18],
+  pit: [40.92, -121.92],
 
   // Virginia
   james: [37.55, -79.45],
@@ -131,6 +159,13 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   french_broad: [35.58, -82.58],
   green_nc: [35.22, -82.32],
   watauga: [36.22, -81.72],
+  davidson: [35.28, -82.78],
+  nantahala_lake: [35.18, -83.62],
+  little_tennessee: [35.42, -83.58],
+  roanoke: [36.18, -77.38],
+  cape_fear: [34.45, -77.92],
+  neuse: [35.12, -77.05],
+  haw: [35.78, -79.18],
 
   // Arizona
   grandcanyon: [36.10, -112.10],
@@ -233,6 +268,13 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   chattooga_sc: [34.82, -83.25],
   saluda: [34.00, -81.15],
   edisto: [33.42, -80.62],
+  chattooga_sc_main: [34.85, -83.25],
+  enoree: [34.62, -82.00],
+  lynches: [34.18, -79.85],
+  wateree: [34.22, -80.62],
+  pee_dee: [34.18, -79.62],
+  black_sc: [33.78, -79.68],
+  lumber: [34.42, -79.38],
 
   // Nebraska
   niobrara: [42.78, -100.08],
