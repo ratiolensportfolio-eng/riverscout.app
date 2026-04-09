@@ -6,35 +6,32 @@ export const dynamic = 'force-dynamic'
 
 // NWS AHPS river forecast API
 // Maps USGS gauge IDs to NWS location IDs (AHPS 5-char codes)
+// VERIFIED via individual lookups against api.water.noaa.gov/nwps/v1/gauges/{lid}
+// To add more: visit water.noaa.gov/gauges/{lid}, confirm the USGS site number,
+// and add the mapping below.
 const USGS_TO_NWS: Record<string, string> = {
-  // Michigan
-  '04137500': 'MIOM4',  // Au Sable at Mio
-  '04125460': 'PHRM4',  // Pine River
-  '04126000': 'MNTM4',  // Manistee
-  '04121500': 'NWGM4',  // Muskegon at Newaygo
-  '04122500': 'PRMM4',  // Pere Marquette
-  // Colorado
-  '07094500': 'ARPC2',  // Arkansas at Parkdale
-  '07091200': 'BVEC2',  // Arkansas at Buena Vista
-  // West Virginia
-  '03189600': 'SMWV2',  // Gauley at Summersville
-  '03185400': 'FYWV2',  // New River at Fayette
-  // Idaho
-  '13317000': 'SALI1',  // Salmon at Salmon
-  // Oregon
-  '14048000': 'DESO3',  // Deschutes at Moody
-  '14359000': 'GRPO3',  // Rogue at Grants Pass
-  // Montana
-  '06052500': 'GALM8',  // Gallatin at Gallatin Gateway
-  '06192500': 'YLSM8',  // Yellowstone at Livingston
-  // Pennsylvania
-  '03082500': 'OHPM4',  // Youghiogheny at Ohiopyle
-  // Tennessee
-  '03566000': 'OCOT1',  // Ocoee
-  // North Carolina
-  '03504000': 'NANP1',  // Nantahala
-  // Maine
-  '01034500': 'WVLM1',  // Penobscot
+  // Michigan — Au Sable chain (verified)
+  '04136000': 'RDOM4',  // Au Sable near Red Oak
+  '04136500': 'MIOM4',  // Au Sable at Mio (Mio Dam)
+  '04136900': 'MCKM4',  // Au Sable near McKinley
+  '04137005': 'CSVM4',  // Au Sable at Curtisville (Alcona Dam)
+  '04137500': 'ASBM4',  // Au Sable near Au Sable (mouth)
+
+  // Michigan — Manistee chain (verified)
+  '04123500': 'GYMM4',  // Manistee near Grayling
+  '04124000': 'SHRM4',  // Manistee near Sherman
+  '04124200': 'MSKM4',  // Manistee near Mesick (Hodenpyl Dam)
+  '04125550': 'WLSM4',  // Manistee at Wellston (Tippy Dam)
+
+  // Michigan — Muskegon (verified)
+  '04121970': 'CROM4',  // Muskegon near Croton (Croton Dam)
+
+  // Montana (verified)
+  '06043500': 'GLGM8',  // Gallatin near Gallatin Gateway
+  '06192500': 'LIVM8',  // Yellowstone at Livingston
+
+  // West Virginia (verified)
+  '03189600': 'SUMW2',  // Gauley below Summersville Lake
 }
 
 interface ForecastPoint {
