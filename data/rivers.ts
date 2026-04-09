@@ -72,7 +72,7 @@ export const STATES: StatesDB = {
         id: 'muskegon', n: 'Muskegon River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Mecosta / Newaygo / Muskegon Co.', len: '216 mi', cls: 'Riffles', opt: '800–3000',
         g: '04121970', avg: 1840, histFlow: 1650, mx: 216, my: 260, abbr: 'MI',
-        desc: "Michigan's longest river entirely within the state. World-class steelhead and Chinook salmon. The world's first logging railroad was built in 1876 specifically to feed logs into the Muskegon system.",
+        desc: "Michigan's longest river entirely within the state, running 216 miles from Houghton Lake to Muskegon Lake. Below Croton Dam, the lower reach is a Michigan Designated Trout Stream with world-class steelhead and Chinook salmon runs. The world's first logging railroad was built in 1876 specifically to feed logs into the Muskegon system.",
         desig: 'Michigan Designated Trout Stream (lower reach)',
         secs: ['Upper — Houghton Lake to Newaygo', 'Lower — Croton Dam to Muskegon Lake'],
         history: [
@@ -103,7 +103,7 @@ export const STATES: StatesDB = {
         id: 'boardman', n: 'Boardman River', lp: true, up: false, wild: false, nat: true, ww: false,
         co: 'Grand Traverse / Kalkaska Co.', len: '40 mi', cls: 'Riffles', opt: '150–500',
         g: '04127200', avg: 280, histFlow: 255, mx: 255, my: 230, abbr: 'MI',
-        desc: "Flows into Grand Traverse Bay at Traverse City, the Boardman has seen dramatic ecological revival through recent dam removals restoring fish passage. A cold, clear stream winding through forested terrain to one of Michigan's most vibrant waterfronts.",
+        desc: "Flows into Grand Traverse Bay at Traverse City, the Boardman has seen dramatic ecological revival through recent dam removals restoring fish passage. A cold, clear stream winding through forested terrain to one of Michigan's most vibrant waterfronts. Designated a Michigan Natural River, the upper reach from Supply Road to Brown Bridge is a remote forest paddle before the lower 40 miles deliver paddlers into downtown Traverse City.",
         desig: 'Michigan Natural River · Trout Unlimited Conservation',
         secs: ['Upper — Supply Road to Brown Bridge, remote forest paddle', 'Lower — Boardman Dam to Grand Traverse Bay, urban paddle through Traverse City'],
         history: [
@@ -163,7 +163,7 @@ export const STATES: StatesDB = {
         id: 'rifle', n: 'Rifle River', lp: true, up: false, wild: false, nat: true, ww: false,
         co: 'Ogemaw / Arenac Co.', len: '60 mi', cls: 'Riffles', opt: '200–800',
         g: '04142000', avg: 380, histFlow: 345, mx: 280, my: 258, abbr: 'MI',
-        desc: "Flowing through the Rifle River Recreation Area, the Rifle is one of Michigan's most family-friendly float rivers with good smallmouth bass fishing. A gentle, forested paddle through the eastern LP.",
+        desc: "Flowing through the Rifle River Recreation Area, the Rifle is one of Michigan's most family-friendly float rivers with good smallmouth bass fishing. A gentle, forested paddle through the eastern LP. Designated a Michigan Natural River, its 60-mile run from the scenic Ogemaw County headwaters to Saginaw Bay offers popular family floats on the middle reach between Selkirk and Sterling.",
         desig: 'Michigan Natural River',
         secs: ['Upper — Rifle River Recreation Area, scenic headwaters', 'Middle — Selkirk to Sterling, popular family float', 'Lower — Sterling to Saginaw Bay, wider and slower'],
         history: [
@@ -208,7 +208,7 @@ export const STATES: StatesDB = {
         id: 'thornapple', n: 'Thornapple River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Barry / Eaton Co.', len: '90 mi', cls: 'Riffles', opt: '300–1200',
         g: '04117500', avg: 680, histFlow: 620, mx: 255, my: 270, abbr: 'MI',
-        desc: "Winding through southwest Michigan's rural farmland, the Thornapple offers good bass fishing and a peaceful, pastoral paddle to its confluence with the Grand River. A quiet alternative to busier northern LP rivers.",
+        desc: "Winding through southwest Michigan's rural farmland, the Thornapple offers good bass fishing and a peaceful, pastoral paddle to its confluence with the Grand River. A quiet alternative to busier northern LP rivers. The 90-mile river drifts through gentle meanders from Vermontville to Hastings before widening on the run into Grand Rapids.",
         desig: 'None',
         secs: ['Upper — Vermontville to Hastings, gentle meanders through farmland', 'Lower — Hastings to Grand Rapids, wider current to Grand River confluence'],
         history: [
@@ -238,7 +238,7 @@ export const STATES: StatesDB = {
         id: 'ausable_sb', n: 'Au Sable South Branch', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Crawford / Roscommon Co.', len: '40 mi', cls: 'Riffles', opt: '100–400',
         g: '04135700', avg: 180, histFlow: 162, mx: 270, my: 258, abbr: 'MI',
-        desc: "Quieter and more intimate than the main stem Au Sable, the South Branch winds through state forest with wild brook trout in every pool. A peaceful escape for anglers and paddlers seeking solitude.",
+        desc: "Quieter and more intimate than the main stem Au Sable, the South Branch winds through state forest with wild brook trout in every pool. A peaceful escape for anglers and paddlers seeking solitude. Designated a Michigan Natural River, the 40-mile South Branch is narrowest and wildest from Chase Bridge to Smith Bridge before widening on the lower reach to Roscommon.",
         desig: 'Michigan Natural River',
         secs: ['Chase Bridge to Smith Bridge — upper reach, narrow and wild', 'Smith Bridge to Roscommon — lower reach, wider meanders'],
         history: [
@@ -268,7 +268,7 @@ export const STATES: StatesDB = {
         id: 'cass', n: 'Cass River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Tuscola Co.', len: '95 mi', cls: 'Riffles', opt: '200–1200',
         g: '04151500', avg: 620, histFlow: 558, mx: 278, my: 262, abbr: 'MI',
-        desc: "Michigan's Thumb area river flowing through agricultural country, the Cass is a family-friendly paddle with gentle current and easy access. A pleasant introduction to paddling in the eastern Lower Peninsula.",
+        desc: "Michigan's Thumb area river flowing through agricultural country, the Cass is a family-friendly paddle with gentle current and easy access. A pleasant introduction to paddling in the eastern Lower Peninsula. Its 95-mile course runs from gentle farmland meanders between Cass City and Caro down to wider, slower water reaching Saginaw Bay.",
         desig: 'None',
         secs: ['Upper — Cass City to Caro, gentle farmland meanders', 'Lower — Caro to Saginaw Bay, wider and slower'],
         history: [
@@ -283,7 +283,7 @@ export const STATES: StatesDB = {
         id: 'chippewa_mi', n: 'Chippewa River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Mecosta / Isabella Co.', len: '90 mi', cls: 'Riffles', opt: '150–600',
         g: '04154000', avg: 340, histFlow: 306, mx: 260, my: 260, abbr: 'MI',
-        desc: "Flowing through the Mt. Pleasant area and Central Michigan University's hometown, the Chippewa is a gentle central LP paddle with good smallmouth bass fishing and easy access from mid-Michigan communities.",
+        desc: "Flowing through the Mt. Pleasant area and Central Michigan University's hometown, the Chippewa is a gentle central LP paddle with good smallmouth bass fishing and easy access from mid-Michigan communities. The 90-mile river begins as a narrow, wooded stream in Mecosta County before broadening through Mt. Pleasant and on to Midland.",
         desig: 'None',
         secs: ['Upper — Mecosta County headwaters, narrow and wooded', 'Lower — Mt. Pleasant to Midland, wider and gentler'],
         history: [
@@ -298,7 +298,7 @@ export const STATES: StatesDB = {
         id: 'dowagiac', n: 'Dowagiac River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Cass Co.', len: '30 mi', cls: 'Riffles', opt: '100–400',
         g: '04101800', avg: 180, histFlow: 162, mx: 240, my: 272, abbr: 'MI',
-        desc: "A spring-fed creek in southwest Michigan with excellent trout habitat, the Dowagiac is a small gem prized by anglers for its cold, clear water and healthy brown trout population.",
+        desc: "A spring-fed creek in southwest Michigan's Cass County with excellent trout habitat, the Dowagiac is a small gem prized by anglers for its cold, clear water and healthy brown trout population. Designated a Michigan Trout Stream, its 30-mile run drops from intimate headwaters at Dowagiac through Sumnerville to the St. Joseph River.",
         desig: 'Michigan Designated Trout Stream',
         secs: ['Upper — Dowagiac to Sumnerville, intimate spring creek', 'Lower — Sumnerville to St. Joseph River, wider meanders'],
         history: [
@@ -328,7 +328,7 @@ export const STATES: StatesDB = {
         id: 'little_manistee', n: 'Little Manistee River', lp: true, up: false, wild: false, nat: true, ww: false,
         co: 'Lake / Mason Co.', len: '55 mi', cls: 'Riffles', opt: '150–600',
         g: '04126130', avg: 280, histFlow: 252, mx: 242, my: 245, abbr: 'MI',
-        desc: "Premier steelhead river and home to the Michigan DNR weir used for egg collection to stock rivers statewide. The Little Manistee runs cold and clear through the Manistee National Forest.",
+        desc: "Premier steelhead river and home to the Michigan DNR weir used for egg collection to stock rivers statewide. The Little Manistee runs cold and clear through the Manistee National Forest. Designated a Michigan Natural River, the 55-mile stream flows from Luther to Manistee Lake, with the lower reach from Old Stronach Road serving as the main steelhead corridor.",
         desig: 'Michigan Natural River',
         secs: ['Upper — Luther to Old Stronach Road, narrow forest paddle', 'Lower — Old Stronach Road to Manistee Lake, steelhead corridor'],
         history: [
@@ -358,7 +358,7 @@ export const STATES: StatesDB = {
         id: 'ocqueoc', n: 'Ocqueoc River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Presque Isle Co.', len: '30 mi', cls: 'Riffles', opt: '80–300',
         g: '04133501', avg: 140, histFlow: 126, mx: 280, my: 242, abbr: 'MI',
-        desc: "Home to Ocqueoc Falls, the only named waterfall in Michigan's Lower Peninsula. A small, intimate river in the remote northeastern LP with good trout fishing and a surprising natural landmark.",
+        desc: "Home to Ocqueoc Falls, the only named waterfall in Michigan's Lower Peninsula. A small, intimate river in the remote northeastern LP with good trout fishing and a surprising natural landmark. Thirty miles of gentle forest paddling in Presque Isle County link the falls to Lake Huron.",
         desig: 'None',
         secs: ['Upper — Ocqueoc Falls area, scenic headwaters', 'Lower — Ocqueoc Falls to Lake Huron, gentle forest paddle'],
         history: [
@@ -373,7 +373,7 @@ export const STATES: StatesDB = {
         id: 'pigeon_mi', n: 'Pigeon River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Otsego Co.', len: '40 mi', cls: 'Riffles', opt: '100–400',
         g: '04132500', avg: 190, histFlow: 171, mx: 272, my: 244, abbr: 'MI',
-        desc: "Flowing through the Pigeon River Country State Forest — Michigan's elk country — the Pigeon is the most remote river in the Lower Peninsula. A wild, intimate paddle with a chance to see elk along the banks.",
+        desc: "Flowing through the Pigeon River Country State Forest — Michigan's elk country — the Pigeon is the most remote river in the Lower Peninsula. A wild, intimate paddle with a chance to see elk along the banks. The 40-mile river begins with a forest run from Pigeon Bridge to Elk Hill before gentling toward Mullett Lake.",
         desig: 'None',
         secs: ['Upper — Pigeon Bridge to Elk Hill, remote forest paddle through elk country', 'Lower — Elk Hill to Mullett Lake, wider and gentler'],
         history: [
@@ -388,7 +388,7 @@ export const STATES: StatesDB = {
         id: 'shiawassee', n: 'Shiawassee River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Livingston / Shiawassee Co.', len: '100 mi', cls: 'Riffles', opt: '200–1000',
         g: '04144500', avg: 480, histFlow: 432, mx: 270, my: 268, abbr: 'MI',
-        desc: "Flowing through mid-Michigan to the Shiawassee National Wildlife Refuge, this river offers gentle paddling through farmland and wetlands with excellent birding opportunities.",
+        desc: "Flowing through mid-Michigan to the Shiawassee National Wildlife Refuge, this river offers gentle paddling through farmland and wetlands with excellent birding opportunities. Its 100-mile course drifts from gentle meanders between Holly and Byron down to the wider wetland corridor of the refuge. The lower reach is one of the premier wildlife-viewing paddles in the Lower Peninsula.",
         desig: 'Shiawassee National Wildlife Refuge (lower reach)',
         secs: ['Upper — Holly to Byron, gentle meanders through farmland', 'Lower — Byron to Shiawassee NWR, wetland paddling and birding'],
         history: [
@@ -403,7 +403,7 @@ export const STATES: StatesDB = {
         id: 'sturgeon_lp', n: 'Sturgeon River (LP)', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Otsego / Cheboygan Co.', len: '45 mi', cls: 'I–II', opt: '150–600',
         g: '04131980', avg: 260, histFlow: 234, mx: 268, my: 238, abbr: 'MI',
-        desc: "The fastest river in the Lower Peninsula with good current and Class I-II water that can challenge beginners. A scenic, forested paddle through the northern LP with reliable flow and a reputation for swift water.",
+        desc: "The fastest river in the Lower Peninsula with good current and Class I-II water that can challenge beginners. A scenic, forested paddle through the northern LP with reliable flow and a reputation for swift water. Designated a Michigan Natural River, the 45-mile run from Wolverine to Burt Lake features its fastest water through state forest above Rondo.",
         desig: 'Michigan Natural River',
         secs: ['Upper — Wolverine to Rondo, fast current through state forest', 'Lower — Rondo to Burt Lake, gentler but still moving'],
         history: [
@@ -2212,7 +2212,7 @@ export const STATES: StatesDB = {
         id: 'russian', n: 'Russian River', ww: false, wild: false, sierra: false, coastal: true,
         co: 'Sonoma / Mendocino Co.', len: '110 mi', cls: 'I–II', opt: '200–1500',
         g: '11464000', avg: 850, histFlow: 780, mx: 123, my: 52, abbr: 'CA',
-        desc: "California wine country's signature paddling river — the Russian flows 110 miles through Mendocino and Sonoma counties past vineyards, redwood groves, and sleepy river towns before reaching the Pacific at Jenner. Summer flows are mild enough for families and beginners, and the river is famous for its mid-river beach coves and warm-water swimming.",
+        desc: "California wine country's signature paddling river — the Russian flows 110 miles through Mendocino and Sonoma counties past vineyards, redwood groves, and sleepy river towns before reaching the Pacific at Jenner. Summer flows are mild enough for families and beginners, and the river is famous for its mid-river beach coves and warm-water swimming. The Alexander Valley run from Healdsburg to Guerneville is the classic summer float, while the lower river carves a redwood canyon to the sea.",
         desig: 'California Heritage River · Russian River Watershed Association',
         secs: ['Upper Russian — Ukiah to Hopland, Class I, vineyards and pastoral valley', 'Alexander Valley — Healdsburg to Guerneville, Class I–II, classic summer float', 'Lower Russian — Guerneville to Jenner, Class I, redwood canyon to the Pacific'],
         history: [
@@ -2879,7 +2879,7 @@ export const STATES: StatesDB = {
         id: 'oak_creek', n: 'Oak Creek', ww: false, wild: false, desert: false, canyon: true,
         co: 'Coconino / Yavapai Co.', len: '56 mi', cls: 'I', opt: '50–300',
         g: '09504420', avg: 120, histFlow: 100, mx: 265, my: 100, abbr: 'AZ',
-        desc: "Oak Creek flows through Sedona's iconic red rock canyon, one of the most photographed landscapes in Arizona. Slide Rock State Park draws visitors to the natural sandstone waterslide, while the creek meanders through towering crimson buttes and lush riparian forest.",
+        desc: "Oak Creek flows through Sedona's iconic red rock canyon, one of the most photographed landscapes in Arizona. Slide Rock State Park draws visitors to the natural sandstone waterslide, while the creek meanders through towering crimson buttes and lush riparian forest. The 56-mile creek runs from a forested canyon above Sedona down through the red rock corridor and out into desert riparian before joining the Verde River.",
         desig: 'Slide Rock State Park · Coconino National Forest',
         secs: ['Upper Oak Creek — Class I, forested canyon above Sedona', 'Sedona reach — Class I, red rock corridor through town', 'Lower Oak Creek to Verde River — Class I, desert riparian'],
         history: [
@@ -2924,7 +2924,7 @@ export const STATES: StatesDB = {
         id: 'san_francisco_az', n: 'San Francisco River', ww: false, wild: false, desert: true, canyon: true,
         co: 'Greenlee Co.', len: '40 mi', cls: 'I–II', opt: '100–800',
         g: '09444500', avg: 200, histFlow: 170, mx: 320, my: 125, abbr: 'AZ',
-        desc: "The San Francisco River flows through one of the most remote and least-visited canyons in eastern Arizona. Forty miles of gentle desert water through Greenlee County offers solitude, wildlife, and a landscape virtually unchanged from the frontier era.",
+        desc: "The San Francisco River flows through one of the most remote and least-visited canyons in eastern Arizona. Forty miles of gentle desert water through Greenlee County offers solitude, wildlife, and a landscape virtually unchanged from the frontier era. The Clifton reach narrows through a canyon before the river drops into the Gila confluence below.",
         desig: 'Apache-Sitgreaves National Forest',
         secs: ['Upper San Francisco — Class I, mountain valley', 'Clifton reach — Class I–II, canyon narrows', 'Lower San Francisco to Gila — Class I, desert corridor'],
         history: [
@@ -3378,7 +3378,7 @@ export const STATES: StatesDB = {
         id: 'allagash', n: 'Allagash Wilderness Waterway', ww: false, wild: true, remote: true, fishing: true,
         co: 'Aroostook / Piscataquis Co.', len: '92 mi', cls: 'I–II', opt: '300–1200',
         g: '01011500', avg: 620, histFlow: 560, mx: 890, my: 100, abbr: 'ME',
-        desc: "First state-designated Wild and Scenic waterway in America (1966) — a 92-mile wilderness canoe route through Maine's North Woods. Remote lakes, boreal forest, moose, and brook trout define this iconic multi-day paddling expedition.",
+        desc: "First state-designated Wild and Scenic waterway in America (1966) — a 92-mile wilderness canoe route through Maine's North Woods. Remote lakes, boreal forest, moose, and brook trout define this iconic multi-day paddling expedition. The route travels from Telos Lake through Churchill Dam and on to Allagash Village, mixing flatwater portages with Class I–II river sections.",
         desig: 'Allagash Wilderness Waterway (Maine), National Wild & Scenic River',
         secs: ['Telos Lake to Chamberlain Lake — 15 mi, lake paddling and portages', 'Churchill Dam to Umsaskis Lake — 30 mi, river and lake sections', 'Long Lake to Allagash Village — 47 mi, river paddling with Class I–II rapids'],
         history: [
@@ -3640,7 +3640,7 @@ export const STATES: StatesDB = {
         id: 'chattooga_ga', n: 'Chattooga River — Georgia Section', ww: true, wild: true, piedmont: false, appalachian: true,
         co: 'Rabun Co.', len: '15 mi', cls: 'III–V', opt: '500–2000',
         g: '02177000', avg: 860, histFlow: 790, mx: 720, my: 390, abbr: 'GA',
-        desc: "Georgia side of the legendary Chattooga — Section IV with the infamous Five Falls is among the most challenging and iconic whitewater runs in the southeastern United States. Deliverance country, wild and uncompromising.",
+        desc: "Georgia side of the legendary Chattooga — Section IV with the infamous Five Falls is among the most challenging and iconic whitewater runs in the southeastern United States. Deliverance country, wild and uncompromising. A National Wild & Scenic River flanked by the Chattahoochee National Forest, the Georgia reach pushes Class III–V water from Bull Sluice through the Five Falls sequence.",
         desig: 'National Wild & Scenic River, Chattahoochee National Forest',
         secs: ['Section III — Class III, Georgia/South Carolina border', 'Section IV — Class III–V, Five Falls and Bull Sluice', 'Five Falls — Class IV–V, the marquee sequence'],
         history: [
@@ -3657,7 +3657,7 @@ export const STATES: StatesDB = {
         id: 'chattahoochee', n: 'Chattahoochee River — Metro Atlanta', ww: false, wild: false, piedmont: true, appalachian: false,
         co: 'Fulton / Cobb Co.', len: '48 mi', cls: 'I–II', opt: '750–2500',
         g: '02336000', avg: 2400, histFlow: 2200, mx: 720, my: 390, abbr: 'GA',
-        desc: "Urban river through Atlanta's Chattahoochee River National Recreation Area — 48 miles of NPS-managed parkland through the heart of metro Atlanta. The most accessible paddling in the Southeast's largest city.",
+        desc: "Urban river through Atlanta's Chattahoochee River National Recreation Area — 48 miles of NPS-managed parkland through the heart of metro Atlanta. The most accessible paddling in the Southeast's largest city. Below Buford Dam the tailwater is Class I–II trout water and tubing country, with an urban whitewater reach from Roswell to Paces Ferry farther downstream.",
         desig: 'Chattahoochee River NRA (NPS), Georgia Scenic River · Trout Unlimited Conservation',
         secs: ['Buford Dam to Roswell — Class I–II, trout water and tubing', 'Roswell to Paces Ferry — Class I–III, urban whitewater section', 'Paces Ferry to Peachtree Creek — Class I, flatwater urban float'],
         history: [
@@ -3787,7 +3787,7 @@ export const STATES: StatesDB = {
         id: 'kawishiwi', n: 'Boundary Waters — Kawishiwi River', ww: false, wild: true, bwca: true, fishing: true,
         co: 'Lake Co.', len: '30 mi', cls: 'I', opt: '200–800',
         g: '05124480', avg: 380, histFlow: 342, mx: 490, my: 80, abbr: 'MN',
-        desc: "The Kawishiwi is the most-traveled canoe route into the Boundary Waters Canoe Area Wilderness — over a million acres of roadless lake-and-river country straddling the Minnesota-Ontario border. Paddlers portage between crystal-clear lakes connected by short river segments through boreal forest unchanged since the last ice age.",
+        desc: "The Kawishiwi is the most-traveled canoe route into the Boundary Waters Canoe Area Wilderness — over a million acres of roadless lake-and-river country straddling the Minnesota-Ontario border. Paddlers portage between crystal-clear lakes connected by short river segments through boreal forest unchanged since the last ice age. The classic entry runs from Kawishiwi Lake to the Sawbill Entry with an iconic 80-rod carry around Kawishiwi Falls.",
         desig: 'Boundary Waters Canoe Area Wilderness (1978) · Superior National Forest',
         secs: ['Kawishiwi Lake to Sawbill Entry — 12 mi, classic BWCAW entry route', 'Kawishiwi Falls portage — iconic 80-rod carry around falls'],
         history: [
@@ -4108,7 +4108,7 @@ export const STATES: StatesDB = {
         id: 'wapsipinicon', n: 'Wapsipinicon River', scenic: true, fishing: true, prairie: true, bluffs: true,
         co: 'Jones / Buchanan Co.', len: '225 mi', cls: 'I–II', opt: '200–1,500',
         g: '05421000', avg: 980, histFlow: 882, mx: 540, my: 195, abbr: 'IA',
-        desc: "A 225-mile journey from prairie headwaters to the Driftless edge, the Wapsipinicon passes through some of Iowa's most varied terrain. Limestone outcrops, wooded bluffs, and gentle riffles characterize this underappreciated Iowa water trail that flows past Wapsipinicon State Park near Anamosa.",
+        desc: "A 225-mile journey from prairie headwaters to the Driftless edge, the Wapsipinicon passes through some of Iowa's most varied terrain. Limestone outcrops, wooded bluffs, and gentle riffles characterize this underappreciated Iowa water trail that flows past Wapsipinicon State Park near Anamosa. The upper reach from Independence to Quasqueton runs through prairie riffles, while the middle section into bluff country rewards multi-day trips.",
         desig: 'Iowa Water Trail · Wapsipinicon State Park',
         secs: ['Upper — Independence to Quasqueton, 40 mi, prairie riffles', 'Middle — Quasqueton to Anamosa, 50 mi, bluff country', 'Lower — Anamosa to Dixon, 60 mi, wide prairie valley'],
         history: [
@@ -4138,7 +4138,7 @@ export const STATES: StatesDB = {
         id: 'volga', n: 'Volga River', scenic: true, fishing: true, prairie: false, bluffs: true,
         co: 'Fayette / Clayton Co.', len: '50 mi', cls: 'I', opt: '100–600',
         g: '05412400', avg: 220, histFlow: 198, mx: 535, my: 190, abbr: 'IA',
-        desc: "A small, intimate Driftless stream flowing through the 5,500-acre Volga River State Recreation Area in northeast Iowa. The Volga offers quiet-water paddling through wooded valleys, past limestone outcrops, and alongside some of Iowa's best public land for hiking and mountain biking.",
+        desc: "A small, intimate Driftless stream flowing through the 5,500-acre Volga River State Recreation Area in northeast Iowa. The Volga offers quiet-water paddling through wooded valleys, past limestone outcrops, and alongside some of Iowa's best public land for hiking and mountain biking. The 15-mile SRA corridor and the 20-mile farm-valley reach to the Turkey River together make up a classic Driftless paddle.",
         desig: 'Volga River State Recreation Area',
         secs: ['Volga River SRA — 15 mi, state recreation area corridor', 'Lower Volga — SRA to Turkey River confluence, 20 mi, farm valley'],
         history: [
@@ -4443,7 +4443,7 @@ export const STATES: StatesDB = {
         id: 'bogue_chitto', n: 'Bogue Chitto River', scenic: true, swamp: false, bayou: false, fishing: true,
         co: 'Washington Parish', len: '100 mi', cls: 'I–II', opt: '300–2000',
         g: '07375000', avg: 1200, histFlow: 1080, mx: 540, my: 430, abbr: 'LA',
-        desc: "Louisiana's best canoe and kayak river — 100 miles of sandy-bottomed blackwater flowing through piney woods and hardwood bottoms from Mississippi to Lake Pontchartrain. White sandbars make perfect lunch stops and primitive campsites.",
+        desc: "Louisiana's best canoe and kayak river — 100 miles of sandy-bottomed blackwater flowing through piney woods and hardwood bottoms from Mississippi to Lake Pontchartrain. White sandbars make perfect lunch stops and primitive campsites. The middle reach from Warnerton to Franklinton has the best sandbars and paddling, with the lower river protected by the Bogue Chitto National Wildlife Refuge.",
         desig: 'Bogue Chitto National Wildlife Refuge (lower reach)',
         secs: ['Upper — Tylertown MS to Warnerton, intimate headwaters', 'Middle — Warnerton to Franklinton, best sandbars and paddling', 'Lower — Franklinton to NWR, wider and slower'],
         history: [
@@ -4458,7 +4458,7 @@ export const STATES: StatesDB = {
         id: 'whiskey_chitto', n: 'Whiskey Chitto Creek', scenic: true, swamp: false, bayou: false, fishing: true,
         co: 'Allen / Beauregard Parish', len: '60 mi', cls: 'I–II', opt: '200–1200',
         g: '08013500', avg: 480, histFlow: 432, mx: 540, my: 430, abbr: 'LA',
-        desc: 'Pristine piney woods paddling through the heart of southwest Louisiana. Whiskey Chitto winds through longleaf pine forests and hardwood bottoms with white sand beaches, gentle riffles, and some of the clearest water in the state.',
+        desc: "Pristine piney woods paddling through the heart of southwest Louisiana. Whiskey Chitto winds through longleaf pine forests and hardwood bottoms with white sand beaches, gentle riffles, and some of the clearest water in the state. A Louisiana Natural & Scenic River, its 60-mile run narrows on the upper reach from Oakdale to Mittie and widens with sandbars on the lower creek.",
         desig: 'Louisiana Natural and Scenic River',
         secs: ['Upper — Oakdale to Mittie, narrow and intimate', 'Lower — Mittie to confluence, wider with sandbars'],
         history: [
@@ -4518,7 +4518,7 @@ export const STATES: StatesDB = {
         id: 'lacombe', n: 'Bayou Lacombe', scenic: true, swamp: true, bayou: true, fishing: true,
         co: 'St. Tammany Parish', len: '30 mi', cls: 'I', opt: '50–300',
         g: '07375050', avg: 120, histFlow: 108, mx: 555, my: 445, abbr: 'LA',
-        desc: "A narrow, intimate cypress bayou draining into Lake Pontchartrain — Bayou Lacombe offers quintessential Louisiana paddling through ancient bald cypress and water tupelo forests. The short length and easy access make it ideal for half-day paddles on the Northshore.",
+        desc: "A narrow, intimate cypress bayou draining into Lake Pontchartrain — Bayou Lacombe offers quintessential Louisiana paddling through ancient bald cypress and water tupelo forests. The short length and easy access make it ideal for half-day paddles on the Northshore. The upper 15 miles form a cypress tunnel, with the lower half traversing the Big Branch Marsh National Wildlife Refuge.",
         desig: 'Big Branch Marsh National Wildlife Refuge (lower reach)',
         secs: ['Upper — Lacombe to Highway 190, 15 mi, cypress tunnel', 'Lower — Highway 190 to Lake Pontchartrain, 15 mi, NWR marshes'],
         history: [
@@ -4573,7 +4573,7 @@ export const STATES: StatesDB = {
         id: 'okatoma', n: 'Okatoma Creek', scenic: true, bluff: false, delta: false, fishing: true,
         co: 'Covington / Jones Co.', len: '20 mi', cls: 'I–II', opt: '200–1000',
         g: '02472500', avg: 440, histFlow: 396, mx: 555, my: 395, abbr: 'MS',
-        desc: "Mississippi's most popular canoe stream — 20 miles of gentle Class I–II rapids, white sandbars, and piney woods through the heart of south Mississippi. Okatoma means 'red water people' in Choctaw.",
+        desc: "Mississippi's most popular canoe stream — 20 miles of gentle Class I–II rapids, white sandbars, and piney woods through the heart of south Mississippi. Okatoma means 'red water people' in Choctaw. Designated a Mississippi Scenic Stream, the upper 10 miles from Seminary to Sanford holds the best rapids and is the classic day-trip run.",
         desig: 'Mississippi Scenic Stream',
         secs: ['Seminary to Sanford — 10 mi, upper run with best rapids', 'Sanford to Highway 29 — 10 mi, wider and mellower'],
         history: [
@@ -4588,7 +4588,7 @@ export const STATES: StatesDB = {
         id: 'wolf_ms', n: 'Wolf River', scenic: true, bluff: false, delta: false, fishing: false,
         co: 'Stone / Harrison Co.', len: '35 mi', cls: 'I', opt: '100–800',
         g: '02481000', avg: 380, histFlow: 342, mx: 555, my: 395, abbr: 'MS',
-        desc: "A pristine Gulf Coast blackwater stream flowing through some of the most undisturbed longleaf pine savanna remaining in the Southeast. The Wolf River's tannic waters, white sand bottom, and cathedral-like canopy make it one of Mississippi's most beautiful paddling experiences.",
+        desc: "A pristine Gulf Coast blackwater stream flowing through some of the most undisturbed longleaf pine savanna remaining in the Southeast. The Wolf River's tannic waters, white sand bottom, and cathedral-like canopy make it one of Mississippi's most beautiful paddling experiences. Designated a Mississippi Scenic Stream, the 35-mile river is narrowest and wildest from McHenry to Landon before widening on the coastal plain.",
         desig: 'Mississippi Scenic Stream · Wolf River Conservation District',
         secs: ['Upper — McHenry to Landon, narrow and wild', 'Lower — Landon to Lyman, wider coastal plain'],
         history: [
@@ -4750,7 +4750,7 @@ export const STATES: StatesDB = {
         id: 'mulberry_al', n: 'Mulberry Fork', ww: true, scenic: true, appalachian: true, coastal: false,
         co: 'Blount / Cullman Co.', len: '50 mi', cls: 'I–III', opt: '300–2,000',
         g: '02449500', avg: 1100, histFlow: 990, mx: 640, my: 378, abbr: 'AL',
-        desc: "Alabama's rain-dependent whitewater surprise — when the Mulberry Fork is running, it delivers genuine Class II–III rapids through a scenic Appalachian foothill gorge in Blount and Cullman counties. Sandstone bluffs, hardwood forests, and a remote corridor make this a favorite among Birmingham-area whitewater paddlers.",
+        desc: "Alabama's rain-dependent whitewater surprise — when the Mulberry Fork is running, it delivers genuine Class II–III rapids through a scenic Appalachian foothill gorge in Blount and Cullman counties. Sandstone bluffs, hardwood forests, and a remote corridor make this a favorite among Birmingham-area whitewater paddlers. The upper 25 miles above Garden City hold the Class II–III technical water, gentling to Class I–II on the run to the Locust Fork confluence.",
         desig: 'Alabama Scenic River',
         secs: ['Upper — Cullman County to Garden City, 25 mi, Class II–III', 'Lower — Garden City to Locust Fork confluence, 25 mi, Class I–II'],
         history: [
@@ -4881,7 +4881,7 @@ export const STATES: StatesDB = {
         id: 'wekiva', n: 'Wekiva River', spring: true, scenic: true, coastal: false, wildlife: true,
         co: 'Seminole / Orange Co.', len: '15 mi', cls: 'I', opt: '100–400',
         g: '02235000', avg: 210, histFlow: 189, mx: 660, my: 440, abbr: 'FL',
-        desc: "A spring-fed Wild and Scenic candidate flowing through Orlando's suburban edge — 15 miles of crystal-clear water, towering cypress, and surprising wilderness just minutes from theme parks. Home to manatees, otters, and one of central Florida's last undeveloped river corridors.",
+        desc: "A spring-fed Wild and Scenic candidate flowing through Orlando's suburban edge — 15 miles of crystal-clear water, towering cypress, and surprising wilderness just minutes from theme parks. Home to manatees, otters, and one of central Florida's last undeveloped river corridors. The 8-mile state park corridor from Wekiwa Springs to Katie Landing is the classic day paddle, with a wilder reach below to the St. Johns confluence.",
         desig: 'Wekiwa Springs State Park · Florida Outstanding Waterway · Wild & Scenic Study River',
         secs: ['Wekiwa Springs to Katie Landing — 8 mi, state park corridor', 'Katie Landing to St. Johns confluence — 7 mi, wider and wilder'],
         history: [
@@ -5061,7 +5061,7 @@ export const STATES: StatesDB = {
         id: 'tyger_sc', n: 'Tyger River', ww: false, scenic: true, piedmont: true, lowcountry: false,
         co: 'Spartanburg / Union Co.', len: '65 mi', cls: 'I–II', opt: '200–1,500',
         g: '02160105', avg: 680, histFlow: 612, mx: 728, my: 362, abbr: 'SC',
-        desc: "An upstate Piedmont river flowing 65 miles through Spartanburg and Union counties past historic textile mill ruins and rocky shoals. The Tyger offers a unique blend of natural beauty and industrial archaeology — crumbling mill dams and stone foundations line a river that has largely returned to a wild state.",
+        desc: "An upstate Piedmont river flowing 65 miles through Spartanburg and Union counties past historic textile mill ruins and rocky shoals. The Tyger offers a unique blend of natural beauty and industrial archaeology — crumbling mill dams and stone foundations line a river that has largely returned to a wild state. Designated an SC Scenic River, the North Tyger through Spartanburg County holds the best mill-ruin paddling before the river joins the Broad downstream.",
         desig: 'SC Scenic River · Tyger River Foundation',
         secs: ['North Tyger — Spartanburg County, 25 mi, mill ruins section', 'Middle Tyger — shoals and riffles, 20 mi', 'South Tyger to Broad River — 20 mi, wider Piedmont'],
         history: [
@@ -5556,7 +5556,7 @@ export const STATES: StatesDB = {
         id: 'cannonball', n: 'Cannonball River', scenic: false, prairie: true, badlands: false, fishing: false,
         co: 'Slope / Sioux Co.', len: '140 mi', cls: 'I', opt: '50–500',
         g: '06354000', avg: 160, histFlow: 144, mx: 395, my: 85, abbr: 'ND',
-        desc: "A remote prairie river flowing through the Standing Rock Reservation — the Cannonball is named for the perfectly round sandstone concretions found along its banks, which early explorers mistook for cannonballs. One of the most isolated paddling experiences in North Dakota, through vast grasslands with virtually no development.",
+        desc: "A remote prairie river flowing through the Standing Rock Reservation — the Cannonball is named for the perfectly round sandstone concretions found along its banks, which early explorers mistook for cannonballs. One of the most isolated paddling experiences in North Dakota, through vast grasslands with virtually no development. The 140-mile river cuts from narrow headwaters in Slope County east across the prairie to the Missouri confluence through Standing Rock.",
         desig: 'Standing Rock Sioux Reservation corridor',
         secs: ['Upper Cannonball — Slope Co. to Hettinger, 50 mi, narrow prairie stream', 'Lower Cannonball — Hettinger to Missouri confluence, 90 mi, wider channel through Standing Rock'],
         history: [
@@ -5690,7 +5690,7 @@ export const STATES: StatesDB = {
         id: 'marais', n: 'Marais des Cygnes River', scenic: true, prairie: true, flinthills: false, fishing: true,
         co: 'Miami / Linn Co.', len: '150 mi', cls: 'I', opt: '200–2000',
         g: '06914000', avg: 1100, histFlow: 990, mx: 430, my: 270, abbr: 'KS',
-        desc: "'Marsh of the Swans' — this French-named river flows through eastern Kansas, home to the Marais des Cygnes National Wildlife Refuge and rich Civil War history. The river passes through some of Kansas's best remaining bottomland hardwood forest, with excellent birding and a haunting historical landscape.",
+        desc: "'Marsh of the Swans' — this French-named river flows through eastern Kansas, home to the Marais des Cygnes National Wildlife Refuge and rich Civil War history. The river passes through some of Kansas's best remaining bottomland hardwood forest, with excellent birding and a haunting historical landscape. The 40-mile reach from Ottawa to Osawatomie crosses Bleeding Kansas country, with the National Wildlife Refuge corridor below offering the best wildlife viewing.",
         desig: 'Marais des Cygnes National Wildlife Refuge · Marais des Cygnes Massacre Memorial',
         secs: ['Ottawa to Osawatomie — 40 mi, eastern Kansas prairie and forest', 'Osawatomie to Trading Post — 40 mi, NWR corridor, best wildlife', 'Trading Post to Missouri line — 30 mi, wider river, bottomland forest'],
         history: [
@@ -5747,7 +5747,7 @@ export const STATES: StatesDB = {
         id: 'blue_ok', n: 'Blue River', ww: false, scenic: true, ozark: false, prairie: true,
         co: 'Johnston Co.', len: '30 mi', cls: 'I–II', opt: '100–800',
         g: '07332500', avg: 280, histFlow: 252, mx: 435, my: 320, abbr: 'OK',
-        desc: "A rare spring-fed limestone creek in south-central Oklahoma — the Blue River is one of only two naturally reproducing trout streams in the state. Crystal-clear water flows over limestone ledges through the Arbuckle Mountains, creating an unexpected oasis on the southern Plains.",
+        desc: "A rare spring-fed limestone creek in south-central Oklahoma — the Blue River is one of only two naturally reproducing trout streams in the state. Crystal-clear water flows over limestone ledges through the Arbuckle Mountains, creating an unexpected oasis on the southern Plains. Designated an Oklahoma Scenic River, the 30-mile stream runs from Connerville past the Blue River CCC Camp down through limestone pools to Milburn.",
         desig: 'Oklahoma Scenic River · Blue River Public Fishing Area',
         secs: ['Connerville to Blue River CCC Camp — 15 mi, spring-fed headwaters', 'CCC Camp to Milburn — 15 mi, wider valley, limestone pools'],
         history: [
@@ -5762,7 +5762,7 @@ export const STATES: StatesDB = {
         id: 'kiamichi', n: 'Kiamichi River', ww: false, scenic: true, ozark: false, prairie: false,
         co: 'Pushmataha / Choctaw Co.', len: '120 mi', cls: 'I–II', opt: '200–2000',
         g: '07335700', avg: 700, histFlow: 630, mx: 435, my: 320, abbr: 'OK',
-        desc: "Deep in the Ouachita Mountains of southeastern Oklahoma — the Kiamichi is one of the most remote and pristine rivers in the state. Flowing through rugged, heavily forested terrain with no towns along its length, the Kiamichi offers true wilderness paddling in a region that feels more like the Ozarks than the Plains.",
+        desc: "Deep in the Ouachita Mountains of southeastern Oklahoma — the Kiamichi is one of the most remote and pristine rivers in the state. Flowing through rugged, heavily forested terrain with no towns along its length, the Kiamichi offers true wilderness paddling in a region that feels more like the Ozarks than the Plains. The 120-mile river cuts from its most remote reach in Pushmataha County through Ouachita forest down to Hugo Lake.",
         desig: 'Kiamichi River Wilderness Area candidate',
         secs: ['Upper Kiamichi — Pushmataha Co., 40 mi, mountain stream, most remote', 'Big Cedar to Antlers — 40 mi, wider channel, Ouachita forest', 'Lower Kiamichi — 40 mi, gentler gradient to Hugo Lake'],
         history: [
@@ -6378,7 +6378,7 @@ export const STATES: StatesDB = {
         id: 'whitewater_in', n: 'Whitewater River', ww: true, scenic: true, flat: false,
         co: 'Franklin / Dearborn Co.', len: '96 mi', cls: 'I–III', opt: '400–2000',
         g: '03275000', avg: 1400, histFlow: 1260, mx: 630, my: 260, abbr: 'IN',
-        desc: "Indiana's namesake whitewater river — the Whitewater flows through the rolling hill country of southeastern Indiana before joining the Great Miami at the Ohio border. Class I–III rapids through limestone ledges make this the best technical paddling in Indiana.",
+        desc: "Indiana's namesake whitewater river — the Whitewater flows through the rolling hill country of southeastern Indiana before joining the Great Miami at the Ohio border. Class I–III rapids through limestone ledges make this the best technical paddling in Indiana. The upper Brookville-to-Metamora reach runs through canal country with gentler Class I–II water, while the Metamora-to-Harrison section holds the river's best whitewater.",
         desig: 'Indiana Natural & Scenic River candidate · Whitewater Memorial State Park',
         secs: ['Brookville to Metamora — Class I–II, canal country', 'Metamora to Harrison — Class II–III, best whitewater'],
         history: [
@@ -6438,7 +6438,7 @@ export const STATES: StatesDB = {
         id: 'muscatatuck', n: 'Muscatatuck River', ww: false, scenic: true, flat: true,
         co: 'Jennings / Jackson Co.', len: '100 mi', cls: 'Riffles', opt: '200–800',
         g: '03365500', avg: 480, histFlow: 432, mx: 630, my: 260, abbr: 'IN',
-        desc: "A scenic southern Indiana river flowing through forested hills and farmland. The Muscatatuck offers gentle paddling past limestone bluffs and through the Muscatatuck National Wildlife Refuge — one of the oldest refuges in the Midwest.",
+        desc: "A scenic southern Indiana river flowing through forested hills and farmland. The Muscatatuck offers gentle paddling past limestone bluffs and through the Muscatatuck National Wildlife Refuge — one of the oldest refuges in the Midwest. The 15-mile Vernon-to-North-Vernon reach holds the best limestone bluff scenery before the river widens toward its confluence with the White River.",
         desig: 'Muscatatuck National Wildlife Refuge · Indiana Scenic River candidate',
         secs: ['Vernon to North Vernon — 15 mi, best limestone bluff section', 'Muscatatuck NWR — wildlife refuge paddle access', 'Lower Muscatatuck to White River — 20 mi, wider and slower'],
         history: [
@@ -6453,7 +6453,7 @@ export const STATES: StatesDB = {
         id: 'eel_in', n: 'Eel River', ww: false, scenic: true, flat: true,
         co: 'Allen / Whitley Co.', len: '103 mi', cls: 'Riffles', opt: '200–700',
         g: '03328000', avg: 420, histFlow: 378, mx: 630, my: 260, abbr: 'IN',
-        desc: "A quiet Wabash tributary winding through northeastern Indiana farmland and forest. The Eel offers peaceful paddling with good smallmouth bass fishing and a surprisingly wild corridor through one of the more developed parts of the state.",
+        desc: "A quiet Wabash tributary winding through northeastern Indiana farmland and forest. The Eel offers peaceful paddling with good smallmouth bass fishing and a surprisingly wild corridor through one of the more developed parts of the state. The 103-mile river begins as a narrow, wooded stream in Allen County and broadens through North Manchester and Logansport before reaching the Wabash.",
         desig: 'Indiana Heritage River candidate',
         secs: ['Allen County headwaters to North Manchester — 30 mi, narrow and wooded', 'North Manchester to Logansport — 40 mi, wider meanders through farmland', 'Logansport to Wabash confluence — 20 mi, lower river'],
         history: [
@@ -6537,7 +6537,7 @@ export const STATES: StatesDB = {
         id: 'fox_il', n: 'Fox River', ww: false, scenic: true, flat: true,
         co: 'Kane / Kendall Co.', len: '115 mi', cls: 'I', opt: '800–2500',
         g: '05551000', avg: 1400, histFlow: 1260, mx: 575, my: 225, abbr: 'IL',
-        desc: "The Fox River flows 115 miles through the western Chicago suburbs, offering accessible flatwater paddling through a chain of riverside parks, historic mill towns, and preserved natural areas. Despite its suburban setting, the Fox maintains surprisingly scenic stretches with bald eagles, great blue herons, and wooded bluffs between Elgin and Yorkville.",
+        desc: "The Fox River flows 115 miles through the western Chicago suburbs, offering accessible flatwater paddling through a chain of riverside parks, historic mill towns, and preserved natural areas. Despite its suburban setting, the Fox maintains surprisingly scenic stretches with bald eagles, great blue herons, and wooded bluffs between Elgin and Yorkville. The St. Charles-to-Yorkville reach is the scenic centerpiece of the Illinois State Water Trail, while dam portages punctuate the mill-town corridor from Elgin to St. Charles.",
         desig: 'Fox River Water Trail · Illinois State Water Trail',
         secs: ['Algonquin to Elgin — 15 mi, chain of lakes outlet, easy flatwater', 'Elgin to St. Charles — 15 mi, mill-town corridor, dam portages', 'St. Charles to Yorkville — 20 mi, best scenery, bluffs and parks'],
         history: [
@@ -6567,7 +6567,7 @@ export const STATES: StatesDB = {
         id: 'mackinaw', n: 'Mackinaw River', ww: false, scenic: true, flat: true,
         co: 'McLean / Tazewell Co.', len: '130 mi', cls: 'Riffles', opt: '200–800',
         g: '05568000', avg: 420, histFlow: 380, mx: 575, my: 235, abbr: 'IL',
-        desc: "The Mackinaw is one of the last free-flowing rivers in Illinois — never dammed along its entire 130-mile length. Flowing through the heart of the central Illinois prairie, the Mackinaw offers gentle riffles over sand and gravel, wooded bottomlands, and a wild character that belies its location in the state's most productive farmland.",
+        desc: "The Mackinaw is one of the last free-flowing rivers in Illinois — never dammed along its entire 130-mile length. Flowing through the heart of the central Illinois prairie, the Mackinaw offers gentle riffles over sand and gravel, wooded bottomlands, and a wild character that belies its location in the state's most productive farmland. The wooded corridor from Congerville to Mackinaw holds the best scenery before the river widens on its run to the Illinois River at Pekin.",
         desig: 'Illinois Nature Preserve · Mackinaw River State Fish & Wildlife Area',
         secs: ['Lexington to Congerville — 20 mi, upper prairie stream', 'Congerville to Mackinaw — 25 mi, wooded corridor, best scenery', 'Mackinaw to Pekin — 30 mi, wider river to Illinois River confluence'],
         history: [
@@ -7327,7 +7327,7 @@ export const STATES: StatesDB = {
         id: 'red_clay', n: 'Red Clay Creek', scenic: true, tidal: false,
         co: 'New Castle Co.', len: '25 mi', cls: 'Riffles', opt: '50–200',
         g: '01480000', avg: 100, histFlow: 90, mx: 810, my: 250, abbr: 'DE',
-        desc: "A suburban creek with a wild heart — Red Clay Creek supports a surprising wild trout population in northern Delaware. Gentle riffles over piedmont bedrock through wooded suburban corridors make this an accessible close-to-home paddle and wade-fishing destination.",
+        desc: "A suburban creek with a wild heart — Red Clay Creek supports a surprising wild trout population in northern Delaware. Gentle riffles over piedmont bedrock through wooded suburban corridors make this an accessible close-to-home paddle and wade-fishing destination. The 8-mile Yorklyn-to-Ashland reach is the best wooded piedmont stretch before the creek passes through suburban parks toward Stanton.",
         desig: 'Red Clay Creek Greenway · Delaware Nature Society',
         secs: ['Yorklyn to Ashland — 8 mi, wooded piedmont paddle', 'Ashland to Stanton — 10 mi, wider creek through suburban parks'],
         history: [
@@ -7441,7 +7441,7 @@ export const STATES: StatesDB = {
         id: 'patuxent', n: 'Patuxent River', ww: false, scenic: true,
         co: 'Howard / Anne Arundel Co.', len: '115 mi', cls: 'Riffles', opt: '100–500',
         g: '01594440', avg: 280, histFlow: 252, mx: 780, my: 265, abbr: 'MD',
-        desc: "The longest river flowing entirely within Maryland, the Patuxent winds 115 miles from piedmont headwaters to the Chesapeake Bay. A major Chesapeake tributary with good paddling through surprisingly wild corridors between Baltimore and Washington, DC.",
+        desc: "The longest river flowing entirely within Maryland, the Patuxent winds 115 miles from piedmont headwaters to the Chesapeake Bay. A major Chesapeake tributary with good paddling through surprisingly wild corridors between Baltimore and Washington, DC. The Patuxent River State Park marks the piedmont headwaters, with a forested corridor running down to Jug Bay Wetlands Sanctuary before the river opens into its tidal estuary.",
         desig: 'Patuxent River State Park · Jug Bay Wetlands Sanctuary · Chesapeake Bay Critical Area',
         secs: ['Patuxent River State Park — 15 mi, piedmont headwaters', 'Laurel to Jug Bay — 20 mi, forested corridor between DC and Baltimore', 'Jug Bay to Chesapeake Bay — 30 mi, tidal estuary'],
         history: [
@@ -7471,7 +7471,7 @@ export const STATES: StatesDB = {
         id: 'antietam_creek', n: 'Antietam Creek', ww: false, scenic: true,
         co: 'Washington Co.', len: '42 mi', cls: 'Riffles', opt: '50–250',
         g: '01619500', avg: 140, histFlow: 126, mx: 780, my: 265, abbr: 'MD',
-        desc: "A limestone spring creek flowing through the Antietam National Battlefield — site of the bloodiest single day in American history. Antietam Creek offers gentle wade-fishing for wild trout in spring-fed water, with the battlefield's monuments visible from the stream.",
+        desc: "A limestone spring creek flowing through the Antietam National Battlefield — site of the bloodiest single day in American history. Antietam Creek offers gentle wade-fishing for wild trout in spring-fed water, with the battlefield's monuments visible from the stream. Designated a Maryland Scenic River, the 42-mile creek runs from limestone springs near Waynesboro through the battlefield's historic corridor down to the Potomac at Burnside Bridge.",
         desig: 'Antietam National Battlefield (NPS) · Maryland Scenic River',
         secs: ['Waynesboro PA to Funkstown — 15 mi, upper creek, limestone springs', 'Antietam Battlefield section — 8 mi, historic corridor', 'Burnside Bridge to Potomac confluence — 10 mi, lower creek'],
         history: [
