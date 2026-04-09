@@ -448,7 +448,7 @@ export const STATES: StatesDB = {
         co: 'Luce Co., UP', len: '20 mi', cls: 'I', opt: '100–500',
         g: '04063700', avg: 290, histFlow: 275, mx: 250, my: 108, abbr: 'MI',
         desc: "Immortalized by Hemingway in 'Big Two-Hearted River' (1924). Flows through Lake Superior State Forest to a dune-backed beach at Lake Superior. Remote, undeveloped, wild — one of the finest wilderness paddles in the Midwest.",
-        desig: 'National Wild & Scenic River · Michigan Natural River',
+        desig: 'Michigan Natural River · Lake Superior State Forest',
         secs: ['Reed and Green Bridge to Lake Superior — 20 mi definitive route'],
         history: [
           { era: 'native', entries: [{ yr: 'Pre-contact', title: 'Lake Superior Ojibwe Territory', text: 'The Two Hearted watershed lies within the ancestral territory of the Lake Superior Ojibwe (Chippewa). The remote UP forests were important hunting and trapping grounds. The Sault Ste. Marie Tribe of Chippewa Indians maintains cultural connections to this landscape today.', src: 'Sault Ste. Marie Tribe of Chippewa Indians' }] },
@@ -2437,7 +2437,7 @@ export const STATES: StatesDB = {
         co: 'McCreary Co., KY / Scott Co., TN', len: '123 mi', cls: 'I–IV', opt: '500–3000',
         g: '03413200', avg: 1400, histFlow: 1280, mx: 490, my: 115, abbr: 'KY',
         desc: "The Big South Fork of the Cumberland cuts one of the deepest and most spectacular gorges in the eastern United States — 500-foot sandstone walls, no roads, and over 190 miles of river and creek within the Big South Fork National River and Recreation Area. The whitewater through the gorge alternates with broad still sections.",
-        desig: 'Big South Fork National River and Recreation Area (NPS) · National Wild & Scenic River',
+        desig: 'Big South Fork National River and Recreation Area (NPS, 1974) · Daniel Boone National Forest',
         secs: ['Confluence to Burnt Mill Bridge — Class I–II, remote wilderness', 'Station Camp to Blue Heron — Class II–III, classic gorge float', 'Leatherwood Ford to Alum Ford — Class III–IV, most challenging'],
         history: [
           { era: 'native', entries: [{ yr: 'Pre-contact', title: 'Cherokee and Shawnee — The Great Hunting Ground', text: "The Cumberland Plateau was a contested and sacred hunting ground shared between Cherokee (from the south) and Shawnee (from the north). Neither nation maintained permanent settlements on the plateau — it was a vast commons deliberately left undeveloped for its hunting value.", src: 'NPS Big South Fork; Tennessee Historical Commission' }] },
@@ -2487,7 +2487,7 @@ export const STATES: StatesDB = {
         co: 'Laurel / Rockcastle Co.', len: '50 mi', cls: 'I–III', opt: '300–1500',
         g: '03281100', avg: 680, histFlow: 620, mx: 430, my: 113, abbr: 'KY',
         desc: "The most beautiful river in Kentucky — the Rockcastle flows through the heart of the Daniel Boone National Forest in spectacular sandstone gorge country. Class I–III rapids through dramatic palisades of Pennsylvanian sandstone, with world-class rock climbing on the canyon walls above. The river's clarity is exceptional — and it was Daniel Boone's favorite hunting ground.",
-        desig: 'National Wild & Scenic River · Daniel Boone National Forest · Clifty Wilderness',
+        desig: 'Wild & Scenic Study River · Daniel Boone National Forest · Kentucky Wild River',
         secs: ['Sublimity Bridge to Round Stone — Class I–II, upper gorge', 'Round Stone to Bee Rock — Class II–III, best whitewater, Clifty Wilderness', 'Bee Rock to Cumberland River — Class I–II, lower canyon'],
         history: [
           { era: 'native', entries: [{ yr: 'Pre-contact', title: "Cherokee and Shawnee — 'River of the Rock Castle'", text: "'Rockcastle' derives from the distinctive castle-like sandstone formations towering above the river. The gorge was within the contested borderland between Cherokee and Shawnee hunting territories. No permanent villages — the gorge was a passage and hunting corridor.", src: 'Kentucky Heritage Council; Daniel Boone National Forest' }] },
@@ -2814,7 +2814,7 @@ export const STATES: StatesDB = {
         co: 'Coconino / Mohave Co.', len: '226 mi', cls: 'I–V', opt: '8000–25000',
         g: '09380000', avg: 12000, histFlow: 10500, mx: 185, my: 72, abbr: 'AZ',
         desc: "The greatest river journey in North America — 226 miles through the Grand Canyon, one of the Seven Natural Wonders of the World. The Colorado cuts through 1.7 billion years of geological record. Lava Falls (Class V) drops 37 feet in 300 yards — the most famous single rapid in North America. Wait times for private permits now exceed 10–15 years.",
-        desig: 'Grand Canyon National Park (UNESCO World Heritage) · National Wild & Scenic River',
+        desig: 'Grand Canyon National Park (UNESCO World Heritage Site, 1979)',
         secs: ["Lee's Ferry to Phantom Ranch — Class I–IV, upper canyon", 'Phantom Ranch to Diamond Creek — Class III–V, middle canyon with Lava Falls', 'Diamond Creek to Lake Mead — Class I–III, lower canyon'],
         history: [
           { era: 'native', entries: [{ yr: 'Pre-contact – ongoing', title: 'Havasupai, Hualapai, Navajo, Hopi, Southern Paiute — The Living Canyon', text: "The Grand Canyon has been continuously inhabited for at least 12,000 years. The Havasupai ('people of the blue-green water') have lived in Havasu Canyon — a Grand Canyon tributary — longer than any other living group. The Hualapai Nation's reservation borders 108 miles of the South Rim. The Colorado River was the lifeblood of all these nations.", src: 'Havasupai Tribe; Hualapai Nation; NPS Grand Canyon Cultural Resources; Smithsonian NMAI' }] },
@@ -7118,7 +7118,7 @@ export const STATES: StatesDB = {
         co: 'Burlington / Atlantic Co.', len: '51 mi', cls: 'I', opt: '100–600',
         g: '01410000', avg: 280, histFlow: 250, mx: 810, my: 225, abbr: 'NJ',
         desc: "The crown jewel of the New Jersey Pine Barrens — 51 miles of pristine cedar water flowing through Wharton State Forest to the Great Bay estuary. The Mullica is the largest river entirely within the Pinelands National Reserve, its tea-colored water filtered through ancient sand aquifers that produce some of the purest surface water on the East Coast.",
-        desig: 'National Wild & Scenic River · Pinelands National Reserve · Wharton State Forest',
+        desig: 'Pinelands National Reserve · Wharton State Forest · NJ Wild & Scenic River',
         secs: ['Atsion to Pleasant Mills — Class I, cedar swamp classic', 'Pleasant Mills to Great Bay — tidal estuary'],
         history: [
           { era: 'native', entries: [{ yr: 'Pre-contact', title: "Lenape Territory — Pine Barrens Interior", text: "The Mullica River watershed was Lenape territory. The river is named for Eric Mullica, a Finnish settler, but the Lenape had used the cedar-water streams of the Pine Barrens for fishing and travel for thousands of years.", src: 'Pinelands Preservation Alliance; NJ State Museum' }] },
