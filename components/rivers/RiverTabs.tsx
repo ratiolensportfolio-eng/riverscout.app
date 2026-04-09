@@ -998,6 +998,20 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                 </div>
               )}
             </div>
+
+            {/* Credibility disclaimer */}
+            <div style={{
+              marginTop: '20px', padding: '12px 14px',
+              background: 'var(--bg2)', border: '.5px solid var(--bd)',
+              borderRadius: 'var(--r)',
+            }}>
+              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '6px' }}>
+                Data Quality
+              </div>
+              <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--tx2)', lineHeight: 1.6, margin: 0 }}>
+                River conditions are community-verified. CFS ranges, difficulty ratings, and trip sections may not reflect every flow level or seasonal change. Always check current conditions, scout unfamiliar rapids, and paddle within your skill level. If you spot an error, use the <strong style={{ color: 'var(--rv)' }}>Improve This River</strong> button at the top of the page &mdash; your local knowledge is what makes this atlas accurate.
+              </p>
+            </div>
           </div>
         )}
 
