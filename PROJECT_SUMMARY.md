@@ -4,7 +4,7 @@
 **Repo:** https://github.com/ratiolensportfolio-eng/riverscout.app  
 **Stack:** Next.js 16 (App Router) · TypeScript · React 19 · Supabase · Mapbox GL · Stripe · Resend  
 **Hosting:** Vercel · Cloudflare DNS  
-**Last Updated:** April 8, 2026  
+**Last Updated:** April 9, 2026  
 
 ---
 
@@ -16,16 +16,17 @@ A paddling atlas for every river in America. Live USGS flow data, interactive ma
 
 ## Data Scale
 
-- **375 rivers** across **48 continental states** (8+ per state, 29 in Michigan)
-- **78 rivers** with fisheries data (species, hatches, run timing, spawn timing)
-- **18 rivers** with named rapids (GPS-located, class-rated, described)
-- **44 rivers** with interactive map geometry (USGS NHDPlus GPS polylines)
-- **103 documents** with verified URLs to .gov/.edu/.org sources
-- **All rivers** have USGS gauge IDs for live CFS flow data
+- **461 rivers** across **48 continental states** (8+ per state, 29 in Michigan)
+- **419 rivers** with fisheries data (species, hatches, run timing, spawn timing)
+- **17 rivers** with named rapids (GPS-located, class-rated, described)
+- **152 rivers** with interactive map geometry (USGS NHDPlus GPS polylines)
+- **135 documents** across 114 rivers, verified URLs to .gov/.edu/.org sources
+- **All 461 rivers** have USGS gauge IDs for live CFS flow data
+- **51 rivers** flagged with `needsVerification` tags for community review (safety audit)
 
 ---
 
-## File Structure (109 files)
+## File Structure
 
 ### Core Configuration
 | File | Purpose |
@@ -45,12 +46,12 @@ A paddling atlas for every river in America. Live USGS flow data, interactive ma
 ### Data Layer (`data/`)
 | File | Purpose |
 |------|---------|
-| `data/rivers.ts` (954KB) | Master river database — 375 rivers with descriptions, history, sections, designations, reviews, outfitters. Includes slug helpers, flow condition calculator. **Migration to Supabase in progress.** |
-| `data/fisheries.ts` (85KB) | Fisheries data for 78 rivers: species, designations (Gold Medal, Blue-Ribbon), spawning, hatch calendars, run timing, fishing guides |
-| `data/rapids.ts` (13KB) | Named rapids for 18 whitewater rivers with GPS coordinates, class ratings, descriptions |
-| `data/river-coordinates.ts` (7KB) | Approximate lat/lng for all 375 rivers (for state map dots) |
-| `data/state-centers.ts` (2KB) | Map center coordinates and zoom levels for all 48 states |
-| `data/river-maps/` (44 files) | Per-river interactive map data: USGS NHDPlus GPS polylines (~150 points each), access points, sections with distances/paddle times |
+| `data/rivers.ts` | Master river database — 461 rivers with descriptions, history, sections, designations, reviews, outfitters, `needsVerification` tags. Includes slug helpers, flow condition calculator. **Migration to Supabase in progress.** |
+| `data/fisheries.ts` | Fisheries data for 419 rivers: species, designations (Gold Medal, Blue-Ribbon), spawning, hatch calendars, run timing, fishing guides |
+| `data/rapids.ts` | Named rapids for 17 whitewater rivers with GPS coordinates, class ratings, descriptions |
+| `data/river-coordinates.ts` | Approximate lat/lng for all 461 rivers (for state map dots) |
+| `data/state-centers.ts` | Map center coordinates and zoom levels for all 48 states |
+| `data/river-maps/` (152 files) | Per-river interactive map data: USGS NHDPlus GPS polylines (~150 points each), access points, sections with distances/paddle times |
 | `data/river-maps/index.ts` | Registry mapping river IDs to their map data files (lazy-loaded) |
 | `data/river-maps/pine_mi.ts` | Pine River MI — fully populated with 10 access points, 8 sections (owner-verified) |
 
@@ -59,7 +60,10 @@ A paddling atlas for every river in America. Live USGS flow data, interactive ma
 |------|---------|
 | `lib/supabase.ts` | Supabase browser client + simple server client (no next/headers) |
 | `lib/supabase-server.ts` | Supabase SSR client with cookie-based auth (next/headers) |
-| `lib/usgs.ts` | USGS NWIS API: fetchGaugeData(), fetchPercentile(), formatCfs(), trendArrow(), temperature helpers. 15-min cache. |
+| `lib/usgs.ts` | USGS NWIS API: fetchGaugeData(), fetchPercentile(), formatCfs(), trendArrow(), temperature helpers. Edge-cached 900s (gauge) / 86400s (percentile). |
+| `lib/noaa-fetch.ts` | Timeout-safe fetch wrapper for all external APIs (USGS, NOAA, NWS). Opt-in `nextRevalidate` for read paths; defaults to `no-store` for cron/write. |
+| `lib/river-page-data.ts` | Server-side batch prefetch: trip_reports, stocking, outfitters, rapids in one `Promise.all` from the river page server component. Eliminates client round-trips on hydration. |
+| `lib/needs-verification.ts` | Maps safety-audit tags (`cfs-range-wide`, `class-v-portage-note`, etc.) to UI labels and target SuggestCorrection fields. |
 | `lib/stripe.ts` | Stripe client + price ID mapping from env vars |
 | `lib/email.ts` | Centralized Resend email: sendEmail(), flowAlertEmail template, improvementApprovedEmail template. All from noreply@riverscout.app |
 | `lib/admin.ts` | Admin user ID list (hardcoded: cd958898-e1da-442d-830b-5767f2e0b5ca) |
@@ -77,6 +81,7 @@ A paddling atlas for every river in America. Live USGS flow data, interactive ma
 | `components/alerts/AlertSubscriber.tsx` (12KB) | Flow alert subscription UI: email input, river search dropdown, threshold selector, active alerts management |
 | `components/AuthNav.tsx` (2KB) | Auth-aware nav: Google avatar + name when signed in, "Sign In" button when not |
 | `components/SuggestCorrection.tsx` (10KB) | "Improve This River" modal: field picker, current/suggested values, reason, source URL. Submits to API for AI evaluation. |
+| `components/rivers/DataConfidenceBanner.tsx` | Credibility banner on river pages. Renders a chip per `needsVerification` tag opening a modal that routes each item to the correct SuggestCorrection field. |
 
 ### Pages (`app/`)
 
@@ -137,6 +142,10 @@ A paddling atlas for every river in America. Live USGS flow data, interactive ma
 | File | Purpose |
 |------|---------|
 | `scripts/seed-rivers.js` | Parses rivers.ts/fisheries.ts/rapids.ts → generates seed.sql |
+| `scripts/audit-safety.js` | Flags unsafe class claims, wide CFS ranges (10x+), Class V rapids without portage notes, class-rating drift. Outputs JSON used by `apply-needs-verification.js`. |
+| `scripts/audit-fisheries.js` | Validates species / hatch / run geography across all rivers (0 red flags as of Apr 9). |
+| `scripts/audit-descriptions.js` | Scans all river descriptions for generic AI phrasing and surfaces thin descriptions (<3 sentences, low specificity). |
+| `scripts/apply-needs-verification.js` | Writes safety-audit flags into `data/rivers.ts` as `needsVerification` string arrays. |
 
 ### Styling
 | File | Purpose |
@@ -152,7 +161,13 @@ A paddling atlas for every river in America. Live USGS flow data, interactive ma
 
 | Feature | Status | Notes |
 |---------|--------|-------|
-| **Live USGS flow data** | ✅ Live | 202 of 375 gauges confirmed active. 15-min cache. |
+| **Live USGS flow data** | ✅ Live | All 461 rivers have gauge IDs. Edge-cached: 900s reads, 86400s percentile. |
+| **NWS gauge discovery** | ✅ Live | Self-populating NWS gauge mapping system (14+ verified mappings). |
+| **7-day weather forecast** | ✅ Live | NOAA forecast with rain timing windows and estimated accumulation. Collapsed by default on river page. |
+| **Dynamic sitemap** | ✅ Live | `app/sitemap.ts` — all 461 rivers, 48 states, static pages. |
+| **Data Confidence Banner** | ✅ Live | Per-river `needsVerification` chips → SuggestCorrection modal for community review. |
+| **Timeout-safe external fetch** | ✅ Live | `lib/noaa-fetch.ts` — never hangs the app on USGS/NOAA/NWS timeouts. |
+| **Server-side prefetch** | ✅ Live | `lib/river-page-data.ts` batches DB queries; eliminates 4 client round-trips per river page load. |
 | **Interactive US map** | ✅ Live | All 50 states with real SVG paths. States colored by flow condition. |
 | **SEO-optimized URLs** | ✅ Live | `/rivers/michigan/pine-river` format. Per-page meta tags. 301 redirects from old URLs. |
 | **River detail pages** | ✅ Live | 6 tabs: Overview, History, Trip Reports, Fishing, Maps & Guides, Documents |
@@ -164,6 +179,7 @@ A paddling atlas for every river in America. Live USGS flow data, interactive ma
 | **Photo uploads** | ✅ Live | JPEG/PNG/WebP/HEIC, 10MB max, Supabase Storage |
 | **Flow Alerts** | ✅ Live | Email subscription by river + threshold. 12-hr cooldown. |
 | **Flow Alert emails** | ✅ Live | Branded HTML via Resend from noreply@riverscout.app. Sponsored outfitter block. |
+| **Flow alert cron** | ✅ Live | `vercel.json` cron hits `/api/alerts/check` every 15 min. |
 | **Interactive river maps** | ✅ Live | 44 rivers with USGS NHDPlus polylines, access points, sections |
 | **State maps** | ✅ Live | Mapbox terrain map on every state page, rivers as dots colored by condition |
 | **Search** | ✅ Live | Real-time filter by name, state, designation |
@@ -190,18 +206,17 @@ A paddling atlas for every river in America. Live USGS flow data, interactive ma
 |---------|--------|--------------|
 | **Outfitter tier rendering** | Partial | Pricing page + join flow built. Tier badges on river pages not yet rendered (outfitter data shows but not tiered). |
 | **Outfitter link display** | Partial | Links intentionally hidden for monetization. Free tier shows name only. Need to render links for Featured/Sponsored tiers. |
-| **Flow alert cron** | Partial | Code complete. Needs Vercel Cron Job configured to hit `/api/alerts/check?key=CRON_SECRET` every 15 min. |
-| **Fishing tab coverage** | Partial | 78 of 375 rivers have fisheries data. Remaining 297 show "coming soon" placeholder. |
-| **Rapids coverage** | Partial | 18 of ~50 whitewater rivers have named rapids data. |
-| **River map coverage** | Partial | 44 of 375 rivers have interactive maps. All have geometry; 21 have full access points. |
-| **Document URLs** | Partial | 103 of ~238 original docs had verified URLs. Unverified docs were removed (trust > volume). |
+| **Fishing tab coverage** | Partial | 419 of 461 rivers have fisheries data. Remaining 42 show "coming soon" placeholder. |
+| **Rapids coverage** | Partial | 17 of ~50 whitewater rivers have named rapids data. |
+| **River map coverage** | Partial | 152 of 461 rivers have interactive maps. |
+| **Document URLs** | Partial | 135 verified .gov/.edu/.org docs across 114 rivers. Unverified docs were removed (trust > volume). |
+| **41 thin descriptions** | Flagged | `audit-descriptions.js` surfaced 41 rivers with short/low-specificity descriptions pending rewrite. |
 
 ### ❌ Not Yet Built
 
 | Feature | Priority | Notes |
 |---------|----------|-------|
 | **Outfitter tier badge rendering on river pages** | High | Show Featured/Sponsored badges with logos, links, photos based on tier |
-| **Vercel Cron setup** | High | Configure cron to call flow alert check endpoint |
 | **Maps & Guides affiliate links** | Medium | Slots exist ("Coming Soon"), need Amazon Associates or publisher affiliate URLs |
 | **River proximity / "nearby rivers"** | Medium | mx/my coordinates exist for all rivers |
 | **User profiles** | Low | UserProfile type exists, not implemented |
