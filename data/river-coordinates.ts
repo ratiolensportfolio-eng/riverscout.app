@@ -60,6 +60,7 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   payette: [44.08, -115.95],
   mf_salmon: [44.72, -115.00],
   hells_canyon: [45.35, -116.70],
+  henrys_fork: [44.08, -111.38],
 
   // Oregon
   rogue: [42.55, -123.50],
@@ -74,6 +75,7 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   skagit: [48.52, -121.65],
   skykomish: [47.80, -121.35],
   sauk: [48.35, -121.55],
+  columbia: [46.65, -119.52],
 
   // Pennsylvania
   yough: [39.87, -79.50],
@@ -88,6 +90,7 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   blackfoot: [46.88, -113.22],
   missouri_mt: [47.85, -110.30],
   stillwater: [45.62, -109.92],
+  madison: [45.32, -111.58],
 
   // Tennessee
   nolichucky: [36.12, -82.55],
@@ -162,6 +165,7 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   salmon_ny: [43.58, -75.98],
   moose_ny: [43.72, -75.25],
   delaware_ny: [41.82, -75.02],
+  beaverkill: [41.95, -74.88],
 
   // Georgia
   chattooga_ga: [34.82, -83.30],
@@ -271,6 +275,10 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   truckee: [39.32, -120.02],
   carson: [38.82, -119.72],
   humboldt: [40.82, -117.52],
+  walker: [38.68, -119.18],
+  east_walker: [38.52, -119.32],
+  jarbidge: [41.88, -115.42],
+  bruneau: [42.78, -115.78],
 
   // Ohio
   cuyahoga: [41.22, -81.55],
@@ -288,6 +296,10 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   whitewater_in: [39.52, -84.98],
   sugar_creek: [39.78, -87.02],
   blue_in: [38.35, -86.22],
+  tippecanoe: [40.78, -86.68],
+  muscatatuck: [38.82, -85.78],
+  eel_in: [40.88, -85.52],
+  wildcat_in: [40.42, -86.82],
 
   // Illinois
   vermilion_il: [41.28, -89.02],
@@ -328,11 +340,19 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   brandywine: [39.78, -75.55],
   st_jones: [39.15, -75.52],
   christina: [39.72, -75.65],
+  white_clay: [39.72, -75.75],
+  red_clay: [39.75, -75.68],
+  nanticoke: [38.55, -75.72],
+  broadkill: [38.78, -75.22],
 
   // Maryland
   yough_md: [39.52, -79.42],
   potomac: [39.00, -77.25],
   savage: [39.52, -79.08],
+  gunpowder: [39.42, -76.52],
+  patuxent: [39.05, -76.72],
+  monocacy: [39.38, -77.38],
+  antietam_creek: [39.45, -77.72],
 
   // Massachusetts
   deerfield: [42.62, -72.82],
