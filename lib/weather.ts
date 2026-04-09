@@ -18,9 +18,22 @@ export interface HourlyForecast {
   hasRain: boolean
 }
 
+export interface DailyForecast {
+  name: string          // "Tuesday", "Tuesday Night"
+  tempF: number
+  isDaytime: boolean
+  shortForecast: string
+  detailedForecast: string
+  windSpeed: string
+  precipChance: number
+  hasThunderstorm: boolean
+  hasRain: boolean
+}
+
 export interface RiverWeather {
   current: HourlyForecast | null
   hourly: HourlyForecast[]
+  daily: DailyForecast[]
   todayHigh: number | null
   todayLow: number | null
   tomorrowHigh: number | null
@@ -65,7 +78,7 @@ async function getGrid(lat: number, lng: number): Promise<{ gridId: string; grid
   try {
     const res = await fetch(`https://api.weather.gov/points/${lat},${lng}`, {
       headers: { 'User-Agent': 'RiverScout (riverscout.app, outfitters@riverscout.app)' },
-      next: { revalidate: 86400 }, // grid doesn't change — cache 24h
+      cache: 'force-cache',
     })
     if (!res.ok) return null
 
@@ -89,7 +102,7 @@ export async function fetchRiverWeather(lat: number, lng: number): Promise<River
     const url = `https://api.weather.gov/gridpoints/${grid.gridId}/${grid.gridX},${grid.gridY}/forecast/hourly`
     const res = await fetch(url, {
       headers: { 'User-Agent': 'RiverScout (riverscout.app, outfitters@riverscout.app)' },
-      next: { revalidate: 1800 }, // 30 min cache
+      cache: 'no-store', // always fresh weather data
     })
     if (!res.ok) return null
 
@@ -137,6 +150,41 @@ export async function fetchRiverWeather(lat: number, lng: number): Promise<River
     const sunriseStr = sun.sunrise ? sun.sunrise.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) : null
     const sunsetStr = sun.sunset ? sun.sunset.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) : null
 
+    // Fetch 7-day daily forecast
+    const dailyUrl = `https://api.weather.gov/gridpoints/${grid.gridId}/${grid.gridX},${grid.gridY}/forecast`
+    let daily: DailyForecast[] = []
+    try {
+      const dailyRes = await fetch(dailyUrl, {
+        headers: { 'User-Agent': 'RiverScout (riverscout.app, outfitters@riverscout.app)' },
+        cache: 'no-store',
+      })
+      if (dailyRes.ok) {
+        const dailyJson = await dailyRes.json()
+        const dailyPeriods: Array<{
+          name: string
+          temperature: number
+          temperatureUnit: string
+          isDaytime: boolean
+          shortForecast: string
+          detailedForecast: string
+          windSpeed: string
+          probabilityOfPrecipitation: { value: number | null }
+        }> = dailyJson.properties?.periods ?? []
+
+        daily = dailyPeriods.slice(0, 14).map(p => ({
+          name: p.name,
+          tempF: p.temperatureUnit === 'F' ? p.temperature : celsiusToF(p.temperature),
+          isDaytime: p.isDaytime,
+          shortForecast: p.shortForecast,
+          detailedForecast: p.detailedForecast,
+          windSpeed: p.windSpeed,
+          precipChance: p.probabilityOfPrecipitation?.value ?? 0,
+          hasThunderstorm: detectThunderstorm(p.shortForecast),
+          hasRain: detectRain(p.shortForecast),
+        }))
+      }
+    } catch { /* daily forecast optional */ }
+
     // Thunderstorm risk in next 24h
     const next24 = hourly.slice(0, 24)
     const thunderstormRisk = next24.some(h => h.hasThunderstorm)
@@ -145,6 +193,7 @@ export async function fetchRiverWeather(lat: number, lng: number): Promise<River
     return {
       current: hourly[0] || null,
       hourly,
+      daily,
       todayHigh: todayTemps.length > 0 ? Math.max(...todayTemps) : null,
       todayLow: todayTemps.length > 0 ? Math.min(...todayTemps) : null,
       tomorrowHigh: tomorrowTemps.length > 0 ? Math.max(...tomorrowTemps) : null,
