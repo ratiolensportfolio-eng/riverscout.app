@@ -265,11 +265,8 @@ export default async function HatchesPage() {
                           {e.daysUntilPeak !== null && e.daysUntilPeak > 0 && (
                             <span>{e.daysUntilPeak} days until peak</span>
                           )}
-                          {e.status === 'peak' && (
-                            <span style={{ color: 'var(--rv)', fontWeight: 500 }}>{STATUS_LABEL[e.status]}</span>
-                          )}
-                          {e.status === 'active' && e.status !== 'peak' && (
-                            <span style={{ color: 'var(--rv)' }}>{STATUS_LABEL[e.status]}</span>
+                          {(e.status === 'peak' || e.status === 'active') && (
+                            <span style={{ color: 'var(--rv)', fontWeight: e.status === 'peak' ? 500 : 400 }}>{STATUS_LABEL[e.status]}</span>
                           )}
                         </div>
                         {e.notes && (
