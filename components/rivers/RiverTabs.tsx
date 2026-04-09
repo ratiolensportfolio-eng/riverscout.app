@@ -111,7 +111,7 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
   // Weather state
   interface RiverWeatherData {
     current: { tempF: number; windSpeedMph: number; windDirection: string; shortForecast: string; precipChance: number; hasThunderstorm: boolean; hasRain: boolean } | null
-    daily: Array<{ name: string; tempF: number; isDaytime: boolean; shortForecast: string; windSpeed: string; precipChance: number; hasThunderstorm: boolean; hasRain: boolean }>
+    daily: Array<{ name: string; tempF: number; isDaytime: boolean; shortForecast: string; windSpeed: string; precipChance: number; hasThunderstorm: boolean; hasRain: boolean; rainWindow?: string | null; estimatedInches?: number | null }>
     todayHigh: number | null; todayLow: number | null
     tomorrowHigh: number | null; tomorrowLow: number | null
     sunrise: string | null; sunset: string | null
@@ -546,10 +546,10 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                           background: d.hasThunderstorm ? 'var(--amlt)' : d.hasRain ? 'var(--wtlt)' : 'var(--bg)',
                           minWidth: 0,
                         }}>
-                          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginBottom: '4px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginBottom: '3px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                             {d.name.replace(/ Night$/, '').slice(0, 3)}
                           </div>
-                          <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '15px', fontWeight: 700, color: 'var(--tx)', marginBottom: '2px' }}>
+                          <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '15px', fontWeight: 700, color: 'var(--tx)', marginBottom: '1px' }}>
                             {d.tempF}°
                           </div>
                           <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', color: 'var(--tx2)', lineHeight: 1.3, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
@@ -558,6 +558,16 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                           {d.precipChance > 0 && (
                             <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', color: 'var(--wt)', marginTop: '2px' }}>
                               {d.precipChance}%
+                              {d.rainWindow && (
+                                <span style={{ color: 'var(--tx3)', display: 'block' }}>
+                                  {d.rainWindow}
+                                </span>
+                              )}
+                            </div>
+                          )}
+                          {d.estimatedInches != null && d.estimatedInches > 0 && (
+                            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '7px', color: 'var(--wt)', marginTop: '1px' }}>
+                              ~{d.estimatedInches}&quot;
                             </div>
                           )}
                         </div>

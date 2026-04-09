@@ -28,6 +28,8 @@ export interface DailyForecast {
   precipChance: number
   hasThunderstorm: boolean
   hasRain: boolean
+  rainWindow: string | null      // "2pm–6pm" or null if no rain
+  estimatedInches: number | null // estimated accumulation
 }
 
 export interface RiverWeather {
@@ -171,17 +173,66 @@ export async function fetchRiverWeather(lat: number, lng: number): Promise<River
           probabilityOfPrecipitation: { value: number | null }
         }> = dailyJson.properties?.periods ?? []
 
-        daily = dailyPeriods.slice(0, 14).map(p => ({
-          name: p.name,
-          tempF: p.temperatureUnit === 'F' ? p.temperature : celsiusToF(p.temperature),
-          isDaytime: p.isDaytime,
-          shortForecast: p.shortForecast,
-          detailedForecast: p.detailedForecast,
-          windSpeed: p.windSpeed,
-          precipChance: p.probabilityOfPrecipitation?.value ?? 0,
-          hasThunderstorm: detectThunderstorm(p.shortForecast),
-          hasRain: detectRain(p.shortForecast),
-        }))
+        daily = dailyPeriods.slice(0, 14).map(p => {
+          const hasRain = detectRain(p.shortForecast) || detectRain(p.detailedForecast)
+          const hasThunderstorm = detectThunderstorm(p.shortForecast) || detectThunderstorm(p.detailedForecast)
+          const precipChance = p.probabilityOfPrecipitation?.value ?? 0
+
+          // Compute rain window from hourly data
+          let rainWindow: string | null = null
+          let estimatedInches: number | null = null
+
+          if (hasRain || precipChance >= 30) {
+            // Find hourly entries that match this day period
+            const dayName = p.name.replace(/ Night$/, '')
+            const dayMap: Record<string, number> = {
+              'Sunday': 0, 'Monday': 1, 'Tuesday': 2, 'Wednesday': 3,
+              'Thursday': 4, 'Friday': 5, 'Saturday': 6,
+              'Today': now.getDay(), 'Tonight': now.getDay(),
+              'This Afternoon': now.getDay(),
+            }
+            const targetDay = dayMap[dayName] ?? dayMap[p.name] ?? -1
+
+            const matchingHours = hourly.filter(h => {
+              const d = new Date(h.time)
+              if (d.getDay() !== targetDay) return false
+              if (p.isDaytime) return d.getHours() >= 6 && d.getHours() < 18
+              return d.getHours() >= 18 || d.getHours() < 6
+            })
+
+            const rainyHours = matchingHours.filter(h => h.precipChance >= 30 || h.hasRain)
+            if (rainyHours.length > 0) {
+              const firstRain = new Date(rainyHours[0].time)
+              const lastRain = new Date(rainyHours[rainyHours.length - 1].time)
+              const fmtHour = (d: Date) => {
+                const h = d.getHours()
+                if (h === 0) return '12am'
+                if (h === 12) return '12pm'
+                return h > 12 ? `${h - 12}pm` : `${h}am`
+              }
+              rainWindow = `${fmtHour(firstRain)}–${fmtHour(new Date(lastRain.getTime() + 3600000))}`
+
+              // Estimate accumulation: ~0.02-0.05 inches per hour of rain at typical chance
+              const avgChance = rainyHours.reduce((s, h) => s + h.precipChance, 0) / rainyHours.length
+              const ratePerHour = hasThunderstorm ? 0.15 : (avgChance > 70 ? 0.08 : 0.04)
+              estimatedInches = Math.round(rainyHours.length * ratePerHour * 10) / 10
+            }
+          }
+
+          return {
+            name: p.name,
+            tempF: p.temperatureUnit === 'F' ? p.temperature : celsiusToF(p.temperature),
+            isDaytime: p.isDaytime,
+            shortForecast: p.shortForecast,
+            detailedForecast: p.detailedForecast,
+            windSpeed: p.windSpeed,
+            precipChance,
+            hasThunderstorm,
+            hasRain,
+            rainWindow,
+            estimatedInches,
+          }
+        })
       }
     } catch { /* daily forecast optional */ }
 
