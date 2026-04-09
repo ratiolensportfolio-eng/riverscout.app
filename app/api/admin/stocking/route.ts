@@ -5,6 +5,10 @@ import { sendEmail, stockingAlertEmail, ADMIN_EMAIL } from '@/lib/email'
 import { getRiver, getStateSlug, getRiverSlug } from '@/data/rivers'
 import { fetchGaugeData } from '@/lib/usgs'
 
+// Admin write path — never cache. The fetchGaugeData call inside still uses
+// lib/usgs.ts's 15-min fetch cache.
+export const dynamic = 'force-dynamic'
+
 // Known state DNR domains for auto-verification
 const GOV_DOMAINS = [
   '.gov', '.state.mi.us', '.state.pa.us', '.state.wv.us', '.state.va.us',

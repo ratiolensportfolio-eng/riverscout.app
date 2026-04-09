@@ -2,6 +2,11 @@ import { NextRequest, NextResponse } from 'next/server'
 
 const DV_BASE = 'https://waterservices.usgs.gov/nwis/dv/'
 
+// Vercel edge cache window — matches USGS gauge update frequency.
+// Combined with the Cache-Control header below, this serves cached responses
+// instantly and revalidates in the background.
+export const revalidate = 900 // 15 minutes
+
 // GET /api/pro/historical?gaugeId=...&years=10 — fetch historical daily values
 // Returns weekly averages for the past N years grouped by week-of-year
 export async function GET(req: NextRequest) {
@@ -87,12 +92,22 @@ export async function GET(req: NextRequest) {
       })
     }
 
-    return NextResponse.json({
-      gaugeId,
-      years,
-      totalReadings: values.length,
-      weeks,
-    })
+    return NextResponse.json(
+      {
+        gaugeId,
+        years,
+        totalReadings: values.length,
+        weeks,
+      },
+      {
+        headers: {
+          // Serve cached responses instantly from the Vercel edge for 15 min,
+          // then keep serving the stale copy for up to 30 min while a fresh
+          // one fetches in the background. Matches USGS update cadence.
+          'Cache-Control': 'public, s-maxage=900, stale-while-revalidate=1800',
+        },
+      },
+    )
   } catch (err) {
     console.error('Historical fetch error:', err)
     return NextResponse.json({ error: 'Failed to fetch historical data' }, { status: 500 })

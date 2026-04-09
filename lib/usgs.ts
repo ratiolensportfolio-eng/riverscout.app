@@ -16,11 +16,20 @@ interface USGSTimeSeries {
   values: Array<{ value: USGSValue[] }>
 }
 
+// Cache window for live USGS gauge data — matches USGS instantaneous-value
+// update cadence (~15 min). Used by both fetchGaugeData and the route segment
+// revalidate on every page/route that surfaces this data.
+export const USGS_REVALIDATE_SECONDS = 900 // 15 minutes
+
 // Fetch current flow + 7-day history for a gauge
 export async function fetchGaugeData(gaugeId: string, optRange: string): Promise<FlowData> {
   const url = `${IV_BASE}?format=json&sites=${gaugeId}&parameterCd=00060,00010&siteStatus=active&period=P7D`
 
-  const json = await fetchExternalJson<{ value?: { timeSeries?: USGSTimeSeries[] } }>(url, { timeoutMs: 10000, retries: 1 })
+  const json = await fetchExternalJson<{ value?: { timeSeries?: USGSTimeSeries[] } }>(url, {
+    timeoutMs: 10000,
+    retries: 1,
+    nextRevalidate: USGS_REVALIDATE_SECONDS,
+  })
 
   if (!json) {
     return { cfs: null, condition: 'loading', trend: null, trendDelta: null, trendDeltaPct: null, percentile: null, tempC: null, readings: [], fetchedAt: new Date() }
@@ -90,7 +99,12 @@ export async function fetchPercentile(gaugeId: string): Promise<number | null> {
   const day = String(now.getDate()).padStart(2, '0')
   const url = `${STAT_BASE}?format=json&sites=${gaugeId}&statReportType=daily&statType=mean&parameterCd=00060`
 
-  const json = await fetchExternalJson<{ value?: { timeSeries?: Array<{ values?: Array<{ value?: Array<{ dateTime: string; value: string; statisticType: string }> }> }> } }>(url, { timeoutMs: 10000, retries: 1 })
+  // Daily statistics — refresh once per day, not every 15 min.
+  const json = await fetchExternalJson<{ value?: { timeSeries?: Array<{ values?: Array<{ value?: Array<{ dateTime: string; value: string; statisticType: string }> }> }> } }>(url, {
+    timeoutMs: 10000,
+    retries: 1,
+    nextRevalidate: 86400,
+  })
   if (!json) return null
 
   try {

@@ -28,6 +28,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Pine National Scenic River Management Plan', s: 'USFS Huron-Manistee', y: 2010, tp: 'Federal', pg: 145, url: 'https://www.rivers.gov/sites/rivers/files/documents/plans/pine-plan.pdf' }, { t: 'Pine River Natural River Plan', s: 'Michigan DNR', y: 1999, tp: 'Survey', pg: 58, url: 'https://mrwa.org/wp-content/uploads/repository/pineplan.pdf' }, { t: 'Pine River Area TU Chapter — Coldwater Conservation', s: 'Trout Unlimited', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.pineriverareatu.org/' }],
         revs: [],
+        needsVerification: ['class-rating-drift'],
         outs: [
           { n: 'Pine River Paddlesports Center', d: 'Full-service outfitter, shuttles, gear, camping', l: 'thepineriver.com' },
           { n: 'Horina Canoe & Kayak Rental', d: 'Budget-friendly rentals, multiple access points', l: 'horinacanoe.com' },
@@ -623,6 +624,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['beginner-claim-review'],
         outs: [{ n: 'Elk River Touring Center', d: 'WV river trips including Tygart shuttles', l: 'ertc.com' }],
       },
       {
@@ -799,6 +801,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Browns Canyon National Monument Management Plan', s: 'BLM/USFS', y: 2020, tp: 'Federal', pg: 290 , url: 'https://eplanning.blm.gov/public_projects/69924/200147053/20022482/250028686/BCNM_ROD_USFS_July2020-508_signed_opt.pdf'}, { t: "Arkansas River Access Protection & Browns Canyon Advocacy", s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/content/Project/view/id/122/' }],
         revs: [],
+        needsVerification: ['class-v-portage-note'],
         outs: [{ n: 'Dvorak Expeditions', d: 'Arkansas River since 1969, all sections', l: 'dvorakexpeditions.com' }, { n: 'AVA Rafting', d: 'Browns Canyon specialists', l: 'avaraft.com' }],
       },
       {
@@ -892,6 +895,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Blazing Adventures', d: 'Roaring Fork and Colorado River rafting from Aspen', l: '' }],
       },
       {
@@ -982,6 +986,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['class-v-portage-note'],
         outs: [{ n: 'A Wanderlust Adventure', d: 'Poudre Canyon commercial rafting from Fort Collins', l: '' }],
       },
       {
@@ -1070,6 +1075,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['class-v-portage-note'],
         outs: [{ n: 'Cascade Raft & Kayak', d: 'North Fork Payette trips', l: 'cascaderaft.com' }, { n: 'Idaho Guide Service', d: 'Payette river float trips', l: 'idahoguideservice.com' }],
       },
       {
@@ -1086,6 +1092,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Frank Church Wilderness River Management Plan', s: 'USFS Salmon-Challis NF', y: 1985, tp: 'Federal', pg: 280, url: 'https://www.rivers.gov/carp/sites/rivers/files/documents/plans/salmon-wilderness-plan.pdf' }],
         revs: [],
+        needsVerification: ['class-v-portage-note'],
         outs: [{ n: 'Middle Fork Rapid Transit', d: 'Middle Fork guided and fly-in expeditions', l: 'midforkrivertours.com' }, { n: 'Rocky Mountain River Tours', d: 'Middle Fork Salmon multi-day commercial trips', l: 'rmrt.com' }],
       },
       {
@@ -1102,6 +1109,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Hells Canyon NRA Wild & Scenic River Plan', s: 'USFS', y: 2003, tp: 'Federal', pg: 240 , url: 'https://www.fs.usda.gov/Internet/FSE_DOCUMENTS/fseprd584420.pdf'}],
         revs: [],
+        needsVerification: ['class-rating-drift', 'class-v-portage-note'],
         outs: [{ n: 'Hells Canyon Adventures', d: 'Hells Canyon jet boat and raft trips, Oxbow OR', l: 'hellscanyonadventures.com' }, { n: 'OARS Hells Canyon', d: 'Multi-day Snake River oar and paddle trips', l: 'oars.com' }],
       },
       {
@@ -1397,6 +1405,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['class-v-portage-note'],
         outs: [{ n: 'Wet Planet Whitewater', d: 'White Salmon River rafting and kayak instruction', l: '' }],
       },
       {
@@ -2011,6 +2020,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Tuolumne Wild & Scenic River Management Plan', s: 'USFS Stanislaus NF', y: 2006, tp: 'Federal', pg: 190 , url: 'https://www.fs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb5126197.pdf'}],
         revs: [],
+        needsVerification: ['class-v-portage-note', 'cfs-range-wide', 'named-rapid-scout-note'],
         outs: [{ n: 'OARS Tuolumne', d: 'Tuolumne River multi-day guided trips', l: 'oars.com' }, { n: 'All-Outdoors California Whitewater', d: 'Tuolumne sections', l: 'aorafting.com' }],
       },
       {
@@ -2027,6 +2037,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Kern River Wild & Scenic River Management Plan', s: 'USFS Sequoia NF', y: 2009, tp: 'Federal', pg: 155 , url: 'https://www.rivers.gov/rivers/sites/rivers/files/documents/plans/kern-plan.pdf'}, { t: 'Kern River Hydropower Relicensing & Flow Gauge Installation', s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/regions/california/' }],
         revs: [],
+        needsVerification: ['class-v-portage-note'],
         outs: [{ n: 'Kern River Outfitters', d: 'Kernville-based all levels', l: 'kernrafting.com' }, { n: 'Whitewater Voyages', d: 'Forks and Lower Kern trips', l: 'whitewatervoyages.com' }],
       },
       {
@@ -2225,6 +2236,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['class-v-portage-note'],
         outs: [{ n: 'Kings River Expeditions', d: 'Main Kings rafting and multi-day trips', l: '' }],
       },
       {
@@ -2527,6 +2539,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Shaker Village Riverboat', d: 'Kentucky River Palisades access and tours', l: '' }],
       },
       {
@@ -2542,6 +2555,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Blue Licks Canoe Livery', d: 'Licking River canoe and kayak rentals', l: '' }],
       },
       {
@@ -2600,6 +2614,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Chattooga Wild & Scenic River Study Report', s: 'USFS', y: 1974, tp: 'Federal', pg: 210, url: 'https://rivers.gov/sites/rivers/files/2023-01/chattooga-study.pdf' }, { t: 'Chattooga Headwaters Access Campaign (1995–2012)', s: 'American Whitewater', y: 2012, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/content/Project/view/id/chattooga/' }],
         revs: [],
+        needsVerification: ['named-rapid-scout-note'],
         outs: [{ n: 'Nantahala Outdoor Center', d: 'Chattooga Section III and IV trips', l: 'noc.com' }, { n: 'Southeastern Expeditions', d: 'Chattooga guided rafting', l: 'southeasternexpeditions.com' }],
       },
       {
@@ -2632,6 +2647,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Green River Corridor Assessment', s: 'Polk County; NC DEQ', y: 2017, tp: 'Survey', pg: 65 , url: 'https://www.deq.nc.gov/water-quality/planning/bpu/broad/broad-basin-plans/2008-plan/green-river/download'}],
         revs: [],
+        needsVerification: ['class-v-portage-note'],
         outs: [{ n: 'Headwaters Outfitters', d: 'Green River area paddling and camping', l: 'headwatersoutfitters.com' }],
       },
       {
@@ -2824,6 +2840,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Colorado River Management Plan', s: 'NPS Grand Canyon', y: 2006, tp: 'Federal', pg: 420, url: 'https://www.nps.gov/grca/learn/management/upload/CRMPIF_s.pdf' }, { t: 'Colorado River Ecosystem Science Program', s: 'USGS Grand Canyon Monitoring', y: 2023, tp: 'Ecology', pg: 310, url: 'https://www.nps.gov/grca/learn/management/riv_mgt.htm' }],
         revs: [],
+        needsVerification: ['class-v-portage-note', 'named-rapid-scout-note'],
         outs: [{ n: 'OARS Grand Canyon', d: 'Premium Grand Canyon oar and motor trips', l: 'oars.com' }, { n: 'Arizona Raft Adventures', d: 'All Grand Canyon trip styles', l: 'azraft.com' }, { n: 'Grand Canyon Expeditions', d: 'Motor and oar trips since 1969', l: 'gcex.com' }],
       },
       {
@@ -3048,6 +3065,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['class-v-portage-note'],
         outs: [{ n: 'Beartooth Whitewater', d: 'Clarks Fork guided expert kayak clinics', l: '' }],
       },
       {
@@ -3120,6 +3138,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Canyonlands National Park River Management Plan', s: 'NPS', y: 2015, tp: 'Federal', pg: 200 , url: 'https://www.nps.gov/cany/learn/management/index.htm'}],
         revs: [],
+        needsVerification: ['named-rapid-scout-note'],
         outs: [{ n: 'Sheri Griffith Expeditions', d: 'Cataract Canyon multi-day whitewater trips', l: 'griffithexp.com' }, { n: 'Tag-A-Long Expeditions', d: 'Cataract Canyon and Canyonlands river trips', l: 'tagalong.com' }],
       },
       {
@@ -3352,6 +3371,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Penobscot River Restoration — Veazie & Great Works Dam Removal', s: 'Trout Unlimited / Penobscot River Restoration Trust', y: 2013, tp: 'Conservation', pg: 1, url: 'https://kenlockwood.tu.org/tu-projects/penobscot-river-restoration' }],
         revs: [],
+        needsVerification: ['class-v-portage-note'],
         outs: [{ n: 'New England Outdoor Center', d: 'Penobscot West Branch specialists, Millinocket', l: 'neoc.com' }, { n: 'North Country Rivers', d: 'Guided Penobscot rafting trips', l: 'northcountryrivers.com' }],
       },
       {
@@ -3630,6 +3650,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['named-rapid-scout-note'],
         outs: [{ n: 'Southeastern Expeditions', d: 'Chattooga rafting since 1972, Clayton GA', l: 'southeasternexpeditions.com' }, { n: 'Wildwater Chattooga', d: 'Section III and IV guided trips', l: 'wildwaterchattooga.com' }],
       },
       {
@@ -3889,6 +3910,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['class-rating-drift'],
         outs: [{ n: 'Shotgun Eddy Rafting', d: 'Wolf River whitewater rafting and kayak trips', l: 'shotguneddy.com' }, { n: 'Wolf River Trips & Campground', d: 'Canoe and kayak rentals with riverside camping', l: 'wolfrivertrips.com' }],
       },
       {
@@ -3964,6 +3986,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Black River State Forest', d: 'Campgrounds, river access, and trail information', l: '' }],
       },
       {
@@ -4240,6 +4263,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Gasconade Hills Resort', d: 'Canoe and kayak rentals, riverside camping on the Gasconade', l: '' }],
       },
       {
@@ -4356,6 +4380,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Kings River Outfitters', d: 'Canoe and kayak rentals for Kings River float trips', l: '' }],
       },
       {
@@ -4818,6 +4843,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Peace River Comprehensive Watershed Management Plan', s: 'SWFWMD', y: 2017, tp: 'Ecology', pg: 195 , url: 'http://polk.wateratlas.usf.edu/upload/documents/PEACE%20RIVER%20CWM%20PART1.pdf'}],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Canoe Outpost — Peace River', d: 'Full-service canoe and kayak rentals, Arcadia', l: 'canoeoutpost.com' }],
       },
       {
@@ -4895,6 +4921,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['class-rating-drift'],
         outs: [{ n: 'Canoe Escape', d: 'Hillsborough River kayak and canoe rentals, Thonotosassa', l: '' }],
       },
       {
@@ -4935,6 +4962,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['named-rapid-scout-note'],
         outs: [{ n: 'Wildwater Chattooga', d: 'Guided Section III and IV trips', l: 'wildwaterchattooga.com' }, { n: 'Chattooga Ridge Outfitters', d: 'Shuttles and kayak rentals, Long Creek SC', l: 'chattoogaridge.com' }],
       },
       {
@@ -5057,6 +5085,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['named-rapid-scout-note'],
         outs: [{ n: 'Nantahala Outdoor Center', d: 'Chattooga River commercial trips from the Chattooga Outpost', l: '' }],
       },
       {
@@ -5248,6 +5277,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Elkhorn River Adventures', d: 'Canoe and kayak rentals, multi-day shuttle service', l: '' }],
       },
       {
@@ -5263,6 +5293,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Harlan County Reservoir Marina', d: 'Boat access, camping, local river information', l: '' }],
       },
       {
@@ -5334,6 +5365,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Cheyenne River Basin Water Quality Assessment', s: 'SD DENR', y: 2018, tp: 'Hydrology', pg: 120 , url: 'https://danr.sd.gov/Conservation/WatershedProtection/ReportsPublications/uppercheyennefinalreport.pdf'}],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Badlands Adventure Outfitters', d: 'Expedition planning and shuttle service', l: 'badlandsadventure.com' }],
       },
       {
@@ -5349,6 +5381,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['named-rapid-scout-note'],
         outs: [{ n: 'Spearfish Canyon Lodge', d: 'Creek access, lodging, local paddling information', l: '' }],
       },
       {
@@ -5379,6 +5412,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'James River Canoe Trail', d: 'Access point information and seasonal conditions', l: '' }],
       },
       {
@@ -5394,6 +5428,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Badlands River Expeditions', d: 'Guided White River trips, reservation permits arranged', l: '' }],
       },
       {
@@ -5434,6 +5469,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Little Missouri River Outfitters', d: 'Medora-based, Badlands expeditions', l: 'littlemissouririver.com' }],
       },
       {
@@ -5450,6 +5486,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Fort Ransom State Park', d: 'Canoe access, camping, shuttle information', l: 'parkrec.nd.gov' }],
       },
       {
@@ -5496,6 +5533,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Fort Abraham Lincoln State Park', d: 'River access, camping, historic site tours', l: '' }],
       },
       {
@@ -5511,6 +5549,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Knife River Indian Villages NHS', d: 'River access, cultural tours, earth lodge visits', l: '' }],
       },
       {
@@ -5526,6 +5565,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Standing Rock Tourism', d: 'Reservation access permits, cultural tours, river information', l: '' }],
       },
     ],
@@ -5596,6 +5636,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Cottonwood Falls Outfitters', d: 'Canoe and kayak rentals, Flint Hills shuttle service', l: '' }],
       },
       {
@@ -5611,6 +5652,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Neosho River Water Trail Association', d: 'Access maps, conditions, group paddles', l: '' }],
       },
       {
@@ -5641,6 +5683,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Castle Rock Outfitters', d: 'Western Kansas river access and shuttle service', l: '' }],
       },
       {
@@ -5656,6 +5699,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Marais des Cygnes Paddling Club', d: 'Group floats, access information, seasonal conditions', l: '' }],
       },
     ],
@@ -5727,6 +5771,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Kiamichi Country Outfitters', d: 'Shuttle service, canoe and kayak rentals', l: '' }],
       },
       {
@@ -5742,6 +5787,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Glover River Outfitters', d: 'McCurtain County kayak and canoe rentals', l: '' }],
       },
       {
@@ -5787,6 +5833,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Washita NWR Visitor Center', d: 'River access, wildlife viewing, battlefield tours', l: '' }],
       },
     ],
@@ -5827,6 +5874,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Possum Kingdom State Park', d: 'TPWD campground and water access', l: 'tpwd.texas.gov' }, { n: 'Brazos River Paddling Trail', d: 'TPWD mapped trail with access points', l: 'tpwd.texas.gov/fishboat/boat/paddlingtrails/brazos' }],
       },
       {
@@ -5904,6 +5952,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Llano River Adventures', d: 'Tubing, kayak, and canoe rentals on the Llano River', l: '' }],
       },
       {
@@ -5919,6 +5968,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Medina River Company', d: 'Tubing and kayak rentals in Bandera, TX', l: '' }],
       },
       {
@@ -7156,6 +7206,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
+        needsVerification: ['cfs-range-wide'],
         outs: [{ n: 'Raritan Riverkeeper', d: 'Guided paddle events and river access information', l: '' }],
       },
       {

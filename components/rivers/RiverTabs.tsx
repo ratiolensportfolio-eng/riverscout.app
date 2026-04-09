@@ -1,17 +1,35 @@
 'use client'
 
-import { useState, useEffect, useCallback, lazy, Suspense } from 'react'
+import { useState, useEffect, useCallback } from 'react'
+import dynamic from 'next/dynamic'
 import type { River, FlowData } from '@/types'
 import { formatCfs, trendArrow, celsiusToFahrenheit, isHypothermiaRisk } from '@/lib/usgs'
 import { supabase } from '@/lib/supabase'
 
-const RiverMap = lazy(() => import('@/components/maps/RiverMap'))
+// Lazy-load Mapbox-backed map component. ssr: false because Mapbox needs
+// the browser. The Maps tab also has a click-to-load gate further down so
+// the chunk only downloads when the user explicitly opens the map.
+const RiverMap = dynamic(() => import('@/components/maps/RiverMap'), {
+  loading: () => (
+    <div style={{
+      height: '350px', background: 'var(--bg2)', borderRadius: 'var(--rlg)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)',
+    }}>
+      Loading map...
+    </div>
+  ),
+  ssr: false,
+})
 import { hasRiverMap, loadRiverMap } from '@/data/river-maps'
-import { FISHERIES } from '@/data/fisheries'
+// FISHERIES (~4200 lines, ~150 kB) is dynamically imported when the user
+// clicks the Fishing tab. See `loadFisheries` below.
 import { RAPIDS } from '@/data/rapids'
 import FishIcon from '@/components/icons/FishIcons'
 import { getHatchTrigger } from '@/lib/hatch-triggers'
 import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
+import type { RiverFisheries } from '@/types'
+import type { RiverPageData } from '@/lib/river-page-data'
 
 const TABS = ['Overview', 'History', 'Trip Reports', 'Fishing', 'Maps & Guides', 'Documents'] as const
 type Tab = typeof TABS[number]
@@ -92,7 +110,17 @@ interface UserReport {
   created_at: string
 }
 
-export default function RiverTabs({ river, flow }: { river: River; flow: FlowData }) {
+interface RiverTabsProps {
+  river: River
+  flow: FlowData
+  // Server-side prefetched payload from lib/river-page-data.ts.
+  // When provided, RiverTabs initializes its state from this and skips the
+  // matching client-side fetches entirely (no browser→Vercel→Supabase round
+  // trips for trip reports, stocking, or outfitters).
+  initialData?: RiverPageData
+}
+
+export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) {
   const [tab, setTab] = useState<Tab>('Overview')
   const [form, setForm] = useState<ReportForm>({ name: '', stars: 4, text: '', cfs: '', tripDate: '' })
   const [submitted, setSubmitted] = useState(false)
@@ -100,13 +128,16 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
   const [submitError, setSubmitError] = useState('')
   const [photos, setPhotos] = useState<string[]>([])
   const [uploading, setUploading] = useState(false)
-  const [userReports, setUserReports] = useState<UserReport[]>([])
+  const [userReports, setUserReports] = useState<UserReport[]>(initialData?.tripReports ?? [])
   const [loadingReports, setLoadingReports] = useState(false)
   const [riverMapData, setRiverMapData] = useState<{ accessPoints: AccessPoint[]; sections: RiverSection[]; riverPath: [number, number][] } | null>(null)
   const [riverMapLoading, setRiverMapLoading] = useState(false)
   const riverHasMap = hasRiverMap(river.id)
-  const [outfitters, setOutfitters] = useState<OutfitterListing[]>([])
-  const [outfittersLoaded, setOutfittersLoaded] = useState(false)
+  // Outfitters: hydrated from server prefetch when available, otherwise lazy.
+  const [outfitters, setOutfitters] = useState<OutfitterListing[]>(
+    initialData?.outfitters ?? []
+  )
+  const [outfittersLoaded, setOutfittersLoaded] = useState(!!initialData)
 
   // Weather state
   interface RiverWeatherData {
@@ -119,6 +150,7 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
   }
   const [weather, setWeather] = useState<RiverWeatherData | null>(null)
   const [weatherLoaded, setWeatherLoaded] = useState(false)
+  const [forecastExpanded, setForecastExpanded] = useState(false)
 
   // Fetch weather on Overview tab
   useEffect(() => {
@@ -132,6 +164,20 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
         .catch(() => setWeatherLoaded(true))
     }
   }, [tab, weatherLoaded, river.id])
+
+  // Lazily-loaded fisheries data — only when user clicks the Fishing tab.
+  // Saves ~150 kB of JS on first load for the 90% of visitors who never
+  // open the Fishing tab.
+  const [fisheries, setFisheries] = useState<Record<string, RiverFisheries> | null>(null)
+  const [fisheriesLoading, setFisheriesLoading] = useState(false)
+  useEffect(() => {
+    if (tab === 'Fishing' && !fisheries && !fisheriesLoading) {
+      setFisheriesLoading(true)
+      import('@/data/fisheries')
+        .then(m => setFisheries(m.FISHERIES))
+        .finally(() => setFisheriesLoading(false))
+    }
+  }, [tab, fisheries, fisheriesLoading])
 
   // Pro features state
   interface WeeklyFlow { week: number; month: string; avg: number; median: number; p10: number; p90: number; min: number; max: number }
@@ -212,8 +258,11 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
     source_url: string | null
     verified: boolean
   }
-  const [stockingEvents, setStockingEvents] = useState<StockingEvent[]>([])
-  const [stockingLoaded, setStockingLoaded] = useState(false)
+  // Stocking: hydrated from server prefetch when available, otherwise lazy.
+  const [stockingEvents, setStockingEvents] = useState<StockingEvent[]>(
+    initialData?.stockingEvents ?? []
+  )
+  const [stockingLoaded, setStockingLoaded] = useState(!!initialData)
 
   const fetchStocking = useCallback(() => {
     fetch(`/api/stocking?riverId=${river.id}`)
@@ -288,8 +337,10 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
     return () => subscription.unsubscribe()
   }, [])
 
-  // Fetch outfitter listings from Supabase
+  // Fetch outfitter listings from Supabase only when not server-prefetched.
+  // When initialData is provided, outfitters are already populated above.
   useEffect(() => {
+    if (initialData) return
     fetch(`/api/outfitters?riverId=${river.id}`)
       .then(r => r.json())
       .then(data => {
@@ -297,7 +348,7 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
         setOutfittersLoaded(true)
       })
       .catch(() => setOutfittersLoaded(true))
-  }, [river.id])
+  }, [river.id, initialData])
 
   function trackClick(outfitterId: string, source: string) {
     fetch('/api/outfitters/click', {
@@ -433,12 +484,12 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                   textTransform: 'uppercase', letterSpacing: '.5px',
                 }}>Sponsored</span>
                 {o.cover_photo_url && (
-                  <img src={o.cover_photo_url} alt={o.business_name}
+                  <img src={o.cover_photo_url} alt={o.business_name} loading="lazy" decoding="async"
                     style={{ width: '100%', height: '120px', objectFit: 'cover', borderRadius: '6px', marginBottom: '10px' }} />
                 )}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' }}>
                   {o.logo_url && (
-                    <img src={o.logo_url} alt="" style={{ width: '36px', height: '36px', borderRadius: '6px', objectFit: 'contain', border: '.5px solid var(--bd)' }} />
+                    <img src={o.logo_url} alt="" loading="lazy" decoding="async" style={{ width: '36px', height: '36px', borderRadius: '6px', objectFit: 'contain', border: '.5px solid var(--bd)' }} />
                   )}
                   <div>
                     <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '15px', fontWeight: 700, color: '#042C53' }}>{o.business_name}</div>
@@ -532,12 +583,23 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                   </div>
                 )}
 
-                {/* 7-Day Forecast */}
+                {/* 7-Day Forecast — collapsed by default to defer the 7×detail render */}
                 {weather.daily && weather.daily.length > 0 && (
                   <div style={{ marginTop: '10px' }}>
-                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '6px' }}>
+                    <button
+                      onClick={() => setForecastExpanded(e => !e)}
+                      style={{
+                        fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px',
+                        color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px',
+                        marginBottom: '6px', background: 'none', border: 'none',
+                        cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center', gap: '6px',
+                      }}
+                      aria-expanded={forecastExpanded}
+                    >
+                      <span>{forecastExpanded ? '\u25BC' : '\u25B6'}</span>
                       7-Day Forecast
-                    </div>
+                    </button>
+                    {forecastExpanded && (
                     <div style={{ display: 'flex', gap: '0', overflow: 'hidden', borderRadius: 'var(--r)', border: '.5px solid var(--bd)' }}>
                       {weather.daily.filter(d => d.isDaytime).slice(0, 7).map((d, i) => (
                         <div key={i} style={{
@@ -584,6 +646,7 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                         </div>
                       ))}
                     </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -665,12 +728,12 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                       textTransform: 'uppercase', letterSpacing: '.5px',
                     }}>Featured</span>
                     {o.cover_photo_url && (
-                      <img src={o.cover_photo_url} alt={o.business_name}
+                      <img src={o.cover_photo_url} alt={o.business_name} loading="lazy" decoding="async"
                         style={{ width: '100%', height: '80px', objectFit: 'cover', borderRadius: '4px', marginBottom: '8px' }} />
                     )}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
                       {o.logo_url && (
-                        <img src={o.logo_url} alt="" style={{ width: '28px', height: '28px', borderRadius: '4px', objectFit: 'contain' }} />
+                        <img src={o.logo_url} alt="" loading="lazy" decoding="async" style={{ width: '28px', height: '28px', borderRadius: '4px', objectFit: 'contain' }} />
                       )}
                       <div>
                         <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', fontWeight: 600, color: 'var(--rvdk)' }}>{o.business_name}</div>
@@ -737,7 +800,7 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                       <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '3px' }}>
-                          {g.logo_url && <img src={g.logo_url} alt="" style={{ width: '24px', height: '24px', borderRadius: '50%' }} />}
+                          {g.logo_url && <img src={g.logo_url} alt="" loading="lazy" decoding="async" style={{ width: '24px', height: '24px', borderRadius: '50%' }} />}
                           <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', fontWeight: 600, color: 'var(--am)' }}>{g.business_name}</span>
                           <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', padding: '2px 6px', borderRadius: '6px', background: 'var(--am)', color: '#fff', textTransform: 'uppercase' }}>Guide</span>
                         </div>
@@ -1096,7 +1159,7 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                       <div style={{ display: 'flex', gap: '6px', marginTop: '8px', overflowX: 'auto' }}>
                         {report.photos.map((url, pi) => (
                           <a key={pi} href={url} target="_blank" rel="noopener noreferrer">
-                            <img src={url} alt="Trip photo" style={{ width: '100px', height: '75px', objectFit: 'cover', borderRadius: '4px', border: '.5px solid var(--bd)' }} />
+                            <img src={url} alt="Trip photo" loading="lazy" decoding="async" style={{ width: '100px', height: '75px', objectFit: 'cover', borderRadius: '4px', border: '.5px solid var(--bd)' }} />
                           </a>
                         ))}
                       </div>
@@ -1189,7 +1252,7 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                       <div style={{ display: 'flex', gap: '6px', marginBottom: '8px', flexWrap: 'wrap' }}>
                         {photos.map((url, i) => (
                           <div key={i} style={{ position: 'relative' }}>
-                            <img src={url} alt={`Upload ${i + 1}`} style={{ width: '80px', height: '60px', objectFit: 'cover', borderRadius: '4px', border: '.5px solid var(--bd)' }} />
+                            <img src={url} alt={`Upload ${i + 1}`} loading="lazy" decoding="async" style={{ width: '80px', height: '60px', objectFit: 'cover', borderRadius: '4px', border: '.5px solid var(--bd)' }} />
                             <button type="button" onClick={() => setPhotos(prev => prev.filter((_, j) => j !== i))}
                               style={{ position: 'absolute', top: -4, right: -4, width: 16, height: 16, borderRadius: '50%',
                                 background: 'var(--dg)', color: '#fff', border: 'none', fontSize: '9px', cursor: 'pointer',
@@ -1241,7 +1304,11 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
 
         {/* ── FISHING ────────────────────────────────────────── */}
         {tab === 'Fishing' && (() => {
-          const fish = FISHERIES[river.id]
+          // Wait for the lazy fisheries dataset to finish loading.
+          if (!fisheries) return (
+            <div style={{ padding: '20px', textAlign: 'center', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>Loading fisheries data...</div>
+          )
+          const fish = fisheries[river.id]
           if (!fish && stockingLoaded && stockingEvents.length === 0) return (
             <EmptyState icon="&#x1F3A3;" label="Fisheries data coming soon" sub="Species, hatch charts, stocking reports, and run timing for this river will appear here." />
           )
@@ -2128,14 +2195,12 @@ export default function RiverTabs({ river, flow }: { river: River; flow: FlowDat
                   </div>
                 )}
                 {riverMapData && (
-                  <Suspense fallback={<div style={{ height: '350px', background: 'var(--bg2)', borderRadius: 'var(--rlg)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>Loading map...</div>}>
-                    <RiverMap
-                      riverName={river.n}
-                      accessPoints={riverMapData.accessPoints}
-                      sections={riverMapData.sections}
-                      riverPath={riverMapData.riverPath}
-                    />
-                  </Suspense>
+                  <RiverMap
+                    riverName={river.n}
+                    accessPoints={riverMapData.accessPoints}
+                    sections={riverMapData.sections}
+                    riverPath={riverMapData.riverPath}
+                  />
                 )}
               </div>
             )}

@@ -4,6 +4,13 @@ import { fetchGaugeData, formatCfs } from '@/lib/usgs'
 import { getRiver } from '@/data/rivers'
 import { sendEmail, flowAlertEmail } from '@/lib/email'
 
+// Cron route — must run fresh every invocation. Caching the response would
+// silently skip alert checks. The underlying fetchGaugeData call still uses
+// the lib/usgs.ts 15-min fetch cache, so concurrent crons within that window
+// share gauge fetches without an upstream USGS hit.
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 interface SponsoredOutfitter {
   business_name: string
   description: string | null

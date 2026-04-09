@@ -8,7 +8,7 @@ import SaveOffline from '@/components/SaveOffline'
 import DataConfidenceBanner from '@/components/rivers/DataConfidenceBanner'
 import { getDesignationBadges } from '@/lib/designations'
 import { RAPIDS } from '@/data/rapids'
-import { createSupabaseServerClient } from '@/lib/supabase-server'
+import { fetchRiverPageData } from '@/lib/river-page-data'
 import type { Metadata } from 'next'
 
 export const revalidate = 900
@@ -58,23 +58,17 @@ export default async function RiverPage({ params }: Props) {
   const river = getRiverBySlug(state, slug)
   if (!river) notFound()
 
-  const flow = await fetchGaugeData(river.g, river.opt)
+  // Fire flow data and the batched river-page query in parallel.
+  // Both go to different upstreams (USGS vs Supabase) so they can race.
+  const [flow, prefetched] = await Promise.all([
+    fetchGaugeData(river.g, river.opt),
+    fetchRiverPageData(river.id, river.stateKey),
+  ])
 
-  // Check if rapids are verified (static data or Supabase)
-  let isVerified = !!(RAPIDS[river.id] && RAPIDS[river.id].length > 0)
-  if (!isVerified) {
-    try {
-      const supabase = await createSupabaseServerClient()
-      const { data: rapids } = await supabase
-        .from('river_rapids')
-        .select('id')
-        .eq('river_id', river.id)
-        .limit(1)
-      if (rapids && rapids.length > 0) isVerified = true
-    } catch {
-      // Supabase not configured or table doesn't exist — fall back to static only
-    }
-  }
+  // Verified-rapids check: static data first, then Supabase fallback (already
+  // included in the prefetched batch — no extra round trip).
+  const isVerified =
+    !!(RAPIDS[river.id] && RAPIDS[river.id].length > 0) || prefetched.hasSupabaseRapids
 
   const condClass = {
     optimal: 'cond-opt',
@@ -176,10 +170,11 @@ export default async function RiverPage({ params }: Props) {
         riverName={river.n}
         stateKey={river.stateKey}
         isVerified={isVerified}
+        needsVerification={river.needsVerification as string[] | undefined}
       />
 
       {/* Tabbed content — fills remaining height */}
-      <RiverTabs river={river} flow={flow} />
+      <RiverTabs river={river} flow={flow} initialData={prefetched} />
     </main>
   )
 }

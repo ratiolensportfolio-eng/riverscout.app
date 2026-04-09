@@ -148,10 +148,10 @@ export default async function HomePage() {
           {/* Left column */}
           <div>
             <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', opacity: 0.7, marginBottom: '16px' }}>
-              Built by Paddlers &nbsp;·&nbsp; Verified by Locals
+              Built by Paddlers &nbsp;·&nbsp; Verified by Paddlers, Outfitters, Guides &amp; Anglers
             </div>
             <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '17px', fontWeight: 600, lineHeight: 1.6, marginBottom: '16px', color: '#fff' }}>
-              RiverScout combines live USGS gauge data, historical records, and firsthand knowledge from outfitters and paddlers who know these rivers personally.
+              RiverScout combines live USGS gauge data, historical records, and firsthand knowledge from paddlers, outfitters, guides, and anglers who know these rivers personally.
             </p>
             <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', lineHeight: 1.7, opacity: 0.7, margin: 0 }}>
               Every river in our database is a starting point. The people who paddle them make them accurate.

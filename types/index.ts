@@ -56,6 +56,10 @@ export interface River {
   docs: RiverDoc[]
   revs: Review[]
   outs: Outfitter[]
+  // Internal QA flags — items the community is asked to verify or improve.
+  // Each string is a short machine-readable tag (e.g. "cfs-range-wide",
+  // "class-v-portage-note"). Surfaces in the Improve This River workflow.
+  needsVerification?: string[]
   // Boolean filter flags (vary by state)
   [key: string]: unknown
 }

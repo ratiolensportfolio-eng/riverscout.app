@@ -9,6 +9,11 @@ interface FetchOptions {
   timeoutMs?: number
   retries?: number
   headers?: Record<string, string>
+  // When set, opt into Next.js fetch caching with the given revalidation
+  // window (in seconds). When omitted, defaults to `cache: 'no-store'` so
+  // alert crons / write paths always see fresh data. USGS gauge fetches
+  // pass 900 (15 min) here to match upstream update frequency.
+  nextRevalidate?: number
 }
 
 /**
@@ -23,6 +28,13 @@ export async function fetchWithTimeout(
   const controller = new AbortController()
   const timer = setTimeout(() => controller.abort(), timeoutMs)
 
+  // Cache strategy: opt in to Next.js fetch cache when nextRevalidate is set,
+  // otherwise force no-store so cron jobs and write paths get fresh data.
+  const cacheOpts: RequestInit =
+    typeof opts.nextRevalidate === 'number'
+      ? { next: { revalidate: opts.nextRevalidate } }
+      : { cache: 'no-store' }
+
   try {
     const response = await fetch(url, {
       signal: controller.signal,
@@ -31,7 +43,7 @@ export async function fetchWithTimeout(
         'Accept': 'application/json',
         ...opts.headers,
       },
-      cache: 'no-store',
+      ...cacheOpts,
     })
     clearTimeout(timer)
     return response

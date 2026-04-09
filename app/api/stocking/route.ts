@@ -4,6 +4,11 @@ import { sendEmail, stockingAlertEmail, ADMIN_EMAIL } from '@/lib/email'
 import { getRiver, getStateSlug, getRiverSlug } from '@/data/rivers'
 import { fetchGaugeData } from '@/lib/usgs'
 
+// NOTE: No `revalidate` export. The GET handler reads from Supabase (no USGS),
+// and the POST handler is a write path that fires alert emails — both must
+// run fresh on every request. The fetchGaugeData call inside POST embeds CFS
+// in alert emails and benefits from lib/usgs.ts's underlying 15-min cache.
+
 // GET /api/stocking?riverId=... — fetch stocking events for a river
 export async function GET(req: NextRequest) {
   const riverId = req.nextUrl.searchParams.get('riverId')
