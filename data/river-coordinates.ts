@@ -32,6 +32,11 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   sturgeon_lp: [45.02, -84.65],
   thunder_bay: [44.90, -83.68],
   white_mi: [43.60, -86.15],
+  big_manistee_lake: [44.28, -85.82],
+  sturgeon_mi: [45.02, -84.68],
+  rogue_mi: [43.10, -85.58],
+  maple_mi: [45.42, -84.88],
+  coldwater_mi: [42.00, -85.00],
   // Michigan UP
   twohearted: [46.68, -85.60],
 
@@ -97,6 +102,11 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   kern: [35.78, -118.52],
   trinity: [40.85, -123.10],
   merced: [37.52, -120.10],
+  sacramento: [40.58, -122.38],
+  yuba: [39.23, -121.10],
+  cache_creek: [38.72, -122.15],
+  mokelumne: [38.22, -120.72],
+  smith: [41.82, -124.08],
 
   // Virginia
   james: [37.55, -79.45],
@@ -251,6 +261,11 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   devils_river: [29.88, -100.92],
   brazos: [32.85, -98.42],
   san_marcos: [29.88, -97.92],
+  frio: [29.55, -99.75],
+  comal: [29.72, -98.12],
+  blanco: [30.05, -98.42],
+  nueces: [29.48, -100.05],
+  sabine: [32.32, -95.82],
 
   // Nevada
   truckee: [39.32, -120.02],
@@ -263,6 +278,11 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   little_miami: [39.42, -84.05],
   grand_oh: [41.72, -81.08],
   hocking: [39.32, -82.12],
+  kokosing: [40.38, -82.32],
+  olentangy: [40.28, -83.05],
+  scioto: [39.72, -82.98],
+  maumee: [41.08, -84.02],
+  chagrin: [41.52, -81.38],
 
   // Indiana
   whitewater_in: [39.52, -84.98],
@@ -273,6 +293,11 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   vermilion_il: [41.28, -89.02],
   cache_il: [37.22, -89.02],
   kankakee: [41.18, -87.88],
+  fox_il: [41.78, -88.32],
+  des_plaines: [41.65, -87.95],
+  mackinaw: [40.52, -89.38],
+  sangamon: [39.82, -89.65],
+  apple_il: [42.42, -90.12],
 
   // New Hampshire
   androscoggin: [44.42, -71.18],
