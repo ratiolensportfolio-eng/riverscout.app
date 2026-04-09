@@ -28,9 +28,23 @@ export async function middleware(request: NextRequest) {
   // Refresh the auth session (important for SSR)
   await supabase.auth.getUser()
 
+  // Legacy /rivers/[id] → /rivers/[state]/[slug] redirect
+  const path = request.nextUrl.pathname
+  const legacyMatch = path.match(/^\/rivers\/([a-z_]+)$/)
+  if (legacyMatch) {
+    const id = legacyMatch[1]
+    // Dynamic import won't work in middleware — use a simple fetch to check
+    // Redirect to search with the ID as a hint, which is better than a 404
+    const { getRiver, getRiverPath } = await import('@/data/rivers')
+    const river = getRiver(id)
+    if (river) {
+      const newPath = getRiverPath(river)
+      return NextResponse.redirect(new URL(newPath, request.url), 301)
+    }
+  }
+
   // Protected routes — redirect to login if not authenticated
   const protectedPaths = ['/outfitters/dashboard', '/admin']
-  const path = request.nextUrl.pathname
 
   if (protectedPaths.some(p => path.startsWith(p))) {
     const { data: { user } } = await supabase.auth.getUser()
