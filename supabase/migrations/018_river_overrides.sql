@@ -57,9 +57,11 @@ create policy "Field overrides are publicly readable"
   on public.river_field_overrides for select using (true);
 
 -- Writes go through /api/suggestions PATCH using the anon client,
--- which the route guards with isAdmin() — RLS doesn't need a write
--- policy because the route layer is the gate. If/when we move to
--- service-role writes for this we can revisit.
+-- gated by isAdmin() at the route layer. This file originally
+-- omitted write policies on the assumption that the route gate was
+-- sufficient, but Postgres RLS denies by default — see migration
+-- 019_river_overrides_write_policies.sql which adds the missing
+-- INSERT/UPDATE/DELETE policies.
 
 create table if not exists public.river_cleared_verification_tags (
   id uuid primary key default gen_random_uuid(),
@@ -78,3 +80,6 @@ alter table public.river_cleared_verification_tags enable row level security;
 
 create policy "Cleared verification tags are publicly readable"
   on public.river_cleared_verification_tags for select using (true);
+
+-- See note on river_field_overrides RLS above. Write policies live
+-- in migration 019_river_overrides_write_policies.sql.
