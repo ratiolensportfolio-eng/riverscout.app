@@ -399,8 +399,46 @@ async function upsertStockings(rows: NormalizedStocking[]): Promise<{ inserted: 
   }
   const supabase = createClient(url, serviceKey, { auth: { persistSession: false } })
 
-  // Map normalized rows to river_stocking column shape
-  const inserts = rows.map(r => ({
+  // Application-level dedupe instead of postgres ON CONFLICT.
+  //
+  // Why: migration 028 created a PARTIAL unique index
+  // (WHERE source_record_id IS NOT NULL) so existing
+  // manually-submitted rows with NULL source_record_id wouldn't
+  // collide. Postgres natively supports ON CONFLICT against
+  // partial indexes, but only if you supply the same WHERE
+  // clause in the ON CONFLICT statement — and PostgREST's
+  // .upsert() API doesn't expose that. So upsert with
+  // onConflict fails with "no unique or exclusion constraint
+  // matching the ON CONFLICT specification."
+  //
+  // Workaround: query for existing source_record_ids in this
+  // batch, filter them out, then plain INSERT the rest. The
+  // partial unique index from migration 028 still acts as
+  // defense-in-depth — if two cron runs ever race, the
+  // database will reject the second one's duplicates.
+
+  // Step 1: which of these source_record_ids already exist?
+  const sourceIds = rows.map(r => r.source_record_id)
+  const { data: existing, error: existingErr } = await supabase
+    .from('river_stocking')
+    .select('source_record_id')
+    .eq('stocking_authority', STOCKING_AUTHORITY)
+    .in('source_record_id', sourceIds)
+
+  if (existingErr) {
+    throw new Error(`Supabase select existing: ${existingErr.message}`)
+  }
+
+  const existingSet = new Set((existing || []).map(r => r.source_record_id as string))
+  const newRows = rows.filter(r => !existingSet.has(r.source_record_id))
+  const duplicates = rows.length - newRows.length
+
+  if (newRows.length === 0) {
+    return { inserted: 0, duplicates }
+  }
+
+  // Step 2: plain insert the new rows
+  const inserts = newRows.map(r => ({
     river_id: r.river_id!,
     state_key: r.state_key,
     stocking_date: r.stocking_date,
@@ -416,24 +454,14 @@ async function upsertStockings(rows: NormalizedStocking[]): Promise<{ inserted: 
     verified: true,
   }))
 
-  // Upsert with onConflict on the unique index from migration 028.
-  // ignoreDuplicates: true makes the insert silently skip rows
-  // whose (stocking_authority, source_record_id) already exists,
-  // returning only the genuinely-new rows. This is what makes the
-  // cron idempotent.
-  const { data, error } = await supabase
+  const { data: insertedRows, error: insertErr } = await supabase
     .from('river_stocking')
-    .upsert(inserts, {
-      onConflict: 'stocking_authority,source_record_id',
-      ignoreDuplicates: true,
-    })
+    .insert(inserts)
     .select('id')
 
-  if (error) {
-    throw new Error(`Supabase upsert: ${error.message}`)
+  if (insertErr) {
+    throw new Error(`Supabase insert: ${insertErr.message}`)
   }
 
-  const inserted = data?.length ?? 0
-  const duplicates = inserts.length - inserted
-  return { inserted, duplicates }
+  return { inserted: insertedRows?.length ?? 0, duplicates }
 }
