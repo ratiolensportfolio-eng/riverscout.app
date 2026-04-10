@@ -1,10 +1,18 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
+import { supabase } from '@/lib/supabase'
 
 const mono = "'IBM Plex Mono', monospace"
 const serif = "'Playfair Display', serif"
+
+interface OwnedListing {
+  id: string
+  business_name: string
+  tier: string
+  active: boolean
+}
 
 interface Analytics {
   outfitter: { id: string; businessName: string; tier: string }
@@ -38,61 +46,114 @@ const sourceColors: Record<string, string> = {
 
 export default function OutfitterDashboard() {
   const [analytics, setAnalytics] = useState<Analytics | null>(null)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [outfitterId, setOutfitterId] = useState('')
   const [userId, setUserId] = useState('')
+  const [authState, setAuthState] = useState<'loading' | 'signed-out' | 'no-listing' | 'has-listing' | 'pick-listing'>('loading')
+  const [ownedListings, setOwnedListings] = useState<OwnedListing[]>([])
   const [logoUrl, setLogoUrl] = useState<string | null>(null)
   const [coverUrl, setCoverUrl] = useState<string | null>(null)
   const [uploading, setUploading] = useState<'logo' | 'cover' | null>(null)
   const [uploadMsg, setUploadMsg] = useState('')
 
-  // In production, these would come from auth session
-  // For now, manual input for demo
-  useEffect(() => {
-    const storedOid = localStorage.getItem('riverscout_outfitter_id')
-    const storedUid = localStorage.getItem('riverscout_user_id')
-    if (storedOid) setOutfitterId(storedOid)
-    if (storedUid) setUserId(storedUid)
-  }, [])
-
-  const fetchAnalytics = async () => {
-    if (!outfitterId || !userId) return
+  const fetchAnalytics = useCallback(async (oid: string, uid: string) => {
     setLoading(true)
     setError('')
     try {
-      const res = await fetch(`/api/outfitters/analytics?outfitterId=${outfitterId}&userId=${userId}`)
+      const res = await fetch(`/api/outfitters/analytics?outfitterId=${oid}&userId=${uid}`)
       const data = await res.json()
       if (data.error) {
         setError(data.error)
       } else {
         setAnalytics(data)
-        localStorage.setItem('riverscout_outfitter_id', outfitterId)
-        localStorage.setItem('riverscout_user_id', userId)
       }
     } catch {
       setError('Failed to load analytics')
     }
     setLoading(false)
 
-    // Fetch current images
+    // Fetch current images. The browser supabase client carries the
+    // auth cookie, so the "Outfitters manage own listing" RLS policy
+    // (auth.uid() = user_id) lets us read our own row even when it's
+    // inactive (newly claimed listings start active=false).
     try {
-      const { createClient } = await import('@supabase/supabase-js')
-      const sb = createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      )
-      const { data: listing } = await sb
+      const { data: listing } = await supabase
         .from('outfitters')
         .select('logo_url, cover_photo_url')
-        .eq('id', outfitterId)
+        .eq('id', oid)
         .single()
       if (listing) {
         setLogoUrl(listing.logo_url)
         setCoverUrl(listing.cover_photo_url)
       }
     } catch {}
-  }
+  }, [])
+
+  // Auth-aware bootstrap. On mount we resolve the current user from
+  // the supabase session, look up their owned outfitter rows, and
+  // auto-load the dashboard for the first one. The old version asked
+  // for an Outfitter ID and User ID via free-text inputs — that was a
+  // pre-auth demo affordance and is gone now.
+  useEffect(() => {
+    let cancelled = false
+    async function bootstrap() {
+      const { data: userRes } = await supabase.auth.getUser()
+      const user = userRes.user
+      if (cancelled) return
+
+      if (!user) {
+        setAuthState('signed-out')
+        setLoading(false)
+        return
+      }
+
+      setUserId(user.id)
+
+      // Look up every outfitter row this user owns. The browser
+      // client has auth.uid() set via cookies, so the
+      // "Outfitters manage own listing" SELECT policy returns the
+      // user's own rows even when they're still inactive.
+      const { data: rows, error: listErr } = await supabase
+        .from('outfitters')
+        .select('id, business_name, tier, active')
+        .eq('user_id', user.id)
+        .order('created_at', { ascending: false })
+
+      if (cancelled) return
+
+      if (listErr) {
+        setError(`Couldn't load your listings: ${listErr.message}`)
+        setAuthState('no-listing')
+        setLoading(false)
+        return
+      }
+
+      const listings = (rows || []) as OwnedListing[]
+      setOwnedListings(listings)
+
+      if (listings.length === 0) {
+        setAuthState('no-listing')
+        setLoading(false)
+        return
+      }
+
+      if (listings.length === 1) {
+        setAuthState('has-listing')
+        setOutfitterId(listings[0].id)
+        await fetchAnalytics(listings[0].id, user.id)
+        return
+      }
+
+      // Multiple listings — show a picker. Default to the first
+      // until the user chooses; user can switch with the picker UI.
+      setAuthState('pick-listing')
+      setOutfitterId(listings[0].id)
+      await fetchAnalytics(listings[0].id, user.id)
+    }
+    bootstrap()
+    return () => { cancelled = true }
+  }, [fetchAnalytics])
 
   async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>, type: 'logo' | 'cover') {
     const file = e.target.files?.[0]
@@ -140,25 +201,80 @@ export default function OutfitterDashboard() {
       </nav>
 
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '20px 28px' }}>
-        {/* Auth / ID input (temp until real auth) */}
-        {!analytics && (
-          <div style={{ background: 'var(--bg2)', border: '.5px solid var(--bd)', borderRadius: 'var(--rlg)', padding: '20px', marginBottom: '20px' }}>
-            <div style={{ fontFamily: serif, fontSize: '18px', fontWeight: 700, marginBottom: '12px' }}>
-              Outfitter Analytics Dashboard
+        {/* Bootstrap states — replace the old manual ID input form
+            with auth-aware empty / picker / signed-out branches. */}
+        {authState === 'loading' && (
+          <div style={{ fontFamily: mono, fontSize: '12px', color: 'var(--tx3)', textAlign: 'center', padding: '60px 0' }}>
+            Loading your listings…
+          </div>
+        )}
+
+        {authState === 'signed-out' && (
+          <div style={{ background: 'var(--bg2)', border: '.5px solid var(--bd)', borderRadius: 'var(--rlg)', padding: '32px', textAlign: 'center' }}>
+            <div style={{ fontFamily: serif, fontSize: '20px', fontWeight: 700, color: 'var(--rvdk)', marginBottom: '8px' }}>
+              Sign in to view your dashboard
             </div>
-            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <input type="text" placeholder="Outfitter ID" value={outfitterId}
-                onChange={e => setOutfitterId(e.target.value)}
-                style={{ fontFamily: mono, fontSize: '12px', padding: '8px 12px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)', flex: '1 1 200px' }} />
-              <input type="text" placeholder="User ID" value={userId}
-                onChange={e => setUserId(e.target.value)}
-                style={{ fontFamily: mono, fontSize: '12px', padding: '8px 12px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)', flex: '1 1 200px' }} />
-              <button onClick={fetchAnalytics} disabled={loading || !outfitterId || !userId}
-                style={{ fontFamily: mono, fontSize: '11px', padding: '8px 20px', borderRadius: 'var(--r)', border: 'none', background: 'var(--rv)', color: '#fff', cursor: 'pointer' }}>
-                {loading ? 'Loading...' : 'Load Dashboard'}
-              </button>
+            <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx2)', marginBottom: '20px' }}>
+              You need to be signed in to manage your outfitter listing.
             </div>
-            {error && <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--dg)', marginTop: '8px' }}>{error}</div>}
+            <Link href="/login?redirect=%2Foutfitters%2Fdashboard" style={{
+              display: 'inline-block', padding: '10px 24px', fontFamily: mono, fontSize: '12px', fontWeight: 500,
+              background: 'var(--rv)', color: '#fff', borderRadius: 'var(--r)', textDecoration: 'none',
+            }}>
+              Sign in
+            </Link>
+          </div>
+        )}
+
+        {authState === 'no-listing' && (
+          <div style={{ background: 'var(--bg2)', border: '.5px solid var(--bd)', borderRadius: 'var(--rlg)', padding: '32px', textAlign: 'center' }}>
+            <div style={{ fontFamily: serif, fontSize: '20px', fontWeight: 700, color: 'var(--rvdk)', marginBottom: '8px' }}>
+              No listings yet
+            </div>
+            <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx2)', marginBottom: '20px', lineHeight: 1.6 }}>
+              You don&rsquo;t have any outfitter listings on this account yet.
+              {error && <><br /><span style={{ color: 'var(--dg)' }}>{error}</span></>}
+            </div>
+            <Link href="/outfitters/join" style={{
+              display: 'inline-block', padding: '10px 24px', fontFamily: mono, fontSize: '12px', fontWeight: 500,
+              background: 'var(--rv)', color: '#fff', borderRadius: 'var(--r)', textDecoration: 'none',
+            }}>
+              Claim your listing
+            </Link>
+          </div>
+        )}
+
+        {/* Listing picker — only shown when the user owns more than
+            one outfitter. Lets them switch which one the dashboard
+            is showing without leaving the page. */}
+        {authState === 'pick-listing' && ownedListings.length > 1 && (
+          <div style={{ background: 'var(--bg2)', border: '.5px solid var(--bd)', borderRadius: 'var(--r)', padding: '12px 14px', marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+            <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px' }}>
+              Listing
+            </span>
+            <select
+              value={outfitterId}
+              onChange={e => {
+                const newOid = e.target.value
+                setOutfitterId(newOid)
+                if (userId) fetchAnalytics(newOid, userId)
+              }}
+              style={{ fontFamily: mono, fontSize: '12px', padding: '6px 10px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)', flex: '1 1 240px' }}
+            >
+              {ownedListings.map(l => (
+                <option key={l.id} value={l.id}>
+                  {l.business_name} {l.active ? '' : '(pending review)'}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
+        {/* Inline error banner for analytics-fetch failures while in
+            a signed-in / has-listing state. */}
+        {(authState === 'has-listing' || authState === 'pick-listing') && error && (
+          <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--dg)', background: 'var(--dglt)', border: '.5px solid var(--dg)', borderRadius: 'var(--r)', padding: '10px 12px', marginBottom: '14px' }}>
+            {error}
           </div>
         )}
 
@@ -365,7 +481,7 @@ export default function OutfitterDashboard() {
 
             {/* Refresh */}
             <div style={{ textAlign: 'center', marginTop: '16px' }}>
-              <button onClick={fetchAnalytics}
+              <button onClick={() => { if (outfitterId && userId) fetchAnalytics(outfitterId, userId) }}
                 style={{ fontFamily: mono, fontSize: '10px', color: 'var(--rv)', background: 'none', border: '.5px solid var(--rvmd)', borderRadius: 'var(--r)', padding: '6px 14px', cursor: 'pointer' }}>
                 Refresh Data
               </button>
