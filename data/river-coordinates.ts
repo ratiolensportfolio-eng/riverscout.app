@@ -402,6 +402,16 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   westfield: [42.18, -72.82],
   concord: [42.45, -71.38],
 
+  // Hawaii — GPS coordinates at the river mouth (most-visited
+  // section) of each of the 5 priority rivers. Wailua, Hanalei,
+  // and Waimea are on Kauai; Anahulu is on Oahu's North Shore;
+  // Wailuku is in Hilo on the Big Island.
+  wailua_hi:  [22.05, -159.34],   // Lydgate Beach Park / Fern Grotto launch
+  hanalei_hi: [22.21, -159.51],   // Hanalei Bridge
+  anahulu_hi: [21.59, -158.10],   // Anahulu Bridge in Hale'iwa
+  wailuku_hi: [19.72, -155.10],   // Rainbow Falls / Hilo
+  waimea_hi:  [21.96, -159.67],   // Waimea town / Russian Fort
+
   // Alaska — coordinates roughly at the most-fished section of each
   // river. Kenai Peninsula and Bristol Bay rivers cluster south /
   // southwest; Talkeetna/Susitna/Copper are southcentral; Goodnews,

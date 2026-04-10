@@ -8243,6 +8243,92 @@ export const STATES: StatesDB = {
     ],
   },
 
+  // ── HAWAII ────────────────────────────────────────────────────
+  hi: {
+    name: 'Hawaii', abbr: 'HI', label: 'Hawaii Rivers',
+    filters: ['all', 'kauai', 'oahu', 'big_island', 'navigable', 'cultural'],
+    fL: { all: 'All', kauai: 'Kauai', oahu: 'Oahu', big_island: 'Big Island', navigable: 'Navigable', cultural: 'Cultural Heritage' },
+    rivers: [
+      {
+        id: 'wailua_hi', n: 'Wailua River', kauai: true, oahu: false, big_island: false, navigable: true, cultural: true,
+        co: 'Kauai County', len: '20 mi', cls: 'Flat', opt: '20–200',
+        g: '16060000', avg: 80, histFlow: 72, mx: 247, my: 540, abbr: 'HI',
+        desc: 'The only navigable river in Hawaii. The Wailua flows 20 miles from Mount Waialeale \u2014 one of the wettest spots on earth at 460 inches of rain per year \u2014 down through the Wailua River State Park to the east shore of Kauai. The river was sacred to Hawaiian royalty (ali\u02bbi) for centuries and contains seven heiau (temples) along its banks. The Fern Grotto motorboat tour is one of the most-photographed visitor experiences in Hawaii, and the river is the most popular kayaking destination on Kauai.',
+        desig: 'Wailua River State Park · Wailua Complex of Heiau (National Historic Landmark) · Only Navigable River in Hawaii',
+        secs: ['Wailua River mouth (Lydgate Beach Park) — kayak launch, 4 mi to Fern Grotto', 'North Fork (Wailua) — Kayak access to the Secret Falls / Uluwehi Falls trail', 'South Fork (Wailua) — quieter paddle, jungle corridor'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-1778', title: "Wailua \u2014 Sacred Royal Center of Kauai", text: "The Wailua River was the most sacred river complex in Hawaii, the seat of Kauai's royal lineage for centuries before Western contact. Seven heiau (temples) line the river from the mouth to the upper valley, including the Hikinaakala Heiau (\"rising of the sun\"), Holoholoku Heiau (the birthing stones where royalty had to be born to be considered ali\u02bbi nui), and Poliahu Heiau in the upper valley. The Wailua Complex of Heiau is a National Historic Landmark protecting these sites.", src: 'NPS Wailua Complex of Heiau NHL; Kauai Historical Society' }] },
+          { era: 'modern', entries: [{ yr: '1946', title: "Smith's Fern Grotto Boat Tour Begins", text: "Walter Smith launched the first Fern Grotto motorboat tour on the Wailua River in 1946, taking visitors 2 miles upstream to a natural amphitheater of hanging ferns. The tour has become one of the most-visited attractions in Hawaii and runs continuously to this day, with Hawaiian musicians playing the wedding song from the Fern Grotto for the boat passengers.", src: 'Smith Family Garden Luau; Kauai Visitors Bureau' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Smith\u2019s Fern Grotto Tour', d: 'Historic Wailua River motorboat tour to the Fern Grotto', l: 'smithskauai.com' }, { n: 'Wailua Kayak Adventures', d: 'Guided kayak trips to Secret Falls and the Fern Grotto', l: '' }],
+      },
+      {
+        id: 'hanalei_hi', n: 'Hanalei River', kauai: true, oahu: false, big_island: false, navigable: false, cultural: true,
+        co: 'Kauai County', len: '16 mi', cls: 'Flat', opt: '40–500',
+        g: '16103000', avg: 220, histFlow: 200, mx: 245, my: 532, abbr: 'HI',
+        desc: 'The Hanalei River drains the Hanalei Valley on Kauai\u2019s North Shore \u2014 the lush taro-field landscape that inspired the song \u201cPuff the Magic Dragon.\u201d The river runs 16 miles from the Wai\u02bbale\u02bbale headwaters down through the Hanalei National Wildlife Refuge before reaching Hanalei Bay, one of the most photographed beaches in the world. The valley produces over half of all the taro grown in Hawaii, and the river\u2019s slow-moving lower reach is a popular flatwater paddle through working agricultural land protected as critical habitat for endangered Hawaiian waterbirds.',
+        desig: 'Hanalei National Wildlife Refuge · American Heritage River (1998) · Endangered Hawaiian Waterbird Habitat',
+        secs: ['Upper Hanalei (Wai\u02bbale\u02bbale headwaters) \u2014 dense rainforest, no public access', 'Hanalei National Wildlife Refuge \u2014 taro fields, endangered Hawaiian waterbirds', 'Lower Hanalei (Hanalei Bridge to Hanalei Bay) \u2014 flatwater paddle, the famous one-lane bridge'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-1778', title: 'Hanalei \u2014 \u201cCrescent Bay\u201d Taro Country', text: "Hanalei (\u201ccrescent bay\u201d) was one of the most productive Hawaiian taro-growing valleys for centuries before contact, supporting a large population through carefully engineered lo\u02bbi (irrigated taro patches) fed by the Hanalei River. The valley\u2019s taro production made it a center of wealth and political power in pre-contact Kauai. Many of the lo\u02bbi terraces in the Hanalei NWR are still in active production today.", src: 'Kauai Historical Society; USFWS Hanalei NWR' }] },
+          { era: 'modern', entries: [{ yr: '1998', title: 'American Heritage River Designation', text: 'President Clinton designated the Hanalei River as one of fourteen American Heritage Rivers in 1998 \u2014 the only Hawaiian river to receive the designation. The recognition reflects both the river\u2019s ecological importance to endangered Hawaiian waterbirds (the koloa duck, the Hawaiian moorhen, the Hawaiian coot, and the ae\u02bbo stilt) and its cultural significance as the heart of traditional taro agriculture in Hawaii.', src: 'USFWS Hanalei National Wildlife Refuge; American Heritage Rivers' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Kayak Hanalei', d: 'Hanalei River kayak rentals and guided paddles', l: '' }],
+      },
+      {
+        id: 'anahulu_hi', n: 'Anahulu River', kauai: false, oahu: true, big_island: false, navigable: true, cultural: false,
+        co: 'Honolulu County (Oahu)', len: '6 mi', cls: 'Flat', opt: '10–150',
+        g: '16294900', avg: 35, histFlow: 32, mx: 230, my: 525, abbr: 'HI',
+        desc: 'The Anahulu River flows 6 miles down the Wai\u02bbanae Range to Hale\u02bbiwa Beach Park on Oahu\u2019s North Shore, ending at the iconic Anahulu Bridge \u2014 a graceful concrete arch built in 1921 that has become one of Oahu\u2019s most-photographed landmarks. The river is tidal and brackish in its lower reach, supporting one of the most popular kayak and stand-up paddleboard rentals in Hawaii. The slow lower mile is family-friendly flatwater with palm trees, mangroves, and views of the North Shore surf in the distance.',
+        desig: 'Hale\u02bbiwa Historic District · Anahulu Stream Bridge (National Register of Historic Places, 1979)',
+        secs: ['Anahulu Bridge \u2014 Hale\u02bbiwa, kayak rentals and SUP launch', 'Lower Anahulu \u2014 1 mi tidal estuary, mangroves and palm trees', 'Upper Anahulu \u2014 narrow, no public access'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-1778', title: 'Anahulu \u2014 \u201cTen Days\u201d Stream', text: "The Anahulu Stream (\u201cten days\u201d in Hawaiian, possibly referring to a religious observance) flowed through one of the most populated valleys on Oahu\u2019s North Shore in pre-contact times. The lower stream supported lo\u02bbi (taro patches) and the estuary was a productive fishery. The valley\u2019s ali\u02bbi were associated with the Wai\u02bbanae chiefly line.", src: 'Bishop Museum; Hawaii Historic Preservation Division' }] },
+          { era: 'modern', entries: [{ yr: '1921', title: 'Anahulu Stream Bridge Built', text: "The graceful concrete arch of the Anahulu Stream Bridge was built in 1921 as part of the early Oahu road system, replacing an earlier wooden span. The bridge was added to the National Register of Historic Places in 1979 and remains one of the most photographed landmarks on the North Shore. The Hale\u02bbiwa Historic District around the bridge has become the cultural and tourism heart of the North Shore.", src: 'National Register of Historic Places (1979); Hawaii Historic Preservation Division' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Surf-N-Sea Hale\u02bbiwa', d: 'Anahulu River kayak and SUP rentals at the Anahulu Bridge', l: 'surfnsea.com' }, { n: 'Rainbow Bridge Kayak', d: 'Self-guided rentals on the Anahulu', l: '' }],
+      },
+      {
+        id: 'wailuku_hi', n: 'Wailuku River', kauai: false, oahu: false, big_island: true, navigable: false, cultural: true,
+        co: 'Hawaii County', len: '32 mi', cls: 'III–V', opt: '50–500',
+        g: '16704000', avg: 170, histFlow: 153, mx: 280, my: 545, abbr: 'HI',
+        desc: 'The longest river in the Hawaiian islands. The Wailuku River drains the windward slope of Mauna Kea \u2014 the world\u2019s tallest mountain measured from base to peak \u2014 and flows 32 miles east through the Wailuku River State Park before reaching Hilo Bay. The river drops over Rainbow Falls (Waianuenue, \u201crainbow seen in water\u201d) and through the dramatic Boiling Pots series of plunge pools, both right inside the city of Hilo. The river is sacred in Hawaiian tradition as the home of Hina, the moon goddess and mother of the demigod M\u0101ui.',
+        desig: 'Wailuku River State Park · Rainbow Falls · Boiling Pots · Longest River in Hawaii',
+        secs: ['Upper Wailuku (Mauna Kea slopes) \u2014 dense rainforest, dangerous flash floods', 'Boiling Pots and Pe\u02bbepe\u02bbe Falls \u2014 plunge-pool series, viewing only', 'Rainbow Falls (Waianuenue) \u2014 80-ft waterfall, Hilo city park'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-1778', title: 'Wailuku \u2014 \u201cWater of Destruction\u201d', text: "The Wailuku River\u2019s name (\u201cwaters of destruction\u201d) reflects the river\u2019s long history of catastrophic flash floods, which Hawaiians attributed to the goddess Hina, the moon goddess and mother of M\u0101ui. The cave behind Rainbow Falls (Waianuenue) was traditionally said to be Hina\u2019s home. The river is referenced in dozens of Hawaiian chants and m\u014dlelo (oral histories) recording both the river\u2019s sacred significance and its deadly flood events.", src: 'Bishop Museum; Hawaii State Parks' }] },
+          { era: 'modern', entries: [{ yr: '2018', title: 'Wailuku River State Park Updated Safety Signage', text: 'After multiple drowning fatalities at Boiling Pots over the years \u2014 including a high-profile death in 2017 \u2014 Hawaii State Parks installed expanded warning signage and barricades around the Boiling Pots and Pe\u02bbepe\u02bbe Falls in 2018. The plunge pools look inviting in dry weather but become lethal flash-flood traps within minutes when rain falls anywhere in the upper watershed.', src: 'Hawaii State Parks; Hawaii Tribune-Herald' }] },
+        ],
+        docs: [],
+        revs: [],
+        needsVerification: ['flash-flood-warning-needed'],
+        outs: [{ n: 'Wailuku River State Park', d: 'Hawaii State Parks information for Rainbow Falls and Boiling Pots', l: '' }],
+      },
+      {
+        id: 'waimea_hi', n: 'Waimea River', kauai: true, oahu: false, big_island: false, navigable: false, cultural: true,
+        co: 'Kauai County', len: '12 mi', cls: 'II–III', opt: '50–600',
+        g: '16031000', avg: 180, histFlow: 162, mx: 244, my: 543, abbr: 'HI',
+        desc: 'The Waimea River drains Waimea Canyon \u2014 the \u201cGrand Canyon of the Pacific\u201d \u2014 a 14-mile-long canyon up to 3,600 feet deep on western Kauai. The river flows 12 miles from the canyon floor down to Waimea Bay on the west shore, passing the historic town of Waimea where Captain Cook first landed in the Hawaiian islands in 1778. The river is the principal drainage of Waimea Canyon State Park and the Koke\u02bbe State Park backcountry, and the upper reaches are subject to dangerous flash floods. The Russian Fort Elizabeth State Historical Park sits at the river mouth.',
+        desig: 'Waimea Canyon State Park (\u201cGrand Canyon of the Pacific\u201d) · Russian Fort Elizabeth State Historical Park · Captain Cook Landing Site (1778)',
+        secs: ['Upper Waimea (Waimea Canyon floor) \u2014 dense rainforest, hike-in only, dangerous flash floods', 'Middle Waimea (Waimea Canyon Drive) \u2014 jeep road follows the river', 'Lower Waimea (Waimea town to Waimea Bay) \u2014 historic corridor, brackish estuary'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-1778', title: "Waimea \u2014 \u201cReddish Water\u201d", text: "Waimea (\u201creddish water\u201d) was named for the iron-red sediment the river carries down from the volcanic soils of Waimea Canyon. The river valley was one of the most populated on Kauai before contact, with extensive lo\u02bbi terraces along the lower river. Waimea Bay was the place where Captain James Cook first landed in the Hawaiian islands on January 20, 1778 \u2014 the first European contact with Hawaii.", src: 'Kauai Historical Society; Bishop Museum' }] },
+          { era: 'modern', entries: [{ yr: '1817', title: 'Russian Fort Elizabeth Built', text: "The Russian-American Company built Fort Elizabeth at the mouth of the Waimea River in 1817 as part of an attempted Russian foothold in the Hawaiian islands. The fort was abandoned within a year when King Kamehameha I expelled the Russians from Hawaii. The remains of the fort \u2014 the only surviving Russian colonial fortification in Hawaii \u2014 are now Russian Fort Elizabeth State Historical Park.", src: 'Hawaii State Parks; Russian Fort Elizabeth SHP' }] },
+        ],
+        docs: [],
+        revs: [],
+        needsVerification: ['flash-flood-warning-needed'],
+        outs: [{ n: 'Waimea Canyon State Park', d: 'Hawaii State Parks information for Waimea Canyon', l: '' }],
+      },
+    ],
+  },
+
 }
 
 // ── Derived helpers ───────────────────────────────────────────────

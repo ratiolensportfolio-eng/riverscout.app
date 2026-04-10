@@ -54,4 +54,8 @@ export const STATE_MAP_CONFIG: Record<string, { center: [number, number]; zoom: 
   // (Kenai Peninsula, Bristol Bay, southcentral). Lower zoom shows
   // the whole state.
   ak: { center: [-152.0, 60.5], zoom: 4.2 },
+  // Hawaii — center on the main 4-island cluster (Kauai → Big Island)
+  // so all 5 priority rivers are in frame at the default zoom. Most
+  // are on Kauai, with one on Oahu and one on the Big Island.
+  hi: { center: [-157.5, 20.7], zoom: 6.5 },
 }

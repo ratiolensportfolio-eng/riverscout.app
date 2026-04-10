@@ -401,9 +401,12 @@ export default function USMap({ stateFlowMap, stateConditions }: Props) {
 
         {/* ── COMING-SOON STATES (render first so live states layer on top) ── */}
         {Object.entries(STATE_PATHS).map(([id, { name, d }]) => {
-          // AK is now live (rendered separately as an inset below
-          // since the SVG path puts it in the bottom-left corner).
-          // HI remains coming-soon for now.
+          // AK and HI are both live, but their SVG paths are
+          // positioned for the bottom-left corner of the viewBox
+          // (or HI's island chain for the bottom-center inset).
+          // They render through their own bordered inset blocks
+          // below, so skip them in the main loops to avoid the
+          // double-render bug from the AK rollout.
           if (liveIds.has(id) || id === 'AK' || id === 'HI') return null
           return sp(id, name, d)
         })}
@@ -411,11 +414,11 @@ export default function USMap({ stateFlowMap, stateConditions }: Props) {
         {/* ── LIVE STATES ── */}
         {Object.entries(STATE_PATHS).map(([id, { name, d }]) => {
           if (!liveIds.has(id)) return null
-          // AK is rendered separately as an inset in the bottom-left
-          // (the SVG path is positioned for that corner). Skip the
-          // main loop here so we don't double-render at native
-          // coordinates.
-          if (id === 'AK') return null
+          // AK + HI are rendered separately as insets (their SVG
+          // paths are positioned for the bottom-left/bottom-center
+          // corners). Skip the main loop here so we don't
+          // double-render at native coordinates.
+          if (id === 'AK' || id === 'HI') return null
           return lp(id, name, d)
         })}
 
@@ -444,21 +447,23 @@ export default function USMap({ stateFlowMap, stateConditions }: Props) {
           </g>
           <text x="93" y="540" fontFamily="IBM Plex Mono,monospace" fontSize={8} fill="rgba(255,255,255,0.5)" textAnchor="middle">15 rivers live</text>
         </g>
+        {/* ── Hawaii inset — now live with 5 paddling/cultural
+            rivers. Same pattern as the Alaska inset above:
+            render the path through the live-state generator (lp)
+            so it gets the click handler + tooltip + colored fill,
+            inside its own bordered box positioned for the bottom-
+            center of the viewBox. */}
         <g>
           <rect x="185" y="475" width="90" height="60" rx="6" fill="#163347" stroke="rgba(255,255,255,0.12)" strokeWidth={0.7} />
           <g transform="translate(-50,0) scale(0.9)">
-            <path d={STATE_PATHS.HI.d}
-              fill="#d8d4cc" stroke="rgba(255,255,255,0.6)" strokeWidth={0.8}
-              style={{ cursor: 'default' }}
-              {...ev('HI', 'Hawaii')}
-            />
+            {lp('HI', 'Hawaii', STATE_PATHS.HI.d)}
           </g>
-          <text x="230" y="530" fontFamily="IBM Plex Mono,monospace" fontSize={8} fill="rgba(255,255,255,0.3)" textAnchor="middle">coming soon</text>
+          <text x="230" y="530" fontFamily="IBM Plex Mono,monospace" fontSize={8} fill="rgba(255,255,255,0.5)" textAnchor="middle">5 rivers live</text>
         </g>
 
         {/* ── Footer ── */}
         <text x="480" y="578" fontFamily="IBM Plex Mono,monospace" fontSize={8.5} fill="rgba(255,255,255,0.32)" textAnchor="middle">
-          49 states live · every river in America — Hawaii coming soon
+          50 states live · every river in America
         </text>
       </svg>
 
