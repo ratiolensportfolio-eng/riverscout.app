@@ -411,6 +411,11 @@ export default function USMap({ stateFlowMap, stateConditions }: Props) {
         {/* ── LIVE STATES ── */}
         {Object.entries(STATE_PATHS).map(([id, { name, d }]) => {
           if (!liveIds.has(id)) return null
+          // AK is rendered separately as an inset in the bottom-left
+          // (the SVG path is positioned for that corner). Skip the
+          // main loop here so we don't double-render at native
+          // coordinates.
+          if (id === 'AK') return null
           return lp(id, name, d)
         })}
 
