@@ -58,6 +58,7 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   arkansas: [38.72, -106.10],
   poudre: [40.68, -105.22],
   yampa: [40.48, -106.83],
+  green_lodore: [40.73, -108.88],
   crystal: [39.20, -107.22],
   glenwood: [39.55, -107.32],
   colorado_glenwood: [39.55, -107.32],

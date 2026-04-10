@@ -21,6 +21,7 @@
 // next-best win and saves 4-6 client round trips.
 
 import { createSupabaseServerClient } from '@/lib/supabase-server'
+import type { RiverPermit } from '@/types'
 
 export interface PrefetchedTripReport {
   id: string
@@ -88,6 +89,7 @@ export interface RiverPageData {
   stockingEvents: PrefetchedStockingEvent[]
   outfitters: PrefetchedOutfitter[]
   hazards: PrefetchedHazard[]  // active, non-expired, non-hidden hazards
+  permit: RiverPermit | null   // null = no permit required for this river
   hasSupabaseRapids: boolean   // for the verified-rapids confidence banner
 }
 
@@ -115,6 +117,7 @@ function emptyResult(): RiverPageData {
     stockingEvents: [],
     outfitters: [],
     hazards: [],
+    permit: null,
     hasSupabaseRapids: false,
   }
 }
@@ -142,7 +145,7 @@ export async function fetchRiverPageData(
   // this is one server-to-Supabase round trip's worth of latency.
   const nowIso = new Date().toISOString()
 
-  const [tripReportsRes, stockingRes, outfittersRes, rapidsRes, hazardsRes] = await Promise.all([
+  const [tripReportsRes, stockingRes, outfittersRes, rapidsRes, hazardsRes, permitRes] = await Promise.all([
     supabase
       .from('trip_reports')
       .select('id, author_name, rating, flow_cfs, trip_date, body, photos, created_at')
@@ -177,6 +180,13 @@ export async function fetchRiverPageData(
       .eq('admin_hidden', false)
       .gt('expires_at', nowIso)
       .order('created_at', { ascending: false }),
+    // Permit row — at most one per river. .maybeSingle() returns
+    // {data: null, error: null} for the no-row case (most rivers).
+    supabase
+      .from('river_permits')
+      .select('*')
+      .eq('river_id', riverId)
+      .maybeSingle(),
   ])
 
   // Sort outfitters by tier priority (destination → listed)
@@ -196,6 +206,7 @@ export async function fetchRiverPageData(
     stockingEvents: (stockingRes.data ?? []) as PrefetchedStockingEvent[],
     outfitters,
     hazards,
+    permit: (permitRes.data ?? null) as RiverPermit | null,
     hasSupabaseRapids: !!(rapidsRes.data && rapidsRes.data.length > 0),
   }
 }

@@ -836,6 +836,21 @@ export const STATES: StatesDB = {
         outs: [{ n: 'Adrift Adventures', d: 'Dinosaur NM multi-day Yampa trips', l: 'adrift.net' }, { n: 'OARS', d: 'Premium Yampa/Dinosaur expeditions', l: 'oars.com' }],
       },
       {
+        id: 'green_lodore', n: 'Green River — Lodore Canyon', ww: true, wild: false, mtn: false, front: false,
+        co: 'Moffat Co.', len: '44 mi', cls: 'III', opt: '1500–5000',
+        g: '09234500', avg: 1700, histFlow: 1500, mx: 134, my: 48, abbr: 'CO',
+        desc: "Lodore Canyon is the Green River's dramatic entry into Dinosaur National Monument — a 44-mile trip from the Gates of Lodore put-in through deep red-walled canyons to the Yampa confluence at Echo Park, then through Whirlpool Canyon and Split Mountain to the takeout. Class III whitewater (Disaster Falls, Hell's Half Mile, Triplet Falls) makes this one of the great intermediate multi-day trips in the West. Permitted by NPS Dinosaur National Monument under the same lottery as the Yampa.",
+        desig: 'Dinosaur National Monument · NPS Permitted River',
+        secs: ['Gates of Lodore to Echo Park — Class III, 19 mi, Disaster Falls and Hell\u2019s Half Mile', 'Echo Park to Split Mountain — Class III, 25 mi, Whirlpool Canyon and Split Mountain Gorge'],
+        history: [
+          { era: 'survey', entries: [{ yr: '1869', title: 'Powell Names the Canyon', text: 'Major John Wesley Powell named Lodore Canyon during his 1869 expedition, after the poem "The Cataract of Lodore" by Robert Southey. His expedition wrecked one of its boats at the rapid he named Disaster Falls. Powell\u2019s journals from this stretch are some of the most-quoted American river writing.', src: 'Powell, J.W. Exploration of the Colorado River of the West (1875)' }] },
+          { era: 'modern', entries: [{ yr: '2024', title: 'NPS Permit Lottery — Same System as Yampa', text: 'Private boating in Dinosaur National Monument is administered by NPS through a single annual lottery covering Lodore Canyon (Green River) and the Yampa. The lottery opens December 1 and closes January 31, with results in early February. Lodore launches are typically less competitive than Yampa launches because Lodore runs through the full season while the Yampa is snowmelt-dependent.', src: 'NPS Dinosaur National Monument Private Boating' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Adrift Adventures', d: 'Dinosaur NM multi-day Lodore trips', l: 'adrift.net' }, { n: 'OARS', d: 'Lodore Canyon multi-day expeditions', l: 'oars.com' }],
+      },
+      {
         id: 'crystal', n: 'Crystal River', ww: true, wild: false, mtn: true, front: false,
         co: 'Pitkin / Gunnison Co.', len: '40 mi', cls: 'II–IV', opt: '200–800',
         g: '09081600', avg: 185, histFlow: 160, mx: 355, my: 82, abbr: 'CO',

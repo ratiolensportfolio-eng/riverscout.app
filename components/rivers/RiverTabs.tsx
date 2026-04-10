@@ -21,6 +21,7 @@ const RiverMap = dynamic(() => import('@/components/maps/RiverMap'), {
   ),
   ssr: false,
 })
+import RiverPermits from '@/components/rivers/RiverPermits'
 import { hasRiverMap, loadRiverMap } from '@/data/river-maps'
 // FISHERIES (~4200 lines, ~150 kB) is dynamically imported when the user
 // clicks the Fishing tab. See `loadFisheries` below.
@@ -722,6 +723,11 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
 
             {/* Data Accuracy */}
             <DataAccuracy riverId={river.id} />
+
+            {/* Permit info — only renders when prefetch returned a row.
+                Sits above outfitters so users see the permit-vs-commercial
+                option before scrolling further. */}
+            {initialData?.permit && <RiverPermits permit={initialData.permit} />}
 
             {/* Outfitters — tiered rendering */}
             {(outfittersLoaded && (featured.length > 0 || listed.length > 0 || river.outs.length > 0)) && (

@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getState, STATES, getRiverPath } from '@/data/rivers'
 import { fetchGaugeData, formatCfs } from '@/lib/usgs'
+import { fetchPermittedRiverIds } from '@/lib/permits'
 import { STATE_MAP_CONFIG } from '@/data/state-centers'
 import { RIVER_COORDS } from '@/data/river-coordinates'
 import StateRiverMap from '@/components/maps/StateRiverMap'
@@ -32,10 +33,13 @@ export default async function StatePage({ params }: Props) {
   const state = getState(stateKey)
   if (!state) notFound()
 
-  // Fetch live CFS for all rivers in this state in parallel
-  const results = await Promise.allSettled(
-    state.rivers.map(r => fetchGaugeData(r.g, r.opt))
-  )
+  // Fetch live CFS for all rivers in this state plus the global
+  // permitted-river-ID set in parallel. The permit query is one round
+  // trip regardless of state size, so it's free to add here.
+  const [results, permittedRiverIds] = await Promise.all([
+    Promise.allSettled(state.rivers.map(r => fetchGaugeData(r.g, r.opt))),
+    fetchPermittedRiverIds(),
+  ])
   const flowMap = new Map<string, FlowData | null>(
     state.rivers.map((r, i) => {
       const res = results[i]
@@ -132,6 +136,19 @@ export default async function StatePage({ params }: Props) {
                   {flow && flow.condition !== 'loading' && (
                     <span style={{ fontSize: '9px', fontFamily: "'IBM Plex Mono', monospace", padding: '2px 5px', borderRadius: '3px', color: condColor, background: 'var(--bg2)', border: `.5px solid ${condColor}`, opacity: 0.85 }}>
                       {flow.condition === 'optimal' ? 'Optimal' : flow.condition === 'low' ? 'Low' : flow.condition === 'high' ? 'High' : 'Flood'}
+                    </span>
+                  )}
+                  {permittedRiverIds.has(river.id) && (
+                    <span
+                      title="Permit required — see river page for details."
+                      style={{
+                        fontSize: '9px', fontFamily: "'IBM Plex Mono', monospace",
+                        padding: '2px 5px', borderRadius: '3px',
+                        color: '#7A4D0E', background: 'var(--amlt)',
+                        border: '.5px solid var(--am)',
+                        fontWeight: 600, letterSpacing: '.3px',
+                      }}>
+                      PERMIT
                     </span>
                   )}
                 </div>

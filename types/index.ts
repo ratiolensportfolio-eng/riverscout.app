@@ -362,6 +362,71 @@ export const HAZARD_SEVERITY_LABELS: Record<HazardSeverity, string> = {
   critical: 'Critical — life-threatening',
 }
 
+// ── River Permits ─────────────────────────────────────────────────
+// Permit requirements for overnight / multi-day private trips. The
+// display layer treats absence of a row as "no permit required".
+
+export type PermitType =
+  | 'lottery_weighted'
+  | 'lottery_standard'
+  | 'first_come_first_served'
+  | 'reservation'
+  | 'self_issue'
+  | 'no_permit_required'
+
+export type PermitRequiredFor =
+  | 'overnight'
+  | 'day_use'
+  | 'all_launches'
+  | 'commercial_only'
+
+export const PERMIT_TYPE_LABELS: Record<PermitType, string> = {
+  lottery_weighted:        'Weighted lottery',
+  lottery_standard:        'Lottery',
+  first_come_first_served: 'First come, first served',
+  reservation:             'Reservation',
+  self_issue:              'Self-issue permit',
+  no_permit_required:      'No permit required',
+}
+
+export const PERMIT_REQUIRED_FOR_LABELS: Record<PermitRequiredFor, string> = {
+  overnight:      'Overnight trips',
+  day_use:        'Day use',
+  all_launches:   'All launches',
+  commercial_only:'Commercial trips only',
+}
+
+// Matches public.river_permits row shape
+export interface RiverPermit {
+  id: string
+  river_id: string
+  river_name: string
+  state_key: string
+  permit_name: string
+  managing_agency: string
+  permit_type: PermitType
+  required_for: PermitRequiredFor
+  application_opens: string | null
+  application_closes: string | null
+  results_date: string | null
+  permit_season_start: string | null
+  permit_season_end: string | null
+  group_size_min: number | null
+  group_size_max: number | null
+  cost_per_person: number | null
+  cost_per_group: number | null
+  apply_url: string | null
+  info_url: string | null
+  phone: string | null
+  notes: string | null
+  commercial_available: boolean
+  commercial_notes: string | null
+  verified: boolean
+  last_verified_year: number | null
+  created_at: string
+  updated_at: string
+}
+
 // Matches public.river_hazards row shape
 export interface RiverHazard {
   id: string
