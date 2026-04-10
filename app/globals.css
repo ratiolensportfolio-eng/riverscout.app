@@ -400,22 +400,45 @@ body {
   animation: river-vision-zoom-out 700ms cubic-bezier(.4, 0, .6, 1) forwards;
 }
 
-/* Large-text mode.
-   Earlier attempts used [style*="font-size: Npx"] attribute
-   selectors to override the codebase's pervasive inline styles.
-   That approach only matched a tiny fraction of elements in
-   practice (browser style serialization, custom font sizes set
-   on parent elements via CSS classes, child elements that
-   inherited from a non-pixel parent, etc.) so most of the page
-   stayed at the default size. Replaced with CSS `zoom` on a
-   wrapper around the page content — zoom proportionally scales
-   every element including text, padding, and borders, regardless
-   of how the size was set. The wrapper (#rs-zoom-target) is in
-   app/layout.tsx and contains the children but NOT the
-   LargeTextToggle button itself, so the toggle doesn't grow with
-   the page. */
+/* Global text-size baseline.
+   The codebase uses pixel-valued inline font sizes everywhere
+   (style={{fontSize:'11px'}}) which makes a typical "bump body
+   font-size" approach a no-op. We use CSS `zoom` on a wrapper
+   (#rs-zoom-target, in app/layout.tsx) instead — zoom
+   proportionally scales every element including text, padding,
+   and borders, regardless of how the size was set.
+
+   1.08 = 8% bump. Big enough to feel meaningfully more readable
+   on small inline-styled labels (10px → ~11px) without breaking
+   anything that's tightly bound to the viewport.
+
+   The wrapper does NOT contain <LargeTextToggle />, so the
+   River Vision button stays at its normal size while the page
+   scales up around it. */
+#rs-zoom-target {
+  zoom: 1.08;
+}
+
+/* The state page uses a viewport-locked split-screen layout
+   (.state-layout has height: calc(100vh - 44px)). Zooming a
+   100vh container makes it exceed the viewport and creates
+   page scroll on a layout that's specifically designed to fit
+   exactly. Compensate by un-zooming .state-layout — its
+   contents render at the un-bumped baseline so the split-screen
+   stays exact. The text on the state page stays its original
+   size as a result; that's a deliberate trade because the
+   primary reading surface is the river detail page, not the
+   list+map index. */
+.state-layout {
+  zoom: calc(1 / 1.08);
+}
+
+/* River Vision (the accessibility toggle) — multiplies the
+   default 1.08 baseline so the relative jump still feels like
+   a meaningful "bigger text" gesture. 1.35 gives roughly the
+   same end-state we had before adding the default bump. */
 html.large-text-mode #rs-zoom-target {
-  zoom: 1.25;
+  zoom: 1.35;
 }
 
 /* Reduced motion: skip the animation but still toggle the class. */
