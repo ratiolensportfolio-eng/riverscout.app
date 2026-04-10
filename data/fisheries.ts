@@ -5674,6 +5674,378 @@ export const FISHERIES: Record<string, RiverFisheries> = {
     guides: [],
   },
 
+  // ── Alaska batch (15 rivers) — added 2026-04-10 ──
+
+  kenai_ak: {
+    species: [
+      { name: 'King Salmon (Chinook)', type: 'anadromous', primary: true, notes: 'World-record fishery — all-tackle record 97 lb 4 oz (1985)' },
+      { name: 'Sockeye Salmon (Red)', type: 'anadromous', primary: true, notes: 'Massive runs at the Russian River confluence' },
+      { name: 'Silver Salmon (Coho)', type: 'anadromous', primary: true, notes: 'Strong fall run' },
+      { name: 'Pink Salmon (Humpy)', type: 'anadromous', primary: false, notes: 'Even-year runs' },
+      { name: 'Chum Salmon', type: 'anadromous', primary: false },
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Trophy wild rainbows in upper Kenai — fly fishing only' },
+      { name: 'Dolly Varden Char', type: 'resident', primary: false },
+    ],
+    designations: ['Kenai National Wildlife Refuge', 'ADF&G Trophy King Salmon Fishery', 'Kenai River Special Management Area'],
+    optimalFishingCfs: '4000–10000',
+    spawning: [
+      { species: 'King Salmon', season: 'July–August', notes: 'Late run kings spawn in lower river gravel' },
+      { species: 'Sockeye Salmon', season: 'July–August' },
+      { species: 'Silver Salmon', season: 'September–October' },
+      { species: 'Rainbow Trout', season: 'May–June' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'King Salmon (Early Run)', timing: 'Mid-May – June', peak: 'Early June', notes: 'Brightest, most chrome fish of the year' },
+      { species: 'King Salmon (Late Run)', timing: 'July', peak: 'Mid-July', notes: 'Trophy fish — historically over 75 lbs' },
+      { species: 'Sockeye (Early Run)', timing: 'June', peak: 'Late June', notes: 'Russian River confluence combat fishery' },
+      { species: 'Sockeye (Late Run)', timing: 'July–August', peak: 'Late July', notes: 'The huge run — millions of returning fish' },
+      { species: 'Silver Salmon', timing: 'August–October', peak: 'September' },
+    ],
+    guides: [],
+  },
+
+  kasilof_ak: {
+    species: [
+      { name: 'King Salmon (Chinook)', type: 'anadromous', primary: true, notes: 'Fly-fishing only — early run kings are bright and chrome' },
+      { name: 'Sockeye Salmon (Red)', type: 'anadromous', primary: true, notes: 'Strong run, dipnet fishery at the river mouth' },
+      { name: 'Silver Salmon (Coho)', type: 'anadromous', primary: false },
+      { name: 'Dolly Varden Char', type: 'resident', primary: false },
+    ],
+    designations: ['ADF&G Sport Fishery', 'Kenai Peninsula', 'Fly-Fishing-Only for King Salmon'],
+    optimalFishingCfs: '800–2500',
+    spawning: [
+      { species: 'King Salmon', season: 'July–August' },
+      { species: 'Sockeye Salmon', season: 'July–August' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'King Salmon', timing: 'Mid-May – July', peak: 'June', notes: 'Early-run kings, fly-fishing only' },
+      { species: 'Sockeye Salmon', timing: 'Mid-June – August', peak: 'July' },
+    ],
+    guides: [],
+  },
+
+  russian_ak: {
+    species: [
+      { name: 'Sockeye Salmon (Red)', type: 'anadromous', primary: true, notes: 'Most concentrated sockeye fishery in the world' },
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Wild rainbows feed on sockeye eggs and flesh' },
+      { name: 'Dolly Varden Char', type: 'resident', primary: true },
+    ],
+    designations: ['Chugach National Forest', 'Russian River Falls', 'Fly-Fishing Only (lower 1.5 mi)'],
+    optimalFishingCfs: '150–500',
+    spawning: [
+      { species: 'Sockeye Salmon', season: 'July–August' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'Sockeye (Early Run)', timing: 'Mid-June – early July', peak: 'Late June', notes: 'First peak of the combat sockeye fishery' },
+      { species: 'Sockeye (Late Run)', timing: 'Mid-July – August', peak: 'Late July', notes: 'Larger second peak — millions of fish' },
+    ],
+    guides: [],
+  },
+
+  naknek_ak: {
+    species: [
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'World-class trophy wild rainbows — 30+ inches and 15+ lbs are routine' },
+      { name: 'King Salmon (Chinook)', type: 'anadromous', primary: true },
+      { name: 'Sockeye Salmon (Red)', type: 'anadromous', primary: true, notes: 'Bristol Bay\u2019s legendary sockeye runs' },
+      { name: 'Silver Salmon (Coho)', type: 'anadromous', primary: true },
+      { name: 'Pink Salmon', type: 'anadromous', primary: false },
+      { name: 'Chum Salmon', type: 'anadromous', primary: false },
+      { name: 'Arctic Char', type: 'resident', primary: false },
+      { name: 'Arctic Grayling', type: 'resident', primary: false },
+    ],
+    designations: ['Katmai National Park and Preserve', 'Bristol Bay Watershed', 'ADF&G Trophy Rainbow Trout'],
+    optimalFishingCfs: '2000–5500',
+    spawning: [
+      { species: 'King Salmon', season: 'July–August' },
+      { species: 'Sockeye Salmon', season: 'July–August' },
+      { species: 'Silver Salmon', season: 'September–October' },
+      { species: 'Rainbow Trout', season: 'May–June' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'King Salmon', timing: 'June–July', peak: 'Late June' },
+      { species: 'Sockeye Salmon', timing: 'Late June – August', peak: 'July' },
+      { species: 'Silver Salmon', timing: 'August–October', peak: 'September' },
+    ],
+    guides: [],
+  },
+
+  brooks_ak: {
+    species: [
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Wild trophy rainbows — 25+ inches' },
+      { name: 'Sockeye Salmon (Red)', type: 'anadromous', primary: true, notes: 'Brooks Falls salmon-and-bear show' },
+      { name: 'Arctic Char', type: 'resident', primary: true },
+      { name: 'Arctic Grayling', type: 'resident', primary: true },
+      { name: 'Lake Trout', type: 'resident', primary: false, notes: 'Brooks Lake' },
+    ],
+    designations: ['Katmai National Park and Preserve', 'Brooks Camp National Historic Landmark', 'Fly-Fishing Only'],
+    optimalFishingCfs: '150–400',
+    spawning: [
+      { species: 'Sockeye Salmon', season: 'July–August' },
+      { species: 'Rainbow Trout', season: 'May–June' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'Sockeye Salmon', timing: 'Late June – July', peak: 'Early–Mid July', notes: 'Peak run brings the bears to Brooks Falls' },
+    ],
+    guides: [],
+  },
+
+  alagnak_ak: {
+    species: [
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Trophy wild rainbows feeding on salmon eggs and carcasses' },
+      { name: 'King Salmon (Chinook)', type: 'anadromous', primary: true },
+      { name: 'Sockeye Salmon (Red)', type: 'anadromous', primary: true },
+      { name: 'Silver Salmon (Coho)', type: 'anadromous', primary: true },
+      { name: 'Pink Salmon', type: 'anadromous', primary: false },
+      { name: 'Chum Salmon', type: 'anadromous', primary: false },
+      { name: 'Arctic Char', type: 'resident', primary: false },
+      { name: 'Arctic Grayling', type: 'resident', primary: false },
+    ],
+    designations: ['National Wild & Scenic River (1980)', 'Katmai National Park and Preserve', 'Bristol Bay Watershed'],
+    optimalFishingCfs: '1200–3500',
+    spawning: [
+      { species: 'King Salmon', season: 'July' },
+      { species: 'Sockeye Salmon', season: 'July–August' },
+      { species: 'Silver Salmon', season: 'September' },
+      { species: 'Rainbow Trout', season: 'May–June' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'King Salmon', timing: 'June–July', peak: 'Late June' },
+      { species: 'Sockeye Salmon', timing: 'Late June – July', peak: 'Early July' },
+      { species: 'Silver Salmon', timing: 'August–September', peak: 'Mid-August' },
+    ],
+    guides: [],
+  },
+
+  kvichak_ak: {
+    species: [
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Iliamna-system trophy rainbows — 30+ inches feeding on the world\u2019s largest sockeye run' },
+      { name: 'Sockeye Salmon (Red)', type: 'anadromous', primary: true, notes: 'Largest sockeye run on earth — 10+ million fish per year' },
+      { name: 'King Salmon (Chinook)', type: 'anadromous', primary: true },
+      { name: 'Silver Salmon (Coho)', type: 'anadromous', primary: false },
+      { name: 'Arctic Char', type: 'resident', primary: false },
+      { name: 'Arctic Grayling', type: 'resident', primary: false },
+    ],
+    designations: ['Bristol Bay Watershed', 'Largest Sockeye Run on Earth', 'ADF&G Trophy Rainbow Trout'],
+    optimalFishingCfs: '8000–18000',
+    spawning: [
+      { species: 'Sockeye Salmon', season: 'July–August' },
+      { species: 'Rainbow Trout', season: 'May–June' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'Sockeye Salmon', timing: 'Late June – August', peak: 'Mid-July', notes: 'Up to 40+ million returning fish in peak years' },
+      { species: 'King Salmon', timing: 'June–July', peak: 'Late June' },
+    ],
+    guides: [],
+  },
+
+  nushagak_ak: {
+    species: [
+      { name: 'King Salmon (Chinook)', type: 'anadromous', primary: true, notes: 'Largest king salmon producer in Bristol Bay — historically 100,000+ kings/year' },
+      { name: 'Sockeye Salmon (Red)', type: 'anadromous', primary: true },
+      { name: 'Silver Salmon (Coho)', type: 'anadromous', primary: true },
+      { name: 'Pink Salmon', type: 'anadromous', primary: false },
+      { name: 'Chum Salmon', type: 'anadromous', primary: false },
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Trophy rainbows in the upper river' },
+      { name: 'Arctic Char', type: 'resident', primary: false },
+      { name: 'Arctic Grayling', type: 'resident', primary: false },
+    ],
+    designations: ['Bristol Bay Watershed', 'ADF&G King Salmon Fishery', 'Wood-Tikchik State Park (headwaters)'],
+    optimalFishingCfs: '4000–12000',
+    spawning: [
+      { species: 'King Salmon', season: 'July–August' },
+      { species: 'Sockeye Salmon', season: 'July–August' },
+      { species: 'Silver Salmon', season: 'September' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'King Salmon', timing: 'June–July', peak: 'Late June – Early July', notes: 'Peak run — combat king fishery at Portage Creek' },
+      { species: 'Sockeye Salmon', timing: 'Late June – August', peak: 'Mid-July' },
+      { species: 'Silver Salmon', timing: 'August–September', peak: 'Mid-August' },
+    ],
+    guides: [],
+  },
+
+  talkeetna_ak: {
+    species: [
+      { name: 'King Salmon (Chinook)', type: 'anadromous', primary: true, notes: 'Late-June run from the Susitna' },
+      { name: 'Silver Salmon (Coho)', type: 'anadromous', primary: true, notes: 'August fall run' },
+      { name: 'Sockeye Salmon (Red)', type: 'anadromous', primary: false },
+      { name: 'Pink Salmon', type: 'anadromous', primary: false },
+      { name: 'Arctic Grayling', type: 'resident', primary: true, notes: 'Multi-day float trips target trophy grayling' },
+      { name: 'Dolly Varden Char', type: 'resident', primary: false },
+    ],
+    designations: ['BLM Talkeetna River Special Recreation Management Area'],
+    optimalFishingCfs: '1200–3500',
+    spawning: [
+      { species: 'King Salmon', season: 'July' },
+      { species: 'Silver Salmon', season: 'September' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'King Salmon', timing: 'Late June – Mid July', peak: 'Early July' },
+      { species: 'Silver Salmon', timing: 'August–September', peak: 'Mid-August' },
+    ],
+    guides: [],
+  },
+
+  susitna_ak: {
+    species: [
+      { name: 'King Salmon (Chinook)', type: 'anadromous', primary: true, notes: 'Largest king run in southcentral Alaska' },
+      { name: 'Silver Salmon (Coho)', type: 'anadromous', primary: true },
+      { name: 'Sockeye Salmon (Red)', type: 'anadromous', primary: false },
+      { name: 'Pink Salmon', type: 'anadromous', primary: false },
+      { name: 'Chum Salmon', type: 'anadromous', primary: false },
+      { name: 'Arctic Grayling', type: 'resident', primary: false },
+      { name: 'Dolly Varden Char', type: 'resident', primary: false },
+    ],
+    designations: ['Matanuska-Susitna Borough', 'ADF&G Sport Fishery'],
+    optimalFishingCfs: '8000–20000',
+    spawning: [
+      { species: 'King Salmon', season: 'July–August' },
+      { species: 'Silver Salmon', season: 'September' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'King Salmon', timing: 'Late May – July', peak: 'Late June' },
+      { species: 'Silver Salmon', timing: 'August–September', peak: 'Late August' },
+      { species: 'Pink Salmon', timing: 'July–August', notes: 'Even-year runs' },
+    ],
+    guides: [],
+  },
+
+  copper_ak: {
+    species: [
+      { name: 'Sockeye Salmon (Red)', type: 'anadromous', primary: true, notes: 'Famous \u201cCopper River reds\u201d — premium-priced commercial fishery' },
+      { name: 'King Salmon (Chinook)', type: 'anadromous', primary: true, notes: 'Premium \u201cCopper River kings\u201d' },
+      { name: 'Silver Salmon (Coho)', type: 'anadromous', primary: false },
+      { name: 'Dolly Varden Char', type: 'resident', primary: false },
+    ],
+    designations: ['Wrangell-St. Elias National Park (headwaters)', 'Chugach National Forest', 'ADF&G Personal Use Dipnet Fishery'],
+    optimalFishingCfs: '12000–30000',
+    spawning: [
+      { species: 'King Salmon', season: 'July–August' },
+      { species: 'Sockeye Salmon', season: 'July–August' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'King Salmon', timing: 'Mid-May – July', peak: 'Mid-June', notes: 'Earliest king run in Alaska' },
+      { species: 'Sockeye Salmon', timing: 'Mid-May – August', peak: 'June–July' },
+    ],
+    guides: [],
+  },
+
+  anchor_ak: {
+    species: [
+      { name: 'Steelhead', type: 'anadromous', primary: true, notes: 'Southernmost wild steelhead run in Alaska — state record 42 lb 3 oz (1970)' },
+      { name: 'King Salmon (Chinook)', type: 'anadromous', primary: true },
+      { name: 'Silver Salmon (Coho)', type: 'anadromous', primary: true, notes: 'Strong August run' },
+      { name: 'Pink Salmon', type: 'anadromous', primary: false },
+      { name: 'Dolly Varden Char', type: 'resident', primary: true, notes: 'Year-round bank fishery' },
+    ],
+    designations: ['ADF&G Wild Steelhead Stream', 'Kenai Peninsula'],
+    optimalFishingCfs: '80–300',
+    spawning: [
+      { species: 'Steelhead', season: 'April–May' },
+      { species: 'King Salmon', season: 'July' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'Steelhead (Fall)', timing: 'September–October', peak: 'Late September', notes: 'Wild steelhead — catch-and-release encouraged' },
+      { species: 'Steelhead (Spring)', timing: 'April–May' },
+      { species: 'King Salmon', timing: 'June–July', peak: 'Late June' },
+      { species: 'Silver Salmon', timing: 'August–September' },
+    ],
+    guides: [],
+  },
+
+  goodnews_ak: {
+    species: [
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Trophy wild rainbows in the upper river' },
+      { name: 'Arctic Char', type: 'resident', primary: true, notes: 'Famous arctic char fishery in Goodnews Lake' },
+      { name: 'Dolly Varden Char', type: 'resident', primary: true },
+      { name: 'King Salmon (Chinook)', type: 'anadromous', primary: true },
+      { name: 'Sockeye Salmon (Red)', type: 'anadromous', primary: true },
+      { name: 'Silver Salmon (Coho)', type: 'anadromous', primary: true },
+      { name: 'Chum Salmon', type: 'anadromous', primary: false },
+      { name: 'Pink Salmon', type: 'anadromous', primary: false },
+      { name: 'Arctic Grayling', type: 'resident', primary: false },
+    ],
+    designations: ['Togiak National Wildlife Refuge', 'Western Alaska'],
+    optimalFishingCfs: '800–2200',
+    spawning: [
+      { species: 'King Salmon', season: 'July' },
+      { species: 'Sockeye Salmon', season: 'July–August' },
+      { species: 'Silver Salmon', season: 'September' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'King Salmon', timing: 'Late June – July', peak: 'Early July' },
+      { species: 'Sockeye Salmon', timing: 'Late June – August', peak: 'Mid-July' },
+      { species: 'Silver Salmon', timing: 'August–September', peak: 'Late August' },
+    ],
+    guides: [],
+  },
+
+  karluk_ak: {
+    species: [
+      { name: 'Steelhead', type: 'anadromous', primary: true, notes: 'Premier Kodiak Island wild steelhead run' },
+      { name: 'Silver Salmon (Coho)', type: 'anadromous', primary: true, notes: 'Trophy Kodiak silvers — fish over 20 lbs are common' },
+      { name: 'Sockeye Salmon (Red)', type: 'anadromous', primary: true },
+      { name: 'King Salmon (Chinook)', type: 'anadromous', primary: false },
+      { name: 'Dolly Varden Char', type: 'resident', primary: true },
+      { name: 'Pink Salmon', type: 'anadromous', primary: false },
+    ],
+    designations: ['Kodiak National Wildlife Refuge', 'ADF&G Wild Steelhead Stream'],
+    optimalFishingCfs: '500–1500',
+    spawning: [
+      { species: 'Steelhead', season: 'April–May' },
+      { species: 'Sockeye Salmon', season: 'July–August' },
+      { species: 'Silver Salmon', season: 'September–October' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'Steelhead', timing: 'September–November, April–May', peak: 'October', notes: 'Fall and spring runs' },
+      { species: 'Sockeye Salmon', timing: 'June–August', peak: 'July' },
+      { species: 'Silver Salmon', timing: 'August–October', peak: 'September', notes: 'Trophy Kodiak silvers, often 18–22 lbs' },
+    ],
+    guides: [],
+  },
+
+  situk_ak: {
+    species: [
+      { name: 'Steelhead', type: 'anadromous', primary: true, notes: 'Largest wild steelhead run in southeast Alaska — historically 9,000+ returning fish/year' },
+      { name: 'Silver Salmon (Coho)', type: 'anadromous', primary: true, notes: 'Strong fall run' },
+      { name: 'Sockeye Salmon (Red)', type: 'anadromous', primary: true },
+      { name: 'King Salmon (Chinook)', type: 'anadromous', primary: false },
+      { name: 'Pink Salmon', type: 'anadromous', primary: false },
+      { name: 'Chum Salmon', type: 'anadromous', primary: false },
+      { name: 'Cutthroat Trout', type: 'resident', primary: true, notes: 'Sea-run cutthroat — \u2018harvest trout\u2019' },
+      { name: 'Dolly Varden Char', type: 'resident', primary: true },
+    ],
+    designations: ['Tongass National Forest', 'ADF&G Wild Steelhead Stream'],
+    optimalFishingCfs: '400–1200',
+    spawning: [
+      { species: 'Steelhead', season: 'April–May' },
+      { species: 'Sockeye Salmon', season: 'July–August' },
+      { species: 'Silver Salmon', season: 'September–October' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'Steelhead (Spring)', timing: 'March–May', peak: 'Mid-April', notes: 'Largest wild steelhead run in southeast AK' },
+      { species: 'Steelhead (Fall)', timing: 'October–November' },
+      { species: 'Sockeye Salmon', timing: 'June–August', peak: 'July' },
+      { species: 'Silver Salmon', timing: 'August–October', peak: 'September' },
+    ],
+    guides: [],
+  },
+
   neversink_ny: {
     species: [
       { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Wild browns — Theodore Gordon\u2019s home water' },

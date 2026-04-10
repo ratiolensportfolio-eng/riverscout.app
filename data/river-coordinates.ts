@@ -401,4 +401,24 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   deerfield: [42.62, -72.82],
   westfield: [42.18, -72.82],
   concord: [42.45, -71.38],
+
+  // Alaska — coordinates roughly at the most-fished section of each
+  // river. Kenai Peninsula and Bristol Bay rivers cluster south /
+  // southwest; Talkeetna/Susitna/Copper are southcentral; Goodnews,
+  // Karluk, Situk are western and southeast.
+  kenai_ak: [60.55, -150.85],         // Sterling area
+  kasilof_ak: [60.35, -151.27],        // Kasilof bridge
+  russian_ak: [60.48, -149.97],        // Russian River confluence
+  naknek_ak: [58.73, -156.98],         // King Salmon
+  brooks_ak: [58.55, -155.78],         // Brooks Camp / Katmai
+  alagnak_ak: [59.05, -156.45],        // mid-river
+  kvichak_ak: [59.32, -156.10],        // Igiugig outlet
+  nushagak_ak: [59.05, -157.45],       // Portage Creek
+  talkeetna_ak: [62.32, -150.10],      // Talkeetna village
+  susitna_ak: [62.30, -150.18],        // Susitna at Talkeetna confluence
+  copper_ak: [61.52, -144.45],         // Chitina
+  anchor_ak: [59.78, -151.83],         // Anchor Point
+  goodnews_ak: [59.12, -161.55],       // Goodnews Bay
+  karluk_ak: [57.57, -154.45],         // Karluk village
+  situk_ak: [59.55, -139.55],          // Situk Bridge / Yakutat
 }

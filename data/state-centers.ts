@@ -49,4 +49,9 @@ export const STATE_MAP_CONFIG: Record<string, { center: [number, number]; zoom: 
   de: { center: [-75.5, 39.2], zoom: 8.5 },
   md: { center: [-77.0, 39.3], zoom: 7.5 },
   ma: { center: [-72.0, 42.4], zoom: 7.5 },
+  // Alaska is enormous — center on the south-central / Bristol Bay
+  // region where most of our 15 priority sportfishing rivers cluster
+  // (Kenai Peninsula, Bristol Bay, southcentral). Lower zoom shows
+  // the whole state.
+  ak: { center: [-152.0, 60.5], zoom: 4.2 },
 }

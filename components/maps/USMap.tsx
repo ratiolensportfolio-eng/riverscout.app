@@ -401,6 +401,9 @@ export default function USMap({ stateFlowMap, stateConditions }: Props) {
 
         {/* ── COMING-SOON STATES (render first so live states layer on top) ── */}
         {Object.entries(STATE_PATHS).map(([id, { name, d }]) => {
+          // AK is now live (rendered separately as an inset below
+          // since the SVG path puts it in the bottom-left corner).
+          // HI remains coming-soon for now.
           if (liveIds.has(id) || id === 'AK' || id === 'HI') return null
           return sp(id, name, d)
         })}
@@ -421,17 +424,20 @@ export default function USMap({ stateFlowMap, stateConditions }: Props) {
           pulse(x, y - 4, `${2.0 + (i % 7) * 0.1}s`)
         ))}
 
-        {/* ── Alaska / Hawaii insets ── */}
+        {/* ── Alaska inset — now live with 15 fishing rivers. The
+            SVG path lives in the bottom-left corner of the map, so
+            we render it inside its own bordered inset rather than
+            as a freestanding path. The transform is preserved from
+            the previous coming-soon version, but the path itself
+            is rendered through the live-state path generator (lp)
+            so it gets the river-condition coloring + cursor +
+            click handler from the rest of the map. */}
         <g>
           <rect x="16" y="445" width="155" height="100" rx="6" fill="#163347" stroke="rgba(255,255,255,0.12)" strokeWidth={0.7} />
           <g transform="translate(-120,335) scale(0.35)">
-            <path d={STATE_PATHS.AK.d}
-              fill="#d8d4cc" stroke="rgba(255,255,255,0.6)" strokeWidth={1.2}
-              style={{ cursor: 'default' }}
-              {...ev('AK', 'Alaska')}
-            />
+            {lp('AK', 'Alaska', STATE_PATHS.AK.d)}
           </g>
-          <text x="93" y="540" fontFamily="IBM Plex Mono,monospace" fontSize={8} fill="rgba(255,255,255,0.3)" textAnchor="middle">coming soon</text>
+          <text x="93" y="540" fontFamily="IBM Plex Mono,monospace" fontSize={8} fill="rgba(255,255,255,0.5)" textAnchor="middle">15 rivers live</text>
         </g>
         <g>
           <rect x="185" y="475" width="90" height="60" rx="6" fill="#163347" stroke="rgba(255,255,255,0.12)" strokeWidth={0.7} />
@@ -447,7 +453,7 @@ export default function USMap({ stateFlowMap, stateConditions }: Props) {
 
         {/* ── Footer ── */}
         <text x="480" y="578" fontFamily="IBM Plex Mono,monospace" fontSize={8.5} fill="rgba(255,255,255,0.32)" textAnchor="middle">
-          48 states live · every river in America — Alaska & Hawaii coming soon
+          49 states live · every river in America — Hawaii coming soon
         </text>
       </svg>
 
