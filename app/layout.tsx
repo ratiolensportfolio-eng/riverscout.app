@@ -57,7 +57,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        {children}
+        {/* #rs-zoom-target is the wrapper that gets `zoom: 1.25`
+            when River Vision is active (see globals.css). It must
+            wrap the page content but NOT the toggle button — the
+            toggle stays at its normal size while the page scales
+            up around it. */}
+        <div id="rs-zoom-target">{children}</div>
         <LargeTextToggle />
         <script dangerouslySetInnerHTML={{ __html: `
           if ('serviceWorker' in navigator) {
