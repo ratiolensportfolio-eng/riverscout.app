@@ -6,6 +6,7 @@ import RiverTabs from '@/components/rivers/RiverTabs'
 import SuggestCorrection from '@/components/SuggestCorrection'
 import SaveOffline from '@/components/SaveOffline'
 import DataConfidenceBanner from '@/components/rivers/DataConfidenceBanner'
+import HazardBanner from '@/components/rivers/HazardBanner'
 import { getDesignationBadges } from '@/lib/designations'
 import { RAPIDS } from '@/data/rapids'
 import { fetchRiverPageData } from '@/lib/river-page-data'
@@ -163,6 +164,15 @@ export default async function RiverPage({ params }: Props) {
           </div>
         </div>
       </div>
+
+      {/* Hazard banner — active safety warnings, time-sensitive.
+          Rendered above the data confidence banner so it can't be missed. */}
+      <HazardBanner
+        riverId={river.id}
+        riverName={river.n}
+        stateKey={river.stateKey}
+        initialHazards={prefetched.hazards}
+      />
 
       {/* Data confidence banner */}
       <DataConfidenceBanner

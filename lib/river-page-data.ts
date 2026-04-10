@@ -63,10 +63,31 @@ export interface PrefetchedRapid {
   id: string
 }
 
+// Matches the subset of public.river_hazards used by the banner. We
+// deliberately exclude email bookkeeping / admin fields so the wire
+// payload stays small and we don't leak reporter emails to the public.
+export interface PrefetchedHazard {
+  id: string
+  river_id: string
+  hazard_type: string
+  severity: 'info' | 'warning' | 'critical'
+  title: string
+  description: string
+  location_description: string | null
+  mile_marker: number | null
+  reporter_name: string | null
+  created_at: string
+  expires_at: string
+  confirmations: number
+  last_confirmed_at: string | null
+  reported_by: string | null
+}
+
 export interface RiverPageData {
   tripReports: PrefetchedTripReport[]
   stockingEvents: PrefetchedStockingEvent[]
   outfitters: PrefetchedOutfitter[]
+  hazards: PrefetchedHazard[]  // active, non-expired, non-hidden hazards
   hasSupabaseRapids: boolean   // for the verified-rapids confidence banner
 }
 
@@ -78,12 +99,22 @@ const TIER_ORDER: Record<string, number> = {
   listed: 4,
 }
 
+// Rank hazards by danger (critical first). Alphabetical ordering in SQL
+// would give critical, info, warning — which buries warnings under info,
+// so we sort in JS instead.
+const SEVERITY_RANK: Record<string, number> = {
+  critical: 0,
+  warning: 1,
+  info: 2,
+}
+
 // Empty result for when Supabase is not configured or fails entirely.
 function emptyResult(): RiverPageData {
   return {
     tripReports: [],
     stockingEvents: [],
     outfitters: [],
+    hazards: [],
     hasSupabaseRapids: false,
   }
 }
@@ -109,7 +140,9 @@ export async function fetchRiverPageData(
   // All queries fire in parallel inside this single serverless function.
   // Compared to the old waterfall (4-6 client round trips post-hydration),
   // this is one server-to-Supabase round trip's worth of latency.
-  const [tripReportsRes, stockingRes, outfittersRes, rapidsRes] = await Promise.all([
+  const nowIso = new Date().toISOString()
+
+  const [tripReportsRes, stockingRes, outfittersRes, rapidsRes, hazardsRes] = await Promise.all([
     supabase
       .from('trip_reports')
       .select('id, author_name, rating, flow_cfs, trip_date, body, photos, created_at')
@@ -132,6 +165,18 @@ export async function fetchRiverPageData(
       .select('id')
       .eq('river_id', riverId)
       .limit(1),
+    // Hazards: only active, non-hidden, non-expired rows. We sort
+    // critical → warning → info in JS below because Postgres orders the
+    // text column alphabetically (critical, info, warning) which would
+    // bury warnings under info.
+    supabase
+      .from('river_hazards')
+      .select('id, river_id, hazard_type, severity, title, description, location_description, mile_marker, reporter_name, created_at, expires_at, confirmations, last_confirmed_at, reported_by')
+      .eq('river_id', riverId)
+      .eq('active', true)
+      .eq('admin_hidden', false)
+      .gt('expires_at', nowIso)
+      .order('created_at', { ascending: false }),
   ])
 
   // Sort outfitters by tier priority (destination → listed)
@@ -139,10 +184,18 @@ export async function fetchRiverPageData(
     .slice()
     .sort((a, b) => (TIER_ORDER[a.tier] ?? 5) - (TIER_ORDER[b.tier] ?? 5))
 
+  // Sort hazards by severity rank (critical → warning → info), preserving
+  // created_at ordering within each rank since Postgres already ordered
+  // the input by created_at desc.
+  const hazards = ((hazardsRes.data ?? []) as PrefetchedHazard[])
+    .slice()
+    .sort((a, b) => (SEVERITY_RANK[a.severity] ?? 9) - (SEVERITY_RANK[b.severity] ?? 9))
+
   return {
     tripReports: (tripReportsRes.data ?? []) as PrefetchedTripReport[],
     stockingEvents: (stockingRes.data ?? []) as PrefetchedStockingEvent[],
     outfitters,
+    hazards,
     hasSupabaseRapids: !!(rapidsRes.data && rapidsRes.data.length > 0),
   }
 }

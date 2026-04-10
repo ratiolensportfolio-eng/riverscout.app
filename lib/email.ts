@@ -537,4 +537,92 @@ export function hatchPeakEmail(
 </body></html>`
 }
 
+// ── Hazard Alert Email ───────────────────────────────────────────
+// Safety-critical hazards trigger a blast to everyone currently subscribed
+// to flow alerts for the same river. Intentionally not gated behind Pro —
+// withholding life-threatening safety information from the free tier is
+// the wrong call, and "cold water safety alerts" are already marketed as
+// free.
+export function hazardAlertEmail(
+  riverName: string,
+  stateSlug: string,
+  riverSlug: string,
+  hazardType: string,
+  severity: 'info' | 'warning' | 'critical',
+  title: string,
+  description: string,
+  locationDescription: string | null,
+  reporterName: string | null,
+): string {
+  const severityColor = severity === 'critical' ? '#A32D2D'
+    : severity === 'warning' ? '#BA7517'
+    : '#185FA5'
+  const severityLabel = severity === 'critical' ? 'Critical Hazard'
+    : severity === 'warning' ? 'Hazard Warning'
+    : 'Hazard Notice'
+  const riverUrl = `https://riverscout.app/rivers/${stateSlug}/${riverSlug}`
+
+  return `<!DOCTYPE html>
+<html><head><meta charset="utf-8" /></head>
+<body style="margin: 0; padding: 0; background: #ffffff; font-family: Georgia, serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 520px; margin: 0 auto; padding: 20px;">
+    <tr>
+      <td style="padding-bottom: 16px; border-bottom: 2px solid ${severityColor};">
+        <span style="font-family: Georgia, serif; font-size: 20px; font-weight: 700; color: #085041; letter-spacing: -0.3px;">
+          River<span style="color: #185FA5;">Scout</span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 24px 0;">
+        <div style="font-family: monospace; font-size: 11px; color: ${severityColor}; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; font-weight: 700;">
+          &#9888; ${severityLabel}
+        </div>
+        <div style="font-family: Georgia, serif; font-size: 22px; font-weight: 700; color: #1a1a18; line-height: 1.3; margin-bottom: 6px;">
+          ${title}
+        </div>
+        <div style="font-family: monospace; font-size: 13px; color: #666660; margin-bottom: 16px;">
+          ${riverName} &middot; ${hazardType}
+        </div>
+
+        <table width="100%" cellpadding="0" cellspacing="0" style="background: ${severity === 'critical' ? '#FCEBEB' : '#FBF3E8'}; border-radius: 8px; border: 1px solid ${severity === 'critical' ? '#F1C4C4' : '#EDD9B5'}; margin-bottom: 20px;">
+          <tr><td style="padding: 16px;">
+            <div style="font-size: 14px; color: #1a1a18; line-height: 1.6; margin-bottom: ${locationDescription ? '12px' : '0'};">
+              ${description}
+            </div>
+            ${locationDescription ? `<div style="font-family: monospace; font-size: 12px; color: #666660; padding-top: 10px; border-top: 1px solid ${severity === 'critical' ? '#F1C4C4' : '#EDD9B5'};">
+              <strong>Location:</strong> ${locationDescription}
+            </div>` : ''}
+          </td></tr>
+        </table>
+
+        ${reporterName ? `<div style="font-family: monospace; font-size: 11px; color: #aaa99a; margin-bottom: 16px;">
+          Reported by ${reporterName}
+        </div>` : ''}
+
+        <p style="font-size: 13px; color: #666660; line-height: 1.6; margin: 0 0 20px;">
+          This report came from the paddling community. Use your own judgment before getting on the water, and scout anything you're unsure about.
+        </p>
+
+        <div style="text-align: center; margin: 24px 0;">
+          <a href="${riverUrl}" style="display: inline-block; padding: 12px 28px; background: ${severityColor}; color: #ffffff; font-family: monospace; font-size: 13px; font-weight: 500; text-decoration: none; border-radius: 6px; letter-spacing: .3px;">
+            View ${riverName} &rarr;
+          </a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 16px 0 0; border-top: 1px solid #e2e1d8;">
+        <div style="font-family: monospace; font-size: 10px; color: #aaa99a; text-align: center; line-height: 1.6;">
+          You received this because you subscribed to alerts for ${riverName} on
+          <a href="https://riverscout.app" style="color: #1D9E75;">RiverScout</a>.<br />
+          Hazard alerts are sent to all subscribers regardless of Pro status.<br />
+          <a href="https://riverscout.app/alerts" style="color: #aaa99a;">Manage your alerts</a>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body></html>`
+}
+
 export { ADMIN_EMAIL }

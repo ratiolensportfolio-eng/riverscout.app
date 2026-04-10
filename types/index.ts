@@ -317,3 +317,62 @@ export const OUTFITTER_TIERS: OutfitterTierConfig[] = [
     ],
   },
 ]
+
+// ── River Hazard Alerts ───────────────────────────────────────────
+// Time-sensitive safety warnings. Distinct from trip_reports (which are
+// retrospective). A hazard auto-expires after 72 hours unless a logged-in
+// user confirms it's still present.
+
+export type HazardType =
+  | 'strainer'
+  | 'hydraulic'
+  | 'access_closure'
+  | 'debris'
+  | 'flood'
+  | 'other'
+
+export type HazardSeverity = 'info' | 'warning' | 'critical'
+
+export const HAZARD_TYPE_LABELS: Record<HazardType, string> = {
+  strainer:       'Strainer / woody debris',
+  hydraulic:      'Hydraulic / low-head dam',
+  access_closure: 'Access closure',
+  debris:         'Debris / obstruction',
+  flood:          'Dangerous high water',
+  other:          'Other',
+}
+
+export const HAZARD_SEVERITY_LABELS: Record<HazardSeverity, string> = {
+  info:     'Info',
+  warning:  'Warning',
+  critical: 'Critical — life-threatening',
+}
+
+// Matches public.river_hazards row shape
+export interface RiverHazard {
+  id: string
+  river_id: string
+  river_name: string
+  state_key: string | null
+  hazard_type: HazardType
+  severity: HazardSeverity
+  title: string
+  description: string
+  location_description: string | null
+  mile_marker: number | null
+  reported_by: string | null
+  reporter_name: string | null
+  reporter_email: string | null
+  created_at: string
+  expires_at: string
+  active: boolean
+  confirmations: number
+  last_confirmed_at: string | null
+  resolved_at: string | null
+  resolved_by: string | null
+  resolved_note: string | null
+  email_sent_at: string | null
+  email_recipients_count: number | null
+  admin_hidden: boolean
+  admin_notes: string | null
+}

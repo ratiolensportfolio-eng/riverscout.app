@@ -298,7 +298,7 @@ export default function AdminSuggestions() {
         )}
 
         {/* Top-level admin tabs */}
-        <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
+        <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>
           {(['suggestions', 'stocking'] as const).map(t => (
             <button key={t} onClick={() => setAdminTab(t)} style={{
               fontFamily: mono, fontSize: '11px', padding: '7px 16px', borderRadius: 'var(--r)', cursor: 'pointer',
@@ -310,6 +310,15 @@ export default function AdminSuggestions() {
               {t === 'suggestions' ? 'River Improvements' : 'Stocking Reports'}
             </button>
           ))}
+          {/* Hazards lives on its own page, not as a tab here, because the
+              data model and actions don't overlap with suggestions/stocking. */}
+          <Link href="/admin/hazards" style={{
+            fontFamily: mono, fontSize: '11px', padding: '7px 16px', borderRadius: 'var(--r)',
+            border: '.5px solid var(--bd2)', background: 'var(--bg)', color: 'var(--tx3)',
+            textDecoration: 'none',
+          }}>
+            Hazards
+          </Link>
         </div>
 
         {adminTab === 'suggestions' && (<>
