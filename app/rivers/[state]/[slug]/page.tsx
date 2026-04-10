@@ -11,6 +11,8 @@ import HazardBanner from '@/components/rivers/HazardBanner'
 import { getDesignationBadges } from '@/lib/designations'
 import { RAPIDS } from '@/data/rapids'
 import { fetchRiverPageData } from '@/lib/river-page-data'
+import { hasFisheries } from '@/data/fisheries-keys'
+import { FISHERIES } from '@/data/fisheries'
 import type { Metadata } from 'next'
 
 export const revalidate = 900
@@ -31,20 +33,93 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const river = getRiverBySlug(state, slug)
   if (!river) return { title: 'River Not Found — RiverScout' }
 
-  const title = `${river.n} — Live Flow, Conditions & Trip Planning | RiverScout`
-  const description = `Live USGS flow data for ${river.n} in ${river.stateName}. Current CFS, optimal range ${river.opt}, Class ${river.cls}, ${river.len}. Trip reports, access points, hatch calendar, and outfitter listings.`
+  // Title format: "[River Name] Conditions & Flow Data | RiverScout"
+  const title = `${river.n} Conditions & Flow Data | RiverScout`
+
+  // Description: 150-160 chars, river-specific, includes state and
+  // a fishing or paddling hook. Detect whether the river has
+  // fisheries data so we can lean into trout/steelhead/fishing
+  // language for known fishing destinations and into class/whitewater
+  // language for paddling-first rivers. Keep the live-CFS hook.
+  const description = buildRiverDescription(river)
+
+  const canonicalUrl = `https://riverscout.app/rivers/${state}/${slug}`
 
   return {
     title,
     description,
+    // Canonical URL — explicit so Google doesn't try to canonicalize
+    // to a different variant (trailing slash, query string, etc.)
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title,
       description,
-      url: `https://riverscout.app/rivers/${state}/${slug}`,
+      url: canonicalUrl,
       siteName: 'RiverScout',
       type: 'website',
+      // Per-page OG image route generates a branded card with the
+      // river name and live conditions — see opengraph-image.tsx in
+      // this segment. Falls back to the static /icon.svg if the
+      // image route fails to render.
+      images: [
+        {
+          url: '/icon.svg',
+          width: 512,
+          height: 512,
+          alt: `${river.n} — RiverScout`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['/icon.svg'],
     },
   }
+}
+
+// Build a 150-160 character meta description tailored to the river.
+// Lean into fishing language when the river has fisheries data,
+// paddling/class language otherwise. Always include the state and
+// the live-CFS hook. Output is hard-clamped to 160 chars.
+function buildRiverDescription(river: ReturnType<typeof getRiverBySlug> & object): string {
+  const name = river.n
+  const stateName = river.stateName
+  const fish = hasFisheries(river.id) ? FISHERIES[river.id] : null
+
+  // Build a fishing-oriented hook for known fisheries
+  if (fish) {
+    const primary = fish.species?.find(s => s.primary)
+    const hasSteelhead = fish.species?.some(s => /steelhead/i.test(s.name))
+    const hasTrout = fish.species?.some(s => /trout/i.test(s.name))
+    const hasSalmon = fish.species?.some(s => /salmon/i.test(s.name))
+    const hook =
+      hasSteelhead && hasSalmon ? 'steelhead and salmon runs'
+        : hasSteelhead ? 'steelhead runs'
+        : hasTrout ? 'trout fishing and hatch calendar'
+        : primary ? `${primary.name.toLowerCase()} fishing`
+        : 'fishing reports'
+    return clamp160(
+      `Live ${name} conditions in ${stateName} — current CFS, 7-day forecast, ${hook}, stocking reports, and trip planning. Updated every 15 minutes from USGS.`
+    )
+  }
+
+  // Paddling-oriented hook
+  const classNote = river.cls && river.cls !== 'I' ? `Class ${river.cls} whitewater, ` : ''
+  return clamp160(
+    `Live ${name} conditions in ${stateName} — current CFS, optimal flows ${river.opt}, ${classNote}7-day forecast, access points, and trip reports. Updated every 15 minutes.`
+  )
+}
+
+// Hard-clamp to 160 characters at a word boundary.
+function clamp160(s: string): string {
+  if (s.length <= 160) return s
+  const cut = s.slice(0, 159)
+  const lastSpace = cut.lastIndexOf(' ')
+  return (lastSpace > 120 ? cut.slice(0, lastSpace) : cut) + '…'
 }
 
 const COND_LABEL: Record<string, string> = {
