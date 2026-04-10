@@ -9,14 +9,34 @@ import { ALL_RIVERS } from '@/data/rivers'
 const mono = "'IBM Plex Mono', monospace"
 const serif = "'Playfair Display', serif"
 
+// Everything available in the free tier. This list mirrors what free
+// users actually get on riverscout.app today and is the counterpart to
+// PRO_FEATURES in types/index.ts. Keep them in sync with the real
+// gating logic in components/rivers/RiverTabs.tsx.
+const FREE_FEATURES: string[] = [
+  `Live CFS conditions on ${ALL_RIVERS.length}+ rivers \u2014 updated every 15 min`,
+  '7-day flow forecasts',
+  'Unlimited flow alert subscriptions',
+  'Stocking reports and hatch calendars',
+  '7-day weather forecast with lightning risk',
+  'Cold water safety alerts',
+  'River history, fisheries data, named rapids',
+  'Trip reports and community corrections',
+  'Outfitter listings',
+]
+
 const FAQ = [
+  {
+    q: 'Is RiverScout really free?',
+    a: `Yes. All ${ALL_RIVERS.length}+ rivers, live conditions, forecasts, hatch and stocking data, trip reports, weather, and alerts are completely free. Pro is for paddlers and anglers who want the site to come to them \u2014 push notifications, deeper analytics, offline access.`,
+  },
   {
     q: 'Can I cancel anytime?',
     a: 'Yes, cancel from your account settings. Your Pro access continues until the end of your billing period.',
   },
   {
-    q: 'Does Pro cover all rivers?',
-    a: `Yes. Pro features apply to all ${ALL_RIVERS.length}+ rivers across 48 states.`,
+    q: 'What exactly do I lose if I don\u2019t upgrade?',
+    a: "Nothing about discovering, planning, or tracking rivers. You can see every river, every forecast, every hatch and stocking report. You just don't get automatic email notifications, offline access, or historical/AI analysis.",
   },
   {
     q: 'Is this separate from outfitter listings?',
@@ -92,13 +112,16 @@ export default function ProPage() {
         {/* Hero */}
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--rv)', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '10px' }}>
-            For Paddlers & Anglers Who Plan Around Conditions
+            The site works for you, not the other way around
           </div>
           <h1 style={{ fontFamily: serif, fontSize: '36px', fontWeight: 700, color: 'var(--rvdk)', lineHeight: 1.2, marginBottom: '14px' }}>
             RiverScout Pro
           </h1>
-          <p style={{ fontFamily: mono, fontSize: '12px', color: 'var(--tx2)', lineHeight: 1.7, maxWidth: '520px', margin: '0 auto' }}>
-            Never miss optimal conditions. Get flow alerts, stocking notifications, forecasts, and offline access — everything you need to plan the perfect trip.
+          <p style={{ fontFamily: mono, fontSize: '13px', color: 'var(--tx)', lineHeight: 1.7, maxWidth: '560px', margin: '0 auto 10px' }}>
+            RiverScout is completely free. Pro is for paddlers and anglers who want the site to come to them.
+          </p>
+          <p style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx2)', lineHeight: 1.7, maxWidth: '560px', margin: '0 auto' }}>
+            Get notified automatically when your rivers hit optimal conditions, when they&apos;re stocked, and when the hatch is about to start. Plus offline access, historical flow data, and AI-powered forecasts.
           </p>
         </div>
 
@@ -214,31 +237,72 @@ export default function ProPage() {
           </div>
         )}
 
-        {/* Feature list */}
-        <div style={{ marginBottom: '40px' }}>
-          <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '14px', textAlign: 'center' }}>
-            Everything Included
+        {/* FREE feature list */}
+        <div style={{ marginBottom: '32px' }}>
+          <div style={{
+            display: 'flex', alignItems: 'baseline', gap: '10px', marginBottom: '8px',
+          }}>
+            <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--rv)', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 600 }}>
+              Free
+            </div>
+            <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx2)' }}>
+              Everything you need to plan every trip
+            </div>
           </div>
           <div style={{
             border: '.5px solid var(--bd)', borderRadius: 'var(--rlg)',
             overflow: 'hidden',
           }}>
+            {FREE_FEATURES.map((title, i) => (
+              <div key={i} style={{
+                display: 'flex', alignItems: 'flex-start', gap: '12px',
+                padding: '11px 18px',
+                borderBottom: i < FREE_FEATURES.length - 1 ? '.5px solid var(--bd)' : 'none',
+                background: i % 2 === 0 ? 'var(--bg)' : 'var(--bg2)',
+              }}>
+                <span style={{ color: 'var(--rv)', fontSize: '12px', flexShrink: 0, marginTop: '1px', fontWeight: 700 }}>&#10003;</span>
+                <div style={{ fontFamily: mono, fontSize: '12px', color: 'var(--tx)', lineHeight: 1.5 }}>
+                  {title}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* PRO feature list */}
+        <div style={{ marginBottom: '40px' }}>
+          <div style={{
+            display: 'flex', alignItems: 'baseline', gap: '10px', marginBottom: '8px',
+          }}>
+            <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--rvdk)', textTransform: 'uppercase', letterSpacing: '1.5px', fontWeight: 600 }}>
+              RiverScout Pro
+            </div>
+            <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx2)' }}>
+              ${PRO_PRICE.monthly}/month &middot; ${PRO_PRICE.yearly}/year
+            </div>
+          </div>
+          <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx3)', marginBottom: '10px', fontStyle: 'italic' }}>
+            Everything in the free tier, plus:
+          </div>
+          <div style={{
+            border: '.5px solid var(--rvmd)', borderRadius: 'var(--rlg)',
+            overflow: 'hidden', background: 'var(--rvlt)',
+          }}>
             {PRO_FEATURES.map((f, i) => (
               <div key={i} style={{
                 display: 'flex', alignItems: 'flex-start', gap: '12px',
-                padding: '14px 18px',
-                borderBottom: i < PRO_FEATURES.length - 1 ? '.5px solid var(--bd)' : 'none',
-                background: i % 2 === 0 ? 'var(--bg)' : 'var(--bg2)',
+                padding: '13px 18px',
+                borderBottom: i < PRO_FEATURES.length - 1 ? '.5px solid var(--rvmd)' : 'none',
               }}>
-                <span style={{ color: 'var(--rv)', fontSize: '13px', flexShrink: 0, marginTop: '1px', fontWeight: 700 }}>&#10003;</span>
+                <span style={{ color: 'var(--rvdk)', fontSize: '13px', flexShrink: 0, marginTop: '1px', fontWeight: 700 }}>{f.icon}</span>
                 <div>
                   <div style={{
-                    fontFamily: mono, fontSize: '12px', fontWeight: 500, color: 'var(--tx)',
+                    fontFamily: mono, fontSize: '12px', fontWeight: 500, color: 'var(--rvdk)',
                     display: 'flex', alignItems: 'center', gap: '8px',
                   }}>
                     {f.title}
                     {!f.available && (
-                      <span style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', padding: '1px 6px', borderRadius: '4px', background: 'var(--bg3)' }}>
+                      <span style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', padding: '1px 6px', borderRadius: '4px', background: 'var(--bg)' }}>
                         coming soon
                       </span>
                     )}
@@ -297,7 +361,7 @@ export default function ProPage() {
               </Link>
             )}
             <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)', marginTop: '10px' }}>
-              Flow and stocking alerts are free during beta
+              Cancel anytime &middot; Every river stays free forever
             </div>
           </div>
         )}

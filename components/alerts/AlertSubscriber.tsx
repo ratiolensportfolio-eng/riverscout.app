@@ -281,6 +281,28 @@ export default function AlertSubscriber({ rivers }: Props) {
                 {message.ok ? '●' : '⚠'} {message.text}
               </div>
             )}
+
+            {/* Pro gate notice — subscriptions are free and unlimited; email
+                delivery is what Pro unlocks. Keep the tone soft. */}
+            <div style={{
+              marginTop: '12px', padding: '10px 12px',
+              background: 'var(--rvlt)', border: '.5px solid var(--rvmd)',
+              borderRadius: 'var(--r)',
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              gap: '12px', flexWrap: 'wrap',
+            }}>
+              <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--rvdk)', lineHeight: 1.55 }}>
+                Want us to notify you automatically? Flow alert emails are a Pro feature. $4.99/month &mdash; cancel anytime.
+              </span>
+              <a href="/pro" style={{
+                fontFamily: mono, fontSize: '10px', fontWeight: 500,
+                padding: '5px 12px', borderRadius: 'var(--r)',
+                background: 'var(--rvdk)', color: '#fff', textDecoration: 'none',
+                flexShrink: 0,
+              }}>
+                Upgrade to Pro &rarr;
+              </a>
+            </div>
           </div>
 
           {/* Active alerts */}

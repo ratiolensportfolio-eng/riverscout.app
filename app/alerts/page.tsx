@@ -102,7 +102,8 @@ export default async function AlertsPage() {
       {/* Alert subscription section */}
       <AlertSubscriber rivers={riverOptions} />
 
-      {/* Pro upgrade pitch */}
+      {/* Pro upgrade pitch — flow alerts are free; Pro adds email delivery
+          and deeper analytics. Tone: helpful suggestion, not a barrier. */}
       <div style={{ padding: '0 28px 20px' }}>
         <div style={{
           background: 'var(--rvdk)', borderRadius: 'var(--rlg)', padding: '24px 28px',
@@ -114,21 +115,24 @@ export default async function AlertsPage() {
           }} />
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '20px' }}>
             <div style={{ flex: '1 1 300px' }}>
-              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', letterSpacing: '2px', textTransform: 'uppercase', opacity: 0.6, marginBottom: '6px' }}>
-                Coming Soon
+              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', letterSpacing: '2px', textTransform: 'uppercase', opacity: 0.7, marginBottom: '6px' }}>
+                Want us to notify you automatically?
               </div>
               <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 700, marginBottom: '4px' }}>
                 RiverScout Pro
               </div>
+              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', opacity: 0.8, lineHeight: 1.6, marginTop: '4px', marginBottom: '10px' }}>
+                Flow alert emails are a Pro feature. Subscribing to a river above is free — upgrade if you want the emails delivered automatically.
+              </div>
               <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '28px', fontWeight: 700, lineHeight: 1 }}>
                 ${PRO_PRICE.monthly}<span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', opacity: 0.6 }}>/month</span>
               </div>
-              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', opacity: 0.5, marginTop: '4px' }}>
-                or ${PRO_PRICE.yearly}/year
+              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', opacity: 0.6, marginTop: '4px' }}>
+                or ${PRO_PRICE.yearly}/year &middot; cancel anytime
               </div>
             </div>
             <div style={{ flex: '1 1 300px' }}>
-              {PRO_FEATURES.map((f, i) => (
+              {PRO_FEATURES.slice(0, 6).map((f, i) => (
                 <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '10px' }}>
                   <span style={{ fontSize: '14px', flexShrink: 0, marginTop: '1px' }}>{f.icon}</span>
                   <div>
@@ -147,18 +151,14 @@ export default async function AlertsPage() {
             </div>
           </div>
           <div style={{ marginTop: '16px', display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
-            <span style={{
-              fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
+            <Link href="/pro" style={{
+              fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', fontWeight: 500,
               padding: '9px 24px', borderRadius: 'var(--r)',
-              background: 'rgba(255,255,255,.15)', color: 'rgba(255,255,255,.5)',
-              border: '1px solid rgba(255,255,255,.15)',
-              cursor: 'default',
+              background: '#fff', color: 'var(--rvdk)',
+              textDecoration: 'none', letterSpacing: '.3px',
             }}>
-              Notify Me When Pro Launches
-            </span>
-            <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', opacity: 0.4 }}>
-              Flow alerts and stocking alerts are free during beta
-            </span>
+              Upgrade to Pro &rarr;
+            </Link>
           </div>
         </div>
       </div>

@@ -150,7 +150,10 @@ export default async function HomePage() {
             <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', letterSpacing: '2px', textTransform: 'uppercase', opacity: 0.7, marginBottom: '16px' }}>
               Built by Paddlers &nbsp;·&nbsp; Verified by Paddlers, Outfitters, Guides &amp; Anglers
             </div>
-            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '17px', fontWeight: 600, lineHeight: 1.6, marginBottom: '16px', color: '#fff' }}>
+            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '18px', fontWeight: 600, lineHeight: 1.55, marginBottom: '14px', color: '#fff' }}>
+              Completely free for every paddler and angler. No ads. No paywalls on conditions data. Just rivers.
+            </p>
+            <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', lineHeight: 1.7, opacity: 0.85, marginBottom: '14px' }}>
               RiverScout combines live USGS gauge data, historical records, and firsthand knowledge from paddlers, outfitters, guides, and anglers who know these rivers personally.
             </p>
             <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', lineHeight: 1.7, opacity: 0.7, margin: 0 }}>

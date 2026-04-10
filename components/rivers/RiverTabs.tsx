@@ -225,28 +225,31 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
     return () => subscription.unsubscribe()
   }, [river.id])
 
-  // Fetch Pro data when Pro user views Overview
+  // Fetch the 72-hour NOAA flow forecast for everyone on the Overview tab —
+  // the raw chart is part of the free tier (discovery/planning). AI
+  // interpretation of the forecast stays Pro-only.
   useEffect(() => {
-    if (overviewIsPro && tab === 'Overview') {
-      // Historical
-      if (!historicalData) {
-        fetch(`/api/pro/historical?gaugeId=${river.g}`)
-          .then(r => r.json())
-          .then(d => { if (d.weeks) setHistoricalData(d.weeks) })
-          .catch(() => {})
-      }
-      // Forecast
-      if (!forecastData && !forecastUnavailable) {
-        fetch(`/api/pro/forecast?gaugeId=${river.g}`)
-          .then(r => r.json())
-          .then(d => {
-            if (d.forecasts?.length > 0) setForecastData(d.forecasts)
-            else setForecastUnavailable(true)
-          })
-          .catch(() => setForecastUnavailable(true))
-      }
+    if (tab === 'Overview' && !forecastData && !forecastUnavailable) {
+      fetch(`/api/pro/forecast?gaugeId=${river.g}`)
+        .then(r => r.json())
+        .then(d => {
+          if (d.forecasts?.length > 0) setForecastData(d.forecasts)
+          else setForecastUnavailable(true)
+        })
+        .catch(() => setForecastUnavailable(true))
     }
-  }, [overviewIsPro, tab, river.g, historicalData, forecastData, forecastUnavailable])
+  }, [tab, river.g, forecastData, forecastUnavailable])
+
+  // Fetch 10-year historical flow analysis only for Pro users — this one
+  // is a heavier analytical tool that stays gated.
+  useEffect(() => {
+    if (overviewIsPro && tab === 'Overview' && !historicalData) {
+      fetch(`/api/pro/historical?gaugeId=${river.g}`)
+        .then(r => r.json())
+        .then(d => { if (d.weeks) setHistoricalData(d.weeks) })
+        .catch(() => {})
+    }
+  }, [overviewIsPro, tab, river.g, historicalData])
 
   // Stocking data
   interface StockingEvent {
@@ -295,7 +298,6 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
   const [hatchAlertExpanded, setHatchAlertExpanded] = useState<string | null>(null)
   const [hatchAlertSaving, setHatchAlertSaving] = useState<string | null>(null)
   const [hatchAlertDaysBefore, setHatchAlertDaysBefore] = useState('7')
-  const [hatchProPrompt, setHatchProPrompt] = useState<string | null>(null)
 
   const [stockingAlertOpen, setStockingAlertOpen] = useState(false)
   const [stockingAlertEmail, setStockingAlertEmail] = useState('')
@@ -850,57 +852,65 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                 ))}
               </div>
             )}
-            {/* 72-Hour Flow Forecast */}
+            {/* 72-Hour Flow Forecast — public NOAA NWPS data, no paywall.
+                AI interpretation of the forecast stays Pro (below). */}
             <div style={{ marginTop: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
                 <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px' }}>
                   72-Hour Flow Forecast
                 </div>
-                {overviewIsPro && <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', color: 'var(--rv)', padding: '1px 5px', borderRadius: '3px', background: 'var(--rvlt)' }}>PRO</span>}
+                <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', color: 'var(--tx3)' }}>
+                  NOAA NWPS
+                </span>
               </div>
-              {overviewIsPro ? (
-                forecastData && forecastData.length > 0 ? (
-                  <div style={{ border: '.5px solid var(--bd)', borderRadius: 'var(--r)', overflow: 'hidden' }}>
-                    <div style={{ height: '140px', background: 'var(--bg2)', display: 'flex', alignItems: 'flex-end', padding: '12px 16px 8px', gap: '2px' }}>
-                      {(() => {
-                        const maxCfs = Math.max(...forecastData.map(f => f.cfs))
-                        return forecastData.map((f, i) => {
-                          const pct = maxCfs > 0 ? (f.cfs / maxCfs) * 85 + 5 : 10
-                          return (
-                            <div key={i} title={`${new Date(f.time).toLocaleString()}: ${f.cfs.toLocaleString()} cfs`}
-                              style={{ flex: 1, height: `${pct}%`, background: 'var(--wt)', borderRadius: '2px 2px 0 0', opacity: 0.8, minWidth: '3px' }} />
-                          )
-                        })
-                      })()}
+              {forecastData && forecastData.length > 0 ? (
+                <div style={{ border: '.5px solid var(--bd)', borderRadius: 'var(--r)', overflow: 'hidden' }}>
+                  <div style={{ height: '140px', background: 'var(--bg2)', display: 'flex', alignItems: 'flex-end', padding: '12px 16px 8px', gap: '2px' }}>
+                    {(() => {
+                      const maxCfs = Math.max(...forecastData.map(f => f.cfs))
+                      return forecastData.map((f, i) => {
+                        const pct = maxCfs > 0 ? (f.cfs / maxCfs) * 85 + 5 : 10
+                        return (
+                          <div key={i} title={`${new Date(f.time).toLocaleString()}: ${f.cfs.toLocaleString()} cfs`}
+                            style={{ flex: 1, height: `${pct}%`, background: 'var(--wt)', borderRadius: '2px 2px 0 0', opacity: 0.8, minWidth: '3px' }} />
+                        )
+                      })
+                    })()}
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 16px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)' }}>
+                    <span>Now</span>
+                    <span>+24h</span>
+                    <span>+48h</span>
+                    <span>+72h</span>
+                  </div>
+                  {/* AI interpretation upsell for free users */}
+                  {!overviewIsPro && (
+                    <div style={{
+                      borderTop: '.5px solid var(--bd)',
+                      padding: '10px 14px', background: 'var(--bg2)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                      gap: '12px', flexWrap: 'wrap',
+                    }}>
+                      <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx2)', lineHeight: 1.5 }}>
+                        Get a plain-language forecast from our AI &mdash; Pro feature.
+                      </span>
+                      <a href="/pro" style={{
+                        fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', fontWeight: 500,
+                        padding: '5px 12px', borderRadius: 'var(--r)',
+                        background: 'var(--rvdk)', color: '#fff', textDecoration: 'none',
+                        flexShrink: 0,
+                      }}>
+                        Upgrade to Pro &rarr;
+                      </a>
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 16px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)' }}>
-                      <span>Now</span>
-                      <span>+24h</span>
-                      <span>+48h</span>
-                      <span>+72h</span>
-                    </div>
-                  </div>
-                ) : forecastUnavailable ? (
-                  <div style={{ padding: '12px', background: 'var(--bg2)', borderRadius: 'var(--r)', border: '.5px solid var(--bd)', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', textAlign: 'center' }}>
-                    Forecast temporarily unavailable
-                  </div>
-                ) : (
-                  <div style={{ padding: '12px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', textAlign: 'center' }}>Loading forecast...</div>
-                )
-              ) : (
-                <div style={{ position: 'relative', borderRadius: 'var(--r)', overflow: 'hidden' }}>
-                  <div style={{ filter: 'blur(5px)', pointerEvents: 'none', userSelect: 'none' }}>
-                    <div style={{ height: '120px', background: 'var(--bg2)', borderRadius: 'var(--r)', border: '.5px solid var(--bd)', display: 'flex', alignItems: 'flex-end', padding: '12px 16px', gap: '4px' }}>
-                      {[35, 42, 55, 68, 72, 65, 58, 50, 48, 52, 60, 70, 75, 72, 68].map((h, i) => (
-                        <div key={i} style={{ flex: 1, height: `${h}%`, background: 'var(--rvmd)', borderRadius: '2px 2px 0 0' }} />
-                      ))}
-                    </div>
-                  </div>
-                  <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,.6)' }}>
-                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--rvdk)', marginBottom: '8px' }}>Upgrade to Pro for 72-hour flow forecasts</div>
-                    <a href="/pro" style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', fontWeight: 500, padding: '6px 16px', borderRadius: 'var(--r)', background: 'var(--rvdk)', color: '#fff', textDecoration: 'none' }}>Upgrade to Pro &rarr;</a>
-                  </div>
+                  )}
                 </div>
+              ) : forecastUnavailable ? (
+                <div style={{ padding: '12px', background: 'var(--bg2)', borderRadius: 'var(--r)', border: '.5px solid var(--bd)', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', textAlign: 'center' }}>
+                  Forecast temporarily unavailable
+                </div>
+              ) : (
+                <div style={{ padding: '12px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', textAlign: 'center' }}>Loading forecast...</div>
               )}
             </div>
 
@@ -1001,18 +1011,23 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                   <div style={{ padding: '12px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', textAlign: 'center' }}>Loading historical data...</div>
                 )
               ) : (
-                <div style={{ position: 'relative', borderRadius: 'var(--r)', overflow: 'hidden' }}>
-                  <div style={{ filter: 'blur(5px)', pointerEvents: 'none', userSelect: 'none' }}>
-                    <div style={{ height: '120px', background: 'var(--bg2)', borderRadius: 'var(--r)', border: '.5px solid var(--bd)', display: 'flex', alignItems: 'flex-end', padding: '12px 16px', gap: '3px' }}>
-                      {[20, 25, 35, 50, 70, 85, 90, 80, 65, 45, 30, 22, 25, 35, 50, 65, 75, 80, 70, 55, 40, 28, 20, 18].map((h, i) => (
-                        <div key={i} style={{ flex: 1, height: `${h}%`, background: 'var(--wtmd)', borderRadius: '2px 2px 0 0', opacity: 0.7 }} />
-                      ))}
-                    </div>
-                  </div>
-                  <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,.6)' }}>
-                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--rvdk)', marginBottom: '8px' }}>Upgrade to Pro to see historical flow patterns</div>
-                    <a href="/pro" style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', fontWeight: 500, padding: '6px 16px', borderRadius: 'var(--r)', background: 'var(--rvdk)', color: '#fff', textDecoration: 'none' }}>Upgrade to Pro &rarr;</a>
-                  </div>
+                <div style={{
+                  padding: '14px 16px', background: 'var(--bg2)',
+                  border: '.5px solid var(--bd)', borderRadius: 'var(--r)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  gap: '12px', flexWrap: 'wrap',
+                }}>
+                  <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--tx2)', lineHeight: 1.5 }}>
+                    See 10 years of flow patterns for this river &mdash; historical analysis is a Pro feature.
+                  </span>
+                  <a href="/pro" style={{
+                    fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', fontWeight: 500,
+                    padding: '6px 14px', borderRadius: 'var(--r)',
+                    background: 'var(--rvdk)', color: '#fff', textDecoration: 'none',
+                    flexShrink: 0,
+                  }}>
+                    Upgrade to Pro &rarr;
+                  </a>
                 </div>
               )}
             </div>
@@ -1070,11 +1085,11 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                 </div>
               ) : (
                 <div style={{
-                  padding: '10px 14px', background: 'var(--rvlt)', border: '.5px solid var(--rvmd)',
+                  padding: '10px 14px', background: 'var(--bg2)', border: '.5px solid var(--bd)',
                   borderRadius: 'var(--r)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', flexWrap: 'wrap',
                 }}>
-                  <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--rvdk)' }}>
-                    Set your own optimal CFS range for personalized alerts
+                  <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--tx2)', lineHeight: 1.5 }}>
+                    Set your personal optimal CFS window per river &mdash; custom ranges are a Pro feature.
                   </span>
                   <a href="/pro" style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', fontWeight: 500, padding: '5px 14px', borderRadius: 'var(--r)', background: 'var(--rvdk)', color: '#fff', textDecoration: 'none', flexShrink: 0 }}>
                     Upgrade to Pro &rarr;
@@ -1416,14 +1431,19 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                           Set Hex Hatch Alert &rarr;
                         </button>
                       ) : stockingAlertEmail ? (
-                        <a href="/pro" style={{
-                          display: 'inline-block', fontFamily: mono, fontSize: '11px', fontWeight: 500,
-                          padding: '9px 20px', borderRadius: 'var(--r)',
-                          background: '#fff', color: 'var(--rvdk)', textDecoration: 'none',
-                          letterSpacing: '.3px',
-                        }}>
-                          Get Pro for Hex Alerts &rarr;
-                        </a>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-start' }}>
+                          <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--rvmd)', lineHeight: 1.5 }}>
+                            We&apos;ll email you when water temp hits the Hex trigger &mdash; hatch alerts are a Pro feature.
+                          </span>
+                          <a href="/pro" style={{
+                            display: 'inline-block', fontFamily: mono, fontSize: '11px', fontWeight: 500,
+                            padding: '9px 20px', borderRadius: 'var(--r)',
+                            background: '#fff', color: 'var(--rvdk)', textDecoration: 'none',
+                            letterSpacing: '.3px',
+                          }}>
+                            Upgrade to Pro &rarr;
+                          </a>
+                        </div>
                       ) : (
                         <a href="/login" style={{
                           fontFamily: mono, fontSize: '10px', color: 'var(--rvmd)', textDecoration: 'underline',
@@ -1580,16 +1600,8 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                                 }}>
                                   &#10003; Alert Set
                                 </button>
-                              ) : stockingAlertEmail && userIsPro ? (
-                                <button onClick={() => setHatchAlertExpanded(isExpanded ? null : h.name)} style={{
-                                  fontFamily: mono, fontSize: '9px', color: 'var(--wt)',
-                                  background: 'var(--wtlt)', border: '.5px solid var(--wtmd)',
-                                  borderRadius: '4px', padding: '4px 8px', cursor: 'pointer',
-                                }}>
-                                  Set Alert
-                                </button>
                               ) : stockingAlertEmail ? (
-                                <button onClick={() => setHatchProPrompt(hatchProPrompt === h.name ? null : h.name)} style={{
+                                <button onClick={() => setHatchAlertExpanded(isExpanded ? null : h.name)} style={{
                                   fontFamily: mono, fontSize: '9px', color: 'var(--wt)',
                                   background: 'var(--wtlt)', border: '.5px solid var(--wtmd)',
                                   borderRadius: '4px', padding: '4px 8px', cursor: 'pointer',
@@ -1607,41 +1619,9 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                             </div>
                           </div>
 
-                          {/* Pro upgrade prompt for free users */}
-                          {hatchProPrompt === h.name && !userIsPro && (
-                            <div style={{
-                              padding: '14px', borderTop: '.5px solid var(--rvmd)',
-                              background: 'var(--rvlt)',
-                            }}>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
-                                <span style={{ fontSize: '13px' }}>&#9889;</span>
-                                <span style={{ fontFamily: mono, fontSize: '11px', fontWeight: 500, color: 'var(--rvdk)' }}>
-                                  Hatch Alerts — RiverScout Pro
-                                </span>
-                              </div>
-                              <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx)', lineHeight: 1.6, marginBottom: '10px' }}>
-                                Get notified the moment water temps hit the {h.name} trigger{river.n ? ` on the ${river.n}` : ''}.
-                              </div>
-                              <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', marginBottom: '12px', lineHeight: 1.5 }}>
-                                Includes all hatch alerts, stocking alerts, and unlimited flow alerts.
-                              </div>
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-                                <a href="/pro" style={{
-                                  fontFamily: mono, fontSize: '11px', fontWeight: 500,
-                                  padding: '8px 20px', borderRadius: 'var(--r)',
-                                  background: 'var(--rvdk)', color: '#fff',
-                                  textDecoration: 'none', letterSpacing: '.3px',
-                                }}>
-                                  Upgrade to Pro &rarr;
-                                </a>
-                                <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>
-                                  $4.99/month &middot; Cancel anytime
-                                </span>
-                              </div>
-                            </div>
-                          )}
-
-                          {/* Expanded alert settings (Pro users only) */}
+                          {/* Expanded alert settings — visible to everyone,
+                              but the save button becomes a Pro upsell for
+                              free users (hatch alert emails stay Pro). */}
                           {isExpanded && (
                             <div style={{
                               padding: '10px 12px', borderTop: '.5px solid var(--bd)',
@@ -1666,49 +1646,72 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                                   <option value="14">14 days before</option>
                                 </select>
                               </div>
-                              <div style={{ display: 'flex', gap: '8px' }}>
-                                <button disabled={isSaving} onClick={async () => {
-                                  setHatchAlertSaving(h.name)
-                                  try {
-                                    const res = await fetch('/api/hatch-alerts', {
-                                      method: 'POST',
-                                      headers: { 'Content-Type': 'application/json' },
-                                      body: JSON.stringify({
-                                        userId: stockingUserId,
-                                        email: stockingAlertEmail,
-                                        riverId: river.id,
-                                        riverName: river.n,
-                                        stateKey: river.stateKey,
-                                        hatchName: h.name,
-                                        species: h.name,
-                                        notifyDaysBefore: parseInt(hatchAlertDaysBefore),
-                                        notifyOnTempTrigger: !!trigger,
-                                        notifyOnCalendar: true,
-                                      }),
-                                    })
-                                    const data = await res.json()
-                                    if (data.ok && data.alert) {
-                                      setHatchAlerts(prev => [...prev, { id: data.alert.id, hatch_name: h.name, active: true }])
-                                    }
-                                  } catch { /* ignore */ }
-                                  setHatchAlertSaving(null)
-                                  setHatchAlertExpanded(null)
-                                }} style={{
-                                  fontFamily: mono, fontSize: '10px', fontWeight: 500,
-                                  padding: '6px 16px', borderRadius: 'var(--r)',
-                                  background: 'var(--wt)', color: '#fff', border: 'none',
-                                  cursor: isSaving ? 'wait' : 'pointer', opacity: isSaving ? 0.6 : 1,
+                              {userIsPro ? (
+                                <div style={{ display: 'flex', gap: '8px' }}>
+                                  <button disabled={isSaving} onClick={async () => {
+                                    setHatchAlertSaving(h.name)
+                                    try {
+                                      const res = await fetch('/api/hatch-alerts', {
+                                        method: 'POST',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({
+                                          userId: stockingUserId,
+                                          email: stockingAlertEmail,
+                                          riverId: river.id,
+                                          riverName: river.n,
+                                          stateKey: river.stateKey,
+                                          hatchName: h.name,
+                                          species: h.name,
+                                          notifyDaysBefore: parseInt(hatchAlertDaysBefore),
+                                          notifyOnTempTrigger: !!trigger,
+                                          notifyOnCalendar: true,
+                                        }),
+                                      })
+                                      const data = await res.json()
+                                      if (data.ok && data.alert) {
+                                        setHatchAlerts(prev => [...prev, { id: data.alert.id, hatch_name: h.name, active: true }])
+                                      }
+                                    } catch { /* ignore */ }
+                                    setHatchAlertSaving(null)
+                                    setHatchAlertExpanded(null)
+                                  }} style={{
+                                    fontFamily: mono, fontSize: '10px', fontWeight: 500,
+                                    padding: '6px 16px', borderRadius: 'var(--r)',
+                                    background: 'var(--wt)', color: '#fff', border: 'none',
+                                    cursor: isSaving ? 'wait' : 'pointer', opacity: isSaving ? 0.6 : 1,
+                                  }}>
+                                    {isSaving ? 'Saving...' : 'Save Alert'}
+                                  </button>
+                                  <button onClick={() => setHatchAlertExpanded(null)} style={{
+                                    fontFamily: mono, fontSize: '10px', padding: '6px 12px',
+                                    borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx3)',
+                                    border: '.5px solid var(--bd2)', cursor: 'pointer',
+                                  }}>
+                                    Cancel
+                                  </button>
+                                </div>
+                              ) : (
+                                <div style={{
+                                  padding: '10px 12px', borderRadius: 'var(--r)',
+                                  background: 'var(--bg)', border: '.5px solid var(--bd)',
                                 }}>
-                                  {isSaving ? 'Saving...' : 'Save Alert'}
-                                </button>
-                                <button onClick={() => setHatchAlertExpanded(null)} style={{
-                                  fontFamily: mono, fontSize: '10px', padding: '6px 12px',
-                                  borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx3)',
-                                  border: '.5px solid var(--bd2)', cursor: 'pointer',
-                                }}>
-                                  Cancel
-                                </button>
-                              </div>
+                                  <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', lineHeight: 1.55, marginBottom: '8px' }}>
+                                    We&apos;ll email you when water temp hits the trigger &mdash; hatch alerts are a Pro feature.
+                                  </div>
+                                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                                    <a href="/pro" style={{
+                                      fontFamily: mono, fontSize: '10px', fontWeight: 500,
+                                      padding: '6px 14px', borderRadius: 'var(--r)',
+                                      background: 'var(--rvdk)', color: '#fff', textDecoration: 'none',
+                                    }}>
+                                      Upgrade to Pro &rarr;
+                                    </a>
+                                    <span style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)' }}>
+                                      $4.99/month &middot; cancel anytime
+                                    </span>
+                                  </div>
+                                </div>
+                              )}
                             </div>
                           )}
                         </div>
@@ -2047,35 +2050,14 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                             }}>&#10005;</button>
                           </div>
 
-                          {!userIsPro && !stockingAlertDone ? (
-                            <div style={{ textAlign: 'center', padding: '12px 0' }}>
-                              <div style={{ fontSize: '18px', marginBottom: '8px' }}>&#9889;</div>
-                              <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--rvdk)', marginBottom: '4px', fontWeight: 500 }}>
-                                RiverScout Pro
-                              </div>
-                              <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx2)', marginBottom: '4px' }}>
-                                Stocking alerts are a Pro feature
-                              </div>
-                              <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)', marginBottom: '14px' }}>
-                                $4.99/month &middot; Cancel anytime
-                              </div>
-                              <a href="/pro" style={{
-                                display: 'inline-block', fontFamily: mono, fontSize: '11px', fontWeight: 500,
-                                padding: '9px 24px', borderRadius: 'var(--r)',
-                                background: 'var(--rvdk)', color: '#fff',
-                                textDecoration: 'none', letterSpacing: '.3px',
-                              }}>
-                                Upgrade to Pro &rarr;
-                              </a>
-                            </div>
-                          ) : stockingAlertDone ? (
+                          {stockingAlertDone ? (
                             <div style={{ textAlign: 'center', padding: '12px 0' }}>
                               <div style={{ fontSize: '20px', marginBottom: '6px' }}>&#10003;</div>
                               <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--rv)', marginBottom: '8px' }}>
-                                Stocking alert set! We'll email you when this river is stocked.
+                                Stocking alert set! We&apos;ll email you when this river is stocked.
                               </div>
                               <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)' }}>
-                                Stocking alerts are free during beta. They'll be part of RiverScout Pro ($4.99/mo) when it launches.
+                                Thanks for supporting RiverScout Pro and independent river data.
                               </div>
                             </div>
                           ) : (
@@ -2110,35 +2092,58 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                                 ))}
                               </div>
 
-                              <button
-                                disabled={stockingAlertSubmitting || !stockingAlertEmail}
-                                onClick={async () => {
-                                  setStockingAlertSubmitting(true)
-                                  try {
-                                    const res = await fetch('/api/stocking/alerts', {
-                                      method: 'POST',
-                                      headers: { 'Content-Type': 'application/json' },
-                                      body: JSON.stringify({
-                                        email: stockingAlertEmail,
-                                        riverId: river.id,
-                                        stateKey: river.stateKey,
-                                        userId: stockingUserId,
-                                        speciesFilter: stockingAlertSpecies,
-                                      }),
-                                    })
-                                    const data = await res.json()
-                                    if (data.ok) setStockingAlertDone(true)
-                                  } catch { /* ignore */ }
-                                  setStockingAlertSubmitting(false)
-                                }}
-                                style={{
-                                  width: '100%', padding: '10px', fontFamily: mono, fontSize: '11px', fontWeight: 500,
-                                  background: 'var(--rv)', color: '#fff', border: 'none', borderRadius: 'var(--r)',
-                                  cursor: stockingAlertSubmitting ? 'wait' : 'pointer',
-                                  opacity: (stockingAlertSubmitting || !stockingAlertEmail) ? 0.6 : 1,
+                              {userIsPro ? (
+                                <button
+                                  disabled={stockingAlertSubmitting || !stockingAlertEmail}
+                                  onClick={async () => {
+                                    setStockingAlertSubmitting(true)
+                                    try {
+                                      const res = await fetch('/api/stocking/alerts', {
+                                        method: 'POST',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({
+                                          email: stockingAlertEmail,
+                                          riverId: river.id,
+                                          stateKey: river.stateKey,
+                                          userId: stockingUserId,
+                                          speciesFilter: stockingAlertSpecies,
+                                        }),
+                                      })
+                                      const data = await res.json()
+                                      if (data.ok) setStockingAlertDone(true)
+                                    } catch { /* ignore */ }
+                                    setStockingAlertSubmitting(false)
+                                  }}
+                                  style={{
+                                    width: '100%', padding: '10px', fontFamily: mono, fontSize: '11px', fontWeight: 500,
+                                    background: 'var(--rv)', color: '#fff', border: 'none', borderRadius: 'var(--r)',
+                                    cursor: stockingAlertSubmitting ? 'wait' : 'pointer',
+                                    opacity: (stockingAlertSubmitting || !stockingAlertEmail) ? 0.6 : 1,
+                                  }}>
+                                  {stockingAlertSubmitting ? 'Setting alert...' : 'Set Stocking Alert'}
+                                </button>
+                              ) : (
+                                <div style={{
+                                  padding: '12px 14px', borderRadius: 'var(--r)',
+                                  background: 'var(--bg2)', border: '.5px solid var(--bd)',
                                 }}>
-                                {stockingAlertSubmitting ? 'Setting alert...' : 'Set Stocking Alert'}
-                              </button>
+                                  <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx2)', lineHeight: 1.55, marginBottom: '10px' }}>
+                                    Get an email the moment this river is stocked &mdash; stocking alerts are a Pro feature.
+                                  </div>
+                                  <a href="/pro" style={{
+                                    display: 'block', width: '100%', textAlign: 'center',
+                                    padding: '10px', fontFamily: mono, fontSize: '11px', fontWeight: 500,
+                                    background: 'var(--rvdk)', color: '#fff',
+                                    borderRadius: 'var(--r)', textDecoration: 'none',
+                                    letterSpacing: '.3px', boxSizing: 'border-box',
+                                  }}>
+                                    Upgrade to Pro &rarr;
+                                  </a>
+                                  <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textAlign: 'center', marginTop: '6px' }}>
+                                    $4.99/month &middot; cancel anytime
+                                  </div>
+                                </div>
+                              )}
                             </div>
                           )}
                         </div>

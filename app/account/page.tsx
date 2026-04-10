@@ -169,11 +169,14 @@ export default function AccountPage() {
             display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px',
           }}>
             <div>
-              <div style={{ fontFamily: mono, fontSize: '12px', color: 'var(--tx2)' }}>Free account</div>
+              <div style={{ fontFamily: mono, fontSize: '12px', color: 'var(--tx)', marginBottom: '2px' }}>Free account</div>
+              <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)', lineHeight: 1.5 }}>
+                Full access to every river. Pro adds email alerts, offline mode, and deeper analytics.
+              </div>
             </div>
             <Link href="/pro" style={{
               fontFamily: mono, fontSize: '10px', fontWeight: 500, padding: '6px 14px', borderRadius: 'var(--r)',
-              background: 'var(--rvdk)', color: '#fff', textDecoration: 'none',
+              background: 'var(--rvdk)', color: '#fff', textDecoration: 'none', flexShrink: 0,
             }}>
               Upgrade to Pro &rarr;
             </Link>

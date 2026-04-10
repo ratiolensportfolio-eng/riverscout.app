@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createSupabaseClient } from '@/lib/supabase'
-import { FREE_ALERT_LIMIT } from '@/lib/pro'
 
 // POST /api/alerts — subscribe to flow alerts
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { email, riverId, riverName, threshold, stateKey, userId } = body
+    const { email, riverId, riverName, threshold, stateKey } = body
 
     if (!email || !riverId || !riverName || !threshold) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
@@ -17,45 +16,6 @@ export async function POST(req: NextRequest) {
     }
 
     const supabase = createSupabaseClient()
-
-    // Check Pro status for alert limits
-    let isPro = false
-    if (userId) {
-      const { data: profile } = await supabase
-        .from('user_profiles')
-        .select('is_pro')
-        .eq('id', userId)
-        .single()
-      isPro = profile?.is_pro ?? false
-    }
-
-    if (!isPro) {
-      // Check if this is an update to an existing alert (allowed) or a new one
-      const { data: existing } = await supabase
-        .from('flow_alerts')
-        .select('id')
-        .eq('email', email)
-        .eq('river_id', riverId)
-        .limit(1)
-
-      if (!existing || existing.length === 0) {
-        // New alert — check limit
-        const { count } = await supabase
-          .from('flow_alerts')
-          .select('*', { count: 'exact', head: true })
-          .eq('email', email)
-          .eq('active', true)
-
-        if ((count ?? 0) >= FREE_ALERT_LIMIT) {
-          return NextResponse.json({
-            error: 'pro_limit',
-            message: `Free accounts can set up to ${FREE_ALERT_LIMIT} flow alerts. Upgrade to Pro for unlimited alerts.`,
-            current: count,
-            limit: FREE_ALERT_LIMIT,
-          }, { status: 403 })
-        }
-      }
-    }
 
     // Upsert — if same email+river already exists, update threshold
     const { data, error } = await supabase

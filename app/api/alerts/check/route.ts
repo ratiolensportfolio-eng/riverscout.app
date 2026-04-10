@@ -40,7 +40,24 @@ export async function GET(req: NextRequest) {
   }
 
   if (alerts.length === 0) {
-    return NextResponse.json({ checked: 0, triggered: 0, sent: 0 })
+    return NextResponse.json({ checked: 0, triggered: 0, sent: 0, skippedFree: 0 })
+  }
+
+  // Flow alert emails are a Pro feature — free users can subscribe to as
+  // many rivers as they like (the subscription list is free and unlimited),
+  // but only Pro users actually receive the emails. Build a Set of Pro
+  // emails keyed by lowercased email so we can filter in-memory.
+  const { data: proProfiles } = await supabase
+    .from('user_profiles')
+    .select('email, pro_expires_at')
+    .eq('is_pro', true)
+
+  const nowTs = Date.now()
+  const proEmails = new Set<string>()
+  for (const p of proProfiles ?? []) {
+    if (!p.email) continue
+    if (p.pro_expires_at && new Date(p.pro_expires_at).getTime() < nowTs) continue
+    proEmails.add(p.email.toLowerCase())
   }
 
   // Fetch all active sponsored outfitters (for email integration)
@@ -78,6 +95,7 @@ export async function GET(req: NextRequest) {
   let checked = 0
   let triggered = 0
   let sent = 0
+  let skippedFree = 0
 
   for (const [riverId, riverAlerts] of byRiver) {
     const river = getRiver(riverId)
@@ -104,6 +122,16 @@ export async function GET(req: NextRequest) {
         if (lastNotified && lastNotified > twelveHoursAgo) continue
 
         triggered++
+
+        // Flow alert emails are a Pro feature. The subscription stays
+        // active for free users so they can upgrade at any time and start
+        // receiving emails without losing their list — we just skip the
+        // actual send here. Do NOT touch last_notified_at for skipped
+        // alerts, or they'd silently deliver stale triggers after upgrade.
+        if (!proEmails.has(alert.email.toLowerCase())) {
+          skippedFree++
+          continue
+        }
 
         // Get sponsored outfitter for this river
         const sponsor = sponsorByRiver.get(riverId) || null
@@ -139,6 +167,7 @@ export async function GET(req: NextRequest) {
     checked,
     triggered,
     sent,
+    skippedFree,
     sponsoredRivers: sponsorByRiver.size,
   })
 }

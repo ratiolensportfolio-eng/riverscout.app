@@ -22,10 +22,12 @@ export default function ProSuccess() {
           borderRadius: 'var(--r)', padding: '16px 20px', marginBottom: '24px',
         }}>
           {[
-            'Unlimited flow alerts',
-            'Stocking alerts',
-            'Historical flow data',
+            'Flow alert emails',
+            'Stocking and hatch alert emails',
             'Offline river pages',
+            '10-year historical flow analysis',
+            'AI forecast interpretation',
+            'Custom CFS ranges',
           ].map((f, i) => (
             <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '5px 0', fontFamily: mono, fontSize: '12px', color: 'var(--rvdk)' }}>
               <span style={{ color: 'var(--rv)', fontWeight: 700 }}>&#10003;</span>

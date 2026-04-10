@@ -226,15 +226,22 @@ export const PRO_PRICE = {
   yearly: 39.99,    // ~$3.33/mo
 }
 
+// Features exclusive to RiverScout Pro. Everything not on this list is
+// available in the free tier. The site should work end-to-end without
+// ever hitting one of these — Pro is for paddlers and anglers who want
+// the site to come to them (push notifications, deeper analytics,
+// offline access, personal history).
 export const PRO_FEATURES: ProFeature[] = [
-  { icon: '\u26A1', title: 'Flow alerts', description: 'Email when your river hits optimal CFS', available: true },
-  { icon: '\uD83D\uDC1F', title: 'Stocking alerts', description: 'Email when your river is stocked', available: true },
-  { icon: '\uD83C\uDF0A', title: '72-hour flow forecast', description: 'See where CFS is heading before you drive', available: true },
-  { icon: '\uD83D\uDCF1', title: 'Offline river pages', description: 'Works without cell service', available: true },
-  { icon: '\uD83D\uDCC8', title: 'Historical flow analysis', description: '10-year CFS patterns by week', available: true },
-  { icon: '\uD83C\uDFAF', title: 'Custom optimal CFS ranges', description: 'Set your own ideal ranges per river', available: true },
-  { icon: '\uD83D\uDE80', title: 'Early access', description: 'New states and features before anyone else', available: true },
-  { icon: '\uD83C\uDF3F', title: 'Support conservation data', description: 'Fund independent river data for everyone', available: true },
+  { icon: '\u26A1', title: 'Flow alert emails', description: 'Get notified the moment your river hits optimal', available: true },
+  { icon: '\u26A1', title: 'Stocking alert emails', description: 'Know the moment your river is stocked', available: true },
+  { icon: '\u26A1', title: 'Hatch alert emails', description: "Water temp hit the hex hatch trigger? We'll tell you", available: true },
+  { icon: '\u26A1', title: 'Offline river pages', description: 'Full data with no cell service', available: true },
+  { icon: '\u26A1', title: 'Historical flow analysis', description: '10-year CFS patterns and seasonal charts', available: true },
+  { icon: '\u26A1', title: 'AI forecast interpretation', description: 'Plain-language forecast with confidence intervals', available: true },
+  { icon: '\u26A1', title: 'Custom CFS ranges', description: 'Set your personal optimal window per river', available: true },
+  { icon: '\u26A1', title: 'River journal and trip statistics', description: 'Your paddling history in one place', available: true },
+  { icon: '\u26A1', title: 'Float plan saved templates', description: 'Pre-filled for your regular rivers', available: false },
+  { icon: '\u26A1', title: 'Early access to new features', description: 'New states and tools before anyone else', available: true },
 ]
 
 export const OUTFITTER_TIERS: OutfitterTierConfig[] = [
