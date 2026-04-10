@@ -66,7 +66,19 @@ export async function POST(req: NextRequest) {
         phone: phone?.trim() || null,
         river_ids: [riverId],
         tier: 'listed',
-        active: false,  // free listings start inactive until reviewed
+        // Free listings are auto-published. Earlier this defaulted to
+        // false on the assumption that we'd build an admin moderation
+        // queue, but in practice (a) it left real business owners
+        // staring at a dashboard with no way to make their listing
+        // visible, (b) it confused them into thinking their uploads
+        // had failed because nothing showed up on the river page,
+        // and (c) at our current scale spam is not a problem
+        // (one-listing-per-river-per-user is enforced by the route
+        // and the auth requirement is a real wall).
+        // If spam becomes a problem we'll add a moderation queue
+        // and flip this back. The owner can always unpublish their
+        // own listing from the dashboard.
+        active: true,
       })
       .select()
 

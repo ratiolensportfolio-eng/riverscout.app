@@ -56,6 +56,11 @@ export default function OutfitterDashboard() {
   const [coverUrl, setCoverUrl] = useState<string | null>(null)
   const [uploading, setUploading] = useState<'logo' | 'cover' | null>(null)
   const [uploadMsg, setUploadMsg] = useState('')
+  // Whether the currently selected listing is publicly visible on
+  // its river page(s). Loaded from the outfitters.active column on
+  // bootstrap and updated by the publish/unpublish toggle.
+  const [isActive, setIsActive] = useState<boolean | null>(null)
+  const [togglingActive, setTogglingActive] = useState(false)
 
   const fetchAnalytics = useCallback(async (oid: string, uid: string) => {
     setLoading(true)
@@ -73,22 +78,52 @@ export default function OutfitterDashboard() {
     }
     setLoading(false)
 
-    // Fetch current images. The browser supabase client carries the
-    // auth cookie, so the "Outfitters manage own listing" RLS policy
+    // Fetch current images + active state. The browser supabase
+    // client carries the auth cookie, so the
+    // "Outfitters manage own listing" RLS policy
     // (auth.uid() = user_id) lets us read our own row even when it's
-    // inactive (newly claimed listings start active=false).
+    // inactive (older listings claimed before auto-publish was
+    // enabled may still be sitting at active=false).
     try {
       const { data: listing } = await supabase
         .from('outfitters')
-        .select('logo_url, cover_photo_url')
+        .select('logo_url, cover_photo_url, active')
         .eq('id', oid)
         .single()
       if (listing) {
         setLogoUrl(listing.logo_url)
         setCoverUrl(listing.cover_photo_url)
+        setIsActive(!!listing.active)
       }
     } catch {}
   }, [])
+
+  // Flip the listing's active flag (publish ↔ unpublish). Uses the
+  // browser supabase client directly because the
+  // "Outfitters manage own listing" RLS policy gates UPDATE on
+  // auth.uid() = user_id and the browser client has the auth
+  // cookie set. No server route needed.
+  async function toggleActive() {
+    if (!outfitterId || isActive === null) return
+    setTogglingActive(true)
+    const next = !isActive
+    const { error: updErr } = await supabase
+      .from('outfitters')
+      .update({ active: next, updated_at: new Date().toISOString() })
+      .eq('id', outfitterId)
+    if (updErr) {
+      setUploadMsg('Error: ' + updErr.message)
+    } else {
+      setIsActive(next)
+      setUploadMsg(next
+        ? 'Published — your listing is now visible on its river page'
+        : 'Unpublished — your listing is now hidden from the public river page')
+      // Also update the row in ownedListings so the picker reflects
+      // the new state without a full re-bootstrap.
+      setOwnedListings(prev => prev.map(l => l.id === outfitterId ? { ...l, active: next } : l))
+    }
+    setTogglingActive(false)
+  }
 
   // Auth-aware bootstrap. On mount we resolve the current user from
   // the supabase session, look up their owned outfitter rows, and
@@ -280,17 +315,62 @@ export default function OutfitterDashboard() {
 
         {analytics && (
           <>
-            {/* Header */}
+            {/* Header — title + tier + publish status pill +
+                publish/unpublish toggle. The pill makes it clear at
+                a glance whether the listing is visible to paddlers
+                on the river page; the button lets the owner flip
+                that state without involving an admin. */}
             <div style={{ marginBottom: '20px' }}>
               <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--rv)', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '4px' }}>
                 {analytics.outfitter.tier} tier
               </div>
-              <div style={{ fontFamily: serif, fontSize: '22px', fontWeight: 700, color: 'var(--rvdk)' }}>
-                {analytics.outfitter.businessName}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                <div style={{ fontFamily: serif, fontSize: '22px', fontWeight: 700, color: 'var(--rvdk)' }}>
+                  {analytics.outfitter.businessName}
+                </div>
+                {isActive !== null && (
+                  <span
+                    title={isActive
+                      ? 'Your listing is visible on its river page(s).'
+                      : 'Your listing exists but is hidden from public river pages. Click "Publish" to make it visible.'}
+                    style={{
+                      fontFamily: mono, fontSize: '9px', padding: '3px 9px', borderRadius: '10px',
+                      textTransform: 'uppercase', letterSpacing: '.5px', fontWeight: 600,
+                      background: isActive ? 'var(--rvlt)' : 'var(--amlt)',
+                      color: isActive ? 'var(--rv)' : 'var(--am)',
+                      border: `.5px solid ${isActive ? 'var(--rvmd)' : 'var(--am)'}`,
+                    }}>
+                    {isActive ? 'Live' : 'Hidden'}
+                  </span>
+                )}
               </div>
               <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)', marginTop: '4px' }}>
                 {analytics.period.thisMonth}
               </div>
+              {isActive !== null && (
+                <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                  <button
+                    onClick={toggleActive}
+                    disabled={togglingActive}
+                    style={{
+                      fontFamily: mono, fontSize: '11px', padding: '7px 16px', borderRadius: 'var(--r)',
+                      cursor: togglingActive ? 'wait' : 'pointer',
+                      background: isActive ? 'var(--bg)' : 'var(--rv)',
+                      color: isActive ? 'var(--tx2)' : '#fff',
+                      border: isActive ? '.5px solid var(--bd2)' : 'none',
+                      opacity: togglingActive ? 0.6 : 1,
+                    }}>
+                    {togglingActive
+                      ? (isActive ? 'Hiding…' : 'Publishing…')
+                      : (isActive ? 'Unpublish listing' : 'Publish listing')}
+                  </button>
+                  {!isActive && (
+                    <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--am)', lineHeight: 1.5 }}>
+                      Your listing is currently hidden from the public river page. Click Publish to make it visible.
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Top-line stats */}
@@ -414,8 +494,18 @@ export default function OutfitterDashboard() {
 
             {/* Manage Listing — Logo & Cover Photo */}
             <div style={{ background: 'var(--bg2)', border: '.5px solid var(--bd)', borderRadius: 'var(--rlg)', padding: '16px', marginTop: '20px' }}>
-              <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' }}>
-                Manage Listing
+              <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '10px', flexWrap: 'wrap', marginBottom: '12px' }}>
+                <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                  Manage Listing
+                </div>
+                {/* The upload widgets fire as soon as you pick a
+                    file — there is no separate save step. Earlier
+                    users hit this page expecting a save button and
+                    thought their uploads had failed when they
+                    couldn't find one. */}
+                <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)' }}>
+                  Auto-saves on upload — no save button needed
+                </div>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
