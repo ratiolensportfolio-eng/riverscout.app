@@ -49,20 +49,6 @@ export default async function StatePage({ params }: Props) {
 
   return (
     <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)' }}>
-      {/* Nav */}
-      <nav style={{
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '0 16px', height: '44px', borderBottom: '.5px solid var(--bd)',
-        background: 'var(--bg)',
-      }}>
-        <Link href="/" style={{ fontFamily: "'Playfair Display', serif", fontSize: '18px', fontWeight: 700, color: 'var(--rvdk)', letterSpacing: '-.3px', textDecoration: 'none' }}>
-          River<span style={{ color: 'var(--wt)' }}>Scout</span>
-        </Link>
-        <Link href="/" style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', background: 'var(--rvlt)', color: 'var(--rvdk)', padding: '4px 10px', borderRadius: '20px', border: '.5px solid var(--rvmd)', textDecoration: 'none' }}>
-          ← Map
-        </Link>
-      </nav>
-
       <div className="state-layout">
         {/* Sidebar */}
         <div className="state-sidebar">

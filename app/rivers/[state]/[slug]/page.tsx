@@ -124,20 +124,6 @@ export default async function RiverPage({ params }: Props) {
     // scroll: <main> grows to fit, the tab content panel grows with
     // it, and the browser handles the page scrollbar.
     <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)', display: 'flex', flexDirection: 'column' }}>
-      {/* Nav */}
-      <nav style={{
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '0 16px', height: '44px', borderBottom: '.5px solid var(--bd)',
-        background: 'var(--bg)', flexShrink: 0,
-      }}>
-        <Link href="/" style={{ fontFamily: "'Playfair Display', serif", fontSize: '18px', fontWeight: 700, color: 'var(--rvdk)', letterSpacing: '-.3px', textDecoration: 'none' }}>
-          River<span style={{ color: 'var(--wt)' }}>Scout</span>
-        </Link>
-        <Link href={`/state/${backState}`} style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', background: 'var(--rvlt)', color: 'var(--rvdk)', padding: '4px 10px', borderRadius: '20px', border: '.5px solid var(--rvmd)', textDecoration: 'none' }}>
-          ← {river.stateName}
-        </Link>
-      </nav>
-
       {/* River header */}
       <div style={{ padding: '12px 16px', borderBottom: '.5px solid var(--bd)', background: 'var(--wtlt)', flexShrink: 0 }}>
         <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 700, color: '#042C53' }}>

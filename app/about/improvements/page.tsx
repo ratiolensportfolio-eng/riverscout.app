@@ -81,16 +81,6 @@ export default async function ImprovementsPage({ searchParams }: Props) {
 
   return (
     <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)' }}>
-      {/* Nav */}
-      <nav style={{
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '0 16px', height: '44px', borderBottom: '.5px solid var(--bd)',
-      }}>
-        <Link href="/" style={{ fontFamily: serif, fontSize: '18px', fontWeight: 700, color: 'var(--rvdk)', letterSpacing: '-.3px', textDecoration: 'none' }}>
-          River<span style={{ color: 'var(--wt)' }}>Scout</span>
-        </Link>
-      </nav>
-
       <div style={{ maxWidth: '640px', margin: '0 auto', padding: '24px 28px' }}>
         {/* Header */}
         <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--rv)', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '6px' }}>

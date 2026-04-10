@@ -3,7 +3,6 @@ import { ALL_RIVERS, STATES } from '@/data/rivers'
 import { fetchGaugeData } from '@/lib/usgs'
 import { createSupabaseServerClient } from '@/lib/supabase-server'
 import USMap from '@/components/maps/USMap'
-import AuthNav from '@/components/AuthNav'
 import type { FlowCondition } from '@/types'
 
 export const revalidate = 900
@@ -69,27 +68,6 @@ export default async function HomePage() {
 
   return (
     <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)', display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
-      {/* Nav */}
-      <nav style={{
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '0 16px', height: '44px', borderBottom: '.5px solid var(--bd)',
-        background: 'var(--bg)', flexShrink: 0,
-      }}>
-        <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '18px', fontWeight: 700, color: 'var(--rvdk)', letterSpacing: '-.3px' }}>
-          River<span style={{ color: 'var(--wt)' }}>Scout</span>
-        </span>
-        <div className="nav-pills">
-          <span style={{ padding: '5px 10px', borderRadius: '20px', border: '.5px solid var(--rvmd)', color: 'var(--rvdk)', background: 'var(--rvlt)' }}>Map</span>
-          <Link href="/search" style={{ padding: '5px 10px', borderRadius: '20px', border: '.5px solid var(--bd2)', color: 'var(--tx2)', textDecoration: 'none' }}>Search</Link>
-          <Link href="/hatches" style={{ padding: '5px 10px', borderRadius: '20px', border: '.5px solid var(--bd2)', color: 'var(--tx2)', textDecoration: 'none' }}>Hatches</Link>
-          <Link href="/alerts" style={{ padding: '5px 10px', borderRadius: '20px', border: '.5px solid var(--bd2)', color: 'var(--tx2)', textDecoration: 'none' }}>Alerts</Link>
-          <Link href="/about/improvements" style={{ padding: '5px 10px', borderRadius: '20px', border: '.5px solid var(--bd2)', color: 'var(--tx2)', textDecoration: 'none' }}>Community</Link>
-          <Link href="/outfitters" style={{ padding: '5px 10px', borderRadius: '20px', border: '.5px solid var(--bd2)', color: 'var(--tx2)', textDecoration: 'none' }}>Outfitters</Link>
-          <Link href="/pro" style={{ padding: '5px 10px', borderRadius: '20px', border: '.5px solid var(--rvmd)', color: 'var(--rvdk)', background: 'var(--rvlt)', textDecoration: 'none', fontWeight: 500 }}>Pro</Link>
-          <AuthNav />
-        </div>
-      </nav>
-
       {/* Hero row */}
       <div style={{ padding: '14px 20px 10px', flexShrink: 0 }}>
         <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--rv)', letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '4px' }}>

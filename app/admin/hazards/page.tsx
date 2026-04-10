@@ -205,19 +205,12 @@ export default function AdminHazardsPage() {
 
   return (
     <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)' }}>
-      <nav style={{
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '0 16px', height: '44px', borderBottom: '.5px solid var(--bd)',
-      }}>
-        <Link href="/" style={{ fontFamily: serif, fontSize: '18px', fontWeight: 700, color: 'var(--rvdk)', letterSpacing: '-.3px', textDecoration: 'none' }}>
-          River<span style={{ color: 'var(--wt)' }}>Scout</span>
-        </Link>
-        <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--dg)', padding: '5px 10px', borderRadius: '20px', border: '.5px solid var(--dg)', background: 'var(--dglt)' }}>
-          Admin
-        </span>
-      </nav>
-
       <div style={{ maxWidth: '900px', margin: '0 auto', padding: '20px 28px' }}>
+        <div style={{ marginBottom: '12px' }}>
+          <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--dg)', padding: '5px 10px', borderRadius: '20px', border: '.5px solid var(--dg)', background: 'var(--dglt)' }}>
+            Admin
+          </span>
+        </div>
         {/* Admin sub-nav */}
         <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>
           <Link href="/admin/suggestions" style={{

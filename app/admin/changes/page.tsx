@@ -148,14 +148,11 @@ export default function AdminChanges() {
 
   return (
     <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)' }}>
-      <nav style={{
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '0 16px', height: '44px', borderBottom: '.5px solid var(--bd)',
-      }}>
-        <Link href="/" style={{ fontFamily: serif, fontSize: '18px', fontWeight: 700, color: 'var(--rvdk)', letterSpacing: '-.3px', textDecoration: 'none' }}>
-          River<span style={{ color: 'var(--wt)' }}>Scout</span>
-        </Link>
-        <div style={{ display: 'flex', gap: '6px' }}>
+      <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '20px 28px' }}>
+        <div style={{ display: 'flex', gap: '6px', marginBottom: '12px', alignItems: 'center' }}>
+          <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--dg)', padding: '5px 10px', borderRadius: '20px', border: '.5px solid var(--dg)', background: 'var(--dglt)' }}>
+            Admin
+          </span>
           <Link href="/admin/suggestions" style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', textDecoration: 'none', padding: '5px 10px', borderRadius: '20px', border: '.5px solid var(--bd2)' }}>
             Suggestions
           </Link>
@@ -163,9 +160,6 @@ export default function AdminChanges() {
             Change Log
           </span>
         </div>
-      </nav>
-
-      <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '20px 28px' }}>
         {/* Banner */}
         {banner && (
           <div style={{

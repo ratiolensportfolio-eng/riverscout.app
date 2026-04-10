@@ -44,13 +44,6 @@ export default function SearchClient({ permittedRiverIds }: Props) {
 
   return (
     <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)', display: 'flex', flexDirection: 'column' }}>
-      {/* Nav */}
-      <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px', height: '44px', borderBottom: '.5px solid var(--bd)', background: 'var(--bg)', flexShrink: 0 }}>
-        <Link href="/" style={{ fontFamily: "'Playfair Display', serif", fontSize: '18px', fontWeight: 700, color: 'var(--rvdk)', letterSpacing: '-.3px', textDecoration: 'none' }}>
-          River<span style={{ color: 'var(--wt)' }}>Scout</span>
-        </Link>
-      </nav>
-
       {/* Search header */}
       <div style={{ padding: '16px 24px', borderBottom: '.5px solid var(--bd)', flexShrink: 0 }}>
         <input

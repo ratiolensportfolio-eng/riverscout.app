@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import LargeTextToggle from '@/components/LargeTextToggle'
+import GlobalNav from '@/components/GlobalNav'
 
 export const metadata: Metadata = {
   title: 'RiverScout — Paddle Every River in America',
@@ -61,8 +62,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             when River Vision is active (see globals.css). It must
             wrap the page content but NOT the toggle button — the
             toggle stays at its normal size while the page scales
-            up around it. */}
-        <div id="rs-zoom-target">{children}</div>
+            up around it. The GlobalNav lives inside the wrapper
+            so it scales with the rest of the page. */}
+        <div id="rs-zoom-target">
+          <GlobalNav />
+          {children}
+        </div>
         <LargeTextToggle />
         <script dangerouslySetInnerHTML={{ __html: `
           if ('serviceWorker' in navigator) {

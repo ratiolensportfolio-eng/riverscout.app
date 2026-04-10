@@ -370,18 +370,6 @@ export default function OutfitterDashboard() {
 
   return (
     <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)' }}>
-      {/* Nav */}
-      <nav style={{
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '0 16px', height: '44px', borderBottom: '.5px solid var(--bd)',
-      }}>
-        <Link href="/" style={{ fontFamily: serif, fontSize: '18px', fontWeight: 700, color: 'var(--rvdk)', letterSpacing: '-.3px', textDecoration: 'none' }}>
-          River<span style={{ color: 'var(--wt)' }}>Scout</span>
-        </Link>
-        <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--rv)', padding: '5px 10px', borderRadius: '20px', border: '.5px solid var(--rvmd)', background: 'var(--rvlt)' }}>
-          Outfitter Dashboard
-        </div>
-      </nav>
 
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '20px 28px' }}>
         {/* Bootstrap states — replace the old manual ID input form
