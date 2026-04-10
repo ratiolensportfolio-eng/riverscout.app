@@ -81,9 +81,21 @@ body {
   animation: pulse 2s ease-in-out infinite;
 }
 
+/* Rapid Rise safety banner — full-width red banner that pulses to
+   draw attention. Used when changePerHour > 500 cfs/hr on a river
+   page, indicating a potentially dangerous rise. */
+@keyframes rapid-rise-pulse {
+  0%, 100% { background-color: #A32D2D; }
+  50%      { background-color: #C44545; }
+}
+.rapid-rise-banner {
+  animation: rapid-rise-pulse 1.6s ease-in-out infinite;
+}
+
 /* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
-  .pulse-dot {
+  .pulse-dot,
+  .rapid-rise-banner {
     animation: none;
   }
   .mission-cta:hover {

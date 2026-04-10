@@ -57,6 +57,11 @@ export function flowAlertEmail(
   condition: string,
   optRange: string,
   sponsor?: { business_name: string; description: string | null; website: string | null; logo_url: string | null } | null,
+  // Rate-of-change context. All optional so existing call sites that
+  // don't have the data still compile and just skip the trend line.
+  gaugeHeightFt?: number | null,
+  changePerHour?: number | null,
+  rateLabel?: string | null,
 ): string {
   const conditionLabel = condition === 'optimal' ? 'Optimal conditions'
     : condition === 'high' ? 'High water'
@@ -67,6 +72,42 @@ export function flowAlertEmail(
     : condition === 'high' ? '#BA7517'
     : condition === 'flood' ? '#A32D2D'
     : '#666660'
+
+  // Trend line — only render when we actually have a meaningful rate.
+  // Stable rivers (|rate| < 25 cfs/hr) and "Rate unknown" are skipped
+  // to avoid noise. Color matches the in-app palette so users get
+  // consistent visual cues.
+  let trendLineHtml = ''
+  if (
+    typeof changePerHour === 'number' &&
+    Math.abs(changePerHour) >= 25 &&
+    rateLabel &&
+    rateLabel !== 'Rate unknown' &&
+    rateLabel !== 'Stable'
+  ) {
+    const isRising = changePerHour > 0
+    const absRate = Math.abs(changePerHour)
+    const arrow = isRising ? '&#8593;' : '&#8595;'
+    let rateColor: string
+    if (isRising) {
+      if (absRate > 300) rateColor = '#A32D2D'
+      else if (absRate > 100) rateColor = '#BA7517'
+      else rateColor = '#3CA86E'
+    } else {
+      if (absRate > 300) rateColor = '#6E4BB4'
+      else if (absRate > 100) rateColor = '#0C447C'
+      else rateColor = '#5B8DBF'
+    }
+    trendLineHtml = `
+        <div style="font-family: monospace; font-size: 13px; color: ${rateColor}; font-weight: 600; margin-top: 8px;">
+          ${arrow} ${rateLabel}
+        </div>`
+  }
+
+  // Headline number line: "1,250 cfs / 2.30 ft" when height is available.
+  const headlineValue = typeof gaugeHeightFt === 'number'
+    ? `${cfs.toLocaleString()} cfs / ${gaugeHeightFt.toFixed(2)} ft`
+    : `${cfs.toLocaleString()} cfs`
 
   const sponsorBlock = sponsor ? `
     <tr>
@@ -106,11 +147,11 @@ export function flowAlertEmail(
           Flow Alert
         </div>
         <div style="font-family: Georgia, serif; font-size: 24px; font-weight: 700; color: #1a1a18; line-height: 1.3; margin-bottom: 8px;">
-          ${riverName} is running at ${cfs.toLocaleString()} cfs
+          ${riverName} is running at ${headlineValue}
         </div>
         <div style="font-size: 16px; color: ${conditionColor}; font-weight: 600; margin-bottom: 4px;">
           ${conditionLabel}
-        </div>
+        </div>${trendLineHtml}
         <div style="font-family: monospace; font-size: 12px; color: #aaa99a; margin-top: 12px;">
           Optimal range: ${optRange} cfs · Live data from USGS
         </div>

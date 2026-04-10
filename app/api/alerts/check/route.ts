@@ -142,7 +142,16 @@ export async function GET(req: NextRequest) {
           : flow.condition === 'flood' ? 'Flood warning'
           : 'Flow alert'
 
-        const html = flowAlertEmail(alert.river_name, flow.cfs, flow.condition, river.opt, sponsor)
+        const html = flowAlertEmail(
+          alert.river_name,
+          flow.cfs,
+          flow.condition,
+          river.opt,
+          sponsor,
+          flow.gaugeHeightFt,
+          flow.changePerHour,
+          flow.rateLabel,
+        )
 
         const emailSent = await sendEmail({
           to: alert.email,

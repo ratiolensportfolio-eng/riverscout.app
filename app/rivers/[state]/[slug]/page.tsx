@@ -125,7 +125,7 @@ export default async function RiverPage({ params }: Props) {
           {river.co} · {river.len} · Class {river.cls}
         </div>
 
-        {/* Live flow row */}
+        {/* Live flow row — "340 cfs / 2.3 ft  [OPTIMAL]" */}
         <div className="river-flow-row">
           <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
             <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: 'var(--rv)' }} className="pulse-dot" />
@@ -134,8 +134,8 @@ export default async function RiverPage({ params }: Props) {
             </span>
             <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--wt)' }}>CFS</span>
             {flow.gaugeHeightFt !== null && (
-              <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', marginLeft: '4px' }}>
-                · {flow.gaugeHeightFt.toFixed(2)} ft
+              <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', color: 'var(--tx2)', marginLeft: '6px' }}>
+                / {flow.gaugeHeightFt.toFixed(2)} ft
               </span>
             )}
           </div>
@@ -145,26 +145,67 @@ export default async function RiverPage({ params }: Props) {
           </span>
         </div>
 
-        {/* Rate-of-change row — separate line so the rateLabel and 3h
-            delta have room without crowding the headline CFS readout. */}
-        {flow.cfs !== null && flow.rateLabel && flow.rateLabel !== 'Rate unknown' && (() => {
-          // Color the rate label by direction. Rising fast / falling fast
-          // (>300 cfs/hr) get a stronger color since those usually mean a
-          // flood pulse is on the way or a release is winding down.
-          const isRising = flow.trend === 'up'
-          const isFalling = flow.trend === 'down'
-          const isFast = flow.changePerHour !== null && Math.abs(flow.changePerHour) > 300
-          const color = isFast
-            ? (isRising ? 'var(--dg)' : 'var(--am)')
-            : isRising
-              ? 'var(--am)'
-              : isFalling
-                ? '#185FA5'
-                : 'var(--tx3)'
+        {/* Rate-of-change row.
+            Color palette per the rate severity:
+              Rising fast  (>300 cfs/hr): red    — potential flash flood
+              Rising       (100-300):     amber  — heads up
+              Rising slowly (<100):       light  — normal rise
+              Stable:                     gray   — (hidden, see note)
+              Falling slowly (<100):      lt blue — improving
+              Falling      (100-300):     blue
+              Falling fast (>300):        purple — rapid drainage
+            Stable rivers below 25 cfs/hr are hidden entirely so the
+            page stays clean — showing "Stable" everywhere is noise. */}
+        {flow.cfs !== null && flow.rateLabel && flow.rateLabel !== 'Rate unknown' && flow.rateLabel !== 'Stable' && (() => {
+          const rate = flow.changePerHour ?? 0
+          const absRate = Math.abs(rate)
+          const isRising = rate > 0
+          const arrow = isRising ? '\u2191' : '\u2193'
+
+          // Pick color from the spec palette
+          let color: string
+          if (isRising) {
+            if (absRate > 300) color = '#A32D2D'        // red — rising fast
+            else if (absRate > 100) color = '#BA7517'   // amber — rising
+            else color = '#3CA86E'                       // light green — rising slowly
+          } else {
+            if (absRate > 300) color = '#6E4BB4'        // purple — falling fast
+            else if (absRate > 100) color = '#0C447C'   // blue — falling
+            else color = '#5B8DBF'                       // light blue — falling slowly
+          }
+
+          // Tooltip shows the calc context. title attribute renders on
+          // hover for desktop and is screen-reader accessible. A custom
+          // tooltip would be nicer typographically but title is good
+          // enough until we have a real reason to upgrade.
+          const tooltip =
+            `Rate of change calculated from USGS readings over the past hour. ` +
+            `Updated every 15 minutes.\n\n` +
+            `Current: ${rate > 0 ? '+' : ''}${rate.toLocaleString()} cfs/hr` +
+            (flow.changeIn3Hours !== null
+              ? `\n3-hour change: ${flow.changeIn3Hours > 0 ? '+' : ''}${flow.changeIn3Hours.toLocaleString()} cfs total`
+              : '')
+
           return (
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '4px', flexWrap: 'wrap' }}>
-              <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color, fontWeight: 500 }}>
+              <span
+                title={tooltip}
+                style={{
+                  fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
+                  color, fontWeight: 600,
+                  display: 'inline-flex', alignItems: 'center', gap: '4px',
+                  cursor: 'help',
+                }}>
+                <span style={{ fontSize: '13px' }}>{arrow}</span>
                 {flow.rateLabel}
+                <span aria-hidden="true" style={{
+                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                  width: '12px', height: '12px', borderRadius: '50%',
+                  fontSize: '9px', fontWeight: 700,
+                  background: 'var(--bg2)', color: 'var(--tx3)',
+                  border: '.5px solid var(--bd2)',
+                  marginLeft: '2px',
+                }}>i</span>
               </span>
               {flow.changeIn3Hours !== null && Math.abs(flow.changeIn3Hours) >= 25 && (
                 <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>
@@ -193,6 +234,46 @@ export default async function RiverPage({ params }: Props) {
           </div>
         </div>
       </div>
+
+      {/* Rapid Rise warning — fires when the river is rising at more
+          than 500 cfs/hr. This is a hard safety threshold (think
+          spring freshet, dam release, or thunderstorm runoff) and the
+          banner is intentionally impossible to miss: full-width red,
+          pulsing background, white text. Renders above every other
+          banner. The pulse animation is suppressed for users with
+          prefers-reduced-motion via globals.css. */}
+      {flow.changePerHour !== null && flow.changePerHour > 500 && (
+        <div
+          role="alert"
+          className="rapid-rise-banner"
+          style={{
+            flexShrink: 0,
+            color: '#fff',
+            padding: '12px 16px',
+            borderTop: '2px solid #6B1A1A',
+            borderBottom: '2px solid #6B1A1A',
+          }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', maxWidth: '900px', margin: '0 auto' }}>
+            <span style={{ fontSize: '24px', flexShrink: 0 }}>&#9888;</span>
+            <div>
+              <div style={{
+                fontFamily: "'IBM Plex Mono', monospace",
+                fontSize: '11px', fontWeight: 700,
+                letterSpacing: '2px', textTransform: 'uppercase',
+                marginBottom: '2px',
+              }}>
+                Rapid Rise Warning
+              </div>
+              <div style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: '14px', fontWeight: 600, lineHeight: 1.45,
+              }}>
+                {river.n} is rising at {flow.changePerHour.toLocaleString()} cfs/hour. Conditions can become dangerous quickly. Do not paddle or wade. Water levels may continue to rise significantly.
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Hazard banner — active safety warnings, time-sensitive.
           Rendered above the data confidence banner so it can't be missed. */}
