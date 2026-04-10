@@ -411,6 +411,13 @@ html.large-text-mode body {
   font-size: 20px;
 }
 
+/* Class-based font sizes — these aren't inline, so the
+   [style*="..."] selectors below won't catch them. The two known
+   class-based font sizes in the codebase are .nav-pills (the top
+   nav) and .verified-badge. Override both directly. */
+html.large-text-mode .nav-pills    { font-size: 13px !important; }
+html.large-text-mode .verified-badge { font-size: 12px !important; }
+
 html.large-text-mode [style*="font-size: 9px"]  { font-size: 12px !important; }
 html.large-text-mode [style*="font-size: 10px"] { font-size: 13px !important; }
 html.large-text-mode [style*="font-size: 11px"] { font-size: 14px !important; }
