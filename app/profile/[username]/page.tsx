@@ -7,6 +7,7 @@ import { supabase } from '@/lib/supabase'
 import { fetchGaugeData, formatCfs } from '@/lib/usgs'
 import { getRiverPath } from '@/data/rivers'
 import type { FlowCondition } from '@/types'
+import { getContributorTier, getNextTier } from '@/lib/contributor-tiers'
 
 const mono = "'IBM Plex Mono', monospace"
 const serif = "'Playfair Display', serif"
@@ -129,6 +130,9 @@ export default function ProfilePage() {
   }
 
   const memberSince = new Date(profile.created_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+  const tier = getContributorTier(stats.approvedImprovements)
+  const nextTier = getNextTier(stats.approvedImprovements)
+  const toNext = nextTier ? nextTier.threshold - stats.approvedImprovements : 0
 
   return (
     <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)' }}>
@@ -162,12 +166,17 @@ export default function ProfilePage() {
               <h1 style={{ fontFamily: serif, fontSize: '22px', fontWeight: 700, color: 'var(--rvdk)', margin: 0 }}>
                 {profile.display_name}
               </h1>
-              {stats.isContributor && (
-                <span style={{
-                  fontFamily: mono, fontSize: '8px', padding: '2px 8px', borderRadius: '8px',
-                  background: 'var(--rv)', color: '#fff', textTransform: 'uppercase', letterSpacing: '.5px',
-                }}>
-                  Contributor
+              {tier.key !== 'none' && (
+                <span
+                  title={tier.description + (nextTier ? ` ${toNext} more to ${nextTier.label}.` : '')}
+                  style={{
+                    fontFamily: mono, fontSize: '9px', padding: '3px 9px', borderRadius: '10px',
+                    background: tier.background, color: tier.color, border: `.5px solid ${tier.border}`,
+                    textTransform: 'uppercase', letterSpacing: '.5px', fontWeight: 600,
+                    display: 'inline-flex', alignItems: 'center', gap: '4px',
+                    cursor: 'help',
+                  }}>
+                  <span aria-hidden="true">{tier.icon}</span> {tier.label}
                 </span>
               )}
             </div>

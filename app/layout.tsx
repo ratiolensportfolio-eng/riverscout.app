@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import LargeTextToggle from '@/components/LargeTextToggle'
 
 export const metadata: Metadata = {
   title: 'RiverScout — Paddle Every River in America',
@@ -34,6 +35,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
+        {/* River Vision pre-render hydration: read the persisted
+            font-size preference from localStorage and apply the
+            class to <html> BEFORE React hydrates, so users with the
+            preference set never see a flash of normal-sized text on
+            page load. This must run inline in the head, before any
+            paint, which is why it's not in the React component. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{if(localStorage.getItem('riverscout_large_text')==='1')document.documentElement.classList.add('large-text-mode')}catch(e){}})();`,
+          }}
+        />
         {/* Privacy-friendly analytics by Plausible */}
         <script async src="https://plausible.io/js/pa-DIiweVYaC109_gt38Iecz.js" />
         <script dangerouslySetInnerHTML={{ __html: `window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()` }} />
@@ -46,6 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         {children}
+        <LargeTextToggle />
         <script dangerouslySetInnerHTML={{ __html: `
           if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {

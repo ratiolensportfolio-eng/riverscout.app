@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import { isAdmin } from '@/lib/admin'
 import FishIcon from '@/components/icons/FishIcons'
+import { getContributorTier } from '@/lib/contributor-tiers'
 
 const mono = "'IBM Plex Mono', monospace"
 const serif = "'Playfair Display', serif"
@@ -27,6 +28,9 @@ interface Suggestion {
   ai_category: string | null
   created_at: string
   reviewed_at: string | null
+  // Server-decorated: lifetime approved-suggestion count for the
+  // submitter, used to render a contributor tier badge in the queue.
+  submitter_approved_count?: number
 }
 
 interface Banner {
@@ -498,12 +502,37 @@ export default function AdminSuggestions() {
                 </div>
               )}
 
-              {/* Submitter */}
-              {s.user_email && (
-                <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', marginBottom: '8px' }}>
-                  Submitted by: {s.user_email}
-                </div>
-              )}
+              {/* Submitter — with contributor tier badge so admins
+                  can see at a glance how proven the submitter is.
+                  The count is the submitter's lifetime approved
+                  count INCLUDING any prior approvals for this same
+                  user; the API decorates each row server-side. */}
+              {s.user_email && (() => {
+                const submitterTier = getContributorTier(s.submitter_approved_count || 0)
+                return (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px', flexWrap: 'wrap' }}>
+                    <span style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)' }}>
+                      Submitted by: {s.user_email}
+                    </span>
+                    {submitterTier.key !== 'none' && (
+                      <span
+                        title={submitterTier.description}
+                        style={{
+                          fontFamily: mono, fontSize: '8px', padding: '2px 7px', borderRadius: '8px',
+                          background: submitterTier.background, color: submitterTier.color,
+                          border: `.5px solid ${submitterTier.border}`,
+                          textTransform: 'uppercase', letterSpacing: '.4px', fontWeight: 600,
+                          display: 'inline-flex', alignItems: 'center', gap: '3px',
+                        }}>
+                        <span aria-hidden="true">{submitterTier.icon}</span> {submitterTier.label}
+                      </span>
+                    )}
+                    <span style={{ fontFamily: mono, fontSize: '8px', color: 'var(--tx3)' }}>
+                      &middot; {s.submitter_approved_count || 0} approved
+                    </span>
+                  </div>
+                )
+              })()}
 
               {/* AI Assessment */}
               {s.ai_confidence && (

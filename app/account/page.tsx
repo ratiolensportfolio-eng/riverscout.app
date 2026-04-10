@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
+import { getContributorTier, getNextTier, CONTRIBUTOR_TIERS } from '@/lib/contributor-tiers'
 
 const mono = "'IBM Plex Mono', monospace"
 const serif = "'Playfair Display', serif"
@@ -369,7 +370,7 @@ export default function AccountPage() {
         </div>
 
         {/* Stats */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', marginBottom: '24px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', marginBottom: '14px' }}>
           {[
             { n: stats.savedRivers, l: 'Saved Rivers' },
             { n: stats.tripReports, l: 'Trip Reports' },
@@ -381,6 +382,91 @@ export default function AccountPage() {
             </div>
           ))}
         </div>
+
+        {/* Contributor tier — derived from approved improvements count.
+            Renders the current tier badge plus a progress hint toward
+            the next tier. The full ladder is visible to give users a
+            sense of what's possible. */}
+        {(() => {
+          const tier = getContributorTier(stats.improvements)
+          const nextTier = getNextTier(stats.improvements)
+          const toNext = nextTier ? nextTier.threshold - stats.improvements : 0
+
+          if (tier.key === 'none') {
+            // Brand-new user — show the encouragement card so they
+            // know the system exists and what the first rung looks like
+            return (
+              <div style={{
+                padding: '14px 16px', borderRadius: 'var(--r)', marginBottom: '24px',
+                border: '.5px dashed var(--bd2)', background: 'var(--bg)',
+                fontFamily: mono, fontSize: '11px', color: 'var(--tx2)', lineHeight: 1.6,
+              }}>
+                <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '6px' }}>
+                  Contributor Tier
+                </div>
+                <div>
+                  Spot something wrong on a river page? Click <strong style={{ color: 'var(--rvdk)' }}>Improve This River</strong> and submit a correction. Your first approved improvement earns the <strong style={{ color: '#085041' }}>{nextTier?.label}</strong> badge.
+                </div>
+              </div>
+            )
+          }
+
+          return (
+            <div style={{
+              padding: '14px 16px', borderRadius: 'var(--r)', marginBottom: '24px',
+              border: `.5px solid ${tier.border}`, background: tier.background,
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <span style={{ fontSize: '24px' }} aria-hidden="true">{tier.icon}</span>
+                  <div>
+                    <div style={{ fontFamily: mono, fontSize: '9px', color: tier.color, textTransform: 'uppercase', letterSpacing: '.5px', opacity: 0.8 }}>
+                      Contributor Tier
+                    </div>
+                    <div style={{ fontFamily: serif, fontSize: '17px', fontWeight: 700, color: tier.color }}>
+                      {tier.label}
+                    </div>
+                  </div>
+                </div>
+                {nextTier ? (
+                  <div style={{ fontFamily: mono, fontSize: '10px', color: tier.color, textAlign: 'right' }}>
+                    <div style={{ opacity: 0.7 }}>Next: {nextTier.label}</div>
+                    <div style={{ fontWeight: 600 }}>{toNext} more {toNext === 1 ? 'approval' : 'approvals'}</div>
+                  </div>
+                ) : (
+                  <div style={{ fontFamily: mono, fontSize: '10px', color: tier.color, fontWeight: 600 }}>
+                    Top tier reached
+                  </div>
+                )}
+              </div>
+              <div style={{ fontFamily: mono, fontSize: '10px', color: tier.color, opacity: 0.85, marginTop: '8px', lineHeight: 1.55 }}>
+                {tier.description}
+              </div>
+              {/* Full ladder so users can see what's next */}
+              <div style={{ display: 'flex', gap: '4px', marginTop: '12px', flexWrap: 'wrap' }}>
+                {CONTRIBUTOR_TIERS.filter(t => t.key !== 'none').map(t => {
+                  const earned = stats.improvements >= t.threshold
+                  return (
+                    <span
+                      key={t.key}
+                      title={`${t.label} \u2014 ${t.threshold}+ approvals`}
+                      style={{
+                        fontFamily: mono, fontSize: '8px', padding: '2px 7px', borderRadius: '8px',
+                        background: earned ? t.background : 'var(--bg)',
+                        color: earned ? t.color : 'var(--tx3)',
+                        border: `.5px solid ${earned ? t.border : 'var(--bd2)'}`,
+                        textTransform: 'uppercase', letterSpacing: '.4px',
+                        opacity: earned ? 1 : 0.6,
+                        cursor: 'help',
+                      }}>
+                      {t.icon} {t.threshold}
+                    </span>
+                  )
+                })}
+              </div>
+            </div>
+          )
+        })()}
 
         {/* Sign out */}
         <button onClick={signOut} style={{

@@ -4,6 +4,7 @@ import { isAdmin } from '@/lib/admin'
 import { sendEmail, improvementApprovedEmail, ADMIN_EMAIL } from '@/lib/email'
 import { VERIFICATION_TAGS } from '@/lib/needs-verification'
 import { getRiver } from '@/data/rivers'
+import { getContributorTier, didJustLevelUp } from '@/lib/contributor-tiers'
 
 // AI evaluation of a suggestion using Claude
 async function evaluateSuggestion(
@@ -271,7 +272,32 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'Failed to fetch suggestions' }, { status: 500 })
   }
 
-  return NextResponse.json({ suggestions: data })
+  // Decorate each suggestion with the submitter's lifetime approved count
+  // so the admin queue can render contributor tier badges next to the
+  // submitter email. We do this here (not on the client) because the
+  // browser can't reach auth.users / the suggestions table with the
+  // anon key under our RLS policies, and the count is cheap on the
+  // server.
+  const submitterIds = Array.from(
+    new Set((data || []).map(s => s.user_id).filter((id): id is string => !!id))
+  )
+  const approvedCounts: Record<string, number> = {}
+  if (submitterIds.length > 0) {
+    const { data: approvedRows } = await supabase
+      .from('suggestions')
+      .select('user_id')
+      .eq('status', 'approved')
+      .in('user_id', submitterIds)
+    for (const row of approvedRows || []) {
+      if (row.user_id) approvedCounts[row.user_id] = (approvedCounts[row.user_id] || 0) + 1
+    }
+  }
+  const decorated = (data || []).map(s => ({
+    ...s,
+    submitter_approved_count: s.user_id ? (approvedCounts[s.user_id] || 0) : 0,
+  }))
+
+  return NextResponse.json({ suggestions: decorated })
 }
 
 // PATCH /api/suggestions — approve or reject (admin only)
@@ -476,10 +502,11 @@ export async function PATCH(req: NextRequest) {
         // Data is already updated — return success but note the status issue
       }
 
-      // BEST-EFFORT: Get contributor stats for the email
+      // BEST-EFFORT: Get contributor stats for the email + tier
+      // celebration. We count by user_email rather than user_id
+      // because some legacy submissions only have email.
       let totalSubmitted = 0
       let totalApproved = 0
-      let isFirstApproval = false
 
       if (suggestion.user_email) {
         try {
@@ -495,8 +522,6 @@ export async function PATCH(req: NextRequest) {
             .eq('user_email', suggestion.user_email)
             .eq('status', 'approved')
           totalApproved = approved || 0
-
-          isFirstApproval = totalApproved === 1
         } catch (statsErr) {
           console.error('[SUGGESTIONS] Failed to fetch contributor stats:', statsErr)
         }
@@ -505,22 +530,57 @@ export async function PATCH(req: NextRequest) {
       // BEST-EFFORT: Send contributor notification email
       if (suggestion.user_email) {
         try {
+          // Tier crossing detection — totalApproved already includes
+          // this newly-approved suggestion, so the previous count is
+          // totalApproved - 1. didJustLevelUp returns the new tier
+          // when the user just crossed a threshold, otherwise null.
+          const previousCount = Math.max(0, totalApproved - 1)
+          const leveledUpTo = didJustLevelUp(previousCount, totalApproved)
+          const currentTier = getContributorTier(totalApproved)
+
           const statsLine = totalSubmitted > 0
             ? `<p style="font-family: monospace; font-size: 12px; color: #666;">Your stats: ${totalApproved} of ${totalSubmitted} improvements approved.</p>`
             : ''
-          const firstTimeLine = isFirstApproval
-            ? `<p style="font-size: 16px; color: #1D9E75; font-weight: bold;">This is your first approved improvement — thank you for being a river steward!</p>`
-            : ''
+
+          // Tier celebration — replaces the old "first approval"
+          // single-line. didJustLevelUp returns the first-tier on
+          // the literal first approval, so this also handles the
+          // welcome moment without a separate branch.
+          const tierBlock = leveledUpTo
+            ? `
+              <div style="background: ${leveledUpTo.background}; border: 1px solid ${leveledUpTo.border}; border-radius: 8px; padding: 16px 20px; margin-bottom: 16px; text-align: center;">
+                <div style="font-size: 32px; line-height: 1; margin-bottom: 6px;">${leveledUpTo.icon}</div>
+                <div style="font-family: monospace; font-size: 10px; color: ${leveledUpTo.color}; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; margin-bottom: 6px;">
+                  New Tier Unlocked
+                </div>
+                <div style="font-family: Georgia, serif; font-size: 20px; font-weight: 700; color: ${leveledUpTo.color}; margin-bottom: 8px;">
+                  ${leveledUpTo.label}
+                </div>
+                <div style="font-family: monospace; font-size: 11px; color: ${leveledUpTo.color}; opacity: 0.85; line-height: 1.55;">
+                  ${leveledUpTo.description}
+                </div>
+              </div>
+            `
+            : currentTier.key !== 'none'
+              ? `
+                <div style="background: #f6f5f2; border: 1px solid #e2e1d8; border-radius: 6px; padding: 10px 14px; margin-bottom: 14px; font-family: monospace; font-size: 11px; color: #666; display: flex; align-items: center; gap: 8px;">
+                  <span style="font-size: 14px;">${currentTier.icon}</span>
+                  <span>You\u2019re a <strong style="color: ${currentTier.color};">${currentTier.label}</strong> contributor.</span>
+                </div>
+              `
+              : ''
 
           await sendEmail({
             to: suggestion.user_email,
-            subject: `Your improvement to ${suggestion.river_name} is live!`,
+            subject: leveledUpTo
+              ? `\u2728 ${leveledUpTo.label} \u2014 your ${suggestion.river_name} improvement is live`
+              : `Your improvement to ${suggestion.river_name} is live!`,
             html: `
               <div style="font-family: Georgia, serif; max-width: 520px; margin: 0 auto; padding: 20px;">
                 <div style="font-size: 20px; font-weight: 700; color: #085041; margin-bottom: 16px;">
                   River<span style="color: #185FA5;">Scout</span>
                 </div>
-                ${firstTimeLine}
+                ${tierBlock}
                 <p>Your improvement to <strong>${suggestion.river_name}</strong> has been reviewed and approved.</p>
                 <p><strong>Field:</strong> ${suggestion.field}</p>
                 <p><strong>Updated to:</strong> ${suggestion.suggested_value}</p>

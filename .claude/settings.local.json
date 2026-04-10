@@ -82,7 +82,22 @@
       "Bash(curl -s -L -o /dev/null -w \"%{http_code}\" \"https://www.nj.gov/pinelands/infor/reports/Mullica%20River%20Basin%20Report.pdf\")",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://pubs.usgs.gov/publication/sir20185093\")",
       "Bash(curl -s -L -o /dev/null -w \"%{http_code}\" \"https://rivers.gov/sites/rivers/files/2023-01/housatonic-study.pdf\")",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://platteriverprogram.org/sites/default/files/2025-10/prrip-2006feis-volume-2.pdf\")"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://platteriverprogram.org/sites/default/files/2025-10/prrip-2006feis-volume-2.pdf\")",
+      "Bash(grep -E \"CLAUDE\\\\.md|*.md$\")",
+      "Bash(node scripts/audit-descriptions.js)",
+      "Bash(node scripts/audit-safety.js)",
+      "Bash(node -e \"const r = require\\('./data/rivers.ts'\\); console.log\\(Object.values\\(r.STATES\\).reduce\\(\\(sum, s\\) => sum + s.rivers.length, 0\\)\\)\")",
+      "Bash(node -e \"const r = require\\('./data/rivers.ts'\\); console.log\\('rivers module loaded'\\); console.log\\(Object.keys\\(r\\)\\);\")",
+      "Bash(ls data/river-maps/*.ts)",
+      "Bash(ls app/sitemap* scripts/audit-*.js lib/noaa-fetch.ts lib/river-page-data.ts lib/needs-verification.ts components/rivers/DataConfidenceBanner.tsx vercel.json)",
+      "Bash(ls app/api/ app/api/*/route.ts)",
+      "Bash(node scripts/gen-fisheries-keys.js)",
+      "Bash(git commit -m ':*)",
+      "Bash(node -e \"const x = require\\('./data/rivers.ts'\\); console.log\\('ok', Object.keys\\(x\\).slice\\(0,5\\)\\);\")",
+      "Bash(node -e \"const x = require\\('./lib/email.ts'\\); console.log\\('ok', Object.keys\\(x\\).filter\\(k => k.includes\\('digest'\\)\\)\\);\")",
+      "Bash(node ../../../tmp/digest-preview.js)",
+      "Bash(node c:/tmp/digest-preview.js)",
+      "Bash(ls c:/tmp/digest-preview*)"
     ]
   }
 }

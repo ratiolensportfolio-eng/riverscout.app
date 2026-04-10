@@ -46,16 +46,15 @@ export async function POST(req: NextRequest) {
 
     const supabase = createSupabaseClient()
 
-    // Check if this user already has a listing on this river
-    const { data: existing } = await supabase
-      .from('outfitters')
-      .select('id')
-      .eq('user_id', userId)
-      .contains('river_ids', [riverId])
-
-    if (existing && existing.length > 0) {
-      return NextResponse.json({ error: 'You already have a listing on this river' }, { status: 409 })
-    }
+    // NOTE: we used to do an "existing listing" pre-check here with a
+    // .select().eq('user_id', ...) query, but under our anon RLS
+    // policies that query returns [] for any inactive row regardless
+    // of whether one exists (the "Active listings are public" policy
+    // requires active=true; the "Outfitters manage own listing"
+    // policy requires auth.uid()). So the pre-check was a silent
+    // no-op that gave a false sense of duplicate-protection. Real
+    // duplicate protection has to live in a DB unique constraint or
+    // a service-role check; for now we just let the insert fly.
 
     const { data, error } = await supabase
       .from('outfitters')
@@ -72,11 +71,29 @@ export async function POST(req: NextRequest) {
       .select()
 
     if (error) {
+      // We've debugged this route blind three times now. Surface the
+      // real Supabase error message + code to the client so the next
+      // failure mode is visible from the browser, not just the
+      // server logs.
       console.error('Outfitter claim error:', error)
-      return NextResponse.json({ error: 'Failed to create listing' }, { status: 500 })
+      return NextResponse.json({
+        error: `Failed to create listing: ${error.message}`,
+        code: error.code,
+        details: error.details,
+        hint: error.hint,
+      }, { status: 500 })
     }
 
-    return NextResponse.json({ ok: true, listing: data?.[0] })
+    // If the insert succeeded but the SELECT policy filtered out the
+    // returned row, `data` is []. Treat that as success — the row
+    // is in the table — and just don't echo it back. Without this
+    // branch the client gets `ok:true, listing:undefined` and may
+    // treat it as a no-op.
+    if (!data || data.length === 0) {
+      return NextResponse.json({ ok: true, listing: null, note: 'inserted (RLS hid the returning row)' })
+    }
+
+    return NextResponse.json({ ok: true, listing: data[0] })
   } catch (err) {
     console.error('Outfitter API error:', err)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
