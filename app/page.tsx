@@ -135,7 +135,7 @@ export default async function HomePage() {
               RiverScout combines live USGS gauge data, historical records, and firsthand knowledge from paddlers, outfitters, guides, and anglers who know these rivers personally.
             </p>
             <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', lineHeight: 1.7, opacity: 0.7, margin: 0 }}>
-              Every river in our database is a starting point. The people who paddle them make them accurate.
+              Every river in our database is a starting point. The people who know and love them make them accurate.
             </p>
           </div>
 
