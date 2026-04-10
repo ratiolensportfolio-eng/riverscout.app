@@ -100,13 +100,17 @@ export async function POST(req: NextRequest) {
     const { riverId, riverName, stateKey, userId, userEmail, field, currentValue, suggestedValue, reason, sourceUrl, safetyData } = body
 
     const isSafetyCritical = field === 'safe_cfs'
+    const isPermitUpdate = field === 'permit_update'
 
     if (!riverId || !field || !suggestedValue || !reason) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
-    // For non-safety fields, also require currentValue
-    if (!isSafetyCritical && !currentValue) {
+    // For non-safety / non-permit fields, also require currentValue.
+    // Permit updates are descriptive ("application date moved to Feb
+    // 1") rather than a single old→new value swap, so currentValue
+    // is optional and we synthesize a placeholder.
+    if (!isSafetyCritical && !isPermitUpdate && !currentValue) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
@@ -139,9 +143,12 @@ export async function POST(req: NextRequest) {
       ai_reasoning: ai.reasoning,
     }
 
-    // Tag safety-critical submissions
+    // Tag safety-critical and permit-update submissions so the admin
+    // page can sort/highlight them above ordinary improvements.
     if (isSafetyCritical) {
       insertData.ai_category = 'safety_critical'
+    } else if (isPermitUpdate) {
+      insertData.ai_category = 'permit_update'
     }
 
     const { data, error } = await supabase
@@ -152,6 +159,35 @@ export async function POST(req: NextRequest) {
     if (error) {
       console.error('Suggestion insert error:', error)
       return NextResponse.json({ error: 'Failed to submit suggestion' }, { status: 500 })
+    }
+
+    // Send priority admin notification for permit-update submissions.
+    // High priority because outdated permit info can cause someone to
+    // miss a lottery window — but not safety-critical, so the email
+    // is less alarming than the safe_cfs blast.
+    if (isPermitUpdate) {
+      try {
+        await sendEmail({
+          to: ADMIN_EMAIL,
+          subject: `[Permit Update] ${riverName || riverId}`,
+          html: `
+            <div style="border-left: 4px solid #BA7517; padding: 16px; font-family: Georgia, serif;">
+              <h2 style="color: #BA7517; margin: 0 0 8px;">Permit Update Reported</h2>
+              <p><strong>River:</strong> ${riverName || riverId} (${(stateKey || '').toUpperCase()})</p>
+              <p><strong>What changed:</strong> ${suggestedValue}</p>
+              <p><strong>Reason / context:</strong> ${reason}</p>
+              ${sourceUrl ? `<p><strong>Source:</strong> <a href="${sourceUrl}">${sourceUrl}</a></p>` : '<p><em>No source URL provided.</em></p>'}
+              <p><strong>Submitted by:</strong> ${userEmail || 'anonymous'}</p>
+              <hr/>
+              <p style="color: #BA7517; font-weight: bold;">Outdated permit info can cause paddlers to miss a lottery window. Verify against the agency site and update the row in /admin/permits.</p>
+              <p><a href="https://riverscout.app/admin/suggestions">Review in Admin Dashboard &rarr;</a></p>
+              <p><a href="https://riverscout.app/admin/permits">Open Admin Permits &rarr;</a></p>
+            </div>
+          `,
+        })
+      } catch (emailErr) {
+        console.error('[SUGGESTIONS] Failed to send permit-update admin email:', emailErr)
+      }
     }
 
     // Send priority admin notification for safety-critical submissions

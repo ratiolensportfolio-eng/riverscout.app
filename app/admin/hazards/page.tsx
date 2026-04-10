@@ -219,7 +219,7 @@ export default function AdminHazardsPage() {
 
       <div style={{ maxWidth: '900px', margin: '0 auto', padding: '20px 28px' }}>
         {/* Admin sub-nav */}
-        <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
+        <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>
           <Link href="/admin/suggestions" style={{
             fontFamily: mono, fontSize: '11px', padding: '7px 16px', borderRadius: 'var(--r)',
             border: '.5px solid var(--bd2)', background: 'var(--bg)', color: 'var(--tx3)',
@@ -234,6 +234,13 @@ export default function AdminHazardsPage() {
           }}>
             Hazards
           </span>
+          <Link href="/admin/permits" style={{
+            fontFamily: mono, fontSize: '11px', padding: '7px 16px', borderRadius: 'var(--r)',
+            border: '.5px solid var(--bd2)', background: 'var(--bg)', color: 'var(--tx3)',
+            textDecoration: 'none',
+          }}>
+            Permits
+          </Link>
         </div>
 
         {banner && (

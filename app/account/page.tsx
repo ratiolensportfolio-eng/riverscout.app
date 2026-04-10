@@ -15,6 +15,7 @@ interface ProfileData {
   pro_tier: string | null
   pro_expires_at: string | null
   stripe_customer_id: string | null
+  digest_subscribed: boolean
 }
 
 interface Stats {
@@ -22,6 +23,13 @@ interface Stats {
   tripReports: number
   improvements: number
 }
+
+type DigestStatus =
+  | { state: 'idle' }
+  | { state: 'saving' }
+  | { state: 'sending-preview' }
+  | { state: 'success'; message: string }
+  | { state: 'error'; message: string }
 
 export default function AccountPage() {
   const [userId, setUserId] = useState<string | null>(null)
@@ -32,6 +40,7 @@ export default function AccountPage() {
   const [editName, setEditName] = useState('')
   const [editState, setEditState] = useState('')
   const [portalLoading, setPortalLoading] = useState(false)
+  const [digestStatus, setDigestStatus] = useState<DigestStatus>({ state: 'idle' })
 
   useEffect(() => {
     supabase.auth.getUser().then(async ({ data }) => {
@@ -42,7 +51,7 @@ export default function AccountPage() {
       // Fetch profile
       const { data: prof } = await supabase
         .from('user_profiles')
-        .select('display_name, email, home_state, is_pro, pro_tier, pro_expires_at, stripe_customer_id')
+        .select('display_name, email, home_state, is_pro, pro_tier, pro_expires_at, stripe_customer_id, digest_subscribed')
         .eq('id', uid)
         .single()
 
@@ -103,6 +112,59 @@ export default function AccountPage() {
   async function signOut() {
     await supabase.auth.signOut()
     window.location.href = '/'
+  }
+
+  // Toggle digest_subscribed. Optimistic update — flip the local state
+  // immediately, roll back on error. Saves the trip across the
+  // network from blocking the UI.
+  async function toggleDigest(next: boolean) {
+    if (!userId || !profile) return
+    setDigestStatus({ state: 'saving' })
+    const prev = profile.digest_subscribed
+    setProfile({ ...profile, digest_subscribed: next })
+
+    const { error } = await supabase
+      .from('user_profiles')
+      .update({ digest_subscribed: next, updated_at: new Date().toISOString() })
+      .eq('id', userId)
+
+    if (error) {
+      setProfile({ ...profile, digest_subscribed: prev })
+      setDigestStatus({ state: 'error', message: 'Failed to update digest preference.' })
+      return
+    }
+    setDigestStatus({
+      state: 'success',
+      message: next ? 'You\'re subscribed to the Thursday digest.' : 'Digest unsubscribed.',
+    })
+  }
+
+  // Trigger a preview send for this user. The /api/digest/preview
+  // route rate-limits to one per 5 minutes per user.
+  async function sendDigestPreview() {
+    if (!userId) return
+    setDigestStatus({ state: 'sending-preview' })
+    try {
+      const res = await fetch('/api/digest/preview', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        setDigestStatus({
+          state: 'error',
+          message: data.message || data.error || 'Failed to send preview.',
+        })
+        return
+      }
+      setDigestStatus({
+        state: 'success',
+        message: `Preview sent — check your inbox (${data.riversIncluded} river${data.riversIncluded === 1 ? '' : 's'}).`,
+      })
+    } catch {
+      setDigestStatus({ state: 'error', message: 'Network error sending preview.' })
+    }
   }
 
   if (loading) {
@@ -182,6 +244,88 @@ export default function AccountPage() {
             </Link>
           </div>
         )}
+
+        {/* Weekly digest — free for all users, prominent placement so
+            users can find and toggle it easily. */}
+        <div style={{
+          padding: '18px 20px',
+          background: profile?.digest_subscribed ? 'var(--rvlt)' : 'var(--bg2)',
+          border: `.5px solid ${profile?.digest_subscribed ? 'var(--rvmd)' : 'var(--bd)'}`,
+          borderRadius: 'var(--rlg)', marginBottom: '20px',
+        }}>
+          <div style={{
+            fontFamily: mono, fontSize: '9px',
+            color: profile?.digest_subscribed ? 'var(--rv)' : 'var(--tx3)',
+            textTransform: 'uppercase', letterSpacing: '1.5px',
+            marginBottom: '6px', fontWeight: 700,
+          }}>
+            Weekly River Digest
+          </div>
+          <div style={{
+            fontFamily: serif, fontSize: '15px', fontWeight: 600,
+            color: 'var(--tx)', marginBottom: '6px',
+          }}>
+            Thursday morning report on your saved rivers
+          </div>
+          <p style={{
+            fontFamily: mono, fontSize: '11px', color: 'var(--tx2)',
+            lineHeight: 1.6, marginBottom: '14px',
+          }}>
+            Get a personalized email every Thursday at 8am showing weekend conditions, weather, hatches, and stocking on the rivers you save. Free for all users.
+          </p>
+
+          <label style={{
+            display: 'flex', alignItems: 'center', gap: '10px',
+            cursor: digestStatus.state === 'saving' ? 'wait' : 'pointer',
+            marginBottom: '12px',
+          }}>
+            <input
+              type="checkbox"
+              checked={!!profile?.digest_subscribed}
+              disabled={digestStatus.state === 'saving'}
+              onChange={e => toggleDigest(e.target.checked)}
+              style={{
+                width: '16px', height: '16px',
+                accentColor: 'var(--rvdk)',
+                cursor: digestStatus.state === 'saving' ? 'wait' : 'pointer',
+              }}
+            />
+            <span style={{ fontFamily: mono, fontSize: '12px', color: 'var(--tx)' }}>
+              Send me the weekly digest
+            </span>
+          </label>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+            <button
+              onClick={sendDigestPreview}
+              disabled={digestStatus.state === 'sending-preview' || !stats.savedRivers}
+              style={{
+                fontFamily: mono, fontSize: '10px', fontWeight: 500,
+                padding: '6px 14px', borderRadius: 'var(--r)',
+                background: 'var(--bg)', color: 'var(--rvdk)',
+                border: '.5px solid var(--rvmd)',
+                cursor: digestStatus.state === 'sending-preview' ? 'wait' : (!stats.savedRivers ? 'not-allowed' : 'pointer'),
+                opacity: !stats.savedRivers ? 0.5 : 1,
+              }}>
+              {digestStatus.state === 'sending-preview' ? 'Sending\u2026' : 'Send me a preview now \u2192'}
+            </button>
+            <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>
+              {stats.savedRivers === 0
+                ? 'Save at least one river to enable previews.'
+                : `Your digest includes your ${stats.savedRivers} saved river${stats.savedRivers === 1 ? '' : 's'}.`}
+            </span>
+          </div>
+
+          {(digestStatus.state === 'success' || digestStatus.state === 'error') && (
+            <div style={{
+              marginTop: '10px',
+              fontFamily: mono, fontSize: '10px',
+              color: digestStatus.state === 'success' ? 'var(--rv)' : 'var(--dg)',
+            }}>
+              {digestStatus.state === 'success' ? '\u2713' : '\u26A0'} {digestStatus.message}
+            </div>
+          )}
+        </div>
 
         {/* Profile fields */}
         <div style={{ marginBottom: '20px' }}>

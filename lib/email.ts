@@ -666,4 +666,496 @@ export function hazardAlertEmail(
 </body></html>`
 }
 
+// ── Weekly River Conditions Digest ──────────────────────────────
+// The most important user-facing email in RiverScout. Sent every
+// Thursday at 8am Eastern to users who opted in. Designed to be
+// scannable in 30 seconds: hazards first, then per-river cards with
+// flow + weekend weather + a "best day" call-out, then a single
+// best-river-this-weekend pick at the bottom.
+//
+// Subject line is dynamic — picked by digestSubject() based on what's
+// actually happening on the user's rivers.
+
+import type {
+  DigestData, DigestRiver, DigestWeekendDay, PaddlingCondition,
+} from '@/lib/digest'
+
+// Pure helpers used by both subject + body. Kept module-private — the
+// public surface is digestSubject() and digestEmail().
+
+const PADDLING_LABEL: Record<PaddlingCondition, string> = {
+  excellent: 'Excellent',
+  good: 'Good',
+  fair: 'Fair',
+  poor: 'Poor',
+  dangerous: 'Dangerous',
+}
+
+const PADDLING_ICON: Record<PaddlingCondition, string> = {
+  excellent: '\u2713',  // check
+  good: '\u2713',
+  fair: '\u26A1',       // bolt
+  poor: '\u26A0',       // warning
+  dangerous: '\u26A0',
+}
+
+const PADDLING_COLOR: Record<PaddlingCondition, string> = {
+  excellent: '#1D9E75',  // green
+  good: '#3CA86E',       // light green
+  fair: '#BA7517',       // amber
+  poor: '#A32D2D',       // red
+  dangerous: '#A32D2D',
+}
+
+const CONDITION_LABEL: Record<string, string> = {
+  optimal: 'OPTIMAL',
+  low: 'LOW',
+  high: 'HIGH',
+  flood: 'FLOOD',
+  loading: '—',
+}
+
+const CONDITION_DOT: Record<string, string> = {
+  optimal: '\uD83D\uDFE2',  // green circle
+  low: '\uD83D\uDFE1',      // yellow circle
+  high: '\uD83D\uDFE3',     // purple circle (high water)
+  flood: '\uD83D\uDD34',    // red circle
+  loading: '\u26AA',         // white circle
+}
+
+// Subject-line picker. Walks through priority cases in order and
+// returns the first one that fires.
+export function digestSubject(rivers: DigestRiver[]): string {
+  const optimalCount = rivers.filter(r => r.condition === 'optimal').length
+  const bestRiver = rivers.find(r => r.condition === 'optimal')
+  const hasHazard = rivers.some(r => r.activeHazards.length > 0)
+  const hasStocking = rivers.some(r => r.upcomingStocking && !r.upcomingStocking.isScheduled)
+
+  if (hasHazard) {
+    return `\u26A0 Hazard alert on your rivers \u2014 weekend conditions`
+  }
+  if (optimalCount >= 3) {
+    return `\uD83D\uDFE2 ${optimalCount} of your rivers are optimal this weekend`
+  }
+  if (optimalCount === 1 && bestRiver) {
+    return `\uD83D\uDFE2 ${bestRiver.name} is running optimal \u2014 your weekend report`
+  }
+  if (hasStocking) {
+    return `\uD83C\uDFA3 Recent stocking on your rivers \u2014 conditions report`
+  }
+  return `Your rivers this weekend \u2014 RiverScout`
+}
+
+function renderHazardBlock(rivers: DigestRiver[]): string {
+  const allHazards = rivers.flatMap(r =>
+    r.activeHazards.map(h => ({ river: r, hazard: h })),
+  )
+  if (allHazards.length === 0) return ''
+
+  // Sort: critical first, then warning, then info. Unique by river
+  // already implied by per-river dedup further upstream.
+  const RANK: Record<string, number> = { critical: 0, warning: 1, info: 2 }
+  allHazards.sort((a, b) => RANK[a.hazard.severity] - RANK[b.hazard.severity])
+
+  const cards = allHazards.slice(0, 5).map(({ river, hazard }) => {
+    const sevColor = hazard.severity === 'critical' ? '#A32D2D'
+      : hazard.severity === 'warning' ? '#BA7517' : '#185FA5'
+    const sevLabel = hazard.severity === 'critical' ? 'CRITICAL HAZARD'
+      : hazard.severity === 'warning' ? 'HAZARD WARNING' : 'HAZARD NOTICE'
+    return `
+    <table width="100%" cellpadding="0" cellspacing="0" style="background: #FCEBEB; border: 1px solid ${sevColor}; border-left: 4px solid ${sevColor}; border-radius: 8px; margin-bottom: 12px;">
+      <tr><td style="padding: 14px 16px;">
+        <div style="font-family: monospace; font-size: 10px; font-weight: 700; color: ${sevColor}; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px;">
+          \u26A0 ${sevLabel} \u2014 ${escapeHtml(river.name)}
+        </div>
+        <div style="font-family: Georgia, serif; font-size: 14px; font-weight: 600; color: #1a1a18; line-height: 1.4; margin-bottom: 4px;">
+          ${escapeHtml(hazard.title)}
+        </div>
+        <div style="font-size: 12px; color: #666660; line-height: 1.55;">
+          ${escapeHtml(hazard.description)}
+        </div>
+        ${hazard.locationDescription ? `<div style="font-family: monospace; font-size: 11px; color: #666660; margin-top: 6px;">\uD83D\uDCCD ${escapeHtml(hazard.locationDescription)}</div>` : ''}
+        <div style="margin-top: 10px;">
+          <a href="${river.url}" style="font-family: monospace; font-size: 11px; color: ${sevColor}; text-decoration: underline;">
+            View hazard \u2192
+          </a>
+        </div>
+      </td></tr>
+    </table>`
+  }).join('')
+
+  return `
+    <tr><td style="padding: 0 0 18px;">
+      <div style="font-family: monospace; font-size: 10px; color: #A32D2D; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; font-weight: 700;">
+        Active Hazards on Your Rivers
+      </div>
+      ${cards}
+    </td></tr>
+  `
+}
+
+function renderWeekendStrip(days: DigestWeekendDay[], bestDayIdx: number): string {
+  if (days.length === 0) {
+    return `<div style="font-family: monospace; font-size: 11px; color: #aaa99a; padding: 6px 0;">Weekend forecast unavailable</div>`
+  }
+  return days.map((d, i) => {
+    const color = PADDLING_COLOR[d.paddlingCondition]
+    const label = PADDLING_LABEL[d.paddlingCondition]
+    const icon = PADDLING_ICON[d.paddlingCondition]
+    const isBest = i === bestDayIdx && d.paddlingCondition === 'excellent'
+    return `
+      <tr>
+        <td style="padding: 5px 0; font-family: monospace; font-size: 12px; color: #1a1a18; vertical-align: top;">
+          <strong style="display: inline-block; width: 32px;">${d.label}</strong>
+          <span style="display: inline-block; width: 48px; color: #666660;">${d.highF !== null ? `${d.highF}\u00B0F` : '\u2014'}</span>
+          <span style="display: inline-block; width: 110px; color: #666660;">${escapeHtml(d.shortForecast)}</span>
+          <span style="color: ${color}; font-weight: 600;">${icon} ${label}</span>
+          ${isBest ? `<span style="color: #1D9E75; font-weight: 600; margin-left: 8px;">\u2190 Best day</span>` : ''}
+        </td>
+      </tr>
+    `
+  }).join('')
+}
+
+function renderRiverCard(river: DigestRiver): string {
+  // Find the single "best" weekend day for the "← Best day" callout.
+  // Only set a best day when one day is strictly better than every
+  // other day — if Friday and Saturday are both "excellent" we don't
+  // pick a winner because the user can paddle either.
+  const RANK: Record<PaddlingCondition, number> = {
+    excellent: 0, good: 1, fair: 2, poor: 3, dangerous: 4,
+  }
+  let bestDayIdx = -1
+  if (river.weekendForecast.length > 0) {
+    const minRank = Math.min(...river.weekendForecast.map(d => RANK[d.paddlingCondition]))
+    const tiedAtMin = river.weekendForecast.filter(d => RANK[d.paddlingCondition] === minRank)
+    if (tiedAtMin.length === 1) {
+      bestDayIdx = river.weekendForecast.findIndex(d => RANK[d.paddlingCondition] === minRank)
+    }
+  }
+
+  const flowLine = river.currentCfs !== null
+    ? `${river.currentCfs.toLocaleString()} cfs${river.gaugeHeightFt !== null ? ` / ${river.gaugeHeightFt.toFixed(2)} ft` : ''}`
+    : 'Flow unavailable'
+
+  const condDot = CONDITION_DOT[river.condition] || '\u26AA'
+  const condLabel = CONDITION_LABEL[river.condition] || river.condition.toUpperCase()
+  const condColor = river.condition === 'optimal' ? '#1D9E75'
+    : river.condition === 'high' ? '#6E4BB4'
+    : river.condition === 'flood' ? '#A32D2D'
+    : river.condition === 'low' ? '#BA7517' : '#666660'
+
+  const paddlingColor = PADDLING_COLOR[river.paddlingCondition]
+  const paddlingLabel = PADDLING_LABEL[river.paddlingCondition]
+  const paddlingIcon = PADDLING_ICON[river.paddlingCondition]
+
+  // Hatch line — only when we have something to say. Plain divs (not
+  // table rows) because this block is rendered inside an existing
+  // <td>, and nesting <tr> inside <td> is invalid HTML even though
+  // many email clients tolerate it.
+  const hatchBlock = river.activeHatch && river.activeHatch.status !== 'fading' && river.activeHatch.status !== 'off_season' ? `
+    <div style="padding: 10px 0 0;">
+      <div style="font-family: monospace; font-size: 12px; color: #185FA5; line-height: 1.55;">
+        \uD83C\uDFA3 <strong>${escapeHtml(river.activeHatch.hatchName)}</strong> ${
+          river.activeHatch.status === 'peak' || river.activeHatch.status === 'active'
+            ? '\u2014 active right now'
+            : river.activeHatch.daysUntilPeak !== null
+              ? `\u2014 ${river.activeHatch.daysUntilPeak} day${river.activeHatch.daysUntilPeak === 1 ? '' : 's'} until peak`
+              : '\u2014 approaching'
+        }
+      </div>
+      ${river.activeHatch.waterTempF !== null && river.activeHatch.triggerTempF !== null ? `
+        <div style="font-family: monospace; font-size: 11px; color: #666660; margin-top: 2px;">
+          Water temp ${river.activeHatch.waterTempF}\u00B0F, trigger at ${river.activeHatch.triggerTempF}\u00B0F
+        </div>` : ''}
+    </div>` : ''
+
+  // Stocking line — only when we have a recent or scheduled event.
+  // Plain divs, same reason as the hatch block above.
+  const stockingBlock = river.upcomingStocking ? `
+    <div style="padding: 8px 0 0;">
+      <div style="font-family: monospace; font-size: 12px; color: #185FA5; line-height: 1.55;">
+        \uD83D\uDC1F <strong>${river.upcomingStocking.isScheduled ? 'Scheduled stocking' : 'Stocked recently'}:</strong>
+        ${river.upcomingStocking.quantity ? `${river.upcomingStocking.quantity.toLocaleString()} ` : ''}${escapeHtml(river.upcomingStocking.species)}${river.upcomingStocking.sizeCategory ? ` (${escapeHtml(river.upcomingStocking.sizeCategory)})` : ''}
+      </div>
+      ${river.upcomingStocking.stockingAuthority || river.upcomingStocking.locationDescription ? `
+        <div style="font-family: monospace; font-size: 11px; color: #666660; margin-top: 2px;">
+          ${river.upcomingStocking.stockingAuthority ? `Stocked by ${escapeHtml(river.upcomingStocking.stockingAuthority)}` : ''}
+          ${river.upcomingStocking.stockingAuthority && river.upcomingStocking.locationDescription ? ' \u00B7 ' : ''}
+          ${river.upcomingStocking.locationDescription ? `Near ${escapeHtml(river.upcomingStocking.locationDescription)}` : ''}
+        </div>` : ''}
+    </div>` : ''
+
+  return `
+  <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 18px; border: 1px solid #e2e1d8; border-radius: 8px; overflow: hidden;">
+    <tr><td style="padding: 16px 18px 14px;">
+      <div style="font-family: Georgia, serif; font-size: 17px; font-weight: 700; color: #042C53; letter-spacing: -0.2px; margin-bottom: 2px;">
+        ${escapeHtml(river.name)}
+      </div>
+      <div style="font-family: monospace; font-size: 10px; color: #aaa99a; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 12px;">
+        ${escapeHtml(river.stateName)}
+      </div>
+
+      <div style="font-family: monospace; font-size: 13px; color: #1a1a18; margin-bottom: 4px;">
+        <strong style="font-size: 16px; color: #0C447C;">${flowLine}</strong>
+        <span style="margin-left: 8px;">${condDot} <span style="color: ${condColor}; font-weight: 600;">${condLabel}</span></span>
+        ${river.rateLabel && river.rateLabel !== 'Stable' && river.rateLabel !== 'Rate unknown'
+          ? `<span style="color: #666660; margin-left: 8px;">${escapeHtml(river.rateLabel)}</span>`
+          : ''}
+      </div>
+
+      <div style="font-family: monospace; font-size: 12px; color: #666660; margin-bottom: 6px;">
+        ${river.waterTempF !== null ? `Water: ${river.waterTempF}\u00B0F` : 'Water temp unavailable'} \u00B7 Weather: ${escapeHtml(river.weatherSummary)}
+      </div>
+
+      <div style="font-family: monospace; font-size: 12px; color: ${paddlingColor}; font-weight: 600; margin-bottom: 12px;">
+        Paddling: ${paddlingIcon} ${paddlingLabel}${
+          river.paddlingCondition === 'excellent' ? ' conditions'
+          : river.paddlingCondition === 'dangerous' ? ' \u2014 do not paddle'
+          : river.paddlingCondition === 'poor' ? ' \u2014 not recommended'
+          : ''
+        }
+      </div>
+
+      ${river.weekendForecast.length > 0 ? `
+      <div style="font-family: monospace; font-size: 10px; color: #aaa99a; text-transform: uppercase; letter-spacing: .8px; margin-bottom: 6px;">
+        This weekend
+      </div>
+      <table cellpadding="0" cellspacing="0" style="margin-bottom: 8px;">
+        ${renderWeekendStrip(river.weekendForecast, bestDayIdx)}
+      </table>` : ''}
+
+      ${hatchBlock}
+      ${stockingBlock}
+
+      <div style="margin-top: 14px;">
+        <a href="${river.url}" style="display: inline-block; padding: 8px 18px; font-family: monospace; font-size: 11px; font-weight: 500; background: #085041; color: #ffffff; text-decoration: none; border-radius: 6px; letter-spacing: .3px;">
+          View ${escapeHtml(river.name)} \u2192
+        </a>
+      </div>
+    </td></tr>
+  </table>
+  `
+}
+
+function bestRiverCallout(best: DigestRiver | null): string {
+  if (!best) return ''
+  // Build the reason line from the most distinguishing facts about
+  // this river. Prioritize: excellent paddling > active hatch >
+  // recent stocking > optimal flows.
+  const reasons: string[] = []
+  if (best.paddlingCondition === 'excellent') {
+    const excellentDays = best.weekendForecast.filter(d => d.paddlingCondition === 'excellent').length
+    if (excellentDays >= 2) reasons.push(`${excellentDays} excellent days this weekend`)
+    else if (excellentDays === 1) reasons.push('excellent conditions one day this weekend')
+    else reasons.push('excellent conditions')
+  }
+  if (best.upcomingStocking && !best.upcomingStocking.isScheduled) {
+    reasons.push('recent stocking')
+  }
+  if (best.activeHatch && (best.activeHatch.status === 'peak' || best.activeHatch.status === 'active')) {
+    reasons.push(`${best.activeHatch.hatchName.toLowerCase()} hatch active`)
+  }
+  if (best.condition === 'optimal') reasons.push('optimal flows')
+
+  const reasonText = reasons.length > 0
+    ? reasons.join(', ') + '.'
+    : 'Best of your saved rivers this weekend.'
+
+  return `
+    <tr><td style="padding: 8px 0 18px;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, #E1F5EE, #E6F1FB); border-radius: 8px; border: 1px solid #9FE1CB;">
+        <tr><td style="padding: 18px 20px;">
+          <div style="font-family: monospace; font-size: 10px; color: #1D9E75; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; margin-bottom: 6px;">
+            \uD83C\uDF1F Best River This Weekend
+          </div>
+          <div style="font-family: Georgia, serif; font-size: 18px; font-weight: 700; color: #085041; margin-bottom: 4px;">
+            ${escapeHtml(best.name)}
+          </div>
+          <div style="font-size: 13px; color: #1a1a18; line-height: 1.55;">
+            ${escapeHtml(reasonText.charAt(0).toUpperCase() + reasonText.slice(1))}
+          </div>
+          <div style="margin-top: 10px;">
+            <a href="${best.url}" style="font-family: monospace; font-size: 11px; color: #085041; text-decoration: underline; font-weight: 600;">
+              View ${escapeHtml(best.name)} \u2192
+            </a>
+          </div>
+        </td></tr>
+      </table>
+    </td></tr>
+  `
+}
+
+// Minimal HTML escape — Resend doesn't sanitize HTML in templates so
+// we have to handle it ourselves. We don't worry about &amp;-style
+// double-escaping because none of the input fields contain pre-escaped
+// content.
+function escapeHtml(s: string | null | undefined): string {
+  if (s == null) return ''
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
+/**
+ * Render the full digest email body. The unsubscribeUrl is required —
+ * the email cannot ship without a working one-click unsub link.
+ */
+export function digestEmail(data: DigestData, unsubscribeUrl: string): string {
+  const { user, rivers, bestRiverThisWeekend } = data
+  const greeting = `Good morning ${user.displayName} \u2014 here's your Thursday river report.`
+  const hazardBlock = renderHazardBlock(rivers)
+  const riverCards = rivers.map(renderRiverCard).join('')
+  const bestBlock = bestRiverCallout(bestRiverThisWeekend)
+  const accountUrl = 'https://riverscout.app/account'
+  const allRiversUrl = 'https://riverscout.app/account'
+
+  return `<!DOCTYPE html>
+<html><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /></head>
+<body style="margin: 0; padding: 0; background: #f6f5f2; font-family: Georgia, serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background: #f6f5f2; padding: 24px 0;">
+    <tr><td align="center">
+      <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 580px; background: #ffffff; padding: 28px 28px 22px; border-radius: 12px; border: 1px solid #e2e1d8;">
+        <tr><td style="padding-bottom: 18px; border-bottom: 1px solid #e2e1d8;">
+          <span style="font-family: Georgia, serif; font-size: 22px; font-weight: 700; color: #085041; letter-spacing: -0.4px;">
+            River<span style="color: #185FA5;">Scout</span>
+          </span>
+        </td></tr>
+
+        <tr><td style="padding: 22px 0 10px;">
+          <div style="font-family: Georgia, serif; font-size: 15px; color: #1a1a18; line-height: 1.55;">
+            ${escapeHtml(greeting)}
+          </div>
+        </td></tr>
+
+        ${hazardBlock}
+
+        <tr><td>
+          <div style="font-family: monospace; font-size: 10px; color: #aaa99a; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; margin: 14px 0 12px; padding-top: 14px; border-top: 1px solid #e2e1d8;">
+            Your Rivers This Weekend
+          </div>
+          ${riverCards}
+        </td></tr>
+
+        ${bestBlock}
+
+        <tr><td style="padding: 8px 0 22px; text-align: center;">
+          <a href="${accountUrl}" style="display: inline-block; padding: 11px 26px; font-family: monospace; font-size: 12px; font-weight: 500; background: #085041; color: #ffffff; text-decoration: none; border-radius: 6px; letter-spacing: .3px;">
+            Check all your rivers \u2192
+          </a>
+        </td></tr>
+
+        <tr><td style="padding-top: 18px; border-top: 1px solid #e2e1d8;">
+          <div style="font-family: monospace; font-size: 10px; color: #aaa99a; text-align: center; line-height: 1.7;">
+            You're receiving this because you saved rivers on RiverScout.<br />
+            <a href="${accountUrl}" style="color: #1D9E75;">Manage digest preferences</a>
+            \u00B7
+            <a href="${unsubscribeUrl}" style="color: #aaa99a;">Unsubscribe from digest</a><br />
+            <a href="https://riverscout.app" style="color: #aaa99a;">riverscout.app</a> \u00B7 noreply@riverscout.app
+          </div>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body></html>`
+}
+
+// ── Permit Verification Reminder ─────────────────────────────────
+// Annual reminder that goes to the admin every January 15. Lists all
+// river_permits rows whose last_verified_year is older than the
+// current year, so the project owner has a punch list before the
+// spring paddling season starts. Plain admin-ops email — not styled
+// like the user-facing newsletters.
+export function permitVerificationReminderEmail(
+  rows: Array<{
+    river_name: string
+    state_key: string
+    permit_name: string
+    managing_agency: string
+    last_verified_year: number | null
+    info_url: string | null
+  }>,
+  currentYear: number,
+): string {
+  const list = rows.map(r => `
+    <tr>
+      <td style="padding: 8px 12px; border-bottom: 1px solid #e2e1d8; vertical-align: top;">
+        <div style="font-family: Georgia, serif; font-size: 14px; font-weight: 700; color: #1a1a18;">
+          ${r.river_name} <span style="font-family: monospace; font-size: 11px; color: #aaa99a;">${(r.state_key || '').toUpperCase()}</span>
+        </div>
+        <div style="font-family: monospace; font-size: 11px; color: #666660; margin-top: 2px;">
+          ${r.permit_name} &middot; ${r.managing_agency}
+        </div>
+        <div style="font-family: monospace; font-size: 10px; color: #aaa99a; margin-top: 4px;">
+          Last verified: ${r.last_verified_year ?? 'never'}
+          ${r.info_url ? ` &middot; <a href="${r.info_url}" style="color: #1D9E75;">${r.info_url}</a>` : ''}
+        </div>
+      </td>
+    </tr>
+  `).join('')
+
+  const empty = `
+    <tr>
+      <td style="padding: 16px 12px; font-family: monospace; font-size: 12px; color: #666660; text-align: center;">
+        All permits are already verified for ${currentYear}. Nothing to do.
+      </td>
+    </tr>
+  `
+
+  return `<!DOCTYPE html>
+<html><head><meta charset="utf-8" /></head>
+<body style="margin: 0; padding: 0; background: #ffffff; font-family: Georgia, serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 640px; margin: 0 auto; padding: 20px;">
+    <tr>
+      <td style="padding-bottom: 16px; border-bottom: 1px solid #e2e1d8;">
+        <span style="font-family: Georgia, serif; font-size: 20px; font-weight: 700; color: #085041;">
+          River<span style="color: #185FA5;">Scout</span>
+          <span style="font-family: monospace; font-size: 11px; color: #BA7517; margin-left: 6px;">ADMIN</span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 24px 0;">
+        <div style="font-family: monospace; font-size: 10px; color: #BA7517; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px;">
+          Annual Permit Verification Reminder
+        </div>
+        <div style="font-family: Georgia, serif; font-size: 22px; font-weight: 700; color: #1a1a18; line-height: 1.3; margin-bottom: 16px;">
+          ${rows.length} river permit${rows.length === 1 ? '' : 's'} need verification for ${currentYear}
+        </div>
+        <p style="font-size: 14px; color: #1a1a18; line-height: 1.6; margin-bottom: 20px;">
+          Permit rules change annually. Please verify and update the rows below before the spring paddling season starts. Each row links to the agency landing page.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%" cellpadding="0" cellspacing="0" style="border: 1px solid #e2e1d8; border-radius: 8px; overflow: hidden;">
+          ${rows.length > 0 ? list : empty}
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 20px 0 0;">
+        <div style="text-align: center;">
+          <a href="https://riverscout.app/admin/permits" style="display: inline-block; padding: 12px 28px; background: #085041; color: #ffffff; font-family: monospace; font-size: 13px; text-decoration: none; border-radius: 6px;">
+            Open Admin Permits &rarr;
+          </a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 24px 0 0; border-top: 1px solid #e2e1d8;">
+        <div style="font-family: monospace; font-size: 10px; color: #aaa99a; text-align: center; line-height: 1.6;">
+          This is an automated annual reminder, sent every January 15.<br />
+          Triggered by the cron at <code>/api/permits/verify-reminder</code>.
+        </div>
+      </td>
+    </tr>
+  </table>
+</body></html>`
+}
+
 export { ADMIN_EMAIL }

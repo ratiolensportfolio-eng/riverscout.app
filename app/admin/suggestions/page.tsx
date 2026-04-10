@@ -37,6 +37,7 @@ interface Banner {
 
 const fieldLabels: Record<string, string> = {
   safe_cfs: '\u26A0 Safe CFS Limit (Safety Critical)',
+  permit_update: '\u26A0 Permit Update (High Priority)',
   cls: 'Whitewater Class',
   opt: 'Optimal CFS',
   len: 'River Length',
@@ -102,11 +103,16 @@ export default function AdminSuggestions() {
     const res = await fetch(`/api/suggestions?userId=${userId}&status=${filter}`)
     const data = await res.json()
     if (data.suggestions) {
-      // Sort safety-critical suggestions to the top
+      // Three-tier sort: safety_critical first, permit_update second,
+      // everything else third. Within each tier, newest first.
+      const rank = (s: Suggestion): number => {
+        if (s.ai_category === 'safety_critical') return 0
+        if (s.ai_category === 'permit_update') return 1
+        return 2
+      }
       const sorted = [...data.suggestions].sort((a: Suggestion, b: Suggestion) => {
-        const aIsSafety = a.ai_category === 'safety_critical' ? 0 : 1
-        const bIsSafety = b.ai_category === 'safety_critical' ? 0 : 1
-        if (aIsSafety !== bIsSafety) return aIsSafety - bIsSafety
+        const r = rank(a) - rank(b)
+        if (r !== 0) return r
         return new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
       })
       setSuggestions(sorted)
@@ -310,14 +316,22 @@ export default function AdminSuggestions() {
               {t === 'suggestions' ? 'River Improvements' : 'Stocking Reports'}
             </button>
           ))}
-          {/* Hazards lives on its own page, not as a tab here, because the
-              data model and actions don't overlap with suggestions/stocking. */}
+          {/* Hazards and Permits live on their own pages, not as tabs
+              here, because the data models and actions don't overlap
+              with suggestions/stocking. */}
           <Link href="/admin/hazards" style={{
             fontFamily: mono, fontSize: '11px', padding: '7px 16px', borderRadius: 'var(--r)',
             border: '.5px solid var(--bd2)', background: 'var(--bg)', color: 'var(--tx3)',
             textDecoration: 'none',
           }}>
             Hazards
+          </Link>
+          <Link href="/admin/permits" style={{
+            fontFamily: mono, fontSize: '11px', padding: '7px 16px', borderRadius: 'var(--r)',
+            border: '.5px solid var(--bd2)', background: 'var(--bg)', color: 'var(--tx3)',
+            textDecoration: 'none',
+          }}>
+            Permits
           </Link>
         </div>
 
@@ -366,13 +380,22 @@ export default function AdminSuggestions() {
           const isProcessing = processing === s.id
           const hasFailed = failedIds.has(s.id)
           const isSafety = s.ai_category === 'safety_critical'
+          const isPermitUpdate = s.ai_category === 'permit_update'
 
           return (
             <div key={s.id} style={{
-              border: isSafety ? '2px solid var(--dg)' : hasFailed ? '1px solid var(--dg)' : '.5px solid var(--bd)',
+              border: isSafety
+                ? '2px solid var(--dg)'
+                : isPermitUpdate
+                  ? '2px solid var(--am)'
+                  : hasFailed ? '1px solid var(--dg)' : '.5px solid var(--bd)',
               borderRadius: 'var(--rlg)',
               padding: '16px', marginBottom: '12px',
-              background: isSafety && filter === 'pending' ? 'var(--dglt)' : filter === 'approved' ? 'var(--rvlt)' : filter === 'rejected' ? 'var(--bg3)' : 'var(--bg2)',
+              background: isSafety && filter === 'pending'
+                ? 'var(--dglt)'
+                : isPermitUpdate && filter === 'pending'
+                  ? 'var(--amlt)'
+                  : filter === 'approved' ? 'var(--rvlt)' : filter === 'rejected' ? 'var(--bg3)' : 'var(--bg2)',
             }}>
               {/* Safety-critical banner */}
               {isSafety && (
@@ -385,6 +408,19 @@ export default function AdminSuggestions() {
                 }}>
                   <span style={{ fontSize: '13px' }}>&#9888;</span>
                   Safety Critical — Review Immediately
+                </div>
+              )}
+              {/* Permit-update banner */}
+              {isPermitUpdate && (
+                <div style={{
+                  display: 'flex', alignItems: 'center', gap: '6px',
+                  fontFamily: mono, fontSize: '10px', fontWeight: 500, color: '#7A4D0E',
+                  padding: '6px 10px', marginBottom: '10px', borderRadius: 'var(--r)',
+                  background: 'rgba(186,117,23,.1)', border: '.5px solid var(--am)',
+                  letterSpacing: '.3px', textTransform: 'uppercase',
+                }}>
+                  <span style={{ fontSize: '13px' }}>&#9888;</span>
+                  Permit Update — Verify Quickly &middot; <a href="/admin/permits" style={{ color: '#7A4D0E', textDecoration: 'underline' }}>Open /admin/permits</a>
                 </div>
               )}
               {/* Header */}

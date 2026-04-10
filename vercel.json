@@ -3,6 +3,14 @@
     {
       "path": "/api/alerts/check?key=${CRON_SECRET}",
       "schedule": "*/15 * * * *"
+    },
+    {
+      "path": "/api/permits/verify-reminder?key=${CRON_SECRET}",
+      "schedule": "0 14 15 1 *"
+    },
+    {
+      "path": "/api/digest?key=${CRON_SECRET}",
+      "schedule": "0 13 * * 4"
     }
   ]
 }

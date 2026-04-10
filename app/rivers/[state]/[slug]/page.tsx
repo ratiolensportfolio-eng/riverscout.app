@@ -5,6 +5,7 @@ import { fetchGaugeData, formatCfs, celsiusToFahrenheit, isHypothermiaRisk } fro
 import RiverTabs from '@/components/rivers/RiverTabs'
 import SuggestCorrection from '@/components/SuggestCorrection'
 import SaveOffline from '@/components/SaveOffline'
+import SaveRiver from '@/components/SaveRiver'
 import DataConfidenceBanner from '@/components/rivers/DataConfidenceBanner'
 import HazardBanner from '@/components/rivers/HazardBanner'
 import { getDesignationBadges } from '@/lib/designations'
@@ -229,6 +230,7 @@ export default async function RiverPage({ params }: Props) {
             Optimal: {river.opt} CFS · USGS #{river.g}
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <SaveRiver riverId={river.id} riverName={river.n} />
             <SaveOffline riverId={river.id} riverName={river.n} gaugeId={river.g} stateSlug={state} riverSlug={slug} />
             <SuggestCorrection riverId={river.id} riverName={river.n} stateKey={river.stateKey} />
           </div>

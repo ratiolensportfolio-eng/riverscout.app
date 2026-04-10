@@ -14,6 +14,7 @@
 // doesn't render at all when permit === null), per the spec: "Show
 // nothing — do not display a 'no permit required' message."
 
+import { useState } from 'react'
 import type { RiverPermit } from '@/types'
 import { PERMIT_TYPE_LABELS, PERMIT_REQUIRED_FOR_LABELS } from '@/types'
 
@@ -51,9 +52,28 @@ function formatGroupSize(min: number | null, max: number | null): string | null 
 }
 
 export default function RiverPermits({ permit }: Props) {
+  const [updateOpen, setUpdateOpen] = useState(false)
+
   // Defensive: caller should have filtered this out, but if a row
   // somehow has type=no_permit_required render nothing.
   if (permit.permit_type === 'no_permit_required') return null
+
+  // Small helper to render the "Permit info outdated?" link consistently
+  // at the bottom of both render shapes. Opens the inline modal.
+  const outdatedLink = (
+    <div style={{ marginTop: '10px', textAlign: 'right' }}>
+      <button
+        type="button"
+        onClick={() => setUpdateOpen(true)}
+        style={{
+          background: 'none', border: 'none', padding: 0,
+          fontFamily: mono, fontSize: '10px',
+          color: 'var(--tx3)', cursor: 'pointer', textDecoration: 'underline',
+        }}>
+        Permit info outdated?
+      </button>
+    </div>
+  )
 
   // Self-issue permits get a compact card — no application window,
   // no lottery dates, just the where-to-pick-it-up + cost line.
@@ -101,7 +121,14 @@ export default function RiverPermits({ permit }: Props) {
               Last verified: {permit.last_verified_year} · Always confirm with the managing agency before your trip.
             </div>
           )}
+          {outdatedLink}
         </div>
+        {updateOpen && (
+          <PermitUpdateModal
+            permit={permit}
+            onClose={() => setUpdateOpen(false)}
+          />
+        )}
       </div>
     )
   }
@@ -283,6 +310,201 @@ export default function RiverPermits({ permit }: Props) {
           <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', fontStyle: 'italic', lineHeight: 1.5 }}>
             Last verified: {permit.last_verified_year} &middot; Permit rules change annually — always confirm with the managing agency before applying.
           </div>
+        )}
+        {outdatedLink}
+      </div>
+      {updateOpen && (
+        <PermitUpdateModal
+          permit={permit}
+          onClose={() => setUpdateOpen(false)}
+        />
+      )}
+    </div>
+  )
+}
+
+// ── Permit update submission modal ────────────────────────────────
+// Free-form report for outdated permit info. Routes through the
+// existing /api/suggestions POST with field='permit_update', which
+// tags ai_category='permit_update' and fires an admin email blast
+// (defined in app/api/suggestions/route.ts).
+//
+// We deliberately don't try to AI-validate this category — permit
+// rule changes are too narrow for the existing river-data Claude
+// prompt to give a useful confidence rating, and they're high-priority
+// enough that admin review is the right path regardless.
+
+interface ModalProps {
+  permit: RiverPermit
+  onClose: () => void
+}
+
+function PermitUpdateModal({ permit, onClose }: ModalProps) {
+  const [whatChanged, setWhatChanged] = useState('')
+  const [sourceUrl, setSourceUrl] = useState('')
+  const [submitterEmail, setSubmitterEmail] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+  const [done, setDone] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const handleSubmit = async () => {
+    if (!whatChanged.trim()) {
+      setError('Please describe what changed')
+      return
+    }
+    setSubmitting(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/suggestions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          riverId: permit.river_id,
+          riverName: permit.river_name,
+          stateKey: permit.state_key,
+          userEmail: submitterEmail.trim() || null,
+          field: 'permit_update',
+          // The suggestions schema expects a single suggestedValue
+          // string. For permit updates we put the user's "what
+          // changed" description here so it surfaces directly in the
+          // admin queue without needing a new column.
+          suggestedValue: whatChanged.trim(),
+          // currentValue is optional for permit_update (handled in
+          // the POST route), but we send the permit name + verified
+          // year so admins have context at a glance.
+          currentValue: `${permit.permit_name} (last verified ${permit.last_verified_year ?? 'never'})`,
+          reason: `Permit info outdated for ${permit.river_name}.`,
+          sourceUrl: sourceUrl.trim() || null,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok || !data.ok) {
+        setError(data.error || 'Failed to submit')
+        setSubmitting(false)
+        return
+      }
+      setDone(true)
+      setSubmitting(false)
+    } catch {
+      setError('Network error')
+      setSubmitting(false)
+    }
+  }
+
+  return (
+    <div onClick={onClose} style={{
+      position: 'fixed', inset: 0, background: 'rgba(0,0,0,.45)',
+      zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center',
+      padding: '16px',
+    }}>
+      <div onClick={e => e.stopPropagation()} style={{
+        background: 'var(--bg)', borderRadius: 'var(--rlg)',
+        padding: '22px 24px', maxWidth: '440px', width: '100%',
+        maxHeight: '90vh', overflowY: 'auto',
+        boxShadow: '0 12px 48px rgba(0,0,0,.25)',
+      }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '6px' }}>
+          <div>
+            <div style={{ fontFamily: mono, fontSize: '9px', color: '#BA7517', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '4px' }}>
+              Permit info outdated?
+            </div>
+            <div style={{ fontFamily: serif, fontSize: '17px', fontWeight: 700, color: 'var(--tx)', lineHeight: 1.3 }}>
+              {permit.river_name}
+            </div>
+          </div>
+          <button onClick={onClose} style={{
+            background: 'none', border: 'none', fontSize: '18px',
+            color: 'var(--tx3)', cursor: 'pointer', padding: '4px 8px',
+          }}>&#10005;</button>
+        </div>
+
+        {done ? (
+          <div style={{ textAlign: 'center', padding: '20px 0' }}>
+            <div style={{ fontSize: '28px', marginBottom: '8px' }}>&#10003;</div>
+            <div style={{ fontFamily: mono, fontSize: '12px', color: 'var(--rv)', marginBottom: '8px', fontWeight: 500 }}>
+              Thank you — admin notified.
+            </div>
+            <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)', lineHeight: 1.55 }}>
+              Permit-update reports are reviewed quickly because outdated info can cause paddlers to miss a lottery window.
+            </div>
+          </div>
+        ) : (
+          <>
+            <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)', marginBottom: '14px', lineHeight: 1.55 }}>
+              Spotted outdated permit info? Tell us what changed so we can update the row. Your report goes directly to the admin queue.
+            </div>
+
+            <label style={{ display: 'block', marginBottom: '12px' }}>
+              <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', display: 'block', marginBottom: '4px' }}>
+                What changed
+              </span>
+              <textarea
+                value={whatChanged}
+                onChange={e => setWhatChanged(e.target.value)}
+                rows={4}
+                maxLength={1500}
+                placeholder="e.g. Application window now closes Feb 15 instead of Jan 31. Per-person fee raised to $12."
+                style={{
+                  width: '100%', padding: '8px 10px', fontFamily: mono, fontSize: '12px',
+                  border: '.5px solid var(--bd2)', borderRadius: 'var(--r)',
+                  background: 'var(--bg)', color: 'var(--tx)', boxSizing: 'border-box',
+                  resize: 'vertical', lineHeight: 1.5,
+                }} />
+            </label>
+
+            <label style={{ display: 'block', marginBottom: '12px' }}>
+              <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', display: 'block', marginBottom: '4px' }}>
+                Source URL <span style={{ color: 'var(--tx3)' }}>(agency announcement, recreation.gov page)</span>
+              </span>
+              <input
+                type="url"
+                value={sourceUrl}
+                onChange={e => setSourceUrl(e.target.value)}
+                placeholder="https://..."
+                style={{
+                  width: '100%', padding: '8px 10px', fontFamily: mono, fontSize: '12px',
+                  border: '.5px solid var(--bd2)', borderRadius: 'var(--r)',
+                  background: 'var(--bg)', color: 'var(--tx)', boxSizing: 'border-box',
+                }} />
+            </label>
+
+            <label style={{ display: 'block', marginBottom: '14px' }}>
+              <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', display: 'block', marginBottom: '4px' }}>
+                Your email <span style={{ color: 'var(--tx3)' }}>(optional, for follow-up)</span>
+              </span>
+              <input
+                type="email"
+                value={submitterEmail}
+                onChange={e => setSubmitterEmail(e.target.value)}
+                placeholder="you@email.com"
+                style={{
+                  width: '100%', padding: '8px 10px', fontFamily: mono, fontSize: '12px',
+                  border: '.5px solid var(--bd2)', borderRadius: 'var(--r)',
+                  background: 'var(--bg)', color: 'var(--tx)', boxSizing: 'border-box',
+                }} />
+            </label>
+
+            {error && (
+              <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--dg)', marginBottom: '10px' }}>
+                &#9888; {error}
+              </div>
+            )}
+
+            <button
+              onClick={handleSubmit}
+              disabled={submitting || !whatChanged.trim()}
+              style={{
+                width: '100%', padding: '11px',
+                fontFamily: mono, fontSize: '11px', fontWeight: 500,
+                background: '#BA7517', color: '#fff', border: 'none',
+                borderRadius: 'var(--r)',
+                cursor: submitting ? 'wait' : 'pointer',
+                opacity: (submitting || !whatChanged.trim()) ? 0.5 : 1,
+                letterSpacing: '.3px',
+              }}>
+              {submitting ? 'Submitting…' : 'Submit permit update'}
+            </button>
+          </>
         )}
       </div>
     </div>

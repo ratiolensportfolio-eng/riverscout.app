@@ -83,6 +83,11 @@ export async function GET(req: NextRequest) {
 }
 
 // POST /api/profile — save/unsave a river
+//
+// Returns { ok: true, firstSave: boolean } where firstSave is true
+// only when this save took the user from 0 saved rivers to 1. The
+// SaveRiver UI uses that flag to show the digest opt-in prompt at
+// the moment of highest intent (per the digest feature spec).
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
@@ -95,10 +100,30 @@ export async function POST(req: NextRequest) {
     const supabase = createSupabaseClient()
 
     if (action === 'save') {
+      // Count saved rivers BEFORE the insert so we can detect the
+      // 0→1 transition. We can't infer this from the upsert response
+      // because upsert is idempotent — re-saving the same river
+      // shouldn't fire the prompt.
+      const { count: beforeCount } = await supabase
+        .from('saved_rivers')
+        .select('*', { count: 'exact', head: true })
+        .eq('user_id', userId)
+
       const { error } = await supabase
         .from('saved_rivers')
         .upsert({ user_id: userId, river_id: riverId }, { onConflict: 'user_id,river_id' })
       if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+
+      // After the upsert, did the user have zero saved rivers and now
+      // have one? Only fire firstSave when the upsert actually
+      // inserted a new row (not when re-saving the same river).
+      const { count: afterCount } = await supabase
+        .from('saved_rivers')
+        .select('*', { count: 'exact', head: true })
+        .eq('user_id', userId)
+
+      const firstSave = (beforeCount ?? 0) === 0 && (afterCount ?? 0) === 1
+      return NextResponse.json({ ok: true, firstSave })
     } else {
       const { error } = await supabase
         .from('saved_rivers')
@@ -106,9 +131,8 @@ export async function POST(req: NextRequest) {
         .eq('user_id', userId)
         .eq('river_id', riverId)
       if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+      return NextResponse.json({ ok: true, firstSave: false })
     }
-
-    return NextResponse.json({ ok: true })
   } catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
