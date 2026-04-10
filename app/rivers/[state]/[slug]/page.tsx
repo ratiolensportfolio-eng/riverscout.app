@@ -116,7 +116,14 @@ export default async function RiverPage({ params }: Props) {
   const backState = river.stateKey
 
   return (
-    <main style={{ height: '100vh', background: 'var(--bg)', color: 'var(--tx)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+    // NOTE: this used to be height:100vh + overflow:hidden with the
+    // tab content scrolling inside its own little box. That produced
+    // a tiny scroll window when there was a hazard banner + a
+    // confidence banner + lots of header content (visible as "the
+    // page is in a small window"). Switched to natural document
+    // scroll: <main> grows to fit, the tab content panel grows with
+    // it, and the browser handles the page scrollbar.
+    <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)', display: 'flex', flexDirection: 'column' }}>
       {/* Nav */}
       <nav style={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',

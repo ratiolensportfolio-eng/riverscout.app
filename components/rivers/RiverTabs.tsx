@@ -446,11 +446,17 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
   const hasDocs = river.docs.length > 0
 
   return (
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0 }}>
+    // Used to be flex:1 + minHeight:0 to fit inside a 100vh-locked
+    // page with the tab content scrolling internally. The page now
+    // uses natural document scroll (see app/rivers/[state]/[slug]/
+    // page.tsx), so this just grows to fit its content. The tab bar
+    // is sticky-to-the-top instead of pinned via flex layout.
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
       {/* Tab bar */}
       <div style={{
         display: 'flex', borderBottom: '.5px solid var(--bd)',
         overflowX: 'auto', flexShrink: 0,
+        position: 'sticky', top: 0, zIndex: 10, background: 'var(--bg)',
       }} className="no-scrollbar tab-bar">
         {TABS.filter(t => t !== 'Fishing' || hasFisheries(river.id)).map(t => (
           <button
@@ -475,8 +481,8 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
         ))}
       </div>
 
-      {/* Tab content */}
-      <div style={{ flex: 1, overflowY: 'auto', padding: '14px 16px' }}>
+      {/* Tab content — grows naturally now; no internal scroll. */}
+      <div style={{ padding: '14px 16px' }}>
 
         {/* ── OVERVIEW ─────────────────────────────────────── */}
         {tab === 'Overview' && (
