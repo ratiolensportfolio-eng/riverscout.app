@@ -38,7 +38,7 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { userId, businessName, description, riverId, phone } = body
+    const { userId, businessName, description, riverId, phone, website, email } = body
 
     if (!userId || !businessName || !riverId) {
       return NextResponse.json({ error: 'userId, businessName, and riverId are required' }, { status: 400 })
@@ -63,8 +63,9 @@ export async function POST(req: NextRequest) {
         user_id: userId,
         business_name: businessName.trim(),
         description: description?.trim() || null,
-        river_ids: [riverId],
+        website: website?.trim() || null,
         phone: phone?.trim() || null,
+        river_ids: [riverId],
         tier: 'listed',
         active: false,  // free listings start inactive until reviewed
       })

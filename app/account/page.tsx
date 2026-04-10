@@ -295,26 +295,37 @@ export default function AccountPage() {
             </span>
           </label>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-            <button
-              onClick={sendDigestPreview}
-              disabled={digestStatus.state === 'sending-preview' || !stats.savedRivers}
-              style={{
-                fontFamily: mono, fontSize: '10px', fontWeight: 500,
-                padding: '6px 14px', borderRadius: 'var(--r)',
-                background: 'var(--bg)', color: 'var(--rvdk)',
-                border: '.5px solid var(--rvmd)',
-                cursor: digestStatus.state === 'sending-preview' ? 'wait' : (!stats.savedRivers ? 'not-allowed' : 'pointer'),
-                opacity: !stats.savedRivers ? 0.5 : 1,
-              }}>
-              {digestStatus.state === 'sending-preview' ? 'Sending\u2026' : 'Send me a preview now \u2192'}
-            </button>
-            <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>
-              {stats.savedRivers === 0
-                ? 'Save at least one river to enable previews.'
-                : `Your digest includes your ${stats.savedRivers} saved river${stats.savedRivers === 1 ? '' : 's'}.`}
-            </span>
-          </div>
+          {stats.savedRivers === 0 ? (
+            // No saved rivers yet — promote the user to go save one
+            // instead of showing a disabled button. Less confusing
+            // than a greyed-out "Send preview" with a tooltip.
+            <div style={{
+              padding: '10px 14px', borderRadius: 'var(--r)',
+              background: 'var(--bg)', border: '.5px dashed var(--bd2)',
+              fontFamily: mono, fontSize: '11px', color: 'var(--tx2)',
+              lineHeight: 1.6,
+            }}>
+              You haven&apos;t saved any rivers yet. Click the <strong style={{ color: 'var(--rvdk)' }}>&#9825; Save</strong> button on any river page to add it to your digest, then come back here to preview.
+            </div>
+          ) : (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+              <button
+                onClick={sendDigestPreview}
+                disabled={digestStatus.state === 'sending-preview'}
+                style={{
+                  fontFamily: mono, fontSize: '10px', fontWeight: 500,
+                  padding: '6px 14px', borderRadius: 'var(--r)',
+                  background: 'var(--bg)', color: 'var(--rvdk)',
+                  border: '.5px solid var(--rvmd)',
+                  cursor: digestStatus.state === 'sending-preview' ? 'wait' : 'pointer',
+                }}>
+                {digestStatus.state === 'sending-preview' ? 'Sending\u2026' : 'Send me a preview now \u2192'}
+              </button>
+              <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>
+                Your digest includes your {stats.savedRivers} saved river{stats.savedRivers === 1 ? '' : 's'}.
+              </span>
+            </div>
+          )}
 
           {(digestStatus.state === 'success' || digestStatus.state === 'error') && (
             <div style={{

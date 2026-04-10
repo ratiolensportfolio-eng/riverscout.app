@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createSupabaseClient } from '@/lib/supabase'
 import { isAdmin } from '@/lib/admin'
 import { sendEmail, improvementApprovedEmail, ADMIN_EMAIL } from '@/lib/email'
+import { VERIFICATION_TAGS } from '@/lib/needs-verification'
+import { getRiver } from '@/data/rivers'
 
 // AI evaluation of a suggestion using Claude
 async function evaluateSuggestion(
@@ -301,24 +303,33 @@ export async function PATCH(req: NextRequest) {
         return NextResponse.json({ error: 'Suggestion not found' }, { status: 404 })
       }
 
-      // Apply the rollback — update the river field back to the original value
-      const fieldMap: Record<string, string> = {
-        cls: 'class', opt: 'optimal_cfs', len: 'length',
-        desc: 'description', desig: 'designations', gauge: 'usgs_gauge',
-        sections: 'sections', access_points: 'sections',
-        safe_cfs: 'optimal_cfs',
-      }
+      // Rollback: delete the override row so the river reverts to
+      // the static data/rivers.ts value. Also clear any cleared-tag
+      // rows tied to this suggestion so the verification chip
+      // reappears for re-review.
+      const OVERRIDEABLE_FIELDS = new Set([
+        'cls', 'opt', 'len', 'desc', 'desig', 'gauge', 'sections', 'access_points', 'safe_cfs',
+      ])
 
-      const dbField = fieldMap[original.field]
-      if (dbField) {
-        const { error: updateErr } = await supabase
-          .from('rivers')
-          .update({ [dbField]: original.current_value, updated_at: new Date().toISOString() })
-          .eq('id', original.river_id)
+      if (OVERRIDEABLE_FIELDS.has(original.field)) {
+        const { error: delErr } = await supabase
+          .from('river_field_overrides')
+          .delete()
+          .eq('river_id', original.river_id)
+          .eq('field', original.field)
 
-        if (updateErr) {
-          return NextResponse.json({ error: 'Failed to rollback river data: ' + updateErr.message }, { status: 500 })
+        if (delErr) {
+          return NextResponse.json({ error: 'Failed to rollback override: ' + delErr.message }, { status: 500 })
         }
+
+        // Re-flag the verification tags this approval cleared. We
+        // identify them by source_suggestion_id rather than the
+        // tag→field mapping so we only un-clear what THIS specific
+        // approval cleared.
+        await supabase
+          .from('river_cleared_verification_tags')
+          .delete()
+          .eq('source_suggestion_id', suggestionId)
       }
 
       // Update suggestion status to rolled_back
@@ -349,7 +360,18 @@ export async function PATCH(req: NextRequest) {
       return NextResponse.json({ ok: true, action: 'rollback', river: original.river_name, field: original.field })
     }
 
-    // For approved: apply the change to the database FIRST (mission-critical)
+    // For approved: apply the change to the override layer FIRST
+    // (mission-critical). The override layer is a thin Supabase
+    // table that the river page reads alongside the static
+    // data/rivers.ts data — see lib/river-page-data.ts and
+    // app/rivers/[state]/[slug]/page.tsx for the merge logic.
+    //
+    // Why an override layer instead of writing to public.rivers:
+    // the river page reads from data/rivers.ts (a static TypeScript
+    // file), not from Supabase. Writes to public.rivers were
+    // happening but never visible on the live site. The override
+    // layer is the bridge that lets approved improvements actually
+    // show up.
     if (action === 'approved') {
       // Fetch the suggestion to get field details
       const { data: suggestion, error: fetchErr } = await supabase
@@ -362,26 +384,80 @@ export async function PATCH(req: NextRequest) {
         return NextResponse.json({ error: 'Suggestion not found' }, { status: 404 })
       }
 
-      // MISSION-CRITICAL: Apply the change to the rivers table
-      const fieldMap: Record<string, string> = {
-        cls: 'class', opt: 'optimal_cfs', len: 'length',
-        desc: 'description', desig: 'designations', gauge: 'usgs_gauge',
-        sections: 'sections', access_points: 'sections',
-        safe_cfs: 'optimal_cfs',
-      }
+      // Allow-list of overrideable fields. Anything outside this set
+      // (e.g. permit_update, photos, custom community fields) is
+      // considered metadata-only and the approval just changes the
+      // suggestion status without writing an override.
+      const OVERRIDEABLE_FIELDS = new Set([
+        'cls', 'opt', 'len', 'desc', 'desig', 'gauge', 'sections', 'access_points', 'safe_cfs',
+      ])
 
-      const dbField = fieldMap[suggestion.field]
-      if (dbField) {
-        const { error: updateErr } = await supabase
-          .from('rivers')
-          .update({ [dbField]: suggestion.suggested_value, updated_at: new Date().toISOString() })
-          .eq('id', suggestion.river_id)
+      if (OVERRIDEABLE_FIELDS.has(suggestion.field)) {
+        // Upsert into river_field_overrides — last approved value
+        // wins per (river_id, field). The unique constraint on
+        // (river_id, field) handles the conflict for re-approvals.
+        const { error: overrideErr } = await supabase
+          .from('river_field_overrides')
+          .upsert(
+            {
+              river_id: suggestion.river_id,
+              field: suggestion.field,
+              value: suggestion.suggested_value,
+              source_suggestion_id: suggestion.id,
+              applied_at: new Date().toISOString(),
+              applied_by: userId,
+            },
+            { onConflict: 'river_id,field' },
+          )
 
-        if (updateErr) {
-          // DATA UPDATE FAILED — do NOT mark as approved, return error
+        if (overrideErr) {
           return NextResponse.json({
-            error: `Failed to update river data: ${updateErr.message}. Suggestion stays pending.`,
+            error: `Failed to write override: ${overrideErr.message}. Suggestion stays pending.`,
           }, { status: 500 })
+        }
+
+        // Clear any verification tags whose suggestField matches the
+        // field we just approved. The DataConfidenceBanner will
+        // subtract these from the static needsVerification list at
+        // render time, so the warning chip disappears immediately.
+        //
+        // We only clear tags that the river ACTUALLY has — looking up
+        // VERIFICATION_TAGS by suggestField gives us all candidate
+        // tag keys (e.g. clf is mapped from 'class-rating-drift'),
+        // then we filter against the river's own static array to
+        // avoid inserting orphan rows.
+        const matchingTags = Object.entries(VERIFICATION_TAGS)
+          .filter(([, meta]) => meta.suggestField === suggestion.field)
+          .map(([tag]) => tag)
+
+        if (matchingTags.length > 0) {
+          const river = getRiver(suggestion.river_id)
+          const staticTags = (river?.needsVerification as string[] | undefined) ?? []
+          const tagsToClear = matchingTags.filter(t => staticTags.includes(t))
+
+          if (tagsToClear.length > 0) {
+            const rows = tagsToClear.map(tag => ({
+              river_id: suggestion.river_id,
+              tag,
+              source_suggestion_id: suggestion.id,
+              cleared_at: new Date().toISOString(),
+              cleared_by: userId,
+            }))
+            // Best-effort: if a tag was already cleared by a prior
+            // approval the unique constraint will conflict — that's
+            // fine, we just want it gone. Use upsert with onConflict
+            // to make the operation idempotent.
+            const { error: clearErr } = await supabase
+              .from('river_cleared_verification_tags')
+              .upsert(rows, { onConflict: 'river_id,tag' })
+
+            if (clearErr) {
+              // Don't fail the approval over a tag-clear miss —
+              // the override is the mission-critical write. Log
+              // and move on.
+              console.error('[SUGGESTIONS] Failed to clear verification tags:', clearErr)
+            }
+          }
         }
       }
 

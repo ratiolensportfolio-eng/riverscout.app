@@ -84,12 +84,25 @@ export interface PrefetchedHazard {
   reported_by: string | null
 }
 
+// Map of field key → override value. Field keys match the
+// suggestions.field column (cls, opt, len, desc, desig, gauge,
+// sections, safe_cfs). The river page merges these on top of the
+// static data/rivers.ts entries before rendering. See
+// supabase/migrations/018_river_overrides.sql for the schema and
+// app/rivers/[state]/[slug]/page.tsx for the merge logic.
+export type RiverFieldOverrides = Record<string, string>
+
 export interface RiverPageData {
   tripReports: PrefetchedTripReport[]
   stockingEvents: PrefetchedStockingEvent[]
   outfitters: PrefetchedOutfitter[]
   hazards: PrefetchedHazard[]  // active, non-expired, non-hidden hazards
   permit: RiverPermit | null   // null = no permit required for this river
+  fieldOverrides: RiverFieldOverrides
+  // Tags from the static needsVerification array that have been
+  // cleared by admin approval. The river page subtracts these from
+  // the static list before rendering the DataConfidenceBanner.
+  clearedVerificationTags: string[]
   hasSupabaseRapids: boolean   // for the verified-rapids confidence banner
 }
 
@@ -118,6 +131,8 @@ function emptyResult(): RiverPageData {
     outfitters: [],
     hazards: [],
     permit: null,
+    fieldOverrides: {},
+    clearedVerificationTags: [],
     hasSupabaseRapids: false,
   }
 }
@@ -145,7 +160,10 @@ export async function fetchRiverPageData(
   // this is one server-to-Supabase round trip's worth of latency.
   const nowIso = new Date().toISOString()
 
-  const [tripReportsRes, stockingRes, outfittersRes, rapidsRes, hazardsRes, permitRes] = await Promise.all([
+  const [
+    tripReportsRes, stockingRes, outfittersRes, rapidsRes, hazardsRes,
+    permitRes, overridesRes, clearedTagsRes,
+  ] = await Promise.all([
     supabase
       .from('trip_reports')
       .select('id, author_name, rating, flow_cfs, trip_date, body, photos, created_at')
@@ -187,6 +205,20 @@ export async function fetchRiverPageData(
       .select('*')
       .eq('river_id', riverId)
       .maybeSingle(),
+    // Field overrides — admin-approved field changes that take
+    // precedence over the static data/rivers.ts values. Most rivers
+    // have zero rows here.
+    supabase
+      .from('river_field_overrides')
+      .select('field, value')
+      .eq('river_id', riverId),
+    // Cleared verification tags — entries from the static
+    // needsVerification array that admin approval has marked as
+    // resolved. Subtracted from the static list at render time.
+    supabase
+      .from('river_cleared_verification_tags')
+      .select('tag')
+      .eq('river_id', riverId),
   ])
 
   // Sort outfitters by tier priority (destination → listed)
@@ -201,12 +233,24 @@ export async function fetchRiverPageData(
     .slice()
     .sort((a, b) => (SEVERITY_RANK[a.severity] ?? 9) - (SEVERITY_RANK[b.severity] ?? 9))
 
+  // Build the field-override map. Last value wins on duplicates,
+  // but the unique(river_id, field) constraint should prevent dupes.
+  const fieldOverrides: RiverFieldOverrides = {}
+  for (const row of (overridesRes.data ?? []) as Array<{ field: string; value: string }>) {
+    fieldOverrides[row.field] = row.value
+  }
+
+  const clearedVerificationTags = ((clearedTagsRes.data ?? []) as Array<{ tag: string }>)
+    .map(r => r.tag)
+
   return {
     tripReports: (tripReportsRes.data ?? []) as PrefetchedTripReport[],
     stockingEvents: (stockingRes.data ?? []) as PrefetchedStockingEvent[],
     outfitters,
     hazards,
     permit: (permitRes.data ?? null) as RiverPermit | null,
+    fieldOverrides,
+    clearedVerificationTags,
     hasSupabaseRapids: !!(rapidsRes.data && rapidsRes.data.length > 0),
   }
 }

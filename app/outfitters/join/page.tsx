@@ -1,10 +1,11 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
 import { ALL_RIVERS } from '@/data/rivers'
 import { OUTFITTER_TIERS } from '@/types'
 import type { OutfitterTier } from '@/types'
+import { supabase } from '@/lib/supabase'
 
 const mono = "'IBM Plex Mono', monospace"
 const serif = "'Playfair Display', serif"
@@ -33,6 +34,23 @@ export default function OutfitterJoin() {
   const [riverSearch, setRiverSearch] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
+  // Auth state — required for the free-tier insert because the
+  // outfitters table uses auth.users-backed user_id with an FK +
+  // RLS policy that gates inserts on auth.uid() = user_id. Anonymous
+  // submitters get bounced to /login on submit.
+  const [userId, setUserId] = useState<string | null>(null)
+  const [authLoaded, setAuthLoaded] = useState(false)
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data }) => {
+      setUserId(data.user?.id ?? null)
+      // Pre-fill email from auth if available
+      if (data.user?.email) {
+        setForm(f => ({ ...f, email: f.email || data.user!.email! }))
+      }
+      setAuthLoaded(true)
+    })
+  }, [])
 
   const tierConfig = OUTFITTER_TIERS.find(t => t.tier === selectedTier)!
   const maxRivers = tierConfig.maxRivers ?? 999
@@ -71,17 +89,31 @@ export default function OutfitterJoin() {
     setError('')
 
     if (selectedTier === 'listed') {
-      // Free tier — submit directly
+      // Free tier requires a logged-in user — the outfitters table
+      // FK + RLS both gate on auth.uid() = user_id. Anonymous
+      // submitters get bounced to /login with a redirect back here.
+      if (!userId) {
+        setError('Please sign in to claim a free listing.')
+        setSubmitting(false)
+        // Give the user a moment to read the error before redirecting.
+        setTimeout(() => {
+          const redirect = encodeURIComponent('/outfitters/join')
+          window.location.href = `/login?redirect=${redirect}`
+        }, 1500)
+        return
+      }
       try {
         const res = await fetch('/api/outfitters', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            userId: 'pending-auth', // will be replaced with real auth
+            userId,
             businessName: form.businessName,
             description: form.description,
             riverId: selectedRivers[0],
             phone: form.phone,
+            website: form.website,
+            email: form.email,
           }),
         })
         const data = await res.json()
@@ -149,6 +181,34 @@ export default function OutfitterJoin() {
             }} />
           ))}
         </div>
+
+        {/* Sign-in nudge — shown only when auth has loaded and the
+            user is anonymous. The free-tier insert requires a real
+            auth.users row, so prompting up front saves the user
+            from filling out the whole form before hitting an error. */}
+        {authLoaded && !userId && (
+          <div style={{
+            padding: '12px 16px', marginBottom: '20px',
+            background: 'var(--amlt)', border: '.5px solid var(--am)',
+            borderRadius: 'var(--r)',
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            gap: '12px', flexWrap: 'wrap',
+          }}>
+            <div style={{ fontFamily: mono, fontSize: '11px', color: '#7A4D0E', lineHeight: 1.55 }}>
+              You&apos;ll need to sign in before claiming a free listing.
+            </div>
+            <Link
+              href="/login?redirect=%2Foutfitters%2Fjoin"
+              style={{
+                fontFamily: mono, fontSize: '10px', fontWeight: 500,
+                padding: '6px 14px', borderRadius: 'var(--r)',
+                background: '#7A4D0E', color: '#fff', textDecoration: 'none',
+                flexShrink: 0,
+              }}>
+              Sign in &rarr;
+            </Link>
+          </div>
+        )}
 
         {/* Step 1: Choose tier */}
         {step === 1 && (

@@ -57,15 +57,48 @@ const COND_LABEL: Record<string, string> = {
 
 export default async function RiverPage({ params }: Props) {
   const { state, slug } = await params
-  const river = getRiverBySlug(state, slug)
-  if (!river) notFound()
+  const staticRiver = getRiverBySlug(state, slug)
+  if (!staticRiver) notFound()
 
   // Fire flow data and the batched river-page query in parallel.
   // Both go to different upstreams (USGS vs Supabase) so they can race.
   const [flow, prefetched] = await Promise.all([
-    fetchGaugeData(river.g, river.opt),
-    fetchRiverPageData(river.id, river.stateKey),
+    fetchGaugeData(staticRiver.g, staticRiver.opt),
+    fetchRiverPageData(staticRiver.id, staticRiver.stateKey),
   ])
+
+  // Apply admin-approved field overrides on top of the static river
+  // record. The override layer (lib/river-page-data.ts) reads from
+  // public.river_field_overrides; without overrides this is a no-op
+  // and the page renders the static data unchanged.
+  //
+  // Field key → static field name map. Mirrors the suggestions
+  // PATCH handler's allow-list so the same key vocabulary is used
+  // everywhere.
+  const FIELD_TO_STATIC: Record<string, keyof typeof staticRiver> = {
+    cls: 'cls',
+    opt: 'opt',
+    len: 'len',
+    desc: 'desc',
+    desig: 'desig',
+    gauge: 'g',
+  }
+  const river: typeof staticRiver = { ...staticRiver }
+  for (const [field, value] of Object.entries(prefetched.fieldOverrides)) {
+    const target = FIELD_TO_STATIC[field]
+    if (target) {
+      // The static columns are all string-typed at the read site
+      // (cls, opt, desc, etc.) so the cast is safe.
+      ;(river as Record<string, unknown>)[target] = value
+    }
+  }
+
+  // Subtract cleared verification tags from the static
+  // needsVerification array. The DataConfidenceBanner sees only
+  // the still-pending tags.
+  const staticTags = (staticRiver.needsVerification as string[] | undefined) ?? []
+  const clearedSet = new Set(prefetched.clearedVerificationTags)
+  const mergedNeedsVerification = staticTags.filter(t => !clearedSet.has(t))
 
   // Verified-rapids check: static data first, then Supabase fallback (already
   // included in the prefetched batch — no extra round trip).
@@ -292,7 +325,7 @@ export default async function RiverPage({ params }: Props) {
         riverName={river.n}
         stateKey={river.stateKey}
         isVerified={isVerified}
-        needsVerification={river.needsVerification as string[] | undefined}
+        needsVerification={mergedNeedsVerification}
       />
 
       {/* Tabbed content — fills remaining height */}
