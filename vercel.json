@@ -11,6 +11,10 @@
     {
       "path": "/api/digest?key=${CRON_SECRET}",
       "schedule": "0 13 * * 4"
+    },
+    {
+      "path": "/api/cron/dnr-stocking-mi?key=${CRON_SECRET}",
+      "schedule": "0 13 * * *"
     }
   ]
 }
