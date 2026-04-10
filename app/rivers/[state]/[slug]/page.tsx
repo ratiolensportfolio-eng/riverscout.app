@@ -179,46 +179,63 @@ export default async function RiverPage({ params }: Props) {
           </span>
         </div>
 
-        {/* Rate-of-change row.
+        {/* Rate-of-change row — always rendered when we have CFS data.
             Color palette per the rate severity:
               Rising fast  (>300 cfs/hr): red    — potential flash flood
               Rising       (100-300):     amber  — heads up
               Rising slowly (<100):       light  — normal rise
-              Stable:                     gray   — (hidden, see note)
+              Stable:                     gray   — quiet river, no drift
               Falling slowly (<100):      lt blue — improving
               Falling      (100-300):     blue
               Falling fast (>300):        purple — rapid drainage
-            Stable rivers below 25 cfs/hr are hidden entirely so the
-            page stays clean — showing "Stable" everywhere is noise. */}
-        {flow.cfs !== null && flow.rateLabel && flow.rateLabel !== 'Rate unknown' && flow.rateLabel !== 'Stable' && (() => {
-          const rate = flow.changePerHour ?? 0
-          const absRate = Math.abs(rate)
-          const isRising = rate > 0
-          const arrow = isRising ? '\u2191' : '\u2193'
+              Rate unknown:               gray   — gauge data too sparse
+
+            Earlier versions of this hid the row entirely for "Stable"
+            and "Rate unknown" because I thought it would be noise. It
+            backfired — a 2,000 cfs river that's holding steady drifts
+            10 cfs/hour, which is "stable" by the 25 cfs/hr threshold,
+            and users (correctly) interpret a missing line as "broken
+            page" rather than "river is quiet." Always render the row
+            so users know the system saw the data and it's just not
+            changing. */}
+        {flow.cfs !== null && (() => {
+          const rate = flow.changePerHour
+          const isStable = flow.rateLabel === 'Stable'
+          const isUnknown = flow.rateLabel === 'Rate unknown' || rate === null
 
           // Pick color from the spec palette
           let color: string
-          if (isRising) {
-            if (absRate > 300) color = '#A32D2D'        // red — rising fast
-            else if (absRate > 100) color = '#BA7517'   // amber — rising
-            else color = '#3CA86E'                       // light green — rising slowly
+          let arrow = ''
+          if (isUnknown) {
+            color = 'var(--tx3)'
+          } else if (isStable) {
+            color = 'var(--tx3)'  // gray — quiet
+            arrow = '\u2192'      // sideways arrow
           } else {
-            if (absRate > 300) color = '#6E4BB4'        // purple — falling fast
-            else if (absRate > 100) color = '#0C447C'   // blue — falling
-            else color = '#5B8DBF'                       // light blue — falling slowly
+            const absRate = Math.abs(rate ?? 0)
+            const isRising = (rate ?? 0) > 0
+            arrow = isRising ? '\u2191' : '\u2193'
+            if (isRising) {
+              if (absRate > 300) color = '#A32D2D'        // red — rising fast
+              else if (absRate > 100) color = '#BA7517'   // amber — rising
+              else color = '#3CA86E'                       // light green — rising slowly
+            } else {
+              if (absRate > 300) color = '#6E4BB4'        // purple — falling fast
+              else if (absRate > 100) color = '#0C447C'   // blue — falling
+              else color = '#5B8DBF'                       // light blue — falling slowly
+            }
           }
 
           // Tooltip shows the calc context. title attribute renders on
-          // hover for desktop and is screen-reader accessible. A custom
-          // tooltip would be nicer typographically but title is good
-          // enough until we have a real reason to upgrade.
-          const tooltip =
-            `Rate of change calculated from USGS readings over the past hour. ` +
-            `Updated every 15 minutes.\n\n` +
-            `Current: ${rate > 0 ? '+' : ''}${rate.toLocaleString()} cfs/hr` +
-            (flow.changeIn3Hours !== null
-              ? `\n3-hour change: ${flow.changeIn3Hours > 0 ? '+' : ''}${flow.changeIn3Hours.toLocaleString()} cfs total`
-              : '')
+          // hover for desktop and is screen-reader accessible.
+          const tooltip = isUnknown
+            ? 'Rate of change is calculated from USGS readings over the past hour, updated every 15 minutes. This gauge does not currently have enough data points within the comparison window to compute a rate.'
+            : `Rate of change calculated from USGS readings over the past hour. ` +
+              `Updated every 15 minutes.\n\n` +
+              `Current: ${(rate ?? 0) > 0 ? '+' : ''}${(rate ?? 0).toLocaleString()} cfs/hr` +
+              (flow.changeIn3Hours !== null
+                ? `\n3-hour change: ${flow.changeIn3Hours > 0 ? '+' : ''}${flow.changeIn3Hours.toLocaleString()} cfs total`
+                : '')
 
           return (
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '4px', flexWrap: 'wrap' }}>
@@ -230,7 +247,7 @@ export default async function RiverPage({ params }: Props) {
                   display: 'inline-flex', alignItems: 'center', gap: '4px',
                   cursor: 'help',
                 }}>
-                <span style={{ fontSize: '13px' }}>{arrow}</span>
+                {arrow && <span style={{ fontSize: '13px' }}>{arrow}</span>}
                 {flow.rateLabel}
                 <span aria-hidden="true" style={{
                   display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
