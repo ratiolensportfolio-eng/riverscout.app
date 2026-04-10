@@ -12,6 +12,25 @@ interface OwnedListing {
   business_name: string
   tier: string
   active: boolean
+  river_ids?: string[]
+}
+
+// Tell Next.js to bust the cached HTML on every river page this
+// listing covers. The river page has revalidate=900, so without
+// this nudge it would keep serving stale outfitter data for up
+// to 15 minutes after every dashboard save.
+async function bustRiverCache(riverIds: string[] | undefined) {
+  if (!riverIds || riverIds.length === 0) return
+  try {
+    await fetch('/api/revalidate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ riverIds }),
+    })
+  } catch {
+    // Best-effort — a failed revalidation just means the page
+    // updates on its own ISR schedule. Don't bubble the error.
+  }
 }
 
 interface Analytics {
@@ -61,6 +80,10 @@ export default function OutfitterDashboard() {
   // bootstrap and updated by the publish/unpublish toggle.
   const [isActive, setIsActive] = useState<boolean | null>(null)
   const [togglingActive, setTogglingActive] = useState(false)
+  // The river_ids array for the currently selected listing — used
+  // to bust ISR cache on those river pages whenever the listing
+  // changes (image upload, edit save, publish toggle).
+  const [currentRiverIds, setCurrentRiverIds] = useState<string[]>([])
   // Editable text fields — business name, description, website,
   // phone. Loaded alongside the active flag and saved via a single
   // "Save details" button. Form state is held locally so the user
@@ -100,13 +123,14 @@ export default function OutfitterDashboard() {
     try {
       const { data: listing } = await supabase
         .from('outfitters')
-        .select('logo_url, cover_photo_url, active, business_name, description, website, phone')
+        .select('logo_url, cover_photo_url, active, business_name, description, website, phone, river_ids')
         .eq('id', oid)
         .single()
       if (listing) {
         setLogoUrl(listing.logo_url)
         setCoverUrl(listing.cover_photo_url)
         setIsActive(!!listing.active)
+        setCurrentRiverIds(Array.isArray(listing.river_ids) ? listing.river_ids : [])
         setEditForm({
           business_name: listing.business_name || '',
           description: listing.description || '',
@@ -151,10 +175,13 @@ export default function OutfitterDashboard() {
     if (updErr) {
       setEditMsg('Error: ' + updErr.message)
     } else {
-      setEditMsg('Saved \u2014 your river page will reflect the new details on the next refresh.')
+      setEditMsg('Saved \u2014 your river page will refresh shortly.')
       setEditDirty(false)
       // Keep the picker in sync if the business name changed.
       setOwnedListings(prev => prev.map(l => l.id === outfitterId ? { ...l, business_name: name } : l))
+      // Bust the river-page ISR cache so the new details appear
+      // on public pages immediately.
+      bustRiverCache(currentRiverIds)
     }
     setSavingEdit(false)
   }
@@ -177,11 +204,14 @@ export default function OutfitterDashboard() {
     } else {
       setIsActive(next)
       setUploadMsg(next
-        ? 'Published — your listing is now visible on its river page'
-        : 'Unpublished — your listing is now hidden from the public river page')
+        ? 'Published \u2014 your listing is now visible on its river page'
+        : 'Unpublished \u2014 your listing is now hidden from the public river page')
       // Also update the row in ownedListings so the picker reflects
       // the new state without a full re-bootstrap.
       setOwnedListings(prev => prev.map(l => l.id === outfitterId ? { ...l, active: next } : l))
+      // Bust the river-page ISR cache so the listing appears /
+      // disappears on public pages immediately.
+      bustRiverCache(currentRiverIds)
     }
     setTogglingActive(false)
   }
@@ -289,7 +319,33 @@ export default function OutfitterDashboard() {
         .eq('id', outfitterId)
 
       if (updErr) {
-        setUploadMsg('Error: file uploaded but could not link to your listing — ' + updErr.message)
+        setUploadMsg('Error: file uploaded but could not link to your listing \u2014 ' + updErr.message)
+        setUploading(null)
+        e.target.value = ''
+        return
+      }
+
+      // Step 3: read the row back to verify the URL actually
+      // landed in the DB. Supabase RLS update returns no error
+      // when zero rows match the policy — it just silently
+      // updates nothing — so the only way to be sure the write
+      // happened is to re-read. If the verification fails the
+      // user gets a clear, actionable error instead of a fake
+      // success and a stale dashboard on next visit.
+      const { data: verifyRow, error: verifyErr } = await supabase
+        .from('outfitters')
+        .select(updateField)
+        .eq('id', outfitterId)
+        .single()
+
+      const savedUrl = (verifyRow as Record<string, string | null> | null)?.[updateField]
+      if (verifyErr || savedUrl !== data.url) {
+        console.error('[outfitter upload] verification failed', { verifyErr, savedUrl, expected: data.url })
+        setUploadMsg(
+          'Error: upload reached storage but the listing row didn\u2019t update. ' +
+          'This usually means your auth session expired \u2014 sign out and back in, then try again. ' +
+          (verifyErr ? `(${verifyErr.message})` : '')
+        )
         setUploading(null)
         e.target.value = ''
         return
@@ -297,7 +353,12 @@ export default function OutfitterDashboard() {
 
       if (type === 'logo') setLogoUrl(data.url)
       else setCoverUrl(data.url)
-      setUploadMsg(`${type === 'logo' ? 'Logo' : 'Cover photo'} saved — visible on the river page on the next refresh.`)
+      setUploadMsg(`${type === 'logo' ? 'Logo' : 'Cover photo'} saved \u2014 your river page will refresh shortly.`)
+
+      // Bust the river-page ISR cache so the photo appears on
+      // public pages immediately rather than after the 15-minute
+      // revalidate window.
+      bustRiverCache(currentRiverIds)
     } catch {
       setUploadMsg('Error: Network error')
     }
