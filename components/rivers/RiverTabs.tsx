@@ -782,31 +782,80 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                   </div>
                 ))}
 
-                {/* Listed outfitters (from Supabase) */}
-                {listed.map(o => (
-                  <div key={o.id} style={{
-                    border: '.5px solid var(--bd)', borderRadius: 'var(--r)',
-                    padding: '9px 11px', background: 'var(--bg2)', marginBottom: '6px',
-                    position: 'relative',
-                  }}>
-                    <span style={{
-                      position: 'absolute', top: '6px', right: '8px',
-                      fontFamily: "'IBM Plex Mono', monospace", fontSize: '7px',
-                      padding: '1px 5px', borderRadius: '5px',
-                      background: 'var(--bg3, #e8e8e8)', color: 'var(--tx3)',
-                      textTransform: 'uppercase', letterSpacing: '.4px',
-                    }}>Listed</span>
-                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', fontWeight: 500, color: 'var(--rvdk)', paddingRight: '46px' }}>{o.business_name}</div>
-                    {o.website && (
-                      <a href={o.website.startsWith('http') ? o.website : `https://${o.website}`}
-                        target="_blank" rel="noopener noreferrer"
-                        onClick={() => trackClick(o.id, 'outfitters_tab')}
-                        style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--rv)', textDecoration: 'none' }}>
-                        {o.website.replace(/^https?:\/\//, '')}
-                      </a>
-                    )}
-                  </div>
-                ))}
+                {/* Listed outfitters (from Supabase) — render logo,
+                    cover photo, description, phone, and website. The
+                    earlier minimalist version only showed the business
+                    name + website, which meant uploaded logos and
+                    cover photos never appeared on the public page. */}
+                {listed.map(o => {
+                  // Validate the website looks like a real URL/domain
+                  // before rendering it as a link. Owners sometimes
+                  // enter their business name in the website field by
+                  // mistake; the old code blindly prepended `https://`
+                  // and produced 404s like `https://Pine River ...`.
+                  // Heuristic: must contain a dot, no spaces, and at
+                  // least one character on each side of a dot.
+                  const websiteLooksValid = !!o.website
+                    && !/\s/.test(o.website)
+                    && /[a-z0-9-]+\.[a-z]{2,}/i.test(o.website)
+                  const websiteHref = websiteLooksValid
+                    ? (o.website!.startsWith('http') ? o.website! : `https://${o.website!}`)
+                    : null
+
+                  return (
+                    <div key={o.id} style={{
+                      border: '.5px solid var(--bd)', borderRadius: 'var(--r)',
+                      padding: '12px', background: 'var(--bg2)', marginBottom: '8px',
+                      position: 'relative',
+                    }}>
+                      <span style={{
+                        position: 'absolute', top: '8px', right: '10px',
+                        fontFamily: "'IBM Plex Mono', monospace", fontSize: '7px',
+                        padding: '1px 6px', borderRadius: '5px',
+                        background: 'var(--bg3, #e8e8e8)', color: 'var(--tx3)',
+                        textTransform: 'uppercase', letterSpacing: '.4px',
+                      }}>Listed</span>
+
+                      {o.cover_photo_url && (
+                        <img src={o.cover_photo_url} alt={o.business_name} loading="lazy" decoding="async"
+                          style={{ width: '100%', height: '90px', objectFit: 'cover', borderRadius: '4px', marginBottom: '8px' }} />
+                      )}
+
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px', paddingRight: '46px' }}>
+                        {o.logo_url && (
+                          <img src={o.logo_url} alt="" loading="lazy" decoding="async"
+                            style={{ width: '32px', height: '32px', borderRadius: '4px', objectFit: 'contain', border: '.5px solid var(--bd)', flexShrink: 0 }} />
+                        )}
+                        <div>
+                          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', fontWeight: 600, color: 'var(--rvdk)' }}>{o.business_name}</div>
+                          {o.phone && <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginTop: '1px' }}>{o.phone}</div>}
+                        </div>
+                      </div>
+
+                      {o.description && (
+                        <div style={{ fontSize: '11px', color: 'var(--tx2)', lineHeight: 1.5, marginTop: '6px', marginBottom: o.website ? '8px' : '0' }}>
+                          {o.description}
+                        </div>
+                      )}
+
+                      {websiteHref ? (
+                        <a href={websiteHref}
+                          target="_blank" rel="noopener noreferrer"
+                          onClick={() => trackClick(o.id, 'outfitters_tab')}
+                          style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--rv)', textDecoration: 'none' }}>
+                          {o.website!.replace(/^https?:\/\//, '')} &rarr;
+                        </a>
+                      ) : o.website ? (
+                        // Owner-entered something in the website field
+                        // that doesn't look like a URL — show it as
+                        // plain text instead of producing a 404 link.
+                        <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>
+                          {o.website}
+                        </div>
+                      ) : null}
+                    </div>
+                  )
+                })}
 
                 {/* Seed outfitters (from static data — shown if no DB outfitters) */}
                 {outfitters.length === 0 && river.outs.map((out, i) => (

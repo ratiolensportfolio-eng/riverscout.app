@@ -85,6 +85,16 @@ export default function OutfitterJoin() {
       setError('Business name, email, and at least one river are required')
       return
     }
+    // Validate the website looks like a URL/domain so it doesn't
+    // 404 when rendered as a link on the river page. Owners
+    // sometimes paste their business name in this field by mistake.
+    // The check is intentionally lenient — we accept anything with
+    // a dot and no spaces.
+    const w = form.website.trim()
+    if (w && (/\s/.test(w) || !/[a-z0-9-]+\.[a-z]{2,}/i.test(w))) {
+      setError('Website doesn\u2019t look like a valid URL. Use something like thepineriver.com or https://thepineriver.com (or leave it blank).')
+      return
+    }
     setSubmitting(true)
     setError('')
 
