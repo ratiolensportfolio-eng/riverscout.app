@@ -55,17 +55,15 @@ export async function POST(req: NextRequest) {
 
     const publicUrl = urlData.publicUrl
 
-    // Update the outfitter record with the new URL
-    const updateField = imageType === 'logo' ? 'logo_url' : 'cover_photo_url'
-    const { error: updateErr } = await supabase
-      .from('outfitters')
-      .update({ [updateField]: publicUrl, updated_at: new Date().toISOString() })
-      .eq('id', outfitterId)
-
-    if (updateErr) {
-      console.error('DB update error:', updateErr)
-      return NextResponse.json({ error: 'File uploaded but failed to update listing' }, { status: 500 })
-    }
+    // NOTE: we used to update outfitters.logo_url / cover_photo_url
+    // here from the server, but the server client is anon-keyed and
+    // the outfitters UPDATE policy gates on auth.uid() = user_id.
+    // Anon has no auth.uid(), so the update silently matched zero
+    // rows and returned no error — files landed in storage but the
+    // listing row never got the URL, so the river page rendered
+    // without the image. The browser dashboard now writes the URL
+    // back to the row itself via the browser supabase client (which
+    // does carry the auth cookie). The route just returns the URL.
 
     return NextResponse.json({ ok: true, url: publicUrl, type: imageType })
   } catch (err) {

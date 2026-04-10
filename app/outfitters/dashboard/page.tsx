@@ -263,15 +263,41 @@ export default function OutfitterDashboard() {
     formData.append('type', type)
 
     try {
+      // Step 1: upload the file. The route just stores it in
+      // Supabase Storage and returns the public URL — it does NOT
+      // touch the outfitters row anymore (the anon-keyed server
+      // client can't pass the auth.uid()=user_id RLS gate, so the
+      // old write-from-route silently failed and the river page
+      // saw null URLs).
       const res = await fetch('/api/outfitters/upload', { method: 'POST', body: formData })
       const data = await res.json()
-      if (data.ok) {
-        if (type === 'logo') setLogoUrl(data.url)
-        else setCoverUrl(data.url)
-        setUploadMsg(`${type === 'logo' ? 'Logo' : 'Cover photo'} updated!`)
-      } else {
+      if (!data.ok) {
         setUploadMsg('Error: ' + (data.error || 'Upload failed'))
+        setUploading(null)
+        e.target.value = ''
+        return
       }
+
+      // Step 2: write the URL to the outfitters row from the
+      // browser client. The browser carries the auth cookie, so
+      // the existing "Outfitters manage own listing" UPDATE
+      // policy lets the owner update their own row.
+      const updateField = type === 'logo' ? 'logo_url' : 'cover_photo_url'
+      const { error: updErr } = await supabase
+        .from('outfitters')
+        .update({ [updateField]: data.url, updated_at: new Date().toISOString() })
+        .eq('id', outfitterId)
+
+      if (updErr) {
+        setUploadMsg('Error: file uploaded but could not link to your listing — ' + updErr.message)
+        setUploading(null)
+        e.target.value = ''
+        return
+      }
+
+      if (type === 'logo') setLogoUrl(data.url)
+      else setCoverUrl(data.url)
+      setUploadMsg(`${type === 'logo' ? 'Logo' : 'Cover photo'} saved — visible on the river page on the next refresh.`)
     } catch {
       setUploadMsg('Error: Network error')
     }
@@ -574,8 +600,16 @@ export default function OutfitterDashboard() {
                 <div>
                   <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', marginBottom: '6px' }}>Logo</div>
                   {logoUrl ? (
-                    <div style={{ position: 'relative', marginBottom: '6px' }}>
+                    <div style={{ position: 'relative', marginBottom: '6px', width: '80px' }}>
                       <img src={logoUrl} alt="Logo" style={{ width: '80px', height: '80px', objectFit: 'contain', borderRadius: '8px', border: '.5px solid var(--bd)' }} />
+                      <span title="Saved to your listing" style={{
+                        position: 'absolute', top: '-4px', right: '-4px',
+                        width: '18px', height: '18px', borderRadius: '50%',
+                        background: 'var(--rv)', color: '#fff',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        fontSize: '11px', fontWeight: 700, lineHeight: 1,
+                        border: '1.5px solid var(--bg)',
+                      }}>&#10003;</span>
                     </div>
                   ) : (
                     <div style={{ width: '80px', height: '80px', borderRadius: '8px', background: 'var(--bg3)', border: '.5px dashed var(--bd2)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '6px' }}>
@@ -593,7 +627,12 @@ export default function OutfitterDashboard() {
                       onChange={e => handleImageUpload(e, 'logo')}
                       style={{ display: 'none' }} />
                   </label>
-                  <div style={{ fontFamily: mono, fontSize: '8px', color: 'var(--tx3)', marginTop: '4px' }}>Max 5MB · Square recommended</div>
+                  {logoUrl && (
+                    <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--rv)', marginTop: '4px', fontWeight: 600 }}>
+                      &#10003; Saved &mdash; visible on river page
+                    </div>
+                  )}
+                  <div style={{ fontFamily: mono, fontSize: '8px', color: 'var(--tx3)', marginTop: '4px' }}>Auto-saves on upload &middot; Max 5MB &middot; Square recommended</div>
                 </div>
 
                 {/* Cover photo upload */}
@@ -602,6 +641,14 @@ export default function OutfitterDashboard() {
                   {coverUrl ? (
                     <div style={{ position: 'relative', marginBottom: '6px' }}>
                       <img src={coverUrl} alt="Cover" style={{ width: '100%', height: '80px', objectFit: 'cover', borderRadius: '8px', border: '.5px solid var(--bd)' }} />
+                      <span title="Saved to your listing" style={{
+                        position: 'absolute', top: '-4px', right: '-4px',
+                        width: '18px', height: '18px', borderRadius: '50%',
+                        background: 'var(--rv)', color: '#fff',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        fontSize: '11px', fontWeight: 700, lineHeight: 1,
+                        border: '1.5px solid var(--bg)',
+                      }}>&#10003;</span>
                     </div>
                   ) : (
                     <div style={{ width: '100%', height: '80px', borderRadius: '8px', background: 'var(--bg3)', border: '.5px dashed var(--bd2)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '6px' }}>
@@ -619,7 +666,12 @@ export default function OutfitterDashboard() {
                       onChange={e => handleImageUpload(e, 'cover')}
                       style={{ display: 'none' }} />
                   </label>
-                  <div style={{ fontFamily: mono, fontSize: '8px', color: 'var(--tx3)', marginTop: '4px' }}>Max 10MB · 16:9 landscape recommended</div>
+                  {coverUrl && (
+                    <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--rv)', marginTop: '4px', fontWeight: 600 }}>
+                      &#10003; Saved &mdash; visible on river page
+                    </div>
+                  )}
+                  <div style={{ fontFamily: mono, fontSize: '8px', color: 'var(--tx3)', marginTop: '4px' }}>Auto-saves on upload &middot; Max 10MB &middot; 16:9 landscape recommended</div>
                 </div>
               </div>
 
