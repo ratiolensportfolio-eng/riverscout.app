@@ -24,7 +24,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
       { name: 'March Brown / Grey Drake', timing: 'May–June' },
       { name: 'Brown Drake', timing: 'Late May – Mid June' },
       { name: 'Sulfur', timing: 'Late May – June' },
-      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July', notes: 'The legendary night hatch — largest mayfly in North America. Brings out trophy browns after dark.' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Mid July', notes: 'Triggered when water temperature reaches 60°F. The legendary night hatch — largest mayfly in North America. Brings out trophy browns after dark.' },
       { name: 'Trico', timing: 'July–September', notes: 'Early morning spinner falls' },
       { name: 'White Fly', timing: 'July–August' },
       { name: 'Terrestrials (hoppers, ants, beetles)', timing: 'July–September' },
@@ -53,7 +53,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
       { name: 'Hendrickson', timing: 'Late April – Mid May' },
       { name: 'Caddis', timing: 'May–June' },
       { name: 'Sulfur', timing: 'Late May – June' },
-      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Mid July', notes: 'Triggered when water temperature reaches 60°F. The legendary night hatch — largest mayfly in North America. Brings out trophy browns after dark.' },
       { name: 'Terrestrials', timing: 'July–September' },
     ],
     runs: [],
@@ -109,11 +109,12 @@ export const FISHERIES: Record<string, RiverFisheries> = {
   manistee: {
     species: [
       { name: 'Brown Trout', type: 'resident', primary: true },
-      { name: 'Steelhead', type: 'anadromous', primary: true, notes: 'World-class runs below Tippy Dam' },
-      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'Fall run below Tippy Dam' },
+      { name: 'Steelhead', type: 'anadromous', primary: true, notes: 'World-class runs below Tippy Dam — 15,000+ steelhead return annually' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'Fall run below Tippy Dam — kings to 30+ lbs' },
       { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Upper river sections' },
     ],
     designations: ['Michigan Blue-Ribbon Trout Stream', 'National Scenic River'],
+    optimalFishingCfs: '500–2500',
     spawning: [
       { species: 'Brown Trout', season: 'October–November' },
       { species: 'Steelhead', season: 'March–April' },
@@ -122,7 +123,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
       { name: 'Hendrickson', timing: 'Late April – Mid May' },
       { name: 'Caddis', timing: 'May–June' },
       { name: 'Brown Drake', timing: 'Late May – Mid June' },
-      { name: 'Hex', timing: 'Late June – Early July' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Mid July', notes: 'Triggered when water temperature reaches 60°F. The legendary night hatch — largest mayfly in North America. Brings out trophy browns after dark.' },
       { name: 'Trico', timing: 'July–September' },
     ],
     runs: [
@@ -274,6 +275,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
       { name: 'Coho Salmon', type: 'anadromous', primary: false },
     ],
     designations: ['Michigan Blue-Ribbon Trout Stream', 'National Wild & Scenic River', "Fly-Fishing-Only section (72nd St to Gleason's Landing)"],
+    optimalFishingCfs: '300–1200',
     spawning: [
       { species: 'Brown Trout', season: 'October–November' },
       { species: 'Steelhead', season: 'March–April' },
@@ -285,7 +287,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
       { name: 'Caddis', timing: 'May–June' },
       { name: 'Sulfur', timing: 'Late May – June' },
       { name: 'Brown Drake', timing: 'Late May – Mid June' },
-      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July', notes: 'Major night hatch on the PM' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Mid July', notes: 'Triggered when water temperature reaches 60°F. Major night hatch on the PM — brings out trophy browns after dark.' },
       { name: 'Trico', timing: 'July–September' },
       { name: 'Terrestrials', timing: 'July–September' },
     ],
@@ -306,6 +308,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
       { name: 'Smallmouth Bass', type: 'warmwater', primary: false },
     ],
     designations: ['Michigan Blue-Ribbon Trout Stream (below Croton Dam)'],
+    optimalFishingCfs: '1200–3500',
     spawning: [
       { species: 'Brown Trout', season: 'October–November' },
       { species: 'Steelhead', season: 'March–April' },
@@ -314,7 +317,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
     hatches: [
       { name: 'Blue-Winged Olive (BWO)', timing: 'April–May, September–October' },
       { name: 'Caddis', timing: 'May–June' },
-      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Mid July', notes: 'Triggered when water temperature reaches 60°F. The legendary night hatch — largest mayfly in North America. Brings out trophy browns after dark.' },
       { name: 'Terrestrials', timing: 'July–September' },
     ],
     runs: [
@@ -340,7 +343,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
       { name: 'Hendrickson', timing: 'Late April – Mid May' },
       { name: 'Caddis', timing: 'May–June' },
       { name: 'Sulfur', timing: 'Late May – June' },
-      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Mid July', notes: 'Triggered when water temperature reaches 60°F. The legendary night hatch — largest mayfly in North America. Brings out trophy browns after dark.' },
       { name: 'Terrestrials', timing: 'July–September' },
     ],
     runs: [],
@@ -363,7 +366,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
       { name: 'Hendrickson', timing: 'Late April – Mid May' },
       { name: 'Caddis', timing: 'May–June' },
       { name: 'Sulfur', timing: 'Late May – June' },
-      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Mid July', notes: 'Triggered when water temperature reaches 60°F. The legendary night hatch — largest mayfly in North America. Brings out trophy browns after dark.' },
       { name: 'Terrestrials', timing: 'July–September' },
     ],
     runs: [],
@@ -378,18 +381,19 @@ export const FISHERIES: Record<string, RiverFisheries> = {
       { name: 'Brown Trout', type: 'resident', primary: false },
     ],
     designations: ['Michigan Natural River'],
+    optimalFishingCfs: '150–800',
     spawning: [
       { species: 'Steelhead', season: 'March–April' },
       { species: 'Chinook Salmon', season: 'September–October' },
     ],
     hatches: [
       { name: 'Caddis', timing: 'May–June' },
-      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Mid July', notes: 'Triggered when water temperature reaches 60°F. The legendary night hatch — largest mayfly in North America. Brings out trophy browns after dark.' },
     ],
     runs: [
-      { species: 'Chinook Salmon', timing: 'September – October', peak: 'Late September' },
+      { species: 'Chinook Salmon', timing: 'September – October', peak: 'Late September', notes: 'One of the most reliable Lake Michigan king runs in northern Michigan; concentrated in the lower river above Crystal Lake' },
       { species: 'Coho Salmon', timing: 'September – November', peak: 'October' },
-      { species: 'Steelhead', timing: 'October – April', peak: 'November and March' },
+      { species: 'Steelhead', timing: 'October – April', peak: 'November and March', notes: 'Both fall and spring runs from Lake Michigan' },
     ],
     guides: ['Betsie River Outfitters'],
   },
@@ -499,7 +503,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
     hatches: [
       { name: 'Blue-Winged Olive (BWO)', timing: 'May–June, September' },
       { name: 'Caddis', timing: 'May–June' },
-      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Mid July', notes: 'Triggered when water temperature reaches 60°F. The legendary night hatch — largest mayfly in North America. Brings out trophy browns after dark.' },
       { name: 'Terrestrials', timing: 'July–September' },
     ],
     runs: [
@@ -1788,7 +1792,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
       { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
       { name: 'Hendrickson', timing: 'Late April – Mid May' },
       { name: 'Caddis', timing: 'May–June' },
-      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Mid July', notes: 'Triggered when water temperature reaches 60°F. The legendary night hatch — largest mayfly in North America. Brings out trophy browns after dark.' },
       { name: 'Trico', timing: 'July–September' },
     ],
     runs: [],
@@ -1808,7 +1812,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
     hatches: [
       { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
       { name: 'Caddis', timing: 'May–June' },
-      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Mid July', notes: 'Triggered when water temperature reaches 60°F. The legendary night hatch — largest mayfly in North America. Brings out trophy browns after dark.' },
     ],
     runs: [],
     guides: [],
@@ -1840,7 +1844,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
     hatches: [
       { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
       { name: 'Caddis', timing: 'May–June' },
-      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Mid July', notes: 'Triggered when water temperature reaches 60°F. The legendary night hatch — largest mayfly in North America. Brings out trophy browns after dark.' },
     ],
     runs: [],
     guides: [],
@@ -1933,7 +1937,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
     hatches: [
       { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
       { name: 'Caddis', timing: 'May–June' },
-      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Mid July', notes: 'Triggered when water temperature reaches 60°F. The legendary night hatch — largest mayfly in North America. Brings out trophy browns after dark.' },
     ],
     runs: [],
     guides: [],
@@ -2000,7 +2004,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
       { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
       { name: 'Hendrickson', timing: 'Late April – Mid May' },
       { name: 'Caddis', timing: 'May–June' },
-      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Mid July', notes: 'Triggered when water temperature reaches 60°F. The legendary night hatch — largest mayfly in North America. Brings out trophy browns after dark.' },
     ],
     runs: [],
     guides: [],
@@ -2035,7 +2039,7 @@ export const FISHERIES: Record<string, RiverFisheries> = {
     hatches: [
       { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
       { name: 'Caddis', timing: 'May–June' },
-      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Early July' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Mid July', notes: 'Triggered when water temperature reaches 60°F. The legendary night hatch — largest mayfly in North America. Brings out trophy browns after dark.' },
     ],
     runs: [],
     guides: [],
@@ -5031,4 +5035,669 @@ export const FISHERIES: Record<string, RiverFisheries> = {
     runs: [],
     guides: [],
   },
+
+  // ── Batch added 2026-04-10: 30 new rivers from this session ──
+  // 10 East-coast (commit e7927b3) + 20 Appalachian fishing rivers
+  // (commit 27adabc). Each entry includes optimalFishingCfs in
+  // string min-max format (matches the existing schema).
+
+  // ── East-coast batch (10 rivers) ──
+
+  charles_ma: {
+    species: [
+      { name: 'Largemouth Bass', type: 'warmwater', primary: true },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: false },
+      { name: 'Bluegill', type: 'warmwater', primary: false },
+      { name: 'Carp', type: 'warmwater', primary: false },
+      { name: 'White Perch', type: 'warmwater', primary: false },
+    ],
+    designations: ['Charles River Watershed Heritage'],
+    optimalFishingCfs: '100–500',
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  sudbury_ma: {
+    species: [
+      { name: 'Largemouth Bass', type: 'warmwater', primary: true },
+      { name: 'Northern Pike', type: 'warmwater', primary: true },
+      { name: 'Pickerel', type: 'warmwater', primary: false },
+      { name: 'Bluegill', type: 'warmwater', primary: false },
+      { name: 'Yellow Perch', type: 'warmwater', primary: false },
+    ],
+    designations: ['National Wild & Scenic River (1999)', 'Great Meadows National Wildlife Refuge'],
+    optimalFishingCfs: '80–400',
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  allegheny: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true, notes: 'World-class smallmouth fishery in the Wild & Scenic reach' },
+      { name: 'Muskellunge', type: 'warmwater', primary: true },
+      { name: 'Walleye', type: 'warmwater', primary: false },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+      { name: 'Northern Pike', type: 'warmwater', primary: false },
+    ],
+    designations: ['National Wild & Scenic River (1992)', 'Allegheny National Forest'],
+    optimalFishingCfs: '1500–6000',
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  mohawk: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Walleye', type: 'warmwater', primary: true },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+      { name: 'Northern Pike', type: 'warmwater', primary: false },
+      { name: 'Carp', type: 'warmwater', primary: false },
+    ],
+    designations: ['Erie Canalway National Heritage Corridor'],
+    optimalFishingCfs: '500–3000',
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  genesee: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Steelhead', type: 'anadromous', primary: true, notes: 'Lake Ontario steelhead run into the lower Genesee fall through spring' },
+      { name: 'Brown Trout', type: 'anadromous', primary: false, notes: 'Lake Ontario lake-run browns' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: false },
+      { name: 'Walleye', type: 'warmwater', primary: false },
+    ],
+    designations: ['Letchworth State Park', 'NY State Scenic River'],
+    optimalFishingCfs: '400–2500',
+    spawning: [],
+    hatches: [],
+    runs: [
+      { species: 'Steelhead', timing: 'October–April', peak: 'November–March', notes: 'Lake Ontario steelhead run into lower Genesee from the lake' },
+      { species: 'Chinook Salmon', timing: 'September–November', peak: 'October' },
+    ],
+    guides: [],
+  },
+
+  tellico_tn: {
+    species: [
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'TWRA stocks 90,000+ trout annually' },
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Native Southern Appalachian brook trout in headwater tributaries' },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: false, notes: 'Lower river' },
+    ],
+    designations: ['Cherokee National Forest', 'TWRA Trophy Trout Water'],
+    optimalFishingCfs: '150–800',
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Rainbow Trout', season: 'February–April' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive', timing: 'March–April, October' },
+      { name: 'Quill Gordon', timing: 'March–April' },
+      { name: 'Hendrickson', timing: 'April' },
+      { name: 'Yellow Sally Stonefly', timing: 'May–June' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Light Cahill', timing: 'June' },
+      { name: 'Terrestrials (ants, beetles, hoppers)', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  holston: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Self-sustaining wild population — TVA tailwater' },
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'TWRA stocks 80,000+ annually' },
+    ],
+    designations: ['TVA Tailwater', 'TWRA Trophy Trout Water'],
+    optimalFishingCfs: '200–1500',
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December', notes: 'Wild browns spawn in tailwater gravel' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive', timing: 'March–April, October–November' },
+      { name: 'Sulfur', timing: 'May–June', notes: 'The South Holston signature hatch — most consistent and predictable in the region' },
+      { name: 'Caddis', timing: 'April–June' },
+      { name: 'Midges', timing: 'Year-round', notes: 'Year-round midge fishing in the cold tailwater' },
+      { name: 'Terrestrials (ants, beetles, hoppers)', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  clinch_va: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Muskellunge', type: 'warmwater', primary: true, notes: 'Self-sustaining muskie population — one of the few in the southeast' },
+      { name: 'Redbreast Sunfish', type: 'warmwater', primary: false },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+      { name: 'Walleye', type: 'warmwater', primary: false },
+    ],
+    designations: ['American Heritage River (1998)', 'Clinch River State Park'],
+    optimalFishingCfs: '300–1500',
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  rapidan: {
+    species: [
+      { name: 'Brook Trout', type: 'resident', primary: true, notes: 'Native Southern Appalachian brook trout in Shenandoah NP headwaters' },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true, notes: 'Lower piedmont reaches' },
+      { name: 'Rainbow Trout', type: 'resident', primary: false, notes: 'Stocked seasonally in middle reaches' },
+      { name: 'Redbreast Sunfish', type: 'warmwater', primary: false },
+    ],
+    designations: ['Shenandoah National Park (headwaters)', 'Rapidan Wildlife Management Area'],
+    optimalFishingCfs: '100–800',
+    spawning: [
+      { species: 'Brook Trout', season: 'September–November', notes: 'Native brookies spawn in SNP headwaters' },
+    ],
+    hatches: [
+      { name: 'Blue Quill', timing: 'April' },
+      { name: 'Quill Gordon', timing: 'April' },
+      { name: 'Hendrickson', timing: 'April–May' },
+      { name: 'March Brown', timing: 'May' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Yellow Sally Stonefly', timing: 'May–June' },
+      { name: 'Terrestrials', timing: 'June–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  patapsco: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Brown Trout', type: 'resident', primary: false, notes: 'MDNR stocks the Patapsco Valley State Park reach' },
+      { name: 'Largemouth Bass', type: 'warmwater', primary: false },
+      { name: 'Rock Bass', type: 'warmwater', primary: false },
+      { name: 'American Shad', type: 'anadromous', primary: false, notes: 'Returning since 2018 Bloede Dam removal' },
+      { name: 'Alewife', type: 'anadromous', primary: false, notes: 'Returning since 2018 Bloede Dam removal' },
+    ],
+    designations: ['Patapsco Valley State Park', 'Maryland Scenic River'],
+    optimalFishingCfs: '100–500',
+    spawning: [
+      { species: 'American Shad', season: 'April–May', notes: 'First runs since the 2018 Bloede Dam removal' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'American Shad', timing: 'April–May', notes: 'Returning runs after Bloede Dam removal in 2018 reopened 65+ mi of habitat' },
+    ],
+    guides: [],
+  },
+
+  // ── Appalachian batch (20 rivers) ──
+
+  penns_creek: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Class A wild brown trout — large fish in the limestone water' },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Tributaries' },
+    ],
+    designations: ['PA Class A Wild Trout', 'Bald Eagle State Forest'],
+    optimalFishingCfs: '150–700',
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December', notes: 'Wild browns spawn in the limestone gravel' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive', timing: 'March–May, September–October' },
+      { name: 'Hendrickson', timing: 'April' },
+      { name: 'Grannom Caddis', timing: 'April–May' },
+      { name: 'March Brown', timing: 'May' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Green Drake (Ephemera guttulata)', timing: 'Late May – Mid June', notes: 'The legendary Penns Creek green drake — one of the great hatches in American fly fishing. Brings out trophy browns from undercut banks.' },
+      { name: 'Slate Drake', timing: 'June' },
+      { name: 'Trico', timing: 'July–August' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  spring_creek_pa: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Highest density wild brown trout in PA — over 4,000 trout per mile in some sections' },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+    ],
+    designations: ['PA Class A Wild Trout', 'Catch-and-Release', 'No Harvest', 'Fisherman\u2019s Paradise (1957)'],
+    optimalFishingCfs: '60–250',
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive', timing: 'March–May, September–October' },
+      { name: 'Hendrickson', timing: 'April' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Caddis', timing: 'April–June' },
+      { name: 'Trico', timing: 'July–August', notes: 'Famous Spring Creek trico spinner falls' },
+      { name: 'Midges', timing: 'Year-round', notes: 'Cold spring water supports midges all year' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  slate_run_pa: {
+    species: [
+      { name: 'Brook Trout', type: 'resident', primary: true, notes: 'Native Eastern brook trout in headwater tributaries' },
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Wild browns dominate the middle and lower run' },
+    ],
+    designations: ['PA Heritage Trout Angling Stream', 'Catch-and-Release Fly Fishing Only'],
+    optimalFishingCfs: '50–250',
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive', timing: 'April–May, September' },
+      { name: 'Hendrickson', timing: 'April–May' },
+      { name: 'Grannom Caddis', timing: 'April–May' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Light Cahill', timing: 'June' },
+      { name: 'Slate Drake', timing: 'June–July' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  brodhead_pa: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Mix of wild and stocked' },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Tributaries' },
+    ],
+    designations: ['Brodhead Watershed Association', 'Pocono Fly Fishing Heritage'],
+    optimalFishingCfs: '100–500',
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive', timing: 'March–May, September–October' },
+      { name: 'Hendrickson', timing: 'April' },
+      { name: 'Grannom Caddis', timing: 'April–May' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Green Drake', timing: 'Late May – Mid June' },
+      { name: 'Light Cahill', timing: 'June' },
+      { name: 'Trico', timing: 'July–August' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  abrams_creek_tn: {
+    species: [
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Wild population through Cades Cove' },
+      { name: 'Brook Trout', type: 'resident', primary: true, notes: 'Native Southern Appalachian brook trout in headwaters and restoration tributaries' },
+    ],
+    designations: ['Great Smoky Mountains National Park', 'Native Brook Trout Restoration Stream'],
+    optimalFishingCfs: '40–200',
+    spawning: [
+      { species: 'Brook Trout', season: 'October–November', notes: 'Native brookies in headwater restoration sections' },
+      { species: 'Rainbow Trout', season: 'February–April' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive', timing: 'March–April' },
+      { name: 'Quill Gordon', timing: 'March–April' },
+      { name: 'Hendrickson', timing: 'April' },
+      { name: 'Yellow Sally Stonefly', timing: 'May–June' },
+      { name: 'Light Cahill', timing: 'June' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  citico_creek_tn: {
+    species: [
+      { name: 'Brook Trout', type: 'resident', primary: true, notes: 'Native Southern Appalachian brook trout above the falls' },
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Wild rainbows below the falls' },
+    ],
+    designations: ['Citico Creek Wilderness', 'Cherokee National Forest', 'Native Brook Trout Stream'],
+    optimalFishingCfs: '30–180',
+    spawning: [
+      { species: 'Brook Trout', season: 'October–November' },
+      { species: 'Rainbow Trout', season: 'February–April' },
+    ],
+    hatches: [
+      { name: 'Quill Gordon', timing: 'March–April' },
+      { name: 'Blue-Winged Olive', timing: 'March–May' },
+      { name: 'Hendrickson', timing: 'April' },
+      { name: 'Yellow Sally Stonefly', timing: 'May–June' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  clinch_norris_tn: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Self-sustaining wild population — state record fish over 28 lbs' },
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Heavily stocked' },
+    ],
+    designations: ['TVA Tailwater', 'TWRA Trophy Trout Water', 'Norris Dam State Park'],
+    optimalFishingCfs: '300–2500',
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December', notes: 'Wild browns spawn in the cold tailwater gravels' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive', timing: 'March–May, September–November' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Caddis', timing: 'April–June' },
+      { name: 'Midges', timing: 'Year-round', notes: 'Critical year-round food source in the cold tailwater' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  mossy_creek_va: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Trophy wild browns up to 10 lbs in fewer than 10 mi of fishable water' },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Headwater tributaries' },
+    ],
+    designations: ['VA Heritage Trout Water', 'Catch-and-Release', 'Fly Fishing Only'],
+    optimalFishingCfs: '20–120',
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive', timing: 'March–May, September–October' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Caddis', timing: 'April–June' },
+      { name: 'Midges', timing: 'Year-round', notes: 'Cold spring water supports midges all year' },
+      { name: 'Terrestrials (cricket, beetle, ant)', timing: 'June–September', notes: 'Trophy browns key on terrestrials in summer' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  jackson_river_va: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Wild browns in cold tailwater' },
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Stocked and holdover' },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: false, notes: 'Lower river' },
+    ],
+    designations: ['VA Stocked Trout Water', 'USACE Gathright Dam Tailwater', 'Lake Moomaw'],
+    optimalFishingCfs: '300–1500',
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive', timing: 'March–May, September–November' },
+      { name: 'Hendrickson', timing: 'April' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Caddis', timing: 'April–June' },
+      { name: 'Light Cahill', timing: 'June' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  south_river_va: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Wild browns in the Waynesboro C&R section' },
+      { name: 'Rainbow Trout', type: 'resident', primary: false, notes: 'Stocked' },
+    ],
+    designations: ['VA Heritage Trout Water', 'South River Catch-and-Release', 'Urban Trout Stream'],
+    optimalFishingCfs: '50–300',
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive', timing: 'March–May, September–October' },
+      { name: 'Hendrickson', timing: 'April' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Caddis', timing: 'April–June' },
+      { name: 'Trico', timing: 'July–August' },
+      { name: 'Terrestrials', timing: 'June–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  cumberland_wolf_ky: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Self-sustaining wild population — multiple state records over 21 lbs' },
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Heavily stocked' },
+      { name: 'Cutthroat Trout', type: 'resident', primary: false, notes: 'Stocked experimentally' },
+    ],
+    designations: ['USACE Tailwater', 'KDFWR Trophy Trout Fishery', 'Wolf Creek National Fish Hatchery'],
+    optimalFishingCfs: '500–4000',
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December', notes: 'Wild browns spawn in the tailwater gravels — strict slot limit protects spawners' },
+    ],
+    hatches: [
+      { name: 'Midges', timing: 'Year-round', notes: 'Primary food source in the cold tailwater' },
+      { name: 'Blue-Winged Olive', timing: 'March–May, October–November' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Caddis', timing: 'April–June' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  hatchery_creek_ky: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Self-sustaining wild population — fish escape from hatchery raceways and reproduce in engineered gravels' },
+      { name: 'Rainbow Trout', type: 'resident', primary: true },
+    ],
+    designations: ['KDFWR Trophy Trout Fishery', 'USFWS Wolf Creek NFH', 'Catch-and-Release'],
+    optimalFishingCfs: '15–60',
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Rainbow Trout', season: 'February–April' },
+    ],
+    hatches: [
+      { name: 'Midges', timing: 'Year-round' },
+      { name: 'Blue-Winged Olive', timing: 'March–May' },
+      { name: 'Caddis', timing: 'April–June' },
+      { name: 'Sulfur', timing: 'May–June' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  hazel_creek_nc: {
+    species: [
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Wild rainbows throughout main creek' },
+      { name: 'Brook Trout', type: 'resident', primary: true, notes: 'Native Southern Appalachian brook trout in highest tributaries' },
+      { name: 'Brown Trout', type: 'resident', primary: false, notes: 'Below Sugar Fork confluence' },
+    ],
+    designations: ['Great Smoky Mountains National Park', 'Backcountry Wilderness Trout Stream'],
+    optimalFishingCfs: '40–250',
+    spawning: [
+      { species: 'Brook Trout', season: 'October–November' },
+      { species: 'Rainbow Trout', season: 'February–April' },
+    ],
+    hatches: [
+      { name: 'Quill Gordon', timing: 'March–April' },
+      { name: 'Blue-Winged Olive', timing: 'March–May' },
+      { name: 'Hendrickson', timing: 'April' },
+      { name: 'Yellow Sally Stonefly', timing: 'May–June' },
+      { name: 'Light Cahill', timing: 'June' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  wilson_creek_nc: {
+    species: [
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Wild rainbows in upper C&R section' },
+      { name: 'Brown Trout', type: 'resident', primary: false },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Small population in headwaters' },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: false, notes: 'Lower gorge below the trout zone' },
+    ],
+    designations: ['National Wild & Scenic River (2000)', 'Pisgah National Forest', 'NC Heritage Trout Water'],
+    optimalFishingCfs: '100–400',
+    spawning: [
+      { species: 'Rainbow Trout', season: 'February–April' },
+    ],
+    hatches: [
+      { name: 'Quill Gordon', timing: 'March–April' },
+      { name: 'Blue-Winged Olive', timing: 'March–May' },
+      { name: 'Hendrickson', timing: 'April' },
+      { name: 'Yellow Sally Stonefly', timing: 'May–June' },
+      { name: 'Light Cahill', timing: 'June' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  south_toe_nc: {
+    species: [
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Wild rainbows in lower wild trout water; stocked above Newdale' },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Native brookies in highest tributaries off Mount Mitchell' },
+      { name: 'Brown Trout', type: 'resident', primary: false },
+    ],
+    designations: ['Pisgah National Forest', 'NC Hatchery Supported Trout Water (upper)', 'NC Wild Trout Water (lower)'],
+    optimalFishingCfs: '60–350',
+    spawning: [
+      { species: 'Rainbow Trout', season: 'February–April' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive', timing: 'March–May' },
+      { name: 'Quill Gordon', timing: 'March–April' },
+      { name: 'Hendrickson', timing: 'April' },
+      { name: 'Yellow Sally Stonefly', timing: 'May–June' },
+      { name: 'Light Cahill', timing: 'June' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  seneca_creek_wv: {
+    species: [
+      { name: 'Brook Trout', type: 'resident', primary: true, notes: 'Native Eastern brook trout — one of the southernmost natural populations' },
+    ],
+    designations: ['Spruce Knob-Seneca Rocks NRA', 'Monongahela National Forest', 'Native Brook Trout Stream'],
+    optimalFishingCfs: '20–120',
+    spawning: [
+      { species: 'Brook Trout', season: 'October–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive', timing: 'April–May' },
+      { name: 'Hendrickson', timing: 'April–May' },
+      { name: 'Yellow Sally Stonefly', timing: 'May–June' },
+      { name: 'Terrestrials', timing: 'June–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  dry_fork_wv: {
+    species: [
+      { name: 'Brook Trout', type: 'resident', primary: true, notes: 'Native brook trout in headwaters around Canaan Valley' },
+      { name: 'Brown Trout', type: 'resident', primary: false, notes: 'Lower river' },
+      { name: 'Rainbow Trout', type: 'resident', primary: false, notes: 'Stocked seasonally' },
+    ],
+    designations: ['Monongahela National Forest', 'Canaan Valley NWR', 'WV Native Brook Trout Stream'],
+    optimalFishingCfs: '60–400',
+    spawning: [
+      { species: 'Brook Trout', season: 'October–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive', timing: 'April–May, September' },
+      { name: 'Hendrickson', timing: 'April–May' },
+      { name: 'Yellow Sally Stonefly', timing: 'May–June' },
+      { name: 'Light Cahill', timing: 'June' },
+      { name: 'Terrestrials', timing: 'June–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  west_branch_ausable_ny: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Wild browns over 20 inches in the Two-Mile C&R section' },
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Wild and stocked' },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Headwater tributaries' },
+    ],
+    designations: ['Adirondack Park', 'NY Trophy Trout Water', 'Catch-and-Release (Two-Mile and Flume sections)'],
+    optimalFishingCfs: '150–800',
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Rainbow Trout', season: 'March–May' },
+    ],
+    hatches: [
+      { name: 'Blue Quill', timing: 'April–May' },
+      { name: 'Hendrickson', timing: 'May' },
+      { name: 'March Brown', timing: 'May–June' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Light Cahill', timing: 'June' },
+      { name: 'Isonychia (Slate Drake)', timing: 'June, September' },
+      { name: 'Trico', timing: 'July–August' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  willowemoc_ny: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Wild browns throughout the lower river' },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Headwaters' },
+    ],
+    designations: ['Catskill Fly Fishing Heritage', 'NY State Scenic River', 'Catskill Park'],
+    optimalFishingCfs: '80–400',
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Blue Quill', timing: 'April' },
+      { name: 'Quill Gordon', timing: 'April' },
+      { name: 'Hendrickson', timing: 'Late April – Mid May', notes: 'The Catskill Hendrickson — one of the most famous hatches in American fly fishing' },
+      { name: 'March Brown', timing: 'May' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Green Drake', timing: 'Late May – Mid June' },
+      { name: 'Light Cahill', timing: 'June' },
+      { name: 'Isonychia', timing: 'June, September' },
+      { name: 'Trico', timing: 'July–August' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  neversink_ny: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Wild browns — Theodore Gordon\u2019s home water' },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Headwaters' },
+      { name: 'Rainbow Trout', type: 'resident', primary: false, notes: 'Stocked below Neversink Reservoir' },
+    ],
+    designations: ['Catskill Park', 'NYC Watershed', 'Catskill Fly Fishing Heritage'],
+    optimalFishingCfs: '60–400',
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Quill Gordon', timing: 'April', notes: 'Theodore Gordon\u2019s namesake fly was developed for the Neversink hatch' },
+      { name: 'Hendrickson', timing: 'Late April – Mid May' },
+      { name: 'Blue-Winged Olive', timing: 'April–May, September–October' },
+      { name: 'March Brown', timing: 'May' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Green Drake', timing: 'Late May – Mid June' },
+      { name: 'Light Cahill', timing: 'June' },
+      { name: 'Isonychia', timing: 'June, September' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
 }

@@ -239,3 +239,138 @@ wired in (separate follow-up work).
   None of the 43 rivers in this batch are release-dependent (the
   release rivers like Gauley already have fisheries entries).
 
+---
+
+## Session 2 — 2026-04-10 (afternoon)
+
+This session covers four follow-up tasks the user added after the
+initial 43-river batch shipped:
+
+1. Add fisheries to the 30 new rivers added in this session
+2. Add `optimalFishingCfs` to every new entry
+3. Verify Michigan hex hatch timing + add 60°F temperature trigger
+4. Add Great Lakes tributary run data + optimal-flow ranges to
+   Muskegon, Pere Marquette, Manistee, Betsie
+
+### 1. Fisheries for the 30 new rivers (10 East + 20 Appalachian)
+
+The 10 East rivers (commit `e7927b3`) and 20 Appalachian fishing
+rivers (commit `27adabc`) added earlier in this session left 30
+rivers without fisheries entries. All 30 now have entries written
+into `data/fisheries.ts`:
+
+| Region | Rivers (river_id) |
+|--------|-------------------|
+| MA     | charles_ma, sudbury_ma |
+| PA (East batch) | allegheny |
+| NY (East batch) | mohawk, genesee |
+| TN (East batch) | tellico_tn, holston |
+| VA (East batch) | clinch_va, rapidan |
+| MD (East batch) | patapsco |
+| PA (Appalachian batch) | penns_creek, spring_creek_pa, slate_run_pa, brodhead_pa |
+| TN (Appalachian batch) | abrams_creek_tn, citico_creek_tn, clinch_norris_tn |
+| VA (Appalachian batch) | mossy_creek_va, jackson_river_va, south_river_va |
+| KY (Appalachian batch) | cumberland_wolf_ky, hatchery_creek_ky |
+| NC (Appalachian batch) | hazel_creek_nc, wilson_creek_nc, south_toe_nc |
+| WV (Appalachian batch) | seneca_creek_wv, dry_fork_wv |
+| NY (Appalachian batch) | west_branch_ausable_ny, willowemoc_ny, neversink_ny |
+
+Every entry includes `optimalFishingCfs` in string min–max format
+(matches existing schema). Trout streams get full hatch calendars
+with the standard southern Appalachian / Catskill / Pocono /
+Adirondack patterns. Tailwater entries (Holston, Norris, Wolf
+Creek, Jackson) include year-round midges. Warmwater rivers
+(Charles, Allegheny, Mohawk, Patapsco) get core species + minimal
+hatch data.
+
+`scripts/gen-fisheries-keys.js` regenerated — fisheries-keys now
+contains **492** entries (was 462, +30 new).
+
+### 2. Optimal fishing CFS field
+
+The user spec called for `fishing_optimal_cfs_min` and
+`fishing_optimal_cfs_max`. The existing `RiverFisheries.optimalFishingCfs`
+field already stores both bounds in a single string (e.g.
+"150–700"). Used the existing field rather than introducing a
+schema change. **All 30 new entries** include it.
+
+The bulk-add of `optimalFishingCfs` to the 462 pre-existing
+entries was NOT done in this session — that's a 462-row sweep
+that requires per-river judgment about flow preferences and is
+flagged as future work.
+
+### 3. Michigan hex hatch verification (60°F trigger, late June –
+mid July)
+
+**Audit results:** 17 of 34 Michigan rivers had hex hatch entries
+in `data/fisheries.ts`. All 17 were updated:
+
+- **Timing:** every entry changed from `'Late June – Early July'`
+  to `'Late June – Mid July'` to match the user spec.
+- **60°F trigger:** every entry now includes a `notes` field that
+  starts with "Triggered when water temperature reaches 60°F"
+  followed by the existing or default night-hatch language.
+
+Edits done in three operations:
+- 12 entries via a single bulk replace_all on the most common
+  format (no-notes form)
+- 1 entry on Au Sable (had existing notes — preserved them after
+  the trigger language)
+- 1 entry on Pere Marquette (had existing notes — preserved
+  "Major night hatch on the PM" after the trigger language)
+- 1 entry on Manistee (used the short `'Hex'` form — converted
+  to canonical `'Hex (Hexagenia limbata)'` and added notes)
+
+**Other states' hex entries** (lines 1558, 1583, 3255, 3277 — MN,
+WI, IA) intentionally left alone. Hex hatch timing varies by
+latitude (cooler waters hatch later) so the MI-specific timing
+doesn't apply universally.
+
+**17 of 34 MI rivers DON'T have hex.** Many of those are
+warmwater bass rivers (Huron, Flat, Thornapple, Kalamazoo lower)
+where hex doesn't apply. A few are northern coldwater streams
+(Little Manistee, Ocqueoc, Pigeon, Sturgeon, Rogue) that
+arguably should have it. Adding hex to those is logged as
+**stretch work** for a future pass — the user's explicit ask
+was about verifying existing entries, which is now complete.
+
+### 4. Great Lakes tributaries
+
+**All 4 target rivers (Muskegon, Pere Marquette, Manistee, Betsie)
+already had rich `runs` data from session 1.** Each had entries
+for Chinook, steelhead, and where applicable Coho, with timing,
+peak periods, and species notes.
+
+What was added in this session:
+- `optimalFishingCfs` field on all 4 (Manistee 500–2500, Pere
+  Marquette 300–1200, Muskegon 1200–3500, Betsie 150–800).
+  Ranges chosen to reflect the dam-release tailwater character
+  of three of them and the freestone character of the Betsie.
+- Enriched run notes:
+  - Manistee: added "kings to 30+ lbs" to Chinook species note,
+    moved the 15,000+ steelhead note to the species line where
+    it belongs
+  - Betsie: added "one of the most reliable Lake Michigan king
+    runs in northern Michigan" to Chinook run, added "both fall
+    and spring runs" to steelhead note
+
+### Files touched in session 2
+
+- `data/fisheries.ts` — +30 new entries + 17 hex hatch updates
+  + 4 Great Lakes trib enrichments
+- `data/fisheries-keys.ts` — regenerated (462 → 492)
+- `FISHERIES_PROGRESS.md` — this session log appended
+
+### What's left
+
+- **Bulk add of `optimalFishingCfs` to the 462 pre-existing
+  entries.** Still pending. Each one needs per-river judgment
+  about flow preferences for the dominant species. Best approach
+  would be a multi-session sweep.
+- **Add hex to the ~5 missing MI coldwater rivers** that could
+  reasonably have it (Little Manistee, Ocqueoc, Pigeon, Sturgeon,
+  Rogue). Stretch work.
+- **Verify hex timing + temp trigger on MN/WI/IA rivers.** The
+  hatch IS the same biology but the dates and water temp trigger
+  vary by latitude. Future task.
+
