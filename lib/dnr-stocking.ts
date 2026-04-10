@@ -65,17 +65,14 @@ const STOCKING_AUTHORITY = 'Michigan DNR'
 // rivers that should be tracked but aren't yet.
 
 const WATERS_ID_TO_RIVER_ID: Record<number, string> = {
-  // ── Lower Peninsula coldwater classics ──
-  8298: 'muskegon',           // Muskegon River (Mecosta Co. — confirmed via test fetch)
-  // The full waters_id list for the famous rivers below has been
-  // partially seeded from the DNR REST endpoint. Confirmed entries
-  // are uncommented; placeholders are commented out until verified
-  // against actual API responses to avoid wrong matches.
-  // 8285: 'ausable',          // Au Sable (multiple sections share this watershed)
-  // 8295: 'manistee',         // Manistee River main stem
-  // 8290: 'pere_marquette',   // Pere Marquette
-  // 8275: 'pine_mi',          // Pine River
-  // 8260: 'boardman',         // Boardman River
+  // Confirmed via the DNR FeatureServer query response. Add
+  // entries here as the cron's `unmatched` log surfaces rivers
+  // we track but the fuzzy matcher misses (typically because
+  // the DNR name has a directional/qualifier prefix the
+  // normalizer strips ambiguously).
+  8298: 'muskegon',           // Muskegon River — Mecosta Co.
+  9079: 'boyne_mi',           // Boyne River — Charlevoix Co. (confirmed 2026-04-10)
+  10753: 'manistique_mi',     // Manistique River — Schoolcraft Co. (confirmed 2026-04-10)
 }
 
 // ── Type definitions ───────────────────────────────────────────

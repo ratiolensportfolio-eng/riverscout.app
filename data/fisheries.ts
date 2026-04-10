@@ -5674,6 +5674,63 @@ export const FISHERIES: Record<string, RiverFisheries> = {
     guides: [],
   },
 
+  // ── Boyne + Manistique (added 2026-04-10 to match DNR cron) ──
+
+  boyne_mi: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Self-sustaining wild population in upper Boyne' },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Headwater tributaries, especially South Branch' },
+      { name: 'Steelhead', type: 'anadromous', primary: true, notes: 'One of the strongest east-side Lake Michigan steelhead runs in the lower mile below Boyne City Dam' },
+      { name: 'Brown Trout (Lake Run)', type: 'anadromous', primary: false, notes: 'Lake Charlevoix lake-run browns' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: false },
+    ],
+    designations: ['Michigan Designated Trout Stream', 'Lake Charlevoix Watershed'],
+    optimalFishingCfs: '50–200',
+    spawning: [
+      { species: 'Brown Trout', season: 'October–November' },
+      { species: 'Steelhead', season: 'March–April' },
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'April–May, September–October' },
+      { name: 'Hendrickson', timing: 'Late April – Mid May' },
+      { name: 'Sulfur', timing: 'Late May – June' },
+      { name: 'Caddis', timing: 'May–June' },
+      { name: 'Brown Drake', timing: 'Late May – Mid June' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Mid July', notes: 'Triggered when water temperature reaches 60°F. The legendary night hatch — largest mayfly in North America. Brings out trophy browns after dark.' },
+      { name: 'Trico', timing: 'July–August' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [
+      { species: 'Steelhead (Fall)', timing: 'October–December', peak: 'November', notes: 'Lake Charlevoix steelhead enter the Boyne in fall' },
+      { species: 'Steelhead (Spring)', timing: 'March–May', peak: 'April' },
+      { species: 'Chinook Salmon', timing: 'September–October', peak: 'Late September' },
+    ],
+    guides: [],
+  },
+
+  manistique_mi: {
+    species: [
+      { name: 'Walleye', type: 'warmwater', primary: true, notes: 'One of the best UP river walleye fisheries' },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Northern Pike', type: 'warmwater', primary: true, notes: 'Trophy pike in deep oxbow holes' },
+      { name: 'Yellow Perch', type: 'warmwater', primary: false },
+      { name: 'Rock Bass', type: 'warmwater', primary: false },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Headwater tributaries (Driggs River, Fox River, etc.)' },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+    ],
+    designations: ['Hiawatha National Forest', 'Seney National Wildlife Refuge (tributary watershed)'],
+    optimalFishingCfs: '400–1200',
+    spawning: [
+      { species: 'Walleye', season: 'April–May' },
+      { species: 'Northern Pike', season: 'March–April' },
+      { species: 'Smallmouth Bass', season: 'May–June' },
+    ],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
   // ── Alaska batch (15 rivers) — added 2026-04-10 ──
 
   kenai_ak: {
