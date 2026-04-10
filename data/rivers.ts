@@ -88,7 +88,7 @@ export const STATES: StatesDB = {
         id: 'pere_marquette', n: 'Pere Marquette River', lp: true, up: false, wild: true, nat: true, ww: false,
         co: 'Lake / Mason Co.', len: '67 mi', cls: 'Riffles', opt: '300–1000',
         g: '04122500', avg: 710, histFlow: 650, mx: 240, my: 248, abbr: 'MI',
-        desc: "National Wild & Scenic River and Michigan Natural River, the Pere Marquette is a legendary steelhead and salmon fishery. The upper river features designated fly-fishing-only water, drawing anglers from across the country.",
+        desc: "Where brown trout were first introduced to North America — German fry stocked here in 1884 became the seed for every brown trout population in the Western Hemisphere. One of the original eight rivers in the eastern U.S. designated National Wild & Scenic in 1978, the Pere Marquette flows 66 miles west through the Manistee National Forest to Ludington. The Flies-Only Water below Baldwin is one of the country's most storied dry-fly streams, and Lake Michigan steelhead and Chinook salmon push deep upstream into the river's gravel each fall and spring.",
         desig: 'National Wild & Scenic River · Michigan Natural River · Trout Unlimited Conservation',
         secs: ['Upper — M-37 to Bowman Bridge, fly-fishing-only water', 'Middle — Bowman Bridge to Scottville, classic canoe camping', 'Lower — Scottville to Ludington, wide and gentle'],
         history: [
