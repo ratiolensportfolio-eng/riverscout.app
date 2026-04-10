@@ -4174,4 +4174,861 @@ export const FISHERIES: Record<string, RiverFisheries> = {
     species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Walleye', type: 'warmwater', primary: false }, { name: 'Muskellunge', type: 'warmwater', primary: false }, { name: 'Sturgeon', type: 'resident', primary: false }],
     designations: [], spawning: [], hatches: [], runs: [], guides: [],
   },
+
+  // ── Added 2026-04-10: 43-river fisheries backfill (FISHERIES_PROGRESS.md) ──
+  // Priority states: CO, WV, PA, CA, NC, SC. Quality bar: only species I'm
+  // confident in given watershed + elevation + water temp regime. Hatches
+  // only on coldwater (trout/salmon) rivers per spec. Designations
+  // conservative — Gold Medal only when on the published CPW list.
+
+  // ── Colorado ──
+  green_lodore: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Tailwater fishery below Flaming Gorge enters at the canyon top' },
+      { name: 'Rainbow Trout', type: 'resident', primary: true },
+      { name: 'Mountain Whitefish', type: 'resident', primary: false },
+    ],
+    designations: ['Dinosaur National Monument'],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Rainbow Trout', season: 'March–May' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–July' },
+      { name: 'Pale Morning Dun (PMD)', timing: 'June–July' },
+      { name: 'Trico', timing: 'July–September', notes: 'Morning spinner falls' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  colorado_glenwood: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Wild browns are the dominant trout in Glenwood Canyon' },
+      { name: 'Rainbow Trout', type: 'resident', primary: true },
+      { name: 'Mountain Whitefish', type: 'resident', primary: false },
+      { name: 'Cutthroat Trout', type: 'resident', primary: false, notes: 'Native Colorado River cutthroat in tributaries' },
+    ],
+    designations: ['White River National Forest'],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Rainbow Trout', season: 'March–May' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–July', notes: 'Mother\u2019s Day caddis is a major hatch' },
+      { name: 'Pale Morning Dun (PMD)', timing: 'June–July' },
+      { name: 'Yellow Sally (Stonefly)', timing: 'June–July' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  taylor: {
+    species: [
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'World-famous Taylor River tailwater below Taylor Park Reservoir holds trophy rainbows' },
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Cutthroat Trout', type: 'resident', primary: false },
+    ],
+    designations: ['Colorado Gold Medal Water (Hog Trough section)', 'Catch & Release — flies and lures only (Hog Trough)'],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Rainbow Trout', season: 'March–May' },
+    ],
+    hatches: [
+      { name: 'Midges', timing: 'Year-round', notes: 'Tailwater stays cold and midges hatch all winter' },
+      { name: 'Blue-Winged Olive (BWO)', timing: 'April–May, September–October' },
+      { name: 'Mysis Shrimp', timing: 'Year-round', notes: 'Mysis flushed from the reservoir feed trophy fish in the Hog Trough' },
+      { name: 'Caddis', timing: 'June–July' },
+      { name: 'Pale Morning Dun (PMD)', timing: 'June–July' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  frying_pan: {
+    species: [
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Trophy rainbow tailwater below Ruedi Reservoir, mysis-fed' },
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Mountain Whitefish', type: 'resident', primary: false },
+    ],
+    designations: ['Colorado Gold Medal Water (entire river)', 'Catch & Release — flies and lures only (Toilet Bowl)'],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Rainbow Trout', season: 'March–May' },
+    ],
+    hatches: [
+      { name: 'Midges', timing: 'Year-round', notes: 'Cold tailwater fishes year-round' },
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Mysis Shrimp', timing: 'Year-round', notes: 'Hallmark of the Frying Pan — flushed from Ruedi, fuels trophy rainbows' },
+      { name: 'Pale Morning Dun (PMD)', timing: 'June–August' },
+      { name: 'Green Drake', timing: 'July–August', notes: 'Famous Pan green drake hatch' },
+      { name: 'Trico', timing: 'August–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  south_platte: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Cheesman Canyon and the Dream Stream are world-class wild brown fisheries' },
+      { name: 'Rainbow Trout', type: 'resident', primary: true },
+      { name: 'Cutthroat Trout', type: 'resident', primary: false },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: false, notes: 'Lower river through the plains' },
+    ],
+    designations: ['Colorado Gold Medal Water (Cheesman Canyon, Dream Stream, and Deckers sections)', 'Catch & Release — flies and lures only (Cheesman, Dream Stream)'],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Rainbow Trout', season: 'March–May' },
+    ],
+    hatches: [
+      { name: 'Midges', timing: 'Year-round' },
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–July' },
+      { name: 'Pale Morning Dun (PMD)', timing: 'June–August' },
+      { name: 'Trico', timing: 'July–September', notes: 'Famous Dream Stream trico spinner falls' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  cache_la_poudre: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Rainbow Trout', type: 'resident', primary: true },
+      { name: 'Greenback Cutthroat Trout', type: 'resident', primary: false, notes: 'Native Colorado state fish — recovering population in headwaters' },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Headwater tributaries' },
+    ],
+    designations: ['National Wild & Scenic River (1986)', 'Roosevelt National Forest'],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Rainbow Trout', season: 'March–May' },
+      { species: 'Brook Trout', season: 'September–October' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'April–May, September–October' },
+      { name: 'Caddis', timing: 'May–July' },
+      { name: 'Pale Morning Dun (PMD)', timing: 'June–July' },
+      { name: 'Salmonfly', timing: 'June', notes: 'Brief window during peak runoff' },
+      { name: 'Yellow Sally', timing: 'June–July' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  gunnison_main: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Black Canyon and Gunnison Gorge hold trophy wild browns' },
+      { name: 'Rainbow Trout', type: 'resident', primary: true },
+      { name: 'Cutthroat Trout', type: 'resident', primary: false },
+      { name: 'Mountain Whitefish', type: 'resident', primary: false },
+    ],
+    designations: ['Colorado Gold Medal Water (Black Canyon and Gunnison Gorge)', 'Black Canyon of the Gunnison National Park'],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Rainbow Trout', season: 'March–May' },
+    ],
+    hatches: [
+      { name: 'Midges', timing: 'Year-round', notes: 'Cold tailwater fishes year-round in the canyon' },
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–July' },
+      { name: 'Salmonfly', timing: 'Late May – Early July', notes: 'Famous Gunnison salmonfly hatch — trophy fish window' },
+      { name: 'Golden Stonefly', timing: 'June–July' },
+      { name: 'Pale Morning Dun (PMD)', timing: 'June–August' },
+      { name: 'Green Drake', timing: 'July' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  colorado_pumphouse: {
+    species: [
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Wild rainbows in the Pumphouse to State Bridge reach' },
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Mountain Whitefish', type: 'resident', primary: false },
+    ],
+    designations: [],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Rainbow Trout', season: 'March–May' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'April–May, September–October' },
+      { name: 'Caddis', timing: 'May–July', notes: 'Strong Mother\u2019s Day caddis hatch on the Upper Colorado' },
+      { name: 'Pale Morning Dun (PMD)', timing: 'June–July' },
+      { name: 'Yellow Sally', timing: 'June–July' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  // ── West Virginia ──
+  cheat_narrows: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Walleye', type: 'warmwater', primary: false },
+      { name: 'Brown Trout', type: 'resident', primary: false, notes: 'Stocked in upper reaches by WVDNR' },
+      { name: 'Muskellunge', type: 'warmwater', primary: false },
+    ],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  bluestone: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true, notes: 'One of West Virginia\u2019s premier smallmouth fisheries' },
+      { name: 'Rock Bass', type: 'warmwater', primary: false },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+      { name: 'Muskellunge', type: 'warmwater', primary: false },
+    ],
+    designations: ['National Wild & Scenic River (1988)', 'Bluestone National Scenic River (NPS)'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  tygart_wv: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Brown Trout', type: 'resident', primary: false, notes: 'WVDNR stocks the upper river and tributaries' },
+      { name: 'Rainbow Trout', type: 'resident', primary: false, notes: 'Stocked seasonally' },
+      { name: 'Walleye', type: 'warmwater', primary: false },
+      { name: 'Muskellunge', type: 'warmwater', primary: false },
+    ],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  north_branch: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Wild brown trout fishery below Jennings Randolph Dam — one of the East\u2019s top tailwaters' },
+      { name: 'Rainbow Trout', type: 'resident', primary: true },
+      { name: 'Cutthroat Trout', type: 'resident', primary: false, notes: 'Stocked by MD DNR in the upper tailwater' },
+      { name: 'Brook Trout', type: 'resident', primary: false },
+    ],
+    designations: ['Catch & Release — flies and lures only (upper tailwater section)', 'Maryland Trophy Trout Management Area'],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Rainbow Trout', season: 'March–May' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'April–June' },
+      { name: 'Sulfur', timing: 'May–June', notes: 'Excellent evening sulfur hatch on the tailwater' },
+      { name: 'Trico', timing: 'July–September' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  cacapon: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true, notes: 'Cacapon is a classic Eastern Panhandle smallmouth river' },
+      { name: 'Rock Bass', type: 'warmwater', primary: false },
+      { name: 'Largemouth Bass', type: 'warmwater', primary: false },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Native brook trout in the headwater tributaries only' },
+    ],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  shavers_fork: {
+    species: [
+      { name: 'Brook Trout', type: 'resident', primary: true, notes: 'One of West Virginia\u2019s most important native brook trout streams in the upper river' },
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: false, notes: 'Lower reaches' },
+    ],
+    designations: ['Monongahela National Forest', 'Catch & Release — High Falls section (upper river)'],
+    spawning: [
+      { species: 'Brook Trout', season: 'September–November', notes: 'Please avoid wading on redds' },
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Quill Gordon', timing: 'April', notes: 'Early-season Appalachian classic' },
+      { name: 'Hendrickson Mayfly', timing: 'Late April – Mid May' },
+      { name: 'Caddis', timing: 'April–June' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  williams_wv: {
+    species: [
+      { name: 'Brook Trout', type: 'resident', primary: true, notes: 'Native brook trout fishery — community verification needed for current population status' },
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'WVDNR stocks brown trout' },
+      { name: 'Rainbow Trout', type: 'resident', primary: false, notes: 'Stocked seasonally' },
+    ],
+    designations: ['Monongahela National Forest', 'Catch & Release — flies only (Tea Creek section)'],
+    spawning: [
+      { species: 'Brook Trout', season: 'September–November' },
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Quill Gordon', timing: 'April' },
+      { name: 'Hendrickson Mayfly', timing: 'Late April – Mid May' },
+      { name: 'Caddis', timing: 'April–June' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  // ── Pennsylvania ──
+  juniata: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true, notes: 'The Juniata is one of Pennsylvania\u2019s most famous smallmouth rivers' },
+      { name: 'Walleye', type: 'warmwater', primary: false },
+      { name: 'Muskellunge', type: 'warmwater', primary: false },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+    ],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  slippery_rock: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Brown Trout', type: 'resident', primary: false, notes: 'PFBC stocks the upper reaches' },
+      { name: 'Rock Bass', type: 'warmwater', primary: false },
+    ],
+    designations: ['McConnells Mill State Park'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  kiski: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true, notes: 'Kiskiminetas has recovered as a smallmouth fishery since AMD remediation' },
+      { name: 'Walleye', type: 'warmwater', primary: false },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+      { name: 'Muskellunge', type: 'warmwater', primary: false },
+    ],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  tohickon: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Brown Trout', type: 'resident', primary: false, notes: 'Stocked by PFBC in spring; seasonal trout fishery' },
+      { name: 'Rock Bass', type: 'warmwater', primary: false },
+    ],
+    designations: ['Ralph Stover State Park'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  little_juniata: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'World-class wild brown trout limestone stream — one of the best in the East' },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+    ],
+    designations: ['Pennsylvania Class A Wild Trout Stream', 'Catch & Release — flies only (Spruce Creek section)'],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–November' },
+      { name: 'Hendrickson Mayfly', timing: 'Late April – Mid May' },
+      { name: 'Caddis', timing: 'April–June', notes: 'Grannom hatch in late April is famous' },
+      { name: 'March Brown', timing: 'May' },
+      { name: 'Sulfur', timing: 'Late May – June', notes: 'Premier sulfur hatch — evening rises into July' },
+      { name: 'Green Drake', timing: 'Late May – June', notes: 'Limited but present — limestone bug' },
+      { name: 'Trico', timing: 'July–September', notes: 'Excellent morning trico spinner falls' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  lackawaxen: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Wild brown trout in the Class A section below Lake Wallenpaupack' },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: false, notes: 'Lower river' },
+      { name: 'American Shad', type: 'anadromous', primary: false, notes: 'Spring shad run from the Delaware' },
+    ],
+    designations: ['Pennsylvania Class A Wild Trout Stream (sections)'],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'April–May, September–October' },
+      { name: 'Hendrickson Mayfly', timing: 'Late April – Mid May' },
+      { name: 'Caddis', timing: 'April–June' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Slate Drake (Isonychia)', timing: 'May–June, September' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [
+      { species: 'American Shad', timing: 'April–May', peak: 'May', notes: 'Spring shad run from the Delaware River reaches the Lackawaxen' },
+    ],
+    guides: [],
+  },
+
+  kettle_creek_pa: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Famous freestone brown trout fishery in the West Branch Susquehanna headwaters' },
+      { name: 'Brook Trout', type: 'resident', primary: true, notes: 'Native brook trout in headwater tributaries' },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+    ],
+    designations: ['Catch & Release — flies only (Kettle Creek Catch and Release Area)', 'Pennsylvania Wilds region'],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Quill Gordon', timing: 'April' },
+      { name: 'Hendrickson Mayfly', timing: 'Late April – Mid May' },
+      { name: 'Caddis', timing: 'April–June' },
+      { name: 'March Brown', timing: 'May' },
+      { name: 'Sulfur', timing: 'Late May – June' },
+      { name: 'Slate Drake (Isonychia)', timing: 'May–June, September' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  // ── California ──
+  feather: {
+    species: [
+      { name: 'Steelhead', type: 'anadromous', primary: true, notes: 'Wild and hatchery steelhead in the Low Flow Channel below Oroville' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'Both fall-run and spring-run Chinook' },
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Resident rainbows in the Low Flow Channel between salmon runs' },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: false, notes: 'Lower river warmwater sections' },
+      { name: 'Striped Bass', type: 'anadromous', primary: false, notes: 'Spring run from the Delta' },
+    ],
+    designations: ['Catch & Release — Low Flow Channel (Oroville Wildlife Area)'],
+    spawning: [
+      { species: 'Chinook Salmon', season: 'September–December (fall run), April–June (spring run)' },
+      { species: 'Steelhead', season: 'January–March' },
+      { species: 'Rainbow Trout', season: 'March–May' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'October–April', notes: 'Cool-season tailwater hatch' },
+      { name: 'Caddis', timing: 'April–June' },
+      { name: 'Pale Morning Dun (PMD)', timing: 'May–July' },
+    ],
+    runs: [
+      { species: 'Chinook Salmon (fall)', timing: 'September–December', peak: 'October', notes: 'Major fall Chinook run on the Low Flow Channel' },
+      { species: 'Chinook Salmon (spring)', timing: 'March–June', peak: 'May', notes: 'Threatened spring-run Chinook' },
+      { species: 'Steelhead', timing: 'September–March', peak: 'November–January' },
+      { species: 'Striped Bass', timing: 'April–June', peak: 'May', notes: 'Anadromous run from the Delta' },
+    ],
+    guides: [],
+  },
+
+  russian: {
+    species: [
+      { name: 'Steelhead', type: 'anadromous', primary: true, notes: 'Winter-run wild and hatchery steelhead — community verification needed for current population status' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: false, notes: 'Fall run, recovering' },
+      { name: 'Coho Salmon', type: 'anadromous', primary: false, notes: 'Endangered Central California Coast ESU — limited and protected' },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: false, notes: 'Wine country reaches in summer' },
+      { name: 'Largemouth Bass', type: 'warmwater', primary: false },
+    ],
+    designations: ['California Heritage River'],
+    spawning: [
+      { species: 'Steelhead', season: 'December–April' },
+      { species: 'Chinook Salmon', season: 'October–December' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'Steelhead', timing: 'December–April', peak: 'January–February', notes: 'Winter run — flow-dependent' },
+      { species: 'Chinook Salmon', timing: 'October–December', peak: 'November' },
+    ],
+    guides: [],
+  },
+
+  kings: {
+    species: [
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Wild rainbows in the Sierra headwaters and Garnet Dike to Pine Flat reach' },
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'High elevation tributaries' },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: false, notes: 'Below Pine Flat Reservoir' },
+    ],
+    designations: ['National Wild & Scenic River (1987) — Middle and South Forks', 'Kings Canyon National Park (headwaters)', 'Sierra National Forest'],
+    spawning: [
+      { species: 'Rainbow Trout', season: 'March–May' },
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'April–May, September–October' },
+      { name: 'Caddis', timing: 'May–July' },
+      { name: 'Pale Morning Dun (PMD)', timing: 'June–August' },
+      { name: 'Golden Stonefly', timing: 'June–July' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  napa: {
+    species: [
+      { name: 'Largemouth Bass', type: 'warmwater', primary: true },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: false },
+      { name: 'Striped Bass', type: 'anadromous', primary: false, notes: 'Tidal lower river — community verification needed' },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+    ],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  truckee_ca: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Wild brown trout fishery — California\u2019s most famous trout river' },
+      { name: 'Rainbow Trout', type: 'resident', primary: true },
+      { name: 'Lahontan Cutthroat Trout', type: 'resident', primary: false, notes: 'Native species recovering through CDFW programs' },
+      { name: 'Mountain Whitefish', type: 'resident', primary: false },
+    ],
+    designations: ['California Wild Trout Water', 'Catch & Release — flies and lures only (sections)'],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Rainbow Trout', season: 'March–May' },
+    ],
+    hatches: [
+      { name: 'Midges', timing: 'Year-round' },
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Skwala (Stonefly)', timing: 'March–April', notes: 'Famous early-season Truckee skwala hatch' },
+      { name: 'Caddis', timing: 'May–July' },
+      { name: 'Pale Morning Dun (PMD)', timing: 'June–August' },
+      { name: 'Golden Stonefly', timing: 'June–July' },
+      { name: 'Trico', timing: 'August–September' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  salmon_ca: {
+    species: [
+      { name: 'Steelhead', type: 'anadromous', primary: true, notes: 'Wild summer and fall steelhead — Klamath system' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'Spring-run and fall-run Chinook' },
+      { name: 'Coho Salmon', type: 'anadromous', primary: false, notes: 'SONCC ESU, threatened' },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+      { name: 'Coastal Cutthroat Trout', type: 'anadromous', primary: false },
+    ],
+    designations: ['National Wild & Scenic River (1981)', 'Klamath National Forest'],
+    spawning: [
+      { species: 'Chinook Salmon', season: 'September–December' },
+      { species: 'Steelhead', season: 'January–April' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'Chinook Salmon (spring)', timing: 'May–July', peak: 'June', notes: 'Famous Salmon River spring Chinook holding pools' },
+      { species: 'Chinook Salmon (fall)', timing: 'September–November', peak: 'October' },
+      { species: 'Steelhead (summer)', timing: 'June–September', peak: 'August' },
+      { species: 'Steelhead (winter)', timing: 'December–March', peak: 'February' },
+    ],
+    guides: [],
+  },
+
+  pit: {
+    species: [
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Wild trophy rainbow tailwater — one of the West\u2019s top wild trout rivers' },
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Mountain Whitefish', type: 'resident', primary: false },
+    ],
+    designations: ['California Wild Trout Water', 'Catch & Release — flies and lures only (Pit 3, Pit 4, Pit 5 reaches)'],
+    spawning: [
+      { species: 'Rainbow Trout', season: 'March–May' },
+      { species: 'Brown Trout', season: 'October–December' },
+    ],
+    hatches: [
+      { name: 'Midges', timing: 'Year-round' },
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–October' },
+      { name: 'Caddis', timing: 'May–July', notes: 'Heavy caddis hatches are the Pit\u2019s hallmark — fish nymphs deep' },
+      { name: 'Pale Morning Dun (PMD)', timing: 'June–August' },
+      { name: 'Golden Stonefly', timing: 'June–July' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  // ── North Carolina ──
+  davidson: {
+    species: [
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Wild trophy rainbows — one of the East\u2019s most famous wild trout streams' },
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Native brook trout in headwater tributaries' },
+    ],
+    designations: ['North Carolina Wild Trout Water', 'Catch & Release — flies only (Davidson River Catch and Release Area)', 'Pisgah National Forest'],
+    spawning: [
+      { species: 'Rainbow Trout', season: 'March–May' },
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–November' },
+      { name: 'Quill Gordon', timing: 'March–April' },
+      { name: 'Hendrickson Mayfly', timing: 'April' },
+      { name: 'Caddis', timing: 'April–June' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Yellow Sally', timing: 'May–July' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  nantahala_lake: {
+    species: [
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Delayed Harvest section above the lake — heavily stocked October–June' },
+      { name: 'Brown Trout', type: 'resident', primary: true },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Native brook trout in headwater tributaries' },
+    ],
+    designations: ['NC Wildlife Resources Commission Delayed Harvest Water', 'Nantahala National Forest'],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Rainbow Trout', season: 'March–May' },
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–November' },
+      { name: 'Hendrickson Mayfly', timing: 'April' },
+      { name: 'Caddis', timing: 'April–June' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  little_tennessee: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true, notes: 'Excellent smallmouth fishery in the lower river' },
+      { name: 'Brown Trout', type: 'resident', primary: false, notes: 'Stocked in tailwater sections — community verification needed for current ranges' },
+      { name: 'Rainbow Trout', type: 'resident', primary: false, notes: 'Stocked seasonally' },
+      { name: 'Walleye', type: 'warmwater', primary: false },
+      { name: 'Muskellunge', type: 'warmwater', primary: false },
+    ],
+    designations: ['Needmore Game Lands (lower reach)'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  roanoke: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true, notes: 'Upper Roanoke holds excellent smallmouth' },
+      { name: 'Largemouth Bass', type: 'warmwater', primary: false, notes: 'Lower river' },
+      { name: 'Striped Bass', type: 'anadromous', primary: true, notes: 'Famous spring striper run on the lower Roanoke through Weldon' },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+      { name: 'Blue Catfish', type: 'warmwater', primary: false, notes: 'Trophy blue catfish in the lower river' },
+    ],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [
+      { species: 'Striped Bass', timing: 'April–May', peak: 'Late April', notes: 'Iconic spring striper run — Weldon to Roanoke Rapids holds tens of thousands of fish on spawning grounds' },
+    ],
+    guides: [],
+  },
+
+  cape_fear: {
+    species: [
+      { name: 'Largemouth Bass', type: 'warmwater', primary: true },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: false, notes: 'Upper river only' },
+      { name: 'Striped Bass', type: 'anadromous', primary: false, notes: 'Spring run from the Atlantic — limited in current state' },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+      { name: 'Flathead Catfish', type: 'warmwater', primary: false, notes: 'Introduced — trophy size in the lower river' },
+      { name: 'American Shad', type: 'anadromous', primary: false, notes: 'Spring shad run' },
+    ],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [
+      { species: 'American Shad', timing: 'March–May', peak: 'April', notes: 'Spring shad run from the Atlantic' },
+    ],
+    guides: [],
+  },
+
+  neuse: {
+    species: [
+      { name: 'Largemouth Bass', type: 'warmwater', primary: true },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: false, notes: 'Upper river above Falls Lake' },
+      { name: 'Striped Bass', type: 'anadromous', primary: true, notes: 'Spring spawning run from the Atlantic, plus year-round Falls Lake tailrace striped bass' },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+      { name: 'Flathead Catfish', type: 'warmwater', primary: false },
+    ],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [
+      { species: 'Striped Bass', timing: 'April–May', peak: 'April', notes: 'Spring spawning run' },
+    ],
+    guides: [],
+  },
+
+  haw: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Largemouth Bass', type: 'warmwater', primary: false },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+      { name: 'Sunfish (Bluegill, Redbreast)', type: 'warmwater', primary: false },
+    ],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  // ── South Carolina ──
+  chattooga_sc_main: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Wild brown trout in the upper river (Sections 0–II) and Delayed Harvest reach' },
+      { name: 'Rainbow Trout', type: 'resident', primary: true },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Native brook trout in headwater tributaries on both NC and GA sides' },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: false, notes: 'Lower sections (III, IV) below Bull Sluice' },
+      { name: 'Redeye Bass', type: 'warmwater', primary: false, notes: 'Native to the Savannah drainage' },
+    ],
+    designations: ['National Wild & Scenic River (1974) — first east of the Mississippi', 'Sumter National Forest', 'Chattahoochee National Forest', 'Delayed Harvest section (upper river)'],
+    spawning: [
+      { species: 'Brown Trout', season: 'October–December' },
+      { species: 'Rainbow Trout', season: 'March–May' },
+      { species: 'Brook Trout', season: 'September–November' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive (BWO)', timing: 'March–May, September–November' },
+      { name: 'Quill Gordon', timing: 'March–April' },
+      { name: 'Hendrickson Mayfly', timing: 'April' },
+      { name: 'Caddis', timing: 'April–June' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Yellow Sally', timing: 'May–July' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  enoree: {
+    species: [
+      { name: 'Largemouth Bass', type: 'warmwater', primary: true },
+      { name: 'Redbreast Sunfish', type: 'warmwater', primary: false, notes: 'Native to South Carolina Piedmont rivers' },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+      { name: 'Bream (Bluegill)', type: 'warmwater', primary: false },
+    ],
+    designations: ['Sumter National Forest (lower reach)'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  lynches: {
+    species: [
+      { name: 'Largemouth Bass', type: 'warmwater', primary: true, notes: 'community verification needed for current population status' },
+      { name: 'Redbreast Sunfish', type: 'warmwater', primary: false },
+      { name: 'Bream (Bluegill)', type: 'warmwater', primary: false },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+      { name: 'Bowfin', type: 'warmwater', primary: false, notes: 'Coastal Plain blackwater swamps' },
+    ],
+    designations: ['National Wild & Scenic River (2008)'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  wateree: {
+    species: [
+      { name: 'Largemouth Bass', type: 'warmwater', primary: true },
+      { name: 'Striped Bass', type: 'anadromous', primary: true, notes: 'Tailrace striped bass below Wateree Dam' },
+      { name: 'Catfish', type: 'warmwater', primary: false, notes: 'Channel and blue catfish' },
+      { name: 'Crappie', type: 'warmwater', primary: false },
+    ],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  pee_dee: {
+    species: [
+      { name: 'Largemouth Bass', type: 'warmwater', primary: true },
+      { name: 'Striped Bass', type: 'anadromous', primary: true, notes: 'Spring run from the Atlantic and tailrace stripers below Blewett Falls' },
+      { name: 'Catfish', type: 'warmwater', primary: false, notes: 'Channel, blue, and flathead catfish — trophy blue cats in the lower river' },
+      { name: 'American Shad', type: 'anadromous', primary: false, notes: 'Spring shad run' },
+      { name: 'Robust Redhorse', type: 'resident', primary: false, notes: 'Rare native sucker, recovering population' },
+    ],
+    designations: [],
+    spawning: [],
+    hatches: [],
+    runs: [
+      { species: 'Striped Bass', timing: 'April–May', peak: 'Late April' },
+      { species: 'American Shad', timing: 'March–May', peak: 'April' },
+    ],
+    guides: [],
+  },
+
+  black_sc: {
+    species: [
+      { name: 'Largemouth Bass', type: 'warmwater', primary: true, notes: 'community verification needed' },
+      { name: 'Bowfin', type: 'warmwater', primary: false, notes: 'Coastal Plain blackwater' },
+      { name: 'Redbreast Sunfish', type: 'warmwater', primary: false },
+      { name: 'Bream (Bluegill)', type: 'warmwater', primary: false },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+    ],
+    designations: ['National Wild & Scenic River (2019)'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  lumber: {
+    species: [
+      { name: 'Largemouth Bass', type: 'warmwater', primary: true },
+      { name: 'Redbreast Sunfish', type: 'warmwater', primary: false, notes: 'A signature Lumber River species' },
+      { name: 'Bowfin', type: 'warmwater', primary: false },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+      { name: 'Pickerel', type: 'warmwater', primary: false },
+    ],
+    designations: ['National Wild & Scenic River (1998)', 'North Carolina Natural and Scenic River'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
 }

@@ -598,7 +598,11 @@ export const STATES: StatesDB = {
         id: 'cheat', n: 'Cheat River', ww: true, wild: false, mtnst: true, flat: false,
         co: 'Tucker / Preston Co.', len: '45 mi', cls: 'III–IV', opt: '1000–4000',
         g: '03069500', avg: 2100, histFlow: 1900, mx: 348, my: 114, abbr: 'WV',
-        desc: "The Cheat Canyon is the crown of West Virginia's rugged Tucker County — 12 miles of Class III–IV whitewater in a remote sandstone gorge with no road access. The Cheat is dam-release paddling at its finest: big waves, long drops, and the kind of remoteness that makes the Gauley feel civilized. Best spring flows April–May.",
+        // Local paddlers gauge the Cheat in feet (11–15 ft is the
+        // canonical paddleable range), not CFS. This CFS range is a
+        // placeholder until height-based optimal ranges are wired in.
+        needsVerification: ['cfs-height-mismatch'],
+        desc: "The Cheat Canyon is the crown of West Virginia's rugged Tucker County — 12 miles of Class III–IV whitewater in a remote sandstone gorge with no road access. Free-flowing big-volume paddling: big waves, long drops, and the kind of remoteness that makes the Gauley feel civilized. Local paddlers gauge the Cheat by stage (11–15 ft is the classic paddleable window). Best spring flows April–May.",
         desig: 'State-designated Scenic Area · Tucker County Recreation Corridor',
         secs: ['Rowlesburg to Albright — Class II–III, flatwater to canyon entry', 'Albright to Lake Lynn Dam — 12 mi Cheat Canyon, Class III–IV', 'Below Lake Lynn — Class II, lower river'],
         history: [
@@ -7616,10 +7620,17 @@ export function getRiverBySlug(stateSlug: string, riverSlug: string) {
 }
 
 export function getFlowCondition(cfs: number, optRange: string): 'optimal' | 'low' | 'high' | 'flood' {
-  const [low, high] = optRange.split('–').map(s => parseInt(s.replace(/,/g, '').trim()))
+  // Accept either en-dash (U+2013, the canonical separator in this repo)
+  // or ASCII hyphen, just in case a row was edited from a non-mac.
+  const [low, high] = optRange.split(/[\u2013\-]/).map(s => parseInt(s.replace(/,/g, '').trim()))
   if (isNaN(low) || isNaN(high)) return 'optimal'
-  if (cfs < low * 0.6) return 'low'
-  if (cfs >= low && cfs <= high) return 'optimal'
-  if (cfs > high && cfs < high * 2.5) return 'high'
-  return 'flood'
+
+  // Order matters — the original version had a bug where any cfs in
+  // [low * 0.6, low) (i.e. below optimal but not crisis low) fell
+  // through every branch and returned 'flood'. e.g. Cheat River at
+  // 980 cfs with opt 1000-4000 was reading as Flood.
+  if (cfs < low) return 'low'                      // anything below optimal
+  if (cfs <= high) return 'optimal'                // inside optimal window
+  if (cfs < high * 2.5) return 'high'              // above optimal, not yet flood
+  return 'flood'                                   // 2.5x the upper bound — runaway
 }

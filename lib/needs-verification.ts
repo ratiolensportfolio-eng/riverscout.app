@@ -68,6 +68,11 @@ export const VERIFICATION_TAGS: Record<string, Omit<VerificationItem, 'tag'>> = 
     description: 'A beginner-friendly claim appears alongside Class IV+ water. Verify scoping or remove.',
     suggestField: 'desc',
   },
+  'cfs-height-mismatch': {
+    label: 'Optimal range needs gauge-height bounds',
+    description: 'Local paddlers describe this river by gauge height (e.g. "11–15 ft") rather than CFS. The current optimal CFS range is a placeholder approximation and the condition pill may not match what locals would say. A gauge-height optimal range would be more accurate.',
+    suggestField: 'opt',
+  },
 }
 
 export function getVerificationItems(tags: string[] | undefined): VerificationItem[] {
