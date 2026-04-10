@@ -88,10 +88,24 @@ export type TrendDirection = 'up' | 'down' | 'flat'
 
 export interface FlowData {
   cfs: number | null
+  // Stage / gauge height in feet (USGS parameter 00065). Not all gauges
+  // report height, so this is nullable.
+  gaugeHeightFt: number | null
   condition: FlowCondition
+  // Trend classification driven by changePerHour, not 6h delta. 'flat'
+  // means |rate| < 25 cfs/hr; 'up'/'down' otherwise. The user-facing
+  // text label lives in rateLabel below; this field is for code that
+  // needs to color or branch by direction.
   trend: TrendDirection | null
-  trendDelta: number | null
-  trendDeltaPct: number | null
+  // Rate of change in cfs/hour, computed from the closest reading to
+  // ~1 hour ago (within ±20 min tolerance). Falls back to (3h delta / 3)
+  // if no 1h reading is available.
+  changePerHour: number | null
+  // Total cfs delta over the last ~3 hours.
+  changeIn3Hours: number | null
+  // Human-friendly rate label, e.g. "Rising slowly (+45 cfs/hr)",
+  // "Falling fast (-420 cfs/hr)", "Stable", or "Rate unknown".
+  rateLabel: string
   percentile: number | null
   tempC: number | null
   readings: Array<{ t: string; v: number }>

@@ -205,6 +205,17 @@ export default async function AlertsPage() {
                     <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginTop: '2px' }}>
                       optimal {river.opt} cfs
                     </div>
+                    {/* Rate of change — only when meaningful (>= 25 cfs/hr).
+                        Stable rivers stay quiet so the grid doesn't shout. */}
+                    {flow && flow.changePerHour !== null && Math.abs(flow.changePerHour) >= 25 && (
+                      <div style={{
+                        fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px',
+                        color: flow.trend === 'up' ? 'var(--am)' : '#185FA5',
+                        marginTop: '2px', fontWeight: 500,
+                      }}>
+                        {flow.rateLabel}
+                      </div>
+                    )}
                   </div>
                   <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', padding: '3px 8px', borderRadius: '12px', fontWeight: 500, ...style }}>
                     {condLabel[cond]}

@@ -92,7 +92,9 @@ export default async function StatePage({ params }: Props) {
                       <span className="verified-badge" title="Rapids verified by local paddlers">&#10003;</span>
                     )}
                   </div>
-                  {/* Live CFS badge */}
+                  {/* Live CFS badge — compact rate-of-change indicator
+                      sits next to it. Only shown when |rate| >= 25 cfs/hr
+                      so we don't clutter the sidebar with stable rivers. */}
                   {flow && flow.cfs !== null && (
                     <div style={{ display: 'flex', alignItems: 'center', gap: '4px', flexShrink: 0, marginLeft: '6px' }}>
                       <div style={{ width: '5px', height: '5px', borderRadius: '50%', background: condColor, flexShrink: 0 }} />
@@ -102,6 +104,18 @@ export default async function StatePage({ params }: Props) {
                       <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)' }}>
                         cfs
                       </span>
+                      {flow.changePerHour !== null && Math.abs(flow.changePerHour) >= 25 && (
+                        <span
+                          title={flow.rateLabel}
+                          style={{
+                            fontFamily: "'IBM Plex Mono', monospace",
+                            fontSize: '9px',
+                            color: flow.trend === 'up' ? 'var(--am)' : 'var(--wt)',
+                            fontWeight: 500,
+                          }}>
+                          {flow.trend === 'up' ? '\u2191' : '\u2193'}{Math.abs(flow.changePerHour) > 100 ? Math.abs(flow.changePerHour) > 300 ? '!!' : '!' : ''}
+                        </span>
+                      )}
                     </div>
                   )}
                 </div>

@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import type { River, FlowData } from '@/types'
-import { formatCfs, trendArrow, celsiusToFahrenheit, isHypothermiaRisk } from '@/lib/usgs'
+import { formatCfs, celsiusToFahrenheit, isHypothermiaRisk } from '@/lib/usgs'
 import { supabase } from '@/lib/supabase'
 
 // Lazy-load Mapbox-backed map component. ssr: false because Mapbox needs

@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getRiverBySlug, getStateSlug, getRiverSlug, ALL_RIVERS } from '@/data/rivers'
-import { fetchGaugeData, formatCfs, trendArrow, celsiusToFahrenheit, isHypothermiaRisk } from '@/lib/usgs'
+import { fetchGaugeData, formatCfs, celsiusToFahrenheit, isHypothermiaRisk } from '@/lib/usgs'
 import RiverTabs from '@/components/rivers/RiverTabs'
 import SuggestCorrection from '@/components/SuggestCorrection'
 import SaveOffline from '@/components/SaveOffline'
@@ -133,18 +133,47 @@ export default async function RiverPage({ params }: Props) {
               {formatCfs(flow.cfs)}
             </span>
             <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--wt)' }}>CFS</span>
+            {flow.gaugeHeightFt !== null && (
+              <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', marginLeft: '4px' }}>
+                · {flow.gaugeHeightFt.toFixed(2)} ft
+              </span>
+            )}
           </div>
 
           <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', padding: '4px 10px', borderRadius: '20px', fontWeight: 500 }} className={condClass}>
             {COND_LABEL[flow.condition]}
           </span>
-
-          {flow.trend && (
-            <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: '#185FA5' }}>
-              {trendArrow(flow.trend)} {flow.trendDelta !== null && flow.trendDelta > 0 ? '+' : ''}{flow.trendDelta} cfs (6h)
-            </span>
-          )}
         </div>
+
+        {/* Rate-of-change row — separate line so the rateLabel and 3h
+            delta have room without crowding the headline CFS readout. */}
+        {flow.cfs !== null && flow.rateLabel && flow.rateLabel !== 'Rate unknown' && (() => {
+          // Color the rate label by direction. Rising fast / falling fast
+          // (>300 cfs/hr) get a stronger color since those usually mean a
+          // flood pulse is on the way or a release is winding down.
+          const isRising = flow.trend === 'up'
+          const isFalling = flow.trend === 'down'
+          const isFast = flow.changePerHour !== null && Math.abs(flow.changePerHour) > 300
+          const color = isFast
+            ? (isRising ? 'var(--dg)' : 'var(--am)')
+            : isRising
+              ? 'var(--am)'
+              : isFalling
+                ? '#185FA5'
+                : 'var(--tx3)'
+          return (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '4px', flexWrap: 'wrap' }}>
+              <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color, fontWeight: 500 }}>
+                {flow.rateLabel}
+              </span>
+              {flow.changeIn3Hours !== null && Math.abs(flow.changeIn3Hours) >= 25 && (
+                <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>
+                  &middot; {flow.changeIn3Hours > 0 ? '+' : ''}{flow.changeIn3Hours.toLocaleString()} cfs in 3h
+                </span>
+              )}
+            </div>
+          )
+        })()}
 
         {/* Temp warning */}
         {flow.tempC !== null && (
