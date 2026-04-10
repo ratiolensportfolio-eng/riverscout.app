@@ -61,6 +61,19 @@ export default function OutfitterDashboard() {
   // bootstrap and updated by the publish/unpublish toggle.
   const [isActive, setIsActive] = useState<boolean | null>(null)
   const [togglingActive, setTogglingActive] = useState(false)
+  // Editable text fields — business name, description, website,
+  // phone. Loaded alongside the active flag and saved via a single
+  // "Save details" button. Form state is held locally so the user
+  // can edit freely without writing to the DB on every keystroke.
+  const [editForm, setEditForm] = useState({
+    business_name: '',
+    description: '',
+    website: '',
+    phone: '',
+  })
+  const [editDirty, setEditDirty] = useState(false)
+  const [savingEdit, setSavingEdit] = useState(false)
+  const [editMsg, setEditMsg] = useState('')
 
   const fetchAnalytics = useCallback(async (oid: string, uid: string) => {
     setLoading(true)
@@ -78,8 +91,8 @@ export default function OutfitterDashboard() {
     }
     setLoading(false)
 
-    // Fetch current images + active state. The browser supabase
-    // client carries the auth cookie, so the
+    // Fetch current images + active state + editable text fields.
+    // The browser supabase client carries the auth cookie, so the
     // "Outfitters manage own listing" RLS policy
     // (auth.uid() = user_id) lets us read our own row even when it's
     // inactive (older listings claimed before auto-publish was
@@ -87,16 +100,64 @@ export default function OutfitterDashboard() {
     try {
       const { data: listing } = await supabase
         .from('outfitters')
-        .select('logo_url, cover_photo_url, active')
+        .select('logo_url, cover_photo_url, active, business_name, description, website, phone')
         .eq('id', oid)
         .single()
       if (listing) {
         setLogoUrl(listing.logo_url)
         setCoverUrl(listing.cover_photo_url)
         setIsActive(!!listing.active)
+        setEditForm({
+          business_name: listing.business_name || '',
+          description: listing.description || '',
+          website: listing.website || '',
+          phone: listing.phone || '',
+        })
+        setEditDirty(false)
+        setEditMsg('')
       }
     } catch {}
   }, [])
+
+  // Save the edited business details. Mirrors the same URL
+  // validation rule we use on /outfitters/join (must contain a dot,
+  // no whitespace, TLD-shaped suffix) so the saved row always
+  // renders cleanly on the river page. Updates via the browser
+  // supabase client — same auth pattern as the publish toggle.
+  async function saveEdit() {
+    if (!outfitterId) return
+    const name = editForm.business_name.trim()
+    if (!name) {
+      setEditMsg('Error: Business name is required.')
+      return
+    }
+    const w = editForm.website.trim()
+    if (w && (/\s/.test(w) || !/[a-z0-9-]+\.[a-z]{2,}/i.test(w))) {
+      setEditMsg('Error: Website doesn\u2019t look like a valid URL. Use something like thepineriver.com (or leave it blank).')
+      return
+    }
+    setSavingEdit(true)
+    setEditMsg('')
+    const { error: updErr } = await supabase
+      .from('outfitters')
+      .update({
+        business_name: name,
+        description: editForm.description.trim() || null,
+        website: w || null,
+        phone: editForm.phone.trim() || null,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', outfitterId)
+    if (updErr) {
+      setEditMsg('Error: ' + updErr.message)
+    } else {
+      setEditMsg('Saved \u2014 your river page will reflect the new details on the next refresh.')
+      setEditDirty(false)
+      // Keep the picker in sync if the business name changed.
+      setOwnedListings(prev => prev.map(l => l.id === outfitterId ? { ...l, business_name: name } : l))
+    }
+    setSavingEdit(false)
+  }
 
   // Flip the listing's active flag (publish ↔ unpublish). Uses the
   // browser supabase client directly because the
@@ -567,6 +628,94 @@ export default function OutfitterDashboard() {
                   {uploadMsg}
                 </div>
               )}
+            </div>
+
+            {/* Edit Listing Details — business name, description,
+                website, phone. All four fields write directly to the
+                outfitters row via the browser supabase client (the
+                "Outfitters manage own listing" RLS policy lets the
+                owner update their own row). The Save button is the
+                explicit commit step — text fields are dirty-tracked
+                so the button only enables when there's something to
+                save. Website is validated with the same heuristic
+                we use on /outfitters/join (must contain a dot, no
+                whitespace) so a saved row never produces a 404 link
+                on the river page. */}
+            <div style={{ background: 'var(--bg2)', border: '.5px solid var(--bd)', borderRadius: 'var(--rlg)', padding: '16px', marginTop: '16px' }}>
+              <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '12px' }}>
+                Edit Listing Details
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
+                <label style={{ display: 'block' }}>
+                  <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', marginBottom: '4px' }}>Business name</div>
+                  <input
+                    type="text"
+                    value={editForm.business_name}
+                    onChange={e => { setEditForm(f => ({ ...f, business_name: e.target.value })); setEditDirty(true); setEditMsg('') }}
+                    placeholder="Pine River Paddlesports Center"
+                    style={{ width: '100%', fontFamily: mono, fontSize: '12px', padding: '8px 10px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)', boxSizing: 'border-box' }}
+                  />
+                </label>
+
+                <label style={{ display: 'block' }}>
+                  <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', marginBottom: '4px' }}>Description</div>
+                  <textarea
+                    value={editForm.description}
+                    onChange={e => { setEditForm(f => ({ ...f, description: e.target.value })); setEditDirty(true); setEditMsg('') }}
+                    placeholder="Full-service outfitter, shuttles, gear, camping. Family-friendly trips daily May–October."
+                    rows={3}
+                    style={{ width: '100%', fontFamily: mono, fontSize: '12px', padding: '8px 10px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)', boxSizing: 'border-box', resize: 'vertical', lineHeight: 1.5 }}
+                  />
+                  <div style={{ fontFamily: mono, fontSize: '8px', color: 'var(--tx3)', marginTop: '3px' }}>Shown under your business name on the river page.</div>
+                </label>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <label style={{ display: 'block' }}>
+                    <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', marginBottom: '4px' }}>Website</div>
+                    <input
+                      type="text"
+                      value={editForm.website}
+                      onChange={e => { setEditForm(f => ({ ...f, website: e.target.value })); setEditDirty(true); setEditMsg('') }}
+                      placeholder="thepineriver.com"
+                      style={{ width: '100%', fontFamily: mono, fontSize: '12px', padding: '8px 10px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)', boxSizing: 'border-box' }}
+                    />
+                    <div style={{ fontFamily: mono, fontSize: '8px', color: 'var(--tx3)', marginTop: '3px' }}>Domain or full URL. Leave blank if none.</div>
+                  </label>
+
+                  <label style={{ display: 'block' }}>
+                    <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', marginBottom: '4px' }}>Phone</div>
+                    <input
+                      type="text"
+                      value={editForm.phone}
+                      onChange={e => { setEditForm(f => ({ ...f, phone: e.target.value })); setEditDirty(true); setEditMsg('') }}
+                      placeholder="(231) 555-0123"
+                      style={{ width: '100%', fontFamily: mono, fontSize: '12px', padding: '8px 10px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)', boxSizing: 'border-box' }}
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: '14px', flexWrap: 'wrap' }}>
+                <button
+                  onClick={saveEdit}
+                  disabled={savingEdit || !editDirty}
+                  style={{
+                    fontFamily: mono, fontSize: '11px', padding: '8px 20px', borderRadius: 'var(--r)',
+                    border: 'none',
+                    background: editDirty && !savingEdit ? 'var(--rv)' : 'var(--bg3)',
+                    color: editDirty && !savingEdit ? '#fff' : 'var(--tx3)',
+                    cursor: editDirty && !savingEdit ? 'pointer' : 'default',
+                    opacity: savingEdit ? 0.6 : 1,
+                  }}>
+                  {savingEdit ? 'Saving…' : editDirty ? 'Save details' : 'Saved'}
+                </button>
+                {editMsg && (
+                  <span style={{ fontFamily: mono, fontSize: '10px', color: editMsg.startsWith('Error') ? 'var(--dg)' : 'var(--rv)' }}>
+                    {editMsg}
+                  </span>
+                )}
+              </div>
             </div>
 
             {/* Refresh */}
