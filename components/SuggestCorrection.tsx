@@ -6,6 +6,21 @@ import { supabase } from '@/lib/supabase'
 const mono = "'IBM Plex Mono', monospace"
 const serif = "'Playfair Display', serif"
 
+// Fields users can suggest improvements to. Two categories:
+//
+//   - "Auto-applies" group: scalar fields that go through the
+//     override layer cleanly. Approval flows from the admin
+//     queue → river_field_overrides → next page render. Marked
+//     with no badge.
+//   - "Needs admin edit" group: fields that the admin queue
+//     accepts but require a manual edit to data/rivers.ts or
+//     data/fisheries.ts because the data is structured (arrays,
+//     nested objects). Suggestion still goes through, admin
+//     handles the data file commit. Marked with the [ADMIN] tag.
+//
+// Outfitter information is intentionally omitted — outfitters
+// have their own dashboard at /outfitters/dashboard, so a
+// "suggest a correction" path here would be a dead end.
 const FIELDS = [
   { value: 'safe_cfs', label: '\u26A0 Safe CFS Limit (Safety Critical)' },
   { value: 'cls', label: 'Whitewater Class' },
@@ -13,15 +28,14 @@ const FIELDS = [
   { value: 'len', label: 'River Length' },
   { value: 'desc', label: 'Description' },
   { value: 'desig', label: 'Designations' },
-  { value: 'species', label: 'Fish Species' },
-  { value: 'hatches', label: 'Hatch Calendar' },
-  { value: 'runs', label: 'Salmon/Steelhead Run Timing' },
-  { value: 'spawning', label: 'Spawn Timing' },
-  { value: 'access_points', label: 'Access Points / Put-ins' },
-  { value: 'sections', label: 'River Sections / Distances' },
   { value: 'gauge', label: 'USGS Gauge ID' },
-  { value: 'outfitters', label: 'Outfitter Information' },
-  { value: 'history', label: 'Historical Information' },
+  { value: 'sections', label: 'River Sections / Distances [admin edit]' },
+  { value: 'access_points', label: 'Access Points / Put-ins [admin edit]' },
+  { value: 'species', label: 'Fish Species [admin edit]' },
+  { value: 'hatches', label: 'Hatch Calendar [admin edit]' },
+  { value: 'runs', label: 'Salmon/Steelhead Run Timing [admin edit]' },
+  { value: 'spawning', label: 'Spawn Timing [admin edit]' },
+  { value: 'history', label: 'Historical Information [admin edit]' },
   { value: 'other', label: 'Other' },
 ]
 

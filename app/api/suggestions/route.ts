@@ -415,36 +415,51 @@ export async function PATCH(req: NextRequest) {
         return NextResponse.json({ error: 'Suggestion not found' }, { status: 404 })
       }
 
-      // Allow-list of overrideable fields. Anything outside this set
-      // (e.g. permit_update, photos, custom community fields) is
-      // considered metadata-only and the approval just changes the
-      // suggestion status without writing an override.
+      // Allow-list of overrideable fields.
       //
-      // IMPORTANT: scalar fields only. The override layer's
-      // `value` column is TEXT and the render-merge in
-      // app/rivers/[state]/[slug]/page.tsx assigns the override
-      // string directly into the static river record. Array
-      // fields like `sections` and `access_points` can't be
-      // round-tripped through a single text value, so even if
-      // an admin approves them the render layer will silently
-      // skip them and the page keeps showing the static data.
-      // Those fields are blocked here and an explicit error is
-      // returned so the admin knows to apply the fix via direct
-      // edit to data/rivers.ts instead.
+      // **CRITICAL: Keep this in sync with FIELD_TO_STATIC in
+      // app/rivers/[state]/[slug]/page.tsx.** Any field added
+      // here that isn't in that map will be silently dropped at
+      // render time. This audit + the matching block-list below
+      // are the result of finding that exact bug class on
+      // sections, hatches, runs, species, etc.
+      //
+      // Scalar fields only. The override layer's `value` column
+      // is TEXT and the render-merge assigns the override string
+      // directly into the static river record. Array / nested
+      // fields can't be round-tripped through a single text
+      // value, so they're blocked below with an explicit admin
+      // error.
       const OVERRIDEABLE_FIELDS = new Set([
         'cls', 'opt', 'len', 'desc', 'desig', 'gauge', 'safe_cfs',
       ])
-      const ARRAY_FIELDS_NEEDING_DIRECT_EDIT = new Set([
-        'sections', 'access_points',
-      ])
 
-      if (ARRAY_FIELDS_NEEDING_DIRECT_EDIT.has(suggestion.field)) {
+      // Fields the dropdown lets users submit but the override
+      // pipeline can't apply. Each one returns a clear admin
+      // error explaining where the fix actually has to land.
+      // Without this block, an admin clicking Approve writes a
+      // phantom override row that the render layer never reads,
+      // and the user's correction silently disappears on every
+      // page render — the exact bug pattern that hid the Pine
+      // River sections fix until we found it.
+      const FIELDS_NEEDING_DIRECT_EDIT: Record<string, string> = {
+        sections: 'Section descriptions are an array — edit data/rivers.ts directly (the river\'s `secs` field).',
+        access_points: 'Access points are an array — edit data/rivers.ts directly.',
+        history: 'River history blocks are nested objects — edit data/rivers.ts directly (the river\'s `history` field).',
+        species: 'Fish species lives in data/fisheries.ts, not data/rivers.ts. Edit it there for river_id "%s".',
+        hatches: 'Hatch calendars live in data/fisheries.ts. Edit it there for river_id "%s" (the `hatches` array).',
+        runs: 'Salmon/steelhead run timing lives in data/fisheries.ts. Edit it there for river_id "%s" (the `runs` array).',
+        spawning: 'Spawn timing lives in data/fisheries.ts. Edit it there for river_id "%s" (the `spawning` array).',
+        outfitters: 'Outfitter listings are managed by their owners through /outfitters/dashboard. Reach out to the owner or use the admin outfitter tools — this dropdown option is being removed.',
+      }
+
+      if (FIELDS_NEEDING_DIRECT_EDIT[suggestion.field]) {
+        const guidance = FIELDS_NEEDING_DIRECT_EDIT[suggestion.field].replace(/%s/g, suggestion.river_id)
         return NextResponse.json({
           error:
-            `The "${suggestion.field}" field is an array and can't be applied through the override layer. ` +
-            `Edit data/rivers.ts directly for river_id "${suggestion.river_id}", commit the change, and then ` +
-            `mark this suggestion approved manually with the admin_notes column. The suggestion is staying ` +
-            `pending so it doesn't disappear from the queue.`,
+            `Can't apply "${suggestion.field}" through the override layer. ${guidance} ` +
+            `After editing the data file and committing, mark this suggestion approved manually via the admin_notes column. ` +
+            `The suggestion is staying pending so it doesn't disappear from the queue.`,
           field: suggestion.field,
           riverId: suggestion.river_id,
           suggestedValue: suggestion.suggested_value,

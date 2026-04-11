@@ -56,6 +56,14 @@ export interface River {
   docs: RiverDoc[]
   revs: Review[]
   outs: Outfitter[]
+  // Optional safety-critical scalar — the CFS at which this
+  // river becomes dangerous for intermediate paddlers, plus a
+  // free-text hazard description. Populated via the "Safety
+  // Critical" form in the SuggestCorrection workflow and
+  // overrideable through the river_field_overrides table on
+  // approval. Surfaces as a high-priority warning banner on
+  // the river page.
+  safe_cfs?: string
   // Internal QA flags — items the community is asked to verify or improve.
   // Each string is a short machine-readable tag (e.g. "cfs-range-wide",
   // "class-v-portage-note"). Surfaces in the Improve This River workflow.

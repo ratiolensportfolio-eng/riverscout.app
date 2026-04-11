@@ -15,9 +15,9 @@ export const STATES: StatesDB = {
         desc: "Michigan's premier whitewater river — the Pine runs cold, clear, and fast through the Manistee National Forest. Designated Wild & Scenic in 1978 among the first eight rivers in the eastern U.S. to receive that honor. Crystal spring-fed water stays below 65°F year-round, supporting one of Michigan's finest wild brook trout populations.",
         desig: 'National Wild & Scenic River (1978) · Michigan Natural River · Trout Unlimited Conservation',
         secs: [
-          'Lincoln Bridge to Low Bridge — 12 mi, popular 2 day trip, flatwater with occasional riffles',
+          'Lincoln Bridge to Low Bridge — 12 mi, popular 2-day trip, flatwater with occasional riffles',
           'Low Bridge to Peterson Bridge — 11 mi, faster current, Class II rapids, most visited stretch',
-          'Peterson Bridge to Elm Flats — 9 mi, Class II–III, Pine River Rush and Silver Creek confluence',
+          'Elm Flats to Peterson Bridge — 9 mi, ~4 hours of paddling without stops, mostly Class I water',
           'Elm Flats to Stronach Reservoir — 10 mi, mellow close-out, excellent campsites',
         ],
         history: [

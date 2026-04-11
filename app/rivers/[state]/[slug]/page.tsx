@@ -149,9 +149,17 @@ export default async function RiverPage({ params }: Props) {
   // public.river_field_overrides; without overrides this is a no-op
   // and the page renders the static data unchanged.
   //
-  // Field key → static field name map. Mirrors the suggestions
-  // PATCH handler's allow-list so the same key vocabulary is used
-  // everywhere.
+  // Field key → static field name map. **MUST stay in sync** with
+  // the OVERRIDEABLE_FIELDS allow-list in
+  // app/api/suggestions/route.ts. Any field that the approve
+  // handler accepts but isn't in this map will be silently
+  // dropped at render time — that's the bug class that hid the
+  // Pine River sections fix.
+  //
+  // Scalar fields only. Array fields like `secs`, `history`,
+  // `outs`, fish species/hatches/runs/spawning can't fit in a
+  // single TEXT override row — those are blocked at the approve
+  // handler with a "edit data/rivers.ts directly" error.
   const FIELD_TO_STATIC: Record<string, keyof typeof staticRiver> = {
     cls: 'cls',
     opt: 'opt',
@@ -159,6 +167,7 @@ export default async function RiverPage({ params }: Props) {
     desc: 'desc',
     desig: 'desig',
     gauge: 'g',
+    safe_cfs: 'safe_cfs',
   }
   const river: typeof staticRiver = { ...staticRiver }
   for (const [field, value] of Object.entries(prefetched.fieldOverrides)) {
@@ -349,6 +358,23 @@ export default async function RiverPage({ params }: Props) {
           <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)' }}>
             Optimal: {river.opt} CFS · USGS #{river.g}
           </div>
+          {/* Safety-critical CFS limit. Sourced from the
+              SuggestCorrection "Safety Critical" form, written
+              to the override layer on approval, surfaced here
+              as a high-priority warning. Renders only when the
+              field is set on the river. */}
+          {river.safe_cfs && (
+            <div style={{
+              fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
+              color: '#7A4D0E', background: 'var(--amlt)',
+              border: '.5px solid var(--am)', borderRadius: 'var(--r)',
+              padding: '6px 10px', marginTop: '6px',
+              display: 'inline-flex', alignItems: 'center', gap: '6px',
+            }}>
+              <span style={{ fontSize: '11px' }}>&#9888;</span>
+              <span><strong>Community-flagged safety limit:</strong> {river.safe_cfs}</span>
+            </div>
+          )}
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <SaveRiver riverId={river.id} riverName={river.n} />
             <SaveOffline riverId={river.id} riverName={river.n} gaugeId={river.g} stateSlug={state} riverSlug={slug} />
