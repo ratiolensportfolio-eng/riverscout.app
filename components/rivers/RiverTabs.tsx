@@ -1791,7 +1791,11 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                 const scheduled = stockingEvents.filter(ev => ev.is_scheduled && new Date(ev.stocking_date + 'T00:00:00') >= now)
 
                 const stockingSourceUrls: Record<string, string> = {
-                  mi: 'https://www.michigan.gov/dnr/fishing/reports/stocking',
+                  // Michigan: official DNR Fish Stocking Database dashboard
+                  // (the same ArcGIS dashboard our scraper pulls from). The
+                  // earlier www.michigan.gov/dnr/fishing/reports/stocking
+                  // path 404'd after a state site reorg.
+                  mi: 'https://midnr.maps.arcgis.com/apps/dashboards/77581b13c6984b919ab8ed927496a31f',
                   pa: 'https://www.fishandboat.com/Fish/StockingSchedules',
                   wv: 'https://www.wvdnr.gov/fishing/stocking.shtm',
                   va: 'https://dwr.virginia.gov/fishing/trout-stocking-schedules/',

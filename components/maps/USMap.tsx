@@ -300,6 +300,12 @@ export default function USMap({ stateFlowMap, stateConditions }: Props) {
     if (LIVE_STATES.has(key)) router.push(`/state/${key}`)
   }
 
+  // Tooltip positioning. Tracks the cursor position relative to the
+  // SVG element and stores raw coordinates; the render layer adds a
+  // small +6/-4 offset so the tooltip sits just up-and-right of the
+  // pointer without occluding the state being hovered. Earlier the
+  // offset was +14/-16 plus the tooltip rendered well off to the
+  // side; users reported the popup felt detached from the cursor.
   const onEnter = (e: React.MouseEvent<SVGPathElement>, id: string, name: string) => {
     const key = toKey(id)
     const live = LIVE_STATES.has(key)
@@ -307,13 +313,13 @@ export default function USMap({ stateFlowMap, stateConditions }: Props) {
     const r = e.currentTarget.closest('svg')!.getBoundingClientRect()
     const cond = stateFlowMap?.[key]
     const summary = stateConditions?.[key]
-    setTooltip({ x: e.clientX - r.left, y: e.clientY - r.top - 16, name, count, live, cond, summary })
+    setTooltip({ x: e.clientX - r.left, y: e.clientY - r.top, name, count, live, cond, summary })
     setHovered(id)
   }
 
   const onMove = (e: React.MouseEvent<SVGPathElement>) => {
     const r = e.currentTarget.closest('svg')?.getBoundingClientRect()
-    if (r) setTooltip(t => t ? { ...t, x: e.clientX - r.left, y: e.clientY - r.top - 16 } : null)
+    if (r) setTooltip(t => t ? { ...t, x: e.clientX - r.left, y: e.clientY - r.top } : null)
   }
 
   const ev = (id: string, name: string) => ({
@@ -433,18 +439,19 @@ export default function USMap({ stateFlowMap, stateConditions }: Props) {
         ))}
 
         {/* ── Alaska inset — now live with 15 fishing rivers. The
-            SVG path lives in the bottom-left corner of the map, so
-            we render it inside its own bordered inset rather than
-            as a freestanding path. The transform is preserved from
-            the previous coming-soon version, but the path itself
-            is rendered through the live-state path generator (lp)
-            so it gets the river-condition coloring + cursor +
-            click handler from the rest of the map. */}
+            AK SVG path's native coordinates (M161.1,453.7) already
+            sit inside the bottom-left corner of the map's viewBox,
+            so the inset is just a bordered rect drawn around the
+            existing path. The path itself renders through the
+            live-state path generator (lp) so it gets the
+            river-condition coloring + cursor + click handler from
+            the rest of the map. The previous version applied a
+            translate/scale transform that worked for the static
+            "coming soon" placeholder but pushed the lp-drawn path
+            outside the inset, leaving an empty box. */}
         <g>
           <rect x="16" y="445" width="155" height="100" rx="6" fill="#163347" stroke="rgba(255,255,255,0.12)" strokeWidth={0.7} />
-          <g transform="translate(-120,335) scale(0.35)">
-            {lp('AK', 'Alaska', STATE_PATHS.AK.d)}
-          </g>
+          {lp('AK', 'Alaska', STATE_PATHS.AK.d)}
           <text x="93" y="540" fontFamily="IBM Plex Mono,monospace" fontSize={8} fill="rgba(255,255,255,0.5)" textAnchor="middle">15 rivers live</text>
         </g>
         {/* ── Hawaii inset — now live with 5 paddling/cultural
@@ -470,7 +477,7 @@ export default function USMap({ stateFlowMap, stateConditions }: Props) {
       {/* Tooltip */}
       {tooltip && (
         <div style={{
-          position: 'absolute', left: tooltip.x + 14, top: tooltip.y,
+          position: 'absolute', left: tooltip.x + 6, top: tooltip.y - 4, transform: 'translateY(-100%)',
           background: 'var(--bg)', border: '.5px solid var(--bd2)',
           borderRadius: 'var(--r)', padding: '8px 13px',
           fontFamily: "'IBM Plex Mono', monospace",

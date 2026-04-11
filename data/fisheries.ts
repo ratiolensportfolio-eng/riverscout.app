@@ -3049,8 +3049,22 @@ export const FISHERIES: Record<string, RiverFisheries> = {
     designations: [], spawning: [], hatches: [], runs: [], guides: [],
   },
   fox_il: {
-    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Walleye', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
-    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true, notes: 'Most accessible urban smallmouth fishery in the Chicago area' },
+      { name: 'Walleye', type: 'warmwater', primary: true },
+      { name: 'Muskellunge', type: 'warmwater', primary: true, notes: 'Growing population from IDNR stocking' },
+      { name: 'Northern Pike', type: 'warmwater', primary: false },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+    ],
+    designations: ['Fox River Water Trail', 'IDNR Stocked Muskellunge Water'],
+    optimalFishingCfs: '500–1800',
+    spawning: [
+      { species: 'Walleye', season: 'March–April', notes: 'Spring spawning runs below Fox River dams' },
+      { species: 'Smallmouth Bass', season: 'May–June' },
+    ],
+    hatches: [],
+    runs: [],
+    guides: [],
   },
   kankakee: {
     species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Walleye', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
@@ -3073,8 +3087,24 @@ export const FISHERIES: Record<string, RiverFisheries> = {
   // INDIANA
   // ============================================================
   blue_in: {
-    species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Bluegill', type: 'warmwater', primary: false }],
-    designations: [], spawning: [], hatches: [], runs: [], guides: [],
+    species: [
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Stocked by Indiana DNR — the only trout stream in Indiana' },
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Only reproducing brown trout population in Indiana' },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: false, notes: 'Lower reaches below the trout stocking zone' },
+      { name: 'Rock Bass', type: 'warmwater', primary: false },
+    ],
+    designations: ['Indiana State Scenic River', "Indiana's Only Trout Stream", 'Harrison-Crawford State Forest'],
+    optimalFishingCfs: '80–300',
+    spawning: [{ species: 'Brown Trout', season: 'October–November' }],
+    hatches: [
+      { name: 'Blue-Winged Olive', timing: 'April–May, September' },
+      { name: 'Hendrickson', timing: 'April' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Caddis', timing: 'April–June' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
   },
   eel_in: {
     species: [{ name: 'Smallmouth Bass', type: 'warmwater', primary: true }, { name: 'Rock Bass', type: 'warmwater', primary: false }, { name: 'Channel Catfish', type: 'warmwater', primary: false }],
@@ -6100,6 +6130,270 @@ export const FISHERIES: Record<string, RiverFisheries> = {
       { species: 'Sockeye Salmon', timing: 'June–August', peak: 'July' },
       { species: 'Silver Salmon', timing: 'August–October', peak: 'September' },
     ],
+    guides: [],
+  },
+
+  // ── Midwest batch (15 rivers) — added 2026-04-10 ──
+
+  brule_wi: {
+    species: [
+      { name: 'Steelhead', type: 'anadromous', primary: true, notes: 'Legendary Lake Superior steelhead run in the lower river' },
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Class A wild brown trout in the upper river' },
+      { name: 'Brook Trout', type: 'resident', primary: true, notes: 'Native brook trout in headwater tributaries' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: false, notes: 'Fall run from Lake Superior' },
+      { name: 'Coho Salmon', type: 'anadromous', primary: false },
+    ],
+    designations: ['Brule River State Forest', 'Wisconsin Class A Wild Trout Stream', 'Lake Superior Steelhead Fishery'],
+    optimalFishingCfs: '120–400',
+    spawning: [
+      { species: 'Brown Trout', season: 'October–November' },
+      { species: 'Steelhead', season: 'April–May' },
+      { species: 'Brook Trout', season: 'September–October' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive', timing: 'April–May, September–October' },
+      { name: 'Hendrickson', timing: 'Late April – Mid May' },
+      { name: 'Sulfur', timing: 'Late May – June' },
+      { name: 'Brown Drake', timing: 'Late May – Mid June' },
+      { name: 'Hex (Hexagenia limbata)', timing: 'Late June – Mid July', notes: 'Triggered when water temperature reaches 60°F — brings out trophy brown trout after dark.' },
+      { name: 'Trico', timing: 'July–August' },
+    ],
+    runs: [
+      { species: 'Steelhead (Fall)', timing: 'September–December', peak: 'November' },
+      { species: 'Steelhead (Spring)', timing: 'March–May', peak: 'April' },
+      { species: 'Chinook Salmon', timing: 'September–October', peak: 'Late September' },
+    ],
+    guides: [],
+  },
+
+  menominee_wi: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true, notes: 'Trophy smallmouth throughout the river' },
+      { name: 'Lake Sturgeon', type: 'warmwater', primary: true, notes: 'Self-sustaining population — fish over 70 lbs landed annually, catch-and-release only' },
+      { name: 'Muskellunge', type: 'warmwater', primary: true },
+      { name: 'Walleye', type: 'warmwater', primary: true },
+      { name: 'Northern Pike', type: 'warmwater', primary: false },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+    ],
+    designations: ['Menominee Nation Homeland', 'WI/MI DNR Class A Sturgeon Water', 'Piers Gorge'],
+    optimalFishingCfs: '800–2800',
+    spawning: [
+      { species: 'Lake Sturgeon', season: 'May–June', notes: 'Spring spawning run — catch-and-release only' },
+      { species: 'Walleye', season: 'April–May' },
+      { species: 'Smallmouth Bass', season: 'May–June' },
+    ],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  milwaukee_wi: {
+    species: [
+      { name: 'Steelhead', type: 'anadromous', primary: true, notes: 'Urban fishery — fall and spring runs from Lake Michigan' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'Fall run, accessible from downtown Milwaukee' },
+      { name: 'Coho Salmon', type: 'anadromous', primary: false },
+      { name: 'Brown Trout', type: 'anadromous', primary: false, notes: 'Lake-run Lake Michigan browns' },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true, notes: 'Upper river through Kettle Moraine State Forest' },
+      { name: 'Northern Pike', type: 'warmwater', primary: false },
+      { name: 'Walleye', type: 'warmwater', primary: false },
+    ],
+    designations: ['Wisconsin DNR Anadromous Fishery', 'Milwaukee Riverwalk'],
+    optimalFishingCfs: '100–400',
+    spawning: [
+      { species: 'Steelhead', season: 'March–April' },
+      { species: 'Chinook Salmon', season: 'September–October' },
+      { species: 'Smallmouth Bass', season: 'May–June' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'Chinook Salmon', timing: 'September–October', peak: 'Late September' },
+      { species: 'Coho Salmon', timing: 'September–November', peak: 'October' },
+      { species: 'Steelhead (Fall)', timing: 'October–December' },
+      { species: 'Steelhead (Spring)', timing: 'March–May', peak: 'April' },
+    ],
+    guides: [],
+  },
+
+  great_miami_oh: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Muskellunge', type: 'warmwater', primary: true, notes: 'Stocked \u2014 fish over 50 inches have been landed' },
+      { name: 'Walleye', type: 'warmwater', primary: false },
+      { name: 'Channel Catfish', type: 'warmwater', primary: false },
+      { name: 'Flathead Catfish', type: 'warmwater', primary: false, notes: 'Trophy flathead in lower river' },
+      { name: 'Rock Bass', type: 'warmwater', primary: false },
+    ],
+    designations: ['Miami Conservancy District', 'Great Miami Water Trail', 'Ohio Stocked Muskellunge Water'],
+    optimalFishingCfs: '400–1800',
+    spawning: [
+      { species: 'Smallmouth Bass', season: 'May–June' },
+      { species: 'Walleye', season: 'March–April' },
+    ],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  wabash_in: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true, notes: 'One of the finest smallmouth fisheries in the Midwest' },
+      { name: 'Walleye', type: 'warmwater', primary: true },
+      { name: 'Channel Catfish', type: 'warmwater', primary: true },
+      { name: 'Flathead Catfish', type: 'warmwater', primary: true, notes: 'Trophy flatheads in lower river' },
+      { name: 'Sauger', type: 'warmwater', primary: false },
+      { name: 'Lake Sturgeon', type: 'warmwater', primary: false, notes: 'Lower river population, catch-and-release only' },
+    ],
+    designations: ['Indiana State River', 'Longest Undammed River East of the Mississippi'],
+    optimalFishingCfs: '2500–7000',
+    spawning: [
+      { species: 'Walleye', season: 'March–April' },
+      { species: 'Smallmouth Bass', season: 'May–June' },
+    ],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  tippecanoe_in: {
+    species: [
+      { name: 'Muskellunge', type: 'warmwater', primary: true, notes: "Indiana's premier muskie fishery \u2014 Class A Muskellunge Water" },
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Walleye', type: 'warmwater', primary: true },
+      { name: 'Northern Pike', type: 'warmwater', primary: false },
+      { name: 'Rock Bass', type: 'warmwater', primary: false },
+    ],
+    designations: ['Indiana State Scenic River', 'Tippecanoe River State Park', 'Indiana DNR Class A Muskellunge Water'],
+    optimalFishingCfs: '400–1200',
+    spawning: [
+      { species: 'Muskellunge', season: 'April–May' },
+      { species: 'Walleye', season: 'March–April' },
+      { species: 'Smallmouth Bass', season: 'May–June' },
+    ],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  white_in: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true, notes: 'Urban smallmouth fishery through Indianapolis' },
+      { name: 'Walleye', type: 'warmwater', primary: true },
+      { name: 'Muskellunge', type: 'warmwater', primary: false, notes: 'Stocked population, growing' },
+      { name: 'Channel Catfish', type: 'warmwater', primary: true },
+      { name: 'Flathead Catfish', type: 'warmwater', primary: false },
+      { name: 'Rock Bass', type: 'warmwater', primary: false },
+    ],
+    designations: ['Indiana DNR Stocked Muskellunge Water', 'White River State Park (Indianapolis)'],
+    optimalFishingCfs: '500–2200',
+    spawning: [
+      { species: 'Smallmouth Bass', season: 'May–June' },
+      { species: 'Walleye', season: 'March–April' },
+    ],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  sugar_creek_in: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true, notes: 'Excellent smallmouth throughout the Turkey Run and Shades corridors' },
+      { name: 'Rock Bass', type: 'warmwater', primary: true },
+      { name: 'Longear Sunfish', type: 'warmwater', primary: false },
+      { name: 'Spotted Bass', type: 'warmwater', primary: false },
+    ],
+    designations: ['Turkey Run State Park', 'Shades State Park'],
+    optimalFishingCfs: '200–700',
+    spawning: [
+      { species: 'Smallmouth Bass', season: 'May–June' },
+    ],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  rock_il: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true },
+      { name: 'Walleye', type: 'warmwater', primary: true, notes: 'Major spring run below Oregon and Dixon dams' },
+      { name: 'Channel Catfish', type: 'warmwater', primary: true },
+      { name: 'Flathead Catfish', type: 'warmwater', primary: true },
+      { name: 'Northern Pike', type: 'warmwater', primary: false },
+      { name: 'Rock Bass', type: 'warmwater', primary: false },
+    ],
+    designations: ['Rock River Trail Water Trail', 'Illinois Smallmouth Fishery'],
+    optimalFishingCfs: '1000–3500',
+    spawning: [
+      { species: 'Walleye', season: 'March–April' },
+      { species: 'Smallmouth Bass', season: 'May–June' },
+    ],
+    hatches: [],
+    runs: [
+      { species: 'Walleye (Spring Run)', timing: 'March–April', peak: 'Late March', notes: 'Concentrated below Oregon and Dixon low-head dams' },
+    ],
+    guides: [],
+  },
+
+  kankakee_il: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true, notes: 'One of the best smallmouth fisheries in Illinois' },
+      { name: 'Walleye', type: 'warmwater', primary: true },
+      { name: 'Channel Catfish', type: 'warmwater', primary: true },
+      { name: 'Flathead Catfish', type: 'warmwater', primary: true, notes: 'Trophy flatheads' },
+      { name: 'Northern Pike', type: 'warmwater', primary: false },
+      { name: 'Rock Bass', type: 'warmwater', primary: false },
+    ],
+    designations: ['Kankakee River State Park', 'Illinois Smallmouth Fishery'],
+    optimalFishingCfs: '700–2500',
+    spawning: [
+      { species: 'Smallmouth Bass', season: 'May–June' },
+      { species: 'Walleye', season: 'March–April' },
+    ],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  whitewater_mn: {
+    species: [
+      { name: 'Brown Trout', type: 'resident', primary: true, notes: 'Class A wild brown trout in the South Branch' },
+      { name: 'Rainbow Trout', type: 'resident', primary: true, notes: 'Stocked by Minnesota DNR' },
+      { name: 'Brook Trout', type: 'resident', primary: false, notes: 'Small population in headwater tributaries' },
+    ],
+    designations: ['Whitewater State Park', 'Whitewater Wildlife Management Area', 'Minnesota DNR Designated Trout Stream'],
+    optimalFishingCfs: '40–150',
+    spawning: [
+      { species: 'Brown Trout', season: 'October–November' },
+      { species: 'Brook Trout', season: 'September–October' },
+    ],
+    hatches: [
+      { name: 'Blue-Winged Olive', timing: 'April–May, September–October' },
+      { name: 'Hendrickson', timing: 'Late April – Mid May' },
+      { name: 'Sulfur', timing: 'May–June' },
+      { name: 'Caddis', timing: 'April–June' },
+      { name: 'Trico', timing: 'July–August' },
+      { name: 'Terrestrials', timing: 'July–September' },
+    ],
+    runs: [],
+    guides: [],
+  },
+
+  zumbro_mn: {
+    species: [
+      { name: 'Smallmouth Bass', type: 'warmwater', primary: true, notes: 'Lower river through Driftless bluff country' },
+      { name: 'Walleye', type: 'warmwater', primary: true },
+      { name: 'Channel Catfish', type: 'warmwater', primary: true },
+      { name: 'Brown Trout', type: 'resident', primary: false, notes: 'Upper branches (South, Middle, North Forks) support wild brown trout' },
+      { name: 'Northern Pike', type: 'warmwater', primary: false },
+    ],
+    designations: ['Zumbro River Water Trail', 'Minnesota DNR Designated Trout Stream (upper branches)'],
+    optimalFishingCfs: '300–1200',
+    spawning: [
+      { species: 'Walleye', season: 'March–April' },
+      { species: 'Smallmouth Bass', season: 'May–June' },
+      { species: 'Brown Trout', season: 'October–November' },
+    ],
+    hatches: [],
+    runs: [],
     guides: [],
   },
 
