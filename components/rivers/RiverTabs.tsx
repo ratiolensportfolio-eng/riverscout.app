@@ -914,7 +914,10 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
               </div>
             )}
             {/* 72-Hour Flow Forecast — public NOAA NWPS data, no paywall.
-                AI interpretation of the forecast stays Pro (below). */}
+                Rebuilt with a real chart: condition-zone background bands
+                (low/optimal/high/flood from river.opt), color-coded bars
+                per condition, peak + low markers with values, hovered-bar
+                callout, and a legend. AI interpretation stays Pro. */}
             <div style={{ marginTop: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
                 <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px' }}>
@@ -924,49 +927,238 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                   NOAA NWPS
                 </span>
               </div>
-              {forecastData && forecastData.length > 0 ? (
-                <div style={{ border: '.5px solid var(--bd)', borderRadius: 'var(--r)', overflow: 'hidden' }}>
-                  <div style={{ height: '140px', background: 'var(--bg2)', display: 'flex', alignItems: 'flex-end', padding: '12px 16px 8px', gap: '2px' }}>
-                    {(() => {
-                      const maxCfs = Math.max(...forecastData.map(f => f.cfs))
-                      return forecastData.map((f, i) => {
-                        const pct = maxCfs > 0 ? (f.cfs / maxCfs) * 85 + 5 : 10
-                        return (
-                          <div key={i} title={`${new Date(f.time).toLocaleString()}: ${f.cfs.toLocaleString()} cfs`}
-                            style={{ flex: 1, height: `${pct}%`, background: 'var(--wt)', borderRadius: '2px 2px 0 0', opacity: 0.8, minWidth: '3px' }} />
-                        )
-                      })
-                    })()}
-                  </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 16px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)' }}>
-                    <span>Now</span>
-                    <span>+24h</span>
-                    <span>+48h</span>
-                    <span>+72h</span>
-                  </div>
-                  {/* AI interpretation upsell for free users */}
-                  {!overviewIsPro && (
-                    <div style={{
-                      borderTop: '.5px solid var(--bd)',
-                      padding: '10px 14px', background: 'var(--bg2)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                      gap: '12px', flexWrap: 'wrap',
-                    }}>
-                      <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx2)', lineHeight: 1.5 }}>
-                        Get a plain-language forecast from our AI &mdash; Pro feature.
-                      </span>
-                      <a href="/pro" style={{
-                        fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', fontWeight: 500,
-                        padding: '5px 12px', borderRadius: 'var(--r)',
-                        background: 'var(--rvdk)', color: '#fff', textDecoration: 'none',
-                        flexShrink: 0,
-                      }}>
-                        Upgrade to Pro &rarr;
-                      </a>
+              {forecastData && forecastData.length > 0 ? (() => {
+                // Parse the river's optimal range from river.opt (e.g.
+                // "500–2000"). Falls back to using the current CFS as
+                // a reference if parsing fails.
+                const parseOpt = (s: string): [number, number] | null => {
+                  const m = s.match(/(\d[\d,]*)\s*[\u2013\-]\s*(\d[\d,]*)/)
+                  if (!m) return null
+                  return [parseInt(m[1].replace(/,/g, ''), 10), parseInt(m[2].replace(/,/g, ''), 10)]
+                }
+                const optRange = parseOpt(river.opt)
+                const lowCutoff = optRange?.[0] ?? 0
+                const highCutoff = optRange?.[1] ?? Infinity
+                const floodCutoff = highCutoff * 2.5
+
+                const condFor = (cfs: number): 'low' | 'optimal' | 'high' | 'flood' => {
+                  if (cfs < lowCutoff) return 'low'
+                  if (cfs <= highCutoff) return 'optimal'
+                  if (cfs < floodCutoff) return 'high'
+                  return 'flood'
+                }
+                const condColor = (c: ReturnType<typeof condFor>): string => {
+                  if (c === 'low') return 'var(--lo)'
+                  if (c === 'optimal') return 'var(--rv)'
+                  if (c === 'high') return 'var(--am)'
+                  return 'var(--dg)'
+                }
+                const condLabel = (c: ReturnType<typeof condFor>): string => {
+                  if (c === 'low') return 'Below optimal'
+                  if (c === 'optimal') return 'Optimal'
+                  if (c === 'high') return 'Above optimal'
+                  return 'Flood'
+                }
+
+                // Y-axis scaling. Snap the chart top to either the
+                // forecast peak or the flood cutoff, whichever is
+                // smaller — keeps "normal weather" forecasts from
+                // looking flat under a giant flood ceiling.
+                const peakCfs = Math.max(...forecastData.map(f => f.cfs))
+                const minCfs = Math.min(...forecastData.map(f => f.cfs))
+                const chartTop = optRange
+                  ? Math.max(peakCfs * 1.1, highCutoff * 1.15)
+                  : peakCfs * 1.1
+                const chartBottom = optRange
+                  ? Math.min(minCfs * 0.9, lowCutoff * 0.85)
+                  : 0
+
+                // Convert a CFS value to a Y-percentage where 0% is the
+                // chart bottom and 100% is the chart top.
+                const pctOf = (cfs: number) => {
+                  if (chartTop === chartBottom) return 50
+                  return Math.max(0, Math.min(100, ((cfs - chartBottom) / (chartTop - chartBottom)) * 100))
+                }
+
+                // Find the peak and low forecast points for marker
+                // labels. Find the next condition transition for the
+                // "expected change" callout.
+                const peakIdx = forecastData.findIndex(f => f.cfs === peakCfs)
+                const minIdx = forecastData.findIndex(f => f.cfs === minCfs)
+                const startCond = condFor(forecastData[0].cfs)
+                let nextChangeIdx = -1
+                for (let i = 1; i < forecastData.length; i++) {
+                  if (condFor(forecastData[i].cfs) !== startCond) {
+                    nextChangeIdx = i
+                    break
+                  }
+                }
+                const hoursFromNow = (timeStr: string) => {
+                  const d = new Date(timeStr)
+                  const diff = d.getTime() - Date.now()
+                  const h = Math.round(diff / (1000 * 60 * 60))
+                  if (h < 1) return 'now'
+                  if (h < 24) return `+${h}h`
+                  const days = Math.floor(h / 24)
+                  const remH = h % 24
+                  return remH === 0 ? `+${days}d` : `+${days}d ${remH}h`
+                }
+
+                const CHART_H = 160
+                return (
+                  <div style={{ border: '.5px solid var(--bd)', borderRadius: 'var(--r)', overflow: 'hidden', background: 'var(--bg)' }}>
+                    {/* Header — current vs forecast peak */}
+                    <div style={{ padding: '12px 14px', borderBottom: '.5px solid var(--bd)', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: '12px', flexWrap: 'wrap', background: 'var(--bg2)' }}>
+                      <div>
+                        <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginBottom: '2px' }}>Forecast peak</div>
+                        <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
+                          <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '22px', fontWeight: 700, color: condColor(condFor(peakCfs)) }}>
+                            {peakCfs.toLocaleString()}
+                          </span>
+                          <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>cfs</span>
+                          <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)' }}>
+                            in {hoursFromNow(forecastData[peakIdx].time)}
+                          </span>
+                        </div>
+                      </div>
+                      <div style={{ textAlign: 'right' }}>
+                        <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginBottom: '2px' }}>Forecast low</div>
+                        <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', justifyContent: 'flex-end' }}>
+                          <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '16px', fontWeight: 600, color: condColor(condFor(minCfs)) }}>
+                            {minCfs.toLocaleString()}
+                          </span>
+                          <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)' }}>
+                            in {hoursFromNow(forecastData[minIdx].time)}
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                  )}
-                </div>
-              ) : forecastUnavailable ? (
+
+                    {/* The chart itself. Two layers:
+                          1. Background condition zones drawn as
+                             absolutely-positioned colored stripes
+                             across the chart height
+                          2. Foreground bars positioned bottom-up
+                             with color matching their predicted
+                             condition */}
+                    <div style={{ position: 'relative', height: `${CHART_H}px`, padding: '12px 14px 8px', background: 'var(--bg)' }}>
+                      {/* Condition zone backdrop */}
+                      {optRange && (
+                        <div style={{ position: 'absolute', inset: '12px 14px 8px', pointerEvents: 'none' }}>
+                          {/* Optimal band */}
+                          <div style={{
+                            position: 'absolute', left: 0, right: 0,
+                            bottom: `${pctOf(lowCutoff)}%`,
+                            top: `${100 - pctOf(highCutoff)}%`,
+                            background: 'var(--rvlt)', opacity: 0.5,
+                            borderTop: '.5px dashed var(--rvmd)',
+                            borderBottom: '.5px dashed var(--rvmd)',
+                          }} />
+                          {/* Optimal label, top-right */}
+                          <div style={{
+                            position: 'absolute', right: '2px',
+                            top: `${100 - pctOf(highCutoff)}%`,
+                            transform: 'translateY(-100%)',
+                            fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', color: 'var(--rv)',
+                            padding: '0 2px',
+                          }}>
+                            optimal {lowCutoff.toLocaleString()}–{highCutoff.toLocaleString()}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Bars */}
+                      <div style={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'flex-end', gap: '2px', zIndex: 1 }}>
+                        {forecastData.map((f, i) => {
+                          const c = condFor(f.cfs)
+                          const pct = pctOf(f.cfs)
+                          const isPeak = i === peakIdx
+                          const isMin = i === minIdx
+                          return (
+                            <div key={i} style={{ flex: 1, position: 'relative', height: '100%', display: 'flex', alignItems: 'flex-end', minWidth: '3px' }}>
+                              <div
+                                title={`${new Date(f.time).toLocaleString()}: ${f.cfs.toLocaleString()} cfs (${condLabel(c)})`}
+                                style={{
+                                  width: '100%',
+                                  height: `${Math.max(2, pct)}%`,
+                                  background: condColor(c),
+                                  borderRadius: '2px 2px 0 0',
+                                  border: (isPeak || isMin) ? '1px solid var(--bg)' : 'none',
+                                  boxShadow: isPeak ? '0 0 0 1.5px var(--am)' : isMin ? '0 0 0 1.5px var(--lo)' : 'none',
+                                }}
+                              />
+                            </div>
+                          )
+                        })}
+                      </div>
+                    </div>
+
+                    {/* Time axis */}
+                    <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 16px 10px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)' }}>
+                      <span>Now</span>
+                      <span>+24h</span>
+                      <span>+48h</span>
+                      <span>+72h</span>
+                    </div>
+
+                    {/* Condition transition callout */}
+                    {nextChangeIdx > 0 && (
+                      <div style={{
+                        padding: '8px 14px', borderTop: '.5px solid var(--bd)',
+                        background: 'var(--bg2)',
+                        display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap',
+                        fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx2)',
+                      }}>
+                        <span style={{
+                          width: 8, height: 8, borderRadius: '50%',
+                          background: condColor(condFor(forecastData[nextChangeIdx].cfs)),
+                          flexShrink: 0,
+                        }} />
+                        <span>
+                          Expected to enter{' '}
+                          <strong style={{ color: condColor(condFor(forecastData[nextChangeIdx].cfs)) }}>
+                            {condLabel(condFor(forecastData[nextChangeIdx].cfs)).toLowerCase()}
+                          </strong>
+                          {' '}in{' '}
+                          <strong style={{ color: 'var(--tx)' }}>{hoursFromNow(forecastData[nextChangeIdx].time)}</strong>
+                          {' '}at {forecastData[nextChangeIdx].cfs.toLocaleString()} cfs
+                        </span>
+                      </div>
+                    )}
+
+                    {/* Legend */}
+                    <div style={{ padding: '6px 14px 8px', display: 'flex', gap: '12px', flexWrap: 'wrap', fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', color: 'var(--tx3)' }}>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><span style={{ width: 8, height: 8, background: 'var(--lo)', borderRadius: '2px' }} /> Low</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><span style={{ width: 8, height: 8, background: 'var(--rv)', borderRadius: '2px' }} /> Optimal</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><span style={{ width: 8, height: 8, background: 'var(--am)', borderRadius: '2px' }} /> High</span>
+                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><span style={{ width: 8, height: 8, background: 'var(--dg)', borderRadius: '2px' }} /> Flood</span>
+                      <span style={{ marginLeft: 'auto', color: 'var(--tx3)' }}>Hover bars for time + value</span>
+                    </div>
+
+                    {/* AI interpretation upsell for free users */}
+                    {!overviewIsPro && (
+                      <div style={{
+                        borderTop: '.5px solid var(--bd)',
+                        padding: '10px 14px', background: 'var(--bg2)',
+                        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                        gap: '12px', flexWrap: 'wrap',
+                      }}>
+                        <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx2)', lineHeight: 1.5 }}>
+                          Get a plain-language forecast from our AI &mdash; Pro feature.
+                        </span>
+                        <a href="/pro" style={{
+                          fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', fontWeight: 500,
+                          padding: '5px 12px', borderRadius: 'var(--r)',
+                          background: 'var(--rvdk)', color: '#fff', textDecoration: 'none',
+                          flexShrink: 0,
+                        }}>
+                          Upgrade to Pro &rarr;
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                )
+              })() : forecastUnavailable ? (
                 <div style={{ padding: '12px', background: 'var(--bg2)', borderRadius: 'var(--r)', border: '.5px solid var(--bd)', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', textAlign: 'center' }}>
                   Forecast temporarily unavailable
                 </div>
