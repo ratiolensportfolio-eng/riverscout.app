@@ -69,9 +69,19 @@ interface Props {
   initialField?: string
   externalOpen?: boolean
   onClose?: () => void
+  // Current values for fields the user might pick. Used to pre-fill
+  // the modal when they select a field — critical for array fields
+  // (sections, species) where typing 1 line wipes the rest because
+  // the override layer replaces the whole array.
+  //
+  // Keys: same field strings the suggestions row uses ('sections',
+  // 'species', 'cls', 'opt', 'len', 'desc', 'desig', 'gauge',
+  // 'safe_cfs'). Values: pre-formatted strings — for sections this
+  // is one section per line, joined by '\n'.
+  currentValues?: Record<string, string>
 }
 
-export default function SuggestCorrection({ riverId, riverName, stateKey, initialField, externalOpen, onClose }: Props) {
+export default function SuggestCorrection({ riverId, riverName, stateKey, initialField, externalOpen, onClose, currentValues }: Props) {
   const [open, setOpen] = useState(false)
   const [form, setForm] = useState({
     field: initialField || '',
@@ -124,6 +134,41 @@ export default function SuggestCorrection({ riverId, riverName, stateKey, initia
   // approve handler parses into a JSON array. Render those as
   // a textarea instead of a single-line input.
   const isMultilineArrayField = form.field === 'sections' || form.field === 'species'
+
+  // Pre-fill currentValue (and for array fields, suggestedValue
+  // as the editing starting point) when the field changes. The
+  // array-field pre-fill is the bug fix for the Pine River
+  // sections regression: without it, a user editing 1 section
+  // submits a 1-line value that wipes the other 3 sections at
+  // approval time, because the override layer replaces the
+  // entire array.
+  //
+  // We only run this when the user picks a field that has a
+  // pre-fill available AND the form fields aren't already
+  // populated (so we don't clobber typing-in-progress on
+  // re-render).
+  useEffect(() => {
+    if (!form.field || !currentValues) return
+    const currentForField = currentValues[form.field]
+    if (!currentForField) return
+    setForm(f => {
+      const next = { ...f }
+      if (!f.currentValue) next.currentValue = currentForField
+      // For array fields, also seed suggestedValue with the
+      // existing list so the user starts editing from the
+      // current state instead of typing the full replacement
+      // from scratch.
+      const isArrayField = form.field === 'sections' || form.field === 'species'
+      if (isArrayField && !f.suggestedValue) {
+        next.suggestedValue = currentForField
+      }
+      return next
+    })
+    // Including form.currentValue/suggestedValue in deps would
+    // create an infinite loop. We deliberately depend only on
+    // the field selection.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [form.field, currentValues])
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()

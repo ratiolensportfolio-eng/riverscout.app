@@ -683,11 +683,14 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                   textTransform: 'uppercase', letterSpacing: '.5px',
                 }}>{o.tier === 'destination' ? 'Destination Sponsor' : 'Sponsored'}</span>
                 {o.cover_photo_url && (
-                  // Honor the 16:9 the dashboard asks uploaders for.
-                  // Older code used a fixed 120px height, which sliced
-                  // wide banners into a thin muddy strip on this card.
+                  // Render at the upload's NATURAL aspect ratio.
+                  // Earlier versions forced 120px (chopped) and then
+                  // 16:9 with object-fit cover (still cropped wider
+                  // banners). Width:100% + height:auto lets whatever
+                  // the user uploaded display in full without any
+                  // cropping or letterboxing.
                   <img src={o.cover_photo_url} alt={o.business_name} loading="lazy" decoding="async"
-                    style={{ width: '100%', aspectRatio: '16 / 9', objectFit: 'cover', borderRadius: '6px', marginBottom: '10px', display: 'block' }} />
+                    style={{ width: '100%', height: 'auto', borderRadius: '6px', marginBottom: '10px', display: 'block' }} />
                 )}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' }}>
                   {o.logo_url && (
@@ -948,9 +951,11 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                       textTransform: 'uppercase', letterSpacing: '.5px',
                     }}>Featured</span>
                     {o.cover_photo_url && (
-                      // 16:9 to match the dashboard upload guidance.
+                      // Natural aspect ratio — see comment in the
+                      // sponsored card above for why we no longer
+                      // force a fixed shape.
                       <img src={o.cover_photo_url} alt={o.business_name} loading="lazy" decoding="async"
-                        style={{ width: '100%', aspectRatio: '16 / 9', objectFit: 'cover', borderRadius: '4px', marginBottom: '8px', display: 'block' }} />
+                        style={{ width: '100%', height: 'auto', borderRadius: '4px', marginBottom: '8px', display: 'block' }} />
                     )}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
                       {o.logo_url && (
@@ -1011,13 +1016,15 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                       }}>Listed</span>
 
                       {o.cover_photo_url && (
-                        // 16:9 to match the dashboard upload guidance.
-                        // Listed cards used to crop to 90px which sliced
-                        // a wide banner into a tiny muddy strip — Pine
-                        // River Paddlesports being the canonical "lit
-                        // dumpster pissed in" example.
+                        // Natural aspect ratio. The 16:9 attempt
+                        // still cropped wider-than-16:9 banners
+                        // (Pine River Paddlesports uploads roughly
+                        // 4:1, the canonical "lit dumpster pissed
+                        // in" example). Width:100% + height:auto
+                        // displays whatever shape they actually
+                        // uploaded.
                         <img src={o.cover_photo_url} alt={o.business_name} loading="lazy" decoding="async"
-                          style={{ width: '100%', aspectRatio: '16 / 9', objectFit: 'cover', borderRadius: '4px', marginBottom: '8px', display: 'block' }} />
+                          style={{ width: '100%', height: 'auto', borderRadius: '4px', marginBottom: '8px', display: 'block' }} />
                       )}
 
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px', paddingRight: '46px' }}>

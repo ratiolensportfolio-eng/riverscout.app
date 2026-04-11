@@ -1,10 +1,35 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import { createSupabaseClient } from '@/lib/supabase'
 import { isAdmin } from '@/lib/admin'
 import { sendEmail, improvementApprovedEmail, ADMIN_EMAIL } from '@/lib/email'
 import { VERIFICATION_TAGS } from '@/lib/needs-verification'
-import { getRiver } from '@/data/rivers'
+import { getRiver, getStateSlug, getRiverSlug } from '@/data/rivers'
 import { getContributorTier, didJustLevelUp } from '@/lib/contributor-tiers'
+
+// Bust the ISR cache for a specific river page so an approved
+// override (or rollback) takes effect on the next request rather
+// than waiting up to 15 minutes for the `revalidate = 900` window.
+//
+// We compute the canonical URL the same way the river page route
+// does — getStateSlug + getRiverSlug from data/rivers.ts — so the
+// path matches exactly. If the river isn't in the static catalog
+// (shouldn't happen for an approved suggestion, but defensive
+// coding) we fall back to revalidating the whole dynamic segment.
+function revalidateRiverPage(riverId: string): void {
+  try {
+    const river = getRiver(riverId)
+    if (river) {
+      const stateSlug = getStateSlug(river.stateKey)
+      const slug = getRiverSlug(river)
+      revalidatePath(`/rivers/${stateSlug}/${slug}`)
+    } else {
+      revalidatePath('/rivers/[state]/[slug]', 'page')
+    }
+  } catch (err) {
+    console.error('[suggestions] revalidatePath failed:', err)
+  }
+}
 
 // AI evaluation of a suggestion using Claude
 async function evaluateSuggestion(
@@ -363,6 +388,10 @@ export async function PATCH(req: NextRequest) {
           .from('river_cleared_verification_tags')
           .delete()
           .eq('source_suggestion_id', suggestionId)
+
+        // Bust the ISR cache so the rollback shows up immediately
+        // instead of waiting for the 15-minute revalidate window.
+        revalidateRiverPage(original.river_id)
       }
 
       // Update suggestion status to rolled_back
@@ -623,6 +652,12 @@ export async function PATCH(req: NextRequest) {
         console.error('[SUGGESTIONS] Failed to update status after successful data change:', statusErr)
         // Data is already updated — return success but note the status issue
       }
+
+      // Bust the ISR cache so the approved override shows up on
+      // the next page load instead of waiting up to 15 minutes
+      // for the revalidate window. Critical: without this, admins
+      // approve a change and then it appears not to have worked.
+      revalidateRiverPage(suggestion.river_id)
 
       // BEST-EFFORT: Get contributor stats for the email + tier
       // celebration. We count by user_email rather than user_id

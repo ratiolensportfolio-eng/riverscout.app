@@ -211,6 +211,39 @@ export default async function RiverPage({ params }: Props) {
   const isVerified =
     !!(RAPIDS[river.id] && RAPIDS[river.id].length > 0) || prefetched.hasSupabaseRapids
 
+  // Build the currentValues map for the SuggestCorrection modal so
+  // it can pre-fill its "what does it say now?" field. Critical for
+  // array fields like sections — without a pre-fill, a user editing
+  // one section types just one line, which wipes the other entries
+  // when the override layer replaces the whole array. With pre-fill,
+  // they edit the existing list naturally.
+  const currentValuesForSuggest: Record<string, string> = {
+    cls: river.cls ?? '',
+    opt: river.opt ?? '',
+    len: river.len ?? '',
+    desc: river.desc ?? '',
+    desig: river.desig ?? '',
+    gauge: river.g ?? '',
+    safe_cfs: river.safe_cfs ?? '',
+    sections: (river.secs ?? []).join('\n'),
+  }
+  // Species lives in fisheries data; merge any approved species
+  // override on top before pre-filling. We render as one species
+  // name per line because the modal accepts newline-separated
+  // input for array fields.
+  if (hasFisheries(river.id)) {
+    const fishStatic = FISHERIES[river.id]
+    let speciesArr = fishStatic?.species ?? []
+    const speciesOverride = prefetched.fieldOverrides.species
+    if (speciesOverride) {
+      try {
+        const parsed = JSON.parse(speciesOverride)
+        if (Array.isArray(parsed)) speciesArr = parsed
+      } catch { /* fall through to static */ }
+    }
+    currentValuesForSuggest.species = speciesArr.map(s => s.name).join('\n')
+  }
+
   const condClass = {
     optimal: 'cond-opt',
     low:     'cond-low',
@@ -398,7 +431,7 @@ export default async function RiverPage({ params }: Props) {
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <SaveRiver riverId={river.id} riverName={river.n} />
             <SaveOffline riverId={river.id} riverName={river.n} gaugeId={river.g} stateSlug={state} riverSlug={slug} />
-            <SuggestCorrection riverId={river.id} riverName={river.n} stateKey={river.stateKey} />
+            <SuggestCorrection riverId={river.id} riverName={river.n} stateKey={river.stateKey} currentValues={currentValuesForSuggest} />
           </div>
         </div>
       </div>
