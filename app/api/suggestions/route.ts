@@ -334,15 +334,17 @@ export async function PATCH(req: NextRequest) {
       // rows tied to this suggestion so the verification chip
       // reappears for re-review.
       //
-      // Same scalar-only allow-list as the approve handler. Array
-      // fields like sections/access_points can't be round-tripped
-      // through the override layer, so they were never written and
-      // there's nothing to delete on rollback.
-      const OVERRIDEABLE_FIELDS = new Set([
+      // **MUST stay in sync** with the approve handler's
+      // OVERRIDEABLE_SCALAR_FIELDS + OVERRIDEABLE_ARRAY_FIELDS
+      // sets, otherwise an approved field can't be rolled back.
+      const ROLLBACKABLE_FIELDS = new Set([
+        // scalars
         'cls', 'opt', 'len', 'desc', 'desig', 'gauge', 'safe_cfs',
+        // arrays
+        'sections', 'species',
       ])
 
-      if (OVERRIDEABLE_FIELDS.has(original.field)) {
+      if (ROLLBACKABLE_FIELDS.has(original.field)) {
         const { error: delErr } = await supabase
           .from('river_field_overrides')
           .delete()
@@ -415,42 +417,46 @@ export async function PATCH(req: NextRequest) {
         return NextResponse.json({ error: 'Suggestion not found' }, { status: 404 })
       }
 
-      // Allow-list of overrideable fields.
+      // Allow-list of overrideable scalar fields.
       //
       // **CRITICAL: Keep this in sync with FIELD_TO_STATIC in
       // app/rivers/[state]/[slug]/page.tsx.** Any field added
       // here that isn't in that map will be silently dropped at
-      // render time. This audit + the matching block-list below
-      // are the result of finding that exact bug class on
-      // sections, hatches, runs, species, etc.
-      //
-      // Scalar fields only. The override layer's `value` column
-      // is TEXT and the render-merge assigns the override string
-      // directly into the static river record. Array / nested
-      // fields can't be round-tripped through a single text
-      // value, so they're blocked below with an explicit admin
-      // error.
-      const OVERRIDEABLE_FIELDS = new Set([
+      // render time.
+      const OVERRIDEABLE_SCALAR_FIELDS = new Set([
         'cls', 'opt', 'len', 'desc', 'desig', 'gauge', 'safe_cfs',
       ])
 
+      // Allow-list of overrideable ARRAY fields.
+      //
+      // The user/admin provides either a JSON array or
+      // newline-separated lines in the suggested_value. The
+      // approve handler normalizes to a JSON array string and
+      // stores it in the override `value` column. Render-time
+      // logic at the consuming surface (river page for sections,
+      // RiverTabs Fishing tab for species) JSON-parses the
+      // value and applies it on top of the static array.
+      //
+      // - sections → River.secs (string[])
+      // - species → RiverFisheries.species (FishSpecies[])
+      //
+      // For species, simple newline input gets each line parsed
+      // as a {name, type: 'resident', primary: false} object so
+      // a non-technical user can submit "Brook Trout\nBrown
+      // Trout" without having to write JSON. Power users can
+      // submit a full JSON array for fine control.
+      const OVERRIDEABLE_ARRAY_FIELDS = new Set(['sections', 'species'])
+
       // Fields the dropdown lets users submit but the override
-      // pipeline can't apply. Each one returns a clear admin
-      // error explaining where the fix actually has to land.
-      // Without this block, an admin clicking Approve writes a
-      // phantom override row that the render layer never reads,
-      // and the user's correction silently disappears on every
-      // page render — the exact bug pattern that hid the Pine
-      // River sections fix until we found it.
+      // pipeline still can't apply. These hard-fail with a
+      // clear admin error.
       const FIELDS_NEEDING_DIRECT_EDIT: Record<string, string> = {
-        sections: 'Section descriptions are an array — edit data/rivers.ts directly (the river\'s `secs` field).',
         access_points: 'Access points are an array — edit data/rivers.ts directly.',
         history: 'River history blocks are nested objects — edit data/rivers.ts directly (the river\'s `history` field).',
-        species: 'Fish species lives in data/fisheries.ts, not data/rivers.ts. Edit it there for river_id "%s".',
-        hatches: 'Hatch calendars live in data/fisheries.ts. Edit it there for river_id "%s" (the `hatches` array).',
-        runs: 'Salmon/steelhead run timing lives in data/fisheries.ts. Edit it there for river_id "%s" (the `runs` array).',
-        spawning: 'Spawn timing lives in data/fisheries.ts. Edit it there for river_id "%s" (the `spawning` array).',
-        outfitters: 'Outfitter listings are managed by their owners through /outfitters/dashboard. Reach out to the owner or use the admin outfitter tools — this dropdown option is being removed.',
+        hatches: 'Hatch calendars are structured objects — edit data/fisheries.ts directly for river_id "%s" (the `hatches` array).',
+        runs: 'Salmon/steelhead run timing is structured — edit data/fisheries.ts directly for river_id "%s" (the `runs` array).',
+        spawning: 'Spawn timing is structured — edit data/fisheries.ts directly for river_id "%s" (the `spawning` array).',
+        outfitters: 'Outfitter listings are managed by their owners through /outfitters/dashboard. Reach out to the owner or use the admin outfitter tools.',
       }
 
       if (FIELDS_NEEDING_DIRECT_EDIT[suggestion.field]) {
@@ -466,7 +472,75 @@ export async function PATCH(req: NextRequest) {
         }, { status: 400 })
       }
 
-      if (OVERRIDEABLE_FIELDS.has(suggestion.field)) {
+      // ── Array field path (sections, species) ──
+      //
+      // Normalize the user's free-text input into a JSON array
+      // string, then upsert that into the override layer. The
+      // render layer at the river page / Fishing tab will
+      // JSON.parse the value back into an array.
+      if (OVERRIDEABLE_ARRAY_FIELDS.has(suggestion.field)) {
+        const raw = (suggestion.suggested_value || '').trim()
+        let normalizedJson: string
+        try {
+          // Strategy 1: input is already JSON. Validate it's
+          // an array, normalize, store.
+          if (raw.startsWith('[')) {
+            const parsed = JSON.parse(raw)
+            if (!Array.isArray(parsed)) throw new Error('JSON value must be an array')
+            normalizedJson = JSON.stringify(parsed)
+          } else {
+            // Strategy 2: newline-separated lines. Per-field
+            // line parser.
+            const lines: string[] = raw.split(/\r?\n/).map((s: string) => s.trim()).filter(Boolean)
+            if (lines.length === 0) throw new Error('No content to apply')
+
+            if (suggestion.field === 'sections') {
+              // sections is just string[] — one section per line.
+              normalizedJson = JSON.stringify(lines)
+            } else if (suggestion.field === 'species') {
+              // species is FishSpecies[] — { name, type, primary }.
+              // Default: assume resident, non-primary. Power
+              // users who want type/primary control can submit
+              // JSON instead.
+              const speciesArray = lines.map((name: string) => ({
+                name,
+                type: 'resident' as const,
+                primary: false,
+              }))
+              normalizedJson = JSON.stringify(speciesArray)
+            } else {
+              throw new Error(`Unsupported array field: ${suggestion.field}`)
+            }
+          }
+        } catch (parseErr) {
+          return NextResponse.json({
+            error:
+              `Could not parse suggested_value for "${suggestion.field}": ${parseErr instanceof Error ? parseErr.message : String(parseErr)}. ` +
+              `Submit either a JSON array (e.g. ["Brook Trout","Brown Trout"]) or newline-separated lines.`,
+            field: suggestion.field,
+          }, { status: 400 })
+        }
+
+        const { error: overrideErr } = await supabase
+          .from('river_field_overrides')
+          .upsert(
+            {
+              river_id: suggestion.river_id,
+              field: suggestion.field,
+              value: normalizedJson,
+              source_suggestion_id: suggestion.id,
+              applied_at: new Date().toISOString(),
+              applied_by: userId,
+            },
+            { onConflict: 'river_id,field' },
+          )
+
+        if (overrideErr) {
+          return NextResponse.json({
+            error: `Failed to write override: ${overrideErr.message}. Suggestion stays pending.`,
+          }, { status: 500 })
+        }
+      } else if (OVERRIDEABLE_SCALAR_FIELDS.has(suggestion.field)) {
         // Upsert into river_field_overrides — last approved value
         // wins per (river_id, field). The unique constraint on
         // (river_id, field) handles the conflict for re-approvals.

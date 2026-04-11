@@ -6,21 +6,21 @@ import { supabase } from '@/lib/supabase'
 const mono = "'IBM Plex Mono', monospace"
 const serif = "'Playfair Display', serif"
 
-// Fields users can suggest improvements to. Two categories:
+// Fields users can suggest improvements to. Three groups:
 //
-//   - "Auto-applies" group: scalar fields that go through the
-//     override layer cleanly. Approval flows from the admin
-//     queue → river_field_overrides → next page render. Marked
-//     with no badge.
-//   - "Needs admin edit" group: fields that the admin queue
-//     accepts but require a manual edit to data/rivers.ts or
-//     data/fisheries.ts because the data is structured (arrays,
-//     nested objects). Suggestion still goes through, admin
-//     handles the data file commit. Marked with the [ADMIN] tag.
+//   - Auto-applies (scalar): goes through the override layer
+//     cleanly, no admin file edit needed. Approval → river page
+//     re-renders on next visit.
+//   - Auto-applies (array): same pipeline but the user provides
+//     a JSON array OR newline-separated lines that the approve
+//     handler normalizes and JSON-encodes. Sections and species
+//     work this way.
+//   - Needs admin edit: structured fields (hatch calendars,
+//     runs, history, etc.) that need a manual data-file commit.
+//     Marked with [admin edit] so users know upfront.
 //
 // Outfitter information is intentionally omitted — outfitters
-// have their own dashboard at /outfitters/dashboard, so a
-// "suggest a correction" path here would be a dead end.
+// have their own dashboard at /outfitters/dashboard.
 const FIELDS = [
   { value: 'safe_cfs', label: '\u26A0 Safe CFS Limit (Safety Critical)' },
   { value: 'cls', label: 'Whitewater Class' },
@@ -29,15 +29,24 @@ const FIELDS = [
   { value: 'desc', label: 'Description' },
   { value: 'desig', label: 'Designations' },
   { value: 'gauge', label: 'USGS Gauge ID' },
-  { value: 'sections', label: 'River Sections / Distances [admin edit]' },
+  { value: 'sections', label: 'River Sections / Distances' },
+  { value: 'species', label: 'Fish Species' },
   { value: 'access_points', label: 'Access Points / Put-ins [admin edit]' },
-  { value: 'species', label: 'Fish Species [admin edit]' },
   { value: 'hatches', label: 'Hatch Calendar [admin edit]' },
   { value: 'runs', label: 'Salmon/Steelhead Run Timing [admin edit]' },
   { value: 'spawning', label: 'Spawn Timing [admin edit]' },
   { value: 'history', label: 'Historical Information [admin edit]' },
   { value: 'other', label: 'Other' },
 ]
+
+// Field-specific placeholder text for the "What should it say?"
+// textarea. Sections and species need format guidance because
+// they accept newline-separated lists rather than free-text
+// scalar values.
+const SUGGESTED_VALUE_HINTS: Record<string, string> = {
+  sections: 'One section per line, e.g.\nLincoln Bridge to Low Bridge — 12 mi, popular 2-day trip\nLow Bridge to Peterson Bridge — 11 mi, Class II',
+  species: 'One species per line, e.g.\nBrook Trout\nBrown Trout\nRainbow Trout',
+}
 
 const HAZARD_OPTIONS = [
   'Strainers become dangerous',
@@ -111,6 +120,10 @@ export default function SuggestCorrection({ riverId, riverName, stateKey, initia
   }, [])
 
   const isSafetyCritical = form.field === 'safe_cfs'
+  // Sections and species accept multi-line input that the
+  // approve handler parses into a JSON array. Render those as
+  // a textarea instead of a single-line input.
+  const isMultilineArrayField = form.field === 'sections' || form.field === 'species'
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -338,18 +351,41 @@ export default function SuggestCorrection({ riverId, riverName, stateKey, initia
                     <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', display: 'block', marginBottom: '4px' }}>
                       What does it say now? *
                     </span>
-                    <input type="text" value={form.currentValue} onChange={e => setForm(f => ({ ...f, currentValue: e.target.value }))}
-                      placeholder="e.g. Class III-IV"
-                      style={{ width: '100%', padding: '8px 10px', fontFamily: mono, fontSize: '12px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)' }} />
+                    {isMultilineArrayField ? (
+                      <textarea
+                        value={form.currentValue}
+                        onChange={e => setForm(f => ({ ...f, currentValue: e.target.value }))}
+                        placeholder="Paste the current list here (or summarize what's wrong)"
+                        rows={3}
+                        style={{ width: '100%', padding: '8px 10px', fontFamily: mono, fontSize: '12px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)', resize: 'vertical', lineHeight: 1.5 }} />
+                    ) : (
+                      <input type="text" value={form.currentValue} onChange={e => setForm(f => ({ ...f, currentValue: e.target.value }))}
+                        placeholder="e.g. Class III-IV"
+                        style={{ width: '100%', padding: '8px 10px', fontFamily: mono, fontSize: '12px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)' }} />
+                    )}
                   </label>
 
                   <label style={{ display: 'block', marginBottom: '12px' }}>
                     <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', display: 'block', marginBottom: '4px' }}>
                       What should it say? *
                     </span>
-                    <input type="text" value={form.suggestedValue} onChange={e => setForm(f => ({ ...f, suggestedValue: e.target.value }))}
-                      placeholder="e.g. Class II-III"
-                      style={{ width: '100%', padding: '8px 10px', fontFamily: mono, fontSize: '12px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)' }} />
+                    {isMultilineArrayField ? (
+                      <textarea
+                        value={form.suggestedValue}
+                        onChange={e => setForm(f => ({ ...f, suggestedValue: e.target.value }))}
+                        placeholder={SUGGESTED_VALUE_HINTS[form.field] || ''}
+                        rows={6}
+                        style={{ width: '100%', padding: '8px 10px', fontFamily: mono, fontSize: '12px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)', resize: 'vertical', lineHeight: 1.5 }} />
+                    ) : (
+                      <input type="text" value={form.suggestedValue} onChange={e => setForm(f => ({ ...f, suggestedValue: e.target.value }))}
+                        placeholder="e.g. Class II-III"
+                        style={{ width: '100%', padding: '8px 10px', fontFamily: mono, fontSize: '12px', border: '.5px solid var(--bd2)', borderRadius: 'var(--r)', background: 'var(--bg)', color: 'var(--tx)' }} />
+                    )}
+                    {isMultilineArrayField && (
+                      <span style={{ display: 'block', fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', marginTop: '4px', lineHeight: 1.5 }}>
+                        Provide the FULL replacement list. Each line becomes one entry. Your submission will replace the entire list when approved.
+                      </span>
+                    )}
                   </label>
 
                   <label style={{ display: 'block', marginBottom: '12px' }}>

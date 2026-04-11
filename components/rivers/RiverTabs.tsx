@@ -1615,7 +1615,27 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
           if (!fisheries) return (
             <div style={{ padding: '20px', textAlign: 'center', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>Loading fisheries data...</div>
           )
-          const fish = fisheries[river.id]
+          // Apply any approved fisheries overrides from the
+          // server-prefetched fieldOverrides payload. Currently
+          // supported: `species` (JSON-encoded FishSpecies[]).
+          // Future: hatches, runs, spawning — same pattern but
+          // requires a per-field schema validator since they're
+          // not just string lists. The render layer falls back
+          // to the static fisheries entry if the override JSON
+          // is malformed.
+          const fishStatic = fisheries[river.id]
+          let fish = fishStatic
+          const speciesOverrideRaw = initialData?.fieldOverrides?.species
+          if (fishStatic && speciesOverrideRaw) {
+            try {
+              const parsed = JSON.parse(speciesOverrideRaw)
+              if (Array.isArray(parsed)) {
+                fish = { ...fishStatic, species: parsed }
+              }
+            } catch {
+              // Fall through to static
+            }
+          }
           if (!fish && stockingLoaded && stockingEvents.length === 0) return (
             <EmptyState icon="&#x1F3A3;" label="Fisheries data coming soon" sub="Species, hatch charts, stocking reports, and run timing for this river will appear here." />
           )

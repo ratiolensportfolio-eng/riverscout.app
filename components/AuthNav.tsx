@@ -151,6 +151,12 @@ export default function AuthNav() {
           <MenuLink href="/account#alerts" onClick={() => setOpen(false)}>
             Flow alerts
           </MenuLink>
+          <MenuLink href="/releases" onClick={() => setOpen(false)}>
+            Dam release alerts
+          </MenuLink>
+          <MenuLink href="/hatches" onClick={() => setOpen(false)}>
+            Hatch alerts
+          </MenuLink>
           <MenuLink href="/outfitters/dashboard" onClick={() => setOpen(false)}>
             Outfitter dashboard
           </MenuLink>

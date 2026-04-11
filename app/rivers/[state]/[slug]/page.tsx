@@ -149,18 +149,15 @@ export default async function RiverPage({ params }: Props) {
   // public.river_field_overrides; without overrides this is a no-op
   // and the page renders the static data unchanged.
   //
-  // Field key → static field name map. **MUST stay in sync** with
-  // the OVERRIDEABLE_FIELDS allow-list in
-  // app/api/suggestions/route.ts. Any field that the approve
-  // handler accepts but isn't in this map will be silently
+  // **MUST stay in sync** with the OVERRIDEABLE_SCALAR_FIELDS +
+  // OVERRIDEABLE_ARRAY_FIELDS allow-lists in
+  // app/api/suggestions/route.ts. Any field the approve handler
+  // accepts but this merge doesn't handle will be silently
   // dropped at render time — that's the bug class that hid the
-  // Pine River sections fix.
+  // Pine River sections fix until we found it.
   //
-  // Scalar fields only. Array fields like `secs`, `history`,
-  // `outs`, fish species/hatches/runs/spawning can't fit in a
-  // single TEXT override row — those are blocked at the approve
-  // handler with a "edit data/rivers.ts directly" error.
-  const FIELD_TO_STATIC: Record<string, keyof typeof staticRiver> = {
+  // SCALAR_FIELD_TO_STATIC: scalar string fields go straight in.
+  const SCALAR_FIELD_TO_STATIC: Record<string, keyof typeof staticRiver> = {
     cls: 'cls',
     opt: 'opt',
     len: 'len',
@@ -169,13 +166,36 @@ export default async function RiverPage({ params }: Props) {
     gauge: 'g',
     safe_cfs: 'safe_cfs',
   }
+
+  // Array fields (the override `value` is a JSON-encoded array).
+  // For sections, we parse the JSON and assign to River.secs.
+  // The species field is also an array but it lives in
+  // data/fisheries.ts and gets applied inside RiverTabs at the
+  // Fishing-tab render — see fieldOverrides passed through
+  // initialData.
+  const ARRAY_FIELD_TO_STATIC: Record<string, keyof typeof staticRiver> = {
+    sections: 'secs',
+  }
+
   const river: typeof staticRiver = { ...staticRiver }
   for (const [field, value] of Object.entries(prefetched.fieldOverrides)) {
-    const target = FIELD_TO_STATIC[field]
-    if (target) {
-      // The static columns are all string-typed at the read site
-      // (cls, opt, desc, etc.) so the cast is safe.
-      ;(river as Record<string, unknown>)[target] = value
+    const scalarTarget = SCALAR_FIELD_TO_STATIC[field]
+    if (scalarTarget) {
+      ;(river as Record<string, unknown>)[scalarTarget] = value
+      continue
+    }
+
+    const arrayTarget = ARRAY_FIELD_TO_STATIC[field]
+    if (arrayTarget) {
+      try {
+        const parsed = JSON.parse(value)
+        if (Array.isArray(parsed)) {
+          ;(river as Record<string, unknown>)[arrayTarget] = parsed
+        }
+      } catch {
+        // Malformed override JSON — fall through to the static
+        // value rather than crashing the page render.
+      }
     }
   }
 
