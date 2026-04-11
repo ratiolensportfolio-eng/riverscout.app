@@ -298,14 +298,16 @@ export default async function HatchesPage() {
                         </div>
 
                         {/* Species icon strip — quick visual scan for
-                            "what fish are in this river." Skips
-                            species without a dedicated icon so we
-                            don't render generic blobs. */}
+                            "what fish are in this river." Each icon
+                            in v2 has its own colors and signature
+                            mark, so the strip reads like a row of
+                            actual fish, not interchangeable blobs.
+                            Skips species without a dedicated icon. */}
                         {e.speciesIcons.length > 0 && (
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginLeft: '13px', marginBottom: '4px', color: 'var(--rvdk)' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '4px', marginLeft: '13px', marginBottom: '6px' }}>
                             {e.speciesIcons.map(name => (
                               <span key={name} title={name} style={{ display: 'inline-flex' }}>
-                                <FishIcon species={name} size={16} />
+                                <FishIcon species={name} size={28} />
                               </span>
                             ))}
                           </div>

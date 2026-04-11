@@ -177,59 +177,20 @@ export const DAM_RELEASES: DamRelease[] = [
   },
 
   // ── WEST RIVER (VT) — BALL MOUNTAIN DAM ───────────────────────
-  // USACE Ball Mountain Dam releases the West River two weekends
-  // per year — one spring (typically late April) and one fall
-  // (late September). Releases happen Sat + Sun morning, ~1500
-  // cfs. Source: https://www.nae.usace.army.mil/Missions/
-  // Recreation/Ball-Mountain-Dam/
-  {
-    id: 'west_river_2026_04_25',
-    riverId: 'west_river',
-    name: 'West River Spring Release',
-    date: '2026-04-25',
-    startTime: '08:00',
-    endTime: '12:00',
-    expectedCfs: 1500,
-    agency: 'USACE',
-    sourceUrl: 'https://www.nae.usace.army.mil/Missions/Recreation/Ball-Mountain-Dam/',
-    notes: 'Spring release weekend (Saturday). Sunday release follows. 9-mile run from Ball Mountain Dam to Townshend Reservoir.',
-  },
-  {
-    id: 'west_river_2026_04_26',
-    riverId: 'west_river',
-    name: 'West River Spring Release',
-    date: '2026-04-26',
-    startTime: '08:00',
-    endTime: '12:00',
-    expectedCfs: 1500,
-    agency: 'USACE',
-    sourceUrl: 'https://www.nae.usace.army.mil/Missions/Recreation/Ball-Mountain-Dam/',
-    notes: 'Spring release weekend (Sunday).',
-  },
-  {
-    id: 'west_river_2026_09_26',
-    riverId: 'west_river',
-    name: 'West River Fall Release',
-    date: '2026-09-26',
-    startTime: '08:00',
-    endTime: '12:00',
-    expectedCfs: 1500,
-    agency: 'USACE',
-    sourceUrl: 'https://www.nae.usace.army.mil/Missions/Recreation/Ball-Mountain-Dam/',
-    notes: 'Fall release weekend (Saturday). One of two weekends per year on the West River.',
-  },
-  {
-    id: 'west_river_2026_09_27',
-    riverId: 'west_river',
-    name: 'West River Fall Release',
-    date: '2026-09-27',
-    startTime: '08:00',
-    endTime: '12:00',
-    expectedCfs: 1500,
-    agency: 'USACE',
-    sourceUrl: 'https://www.nae.usace.army.mil/Missions/Recreation/Ball-Mountain-Dam/',
-    notes: 'Fall release weekend (Sunday).',
-  },
+  // USACE Ball Mountain Dam historically released the West River
+  // two weekends per year — one spring (late April) and one fall
+  // (late September). Source: https://www.nae.usace.army.mil/
+  // Missions/Recreation/Ball-Mountain-Dam/
+  //
+  // 2026 STATUS: Spring release CANCELLED. Per American Whitewater
+  // (April 2026), there will be no spring scheduled whitewater
+  // release on the West River for the first time in decades. Fall
+  // release status unconfirmed for 2026 — DO NOT add fall entries
+  // here without direct confirmation from USACE Ball Mountain Dam.
+  // The honest empty list is better than a confidently wrong date.
+  //
+  // Annual roll-forward checklist (see DAM_RELEASES_RUNBOOK.md):
+  // call USACE Ball Mountain to confirm before adding 2027 dates.
 
   // ── RUSSELL FORK (VA/KY) — FLANNAGAN DAM ──────────────────────
   // USACE John W. Flannagan Dam releases the Russell Fork
@@ -482,41 +443,13 @@ export const DAM_RELEASES: DamRelease[] = [
     sourceUrl: 'https://www.lrh.usace.army.mil/Missions/Recreation/Lakes/Tygart-Lake/',
   },
 
-  // ── CHEAT NARROWS (WV) — CHEAT FEST WEEKEND ───────────────────
-  // Cheat Canyon doesn't get a dam release, but the Cheat
-  // Festival in early May is the marquee event of the year and
-  // typically lines up with peak natural snowmelt. Listed here
-  // as an "event" rather than a release so paddlers can plan
-  // their trip around it.
-  {
-    id: 'cheat_2026_05_01',
-    riverId: 'cheat_narrows',
-    name: 'Cheat River Festival Weekend',
-    date: '2026-05-01',
-    expectedCfs: 4000,
-    agency: 'Friends of the Cheat (event, not release)',
-    sourceUrl: 'https://cheat.org/cheat-river-festival/',
-    notes: 'Cheat Fest weekend \u2014 the marquee event of the eastern whitewater calendar. Cheat Canyon is free-flowing (no dam), so flows depend on snowmelt and recent rain. Typically peaks above 3000 cfs during festival weekend.',
-  },
-  {
-    id: 'cheat_2026_05_02',
-    riverId: 'cheat_narrows',
-    name: 'Cheat River Festival',
-    date: '2026-05-02',
-    expectedCfs: 4000,
-    agency: 'Friends of the Cheat (event, not release)',
-    sourceUrl: 'https://cheat.org/cheat-river-festival/',
-    notes: 'Saturday \u2014 the festival\'s biggest day.',
-  },
-  {
-    id: 'cheat_2026_05_03',
-    riverId: 'cheat_narrows',
-    name: 'Cheat River Festival',
-    date: '2026-05-03',
-    expectedCfs: 4000,
-    agency: 'Friends of the Cheat (event, not release)',
-    sourceUrl: 'https://cheat.org/cheat-river-festival/',
-  },
+  // ── CHEAT NARROWS / CHEAT CANYON (WV) — REMOVED ───────────────
+  // The Cheat is a free-flowing river with NO dam. The Cheat
+  // Festival is a paddling event whose flow depends on natural
+  // snowmelt, not a release. Listing it here was a categorization
+  // bug — this page is "Dam Releases," not "paddling events." If
+  // we want a paddling festivals calendar that's a separate
+  // feature, not this one. Removed all three entries 2026-04-11.
 
   // ── TALLULAH GORGE (GA) — GEORGIA POWER NOVEMBER RELEASES ─────
   // Georgia Power releases the gorge for whitewater on the first
