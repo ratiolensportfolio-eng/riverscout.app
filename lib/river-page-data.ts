@@ -93,6 +93,47 @@ export interface PrefetchedHazard {
 // app/rivers/[state]/[slug]/page.tsx for the merge logic.
 export type RiverFieldOverrides = Record<string, string>
 
+// Access points — mirrors public.river_access_points from migration
+// 032 with confirmation count + viewer-confirmation flag joined in.
+// Anonymous-friendly: pending submissions are visible immediately
+// (gray dot) per the user's launch decision; only `rejected` rows
+// are filtered out.
+export type AccessVerificationStatus = 'pending' | 'verified' | 'needs_review' | 'rejected'
+
+export interface PrefetchedAccessPoint {
+  id: string
+  river_id: string
+  name: string
+  description: string | null
+  access_type: string | null
+  ramp_surface: string | null
+  trailer_access: boolean
+  max_trailer_length_ft: number | null
+  parking_capacity: string | null
+  parking_fee: boolean
+  fee_amount: string | null
+  facilities: string[]
+  lat: number | null
+  lng: number | null
+  river_mile: number | null
+  distance_to_next_access_miles: number | null
+  next_access_name: string | null
+  float_time_to_next: string | null
+  seasonal_notes: string | null
+  submitted_by: string | null
+  submitted_by_name: string | null
+  verification_status: AccessVerificationStatus
+  helpful_count: number
+  last_verified_at: string | null
+  last_verified_by: string | null
+  created_at: string
+  updated_at: string
+  // Server-decorated count of confirmations (populated from a
+  // batched count over the confirmations table). Drives the
+  // "X confirmations" line under the freshness indicator.
+  confirmation_count: number
+}
+
 // Q&A — mirrors public.river_questions / public.river_answers from
 // migration 031. We prefetch questions + their top answers so the
 // Q&A tab body renders server-side and Google indexes the actual
@@ -137,6 +178,7 @@ export interface RiverPageData {
   clearedVerificationTags: string[]
   hasSupabaseRapids: boolean   // for the verified-rapids confidence banner
   qa: PrefetchedQAQuestion[]   // Q&A tab — answered first, unanswered after
+  accessPoints: PrefetchedAccessPoint[] // Maps & Guides tab — sorted by river_mile asc, nulls last
 }
 
 const TIER_ORDER: Record<string, number> = {
@@ -168,6 +210,7 @@ function emptyResult(): RiverPageData {
     clearedVerificationTags: [],
     hasSupabaseRapids: false,
     qa: [],
+    accessPoints: [],
   }
 }
 
@@ -196,7 +239,7 @@ export async function fetchRiverPageData(
 
   const [
     tripReportsRes, stockingRes, outfittersRes, rapidsRes, hazardsRes,
-    permitRes, overridesRes, clearedTagsRes, qaQuestionsRes,
+    permitRes, overridesRes, clearedTagsRes, qaQuestionsRes, accessPointsRes,
   ] = await Promise.all([
     supabase
       .from('trip_reports')
@@ -271,6 +314,18 @@ export async function fetchRiverPageData(
       .order('answered', { ascending: false })       // answered first
       .order('created_at', { ascending: false })     // newest within group
       .limit(100),
+    // Access points — anything except rejected. Sorted by river
+    // mile (nulls last) so the public render renders upstream→
+    // downstream when river_mile data is available, falling back
+    // to creation order for points without a milepost.
+    supabase
+      .from('river_access_points')
+      .select('*')
+      .eq('river_id', riverId)
+      .neq('verification_status', 'rejected')
+      .order('river_mile', { ascending: true, nullsFirst: false })
+      .order('created_at', { ascending: true })
+      .limit(50),
   ])
 
   // Sort outfitters by tier priority (destination → listed)
@@ -354,6 +409,55 @@ export async function fetchRiverPageData(
     })
   }
 
+  // ── Access points ──
+  // We pulled the rows above; here we batch-fetch confirmation
+  // counts for all of them in one query and stitch the count
+  // onto each row. Far cheaper than N+1 client-side counts.
+  const apRows = (accessPointsRes.data ?? []) as Array<Record<string, unknown>>
+  let accessPoints: PrefetchedAccessPoint[] = []
+  if (apRows.length > 0) {
+    const apIds = apRows.map(r => r.id as string)
+    const { data: confRows } = await supabase
+      .from('river_access_point_confirmations')
+      .select('access_point_id')
+      .in('access_point_id', apIds)
+    const countByAp: Record<string, number> = {}
+    for (const c of (confRows ?? []) as Array<{ access_point_id: string }>) {
+      countByAp[c.access_point_id] = (countByAp[c.access_point_id] ?? 0) + 1
+    }
+    accessPoints = apRows.map(r => ({
+      id: r.id as string,
+      river_id: r.river_id as string,
+      name: r.name as string,
+      description: (r.description as string | null) ?? null,
+      access_type: (r.access_type as string | null) ?? null,
+      ramp_surface: (r.ramp_surface as string | null) ?? null,
+      trailer_access: !!r.trailer_access,
+      max_trailer_length_ft: (r.max_trailer_length_ft as number | null) ?? null,
+      parking_capacity: (r.parking_capacity as string | null) ?? null,
+      parking_fee: !!r.parking_fee,
+      fee_amount: (r.fee_amount as string | null) ?? null,
+      facilities: ((r.facilities as string[] | null) ?? []),
+      lat: r.lat != null ? Number(r.lat) : null,
+      lng: r.lng != null ? Number(r.lng) : null,
+      river_mile: r.river_mile != null ? Number(r.river_mile) : null,
+      distance_to_next_access_miles: r.distance_to_next_access_miles != null
+        ? Number(r.distance_to_next_access_miles) : null,
+      next_access_name: (r.next_access_name as string | null) ?? null,
+      float_time_to_next: (r.float_time_to_next as string | null) ?? null,
+      seasonal_notes: (r.seasonal_notes as string | null) ?? null,
+      submitted_by: (r.submitted_by as string | null) ?? null,
+      submitted_by_name: (r.submitted_by_name as string | null) ?? null,
+      verification_status: (r.verification_status as AccessVerificationStatus) ?? 'pending',
+      helpful_count: (r.helpful_count as number | null) ?? 0,
+      last_verified_at: (r.last_verified_at as string | null) ?? null,
+      last_verified_by: (r.last_verified_by as string | null) ?? null,
+      created_at: r.created_at as string,
+      updated_at: r.updated_at as string,
+      confirmation_count: countByAp[r.id as string] ?? 0,
+    }))
+  }
+
   return {
     tripReports: (tripReportsRes.data ?? []) as PrefetchedTripReport[],
     stockingEvents: (stockingRes.data ?? []) as PrefetchedStockingEvent[],
@@ -364,5 +468,6 @@ export async function fetchRiverPageData(
     clearedVerificationTags,
     hasSupabaseRapids: !!(rapidsRes.data && rapidsRes.data.length > 0),
     qa,
+    accessPoints,
   }
 }

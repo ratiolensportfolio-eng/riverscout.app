@@ -153,6 +153,13 @@ export default function AdminPermitsPage() {
           }}>
             Q&amp;A
           </Link>
+          <Link href="/admin/access-points" style={{
+            fontFamily: mono, fontSize: '11px', padding: '7px 16px', borderRadius: 'var(--r)',
+            border: '.5px solid var(--bd2)', background: 'var(--bg)', color: 'var(--tx3)',
+            textDecoration: 'none',
+          }}>
+            Access Points
+          </Link>
         </div>
 
         {banner && (

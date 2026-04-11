@@ -40,6 +40,41 @@ import ContributorBadge from '@/components/ContributorBadge'
 const TABS = ['Overview', 'History', 'Trip Reports', 'Q&A', 'Fishing', 'Maps & Guides', 'Documents'] as const
 type Tab = typeof TABS[number]
 
+// Access points — local writable mirror of PrefetchedAccessPoint
+// from lib/river-page-data.ts. We redeclare here so RiverTabs can
+// own its own state without spreading the SSR type across client
+// mutators.
+interface AccessPointLite {
+  id: string
+  river_id: string
+  name: string
+  description: string | null
+  access_type: string | null
+  ramp_surface: string | null
+  trailer_access: boolean
+  max_trailer_length_ft: number | null
+  parking_capacity: string | null
+  parking_fee: boolean
+  fee_amount: string | null
+  facilities: string[]
+  lat: number | null
+  lng: number | null
+  river_mile: number | null
+  distance_to_next_access_miles: number | null
+  next_access_name: string | null
+  float_time_to_next: string | null
+  seasonal_notes: string | null
+  submitted_by: string | null
+  submitted_by_name: string | null
+  verification_status: 'pending' | 'verified' | 'needs_review' | 'rejected'
+  helpful_count: number
+  last_verified_at: string | null
+  last_verified_by: string | null
+  created_at: string
+  updated_at: string
+  confirmation_count: number
+}
+
 // Subset of fields the Q&A tab uses. Mirrors PrefetchedQAQuestion
 // from lib/river-page-data.ts but redeclared here so RiverTabs can
 // own its local writeable state without spreading the SSR type
@@ -182,6 +217,41 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
   const [qaAnswerError, setQaAnswerError] = useState<Record<string, string | null>>({})
   // Tracks which questions have their full answer list expanded.
   const [qaExpanded, setQaExpanded] = useState<Set<string>>(new Set())
+
+  // Access points state — initialized from SSR prefetch.
+  const [accessPoints, setAccessPoints] = useState<AccessPointLite[]>(
+    (initialData?.accessPoints as AccessPointLite[] | undefined) ?? []
+  )
+  const [apModalOpen, setApModalOpen] = useState(false)
+  const [apReportOpen, setApReportOpen] = useState<string | null>(null) // access point id whose report form is open
+  const [apBusyId, setApBusyId] = useState<string | null>(null)
+  const [apHelpfulMarked, setApHelpfulMarked] = useState<Set<string>>(new Set())
+  // Submission form state — see the submit modal at the bottom of
+  // the Maps & Guides tab body for the field map.
+  const [apForm, setApForm] = useState({
+    name: '',
+    description: '',
+    accessType: '',
+    rampSurface: '',
+    trailerAccess: false,
+    maxTrailerLengthFt: '',
+    parkingCapacity: '',
+    parkingFee: false,
+    feeAmount: '',
+    facilities: [] as string[],
+    lat: '',
+    lng: '',
+    riverMile: '',
+    distanceToNextAccessMiles: '',
+    nextAccessName: '',
+    floatTimeToNext: '',
+    seasonalNotes: '',
+    displayName: '',
+  })
+  const [apSubmitting, setApSubmitting] = useState(false)
+  const [apSubmitError, setApSubmitError] = useState<string | null>(null)
+  const [apReportForm, setApReportForm] = useState({ changeType: '', notes: '' })
+  const [apReportSubmitting, setApReportSubmitting] = useState(false)
   // Local helpful-mark dedupe so a single click doesn't double-bump
   // when the user spam-clicks. We'd ideally enforce this in the DB,
   // but the spec calls for no-login helpful so per-client is the
@@ -623,6 +693,146 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
     } catch {
       /* see comment above — desync self-corrects */
     }
+  }
+
+  // ── Access points handlers ──────────────────────────────
+  // Refresh the local access points list after any mutation.
+  async function refreshAccessPoints() {
+    try {
+      const res = await fetch(`/api/access-points/list?riverId=${encodeURIComponent(river.id)}`)
+      const data = await res.json()
+      if (res.ok && Array.isArray(data.accessPoints)) {
+        setAccessPoints(data.accessPoints as AccessPointLite[])
+      }
+    } catch { /* swallow — next page reload recovers */ }
+  }
+
+  // Submit a new access point.
+  async function submitAccessPoint(e: React.FormEvent) {
+    e.preventDefault()
+    if (!apForm.name.trim()) {
+      setApSubmitError('Name is required.')
+      return
+    }
+    if (!apForm.displayName.trim()) {
+      setApSubmitError('Display name is required.')
+      return
+    }
+    setApSubmitting(true)
+    setApSubmitError(null)
+    try {
+      const res = await fetch('/api/access-points/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          riverId: river.id,
+          name: apForm.name,
+          description: apForm.description || null,
+          accessType: apForm.accessType || null,
+          rampSurface: apForm.rampSurface || null,
+          trailerAccess: apForm.trailerAccess,
+          maxTrailerLengthFt: apForm.maxTrailerLengthFt ? Number(apForm.maxTrailerLengthFt) : null,
+          parkingCapacity: apForm.parkingCapacity || null,
+          parkingFee: apForm.parkingFee,
+          feeAmount: apForm.feeAmount || null,
+          facilities: apForm.facilities,
+          lat: apForm.lat ? Number(apForm.lat) : null,
+          lng: apForm.lng ? Number(apForm.lng) : null,
+          riverMile: apForm.riverMile ? Number(apForm.riverMile) : null,
+          distanceToNextAccessMiles: apForm.distanceToNextAccessMiles ? Number(apForm.distanceToNextAccessMiles) : null,
+          nextAccessName: apForm.nextAccessName || null,
+          floatTimeToNext: apForm.floatTimeToNext || null,
+          seasonalNotes: apForm.seasonalNotes || null,
+          displayName: apForm.displayName,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        setApSubmitError(data.error || 'Failed to submit access point.')
+        return
+      }
+      setApModalOpen(false)
+      // Reset most fields but keep the display name for repeat
+      // submissions in the same session.
+      setApForm(f => ({
+        ...f,
+        name: '', description: '', accessType: '', rampSurface: '',
+        trailerAccess: false, maxTrailerLengthFt: '',
+        parkingCapacity: '', parkingFee: false, feeAmount: '',
+        facilities: [], lat: '', lng: '', riverMile: '',
+        distanceToNextAccessMiles: '', nextAccessName: '',
+        floatTimeToNext: '', seasonalNotes: '',
+      }))
+      await refreshAccessPoints()
+    } catch {
+      setApSubmitError('Network error — please try again.')
+    } finally {
+      setApSubmitting(false)
+    }
+  }
+
+  async function confirmAccessPoint(id: string) {
+    setApBusyId(id)
+    try {
+      const res = await fetch('/api/access-points/confirm', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ accessPointId: id }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        alert(data.error || 'Failed to confirm.')
+        return
+      }
+      await refreshAccessPoints()
+    } catch {
+      /* swallow */
+    } finally {
+      setApBusyId(null)
+    }
+  }
+
+  async function submitAccessPointReport(id: string) {
+    if (!apReportForm.changeType) return
+    setApReportSubmitting(true)
+    try {
+      const res = await fetch('/api/access-points/report-change', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          accessPointId: id,
+          changeType: apReportForm.changeType,
+          notes: apReportForm.notes || null,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        alert(data.error || 'Failed to report change.')
+        return
+      }
+      setApReportOpen(null)
+      setApReportForm({ changeType: '', notes: '' })
+      await refreshAccessPoints()
+    } catch {
+      /* swallow */
+    } finally {
+      setApReportSubmitting(false)
+    }
+  }
+
+  async function markAccessPointHelpful(id: string) {
+    if (apHelpfulMarked.has(id)) return
+    setApHelpfulMarked(prev => new Set(prev).add(id))
+    setAccessPoints(prev => prev.map(ap =>
+      ap.id === id ? { ...ap, helpful_count: ap.helpful_count + 1 } : ap
+    ))
+    try {
+      await fetch('/api/access-points/helpful', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id }),
+      })
+    } catch { /* desync self-corrects on reload */ }
   }
 
   const gear = gearList(river.cls, flow.tempC)
@@ -3095,6 +3305,294 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
               </div>
             )}
 
+            {/* ── Access Points timeline ─────────────────────────
+                User-editable list of put-ins/take-outs. Sorted by
+                river_mile (asc, nulls last) so the render runs
+                upstream → downstream when milepost data exists,
+                falling back to creation order otherwise. Float
+                segment summary cards render between consecutive
+                points using distance + time fields. */}
+            <div style={{ marginBottom: '20px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '12px', gap: '12px', flexWrap: 'wrap' }}>
+                <div>
+                  <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '4px' }}>
+                    Access Points — {river.n}
+                  </div>
+                  <div style={{ fontSize: '11px', color: 'var(--tx2)', lineHeight: 1.55 }}>
+                    Crowdsourced put-ins, take-outs, and float segments. Verified by community confirmations.
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setApModalOpen(true)}
+                  style={{
+                    fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', fontWeight: 500,
+                    padding: '8px 16px', borderRadius: 'var(--r)',
+                    background: 'var(--rv)', color: '#fff', border: 'none',
+                    cursor: 'pointer', flexShrink: 0,
+                  }}
+                >
+                  + Add access point
+                </button>
+              </div>
+
+              {accessPoints.length === 0 ? (
+                <div style={{
+                  padding: '20px', textAlign: 'center', borderRadius: 'var(--r)',
+                  background: 'var(--bg2)', border: '.5px dashed var(--bd2)',
+                  fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--tx3)',
+                  lineHeight: 1.6,
+                }}>
+                  No access points yet. Be the first to add one — the put-in or take-out you launched from counts.
+                </div>
+              ) : (
+                <div>
+                  {accessPoints.map((ap, idx) => {
+                    const next = idx < accessPoints.length - 1 ? accessPoints[idx + 1] : null
+                    return (
+                      <AccessPointRow
+                        key={ap.id}
+                        ap={ap}
+                        next={next}
+                        busy={apBusyId === ap.id}
+                        helpfulMarked={apHelpfulMarked.has(ap.id)}
+                        reportOpen={apReportOpen === ap.id}
+                        reportForm={apReportForm}
+                        reportSubmitting={apReportSubmitting}
+                        onConfirm={() => confirmAccessPoint(ap.id)}
+                        onReport={() => setApReportOpen(prev => prev === ap.id ? null : ap.id)}
+                        onReportFormChange={setApReportForm}
+                        onSubmitReport={() => submitAccessPointReport(ap.id)}
+                        onMarkHelpful={() => markAccessPointHelpful(ap.id)}
+                      />
+                    )
+                  })}
+                </div>
+              )}
+            </div>
+
+            {/* Add-access-point modal */}
+            {apModalOpen && (
+              <div
+                onClick={() => setApModalOpen(false)}
+                style={{
+                  position: 'fixed', inset: 0, background: 'rgba(0,0,0,.45)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  zIndex: 1000, padding: '20px',
+                }}
+              >
+                <div
+                  onClick={e => e.stopPropagation()}
+                  style={{
+                    background: 'var(--bg)', borderRadius: 'var(--rlg)',
+                    border: '.5px solid var(--bd2)',
+                    padding: '20px 22px', maxWidth: '560px', width: '100%',
+                    maxHeight: '90vh', overflowY: 'auto',
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '14px' }}>
+                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '17px', fontWeight: 700, color: 'var(--rvdk)', margin: 0 }}>
+                      Add an access point — {river.n}
+                    </h3>
+                    <button
+                      type="button"
+                      onClick={() => setApModalOpen(false)}
+                      style={{ background: 'none', border: 'none', fontSize: '18px', color: 'var(--tx3)', cursor: 'pointer', padding: 0, lineHeight: 1 }}
+                      aria-label="Close"
+                    >
+                      ×
+                    </button>
+                  </div>
+                  <form onSubmit={submitAccessPoint}>
+                    {/* Section 1 — Location */}
+                    <ApSection title="Location">
+                      <ApField label="Access point name *">
+                        <input type="text" value={apForm.name} required maxLength={120}
+                          onChange={e => setApForm(f => ({ ...f, name: e.target.value }))}
+                          placeholder="e.g. Peterson Bridge"
+                          style={apInputStyle} />
+                      </ApField>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                        <ApField label="Latitude">
+                          <input type="number" step="any" value={apForm.lat}
+                            onChange={e => setApForm(f => ({ ...f, lat: e.target.value }))}
+                            placeholder="44.0123" style={apInputStyle} />
+                        </ApField>
+                        <ApField label="Longitude">
+                          <input type="number" step="any" value={apForm.lng}
+                            onChange={e => setApForm(f => ({ ...f, lng: e.target.value }))}
+                            placeholder="-85.7234" style={apInputStyle} />
+                        </ApField>
+                      </div>
+                      <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginBottom: '8px', lineHeight: 1.5 }}>
+                        Tip: drop a pin on Google Maps, right-click, copy coordinates. Map picker coming soon.
+                      </div>
+                      <ApField label="River mile (optional)">
+                        <input type="number" step="any" value={apForm.riverMile}
+                          onChange={e => setApForm(f => ({ ...f, riverMile: e.target.value }))}
+                          placeholder="If you know it" style={apInputStyle} />
+                      </ApField>
+                    </ApSection>
+
+                    {/* Section 2 — Access type */}
+                    <ApSection title="Access type">
+                      <ApField label="Type">
+                        <select value={apForm.accessType}
+                          onChange={e => setApForm(f => ({ ...f, accessType: e.target.value }))}
+                          style={apInputStyle}>
+                          <option value="">Select…</option>
+                          <option value="boat_ramp">Boat ramp</option>
+                          <option value="carry_in">Carry-in</option>
+                          <option value="beach_launch">Beach launch</option>
+                          <option value="dock">Dock</option>
+                          <option value="steps">Steps</option>
+                          <option value="primitive">Primitive</option>
+                        </select>
+                      </ApField>
+                      <ApField label="Ramp surface">
+                        <select value={apForm.rampSurface}
+                          onChange={e => setApForm(f => ({ ...f, rampSurface: e.target.value }))}
+                          style={apInputStyle}>
+                          <option value="">Select…</option>
+                          <option value="paved">Paved</option>
+                          <option value="gravel">Gravel</option>
+                          <option value="dirt">Dirt</option>
+                          <option value="concrete">Concrete</option>
+                          <option value="sand">Sand</option>
+                          <option value="none">None</option>
+                        </select>
+                      </ApField>
+                      <label style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer' }}>
+                        <input type="checkbox" checked={apForm.trailerAccess}
+                          onChange={e => setApForm(f => ({ ...f, trailerAccess: e.target.checked }))} />
+                        <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--tx)' }}>
+                          Trailer access available
+                        </span>
+                      </label>
+                      {apForm.trailerAccess && (
+                        <ApField label="Maximum trailer length (ft) — optional">
+                          <input type="number" value={apForm.maxTrailerLengthFt}
+                            onChange={e => setApForm(f => ({ ...f, maxTrailerLengthFt: e.target.value }))}
+                            placeholder="e.g. 24" style={apInputStyle} />
+                        </ApField>
+                      )}
+                    </ApSection>
+
+                    {/* Section 3 — Facilities */}
+                    <ApSection title="Facilities">
+                      <ApField label="Parking capacity">
+                        <select value={apForm.parkingCapacity}
+                          onChange={e => setApForm(f => ({ ...f, parkingCapacity: e.target.value }))}
+                          style={apInputStyle}>
+                          <option value="">Select…</option>
+                          <option value="limited_under_5">Under 5 vehicles</option>
+                          <option value="small_5_to_15">5–15 vehicles</option>
+                          <option value="medium_15_to_30">15–30 vehicles</option>
+                          <option value="large_over_30">30+ vehicles</option>
+                        </select>
+                      </ApField>
+                      <label style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer' }}>
+                        <input type="checkbox" checked={apForm.parkingFee}
+                          onChange={e => setApForm(f => ({ ...f, parkingFee: e.target.checked }))} />
+                        <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--tx)' }}>
+                          Parking fee
+                        </span>
+                      </label>
+                      {apForm.parkingFee && (
+                        <ApField label="How much?">
+                          <input type="text" value={apForm.feeAmount}
+                            onChange={e => setApForm(f => ({ ...f, feeAmount: e.target.value }))}
+                            placeholder="e.g. $5/day" style={apInputStyle} />
+                        </ApField>
+                      )}
+                      <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '.5px' }}>
+                        Facilities (check all that apply)
+                      </div>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4px 12px', marginBottom: '12px' }}>
+                        {['Restroom', 'Port-a-john', 'Picnic tables', 'Fire rings', 'Camping', 'Drinking water', 'Boat blower', 'Dumpster'].map(f => (
+                          <label key={f} style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}>
+                            <input type="checkbox" checked={apForm.facilities.includes(f)}
+                              onChange={e => setApForm(prev => ({
+                                ...prev,
+                                facilities: e.target.checked
+                                  ? [...prev.facilities, f]
+                                  : prev.facilities.filter(x => x !== f),
+                              }))} />
+                            <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx)' }}>{f}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </ApSection>
+
+                    {/* Section 4 — Float segment */}
+                    <ApSection title="Float segment to next access">
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                        <ApField label="Distance (miles)">
+                          <input type="number" step="any" value={apForm.distanceToNextAccessMiles}
+                            onChange={e => setApForm(f => ({ ...f, distanceToNextAccessMiles: e.target.value }))}
+                            placeholder="4.2" style={apInputStyle} />
+                        </ApField>
+                        <ApField label="Next access name">
+                          <input type="text" value={apForm.nextAccessName}
+                            onChange={e => setApForm(f => ({ ...f, nextAccessName: e.target.value }))}
+                            placeholder="e.g. Elm Flats" style={apInputStyle} />
+                        </ApField>
+                      </div>
+                      <ApField label="Estimated float time">
+                        <input type="text" value={apForm.floatTimeToNext}
+                          onChange={e => setApForm(f => ({ ...f, floatTimeToNext: e.target.value }))}
+                          placeholder="e.g. about 2 hours at normal flows" style={apInputStyle} />
+                      </ApField>
+                    </ApSection>
+
+                    {/* Section 5 — Local knowledge */}
+                    <ApSection title="Local knowledge">
+                      <ApField label="Description (max 280 chars)">
+                        <textarea value={apForm.description} maxLength={280} rows={3}
+                          onChange={e => setApForm(f => ({ ...f, description: e.target.value }))}
+                          placeholder="What should a first-timer know? Parking tips, ramp quirks, seasonal changes, local knowledge…"
+                          style={{ ...apInputStyle, resize: 'vertical', fontFamily: 'Georgia, serif', fontSize: '12px', lineHeight: 1.55 }} />
+                      </ApField>
+                      <ApField label="Seasonal notes (optional)">
+                        <textarea value={apForm.seasonalNotes} rows={2}
+                          onChange={e => setApForm(f => ({ ...f, seasonalNotes: e.target.value }))}
+                          placeholder="Any seasonal closures or changes?"
+                          style={{ ...apInputStyle, resize: 'vertical', fontFamily: 'Georgia, serif', fontSize: '12px', lineHeight: 1.55 }} />
+                      </ApField>
+                    </ApSection>
+
+                    {/* Section 6 — Your name */}
+                    <ApSection title="Your name">
+                      <ApField label="Display name *">
+                        <input type="text" value={apForm.displayName} required maxLength={60}
+                          onChange={e => setApForm(f => ({ ...f, displayName: e.target.value }))}
+                          placeholder="What should we call you?" style={apInputStyle} />
+                      </ApField>
+                      <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', lineHeight: 1.5 }}>
+                        Your name appears publicly with your submission. Sign in is required so we can credit your contributor tier.
+                      </div>
+                    </ApSection>
+
+                    {apSubmitError && (
+                      <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--dg)', marginBottom: '10px' }}>
+                        {apSubmitError}
+                      </div>
+                    )}
+                    <button type="submit" disabled={apSubmitting}
+                      style={{
+                        width: '100%',
+                        fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
+                        padding: '10px', borderRadius: 'var(--r)',
+                        background: 'var(--rv)', color: '#fff', border: 'none',
+                        cursor: apSubmitting ? 'wait' : 'pointer',
+                      }}>
+                      {apSubmitting ? 'Submitting…' : 'Submit access point'}
+                    </button>
+                  </form>
+                </div>
+              </div>
+            )}
+
             {/* Featured map placeholder */}
             <div style={{ border: '.5px solid var(--rvmd)', borderRadius: 'var(--rlg)', padding: '16px 18px', background: 'var(--rvlt)', marginBottom: '12px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
@@ -3398,4 +3896,293 @@ const inputStyle: React.CSSProperties = {
   outline: 'none',
   width: '100%',
   boxSizing: 'border-box',
+}
+
+// ── Access points helpers ───────────────────────────────────
+
+const apMono = "'IBM Plex Mono', monospace"
+const apSerif = "'Playfair Display', serif"
+
+const apInputStyle: React.CSSProperties = {
+  width: '100%', boxSizing: 'border-box',
+  padding: '8px 10px',
+  fontFamily: apMono, fontSize: '12px',
+  border: '.5px solid var(--bd2)', borderRadius: 'var(--r)',
+  background: 'var(--bg)', color: 'var(--tx)',
+}
+
+function ApSection({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div style={{ marginBottom: '14px', paddingBottom: '12px', borderBottom: '.5px dashed var(--bd)' }}>
+      <div style={{ fontFamily: apMono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px', fontWeight: 600 }}>
+        {title}
+      </div>
+      {children}
+    </div>
+  )
+}
+
+function ApField({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <label style={{ display: 'block', marginBottom: '8px' }}>
+      <span style={{ fontFamily: apMono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px', display: 'block', marginBottom: '4px' }}>
+        {label}
+      </span>
+      {children}
+    </label>
+  )
+}
+
+// Friendly labels for the enum columns. The DB stores
+// machine-friendly values; the render shows human ones.
+const ACCESS_TYPE_LABELS: Record<string, string> = {
+  boat_ramp: 'Boat ramp',
+  carry_in: 'Carry-in',
+  beach_launch: 'Beach launch',
+  dock: 'Dock',
+  steps: 'Steps',
+  primitive: 'Primitive',
+}
+const RAMP_SURFACE_LABELS: Record<string, string> = {
+  paved: 'Paved', gravel: 'Gravel', dirt: 'Dirt',
+  concrete: 'Concrete', sand: 'Sand', none: 'None',
+}
+const PARKING_LABELS: Record<string, string> = {
+  limited_under_5: 'Under 5 vehicles',
+  small_5_to_15: '5–15 vehicles',
+  medium_15_to_30: '15–30 vehicles',
+  large_over_30: '30+ vehicles',
+}
+const CHANGE_TYPE_LABELS: Record<string, string> = {
+  ramp_damaged: 'Ramp damaged',
+  parking_reduced: 'Parking reduced',
+  access_closed: 'Access closed',
+  facilities_changed: 'Facilities changed',
+  other: 'Other',
+}
+
+// Freshness indicator: green for <60d, amber for <365d, red beyond.
+// Drives the user's confidence in the data and prompts re-verify.
+function freshnessLabel(lastVerifiedAt: string | null): { text: string; color: string } | null {
+  if (!lastVerifiedAt) return null
+  const ms = Date.now() - new Date(lastVerifiedAt).getTime()
+  const days = Math.floor(ms / 86_400_000)
+  if (days < 7) return { text: `Verified ${days <= 1 ? 'this week' : days + ' days ago'}`, color: '#1D9E75' }
+  if (days < 30) return { text: `Verified ${Math.floor(days / 7)} week${Math.floor(days / 7) === 1 ? '' : 's'} ago`, color: '#1D9E75' }
+  if (days < 60) return { text: `Verified ${Math.floor(days / 30)} month${Math.floor(days / 30) === 1 ? '' : 's'} ago`, color: '#1D9E75' }
+  if (days < 365) return { text: `Last verified ${Math.floor(days / 30)} months ago`, color: '#BA7517' }
+  return { text: `Last verified over ${Math.floor(days / 365)} year${Math.floor(days / 365) === 1 ? '' : 's'} ago`, color: '#A32D2D' }
+}
+
+interface AccessPointRowProps {
+  ap: AccessPointLite
+  next: AccessPointLite | null
+  busy: boolean
+  helpfulMarked: boolean
+  reportOpen: boolean
+  reportForm: { changeType: string; notes: string }
+  reportSubmitting: boolean
+  onConfirm: () => void
+  onReport: () => void
+  onReportFormChange: (f: { changeType: string; notes: string }) => void
+  onSubmitReport: () => void
+  onMarkHelpful: () => void
+}
+
+function AccessPointRow({
+  ap, next, busy, helpfulMarked, reportOpen, reportForm, reportSubmitting,
+  onConfirm, onReport, onReportFormChange, onSubmitReport, onMarkHelpful,
+}: AccessPointRowProps) {
+  // Color the timeline dot by verification state.
+  const dotColor =
+    ap.verification_status === 'verified' ? '#1D9E75' :
+    ap.verification_status === 'needs_review' ? '#BA7517' :
+    'var(--tx3)'
+
+  const fresh = freshnessLabel(ap.last_verified_at)
+
+  // Compute the float segment line. Prefer the explicit
+  // distance/time fields the submitter provided. If only river_mile
+  // is set on both this and the next point, derive distance from
+  // that. Otherwise show nothing rather than fake data.
+  let segmentDistance: number | null = null
+  if (ap.distance_to_next_access_miles != null) {
+    segmentDistance = ap.distance_to_next_access_miles
+  } else if (ap.river_mile != null && next?.river_mile != null) {
+    segmentDistance = Math.abs(next.river_mile - ap.river_mile)
+  }
+
+  return (
+    <div style={{ position: 'relative' }}>
+      {/* Vertical timeline dot + line */}
+      <div style={{ display: 'flex', gap: '12px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0, paddingTop: '4px' }}>
+          <div style={{
+            width: '12px', height: '12px', borderRadius: '50%',
+            background: dotColor, border: '2px solid var(--bg)',
+            boxShadow: '0 0 0 1px ' + dotColor,
+          }} />
+          {next && (
+            <div style={{
+              width: '2px', flex: 1, minHeight: '40px',
+              background: 'var(--bd2)', marginTop: '4px',
+            }} />
+          )}
+        </div>
+
+        {/* Body */}
+        <div style={{ flex: 1, minWidth: 0, paddingBottom: next ? '0' : '12px' }}>
+          {/* Heading row — name, badge */}
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap', marginBottom: '4px' }}>
+            <h3 style={{
+              fontFamily: apSerif, fontSize: '15px', fontWeight: 600,
+              color: 'var(--tx)', margin: 0, lineHeight: 1.3,
+            }}>
+              {ap.name}
+            </h3>
+            {ap.verification_status === 'verified' && (
+              <span style={{
+                fontFamily: apMono, fontSize: '8px', padding: '2px 7px', borderRadius: '8px',
+                background: '#E1F5EE', color: '#1D9E75', border: '.5px solid #9FE1CB',
+                textTransform: 'uppercase', letterSpacing: '.5px', fontWeight: 600,
+              }}>
+                ✓ Verified
+              </span>
+            )}
+            {ap.verification_status === 'pending' && (
+              <span style={{
+                fontFamily: apMono, fontSize: '8px', padding: '2px 7px', borderRadius: '8px',
+                background: 'var(--bg2)', color: 'var(--tx3)', border: '.5px solid var(--bd2)',
+                textTransform: 'uppercase', letterSpacing: '.5px', fontWeight: 600,
+              }}>
+                Pending
+              </span>
+            )}
+            {ap.verification_status === 'needs_review' && (
+              <span style={{
+                fontFamily: apMono, fontSize: '8px', padding: '2px 7px', borderRadius: '8px',
+                background: '#FBF3E8', color: '#BA7517', border: '.5px solid #E8C54A',
+                textTransform: 'uppercase', letterSpacing: '.5px', fontWeight: 600,
+              }}>
+                ⚠ Needs review
+              </span>
+            )}
+          </div>
+
+          {/* Type / surface / trailer line */}
+          {(ap.access_type || ap.ramp_surface || ap.trailer_access) && (
+            <div style={{ fontFamily: apMono, fontSize: '10px', color: 'var(--tx2)', marginBottom: '3px', lineHeight: 1.5 }}>
+              {[
+                ap.ramp_surface && RAMP_SURFACE_LABELS[ap.ramp_surface] + (ap.access_type === 'boat_ramp' ? ' ramp' : ''),
+                ap.access_type && !ap.ramp_surface && ACCESS_TYPE_LABELS[ap.access_type],
+                ap.trailer_access
+                  ? `Trailer access${ap.max_trailer_length_ft ? ` (up to ${ap.max_trailer_length_ft}ft)` : ''}`
+                  : null,
+              ].filter(Boolean).join(' · ')}
+            </div>
+          )}
+
+          {/* Parking + facilities line */}
+          {(ap.parking_capacity || ap.facilities.length > 0) && (
+            <div style={{ fontFamily: apMono, fontSize: '10px', color: 'var(--tx2)', marginBottom: '6px', lineHeight: 1.5 }}>
+              {ap.parking_capacity && <>Parking: {PARKING_LABELS[ap.parking_capacity]}</>}
+              {ap.parking_fee && ap.fee_amount && <> · {ap.fee_amount}</>}
+              {ap.facilities.length > 0 && <> · {ap.facilities.join(', ')}</>}
+            </div>
+          )}
+
+          {/* Description */}
+          {ap.description && (
+            <div style={{ fontSize: '12px', color: 'var(--tx)', lineHeight: 1.6, fontStyle: 'italic', marginBottom: '6px', paddingLeft: '8px', borderLeft: '2px solid var(--bd2)' }}>
+              &ldquo;{ap.description}&rdquo;
+            </div>
+          )}
+
+          {/* Seasonal notes */}
+          {ap.seasonal_notes && (
+            <div style={{ fontFamily: apMono, fontSize: '10px', color: 'var(--am)', marginBottom: '6px', lineHeight: 1.5 }}>
+              ⚠ {ap.seasonal_notes}
+            </div>
+          )}
+
+          {/* Submitter + freshness line */}
+          <div style={{ fontFamily: apMono, fontSize: '9px', color: 'var(--tx3)', display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '6px' }}>
+            {ap.submitted_by_name && <span>— submitted by {ap.submitted_by_name}</span>}
+            {fresh && <span style={{ color: fresh.color }}>{fresh.text}</span>}
+            {ap.confirmation_count > 0 && <span>{ap.confirmation_count} confirmation{ap.confirmation_count === 1 ? '' : 's'}</span>}
+          </div>
+
+          {/* Action row */}
+          <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '6px' }}>
+            <button onClick={onConfirm} disabled={busy} style={apActionBtnStyle}>
+              {busy ? 'Working…' : 'Mark still accurate'}
+            </button>
+            <button onClick={onReport} style={apActionBtnStyle}>
+              Report change
+            </button>
+            <button onClick={onMarkHelpful} disabled={helpfulMarked} style={{ ...apActionBtnStyle, color: helpfulMarked ? 'var(--rv)' : 'var(--tx2)' }}>
+              {helpfulMarked ? '✓ ' : ''}Helpful ({ap.helpful_count})
+            </button>
+          </div>
+
+          {/* Inline report-change form */}
+          {reportOpen && (
+            <div style={{ background: 'var(--bg2)', border: '.5px solid var(--bd)', borderRadius: 'var(--r)', padding: '10px 12px', marginBottom: '8px' }}>
+              <div style={{ fontFamily: apMono, fontSize: '9px', color: 'var(--tx3)', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '.5px' }}>
+                What changed?
+              </div>
+              <select value={reportForm.changeType}
+                onChange={e => onReportFormChange({ ...reportForm, changeType: e.target.value })}
+                style={{ ...apInputStyle, marginBottom: '6px' }}>
+                <option value="">Select…</option>
+                {Object.entries(CHANGE_TYPE_LABELS).map(([k, v]) => (
+                  <option key={k} value={k}>{v}</option>
+                ))}
+              </select>
+              <textarea value={reportForm.notes}
+                onChange={e => onReportFormChange({ ...reportForm, notes: e.target.value })}
+                placeholder="Anything else admins should know?"
+                rows={2}
+                style={{ ...apInputStyle, marginBottom: '6px', resize: 'vertical', fontFamily: 'Georgia, serif', fontSize: '12px' }} />
+              <button
+                onClick={onSubmitReport}
+                disabled={reportSubmitting || !reportForm.changeType}
+                style={{
+                  fontFamily: apMono, fontSize: '10px', padding: '6px 12px', borderRadius: 'var(--r)',
+                  background: 'var(--rv)', color: '#fff', border: 'none',
+                  cursor: reportSubmitting ? 'wait' : 'pointer',
+                }}>
+                {reportSubmitting ? 'Submitting…' : 'Submit report'}
+              </button>
+            </div>
+          )}
+
+          {/* Float segment summary card to next access point. Renders
+              only when we have at least a distance to show. */}
+          {next && (segmentDistance != null || ap.float_time_to_next || ap.next_access_name) && (
+            <div style={{
+              marginTop: '10px', marginBottom: '10px', marginLeft: '0',
+              padding: '10px 12px',
+              background: 'var(--rvlt)', border: '.5px solid var(--rvmd)',
+              borderRadius: 'var(--r)',
+            }}>
+              <div style={{ fontFamily: apMono, fontSize: '9px', color: 'var(--rv)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '4px', fontWeight: 600 }}>
+                {ap.name} → {ap.next_access_name || next.name}
+              </div>
+              <div style={{ fontFamily: apMono, fontSize: '11px', color: 'var(--rvdk)', lineHeight: 1.55 }}>
+                {segmentDistance != null && <>{segmentDistance.toFixed(1)} miles</>}
+                {ap.float_time_to_next && <> · {ap.float_time_to_next}</>}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const apActionBtnStyle: React.CSSProperties = {
+  fontFamily: apMono, fontSize: '9px', padding: '4px 9px', borderRadius: 'var(--r)',
+  background: 'var(--bg)', color: 'var(--tx2)', border: '.5px solid var(--bd2)',
+  cursor: 'pointer',
 }
