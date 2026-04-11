@@ -153,7 +153,22 @@ export async function POST(req: NextRequest) {
       safetyPromptPrefix,
     )
 
-    const supabase = createSupabaseClient()
+    // Service role for the write path. The anon-client + .select()
+    // pattern was failing with the misleading "RLS policy" error
+    // class documented in migration 026 — the RETURNING clause
+    // triggered by .select() runs through the SELECT policy, and
+    // the FK to auth.users on user_id can't be verified by the
+    // anon role. The route is the gate (we already validated all
+    // required fields and ran the AI eval), so service role is
+    // safe and avoids both footguns at once. Same pattern as
+    // /api/releases/subscribe.
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+    if (!url || !serviceKey) {
+      return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
+    }
+    const { createClient } = await import('@supabase/supabase-js')
+    const supabase = createClient(url, serviceKey, { auth: { persistSession: false } })
 
     const insertData: Record<string, unknown> = {
       river_id: riverId,
@@ -179,14 +194,22 @@ export async function POST(req: NextRequest) {
       insertData.ai_category = 'permit_update'
     }
 
-    const { data, error } = await supabase
+    // Plain insert without .select() — no caller uses the
+    // returned row, and dropping it sidesteps the RETURNING
+    // SELECT-policy check.
+    const { error } = await supabase
       .from('suggestions')
       .insert(insertData)
-      .select()
 
     if (error) {
-      console.error('Suggestion insert error:', error)
-      return NextResponse.json({ error: 'Failed to submit suggestion' }, { status: 500 })
+      console.error('[suggestions] insert error:', error)
+      // Surface the real Supabase error in the response so the
+      // next failure is debuggable instead of mystery-meat. Worst
+      // case the user pastes it back to us and we know exactly
+      // what's wrong.
+      return NextResponse.json({
+        error: `Failed to submit suggestion: ${error.message}`,
+      }, { status: 500 })
     }
 
     // Send priority admin notification for permit-update submissions.
@@ -249,7 +272,10 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    return NextResponse.json({ ok: true, suggestion: data?.[0] })
+    // No suggestion row echoed back — we dropped .select() above to
+    // avoid the RETURNING SELECT-policy check. Callers in the app
+    // only need to know whether the submit succeeded.
+    return NextResponse.json({ ok: true })
   } catch (err) {
     console.error('Suggestion error:', err)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })

@@ -53,7 +53,18 @@ export async function POST(req: NextRequest) {
     const isGovSource = sourceUrl && (/\.gov(\/|$)/.test(sourceUrl) || /\.state\.\w+\.us/.test(sourceUrl))
     const verified = !!(autoVerified || isGovSource)
 
-    const supabase = createSupabaseClient()
+    // Service role for the write path. river_stocking.submitted_by
+    // is FK-bound to auth.users so the anon write hits the
+    // migration-026 error. Same canonical pattern as the rest of
+    // the user-facing write routes.
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+    if (!url || !serviceKey) {
+      return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
+    }
+    const { createClient } = await import('@supabase/supabase-js')
+    const supabase = createClient(url, serviceKey, { auth: { persistSession: false } })
+
     const { data, error } = await supabase
       .from('river_stocking')
       .insert({
@@ -71,10 +82,11 @@ export async function POST(req: NextRequest) {
         submitted_by: userId,
       })
       .select()
+      .single()
 
     if (error) {
-      console.error('Stocking insert error:', error)
-      return NextResponse.json({ error: 'Failed to submit stocking report' }, { status: 500 })
+      console.error('[stocking] insert error:', error)
+      return NextResponse.json({ error: `Failed to submit stocking report: ${error.message}` }, { status: 500 })
     }
 
     // Notify admin
@@ -159,7 +171,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    return NextResponse.json({ ok: true, event: data?.[0] })
+    return NextResponse.json({ ok: true, event: data })
   } catch (err) {
     console.error('Stocking error:', err)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })

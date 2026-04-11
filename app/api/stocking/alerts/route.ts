@@ -11,7 +11,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
-    const supabase = createSupabaseClient()
+    // Service role: stocking_alerts.user_id is FK-bound to
+    // auth.users so the anon write hits the migration-026 error.
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+    if (!url || !serviceKey) {
+      return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
+    }
+    const { createClient } = await import('@supabase/supabase-js')
+    const supabase = createClient(url, serviceKey, { auth: { persistSession: false } })
 
     // Check Pro status — stocking alerts are Pro-only
     let isPro = false
@@ -31,7 +39,8 @@ export async function POST(req: NextRequest) {
       }, { status: 403 })
     }
 
-    const { data, error } = await supabase
+    // Plain upsert without .select() — we don't echo the row back.
+    const { error } = await supabase
       .from('stocking_alerts')
       .upsert(
         {
@@ -46,14 +55,13 @@ export async function POST(req: NextRequest) {
         },
         { onConflict: 'email,river_id' }
       )
-      .select()
 
     if (error) {
-      console.error('Stocking alert insert error:', error)
-      return NextResponse.json({ error: 'Failed to create alert' }, { status: 500 })
+      console.error('[stocking/alerts] insert error:', error)
+      return NextResponse.json({ error: `Failed to create alert: ${error.message}` }, { status: 500 })
     }
 
-    return NextResponse.json({ ok: true, alert: data?.[0] })
+    return NextResponse.json({ ok: true })
   } catch (err) {
     console.error('Stocking alert error:', err)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })

@@ -1,11 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createSupabaseClient } from '@/lib/supabase'
 
 // POST /api/hazards/:id/confirm — "still present" confirmation.
 // Any logged-in user can confirm. Each user's confirmation is unique
 // (enforced by the river_hazard_confirmations unique constraint), so
 // repeated taps from the same user don't ratchet expires_at. A fresh
 // confirmation from any user extends expires_at by 72 hours from now.
+//
+// Service-role write because river_hazard_confirmations.user_id and
+// river_hazards.reported_by are FK-bound to auth.users in some
+// deployments — anon writes hit the misleading RLS error class
+// documented in migration 026.
 export async function POST(
   req: NextRequest,
   context: { params: Promise<{ id: string }> },
@@ -18,7 +22,13 @@ export async function POST(
     return NextResponse.json({ error: 'auth_required' }, { status: 401 })
   }
 
-  const supabase = createSupabaseClient()
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+  if (!url || !serviceKey) {
+    return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
+  }
+  const { createClient } = await import('@supabase/supabase-js')
+  const supabase = createClient(url, serviceKey, { auth: { persistSession: false } })
 
   // Upsert the confirmation ledger row. Conflict on (hazard_id, user_id)
   // means this user has already confirmed once — we still bump expires_at

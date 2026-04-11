@@ -42,7 +42,18 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Report text too long (max 5000 chars)' }, { status: 400 })
     }
 
-    const supabase = createSupabaseClient()
+    // Service role for the write path. Same canonical pattern as
+    // every other user-facing write route — sidesteps the
+    // misleading RLS error class even on tables that don't
+    // currently have an auth.users FK, in case the schema
+    // tightens later.
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+    if (!url || !serviceKey) {
+      return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
+    }
+    const { createClient } = await import('@supabase/supabase-js')
+    const supabase = createClient(url, serviceKey, { auth: { persistSession: false } })
 
     const { data, error } = await supabase
       .from('trip_reports')
@@ -57,13 +68,14 @@ export async function POST(req: NextRequest) {
         photos: photos || [],
       })
       .select()
+      .single()
 
     if (error) {
-      console.error('Insert trip report error:', error)
-      return NextResponse.json({ error: 'Failed to submit report' }, { status: 500 })
+      console.error('[trips] insert error:', error)
+      return NextResponse.json({ error: `Failed to submit report: ${error.message}` }, { status: 500 })
     }
 
-    return NextResponse.json({ ok: true, report: data?.[0] })
+    return NextResponse.json({ ok: true, report: data })
   } catch (err) {
     console.error('Trip report submit error:', err)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })

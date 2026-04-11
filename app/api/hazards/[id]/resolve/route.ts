@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createSupabaseClient } from '@/lib/supabase'
 import { isAdmin } from '@/lib/admin'
 
 // POST /api/hazards/:id/resolve — mark a hazard as resolved.
@@ -19,7 +18,15 @@ export async function POST(
     return NextResponse.json({ error: 'auth_required' }, { status: 401 })
   }
 
-  const supabase = createSupabaseClient()
+  // Service role: river_hazards.resolved_by is FK-bound to
+  // auth.users so the anon write hits the migration-026 error.
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+  if (!url || !serviceKey) {
+    return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
+  }
+  const { createClient } = await import('@supabase/supabase-js')
+  const supabase = createClient(url, serviceKey, { auth: { persistSession: false } })
 
   // Pull the hazard so we can check authorization (reporter OR admin).
   const { data: hazard, error: fetchErr } = await supabase

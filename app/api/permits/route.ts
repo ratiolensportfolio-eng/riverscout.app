@@ -106,7 +106,17 @@ export async function PATCH(req: NextRequest) {
 
     safe.updated_at = new Date().toISOString()
 
-    const supabase = createSupabaseClient()
+    // Service role for the write — admin gate above is the
+    // authorization check, and anon writes to tables with strict
+    // RLS write policies hit the misleading error class.
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+    if (!url || !serviceKey) {
+      return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
+    }
+    const { createClient } = await import('@supabase/supabase-js')
+    const supabase = createClient(url, serviceKey, { auth: { persistSession: false } })
+
     const { data, error } = await supabase
       .from('river_permits')
       .update(safe)
@@ -116,7 +126,7 @@ export async function PATCH(req: NextRequest) {
 
     if (error) {
       console.error('[permits PATCH] error:', error)
-      return NextResponse.json({ error: 'Failed to update' }, { status: 500 })
+      return NextResponse.json({ error: `Failed to update: ${error.message}` }, { status: 500 })
     }
 
     return NextResponse.json({ ok: true, permit: data })

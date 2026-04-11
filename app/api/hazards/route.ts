@@ -87,7 +87,20 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Unknown river' }, { status: 404 })
     }
 
-    const supabase = createSupabaseClient()
+    // Service role for the write path. We need the inserted row's
+    // id back so we can stamp email_sent_at on it after the
+    // critical-hazard fan-out, which means .select() stays — and
+    // anon + .select() hits the RLS-misleading error class
+    // documented in migration 026. Service role sidesteps both
+    // by bypassing RLS entirely. The route is the gate.
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+    if (!url || !serviceKey) {
+      return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
+    }
+    const { createClient } = await import('@supabase/supabase-js')
+    const supabase = createClient(url, serviceKey, { auth: { persistSession: false } })
+
     const { data: inserted, error } = await supabase
       .from('river_hazards')
       .insert({
@@ -109,7 +122,7 @@ export async function POST(req: NextRequest) {
 
     if (error || !inserted) {
       console.error('[hazards] insert error:', error)
-      return NextResponse.json({ error: 'Failed to create hazard' }, { status: 500 })
+      return NextResponse.json({ error: `Failed to create hazard: ${error?.message ?? 'unknown'}` }, { status: 500 })
     }
 
     // Critical hazards trigger an email blast to every flow-alert

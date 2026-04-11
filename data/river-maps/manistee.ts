@@ -1,13 +1,49 @@
 import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
-// Manistee River (MICHIGAN) — geometry from USGS NHDPlus HR
-// 80 points
+// Manistee River (MICHIGAN) — geometry from USGS NHDPlus HR.
+//
+// COVERAGE NOTE: the 80-point NHDPlus extraction below only
+// covers ~9 miles of the river around Cadillac, which is a tiny
+// fraction of the actual paddleable extent. The Manistee is
+// paddleable for ~190 miles from M-72 / M-66 area down to Lake
+// Michigan, and the user flagged the visualization as too short.
+//
+// As a stopgap I've prepended ~12 hand-placed waypoints that
+// trace the upper Manistee from M-66 Boat Launch (the upstream
+// snap point the user identified, near Sharon, MI) westward to
+// the start of the original NHDPlus extraction. These are
+// approximations — the river meanders much more than the
+// straight segments here suggest, and I do not have NHDPlus data
+// for the upper river to do better. The visualization will look
+// roughly straight in this stretch but will correctly indicate
+// the upstream water as paddleable.
+//
+// TODO: replace the upstream extension with a full NHDPlus HR
+// extraction from headwaters to mouth. Same for the downstream
+// extension below Cadillac to Tippy Dam tailwaters and on to
+// Manistee Lake.
+//
+// M-66 Boat Launch: approximately 44.4915, -85.2278.
 
 export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 
 export const riverPath: [number, number][] = [
+  // ── Upstream extension to M-66 Boat Launch (approximated) ──
+  [-85.2278, 44.4915], // M-66 Boat Launch (snap point)
+  [-85.2620, 44.4880],
+  [-85.3000, 44.4920],
+  [-85.3450, 44.4950],
+  [-85.3900, 44.4880],
+  [-85.4350, 44.4790],
+  [-85.4800, 44.4700],
+  [-85.5250, 44.4620],
+  [-85.5650, 44.4520],
+  [-85.6000, 44.4450],
+  [-85.6350, 44.4400],
+  [-85.6600, 44.4360],
+  // ── Original NHDPlus HR extraction (Cadillac area, ~9 mi) ──
   [-85.6772, 44.4318],
   [-85.6808, 44.4333],
   [-85.6805, 44.4355],

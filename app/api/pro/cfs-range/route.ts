@@ -41,8 +41,17 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'pro_required', message: 'Custom CFS ranges are a Pro feature' }, { status: 403 })
     }
 
-    const supabase = createSupabaseClient()
-    const { data, error } = await supabase
+    // Service role: custom_cfs_ranges.user_id is FK-bound to
+    // auth.users so the anon write hits the migration-026 error.
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+    if (!url || !serviceKey) {
+      return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
+    }
+    const { createClient } = await import('@supabase/supabase-js')
+    const supabase = createClient(url, serviceKey, { auth: { persistSession: false } })
+
+    const { error } = await supabase
       .from('custom_cfs_ranges')
       .upsert({
         user_id: userId,
@@ -52,13 +61,13 @@ export async function POST(req: NextRequest) {
         notes: notes || null,
         updated_at: new Date().toISOString(),
       }, { onConflict: 'user_id,river_id' })
-      .select()
 
     if (error) {
-      return NextResponse.json({ error: 'Failed to save range' }, { status: 500 })
+      console.error('[pro/cfs-range] insert error:', error)
+      return NextResponse.json({ error: `Failed to save range: ${error.message}` }, { status: 500 })
     }
 
-    return NextResponse.json({ ok: true, range: data?.[0] })
+    return NextResponse.json({ ok: true })
   } catch (err) {
     console.error('CFS range error:', err)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })

@@ -120,7 +120,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'userId, riverId, and action (save|unsave) required' }, { status: 400 })
     }
 
-    const supabase = createSupabaseClient()
+    // Service role: saved_rivers.user_id is FK-bound to auth.users
+    // so the anon write hits the migration-026 error class.
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+    if (!url || !serviceKey) {
+      return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
+    }
+    const { createClient } = await import('@supabase/supabase-js')
+    const supabase = createClient(url, serviceKey, { auth: { persistSession: false } })
 
     if (action === 'save') {
       // Count saved rivers BEFORE the insert so we can detect the

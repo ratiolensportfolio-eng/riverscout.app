@@ -44,17 +44,20 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'userId, businessName, and riverId are required' }, { status: 400 })
     }
 
-    const supabase = createSupabaseClient()
-
-    // NOTE: we used to do an "existing listing" pre-check here with a
-    // .select().eq('user_id', ...) query, but under our anon RLS
-    // policies that query returns [] for any inactive row regardless
-    // of whether one exists (the "Active listings are public" policy
-    // requires active=true; the "Outfitters manage own listing"
-    // policy requires auth.uid()). So the pre-check was a silent
-    // no-op that gave a false sense of duplicate-protection. Real
-    // duplicate protection has to live in a DB unique constraint or
-    // a service-role check; for now we just let the insert fly.
+    // Service role for the write path. The route is the gate
+    // (we already validated userId / businessName / riverId).
+    // Bypassing RLS sidesteps both the FK lookup failure on
+    // outfitters.user_id and the RETURNING SELECT-policy issue
+    // that previously made `data` come back empty even on a
+    // successful insert. Same canonical pattern as the rest of
+    // the user-facing write routes.
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+    if (!url || !serviceKey) {
+      return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
+    }
+    const { createClient } = await import('@supabase/supabase-js')
+    const supabase = createClient(url, serviceKey, { auth: { persistSession: false } })
 
     const { data, error } = await supabase
       .from('outfitters')
@@ -66,28 +69,16 @@ export async function POST(req: NextRequest) {
         phone: phone?.trim() || null,
         river_ids: [riverId],
         tier: 'listed',
-        // Free listings are auto-published. Earlier this defaulted to
-        // false on the assumption that we'd build an admin moderation
-        // queue, but in practice (a) it left real business owners
-        // staring at a dashboard with no way to make their listing
-        // visible, (b) it confused them into thinking their uploads
-        // had failed because nothing showed up on the river page,
-        // and (c) at our current scale spam is not a problem
-        // (one-listing-per-river-per-user is enforced by the route
-        // and the auth requirement is a real wall).
-        // If spam becomes a problem we'll add a moderation queue
-        // and flip this back. The owner can always unpublish their
-        // own listing from the dashboard.
+        // Free listings are auto-published. The owner can always
+        // unpublish from the dashboard. If spam becomes a problem
+        // we'll add a moderation queue and flip this back.
         active: true,
       })
       .select()
+      .single()
 
     if (error) {
-      // We've debugged this route blind three times now. Surface the
-      // real Supabase error message + code to the client so the next
-      // failure mode is visible from the browser, not just the
-      // server logs.
-      console.error('Outfitter claim error:', error)
+      console.error('[outfitters] insert error:', error)
       return NextResponse.json({
         error: `Failed to create listing: ${error.message}`,
         code: error.code,
@@ -96,16 +87,7 @@ export async function POST(req: NextRequest) {
       }, { status: 500 })
     }
 
-    // If the insert succeeded but the SELECT policy filtered out the
-    // returned row, `data` is []. Treat that as success — the row
-    // is in the table — and just don't echo it back. Without this
-    // branch the client gets `ok:true, listing:undefined` and may
-    // treat it as a no-op.
-    if (!data || data.length === 0) {
-      return NextResponse.json({ ok: true, listing: null, note: 'inserted (RLS hid the returning row)' })
-    }
-
-    return NextResponse.json({ ok: true, listing: data[0] })
+    return NextResponse.json({ ok: true, listing: data })
   } catch (err) {
     console.error('Outfitter API error:', err)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })

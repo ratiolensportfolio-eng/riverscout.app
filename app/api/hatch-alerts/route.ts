@@ -44,7 +44,17 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
 
-    const supabase = createSupabaseClient()
+    // Service role for the write path. The Pro gate above only
+    // needs SELECT on user_profiles which the anon role can do
+    // safely; the actual hatch_alerts write hits the same FK
+    // bug class as flow_alerts / suggestions / release_alerts.
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+    if (!url || !serviceKey) {
+      return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
+    }
+    const { createClient } = await import('@supabase/supabase-js')
+    const supabase = createClient(url, serviceKey, { auth: { persistSession: false } })
 
     // Hatch alerts are Pro-only
     if (userId) {
@@ -64,7 +74,9 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    const { data, error } = await supabase
+    // Plain upsert without .select() — drops the RETURNING
+    // SELECT-policy check that bites the anon path.
+    const { error } = await supabase
       .from('hatch_alerts')
       .upsert({
         user_id: userId || null,
@@ -79,14 +91,13 @@ export async function POST(req: NextRequest) {
         notify_on_calendar: notifyOnCalendar ?? true,
         active: true,
       }, { onConflict: 'email,river_id,hatch_name' })
-      .select()
 
     if (error) {
-      console.error('Hatch alert insert error:', error)
-      return NextResponse.json({ error: 'Failed to create alert' }, { status: 500 })
+      console.error('[hatch-alerts] insert error:', error)
+      return NextResponse.json({ error: `Failed to create alert: ${error.message}` }, { status: 500 })
     }
 
-    return NextResponse.json({ ok: true, alert: data?.[0] })
+    return NextResponse.json({ ok: true })
   } catch (err) {
     console.error('Hatch alert error:', err)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })

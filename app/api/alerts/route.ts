@@ -1,6 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createSupabaseClient } from '@/lib/supabase'
 
+// Service-role client factory. Reused by every write path in this
+// file because flow_alerts.user_id is FK-bound to auth.users in
+// some deployments and the anon role can't satisfy that lookup
+// (the misleading "RLS" error class documented in migration 026).
+// Same canonical pattern used in /api/releases/subscribe and the
+// suggestions submit route.
+async function getServiceRoleClient() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+  if (!url || !serviceKey) return null
+  const { createClient } = await import('@supabase/supabase-js')
+  return createClient(url, serviceKey, { auth: { persistSession: false } })
+}
+
 // POST /api/alerts — subscribe to flow alerts
 export async function POST(req: NextRequest) {
   try {
@@ -15,10 +29,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid threshold. Must be optimal, high, flood, or any' }, { status: 400 })
     }
 
-    const supabase = createSupabaseClient()
+    const supabase = await getServiceRoleClient()
+    if (!supabase) {
+      return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
+    }
 
-    // Upsert — if same email+river already exists, update threshold
-    const { data, error } = await supabase
+    // Upsert — if same email+river already exists, update threshold.
+    // Plain upsert without .select() — we don't need the returned
+    // row and dropping it sidesteps the RETURNING SELECT-policy
+    // check that bites the anon path.
+    const { error } = await supabase
       .from('flow_alerts')
       .upsert(
         {
@@ -32,14 +52,13 @@ export async function POST(req: NextRequest) {
         },
         { onConflict: 'email,river_id' }
       )
-      .select()
 
     if (error) {
-      console.error('Supabase insert error:', error)
-      return NextResponse.json({ error: 'Failed to create alert' }, { status: 500 })
+      console.error('[alerts] insert error:', error)
+      return NextResponse.json({ error: `Failed to create alert: ${error.message}` }, { status: 500 })
     }
 
-    return NextResponse.json({ ok: true, alert: data?.[0] })
+    return NextResponse.json({ ok: true })
   } catch (err) {
     console.error('Alert subscribe error:', err)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
