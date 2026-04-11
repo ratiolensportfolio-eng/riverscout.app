@@ -333,8 +333,13 @@ export async function PATCH(req: NextRequest) {
       // the static data/rivers.ts value. Also clear any cleared-tag
       // rows tied to this suggestion so the verification chip
       // reappears for re-review.
+      //
+      // Same scalar-only allow-list as the approve handler. Array
+      // fields like sections/access_points can't be round-tripped
+      // through the override layer, so they were never written and
+      // there's nothing to delete on rollback.
       const OVERRIDEABLE_FIELDS = new Set([
-        'cls', 'opt', 'len', 'desc', 'desig', 'gauge', 'sections', 'access_points', 'safe_cfs',
+        'cls', 'opt', 'len', 'desc', 'desig', 'gauge', 'safe_cfs',
       ])
 
       if (OVERRIDEABLE_FIELDS.has(original.field)) {
@@ -414,9 +419,37 @@ export async function PATCH(req: NextRequest) {
       // (e.g. permit_update, photos, custom community fields) is
       // considered metadata-only and the approval just changes the
       // suggestion status without writing an override.
+      //
+      // IMPORTANT: scalar fields only. The override layer's
+      // `value` column is TEXT and the render-merge in
+      // app/rivers/[state]/[slug]/page.tsx assigns the override
+      // string directly into the static river record. Array
+      // fields like `sections` and `access_points` can't be
+      // round-tripped through a single text value, so even if
+      // an admin approves them the render layer will silently
+      // skip them and the page keeps showing the static data.
+      // Those fields are blocked here and an explicit error is
+      // returned so the admin knows to apply the fix via direct
+      // edit to data/rivers.ts instead.
       const OVERRIDEABLE_FIELDS = new Set([
-        'cls', 'opt', 'len', 'desc', 'desig', 'gauge', 'sections', 'access_points', 'safe_cfs',
+        'cls', 'opt', 'len', 'desc', 'desig', 'gauge', 'safe_cfs',
       ])
+      const ARRAY_FIELDS_NEEDING_DIRECT_EDIT = new Set([
+        'sections', 'access_points',
+      ])
+
+      if (ARRAY_FIELDS_NEEDING_DIRECT_EDIT.has(suggestion.field)) {
+        return NextResponse.json({
+          error:
+            `The "${suggestion.field}" field is an array and can't be applied through the override layer. ` +
+            `Edit data/rivers.ts directly for river_id "${suggestion.river_id}", commit the change, and then ` +
+            `mark this suggestion approved manually with the admin_notes column. The suggestion is staying ` +
+            `pending so it doesn't disappear from the queue.`,
+          field: suggestion.field,
+          riverId: suggestion.river_id,
+          suggestedValue: suggestion.suggested_value,
+        }, { status: 400 })
+      }
 
       if (OVERRIDEABLE_FIELDS.has(suggestion.field)) {
         // Upsert into river_field_overrides — last approved value
