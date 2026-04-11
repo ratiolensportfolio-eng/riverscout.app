@@ -13,6 +13,7 @@ import { RAPIDS } from '@/data/rapids'
 import { fetchRiverPageData } from '@/lib/river-page-data'
 import { hasFisheries } from '@/data/fisheries-keys'
 import { FISHERIES } from '@/data/fisheries'
+import { getNextReleaseForRiver } from '@/data/dam-releases'
 import type { Metadata } from 'next'
 
 export const revalidate = 900
@@ -412,6 +413,60 @@ export default async function RiverPage({ params }: Props) {
         isVerified={isVerified}
         needsVerification={mergedNeedsVerification}
       />
+
+      {/* Next dam release callout — only renders for rivers with
+          a scheduled release on the books. Computed at request
+          time from data/dam-releases.ts. */}
+      {(() => {
+        const next = getNextReleaseForRiver(river.id)
+        if (!next) return null
+        const releaseDate = new Date(next.date + 'T12:00:00')
+        const today = new Date()
+        today.setHours(0, 0, 0, 0)
+        const days = Math.round((releaseDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
+        const relTime = days === 0 ? 'today' : days === 1 ? 'tomorrow' : days < 7 ? `in ${days} days` : days < 14 ? 'next week' : days < 60 ? `in ${Math.round(days / 7)} weeks` : `in ${Math.round(days / 30)} months`
+        const prettyDate = releaseDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })
+        const isImminent = days <= 7
+        return (
+          <div style={{
+            flexShrink: 0,
+            padding: '10px 16px',
+            background: isImminent ? 'var(--rvlt)' : 'var(--bg2)',
+            borderBottom: isImminent ? '.5px solid var(--rvmd)' : '.5px solid var(--bd)',
+            display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap',
+          }}>
+            <span style={{
+              fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px',
+              padding: '3px 8px', borderRadius: '10px',
+              background: isImminent ? 'var(--rv)' : 'var(--rvdk)',
+              color: '#fff', textTransform: 'uppercase', letterSpacing: '.5px', fontWeight: 600,
+              flexShrink: 0,
+            }}>
+              {isImminent ? '\u26A1 Release ' + relTime : 'Next release'}
+            </span>
+            <div style={{ flex: '1 1 200px', minWidth: 0 }}>
+              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '14px', fontWeight: 600, color: isImminent ? 'var(--rvdk)' : 'var(--tx)' }}>
+                {next.name}
+              </div>
+              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx2)', marginTop: '2px' }}>
+                {prettyDate}
+                {next.startTime && ` \u00b7 ${next.startTime}${next.endTime ? '\u2013' + next.endTime : ''}`}
+                {next.expectedCfs && ` \u00b7 ${next.expectedCfs.toLocaleString()} cfs`}
+                {' \u00b7 '}{next.agency.split(' ')[0]}
+              </div>
+            </div>
+            <Link href="/releases" style={{
+              fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
+              color: 'var(--rv)', textDecoration: 'none',
+              padding: '5px 12px', borderRadius: 'var(--r)',
+              border: '.5px solid var(--rvmd)', background: 'var(--bg)',
+              flexShrink: 0,
+            }}>
+              Full calendar &rarr;
+            </Link>
+          </div>
+        )
+      })()}
 
       {/* Tabbed content — fills remaining height */}
       <RiverTabs river={river} flow={flow} initialData={prefetched} />

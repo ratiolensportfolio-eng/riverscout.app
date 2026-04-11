@@ -150,6 +150,64 @@ export interface RiverFisheries {
   guides: string[]              // guide service names (links hidden for now like outfitters)
 }
 
+// ── Dam Release Types ────────────────────────────────────────────
+//
+// Each entry is a single scheduled release day on a dam-controlled
+// river. Recurring schedules (like the Gauley fall season or the
+// Ocoee summer schedule) are flattened into individual day entries
+// at curation time so the data file is just a flat array — no
+// recurrence rules to evaluate at runtime. Re-curate annually as
+// the new year's schedule is published.
+
+export interface DamRelease {
+  // Stable unique key, e.g. "gauley_2026_09_11" — includes the
+  // river_id and ISO date so curators don't accidentally collide.
+  id: string
+  // Matches an id from data/rivers.ts. Releases on rivers we
+  // don't track yet stay out of the data file (or get added with
+  // the river itself in the same batch).
+  riverId: string
+  // User-facing name for the release event. e.g.
+  //   "Gauley Fall Season — Day 1"
+  //   "Lehigh Recreational Release"
+  //   "Russell Fork — Flannagan Release"
+  name: string
+  // ISO date YYYY-MM-DD. Local to the river's time zone — we
+  // don't store TZ separately because release schedules are
+  // always communicated in local time.
+  date: string
+  // Optional 24-hour times bracketing the release window. Some
+  // dams release for a fixed window (Lehigh = 9am-3pm), others
+  // are dawn-to-dusk (Gauley) and we leave these blank.
+  startTime?: string
+  endTime?: string
+  // Typical release CFS. Used for the optimal/high condition
+  // coloring on the release card.
+  expectedCfs?: number
+  // Operating agency, used in the source attribution and as a
+  // filter in the future. Common values:
+  //   USACE      — US Army Corps of Engineers
+  //   TVA        — Tennessee Valley Authority
+  //   FERC       — privately-owned hydro under FERC license
+  //   USBR       — Bureau of Reclamation
+  //   PSE        — Puget Sound Energy
+  //   BC Hydro   — for cross-border releases like the Skagit
+  agency: string
+  // Link to the official schedule page. The release card surfaces
+  // this as a "verify schedule" link so paddlers can double-check
+  // before driving 4 hours.
+  sourceUrl: string
+  // Free text. Used for "section run" notes (e.g. "Upper Gauley
+  // only — Lower Gauley releases follow the day after"), gate
+  // height notes, level qualifications, etc.
+  notes?: string
+  // Optional grouping label so the UI can fold N day entries
+  // into a "Gauley Fall Season (22 days)" parent. Lets the
+  // calendar render either flat or grouped without changing the
+  // data shape.
+  seasonLabel?: string
+}
+
 // ── Auth / User Types ─────────────────────────────────────────────
 
 export interface UserProfile {
