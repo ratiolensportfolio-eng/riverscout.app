@@ -683,14 +683,16 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                   textTransform: 'uppercase', letterSpacing: '.5px',
                 }}>{o.tier === 'destination' ? 'Destination Sponsor' : 'Sponsored'}</span>
                 {o.cover_photo_url && (
-                  // Render at the upload's NATURAL aspect ratio.
-                  // Earlier versions forced 120px (chopped) and then
-                  // 16:9 with object-fit cover (still cropped wider
-                  // banners). Width:100% + height:auto lets whatever
-                  // the user uploaded display in full without any
-                  // cropping or letterboxing.
+                  // Banner sizing journey:
+                  //   v1: height 120px + cover  → cropped wider banners
+                  //   v2: aspectRatio 16/9 + cover → still cropped 4:1
+                  //   v3: width 100%, height auto → too big, billboard
+                  //   v4 (this): max-height cap + auto width preserves
+                  //   the natural aspect ratio AND keeps the banner
+                  //   from dominating the listing. Sponsored gets the
+                  //   biggest cap because they paid the most.
                   <img src={o.cover_photo_url} alt={o.business_name} loading="lazy" decoding="async"
-                    style={{ width: '100%', height: 'auto', borderRadius: '6px', marginBottom: '10px', display: 'block' }} />
+                    style={{ maxWidth: '100%', maxHeight: '160px', width: 'auto', height: 'auto', borderRadius: '6px', marginBottom: '10px', display: 'block' }} />
                 )}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' }}>
                   {o.logo_url && (
@@ -951,11 +953,11 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                       textTransform: 'uppercase', letterSpacing: '.5px',
                     }}>Featured</span>
                     {o.cover_photo_url && (
-                      // Natural aspect ratio — see comment in the
-                      // sponsored card above for why we no longer
-                      // force a fixed shape.
+                      // Featured tier — see sponsored card above for
+                      // the sizing rationale. Smaller cap (110px)
+                      // since featured pays less than sponsored.
                       <img src={o.cover_photo_url} alt={o.business_name} loading="lazy" decoding="async"
-                        style={{ width: '100%', height: 'auto', borderRadius: '4px', marginBottom: '8px', display: 'block' }} />
+                        style={{ maxWidth: '100%', maxHeight: '110px', width: 'auto', height: 'auto', borderRadius: '4px', marginBottom: '8px', display: 'block' }} />
                     )}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
                       {o.logo_url && (
@@ -1016,15 +1018,14 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                       }}>Listed</span>
 
                       {o.cover_photo_url && (
-                        // Natural aspect ratio. The 16:9 attempt
-                        // still cropped wider-than-16:9 banners
-                        // (Pine River Paddlesports uploads roughly
-                        // 4:1, the canonical "lit dumpster pissed
-                        // in" example). Width:100% + height:auto
-                        // displays whatever shape they actually
-                        // uploaded.
+                        // Listed tier — smallest banner cap (90px).
+                        // Listed is the free tier; listings should
+                        // feel like listings, not advertisements.
+                        // The image preserves natural aspect ratio
+                        // within the cap so wide banners stay wide
+                        // and 16:9 banners letterbox naturally.
                         <img src={o.cover_photo_url} alt={o.business_name} loading="lazy" decoding="async"
-                          style={{ width: '100%', height: 'auto', borderRadius: '4px', marginBottom: '8px', display: 'block' }} />
+                          style={{ maxWidth: '100%', maxHeight: '90px', width: 'auto', height: 'auto', borderRadius: '4px', marginBottom: '8px', display: 'block' }} />
                       )}
 
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px', paddingRight: '46px' }}>

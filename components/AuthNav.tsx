@@ -148,18 +148,12 @@ export default function AuthNav() {
           <MenuLink href="/account#saved" onClick={() => setOpen(false)}>
             Saved rivers
           </MenuLink>
-          {/* These three jump to the matching block inside the
-              /account "My Alerts" section — NOT the public discovery
-              pages. The discovery pages live at /releases and
-              /hatches and are linked from the homepage / hub. */}
-          <MenuLink href="/account#flow-alerts" onClick={() => setOpen(false)}>
-            Flow alerts
-          </MenuLink>
-          <MenuLink href="/account#release-alerts" onClick={() => setOpen(false)}>
-            Dam release alerts
-          </MenuLink>
-          <MenuLink href="/account#hatch-alerts" onClick={() => setOpen(false)}>
-            Hatch alerts
+          {/* Single "Alerts" link — all three alert types (flow,
+              dam release, hatch) live under the same My Alerts
+              section on /account, so listing them separately just
+              meant three menu items leading to the same page. */}
+          <MenuLink href="/account#alerts" onClick={() => setOpen(false)}>
+            Alerts
           </MenuLink>
           <MenuLink href="/outfitters/dashboard" onClick={() => setOpen(false)}>
             Outfitter dashboard
