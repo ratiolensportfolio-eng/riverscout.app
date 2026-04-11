@@ -21,6 +21,15 @@ const serif = "'Playfair Display', serif"
 //
 // Outfitter information is intentionally omitted — outfitters
 // have their own dashboard at /outfitters/dashboard.
+// `sections` was removed when the user-editable Access Points
+// timeline replaced the static Trip Sections block on the
+// Overview tab. Section/distance data now lives in the
+// river_access_points table — direct users there instead.
+//
+// `access_points` (the static legacy array) was always
+// admin-edit-only because the override pipeline doesn't handle
+// nested objects, so it's removed from the dropdown too. The
+// Maps & Guides "+ Add access point" button is the right path.
 const FIELDS = [
   { value: 'safe_cfs', label: '\u26A0 Safe CFS Limit (Safety Critical)' },
   { value: 'cls', label: 'Whitewater Class' },
@@ -29,9 +38,7 @@ const FIELDS = [
   { value: 'desc', label: 'Description' },
   { value: 'desig', label: 'Designations' },
   { value: 'gauge', label: 'USGS Gauge ID' },
-  { value: 'sections', label: 'River Sections / Distances' },
   { value: 'species', label: 'Fish Species' },
-  { value: 'access_points', label: 'Access Points / Put-ins [admin edit]' },
   { value: 'hatches', label: 'Hatch Calendar [admin edit]' },
   { value: 'runs', label: 'Salmon/Steelhead Run Timing [admin edit]' },
   { value: 'spawning', label: 'Spawn Timing [admin edit]' },

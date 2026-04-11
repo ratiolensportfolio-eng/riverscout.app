@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import { FISHERIES } from '@/data/fisheries'
-import { ALL_RIVERS, getRiverPath, STATES } from '@/data/rivers'
+import { ALL_RIVERS, getRiverPath } from '@/data/rivers'
 import { fetchGaugeData, formatCfs, celsiusToFahrenheit } from '@/lib/usgs'
 import { getHatchTrigger } from '@/lib/hatch-triggers'
 import { evaluateHatchConditions, parseTimingString } from '@/lib/hatch-conditions'
+import { FishIcon, SPECIES_ICON_LEGEND, hasFishIcon } from '@/components/icons/FishIcons'
 import type { Metadata } from 'next'
 import type { HatchStatus } from '@/lib/hatch-conditions'
 
@@ -39,6 +40,12 @@ interface HatchEntry {
   condition: string
   daysUntilPeak: number | null
   triggerTempF: number | null
+  // Species names from FISHERIES[riverId].species — we render
+  // a small inline FishIcon strip on each card so anglers can
+  // tell at a glance whether a river holds the fish they want
+  // before clicking through. The legend at the side of the
+  // page explains what each icon means.
+  speciesIcons: string[]
 }
 
 const STATUS_ORDER: Record<HatchStatus, number> = {
@@ -110,6 +117,28 @@ export default async function HatchesPage() {
       // Only include non-off-season hatches (unless we want a full list)
       if (evaluation.status === 'off_season') continue
 
+      // Build the species icon list for this river. Dedupe by
+      // the icon component (so two trout species don't render
+      // two near-identical silhouettes), keep order primary
+      // species first. Skip species without a dedicated icon so
+      // we don't render generic blobs.
+      const speciesIcons: string[] = []
+      const seenIcons = new Set<string>()
+      const orderedSpecies = [...fishData.species].sort((a, b) =>
+        (b.primary ? 1 : 0) - (a.primary ? 1 : 0)
+      )
+      for (const sp of orderedSpecies) {
+        if (!hasFishIcon(sp.name)) continue
+        // Use lowercased name as the dedupe key — close-enough
+        // proxy for "same icon component" since the SPECIES_ICONS
+        // map keys directly off the species name.
+        const key = sp.name.toLowerCase()
+        if (seenIcons.has(key)) continue
+        seenIcons.add(key)
+        speciesIcons.push(sp.name)
+        if (speciesIcons.length >= 5) break
+      }
+
       entries.push({
         riverId,
         riverName: river.n,
@@ -126,6 +155,7 @@ export default async function HatchesPage() {
         condition: flow?.condition ?? 'loading',
         daysUntilPeak: evaluation.daysUntilPeak,
         triggerTempF: trigger?.tempMinF ?? null,
+        speciesIcons,
       })
     }
   }
@@ -162,7 +192,7 @@ export default async function HatchesPage() {
   return (
     <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)' }}>
       {/* Header */}
-      <div style={{ padding: '24px 28px 16px', maxWidth: '900px', margin: '0 auto' }}>
+      <div style={{ padding: '24px 28px 16px', maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--rv)', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '6px' }}>
           Live Fly Fishing Conditions
         </div>
@@ -196,8 +226,21 @@ export default async function HatchesPage() {
         </div>
       </div>
 
-      {/* Hatch list */}
-      <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 28px 40px' }}>
+      {/* 2-column layout: hatch list + sticky species legend
+          sidebar. Below 900px the sidebar drops below the list
+          via the .hatches-grid CSS class so the page stays
+          mobile-friendly. */}
+      <div className="hatches-grid" style={{
+        maxWidth: '1200px', margin: '0 auto', padding: '0 28px 40px',
+        display: 'grid', gridTemplateColumns: '1fr 220px', gap: '28px',
+      }}>
+        <style>{`
+          @media (max-width: 900px) {
+            .hatches-grid { grid-template-columns: 1fr !important; }
+            .hatches-legend { position: static !important; }
+          }
+        `}</style>
+        <div>
         {entries.length === 0 && (
           <div style={{ textAlign: 'center', padding: '40px 0', fontFamily: mono, fontSize: '12px', color: 'var(--tx3)' }}>
             No active or approaching hatches right now. Check back as conditions change.
@@ -229,16 +272,45 @@ export default async function HatchesPage() {
                     background: e.status === 'peak' ? 'var(--rvlt)' : 'var(--bg)',
                   }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px' }}>
-                      <div>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '3px' }}>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px', flexWrap: 'wrap' }}>
                           <span style={{ width: 7, height: 7, borderRadius: '50%', background: STATUS_DOT[e.status], display: 'inline-block', flexShrink: 0 }} />
                           <span style={{ fontFamily: serif, fontSize: '14px', fontWeight: 600 }}>
                             {e.riverName}
                           </span>
-                          <span style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)' }}>{String(e.stateKey).toUpperCase()}</span>
+                          {/* State badge — pronounced. Used to be
+                              tiny gray text after the river name;
+                              now it's a colored chip that stands
+                              out so you can tell at a glance which
+                              state the river is in. */}
+                          <span style={{
+                            fontFamily: mono, fontSize: '9px', fontWeight: 600,
+                            padding: '2px 8px', borderRadius: '10px',
+                            background: 'var(--wtlt)', color: '#0C447C',
+                            border: '.5px solid #9DC4EA',
+                            textTransform: 'uppercase', letterSpacing: '.5px',
+                            flexShrink: 0,
+                          }}>
+                            {String(e.stateKey).toUpperCase()}
+                          </span>
                           <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>—</span>
                           <span style={{ fontFamily: mono, fontSize: '11px', fontWeight: 500 }}>{e.hatchName}</span>
                         </div>
+
+                        {/* Species icon strip — quick visual scan for
+                            "what fish are in this river." Skips
+                            species without a dedicated icon so we
+                            don't render generic blobs. */}
+                        {e.speciesIcons.length > 0 && (
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginLeft: '13px', marginBottom: '4px', color: 'var(--rvdk)' }}>
+                            {e.speciesIcons.map(name => (
+                              <span key={name} title={name} style={{ display: 'inline-flex' }}>
+                                <FishIcon species={name} size={16} />
+                              </span>
+                            ))}
+                          </div>
+                        )}
+
                         <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', display: 'flex', gap: '10px', flexWrap: 'wrap', marginLeft: '13px' }}>
                           {e.waterTempF !== null && (
                             <span>Water: {e.waterTempF}°F{e.triggerTempF ? (e.waterTempF >= e.triggerTempF ? ' ✓' : ` (need ${e.triggerTempF}°F)`) : ''}</span>
@@ -276,6 +348,49 @@ export default async function HatchesPage() {
             </div>
           )
         })}
+        </div>
+
+        {/* ── Species legend sidebar ──────────────────────────
+            Sticky on desktop so scrolling through the long
+            hatch list doesn't lose the key. Drops below the
+            list at narrow viewports via .hatches-legend CSS
+            in the parent grid. */}
+        <aside
+          className="hatches-legend"
+          style={{
+            position: 'sticky', top: '20px', alignSelf: 'start',
+            background: 'var(--bg2)', border: '.5px solid var(--bd)',
+            borderRadius: 'var(--r)', padding: '14px 16px',
+          }}
+        >
+          <div style={{
+            fontFamily: mono, fontSize: '9px', color: 'var(--tx3)',
+            textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px',
+            fontWeight: 600,
+          }}>
+            Fish Symbol Key
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {SPECIES_ICON_LEGEND.filter(item => item.species !== 'other').map(item => (
+              <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ display: 'inline-flex', flexShrink: 0, color: 'var(--rvdk)' }}>
+                  <FishIcon species={item.species} size={20} />
+                </span>
+                <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx)', lineHeight: 1.4 }}>
+                  {item.label}
+                </span>
+              </div>
+            ))}
+          </div>
+          <div style={{
+            marginTop: '12px', paddingTop: '10px',
+            borderTop: '.5px solid var(--bd)',
+            fontFamily: mono, fontSize: '9px', color: 'var(--tx3)',
+            lineHeight: 1.55,
+          }}>
+            Hover any fish on a river card to see the species name. Cards only show fish that are actually present in that river.
+          </div>
+        </aside>
       </div>
     </main>
   )

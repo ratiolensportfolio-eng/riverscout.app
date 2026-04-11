@@ -132,4 +132,28 @@ export function FishIcon({ species, size, color }: { species: string; size?: num
   return <Icon size={size} color={color} />
 }
 
+// For the hatches-page key. We expose a flat list of the
+// species-name → icon-component pairs so the legend stays in
+// sync with the actual icon set instead of duplicating labels in
+// two places. Order matches roughly: trouts → salmonids → warm.
+export const SPECIES_ICON_LEGEND: Array<{ label: string; species: string }> = [
+  { label: 'Brown Trout', species: 'brown trout' },
+  { label: 'Rainbow / Cutthroat Trout', species: 'rainbow trout' },
+  { label: 'Brook Trout', species: 'brook trout' },
+  { label: 'Lake Trout', species: 'lake trout' },
+  { label: 'Steelhead', species: 'steelhead' },
+  { label: 'Salmon (Chinook / Coho / Atlantic)', species: 'chinook salmon' },
+  { label: 'Walleye / Muskie', species: 'walleye' },
+  { label: 'Bass (Smallmouth / Largemouth)', species: 'smallmouth bass' },
+  { label: 'Other species', species: 'other' },
+]
+
+// Returns true when the species name is one we have a dedicated
+// icon for (i.e., not the GenericFish fallback). Used by the
+// hatches page river card to skip rendering an icon for unknown
+// species rather than showing a generic blob.
+export function hasFishIcon(species: string): boolean {
+  return Object.prototype.hasOwnProperty.call(SPECIES_ICONS, species.toLowerCase())
+}
+
 export default FishIcon

@@ -1089,19 +1089,15 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
               </div>
             )}
 
-            {/* Sections */}
-            {river.secs.length > 0 && (
-              <div style={{ marginBottom: '14px' }}>
-                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '7px' }}>
-                  Trip sections
-                </div>
-                {river.secs.map((sec, i) => (
-                  <div key={i} style={{ fontSize: '12px', color: 'var(--tx)', marginBottom: '5px', paddingLeft: '10px', borderLeft: '2px solid var(--rvmd)', lineHeight: 1.55 }}>
-                    {sec}
-                  </div>
-                ))}
-              </div>
-            )}
+            {/* Trip sections were removed in favor of the Maps &
+                Guides → Access Points timeline, which is the
+                canonical source for "where do I put in / take out"
+                and the float segment between each pair. The legacy
+                static `river.secs` array still exists in
+                data/rivers.ts and the override pipeline still
+                accepts updates to it (so historical approvals
+                aren't broken), but nothing on the public render
+                consumes it anymore. */}
 
             {/* Notable Rapids */}
             {RAPIDS[river.id] && RAPIDS[river.id].length > 0 && (
