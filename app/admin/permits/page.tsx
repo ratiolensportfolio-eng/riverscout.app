@@ -146,6 +146,13 @@ export default function AdminPermitsPage() {
           }}>
             Permits
           </span>
+          <Link href="/admin/qa" style={{
+            fontFamily: mono, fontSize: '11px', padding: '7px 16px', borderRadius: 'var(--r)',
+            border: '.5px solid var(--bd2)', background: 'var(--bg)', color: 'var(--tx3)',
+            textDecoration: 'none',
+          }}>
+            Q&amp;A
+          </Link>
         </div>
 
         {banner && (

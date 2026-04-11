@@ -148,13 +148,17 @@ export default function AuthNav() {
           <MenuLink href="/account#saved" onClick={() => setOpen(false)}>
             Saved rivers
           </MenuLink>
-          <MenuLink href="/account#alerts" onClick={() => setOpen(false)}>
+          {/* These three jump to the matching block inside the
+              /account "My Alerts" section — NOT the public discovery
+              pages. The discovery pages live at /releases and
+              /hatches and are linked from the homepage / hub. */}
+          <MenuLink href="/account#flow-alerts" onClick={() => setOpen(false)}>
             Flow alerts
           </MenuLink>
-          <MenuLink href="/releases" onClick={() => setOpen(false)}>
+          <MenuLink href="/account#release-alerts" onClick={() => setOpen(false)}>
             Dam release alerts
           </MenuLink>
-          <MenuLink href="/hatches" onClick={() => setOpen(false)}>
+          <MenuLink href="/account#hatch-alerts" onClick={() => setOpen(false)}>
             Hatch alerts
           </MenuLink>
           <MenuLink href="/outfitters/dashboard" onClick={() => setOpen(false)}>

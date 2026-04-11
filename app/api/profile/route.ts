@@ -62,12 +62,31 @@ export async function GET(req: NextRequest) {
     savedRivers = saved || []
   }
 
-  // Count total improvements for badge
-  const { count: approvedCount } = await supabase
-    .from('suggestions')
-    .select('*', { count: 'exact', head: true })
-    .eq('user_id', profile.id)
-    .eq('status', 'approved')
+  // Count total contributions for the badge. The contributor tier
+  // is fed by two sources:
+  //   1. Approved suggestions (the original system)
+  //   2. Q&A answers that have at least one helpful mark
+  //
+  // Counting answers as "helpful_count >= 1" means a single great
+  // answer = 1 point (not 50 if 50 people thank it), AND a junk
+  // answer no one finds useful = 0 points. That resists farming
+  // both ways.
+  const [approvedRes, helpfulAnswersRes] = await Promise.all([
+    supabase
+      .from('suggestions')
+      .select('*', { count: 'exact', head: true })
+      .eq('user_id', profile.id)
+      .eq('status', 'approved'),
+    supabase
+      .from('river_answers')
+      .select('*', { count: 'exact', head: true })
+      .eq('user_id', profile.id)
+      .eq('status', 'active')
+      .gte('helpful_count', 1),
+  ])
+  const approvedCount = approvedRes.count ?? 0
+  const helpfulAnswers = helpfulAnswersRes.count ?? 0
+  const totalContributions = approvedCount + helpfulAnswers
 
   return NextResponse.json({
     profile,
@@ -75,9 +94,13 @@ export async function GET(req: NextRequest) {
     improvements: allImprovements,
     savedRivers,
     stats: {
-      approvedImprovements: approvedCount || 0,
+      // Keep the old field name for back-compat — the UI passes
+      // it straight into getContributorTier(). Renaming would
+      // require touching every consumer; the value semantics
+      // (total contribution points) are unchanged.
+      approvedImprovements: totalContributions,
       tripReports: reports?.length || 0,
-      isContributor: (approvedCount || 0) > 0,
+      isContributor: totalContributions > 0,
     },
   })
 }

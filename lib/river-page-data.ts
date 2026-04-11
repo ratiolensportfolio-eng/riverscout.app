@@ -92,6 +92,30 @@ export interface PrefetchedHazard {
 // app/rivers/[state]/[slug]/page.tsx for the merge logic.
 export type RiverFieldOverrides = Record<string, string>
 
+// Q&A — mirrors public.river_questions / public.river_answers from
+// migration 031. We prefetch questions + their top answers so the
+// Q&A tab body renders server-side and Google indexes the actual
+// question/answer text instead of an empty client shell.
+export interface PrefetchedQAAnswer {
+  id: string
+  display_name: string
+  answer: string
+  created_at: string
+  helpful_count: number
+  is_best_answer: boolean
+}
+
+export interface PrefetchedQAQuestion {
+  id: string
+  river_id: string
+  display_name: string
+  question: string
+  created_at: string
+  answered: boolean
+  helpful_count: number
+  answers: PrefetchedQAAnswer[]
+}
+
 export interface RiverPageData {
   tripReports: PrefetchedTripReport[]
   stockingEvents: PrefetchedStockingEvent[]
@@ -104,6 +128,7 @@ export interface RiverPageData {
   // the static list before rendering the DataConfidenceBanner.
   clearedVerificationTags: string[]
   hasSupabaseRapids: boolean   // for the verified-rapids confidence banner
+  qa: PrefetchedQAQuestion[]   // Q&A tab — answered first, unanswered after
 }
 
 const TIER_ORDER: Record<string, number> = {
@@ -134,6 +159,7 @@ function emptyResult(): RiverPageData {
     fieldOverrides: {},
     clearedVerificationTags: [],
     hasSupabaseRapids: false,
+    qa: [],
   }
 }
 
@@ -162,7 +188,7 @@ export async function fetchRiverPageData(
 
   const [
     tripReportsRes, stockingRes, outfittersRes, rapidsRes, hazardsRes,
-    permitRes, overridesRes, clearedTagsRes,
+    permitRes, overridesRes, clearedTagsRes, qaQuestionsRes,
   ] = await Promise.all([
     supabase
       .from('trip_reports')
@@ -219,6 +245,20 @@ export async function fetchRiverPageData(
       .from('river_cleared_verification_tags')
       .select('tag')
       .eq('river_id', riverId),
+    // Q&A — pull active questions for this river. We'll fetch the
+    // matching answers in a separate small query and stitch them
+    // in JS, since Supabase nested-select with manual FKs is
+    // brittle (same constraint that forces us to do trip_reports
+    // the same way). Limit to 100 questions per page — beyond that
+    // we'd want pagination, but no river is anywhere near that yet.
+    supabase
+      .from('river_questions')
+      .select('id, river_id, display_name, question, created_at, answered, helpful_count')
+      .eq('river_id', riverId)
+      .eq('status', 'active')
+      .order('answered', { ascending: false })       // answered first
+      .order('created_at', { ascending: false })     // newest within group
+      .limit(100),
   ])
 
   // Sort outfitters by tier priority (destination → listed)
@@ -243,6 +283,39 @@ export async function fetchRiverPageData(
   const clearedVerificationTags = ((clearedTagsRes.data ?? []) as Array<{ tag: string }>)
     .map(r => r.tag)
 
+  // Stitch answers onto each question. We do a single follow-up
+  // query for ALL answers across the prefetched questions rather
+  // than N+1 queries. Each question gets its top answers (sorted
+  // by best_answer first, then helpful_count desc). The Q&A tab UI
+  // shows the top one inline and offers an expander for the rest.
+  const questionRows = (qaQuestionsRes.data ?? []) as Array<{
+    id: string; river_id: string; display_name: string; question: string;
+    created_at: string; answered: boolean; helpful_count: number;
+  }>
+  let qa: PrefetchedQAQuestion[] = []
+  if (questionRows.length > 0) {
+    const questionIds = questionRows.map(q => q.id)
+    const answersRes = await supabase
+      .from('river_answers')
+      .select('id, question_id, display_name, answer, created_at, helpful_count, is_best_answer')
+      .in('question_id', questionIds)
+      .eq('status', 'active')
+      .order('is_best_answer', { ascending: false })
+      .order('helpful_count', { ascending: false })
+      .order('created_at', { ascending: true })
+
+    const answersByQuestion = new Map<string, PrefetchedQAAnswer[]>()
+    for (const a of (answersRes.data ?? []) as Array<PrefetchedQAAnswer & { question_id: string }>) {
+      const list = answersByQuestion.get(a.question_id) ?? []
+      // Strip the question_id before storing — the parent question
+      // already knows it owns this answer.
+      const { question_id: _qid, ...rest } = a
+      list.push(rest)
+      answersByQuestion.set(a.question_id, list)
+    }
+    qa = questionRows.map(q => ({ ...q, answers: answersByQuestion.get(q.id) ?? [] }))
+  }
+
   return {
     tripReports: (tripReportsRes.data ?? []) as PrefetchedTripReport[],
     stockingEvents: (stockingRes.data ?? []) as PrefetchedStockingEvent[],
@@ -252,5 +325,6 @@ export async function fetchRiverPageData(
     fieldOverrides,
     clearedVerificationTags,
     hasSupabaseRapids: !!(rapidsRes.data && rapidsRes.data.length > 0),
+    qa,
   }
 }

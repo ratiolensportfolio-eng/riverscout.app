@@ -25,6 +25,44 @@ interface Stats {
   improvements: number
 }
 
+// Subset of fields we render per alert row. The /api/alerts/list
+// route normalizes the three tables to share id/river_id/river_name/
+// active, and adds whatever extra config columns each kind needs.
+interface FlowAlertRow {
+  id: string
+  river_id: string | null
+  river_name: string | null
+  state_key: string | null
+  threshold: number | null
+  active: boolean | null
+}
+interface ReleaseAlertRow {
+  id: string
+  river_id: string | null
+  river_name: string | null
+  season_label: string | null
+  notify_days_before: number | null
+  active: boolean | null
+}
+interface HatchAlertRow {
+  id: string
+  river_id: string | null
+  river_name: string | null
+  state_key: string | null
+  hatch_name: string | null
+  species: string | null
+  notify_days_before: number | null
+  active: boolean | null
+}
+
+interface AlertsState {
+  flow: FlowAlertRow[]
+  release: ReleaseAlertRow[]
+  hatch: HatchAlertRow[]
+  loading: boolean
+  errors: { flow: string | null; release: string | null; hatch: string | null }
+}
+
 type DigestStatus =
   | { state: 'idle' }
   | { state: 'saving' }
@@ -42,6 +80,12 @@ export default function AccountPage() {
   const [editState, setEditState] = useState('')
   const [portalLoading, setPortalLoading] = useState(false)
   const [digestStatus, setDigestStatus] = useState<DigestStatus>({ state: 'idle' })
+  const [alerts, setAlerts] = useState<AlertsState>({
+    flow: [], release: [], hatch: [],
+    loading: true,
+    errors: { flow: null, release: null, hatch: null },
+  })
+  const [unsubscribing, setUnsubscribing] = useState<string | null>(null)
 
   useEffect(() => {
     supabase.auth.getUser().then(async ({ data }) => {
@@ -62,22 +106,76 @@ export default function AccountPage() {
         setEditState(prof.home_state || '')
       }
 
-      // Fetch stats
-      const [saved, trips, improvements] = await Promise.all([
+      // Fetch stats. Contributor count = approved suggestions +
+      // Q&A answers that have earned at least one helpful mark.
+      // See app/api/profile/route.ts for the rationale.
+      const [saved, trips, improvements, helpfulAnswers] = await Promise.all([
         supabase.from('saved_rivers').select('*', { count: 'exact', head: true }).eq('user_id', uid),
         supabase.from('trip_reports').select('*', { count: 'exact', head: true }).eq('user_id', uid),
         supabase.from('suggestions').select('*', { count: 'exact', head: true }).eq('user_id', uid).eq('status', 'approved'),
+        supabase.from('river_answers').select('*', { count: 'exact', head: true }).eq('user_id', uid).eq('status', 'active').gte('helpful_count', 1),
       ])
 
       setStats({
         savedRivers: saved.count ?? 0,
         tripReports: trips.count ?? 0,
-        improvements: improvements.count ?? 0,
+        improvements: (improvements.count ?? 0) + (helpfulAnswers.count ?? 0),
       })
+
+      // Fetch the user's alert subscriptions across all three tables.
+      // We hit a service-role route because RLS on release_alerts and
+      // hatch_alerts gates SELECT on auth.uid(), which the anon browser
+      // client can't provide reliably from the account page.
+      try {
+        const params = new URLSearchParams({ userId: uid })
+        if (data.user?.email) params.set('email', data.user.email)
+        const res = await fetch(`/api/alerts/list?${params.toString()}`)
+        const payload = await res.json()
+        if (res.ok) {
+          setAlerts({
+            flow: payload.flow ?? [],
+            release: payload.release ?? [],
+            hatch: payload.hatch ?? [],
+            loading: false,
+            errors: payload.errors ?? { flow: null, release: null, hatch: null },
+          })
+        } else {
+          setAlerts(a => ({ ...a, loading: false }))
+        }
+      } catch {
+        setAlerts(a => ({ ...a, loading: false }))
+      }
 
       setLoading(false)
     })
   }, [])
+
+  // Soft-delete a single alert subscription. Optimistic — drop the row
+  // from local state immediately, restore on error so the user doesn't
+  // see a "click did nothing" moment.
+  async function unsubscribe(type: 'flow' | 'release' | 'hatch', id: string) {
+    setUnsubscribing(id)
+    const snapshot = alerts
+    setAlerts(prev => ({
+      ...prev,
+      [type]: (prev[type] as { id: string }[]).filter(r => r.id !== id),
+    }))
+    try {
+      const res = await fetch('/api/alerts/unsubscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type, id }),
+      })
+      if (!res.ok) {
+        // Roll back so the user can try again.
+        setAlerts(snapshot)
+      }
+    } catch {
+      setAlerts(snapshot)
+    } finally {
+      setUnsubscribing(null)
+    }
+  }
 
   async function saveProfile() {
     if (!userId) return
@@ -373,6 +471,99 @@ export default function AccountPage() {
           ))}
         </div>
 
+        {/* My Alerts — three sub-blocks (flow, release, hatch). Each
+            block fetches from /api/alerts/list and lets the user
+            unsubscribe in place. Anchor IDs match the AuthNav dropdown
+            links so /account#release-alerts jumps straight to the
+            block the user clicked. */}
+        <div style={{ marginBottom: '24px' }} id="alerts">
+          <h2 style={{
+            fontFamily: serif, fontSize: '17px', fontWeight: 700,
+            color: 'var(--rvdk)', marginBottom: '4px',
+          }}>
+            My Alerts
+          </h2>
+          <p style={{
+            fontFamily: mono, fontSize: '10px', color: 'var(--tx3)',
+            marginBottom: '14px', lineHeight: 1.5,
+          }}>
+            Email notifications you&apos;ve subscribed to from river pages.
+          </p>
+
+          {/* Flow alerts */}
+          <AlertSection
+            anchor="flow-alerts"
+            title="Flow alerts"
+            subtitle="Email me when a river crosses a CFS threshold."
+            loading={alerts.loading}
+            error={alerts.errors.flow}
+            empty="No flow alerts yet. Subscribe from any river page using the bell icon."
+          >
+            {alerts.flow.map(row => (
+              <AlertRow
+                key={row.id}
+                title={row.river_name || row.river_id || 'Unknown river'}
+                detail={row.threshold != null ? `When flow crosses ${row.threshold} CFS` : 'Threshold not set'}
+                inactive={row.active === false}
+                disabled={unsubscribing === row.id}
+                onUnsubscribe={() => unsubscribe('flow', row.id)}
+              />
+            ))}
+          </AlertSection>
+
+          {/* Dam release alerts */}
+          <AlertSection
+            anchor="release-alerts"
+            title="Dam release alerts"
+            subtitle="Email me before scheduled dam releases."
+            loading={alerts.loading}
+            error={alerts.errors.release}
+            empty={
+              <>No dam release alerts yet. Browse <Link href="/releases" style={{ color: 'var(--rv)' }}>upcoming releases</Link> and subscribe.</>
+            }
+          >
+            {alerts.release.map(row => (
+              <AlertRow
+                key={row.id}
+                title={row.river_name || row.river_id || 'Unknown river'}
+                detail={[
+                  row.season_label,
+                  row.notify_days_before != null ? `${row.notify_days_before} day${row.notify_days_before === 1 ? '' : 's'} before` : null,
+                ].filter(Boolean).join(' \u00B7 ')}
+                inactive={row.active === false}
+                disabled={unsubscribing === row.id}
+                onUnsubscribe={() => unsubscribe('release', row.id)}
+              />
+            ))}
+          </AlertSection>
+
+          {/* Hatch alerts */}
+          <AlertSection
+            anchor="hatch-alerts"
+            title="Hatch alerts"
+            subtitle="Email me before fly hatches kick off."
+            loading={alerts.loading}
+            error={alerts.errors.hatch}
+            empty={
+              <>No hatch alerts yet. Browse <Link href="/hatches" style={{ color: 'var(--rv)' }}>hatch calendars</Link> and subscribe.</>
+            }
+          >
+            {alerts.hatch.map(row => (
+              <AlertRow
+                key={row.id}
+                title={row.river_name || row.river_id || 'Unknown river'}
+                detail={[
+                  row.hatch_name || row.species,
+                  row.notify_days_before != null ? `${row.notify_days_before} day${row.notify_days_before === 1 ? '' : 's'} before` : null,
+                ].filter(Boolean).join(' \u00B7 ')}
+                inactive={row.active === false}
+                disabled={unsubscribing === row.id}
+                onUnsubscribe={() => unsubscribe('hatch', row.id)}
+              />
+            ))}
+          </AlertSection>
+        </div>
+
         {/* Contributor tier — derived from approved improvements count.
             Renders the current tier badge plus a progress hint toward
             the next tier. The full ladder is visible to give users a
@@ -458,7 +649,8 @@ export default function AccountPage() {
           )
         })()}
 
-        {/* Sign out */}
+        {/* Sign out — kept last so users don't accidentally hit it
+            while scrolling through alerts. */}
         <button onClick={signOut} style={{
           fontFamily: mono, fontSize: '11px', padding: '8px 20px', borderRadius: 'var(--r)',
           background: 'var(--bg)', color: 'var(--dg)', border: '.5px solid var(--dg)',
@@ -468,5 +660,115 @@ export default function AccountPage() {
         </button>
       </div>
     </main>
+  )
+}
+
+// Wrapper for one alert kind. Handles loading/error/empty states so
+// the parent doesn't have to repeat them three times. Children are
+// the rendered AlertRow elements when there are subscriptions.
+function AlertSection({
+  anchor, title, subtitle, loading, error, empty, children,
+}: {
+  anchor: string
+  title: string
+  subtitle: string
+  loading: boolean
+  error: string | null
+  empty: React.ReactNode
+  children: React.ReactNode
+}) {
+  // Children may be an array of <AlertRow>; we use Array.Children
+  // to count rather than relying on length so a single child still
+  // works.
+  const count = Array.isArray(children) ? children.filter(Boolean).length : (children ? 1 : 0)
+  return (
+    <div id={anchor} style={{
+      padding: '14px 16px', marginBottom: '12px',
+      background: 'var(--bg2)', border: '.5px solid var(--bd)',
+      borderRadius: 'var(--r)',
+      // scroll-margin so anchor jumps don't tuck the heading under
+      // the fixed nav (if any). Cheap and harmless either way.
+      scrollMarginTop: '80px',
+    }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '8px', marginBottom: '2px' }}>
+        <div style={{ fontFamily: mono, fontSize: '11px', fontWeight: 600, color: 'var(--tx)' }}>
+          {title}
+        </div>
+        {count > 0 && (
+          <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)' }}>
+            {count} active
+          </div>
+        )}
+      </div>
+      <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)', marginBottom: '10px', lineHeight: 1.5 }}>
+        {subtitle}
+      </div>
+      {loading ? (
+        <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>Loading…</div>
+      ) : error ? (
+        <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--dg)' }}>
+          Couldn&apos;t load: {error}
+        </div>
+      ) : count === 0 ? (
+        <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', lineHeight: 1.6 }}>
+          {empty}
+        </div>
+      ) : (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          {children}
+        </div>
+      )}
+    </div>
+  )
+}
+
+// Single alert row. Title is the river name; detail is the
+// configuration string (threshold, days-before, hatch name…).
+// Inactive rows render dimmed but still visible so the user knows
+// they exist — they were soft-deleted, not hard-deleted.
+function AlertRow({
+  title, detail, inactive, disabled, onUnsubscribe,
+}: {
+  title: string
+  detail: string
+  inactive: boolean
+  disabled: boolean
+  onUnsubscribe: () => void
+}) {
+  return (
+    <div style={{
+      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+      gap: '10px', padding: '8px 10px',
+      background: 'var(--bg)', border: '.5px solid var(--bd2)',
+      borderRadius: 'var(--r)',
+      opacity: inactive ? 0.55 : 1,
+    }}>
+      <div style={{ minWidth: 0, flex: 1 }}>
+        <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          {title}{inactive && <span style={{ marginLeft: '6px', fontSize: '9px', color: 'var(--tx3)' }}>(paused)</span>}
+        </div>
+        {detail && (
+          <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', marginTop: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            {detail}
+          </div>
+        )}
+      </div>
+      {!inactive && (
+        <button
+          onClick={onUnsubscribe}
+          disabled={disabled}
+          style={{
+            fontFamily: mono, fontSize: '9px',
+            padding: '5px 10px', borderRadius: 'var(--r)',
+            background: 'var(--bg)', color: 'var(--dg)',
+            border: '.5px solid var(--bd2)',
+            cursor: disabled ? 'wait' : 'pointer',
+            flexShrink: 0,
+          }}
+        >
+          {disabled ? '\u2026' : 'Unsubscribe'}
+        </button>
+      )}
+    </div>
   )
 }

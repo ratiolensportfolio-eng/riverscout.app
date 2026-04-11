@@ -36,8 +36,31 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 import type { RiverFisheries } from '@/types'
 import type { RiverPageData } from '@/lib/river-page-data'
 
-const TABS = ['Overview', 'History', 'Trip Reports', 'Fishing', 'Maps & Guides', 'Documents'] as const
+const TABS = ['Overview', 'History', 'Trip Reports', 'Q&A', 'Fishing', 'Maps & Guides', 'Documents'] as const
 type Tab = typeof TABS[number]
+
+// Subset of fields the Q&A tab uses. Mirrors PrefetchedQAQuestion
+// from lib/river-page-data.ts but redeclared here so RiverTabs can
+// own its local writeable state without spreading the SSR type
+// across client mutators.
+interface QAAnswerLite {
+  id: string
+  display_name: string
+  answer: string
+  created_at: string
+  helpful_count: number
+  is_best_answer: boolean
+}
+interface QAQuestionLite {
+  id: string
+  river_id: string
+  display_name: string
+  question: string
+  created_at: string
+  answered: boolean
+  helpful_count: number
+  answers: QAAnswerLite[]
+}
 
 const ERA_LABELS: Record<string, string> = {
   native:  'Indigenous Era',
@@ -135,6 +158,28 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
   const [uploading, setUploading] = useState(false)
   const [userReports, setUserReports] = useState<UserReport[]>(initialData?.tripReports ?? [])
   const [loadingReports, setLoadingReports] = useState(false)
+
+  // Q&A state — initialized from the SSR prefetch so the tab body
+  // is populated on first paint and Google indexes the actual
+  // question/answer text. Mutators only need to refetch from
+  // /api/qa/list after a successful submit.
+  const [qa, setQa] = useState<QAQuestionLite[]>(initialData?.qa ?? [])
+  const [qaModalOpen, setQaModalOpen] = useState(false)
+  const [qaAskForm, setQaAskForm] = useState({ question: '', name: '', notify: false, notifyEmail: '' })
+  const [qaAskSubmitting, setQaAskSubmitting] = useState(false)
+  const [qaAskError, setQaAskError] = useState<string | null>(null)
+  // Per-question answer composer state. Keyed by question id so
+  // multiple inline composers can stay open without colliding.
+  const [qaAnswerDrafts, setQaAnswerDrafts] = useState<Record<string, string>>({})
+  const [qaAnswerSubmitting, setQaAnswerSubmitting] = useState<string | null>(null)
+  const [qaAnswerError, setQaAnswerError] = useState<Record<string, string | null>>({})
+  // Tracks which questions have their full answer list expanded.
+  const [qaExpanded, setQaExpanded] = useState<Set<string>>(new Set())
+  // Local helpful-mark dedupe so a single click doesn't double-bump
+  // when the user spam-clicks. We'd ideally enforce this in the DB,
+  // but the spec calls for no-login helpful so per-client is the
+  // best we can do without an audit table.
+  const [qaHelpfulMarked, setQaHelpfulMarked] = useState<Set<string>>(new Set())
   const [riverMapData, setRiverMapData] = useState<{ accessPoints: AccessPoint[]; sections: RiverSection[]; riverPath: [number, number][] } | null>(null)
   const [riverMapLoading, setRiverMapLoading] = useState(false)
   const riverHasMap = hasRiverMap(river.id)
@@ -446,6 +491,133 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
     setSubmitting(false)
   }
 
+  // Refetch the Q&A list after a successful ask/answer/helpful so
+  // the tab body reflects the new content. We hit /api/qa/list
+  // (service-role) rather than refreshing the whole page so the
+  // user keeps their tab + scroll position.
+  async function refreshQa() {
+    try {
+      const res = await fetch(`/api/qa/list?riverId=${encodeURIComponent(river.id)}`)
+      const data = await res.json()
+      if (res.ok && Array.isArray(data.qa)) {
+        setQa(data.qa as QAQuestionLite[])
+      }
+    } catch {
+      /* swallow — next page reload will recover */
+    }
+  }
+
+  // Submit a new question. Anonymous OK — display name required.
+  // notify-when-answered is opt-in so we don't burn email goodwill.
+  async function submitQuestion(e: React.FormEvent) {
+    e.preventDefault()
+    if (!qaAskForm.question.trim() || !qaAskForm.name.trim()) {
+      setQaAskError('Question and display name are required.')
+      return
+    }
+    if (qaAskForm.notify && !qaAskForm.notifyEmail.includes('@')) {
+      setQaAskError('Enter a valid email or uncheck "notify me".')
+      return
+    }
+    setQaAskSubmitting(true)
+    setQaAskError(null)
+    try {
+      // Try to attach userId if the visitor is signed in. Optional —
+      // anon submissions are allowed.
+      const { data: { user } } = await supabase.auth.getUser()
+      const res = await fetch('/api/qa/ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          riverId: river.id,
+          question: qaAskForm.question,
+          displayName: qaAskForm.name,
+          userId: user?.id ?? null,
+          notifyEmail: qaAskForm.notify ? qaAskForm.notifyEmail : null,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        setQaAskError(data.error || 'Failed to post question.')
+        return
+      }
+      // Reset and close.
+      setQaAskForm({ question: '', name: qaAskForm.name, notify: false, notifyEmail: '' })
+      setQaModalOpen(false)
+      await refreshQa()
+    } catch {
+      setQaAskError('Network error — please try again.')
+    } finally {
+      setQaAskSubmitting(false)
+    }
+  }
+
+  // Submit an answer to an existing question. Login required.
+  async function submitAnswer(questionId: string) {
+    const draft = (qaAnswerDrafts[questionId] || '').trim()
+    if (!draft) return
+    setQaAnswerSubmitting(questionId)
+    setQaAnswerError(prev => ({ ...prev, [questionId]: null }))
+    try {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) {
+        setQaAnswerError(prev => ({ ...prev, [questionId]: 'Sign in to answer.' }))
+        return
+      }
+      const displayName =
+        (user.user_metadata?.full_name as string | undefined) ||
+        user.email?.split('@')[0] ||
+        'Paddler'
+      const res = await fetch('/api/qa/answer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ questionId, answer: draft, displayName }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        setQaAnswerError(prev => ({ ...prev, [questionId]: data.error || 'Failed to post answer.' }))
+        return
+      }
+      setQaAnswerDrafts(prev => ({ ...prev, [questionId]: '' }))
+      await refreshQa()
+    } catch {
+      setQaAnswerError(prev => ({ ...prev, [questionId]: 'Network error.' }))
+    } finally {
+      setQaAnswerSubmitting(null)
+    }
+  }
+
+  // Mark a question or answer helpful. Optimistic local bump so
+  // the user sees immediate feedback; we don't roll back on
+  // network failure because the worst case is a +1 desync that
+  // self-corrects on next page load.
+  async function markHelpful(kind: 'question' | 'answer', id: string) {
+    const key = `${kind}:${id}`
+    if (qaHelpfulMarked.has(key)) return
+    setQaHelpfulMarked(prev => new Set(prev).add(key))
+    setQa(prev => prev.map(q => {
+      if (kind === 'question' && q.id === id) {
+        return { ...q, helpful_count: q.helpful_count + 1 }
+      }
+      if (kind === 'answer') {
+        return {
+          ...q,
+          answers: q.answers.map(a => a.id === id ? { ...a, helpful_count: a.helpful_count + 1 } : a),
+        }
+      }
+      return q
+    }))
+    try {
+      await fetch('/api/qa/helpful', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ kind, id }),
+      })
+    } catch {
+      /* see comment above — desync self-corrects */
+    }
+  }
+
   const gear = gearList(river.cls, flow.tempC)
   const hasHistory = river.history.length > 0
   const hasDocs = river.docs.length > 0
@@ -511,8 +683,11 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                   textTransform: 'uppercase', letterSpacing: '.5px',
                 }}>{o.tier === 'destination' ? 'Destination Sponsor' : 'Sponsored'}</span>
                 {o.cover_photo_url && (
+                  // Honor the 16:9 the dashboard asks uploaders for.
+                  // Older code used a fixed 120px height, which sliced
+                  // wide banners into a thin muddy strip on this card.
                   <img src={o.cover_photo_url} alt={o.business_name} loading="lazy" decoding="async"
-                    style={{ width: '100%', height: '120px', objectFit: 'cover', borderRadius: '6px', marginBottom: '10px' }} />
+                    style={{ width: '100%', aspectRatio: '16 / 9', objectFit: 'cover', borderRadius: '6px', marginBottom: '10px', display: 'block' }} />
                 )}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' }}>
                   {o.logo_url && (
@@ -773,8 +948,9 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                       textTransform: 'uppercase', letterSpacing: '.5px',
                     }}>Featured</span>
                     {o.cover_photo_url && (
+                      // 16:9 to match the dashboard upload guidance.
                       <img src={o.cover_photo_url} alt={o.business_name} loading="lazy" decoding="async"
-                        style={{ width: '100%', height: '80px', objectFit: 'cover', borderRadius: '4px', marginBottom: '8px' }} />
+                        style={{ width: '100%', aspectRatio: '16 / 9', objectFit: 'cover', borderRadius: '4px', marginBottom: '8px', display: 'block' }} />
                     )}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
                       {o.logo_url && (
@@ -835,8 +1011,13 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                       }}>Listed</span>
 
                       {o.cover_photo_url && (
+                        // 16:9 to match the dashboard upload guidance.
+                        // Listed cards used to crop to 90px which sliced
+                        // a wide banner into a tiny muddy strip — Pine
+                        // River Paddlesports being the canonical "lit
+                        // dumpster pissed in" example.
                         <img src={o.cover_photo_url} alt={o.business_name} loading="lazy" decoding="async"
-                          style={{ width: '100%', height: '90px', objectFit: 'cover', borderRadius: '4px', marginBottom: '8px' }} />
+                          style={{ width: '100%', aspectRatio: '16 / 9', objectFit: 'cover', borderRadius: '4px', marginBottom: '8px', display: 'block' }} />
                       )}
 
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px', paddingRight: '46px' }}>
@@ -1606,6 +1787,370 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                 </form>
               )}
             </div>
+          </div>
+        )}
+
+        {/* ── Q&A ──────────────────────────────────────────────
+            Community Q&A. Renders SSR off initialData.qa so Google
+            indexes the actual question/answer text — each <h3>
+            wraps a question for structured-content signal. Logged-in
+            users can answer; anonymous visitors can ask and mark
+            helpful with no friction. */}
+        {tab === 'Q&A' && (
+          <div>
+            <div style={{
+              display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between',
+              gap: '12px', marginBottom: '14px', flexWrap: 'wrap',
+            }}>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '4px' }}>
+                  Local Knowledge
+                </div>
+                <p style={{ fontSize: '12px', color: 'var(--tx2)', lineHeight: 1.55, margin: 0 }}>
+                  Ask anything a local paddler would know — access, parking, shuttle, water quality, seasonal tips. Anyone can ask, anyone can mark helpful, signed-in users can answer.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setQaModalOpen(true)}
+                style={{
+                  fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', fontWeight: 500,
+                  padding: '8px 16px', borderRadius: 'var(--r)',
+                  background: 'var(--rv)', color: '#fff', border: 'none',
+                  cursor: 'pointer', flexShrink: 0,
+                }}
+              >
+                Ask a question
+              </button>
+            </div>
+
+            {qa.length === 0 ? (
+              <EmptyState
+                icon="?"
+                label="No questions yet"
+                sub="Be the first to ask a local-knowledge question about this river."
+              />
+            ) : (
+              <div>
+                {qa.map(q => {
+                  const topAnswer = q.answers[0] ?? null
+                  const restAnswers = q.answers.slice(1)
+                  const expanded = qaExpanded.has(q.id)
+                  const helpfulQ = qaHelpfulMarked.has(`question:${q.id}`)
+                  return (
+                    <div key={q.id} style={{
+                      padding: '14px 0',
+                      borderBottom: '.5px solid var(--bd)',
+                    }}>
+                      {/* Question heading — h3 for SEO structure. */}
+                      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '8px', marginBottom: '6px' }}>
+                        <h3 style={{
+                          fontFamily: "'Playfair Display', serif",
+                          fontSize: '15px', fontWeight: 600, color: 'var(--tx)',
+                          margin: 0, lineHeight: 1.4, flex: 1,
+                        }}>
+                          {q.question}
+                        </h3>
+                        {!q.answered && (
+                          <span style={{
+                            flexShrink: 0,
+                            fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px',
+                            padding: '2px 7px', borderRadius: '8px',
+                            background: 'var(--amlt)', color: 'var(--am)',
+                            textTransform: 'uppercase', letterSpacing: '.5px', fontWeight: 600,
+                          }}>Unanswered</span>
+                        )}
+                      </div>
+
+                      <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginBottom: '8px', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                        <span>Asked by {q.display_name}</span>
+                        <span>{new Date(q.created_at).toLocaleDateString()}</span>
+                        <span>{q.answers.length} answer{q.answers.length === 1 ? '' : 's'}</span>
+                        <button
+                          type="button"
+                          onClick={() => markHelpful('question', q.id)}
+                          disabled={helpfulQ}
+                          style={{
+                            background: 'none', border: 'none',
+                            fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px',
+                            color: helpfulQ ? 'var(--rv)' : 'var(--tx3)',
+                            cursor: helpfulQ ? 'default' : 'pointer',
+                            padding: 0,
+                          }}
+                        >
+                          {helpfulQ ? '\u2713 ' : ''}Helpful ({q.helpful_count})
+                        </button>
+                      </div>
+
+                      {/* Top answer inline. */}
+                      {topAnswer && (
+                        <div style={{
+                          background: 'var(--bg2)',
+                          borderLeft: topAnswer.is_best_answer ? '3px solid var(--rv)' : '2px solid var(--bd2)',
+                          padding: '10px 12px', borderRadius: 'var(--r)',
+                          marginBottom: '6px',
+                        }}>
+                          {topAnswer.is_best_answer && (
+                            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', color: 'var(--rv)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '4px', fontWeight: 600 }}>
+                              ★ Best answer
+                            </div>
+                          )}
+                          <p style={{ fontSize: '12.5px', color: 'var(--tx)', lineHeight: 1.65, margin: 0, marginBottom: '6px' }}>
+                            {topAnswer.answer}
+                          </p>
+                          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                            <span>{topAnswer.display_name}</span>
+                            <span>{new Date(topAnswer.created_at).toLocaleDateString()}</span>
+                            <button
+                              type="button"
+                              onClick={() => markHelpful('answer', topAnswer.id)}
+                              disabled={qaHelpfulMarked.has(`answer:${topAnswer.id}`)}
+                              style={{
+                                background: 'none', border: 'none',
+                                fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px',
+                                color: qaHelpfulMarked.has(`answer:${topAnswer.id}`) ? 'var(--rv)' : 'var(--tx3)',
+                                cursor: qaHelpfulMarked.has(`answer:${topAnswer.id}`) ? 'default' : 'pointer',
+                                padding: 0,
+                              }}
+                            >
+                              {qaHelpfulMarked.has(`answer:${topAnswer.id}`) ? '\u2713 ' : ''}Helpful ({topAnswer.helpful_count})
+                            </button>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Show-all-answers expander. */}
+                      {restAnswers.length > 0 && (
+                        <button
+                          type="button"
+                          onClick={() => setQaExpanded(prev => {
+                            const next = new Set(prev)
+                            if (next.has(q.id)) next.delete(q.id); else next.add(q.id)
+                            return next
+                          })}
+                          style={{
+                            background: 'none', border: 'none',
+                            fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
+                            color: 'var(--rv)', cursor: 'pointer', padding: '4px 0',
+                          }}
+                        >
+                          {expanded ? '\u25BC Hide' : `\u25B6 Show ${restAnswers.length} more answer${restAnswers.length === 1 ? '' : 's'}`}
+                        </button>
+                      )}
+                      {expanded && restAnswers.map(a => {
+                        const helpfulA = qaHelpfulMarked.has(`answer:${a.id}`)
+                        return (
+                          <div key={a.id} style={{
+                            background: 'var(--bg2)',
+                            borderLeft: a.is_best_answer ? '3px solid var(--rv)' : '2px solid var(--bd2)',
+                            padding: '10px 12px', borderRadius: 'var(--r)',
+                            marginTop: '6px',
+                          }}>
+                            {a.is_best_answer && (
+                              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', color: 'var(--rv)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '4px', fontWeight: 600 }}>
+                                ★ Best answer
+                              </div>
+                            )}
+                            <p style={{ fontSize: '12.5px', color: 'var(--tx)', lineHeight: 1.65, margin: 0, marginBottom: '6px' }}>{a.answer}</p>
+                            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                              <span>{a.display_name}</span>
+                              <span>{new Date(a.created_at).toLocaleDateString()}</span>
+                              <button
+                                type="button"
+                                onClick={() => markHelpful('answer', a.id)}
+                                disabled={helpfulA}
+                                style={{
+                                  background: 'none', border: 'none',
+                                  fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px',
+                                  color: helpfulA ? 'var(--rv)' : 'var(--tx3)',
+                                  cursor: helpfulA ? 'default' : 'pointer', padding: 0,
+                                }}
+                              >
+                                {helpfulA ? '\u2713 ' : ''}Helpful ({a.helpful_count})
+                              </button>
+                            </div>
+                          </div>
+                        )
+                      })}
+
+                      {/* Inline answer composer for unanswered
+                          questions. We render it for answered ones
+                          too — anyone can chip in additional context
+                          — but the affordance is gentler. */}
+                      <div style={{ marginTop: '8px' }}>
+                        <textarea
+                          value={qaAnswerDrafts[q.id] || ''}
+                          onChange={e => setQaAnswerDrafts(prev => ({ ...prev, [q.id]: e.target.value }))}
+                          placeholder={q.answered ? 'Add another answer…' : 'Answer this question…'}
+                          rows={2}
+                          style={{
+                            width: '100%', boxSizing: 'border-box',
+                            padding: '8px 10px',
+                            fontFamily: 'Georgia, serif', fontSize: '12px',
+                            border: '.5px solid var(--bd2)', borderRadius: 'var(--r)',
+                            background: 'var(--bg)', color: 'var(--tx)',
+                            resize: 'vertical',
+                          }}
+                        />
+                        {qaAnswerError[q.id] && (
+                          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--dg)', marginTop: '4px' }}>
+                            {qaAnswerError[q.id]}
+                          </div>
+                        )}
+                        {(qaAnswerDrafts[q.id] || '').trim().length > 0 && (
+                          <button
+                            type="button"
+                            onClick={() => submitAnswer(q.id)}
+                            disabled={qaAnswerSubmitting === q.id}
+                            style={{
+                              marginTop: '6px',
+                              fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
+                              padding: '6px 14px', borderRadius: 'var(--r)',
+                              background: 'var(--rv)', color: '#fff', border: 'none',
+                              cursor: qaAnswerSubmitting === q.id ? 'wait' : 'pointer',
+                            }}
+                          >
+                            {qaAnswerSubmitting === q.id ? 'Posting…' : 'Post answer'}
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+
+            {/* Ask-question modal. Inline overlay rather than a
+                portal — keeps the focus management simple and the
+                Q&A tab is the only mount site so we don't need to
+                share it. */}
+            {qaModalOpen && (
+              <div
+                onClick={() => setQaModalOpen(false)}
+                style={{
+                  position: 'fixed', inset: 0, background: 'rgba(0,0,0,.45)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  zIndex: 1000, padding: '20px',
+                }}
+              >
+                <div
+                  onClick={e => e.stopPropagation()}
+                  style={{
+                    background: 'var(--bg)', borderRadius: 'var(--rlg)',
+                    border: '.5px solid var(--bd2)',
+                    padding: '20px 22px', maxWidth: '480px', width: '100%',
+                    maxHeight: '90vh', overflowY: 'auto',
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '14px' }}>
+                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '17px', fontWeight: 700, color: 'var(--rvdk)', margin: 0 }}>
+                      Ask the {river.n} community
+                    </h3>
+                    <button
+                      type="button"
+                      onClick={() => setQaModalOpen(false)}
+                      style={{ background: 'none', border: 'none', fontSize: '18px', color: 'var(--tx3)', cursor: 'pointer', padding: 0, lineHeight: 1 }}
+                      aria-label="Close"
+                    >
+                      ×
+                    </button>
+                  </div>
+                  <form onSubmit={submitQuestion}>
+                    <label style={{ display: 'block', marginBottom: '12px' }}>
+                      <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px', display: 'block', marginBottom: '4px' }}>
+                        Your question (max 280 chars)
+                      </span>
+                      <textarea
+                        value={qaAskForm.question}
+                        onChange={e => setQaAskForm(f => ({ ...f, question: e.target.value }))}
+                        placeholder="Ask something a local paddler would know — access, parking, shuttle, water quality, seasonal tips…"
+                        rows={4}
+                        maxLength={280}
+                        required
+                        style={{
+                          width: '100%', boxSizing: 'border-box',
+                          padding: '8px 10px',
+                          fontFamily: 'Georgia, serif', fontSize: '13px',
+                          border: '.5px solid var(--bd2)', borderRadius: 'var(--r)',
+                          background: 'var(--bg)', color: 'var(--tx)',
+                          resize: 'vertical', lineHeight: 1.55,
+                        }}
+                      />
+                      <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textAlign: 'right', marginTop: '2px' }}>
+                        {qaAskForm.question.length}/280
+                      </div>
+                    </label>
+
+                    <label style={{ display: 'block', marginBottom: '12px' }}>
+                      <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px', display: 'block', marginBottom: '4px' }}>
+                        Display name
+                      </span>
+                      <input
+                        type="text"
+                        value={qaAskForm.name}
+                        onChange={e => setQaAskForm(f => ({ ...f, name: e.target.value }))}
+                        placeholder="What should we call you?"
+                        required
+                        style={{
+                          width: '100%', boxSizing: 'border-box',
+                          padding: '8px 10px',
+                          fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px',
+                          border: '.5px solid var(--bd2)', borderRadius: 'var(--r)',
+                          background: 'var(--bg)', color: 'var(--tx)',
+                        }}
+                      />
+                    </label>
+
+                    <label style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: qaAskForm.notify ? '8px' : '14px', cursor: 'pointer' }}>
+                      <input
+                        type="checkbox"
+                        checked={qaAskForm.notify}
+                        onChange={e => setQaAskForm(f => ({ ...f, notify: e.target.checked }))}
+                        style={{ width: '14px', height: '14px', accentColor: 'var(--rv)' }}
+                      />
+                      <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--tx)' }}>
+                        Email me when someone answers
+                      </span>
+                    </label>
+                    {qaAskForm.notify && (
+                      <input
+                        type="email"
+                        value={qaAskForm.notifyEmail}
+                        onChange={e => setQaAskForm(f => ({ ...f, notifyEmail: e.target.value }))}
+                        placeholder="you@example.com"
+                        required
+                        style={{
+                          width: '100%', boxSizing: 'border-box',
+                          padding: '8px 10px', marginBottom: '14px',
+                          fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px',
+                          border: '.5px solid var(--bd2)', borderRadius: 'var(--r)',
+                          background: 'var(--bg)', color: 'var(--tx)',
+                        }}
+                      />
+                    )}
+
+                    {qaAskError && (
+                      <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--dg)', marginBottom: '8px' }}>
+                        {qaAskError}
+                      </div>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={qaAskSubmitting}
+                      style={{
+                        fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
+                        padding: '9px 20px', borderRadius: 'var(--r)',
+                        background: 'var(--rv)', color: '#fff', border: 'none',
+                        cursor: qaAskSubmitting ? 'wait' : 'pointer',
+                      }}
+                    >
+                      {qaAskSubmitting ? 'Posting…' : 'Post question'}
+                    </button>
+                  </form>
+                </div>
+              </div>
+            )}
           </div>
         )}
 
