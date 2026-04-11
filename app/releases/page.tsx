@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { DAM_RELEASES, getUpcomingReleases, groupBySeason } from '@/data/dam-releases'
 import { ALL_RIVERS, getStateSlug, getRiverSlug } from '@/data/rivers'
 import type { DamRelease } from '@/types'
+import ReleasesGrid from './ReleasesGrid'
 
 export const metadata: Metadata = {
   title: 'Dam Release Calendar | RiverScout',
@@ -114,6 +115,18 @@ export default function ReleasesPage() {
           </div>
         </div>
 
+        {/* List/Grid view toggle. The grid view is owned by the
+            ReleasesGrid client component (renders both the toggle
+            buttons and, when active, the calendar grid itself).
+            The server-rendered list view sits in a wrapper marked
+            with data-releases-list-content so the grid component
+            can toggle its visibility via a body attribute + CSS
+            without remounting. */}
+        {upcomingAll.length > 0 && (
+          <ReleasesGrid releases={upcomingAll} riverLookup={riverLookup} />
+        )}
+
+        <div data-releases-list-content>
         {/* Empty state */}
         {totalUpcoming === 0 && (
           <div style={{ padding: '40px 20px', textAlign: 'center', color: 'var(--tx3)', fontFamily: mono, fontSize: '12px' }}>
@@ -158,6 +171,7 @@ export default function ReleasesPage() {
             </div>
           </section>
         )}
+        </div>{/* /data-releases-list-content */}
 
         {/* Helpful footnote */}
         <div style={{ marginTop: '40px', padding: '14px 16px', background: 'var(--bg2)', borderRadius: 'var(--r)', border: '.5px solid var(--bd)' }}>
