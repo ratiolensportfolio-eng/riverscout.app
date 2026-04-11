@@ -1,9 +1,15 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { DAM_RELEASES, getUpcomingReleases, groupBySeason } from '@/data/dam-releases'
+import { groupBySeason } from '@/data/dam-releases'
+import { getAllReleases } from '@/lib/releases-merge'
 import { ALL_RIVERS, getStateSlug, getRiverSlug } from '@/data/rivers'
 import type { DamRelease } from '@/types'
 import ReleasesGrid from './ReleasesGrid'
+
+// Render fresh on each request so newly-scraped releases show up
+// without an ISR cache wait. The merge helper does its own short
+// query so cost is bounded.
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Dam Release Calendar | RiverScout',
@@ -79,22 +85,28 @@ function agencyColors(agency: string): { bg: string; color: string; border: stri
   return { bg: 'var(--bg2)', color: 'var(--tx2)', border: 'var(--bd2)' }
 }
 
-export default function ReleasesPage() {
+export default async function ReleasesPage() {
   const now = new Date()
   const riverLookup = buildRiverLookup()
 
-  const upcomingAll = getUpcomingReleases(now)
-  const upcoming30 = getUpcomingReleases(now, 30)
-  const upcoming90 = getUpcomingReleases(now, 90)
+  // Pull from BOTH hand-curated and scraped sources via the
+  // merge helper. Curated entries always win on (river_id, date)
+  // collision so a flaky scraper can never overwrite a verified
+  // human entry.
+  const allReleases = await getAllReleases()
+  const todayIso = now.toISOString().slice(0, 10)
+  const upcomingAll = allReleases.filter(r => r.date >= todayIso)
+  const cutoff30 = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10)
+  const upcoming30 = upcomingAll.filter(r => r.date <= cutoff30)
 
   // Group everything beyond the next 30 days by season label so
   // the Gauley fall season folds into a single block instead of
   // 22 individual cards.
-  const beyond30 = upcomingAll.filter(r => !upcoming30.includes(r))
+  const beyond30 = upcomingAll.filter(r => r.date > cutoff30)
   const seasonGroups = groupBySeason(beyond30)
 
   const totalUpcoming = upcomingAll.length
-  const riversWithReleases = new Set(DAM_RELEASES.map(r => r.riverId)).size
+  const riversWithReleases = new Set(allReleases.map(r => r.riverId)).size
 
   return (
     <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)' }}>
