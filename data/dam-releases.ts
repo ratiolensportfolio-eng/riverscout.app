@@ -51,53 +51,34 @@ export const DAM_RELEASES: DamRelease[] = [
   // Lower Gauley follows the day after each Upper Gauley release.
   ...buildGauleyFallSeason2026(),
 
-  // ── OCOEE RIVER 2026 ──────────────────────────────────────────
-  // TVA Apalachia Powerhouse releases. Middle Ocoee runs Wed-Sun
-  // Memorial Day weekend through Labor Day weekend, plus weekend
-  // releases through early October. Standard release: 1500-2750
-  // cfs. We surface the headline weekend dates rather than every
-  // weekday — the daily Wed/Thu schedule is pretty mechanical and
-  // would clutter the calendar. Source:
-  // https://www.tva.com/environment/lake-levels/ocoee-river-recreation
-  {
-    id: 'ocoee_2026_05_23',
-    riverId: 'ocoee',
-    name: 'Ocoee Memorial Day Opener',
-    date: '2026-05-23',
-    startTime: '10:00',
-    endTime: '17:00',
-    expectedCfs: 1500,
-    agency: 'TVA',
-    sourceUrl: 'https://www.tva.com/environment/lake-levels/ocoee-river-recreation',
-    notes: 'First weekend of the Middle Ocoee summer recreation season. Standard 1500 cfs release.',
-    seasonLabel: 'Ocoee Summer Releases',
-  },
-  {
-    id: 'ocoee_2026_07_04',
-    riverId: 'ocoee',
-    name: 'Ocoee Independence Day',
-    date: '2026-07-04',
-    startTime: '10:00',
-    endTime: '17:00',
-    expectedCfs: 1500,
-    agency: 'TVA',
-    sourceUrl: 'https://www.tva.com/environment/lake-levels/ocoee-river-recreation',
-    notes: 'Holiday weekend release. Often the busiest day of the Middle Ocoee summer season.',
-    seasonLabel: 'Ocoee Summer Releases',
-  },
-  {
-    id: 'ocoee_2026_09_05',
-    riverId: 'ocoee',
-    name: 'Ocoee Labor Day Closer',
-    date: '2026-09-05',
-    startTime: '10:00',
-    endTime: '17:00',
-    expectedCfs: 1500,
-    agency: 'TVA',
-    sourceUrl: 'https://www.tva.com/environment/lake-levels/ocoee-river-recreation',
-    notes: 'Last weekend of the Middle Ocoee summer schedule. Weekend-only releases continue through early October.',
-    seasonLabel: 'Ocoee Summer Releases',
-  },
+  // ── OCOEE #2 RIVER 2026 ───────────────────────────────────────
+  // TVA Ocoee #2 (Middle Ocoee) recreational releases. The full
+  // 2026 schedule is generated below by buildOcoeeSeason2026()
+  // following the standard TVA pattern documented on the official
+  // calendar:
+  //
+  //   Shoulder weekends (Sat+Sun, 11am-4pm):
+  //     late March through mid-May,
+  //     mid-September through early November
+  //   Peak weekends (Sat+Sun, 9am-6pm):
+  //     Memorial Day weekend through Labor Day weekend
+  //   Wednesday releases (11am-5pm):
+  //     June, July, August
+  //
+  // The previous version of this block had only 3 hand-curated
+  // headline dates with a comment claiming the rest would
+  // "clutter the calendar." That was wrong — paddlers want every
+  // release date so they can plan a whole season. Replaced with
+  // the full enumerated list.
+  //
+  // Source: https://www.tva.com/environment/lake-levels/ocoee-river-recreation
+  // and the official 2026 Ocoee #2 Recreational Release Calendar.
+  //
+  // VERIFY: this list is built from the standard TVA pattern. If
+  // any specific 2026 date is added/removed/cancelled by TVA,
+  // edit the date arrays in buildOcoeeSeason2026() below — do
+  // NOT hand-edit individual entries up here.
+  ...buildOcoeeSeason2026(),
 
   // ── LEHIGH RECREATIONAL RELEASES 2026 ─────────────────────────
   // USACE Francis E. Walter Reservoir releases. ~7 weekend
@@ -543,6 +524,129 @@ function buildGauleyFallSeason2026(): DamRelease[] {
     notes: 'Upper Gauley release from Summersville Lake. Lower Gauley follows at the same flow the day after each Upper release. The 22-day Gauley Fall Season is the marquee whitewater event in the eastern United States.',
     seasonLabel: 'Gauley Fall Season 2026',
   }))
+}
+
+// Ocoee #2 Recreational Release Season 2026 — TVA Apalachia
+// Powerhouse releases on the Middle Ocoee. Three time blocks:
+//
+//   PEAK weekends (Sat+Sun, 9am-6pm)
+//     Memorial Day weekend through Labor Day weekend.
+//     Includes Memorial Day Monday and Labor Day Monday.
+//
+//   SHOULDER weekends (Sat+Sun, 11am-4pm)
+//     Late March through mid-May, plus mid-September through
+//     early November. Same standard 1500 cfs flow but shorter
+//     window — daylight is shorter at the edges of the season.
+//
+//   WEDNESDAY releases (11am-5pm)
+//     June, July, August. Mid-week mid-summer flows for the
+//     commercial outfitters' weekday business.
+//
+// Each date below is the literal calendar date — easy for
+// reviewers to scan against the official TVA 2026 calendar.
+// To remove a date that TVA cancels, just delete it from the
+// matching array. To add a date that's been added, append it.
+function buildOcoeeSeason2026(): DamRelease[] {
+  // Peak weekend dates (Sat+Sun + Memorial Day + Labor Day Monday)
+  // 9am-6pm. Memorial Day 2026 = Mon May 25. Labor Day 2026 = Mon Sept 7.
+  const peakDays: string[] = [
+    // Memorial Day weekend
+    '2026-05-23', '2026-05-24', '2026-05-25',
+    // June weekends
+    '2026-05-30', '2026-05-31',
+    '2026-06-06', '2026-06-07',
+    '2026-06-13', '2026-06-14',
+    '2026-06-20', '2026-06-21',
+    '2026-06-27', '2026-06-28',
+    // July weekends (incl. Independence Day Sat July 4)
+    '2026-07-04', '2026-07-05',
+    '2026-07-11', '2026-07-12',
+    '2026-07-18', '2026-07-19',
+    '2026-07-25', '2026-07-26',
+    // August weekends
+    '2026-08-01', '2026-08-02',
+    '2026-08-08', '2026-08-09',
+    '2026-08-15', '2026-08-16',
+    '2026-08-22', '2026-08-23',
+    '2026-08-29', '2026-08-30',
+    // Labor Day weekend
+    '2026-09-05', '2026-09-06', '2026-09-07',
+  ]
+
+  // Shoulder weekend dates (Sat+Sun, 11am-4pm)
+  const shoulderDays: string[] = [
+    // Spring shoulder — late March through mid-May
+    '2026-03-28', '2026-03-29',
+    '2026-04-04', '2026-04-05',
+    '2026-04-11', '2026-04-12',
+    '2026-04-18', '2026-04-19',
+    '2026-04-25', '2026-04-26',
+    '2026-05-02', '2026-05-03',
+    '2026-05-09', '2026-05-10',
+    '2026-05-16', '2026-05-17',
+    // Fall shoulder — mid-September through early November
+    '2026-09-12', '2026-09-13',
+    '2026-09-19', '2026-09-20',
+    '2026-09-26', '2026-09-27',
+    '2026-10-03', '2026-10-04',
+    '2026-10-10', '2026-10-11',
+    '2026-10-17', '2026-10-18',
+    '2026-10-24', '2026-10-25',
+    '2026-10-31', '2026-11-01',
+  ]
+
+  // Wednesday releases (11am-5pm) — June/July/August
+  const wednesdayDays: string[] = [
+    '2026-06-03', '2026-06-10', '2026-06-17', '2026-06-24',
+    '2026-07-01', '2026-07-08', '2026-07-15', '2026-07-22', '2026-07-29',
+    '2026-08-05', '2026-08-12', '2026-08-19', '2026-08-26',
+  ]
+
+  const sourceUrl = 'https://www.tva.com/environment/lake-levels/ocoee-river-recreation'
+
+  const peak: DamRelease[] = peakDays.map(date => ({
+    id: `ocoee_${date.replace(/-/g, '_')}`,
+    riverId: 'ocoee',
+    name: 'Ocoee Recreational Release',
+    date,
+    startTime: '09:00',
+    endTime: '18:00',
+    expectedCfs: 1500,
+    agency: 'TVA',
+    sourceUrl,
+    notes: 'Peak summer release window — 9am to 6pm, full daylight schedule. Standard 1500 cfs from Apalachia Powerhouse.',
+    seasonLabel: 'Ocoee #2 Recreational Releases 2026',
+  }))
+
+  const shoulder: DamRelease[] = shoulderDays.map(date => ({
+    id: `ocoee_${date.replace(/-/g, '_')}`,
+    riverId: 'ocoee',
+    name: 'Ocoee Recreational Release',
+    date,
+    startTime: '11:00',
+    endTime: '16:00',
+    expectedCfs: 1500,
+    agency: 'TVA',
+    sourceUrl,
+    notes: 'Shoulder season release — 11am to 4pm. Cooler water and smaller crowds; the shoulder windows bracket the peak summer schedule on either side.',
+    seasonLabel: 'Ocoee #2 Recreational Releases 2026',
+  }))
+
+  const wednesday: DamRelease[] = wednesdayDays.map(date => ({
+    id: `ocoee_${date.replace(/-/g, '_')}`,
+    riverId: 'ocoee',
+    name: 'Ocoee Wednesday Release',
+    date,
+    startTime: '11:00',
+    endTime: '17:00',
+    expectedCfs: 1500,
+    agency: 'TVA',
+    sourceUrl,
+    notes: 'Mid-week summer release — 11am to 5pm. Wednesday flows run June through August for commercial outfitters\u2019 weekday trips.',
+    seasonLabel: 'Ocoee #2 Recreational Releases 2026',
+  }))
+
+  return [...shoulder, ...peak, ...wednesday]
 }
 
 // ── Helper functions ───────────────────────────────────────────
