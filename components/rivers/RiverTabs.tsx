@@ -152,6 +152,11 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
     tomorrowHigh: number | null; tomorrowLow: number | null
     sunrise: string | null; sunset: string | null
     thunderstormRisk: boolean; rainNext24h: boolean
+    // Coordinates the NWS forecast was fetched for. Used to link
+    // the user out to the matching forecast.weather.gov page so
+    // they can verify the data and trust the source.
+    latitude?: number
+    longitude?: number
   }
   const [weather, setWeather] = useState<RiverWeatherData | null>(null)
   const [weatherLoaded, setWeatherLoaded] = useState(false)
@@ -622,6 +627,7 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                       7-Day Forecast
                     </button>
                     {forecastExpanded && (
+                    <>
                     <div style={{ display: 'flex', gap: '0', overflow: 'hidden', borderRadius: 'var(--r)', border: '.5px solid var(--bd)' }}>
                       {weather.daily.filter(d => d.isDaytime).slice(0, 7).map((d, i) => (
                         <div key={i} style={{
@@ -668,6 +674,18 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                         </div>
                       ))}
                     </div>
+                    {/* Source attribution — links the user out to the
+                        same NWS forecast page our backend pulls from,
+                        so they can verify and trust the data. */}
+                    <div style={{ marginTop: '6px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', color: 'var(--tx3)', textAlign: 'right' }}>
+                      Forecast: <a
+                        href={`https://forecast.weather.gov/MapClick.php?lat=${weather.latitude ?? ''}&lon=${weather.longitude ?? ''}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: 'var(--rv)', textDecoration: 'underline' }}
+                      >NOAA / National Weather Service &rarr;</a>
+                    </div>
+                    </>
                     )}
                   </div>
                 )}

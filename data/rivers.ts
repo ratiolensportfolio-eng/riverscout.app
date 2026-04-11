@@ -4215,6 +4215,21 @@ export const STATES: StatesDB = {
         revs: [],
         outs: [{ n: 'Carters Lake Marina', d: 'Kayak rentals and tailwater access near Carters Dam', l: '' }],
       },
+      {
+        id: 'tallulah_ga', n: 'Tallulah River', ww: true, wild: false, piedmont: false, appalachian: true,
+        co: 'Rabun / Habersham Co.', len: '45 mi', cls: 'IV–V', opt: '500–900',
+        g: '02178400', avg: 320, histFlow: 290, mx: 595, my: 320, abbr: 'GA',
+        desc: "The Tallulah River drains the Blue Ridge of north Georgia and drops through Tallulah Gorge \u2014 a 1,000-foot-deep granite canyon dewatered for over a century by Georgia Power\u2019s 1913 hydroelectric project. The gorge is largely empty water most of the year, but Georgia Power releases the river two weekends each November (and occasionally April) at 700 cfs, transforming the dewatered slot into one of the most dramatic Class IV\u2013V whitewater runs in the Southeast. Whitewater paddlers wait all year for the Tallulah Gorge release weekends \u2014 only 4 release days per year on average. Tallulah Gorge State Park manages the access and permit system.",
+        desig: 'Tallulah Gorge State Park \u00b7 FERC Hydroelectric Project (Georgia Power) \u00b7 4 Release Days Per Year',
+        secs: ['Tallulah Gorge release section — 2.5 mi, Class IV–V, accessible only on release weekends with state park permit', 'Above the gorge — Class I–II, normal flows', 'Below Tugaloo confluence — Class I, mixed bass water'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-contact', title: "Cherokee Sacred Site \u2014 \u2018Terrible\u2019 Gorge", text: "Tallulah Gorge was sacred ground to the Cherokee Nation, who called it \u2018Ugun\u2019yi\u2019 (\u2018terrible\u2019 or \u2018awful\u2019). Cherokee tradition held that an immortal race called the Nunnehi lived beneath the falls, and Cherokee crossings of the gorge were ritualized. The river\u2019s English name comes from the Cherokee word \u2018taluli,\u2019 likely a place-name for the falls themselves.", src: 'Eastern Band of Cherokee Indians; Georgia State Parks' }] },
+          { era: 'modern', entries: [{ yr: '1913', title: 'Georgia Power Hydroelectric Project Dewaters the Gorge', text: "Georgia Power completed its Tallulah Falls hydroelectric project in 1913, diverting nearly all of the river\u2019s flow into a series of penstocks that bypass the gorge. For over a century the famous Tallulah Falls have been mostly dry. The dewatering remains controversial \u2014 the gorge was once one of the most-visited natural attractions in the eastern United States.", src: 'Georgia Power Tallulah Falls Hydro Project; Georgia Historical Society' }, { yr: '1996', title: "Negotiated Whitewater Releases Begin", text: "After years of advocacy by American Whitewater and the Atlanta Whitewater Club, Georgia Power agreed to release the gorge for whitewater paddling and aesthetic flows as part of its 1996 FERC license renewal. Whitewater releases occur the first two weekends of November (4 days total) at 700 cfs \u2014 the only way to legally paddle the gorge.", src: 'American Whitewater; FERC Tallulah Project relicense' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Tallulah Gorge State Park', d: 'State park with the Tallulah Gorge release permit system and access', l: '' }],
+      },
     ],
   },
 

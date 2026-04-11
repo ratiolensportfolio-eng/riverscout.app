@@ -518,9 +518,67 @@ export const DAM_RELEASES: DamRelease[] = [
     sourceUrl: 'https://cheat.org/cheat-river-festival/',
   },
 
-  // (Tallulah Gorge releases are intentionally NOT in this file
-  // until we add Tallulah as a tracked river. Putting them here
-  // with a wrong river_id would create dead links.)
+  // ── TALLULAH GORGE (GA) — GEORGIA POWER NOVEMBER RELEASES ─────
+  // Georgia Power releases the gorge for whitewater on the first
+  // two weekends of November as part of the 1996 FERC license
+  // settlement. 700 cfs through Tallulah Gorge — Class IV–V
+  // technical whitewater. Only 4 release days per year. Requires
+  // a permit through Tallulah Gorge State Park (capacity-limited).
+  // Source:
+  // https://www.georgiapower.com/about/lakes-recreation/tallulah-gorge.html
+  // and Tallulah Gorge State Park whitewater release page.
+  {
+    id: 'tallulah_2026_11_07',
+    riverId: 'tallulah_ga',
+    name: 'Tallulah Gorge Whitewater Release',
+    date: '2026-11-07',
+    startTime: '09:00',
+    endTime: '15:00',
+    expectedCfs: 700,
+    agency: 'FERC (Georgia Power)',
+    sourceUrl: 'https://www.georgiapower.com/about/lakes-recreation/tallulah-gorge.html',
+    notes: 'First November release weekend (Saturday). Tallulah Gorge runs only 4 release days per year — the gorge is otherwise dewatered. Requires a permit through Tallulah Gorge State Park.',
+    seasonLabel: 'Tallulah Gorge November Releases',
+  },
+  {
+    id: 'tallulah_2026_11_08',
+    riverId: 'tallulah_ga',
+    name: 'Tallulah Gorge Whitewater Release',
+    date: '2026-11-08',
+    startTime: '09:00',
+    endTime: '15:00',
+    expectedCfs: 700,
+    agency: 'FERC (Georgia Power)',
+    sourceUrl: 'https://www.georgiapower.com/about/lakes-recreation/tallulah-gorge.html',
+    notes: 'First November release weekend (Sunday).',
+    seasonLabel: 'Tallulah Gorge November Releases',
+  },
+  {
+    id: 'tallulah_2026_11_14',
+    riverId: 'tallulah_ga',
+    name: 'Tallulah Gorge Whitewater Release',
+    date: '2026-11-14',
+    startTime: '09:00',
+    endTime: '15:00',
+    expectedCfs: 700,
+    agency: 'FERC (Georgia Power)',
+    sourceUrl: 'https://www.georgiapower.com/about/lakes-recreation/tallulah-gorge.html',
+    notes: 'Second November release weekend (Saturday).',
+    seasonLabel: 'Tallulah Gorge November Releases',
+  },
+  {
+    id: 'tallulah_2026_11_15',
+    riverId: 'tallulah_ga',
+    name: 'Tallulah Gorge Whitewater Release',
+    date: '2026-11-15',
+    startTime: '09:00',
+    endTime: '15:00',
+    expectedCfs: 700,
+    agency: 'FERC (Georgia Power)',
+    sourceUrl: 'https://www.georgiapower.com/about/lakes-recreation/tallulah-gorge.html',
+    notes: 'Second November release weekend (Sunday) — final whitewater release of the year.',
+    seasonLabel: 'Tallulah Gorge November Releases',
+  },
 ]
 
 // ── Curated season builders ────────────────────────────────────

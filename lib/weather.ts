@@ -46,6 +46,12 @@ export interface RiverWeather {
   thunderstormRisk: boolean
   rainNext24h: boolean
   fetchedAt: string
+  // Coordinates used to look up the NWS forecast — surfaced on
+  // the river page so we can link out to the same NWS forecast
+  // page for verification ("Forecast: NOAA / NWS →"). Optional
+  // because the underlying lookup may fail.
+  latitude?: number
+  longitude?: number
 }
 
 // Cache grid lookups — NOAA requires a two-step process:
@@ -245,6 +251,8 @@ export async function fetchRiverWeather(lat: number, lng: number): Promise<River
       thunderstormRisk,
       rainNext24h,
       fetchedAt: new Date().toISOString(),
+      latitude: lat,
+      longitude: lng,
     }
   } catch {
     return null
