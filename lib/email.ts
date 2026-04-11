@@ -1158,4 +1158,101 @@ export function permitVerificationReminderEmail(
 </body></html>`
 }
 
+// ── Release Alert Email Template ─────────────────────────────
+
+// Email sent N days before a scheduled dam release on a river
+// the user has subscribed to. Same Georgia/monospace styling as
+// the stocking + hatch alerts. Built so the cron at
+// /api/cron/release-alerts can fire it directly.
+export function releaseAlertEmail(
+  riverName: string,
+  stateSlug: string,
+  riverSlug: string,
+  releaseName: string,
+  releaseDate: string,        // YYYY-MM-DD
+  daysAway: number,            // 1, 2, 3...
+  expectedCfs: number | null,
+  startTime: string | null,
+  endTime: string | null,
+  agency: string,
+  notes: string | null,
+  sourceUrl: string,
+  unsubscribeUrl: string,
+): string {
+  const prettyDate = new Date(releaseDate + 'T12:00:00').toLocaleDateString('en-US', {
+    weekday: 'long', month: 'long', day: 'numeric', year: 'numeric',
+  })
+  const dayPhrase = daysAway === 0 ? 'today'
+    : daysAway === 1 ? 'tomorrow'
+    : `in ${daysAway} days`
+
+  return `<!DOCTYPE html>
+<html><head><meta charset="utf-8" /></head>
+<body style="margin: 0; padding: 0; background: #ffffff; font-family: Georgia, serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 520px; margin: 0 auto; padding: 20px;">
+    <tr>
+      <td style="padding-bottom: 16px; border-bottom: 1px solid #e2e1d8;">
+        <span style="font-family: Georgia, serif; font-size: 20px; font-weight: 700; color: #085041;">
+          River<span style="color: #185FA5;">Scout</span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 24px 0;">
+        <div style="font-family: monospace; font-size: 10px; color: #BA7517; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px;">
+          \u26A1 Release ${dayPhrase}
+        </div>
+        <div style="font-family: Georgia, serif; font-size: 22px; font-weight: 700; color: #1a1a18; line-height: 1.3; margin-bottom: 8px;">
+          ${riverName}
+        </div>
+        <div style="font-family: monospace; font-size: 12px; color: #666660; margin-bottom: 16px;">
+          ${releaseName}
+        </div>
+        <table width="100%" cellpadding="0" cellspacing="0" style="background: #f6f5f2; border-radius: 8px; border: 1px solid #e2e1d8;">
+          <tr>
+            <td style="padding: 16px;">
+              <div style="font-family: monospace; font-size: 12px; color: #1a1a18; margin-bottom: 6px;">
+                <strong>Date:</strong> ${prettyDate}
+              </div>
+              ${(startTime || endTime) ? `<div style="font-family: monospace; font-size: 12px; color: #1a1a18; margin-bottom: 6px;"><strong>Window:</strong> ${startTime || ''}${startTime && endTime ? '\u2013' : ''}${endTime || ''}</div>` : ''}
+              ${expectedCfs ? `<div style="font-family: monospace; font-size: 12px; color: #1a1a18; margin-bottom: 6px;"><strong>Expected flow:</strong> ${expectedCfs.toLocaleString()} cfs</div>` : ''}
+              <div style="font-family: monospace; font-size: 12px; color: #1a1a18; margin-bottom: 6px;">
+                <strong>Operating agency:</strong> ${agency}
+              </div>
+              ${notes ? `<div style="font-family: Georgia, serif; font-size: 12px; color: #666660; line-height: 1.55; margin-top: 10px; padding-top: 10px; border-top: 1px solid #e2e1d8;">${notes}</div>` : ''}
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 0 0 24px;">
+        <div style="background: #FBF3E8; border: 1px solid #BA7517; border-radius: 8px; padding: 12px 16px;">
+          <div style="font-family: monospace; font-size: 11px; color: #7A4D0E; line-height: 1.55;">
+            <strong>Verify before driving.</strong> Release schedules can change with reservoir conditions. <a href="${sourceUrl}" style="color: #BA7517; text-decoration: underline;">Check the official ${agency.split(' ')[0]} schedule \u2192</a>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 0 0 24px; text-align: center;">
+        <a href="https://riverscout.app/rivers/${stateSlug}/${riverSlug}" style="display: inline-block; padding: 12px 28px; background: #085041; color: #ffffff; font-family: monospace; font-size: 13px; font-weight: 500; text-decoration: none; border-radius: 6px; letter-spacing: .3px;">
+          View ${riverName} Conditions &rarr;
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 16px 0 0; border-top: 1px solid #e2e1d8;">
+        <div style="font-family: monospace; font-size: 10px; color: #aaa99a; text-align: center; line-height: 1.6;">
+          You received this because you subscribed to release alerts for ${riverName} on
+          <a href="https://riverscout.app" style="color: #1D9E75;">RiverScout</a>.<br />
+          <a href="${unsubscribeUrl}" style="color: #aaa99a;">Unsubscribe</a> &middot;
+          <a href="https://riverscout.app/account" style="color: #aaa99a;">Manage all alerts</a>
+        </div>
+      </td>
+    </tr>
+  </table>
+</body></html>`
+}
+
 export { ADMIN_EMAIL }

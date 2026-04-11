@@ -14,6 +14,7 @@ import { fetchRiverPageData } from '@/lib/river-page-data'
 import { hasFisheries } from '@/data/fisheries-keys'
 import { FISHERIES } from '@/data/fisheries'
 import { getNextReleaseForRiver } from '@/data/dam-releases'
+import SubscribeReleaseAlert from '@/components/rivers/SubscribeReleaseAlert'
 import type { Metadata } from 'next'
 
 export const revalidate = 900
@@ -455,6 +456,11 @@ export default async function RiverPage({ params }: Props) {
                 {' \u00b7 '}{next.agency.split(' ')[0]}
               </div>
             </div>
+            <SubscribeReleaseAlert
+              riverId={river.id}
+              riverName={river.n}
+              seasonLabel={next.seasonLabel}
+            />
             <Link href="/releases" style={{
               fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
               color: 'var(--rv)', textDecoration: 'none',
