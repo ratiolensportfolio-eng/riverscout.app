@@ -21,6 +21,7 @@
 // next-best win and saves 4-6 client round trips.
 
 import { createSupabaseServerClient } from '@/lib/supabase-server'
+import { fetchContributorCounts } from '@/lib/contributor-counts'
 import type { RiverPermit } from '@/types'
 
 export interface PrefetchedTripReport {
@@ -96,6 +97,11 @@ export type RiverFieldOverrides = Record<string, string>
 // migration 031. We prefetch questions + their top answers so the
 // Q&A tab body renders server-side and Google indexes the actual
 // question/answer text instead of an empty client shell.
+//
+// `contributor_count` is decorated server-side from the user_id
+// column so the Q&A render can show a tier badge next to each
+// display name without an N+1 client lookup. Anonymous rows
+// (user_id null) get null and render no badge.
 export interface PrefetchedQAAnswer {
   id: string
   display_name: string
@@ -103,6 +109,7 @@ export interface PrefetchedQAAnswer {
   created_at: string
   helpful_count: number
   is_best_answer: boolean
+  contributor_count: number | null
 }
 
 export interface PrefetchedQAQuestion {
@@ -113,6 +120,7 @@ export interface PrefetchedQAQuestion {
   created_at: string
   answered: boolean
   helpful_count: number
+  contributor_count: number | null
   answers: PrefetchedQAAnswer[]
 }
 
@@ -251,9 +259,13 @@ export async function fetchRiverPageData(
     // brittle (same constraint that forces us to do trip_reports
     // the same way). Limit to 100 questions per page — beyond that
     // we'd want pagination, but no river is anywhere near that yet.
+    //
+    // user_id is included so the renderer can attach a contributor
+    // tier badge next to each display name. Anonymous rows have a
+    // null user_id and render no badge.
     supabase
       .from('river_questions')
-      .select('id, river_id, display_name, question, created_at, answered, helpful_count')
+      .select('id, river_id, user_id, display_name, question, created_at, answered, helpful_count')
       .eq('river_id', riverId)
       .eq('status', 'active')
       .order('answered', { ascending: false })       // answered first
@@ -289,31 +301,57 @@ export async function fetchRiverPageData(
   // by best_answer first, then helpful_count desc). The Q&A tab UI
   // shows the top one inline and offers an expander for the rest.
   const questionRows = (qaQuestionsRes.data ?? []) as Array<{
-    id: string; river_id: string; display_name: string; question: string;
-    created_at: string; answered: boolean; helpful_count: number;
+    id: string; river_id: string; user_id: string | null; display_name: string;
+    question: string; created_at: string; answered: boolean; helpful_count: number;
   }>
   let qa: PrefetchedQAQuestion[] = []
   if (questionRows.length > 0) {
     const questionIds = questionRows.map(q => q.id)
     const answersRes = await supabase
       .from('river_answers')
-      .select('id, question_id, display_name, answer, created_at, helpful_count, is_best_answer')
+      .select('id, question_id, user_id, display_name, answer, created_at, helpful_count, is_best_answer')
       .in('question_id', questionIds)
       .eq('status', 'active')
       .order('is_best_answer', { ascending: false })
       .order('helpful_count', { ascending: false })
       .order('created_at', { ascending: true })
 
+    type AnswerRowWithUser = {
+      id: string; question_id: string; user_id: string | null;
+      display_name: string; answer: string; created_at: string;
+      helpful_count: number; is_best_answer: boolean;
+    }
+    const answerRows = (answersRes.data ?? []) as AnswerRowWithUser[]
+
+    // Batch-fetch contributor counts for every unique user_id that
+    // owns a question or an answer on this river page. Single round
+    // trip vs N+1.
+    const allUserIds: string[] = []
+    for (const q of questionRows) if (q.user_id) allUserIds.push(q.user_id)
+    for (const a of answerRows) if (a.user_id) allUserIds.push(a.user_id)
+    const counts = await fetchContributorCounts(supabase, allUserIds)
+
     const answersByQuestion = new Map<string, PrefetchedQAAnswer[]>()
-    for (const a of (answersRes.data ?? []) as Array<PrefetchedQAAnswer & { question_id: string }>) {
+    for (const a of answerRows) {
       const list = answersByQuestion.get(a.question_id) ?? []
-      // Strip the question_id before storing — the parent question
-      // already knows it owns this answer.
-      const { question_id: _qid, ...rest } = a
-      list.push(rest)
+      // Strip question_id and user_id off the row before storing —
+      // the parent question already owns it, and we replace user_id
+      // with the contributor_count needed by the renderer.
+      const { question_id: _qid, user_id: aUid, ...rest } = a
+      list.push({
+        ...rest,
+        contributor_count: aUid ? (counts[aUid] ?? 0) : null,
+      })
       answersByQuestion.set(a.question_id, list)
     }
-    qa = questionRows.map(q => ({ ...q, answers: answersByQuestion.get(q.id) ?? [] }))
+    qa = questionRows.map(q => {
+      const { user_id: qUid, ...rest } = q
+      return {
+        ...rest,
+        contributor_count: qUid ? (counts[qUid] ?? 0) : null,
+        answers: answersByQuestion.get(q.id) ?? [],
+      }
+    })
   }
 
   return {

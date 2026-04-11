@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import type { User } from '@supabase/supabase-js'
+import ContributorBadge from '@/components/ContributorBadge'
 
 const mono = "'IBM Plex Mono', monospace"
 
@@ -11,6 +12,12 @@ export default function AuthNav() {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
   const [open, setOpen] = useState(false)
+  // Signed-in user's contributor count (approved suggestions +
+  // helpful answers). Drives the inline tier badge in the dropdown
+  // header. Null until the count fetch completes; the badge
+  // component renders nothing for the empty 'none' tier so the
+  // header gracefully shows just the email until then.
+  const [contributorCount, setContributorCount] = useState<number | null>(null)
   const wrapperRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
@@ -25,6 +32,38 @@ export default function AuthNav() {
 
     return () => subscription.unsubscribe()
   }, [])
+
+  // Fetch the user's contributor count whenever the user changes.
+  // Same dual-source calculation as /account: approved suggestions
+  // plus Q&A answers with helpful_count >= 1. Best-effort — errors
+  // leave the count null and the badge simply doesn't render.
+  useEffect(() => {
+    if (!user) {
+      setContributorCount(null)
+      return
+    }
+    let cancelled = false
+    Promise.all([
+      supabase
+        .from('suggestions')
+        .select('*', { count: 'exact', head: true })
+        .eq('user_id', user.id)
+        .eq('status', 'approved'),
+      supabase
+        .from('river_answers')
+        .select('*', { count: 'exact', head: true })
+        .eq('user_id', user.id)
+        .eq('status', 'active')
+        .gte('helpful_count', 1),
+    ]).then(([approved, helpful]) => {
+      if (cancelled) return
+      const total = (approved.count ?? 0) + (helpful.count ?? 0)
+      setContributorCount(total)
+    }).catch(() => {
+      if (!cancelled) setContributorCount(null)
+    })
+    return () => { cancelled = true }
+  }, [user])
 
   // Close on outside click + escape key. We register both because
   // either one is a typical "I'm done with this menu" gesture and
@@ -96,6 +135,7 @@ export default function AuthNav() {
         <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', maxWidth: '120px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
           {name}
         </span>
+        {contributorCount != null && <ContributorBadge count={contributorCount} />}
         {/* Tiny chevron — visual hint that this opens a menu. */}
         <span aria-hidden="true" style={{
           fontFamily: mono, fontSize: '9px', color: 'var(--tx3)',
@@ -137,6 +177,11 @@ export default function AuthNav() {
             <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx)', wordBreak: 'break-all', lineHeight: 1.3 }}>
               {user.email}
             </div>
+            {contributorCount != null && contributorCount > 0 && (
+              <div style={{ marginTop: '6px' }}>
+                <ContributorBadge count={contributorCount} size="md" showLabel />
+              </div>
+            )}
           </div>
 
           <MenuLink href={`/profile/${profileUsername}`} onClick={() => setOpen(false)}>

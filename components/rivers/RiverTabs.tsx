@@ -35,6 +35,7 @@ import { getHatchTrigger } from '@/lib/hatch-triggers'
 import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 import type { RiverFisheries } from '@/types'
 import type { RiverPageData } from '@/lib/river-page-data'
+import ContributorBadge from '@/components/ContributorBadge'
 
 const TABS = ['Overview', 'History', 'Trip Reports', 'Q&A', 'Fishing', 'Maps & Guides', 'Documents'] as const
 type Tab = typeof TABS[number]
@@ -43,6 +44,10 @@ type Tab = typeof TABS[number]
 // from lib/river-page-data.ts but redeclared here so RiverTabs can
 // own its local writeable state without spreading the SSR type
 // across client mutators.
+//
+// `contributor_count` is the server-decorated count (approved
+// suggestions + helpful answers). Anonymous rows pass null and
+// the renderer shows no badge.
 interface QAAnswerLite {
   id: string
   display_name: string
@@ -50,6 +55,7 @@ interface QAAnswerLite {
   created_at: string
   helpful_count: number
   is_best_answer: boolean
+  contributor_count: number | null
 }
 interface QAQuestionLite {
   id: string
@@ -59,6 +65,7 @@ interface QAQuestionLite {
   created_at: string
   answered: boolean
   helpful_count: number
+  contributor_count: number | null
   answers: QAAnswerLite[]
 }
 
@@ -1870,8 +1877,11 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                         )}
                       </div>
 
-                      <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginBottom: '8px', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                        <span>Asked by {q.display_name}</span>
+                      <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginBottom: '8px', display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
+                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+                          Asked by {q.display_name}
+                          {q.contributor_count != null && <ContributorBadge count={q.contributor_count} />}
+                        </span>
                         <span>{new Date(q.created_at).toLocaleDateString()}</span>
                         <span>{q.answers.length} answer{q.answers.length === 1 ? '' : 's'}</span>
                         <button
@@ -1906,8 +1916,11 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                           <p style={{ fontSize: '12.5px', color: 'var(--tx)', lineHeight: 1.65, margin: 0, marginBottom: '6px' }}>
                             {topAnswer.answer}
                           </p>
-                          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                            <span>{topAnswer.display_name}</span>
+                          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
+                            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+                              {topAnswer.display_name}
+                              {topAnswer.contributor_count != null && <ContributorBadge count={topAnswer.contributor_count} />}
+                            </span>
                             <span>{new Date(topAnswer.created_at).toLocaleDateString()}</span>
                             <button
                               type="button"
@@ -1960,8 +1973,11 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                               </div>
                             )}
                             <p style={{ fontSize: '12.5px', color: 'var(--tx)', lineHeight: 1.65, margin: 0, marginBottom: '6px' }}>{a.answer}</p>
-                            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                              <span>{a.display_name}</span>
+                            <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
+                              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+                                {a.display_name}
+                                {a.contributor_count != null && <ContributorBadge count={a.contributor_count} />}
+                              </span>
                               <span>{new Date(a.created_at).toLocaleDateString()}</span>
                               <button
                                 type="button"
