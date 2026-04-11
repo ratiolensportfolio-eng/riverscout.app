@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createSupabaseClient } from '@/lib/supabase'
 import { ALL_RIVERS } from '@/data/rivers'
 import { hasReleases } from '@/data/dam-releases'
 
@@ -52,19 +51,36 @@ export async function POST(req: NextRequest) {
       daysBefore = Math.max(1, Math.min(30, Math.round(notifyDaysBefore)))
     }
 
-    const supabase = createSupabaseClient()
+    // Use the service role for the write path. The route is the
+    // gate (we already validated email + riverId + hasReleases),
+    // and the alternative — relying on auth.uid() inside the
+    // policies — fails because the anon supabase client has no
+    // session context server-side. Same pattern as the Michigan
+    // DNR stocking route and the publish-listing route.
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+    if (!url || !serviceKey) {
+      return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
+    }
+    const { createClient } = await import('@supabase/supabase-js')
+    const supabase = createClient(url, serviceKey, { auth: { persistSession: false } })
 
     // Check for an existing subscription with the same key.
     // Postgres' UNIQUE constraint would catch this on insert,
     // but we re-activate stale ones rather than erroring out
     // so the user experience is "subscribe button always works".
-    const { data: existing } = await supabase
+    const { data: existing, error: existingErr } = await supabase
       .from('release_alerts')
       .select('id, active')
       .eq('email', email.toLowerCase())
       .eq('river_id', riverId)
       .eq('season_label', seasonLabel ?? null)
       .maybeSingle()
+
+    if (existingErr) {
+      console.error('[releases/subscribe] lookup error:', existingErr)
+      return NextResponse.json({ error: `Subscribe failed: ${existingErr.message}` }, { status: 500 })
+    }
 
     if (existing) {
       if (!existing.active) {
@@ -84,8 +100,13 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    // New subscription
-    const { data: inserted, error } = await supabase
+    // New subscription. Plain insert without .select() so we
+    // don't trigger PostgREST's implicit RETURNING — that path
+    // is what was failing earlier with the "new row violates
+    // row-level security policy" error even though the policy
+    // is permissive on writes (the RETURNING was triggering a
+    // SELECT-policy check too).
+    const { error } = await supabase
       .from('release_alerts')
       .insert({
         user_id: userId || null,
@@ -96,8 +117,6 @@ export async function POST(req: NextRequest) {
         notify_days_before: daysBefore,
         active: true,
       })
-      .select('id')
-      .single()
 
     if (error) {
       console.error('[releases/subscribe] insert error:', error)
@@ -106,7 +125,6 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({
       ok: true,
-      id: inserted?.id,
       message: `You'll get an email ${daysBefore} day${daysBefore === 1 ? '' : 's'} before each release.`,
     })
   } catch (err) {
@@ -118,13 +136,19 @@ export async function POST(req: NextRequest) {
 // DELETE /api/releases/subscribe?id=...
 // Lets the user (or the unsubscribe link in an email) deactivate
 // a subscription without deleting the row — keeps history for
-// re-activation later.
+// re-activation later. Same service-role auth pattern as POST.
 export async function DELETE(req: NextRequest) {
   const id = req.nextUrl.searchParams.get('id')
   if (!id) {
     return NextResponse.json({ error: 'id required' }, { status: 400 })
   }
-  const supabase = createSupabaseClient()
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+  if (!url || !serviceKey) {
+    return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
+  }
+  const { createClient } = await import('@supabase/supabase-js')
+  const supabase = createClient(url, serviceKey, { auth: { persistSession: false } })
   const { error } = await supabase
     .from('release_alerts')
     .update({ active: false })
