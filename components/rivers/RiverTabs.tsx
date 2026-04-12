@@ -1047,21 +1047,26 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
               </div>
             ))}
 
-            {/* Stats grid */}
-            <div className="stats-grid" style={{ marginBottom: '12px' }}>
-              {[
-                { n: river.len, l: 'Length' },
-                { n: `Class ${river.cls}`, l: 'Difficulty' },
-                { n: `${river.opt} cfs`, l: 'Optimal' },
-                { n: river.avg ? `${river.avg.toLocaleString()} cfs` : '—', l: 'Avg Flow' },
-                { n: river.histFlow ? `${river.histFlow.toLocaleString()} cfs` : '—', l: 'Hist. Median' },
-                { n: `#${river.g}`, l: 'USGS Gauge' },
-              ].map(s => (
-                <div key={s.l} style={{ background: 'var(--bg2)', borderRadius: 'var(--r)', padding: '8px 10px' }}>
-                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 600, color: 'var(--tx)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{s.n}</div>
-                  <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '8px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.4px', marginTop: '2px' }}>{s.l}</div>
-                </div>
-              ))}
+            {/* Secondary stats — a single muted line of the non-
+                redundant data points the hero doesn't show. The
+                hero already covers: live CFS, gauge height,
+                condition badge, optimal range, water temp, and
+                rate of change. Length, difficulty, and optimal are
+                in the header sub-line. So only avg flow, hist
+                median, and gauge ID belong down here. */}
+            <div style={{
+              fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
+              color: 'var(--tx3)', marginBottom: '12px',
+              display: 'flex', gap: '12px', flexWrap: 'wrap',
+              lineHeight: 1.5,
+            }}>
+              {river.avg != null && (
+                <span>Avg flow: <strong style={{ color: 'var(--tx2)' }}>{river.avg.toLocaleString()} cfs</strong></span>
+              )}
+              {river.histFlow != null && (
+                <span>Hist. median: <strong style={{ color: 'var(--tx2)' }}>{river.histFlow.toLocaleString()} cfs</strong></span>
+              )}
+              <span>USGS <strong style={{ color: 'var(--tx2)' }}>#{river.g}</strong></span>
             </div>
 
             {/* Designation */}
