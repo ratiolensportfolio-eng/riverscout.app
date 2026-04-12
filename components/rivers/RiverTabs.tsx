@@ -264,6 +264,20 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
   const [riverMapData, setRiverMapData] = useState<{ accessPoints: AccessPoint[]; sections: RiverSection[]; riverPath: [number, number][] } | null>(null)
   const [riverMapLoading, setRiverMapLoading] = useState(false)
   const riverHasMap = hasRiverMap(river.id)
+
+  // Auto-load river map data when the Maps & Guides tab becomes
+  // active. Replaces the old "click to load" button so the map
+  // starts rendering immediately when the tab is clicked. The
+  // Mapbox GL JS library itself is still lazy-loaded (via
+  // next/dynamic), so this doesn't add to the initial bundle.
+  useEffect(() => {
+    if (tab === 'Maps & Guides' && riverHasMap && !riverMapData && !riverMapLoading) {
+      setRiverMapLoading(true)
+      loadRiverMap(river.id)
+        .then(data => { if (data) setRiverMapData(data) })
+        .finally(() => setRiverMapLoading(false))
+    }
+  }, [tab, riverHasMap, riverMapData, riverMapLoading, river.id])
   // Outfitters: hydrated from server prefetch when available, otherwise lazy.
   const [outfitters, setOutfitters] = useState<OutfitterListing[]>(
     initialData?.outfitters ?? []
@@ -3347,30 +3361,60 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
               Maps & Guides for {river.n}
             </div>
 
-            {/* Interactive River Map */}
+            {/* Interactive River Map — auto-loads when the Maps tab
+                becomes active (via the useEffect above). While
+                the data is loading, a gray placeholder with a
+                spinner holds the space so there's no jarring
+                white flash. Mapbox GL JS itself is still lazy-
+                loaded via next/dynamic. */}
             {riverHasMap && (
               <div style={{ marginBottom: '16px' }}>
-                {!riverMapData && !riverMapLoading && (
-                  <button onClick={async () => {
-                    setRiverMapLoading(true)
-                    const data = await loadRiverMap(river.id)
-                    if (data) setRiverMapData(data)
-                    setRiverMapLoading(false)
-                  }} style={{
-                    width: '100%', padding: '14px', border: '.5px solid var(--rvmd)',
-                    borderRadius: 'var(--rlg)', background: 'var(--rvlt)', cursor: 'pointer',
-                    fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--rvdk)',
-                    textAlign: 'center',
+                {!riverMapData ? (
+                  // Placeholder: same dimensions as the rendered map
+                  // (aspect ratio ~16:9 via padding hack) with a
+                  // centered spinner. The background matches the
+                  // Mapbox canvas background so the transition from
+                  // placeholder → map is seamless.
+                  <div style={{
+                    width: '100%',
+                    paddingBottom: '56.25%', // 16:9 aspect ratio
+                    position: 'relative',
+                    background: '#f0efec', // Mapbox's default canvas bg
+                    borderRadius: 'var(--rlg)',
+                    border: '.5px solid var(--bd)',
+                    overflow: 'hidden',
                   }}>
-                    Load Interactive River Map — Access Points, Distances & Paddle Times
-                  </button>
-                )}
-                {riverMapLoading && (
-                  <div style={{ padding: '20px', textAlign: 'center', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>
-                    Loading map data...
+                    <div style={{
+                      position: 'absolute', inset: 0,
+                      display: 'flex', flexDirection: 'column',
+                      alignItems: 'center', justifyContent: 'center',
+                      gap: '10px',
+                    }}>
+                      {/* CSS spinner — no external assets needed. The
+                          keyframes are scoped inline via style tag so
+                          they don't leak outside this component. */}
+                      <style>{`
+                        @keyframes river-map-spin {
+                          to { transform: rotate(360deg); }
+                        }
+                      `}</style>
+                      <div style={{
+                        width: '24px', height: '24px',
+                        border: '2.5px solid var(--bd2)',
+                        borderTopColor: 'var(--rv)',
+                        borderRadius: '50%',
+                        animation: 'river-map-spin .8s linear infinite',
+                      }} />
+                      <span style={{
+                        fontFamily: "'IBM Plex Mono', monospace",
+                        fontSize: '10px', color: 'var(--tx3)',
+                        letterSpacing: '.5px',
+                      }}>
+                        Loading map…
+                      </span>
+                    </div>
                   </div>
-                )}
-                {riverMapData && (
+                ) : (
                   <RiverMap
                     riverName={river.n}
                     accessPoints={riverMapData.accessPoints}
