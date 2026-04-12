@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import { ALL_RIVERS, STATES } from '@/data/rivers'
 import { fetchGaugeData } from '@/lib/usgs'
 import { createSupabaseServerClient } from '@/lib/supabase-server'
@@ -70,105 +69,61 @@ export default async function HomePage() {
 
   return (
     <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)', display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
-      {/* ── Hero with background image ─────────────────────────
-          The canoe-on-river illustration (riverscout-hero.jpg)
-          fills the hero at 1440×600 via object-fit:cover. A 40%
-          dark overlay ensures white text reads cleanly on top.
-          Content is centered: wordmark → tagline → search bar. */}
-      <div style={{
-        position: 'relative',
-        width: '100%',
-        height: '600px',
-        overflow: 'hidden',
-        flexShrink: 0,
-      }}>
-        {/* Background image */}
-        <Image
-          src="/images/riverscout-hero.jpg"
-          alt="A canoe gliding down a winding river at dusk"
-          fill
-          priority
-          style={{ objectFit: 'cover', objectPosition: 'center' }}
-          sizes="100vw"
-        />
-        {/* Dark overlay at 40% opacity */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'rgba(0, 0, 0, 0.40)',
-          zIndex: 1,
-        }} />
-
-        {/* Centered content */}
-        <div style={{
-          position: 'relative', zIndex: 2,
-          display: 'flex', flexDirection: 'column',
-          alignItems: 'center', justifyContent: 'center',
-          height: '100%', padding: '0 24px',
-          textAlign: 'center',
-        }}>
-          {/* Wordmark */}
-          <h1 style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: '48px', fontWeight: 700,
-            color: '#fff', margin: '0 0 12px',
-            lineHeight: 1.1, letterSpacing: '-0.5px',
-            textShadow: '0 2px 12px rgba(0,0,0,.3)',
-          }}>
-            River<span style={{ color: '#9DC4EA' }}>Scout</span>
-          </h1>
-
-          {/* Tagline */}
-          <p style={{
-            fontFamily: "'IBM Plex Mono', monospace",
-            fontSize: '20px', fontWeight: 400,
-            color: '#fff', margin: '0 0 28px',
-            opacity: 0.92,
-            textShadow: '0 1px 6px rgba(0,0,0,.3)',
-            letterSpacing: '.5px',
-          }}>
-            Know before you go.
-          </p>
-
-          {/* Search bar */}
-          <div style={{ width: '100%', maxWidth: '520px' }}>
-            <HomeSearch />
-          </div>
-
-          {/* Live stats — small, subtle, below the search bar */}
-          <div style={{
-            display: 'flex', gap: '16px', marginTop: '20px',
-            fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
-            color: 'rgba(255,255,255,.7)',
-          }}>
-            <span>{riverCount} rivers</span>
-            <span>·</span>
-            <span>{stateCount} states</span>
-            <span>·</span>
-            <span>Live USGS data</span>
-            {totalOptimal > 0 && (
-              <>
-                <span>·</span>
-                <span style={{ color: '#9FE1CB' }}>{totalOptimal} at optimal flow</span>
-              </>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* ── Conditions map section ─────────────────────────────
-          Full-width, dark navy background that transitions
-          cleanly from the hero. The interactive US map is the
-          first scroll section — no separate map page needed. */}
+      {/* ── Hero + Map — one unified section ────────────────────
+          Navy background. Wordmark, tagline, and search bar sit
+          above the interactive US conditions map. No separate
+          image — the map IS the visual. */}
       <section style={{
         background: '#042C53',
-        padding: '32px 20px 24px',
-        width: '100%',
+        width: '100%', flexShrink: 0,
+        padding: '40px 20px 24px',
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          {/* Section label with live pulse dot */}
+          {/* Wordmark + tagline + search — centered */}
+          <div style={{ textAlign: 'center', marginBottom: '28px' }}>
+            <h1 style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: '48px', fontWeight: 700,
+              color: '#fff', margin: '0 0 10px',
+              lineHeight: 1.1, letterSpacing: '-0.5px',
+            }}>
+              River<span style={{ color: '#9DC4EA' }}>Scout</span>
+            </h1>
+            <p style={{
+              fontFamily: "'IBM Plex Mono', monospace",
+              fontSize: '20px', fontWeight: 400,
+              color: '#fff', margin: '0 0 22px',
+              opacity: 0.9, letterSpacing: '.5px',
+            }}>
+              Know before you go.
+            </p>
+            <div style={{ maxWidth: '520px', margin: '0 auto' }}>
+              <HomeSearch />
+            </div>
+            <div style={{
+              display: 'flex', gap: '14px', justifyContent: 'center',
+              marginTop: '16px',
+              fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
+              color: 'rgba(255,255,255,.55)',
+            }}>
+              <span>{riverCount} rivers</span>
+              <span>·</span>
+              <span>{stateCount} states</span>
+              <span>·</span>
+              <span>Live USGS data</span>
+              {totalOptimal > 0 && (
+                <>
+                  <span>·</span>
+                  <span style={{ color: '#9FE1CB' }}>{totalOptimal} at optimal flow</span>
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* Conditions label */}
           <div style={{
             display: 'flex', alignItems: 'center', gap: '8px',
-            marginBottom: '16px',
+            marginBottom: '12px',
           }}>
             <span className="pulse-dot" style={{
               width: '8px', height: '8px', borderRadius: '50%',
@@ -177,7 +132,7 @@ export default async function HomePage() {
             <span style={{
               fontFamily: "'IBM Plex Mono', monospace",
               fontSize: '11px', fontWeight: 600,
-              color: 'rgba(255,255,255,.85)',
+              color: 'rgba(255,255,255,.8)',
               textTransform: 'uppercase', letterSpacing: '1.5px',
             }}>
               Conditions right now
@@ -197,7 +152,7 @@ export default async function HomePage() {
           <div style={{
             textAlign: 'center', marginTop: '14px',
             fontFamily: "'IBM Plex Mono', monospace",
-            fontSize: '11px', color: 'rgba(255,255,255,.45)',
+            fontSize: '11px', color: 'rgba(255,255,255,.4)',
             letterSpacing: '.3px',
           }}>
             Click any state to explore rivers.
