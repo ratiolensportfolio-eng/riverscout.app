@@ -1,0 +1,374 @@
+slug,gnis_name,huc4,state
+ausable_sb,Au Sable River,0408,MI
+big_manistee_lake,Manistee River,0406,MI
+boyne_mi,Boyne River,0406,MI
+coldwater_mi,Coldwater River,0405,MI
+dowagiac,Dowagiac River,0405,MI
+manistique_mi,Manistique River,0408,MI
+maple_mi,Maple River,0405,MI
+rogue_mi,Rogue River,0406,MI
+sturgeon_mi,Sturgeon River,0407,MI
+bluestone,Bluestone River,0505,WV
+cacapon,Cacapon River,0207,WV
+cheat_narrows,Cheat River,0205,WV
+cranberry,Cranberry River,0505,WV
+dry_fork_wv,Dry Fork,0205,WV
+elk_wv,Elk River,0505,WV
+meadow,Meadow River,0505,WV
+north_branch,North Branch Potomac River,0207,WV
+seneca_creek_wv,Seneca Creek,0207,WV
+shavers_fork,Shavers Fork,0205,WV
+tygart_wv,Tygart Valley River,0205,WV
+williams_wv,Williams River,0505,WV
+blue_co,Blue River,1401,CO
+cache_la_poudre,Cache La Poudre River,1019,CO
+colorado_glenwood,Colorado River,1401,CO
+colorado_pumphouse,Colorado River,1401,CO
+eagle,Eagle River,1401,CO
+frying_pan,Fryingpan River,1401,CO
+green_lodore,Green River,1404,CO
+gunnison_main,Gunnison River,1402,CO
+poudre,Cache La Poudre River,1019,CO
+roaring_fork,Roaring Fork,1401,CO
+south_platte,South Platte River,1019,CO
+taylor,Taylor River,1402,CO
+payette,North Fork Payette River,1701,ID
+mf_salmon,Middle Fork Salmon River,1706,ID
+selway,Selway River,1706,ID
+sf_boise,South Fork Boise River,1706,ID
+priest,Priest River,1701,ID
+henrys_fork,Henrys Fork,1704,ID
+mckenzie,McKenzie River,1709,OR
+illinois_or,Illinois River,1710,OR
+north_umpqua,North Umpqua River,1710,OR
+john_day,John Day River,1707,OR
+clackamas,Clackamas River,1709,OR
+sandy,Sandy River,1708,OR
+skagit,Skagit River,1711,WA
+skykomish,Skykomish River,1711,WA
+sauk,Sauk River,1711,WA
+white_salmon,White Salmon River,1708,WA
+tieton,Tieton River,1703,WA
+green_wa,Green River,1711,WA
+columbia,Columbia River,1707,WA
+delaware_pa,Delaware River,0204,PA
+susquehanna,Susquehanna River,0205,PA
+schuylkill,Schuylkill River,0204,PA
+juniata,Juniata River,0205,PA
+slippery_rock,Slippery Rock Creek,0503,PA
+kiski,Kiskiminetas River,0503,PA
+tohickon,Tohickon Creek,0204,PA
+little_juniata,Little Juniata River,0205,PA
+lackawaxen,Lackawaxen River,0204,PA
+kettle_creek_pa,Kettle Creek,0205,PA
+allegheny,Allegheny River,0503,PA
+penns_creek,Penns Creek,0205,PA
+spring_creek_pa,Spring Creek,0205,PA
+slate_run_pa,Slate Run,0205,PA
+brodhead_pa,Brodhead Creek,0204,PA
+yellowstone,Yellowstone River,1007,MT
+clark_fork,Clark Fork,1701,MT
+big_hole,Big Hole River,1002,MT
+madison,Madison River,1002,MT
+nolichucky,Nolichucky River,0601,TN
+obeds,Obed River,0513,TN
+hiwassee,Hiwassee River,0601,TN
+duck_river,Duck River,0603,TN
+pigeon_tn,Pigeon River,0601,TN
+elk_tn,Elk River,0603,TN
+caney_fork,Caney Fork,0513,TN
+tellico_tn,Tellico River,0601,TN
+holston,South Fork Holston River,0601,TN
+abrams_creek_tn,Abrams Creek,0601,TN
+citico_creek_tn,Citico Creek,0601,TN
+clinch_norris_tn,Clinch River,0513,TN
+cache_creek,Cache Creek,1802,CA
+eel,Eel River,1801,CA
+feather,Feather River,1802,CA
+kings,Kings River,1803,CA
+klamath,Klamath River,1801,CA
+mokelumne,Mokelumne River,1802,CA
+napa,Napa River,1805,CA
+pit,Pit River,1802,CA
+russian,Russian River,1801,CA
+sacramento,Sacramento River,1802,CA
+salmon_ca,Salmon River,1801,CA
+smith,Smith River,1801,CA
+stanislaus,Stanislaus River,1804,CA
+trinity,Trinity River,1801,CA
+truckee_ca,Truckee River,1605,CA
+yuba,Yuba River,1802,CA
+shenandoah,Shenandoah River,0207,VA
+maury,Maury River,0207,VA
+jackson_va,Jackson River,0207,VA
+south_branch,South Branch Potomac River,0207,VA
+clinch_va,Clinch River,0513,VA
+rapidan,Rapidan River,0208,VA
+mossy_creek_va,Mossy Creek,0207,VA
+jackson_river_va,Jackson River,0207,VA
+south_river_va,South River,0207,VA
+red_river,Red River,0513,KY
+elkhorn,Elkhorn Creek,0512,KY
+kentucky,Kentucky River,0512,KY
+licking,Licking River,0509,KY
+russell_ky,Russell Creek,0513,KY
+cumberland_wolf_ky,Cumberland River,0513,KY
+hatchery_creek_ky,Hatchery Creek,0512,KY
+rockcastle,Rockcastle River,0513,KY
+french_broad,French Broad River,0601,NC
+green_nc,Green River,0601,NC
+watauga,Watauga River,0601,NC
+nolichucky_nc,Nolichucky River,0601,NC
+tuckasegee,Tuckasegee River,0601,NC
+linville,Linville River,0303,NC
+davidson,Davidson River,0601,NC
+nantahala_lake,Nantahala River,0601,NC
+little_tennessee,Little Tennessee River,0601,NC
+roanoke,Roanoke River,0301,NC
+cape_fear,Cape Fear River,0303,NC
+neuse,Neuse River,0302,NC
+haw,Haw River,0303,NC
+hazel_creek_nc,Hazel Creek,0601,NC
+wilson_creek_nc,Wilson Creek,0303,NC
+south_toe_nc,South Toe River,0601,NC
+salt_river,Salt River,1506,AZ
+oak_creek,Oak Creek,1506,AZ
+black_az,Black River,1504,AZ
+gila_box,Gila River,1504,AZ
+san_francisco_az,San Francisco River,1504,AZ
+fossil_creek,Fossil Creek,1506,AZ
+wind_river,Wind River,1008,WY
+shoshone,Shoshone River,1008,WY
+hoback,Hoback River,1704,WY
+clarks_fork,Clarks Fork Yellowstone River,1008,WY
+greys,Greys River,1704,WY
+provo,Provo River,1602,UT
+weber,Weber River,1602,UT
+logan,Logan River,1601,UT
+dolores,Dolores River,1403,UT
+westwater,Colorado River,1403,UT
+rio_chama,Rio Chama,1302,NM
+pecos_nm,Pecos River,1306,NM
+red_river_nm,Red River,1302,NM
+san_antonio,San Antonio Creek,1302,NM
+canadian_nm,Canadian River,1112,NM
+jemez,Jemez River,1302,NM
+allagash,Allagash River,0105,ME
+machias,Machias River,0106,ME
+seboeis,Seboeis River,0104,ME
+rapid_me,Rapid River,0104,ME
+penobscot,Penobscot River,0104,ME
+esopus,Esopus Creek,0204,NY
+sacandaga,Sacandaga River,0202,NY
+raquette,Raquette River,0415,NY
+beaverkill,Beaverkill,0204,NY
+mohawk,Mohawk River,0202,NY
+genesee,Genesee River,0413,NY
+west_branch_ausable_ny,Ausable River,0202,NY
+willowemoc_ny,Willowemoc Creek,0204,NY
+neversink_ny,Neversink River,0204,NY
+delaware_ny,Delaware River,0204,NY
+chattooga_ga,Chattooga River,0302,GA
+toccoa,Toccoa River,0601,GA
+oconee,Oconee River,0307,GA
+amicalola,Amicalola Creek,0315,GA
+broad_ga,Broad River,0307,GA
+coosawattee,Coosawattee River,0315,GA
+tallulah_ga,Tallulah River,0302,GA
+st_croix,St. Croix River,0703,MN
+kawishiwi,Kawishiwi River,0903,MN
+st_louis_mn,St. Louis River,0401,MN
+root,Root River,0708,MN
+cloquet,Cloquet River,0401,MN
+cannon,Cannon River,0702,MN
+whitewater_mn,Whitewater River,0708,MN
+zumbro_mn,Zumbro River,0708,MN
+flambeau,Flambeau River,0705,WI
+black_wi,Black River,0704,WI
+pine_wi,Pine River,0707,WI
+wisconsin,Wisconsin River,0707,WI
+brule_wi,Bois Brule River,0401,WI
+menominee_wi,Menominee River,0406,WI
+milwaukee_wi,Milwaukee River,0404,WI
+cedar_ia,Cedar River,0708,IA
+des_moines,Des Moines River,0710,IA
+wapsipinicon,Wapsipinicon River,0708,IA
+turkey,Turkey River,0706,IA
+volga,Volga River,0706,IA
+yellow_ia,Yellow River,0706,IA
+st_francis,St. Francis River,0802,MO
+jacks_fork,Jacks Fork,1101,MO
+big_mo,Big River,0714,MO
+gasconade,Gasconade River,1029,MO
+north_fork_white,North Fork White River,1101,MO
+kings_ar,Kings River,1101,AR
+illinois_bayou,Illinois Bayou,1111,AR
+caddo,Caddo River,0811,AR
+atchafalaya,Atchafalaya River,0809,LA
+bogue_chitto,Bogue Chitto River,0804,LA
+whiskey_chitto,Whiskey Chitto Creek,0808,LA
+tchefuncte,Tchefuncte River,0809,LA
+amite,Amite River,0807,LA
+tangipahoa,Tangipahoa River,0809,LA
+lacombe,Bayou Lacombe,0809,LA
+comite,Comite River,0807,LA
+okatoma,Okatoma Creek,0318,MS
+wolf_ms,Wolf River,0318,MS
+bowie,Bowie Creek,0318,MS
+leaf,Leaf River,0318,MS
+pearl,Pearl River,0318,MS
+chunky,Chunky River,0318,MS
+tallahala,Tallahala Creek,0318,MS
+little_river_al,Little River,0315,AL
+locust_fork,Locust Fork,0315,AL
+sipsey_fork,Sipsey Fork,0315,AL
+mulberry_al,Mulberry Fork,0315,AL
+coosa,Coosa River,0315,AL
+tallapoosa,Tallapoosa River,0315,AL
+flint_al,Flint Creek,0603,AL
+chattooga_sc,Chattooga River,0302,SC
+edisto,Edisto River,0306,SC
+broad_sc,Broad River,0305,SC
+congaree,Congaree River,0305,SC
+little_sc,Little River,0303,SC
+waccamaw,Waccamaw River,0304,SC
+tyger_sc,Tyger River,0305,SC
+chattooga_sc_main,Chattooga River,0302,SC
+enoree,Enoree River,0305,SC
+lynches,Lynches River,0304,SC
+wateree,Wateree River,0305,SC
+pee_dee,Pee Dee River,0304,SC
+black_sc,Black River,0304,SC
+lumber,Lumber River,0304,SC
+rainbow,Rainbow River,0310,FL
+hillsborough,Hillsborough River,0311,FL
+santa_fe,Santa Fe River,0310,FL
+calamus,Calamus River,1015,NE
+loup,Loup River,1021,NE
+elkhorn_ne,Elkhorn River,1022,NE
+republican,Republican River,1025,NE
+middle_loup,Middle Loup River,1021,NE
+cheyenne_sd,Cheyenne River,1012,SD
+spearfish,Spearfish Creek,1012,SD
+rapid_creek,Rapid Creek,1012,SD
+james_sd,James River,1014,SD
+white_sd,White River,1013,SD
+vermillion_sd,Vermillion River,1017,SD
+sheyenne,Sheyenne River,0902,ND
+pembina,Pembina River,0902,ND
+heart,Heart River,1013,ND
+knife,Knife River,1013,ND
+cannonball,Cannonball River,1013,ND
+cottonwood,Cottonwood River,1103,KS
+kaw,Kansas River,1027,KS
+neosho,Neosho River,1107,KS
+solomon,Solomon River,1026,KS
+smoky_hill,Smoky Hill River,1026,KS
+marais,Marais des Cygnes River,1029,KS
+mountain_fork,Mountain Fork,1111,OK
+kiamichi,Kiamichi River,1111,OK
+glover,Glover River,1111,OK
+baron_fork,Baron Fork,1111,OK
+caney,Caney River,1107,OK
+washita,Washita River,1130,OK
+big_bend,Rio Grande,1304,TX
+san_marcos,San Marcos River,1210,TX
+colorado_tx,Colorado River,1209,TX
+llano,Llano River,1210,TX
+medina,Medina River,1210,TX
+frio,Frio River,1210,TX
+comal,Comal River,1210,TX
+blanco,Blanco River,1210,TX
+nueces,Nueces River,1210,TX
+sabine,Sabine River,1201,TX
+walker,Walker River,1605,NV
+east_walker,East Walker River,1605,NV
+jarbidge,Jarbidge River,1603,NV
+bruneau,Bruneau River,1603,NV
+carson,Carson River,1605,NV
+mad_oh,Mad River,0509,OH
+tuscarawas,Tuscarawas River,0504,OH
+kokosing,Kokosing River,0504,OH
+olentangy,Olentangy River,0510,OH
+scioto,Scioto River,0510,OH
+maumee,Maumee River,0410,OH
+chagrin,Chagrin River,0415,OH
+great_miami_oh,Great Miami River,0509,OH
+vermilion_oh,Vermilion River,0415,OH
+tippecanoe,Tippecanoe River,0512,IN
+muscatatuck,Muscatatuck River,0514,IN
+eel_in,Eel River,0512,IN
+wildcat_in,Wildcat Creek,0512,IN
+wabash_in,Wabash River,0512,IN
+white_in,White River,0512,IN
+fox_il,Fox River,0707,IL
+des_plaines,Des Plaines River,0712,IL
+mackinaw,Mackinaw River,0713,IL
+sangamon,Sangamon River,0713,IL
+apple_il,Apple River,0707,IL
+rock_il,Rock River,0707,IL
+kankakee_il,Kankakee River,0712,IL
+connecticut_nh,Connecticut River,0108,NH
+merrimack,Merrimack River,0107,NH
+swift_nh,Swift River,0107,NH
+ellis,Ellis River,0104,NH
+contoocook,Contoocook River,0107,NH
+battenkill,Battenkill,0202,VT
+missisquoi,Missisquoi River,0208,VT
+mad_vt,Mad River,0108,VT
+otter_creek,Otter Creek,0208,VT
+white_vt,White River,0108,VT
+winooski,Winooski River,0208,VT
+farmington,Farmington River,0110,CT
+connecticut,Connecticut River,0110,CT
+salmon_ct,Salmon River,0110,CT
+quinnipiac,Quinnipiac River,0110,CT
+natchaug,Natchaug River,0110,CT
+shepaug,Shepaug River,0110,CT
+bantam,Bantam River,0110,CT
+chipuxet,Chipuxet River,0109,RI
+hunt,Hunt River,0109,RI
+pawtuxet,Pawtuxet River,0109,RI
+ten_mile,Ten Mile River,0109,RI
+woonasquatucket,Woonasquatucket River,0109,RI
+pawcatuck,Pawcatuck River,0109,RI
+paulins_kill,Paulins Kill,0204,NJ
+raritan,Raritan River,0206,NJ
+maurice,Maurice River,0204,NJ
+musconetcong,Musconetcong River,0204,NJ
+great_egg,Great Egg Harbor River,0204,NJ
+wharton,Batsto River,0204,NJ
+st_jones,St. Jones River,0206,DE
+christina,Christina River,0206,DE
+white_clay,White Clay Creek,0206,DE
+red_clay,Red Clay Creek,0206,DE
+nanticoke,Nanticoke River,0206,DE
+broadkill,Broadkill River,0206,DE
+savage,Savage River,0205,MD
+gunpowder,Gunpowder Falls,0206,MD
+patuxent,Patuxent River,0206,MD
+monocacy,Monocacy River,0207,MD
+antietam_creek,Antietam Creek,0207,MD
+patapsco,Patapsco River,0206,MD
+charles_ma,Charles River,0109,MA
+sudbury_ma,Sudbury River,0107,MA
+kenai_ak,Kenai River,1902,AK
+kasilof_ak,Kasilof River,1902,AK
+russian_ak,Russian River,1902,AK
+naknek_ak,Naknek River,1903,AK
+brooks_ak,Brooks River,1903,AK
+alagnak_ak,Alagnak River,1903,AK
+kvichak_ak,Kvichak River,1903,AK
+nushagak_ak,Nushagak River,1903,AK
+talkeetna_ak,Talkeetna River,1902,AK
+susitna_ak,Susitna River,1902,AK
+copper_ak,Copper River,1901,AK
+anchor_ak,Anchor River,1902,AK
+goodnews_ak,Goodnews River,1903,AK
+karluk_ak,Karluk River,1901,AK
+situk_ak,Situk River,1901,AK
+wailua_hi,Wailua River,2007,HI
+hanalei_hi,Hanalei River,2007,HI
+anahulu_hi,Anahulu Stream,2006,HI
+wailuku_hi,Wailuku River,2001,HI
+waimea_hi,Waimea River,2007,HI
