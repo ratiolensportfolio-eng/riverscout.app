@@ -124,4 +124,51 @@ export const riverPath: [number, number][] = [
   [-85.8166, 44.363],
   [-85.8199, 44.3625],
   [-85.8199, 44.3625],
+  // ── Downstream extension to Lake Michigan (approximated) ──
+  // Hand-placed waypoints tracing the lower Manistee from the
+  // end of the NHDPlus extraction down through Hodenpyl Pond,
+  // Tippy Dam, the lower river canyon (Wellston / High Bridge /
+  // Bear Creek confluence), Manistee Lake, and out to Lake
+  // Michigan at the city of Manistee. Same caveats as the
+  // upstream extension above: these are approximations and the
+  // visualization will look straighter than the actual
+  // meandering river. Replace with a full NHDPlus HR extraction
+  // when the data work happens.
+  //
+  // Key landmarks the waypoints try to hit:
+  //   Hodenpyl Dam Pond — ~44.358, -85.901
+  //   Tippy Dam         — ~44.239, -85.932 (fishing capital
+  //                       of MI for steelhead and chinook)
+  //   High Bridge area  — ~44.247, -85.985
+  //   Bear Creek mouth  — ~44.249, -86.040
+  //   Manistee Lake     — ~44.250, -86.320
+  //   Lake Michigan     — ~44.255, -86.343 (city of Manistee)
+  [-85.8400, 44.3600],
+  [-85.8600, 44.3585],
+  [-85.8800, 44.3590],
+  [-85.8950, 44.3600], // Hodenpyl Pond approach
+  [-85.9011, 44.3580], // Hodenpyl Dam
+  [-85.9050, 44.3450],
+  [-85.9100, 44.3300],
+  [-85.9150, 44.3100],
+  [-85.9200, 44.2900],
+  [-85.9270, 44.2700],
+  [-85.9322, 44.2500],
+  [-85.9322, 44.2392], // Tippy Dam
+  [-85.9500, 44.2410], // Below Tippy
+  [-85.9700, 44.2440],
+  [-85.9850, 44.2470], // High Bridge area
+  [-86.0100, 44.2485],
+  [-86.0400, 44.2490], // Bear Creek confluence
+  [-86.0700, 44.2500],
+  [-86.1000, 44.2495],
+  [-86.1300, 44.2490],
+  [-86.1600, 44.2485],
+  [-86.1900, 44.2485],
+  [-86.2200, 44.2490],
+  [-86.2500, 44.2495],
+  [-86.2800, 44.2497], // Manistee Lake (north end)
+  [-86.3050, 44.2510], // Through Manistee Lake
+  [-86.3200, 44.2535],
+  [-86.3350, 44.2547], // Lake Michigan mouth (city of Manistee)
 ]
