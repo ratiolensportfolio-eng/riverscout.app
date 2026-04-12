@@ -6,17 +6,34 @@ import type { River, FlowData } from '@/types'
 import { formatCfs, celsiusToFahrenheit, isHypothermiaRisk } from '@/lib/usgs'
 import { supabase } from '@/lib/supabase'
 
-// Lazy-load Mapbox-backed map component. ssr: false because Mapbox needs
-// the browser. The Maps tab also has a click-to-load gate further down so
-// the chunk only downloads when the user explicitly opens the map.
+// Lazy-load Mapbox-backed map component. ssr: false because Mapbox GL JS
+// needs the browser DOM. The JS chunk downloads when `<RiverMap>` first
+// renders (which happens automatically when the Maps tab becomes active
+// and map data loads via the useEffect). The loading placeholder matches
+// the spinner we show in the Maps tab body so the user sees one
+// continuous loading state, not a flash.
 const RiverMap = dynamic(() => import('@/components/maps/RiverMap'), {
   loading: () => (
     <div style={{
-      height: '350px', background: 'var(--bg2)', borderRadius: 'var(--rlg)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)',
+      height: '350px', background: '#f0efec', borderRadius: 'var(--rlg)',
+      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+      gap: '10px',
     }}>
-      Loading map...
+      <style>{`@keyframes river-map-spin { to { transform: rotate(360deg); } }`}</style>
+      <div style={{
+        width: '24px', height: '24px',
+        border: '2.5px solid var(--bd2)',
+        borderTopColor: 'var(--rv)',
+        borderRadius: '50%',
+        animation: 'river-map-spin .8s linear infinite',
+      }} />
+      <span style={{
+        fontFamily: "'IBM Plex Mono', monospace",
+        fontSize: '10px', color: 'var(--tx3)',
+        letterSpacing: '.5px',
+      }}>
+        Loading map…
+      </span>
     </div>
   ),
   ssr: false,

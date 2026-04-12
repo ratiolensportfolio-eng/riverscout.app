@@ -123,12 +123,19 @@ export default function RiverMap({ riverName, accessPoints, sections, riverPath,
           .addTo(map.current)
       })
 
-      // Fit bounds to show all points
-      if (accessPoints.length > 1 && map.current) {
+      // Fit bounds to show everything — access point markers AND
+      // the river polyline. The old code required accessPoints > 1,
+      // which meant rivers with a riverPath but no static access
+      // points (like Manistee, whose access points live in Supabase)
+      // never zoomed to the river and just showed the default center.
+      if (map.current) {
         const bounds = new mapboxgl.LngLatBounds()
-        accessPoints.forEach(pt => bounds.extend([pt.lng, pt.lat]))
-        if (riverPath) riverPath.forEach(coord => bounds.extend(coord as [number, number]))
-        map.current.fitBounds(bounds, { padding: 50, maxZoom: 13 })
+        let hasPoints = false
+        accessPoints.forEach(pt => { bounds.extend([pt.lng, pt.lat]); hasPoints = true })
+        if (riverPath) riverPath.forEach(coord => { bounds.extend(coord as [number, number]); hasPoints = true })
+        if (hasPoints) {
+          map.current.fitBounds(bounds, { padding: 50, maxZoom: 13 })
+        }
       }
     })
 
