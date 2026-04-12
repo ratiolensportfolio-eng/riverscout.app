@@ -2,23 +2,41 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { ALL_RIVERS, getRiverPath } from '@/data/rivers'
+import { ALL_RIVERS, STATES, getStateSlug, getRiverPath } from '@/data/rivers'
 
 const mono = "'IBM Plex Mono', monospace"
 
-// Lightweight client-side search across river names, state names,
-// and (if fisheries data is loaded) species. Renders as a centered
-// search bar on the homepage hero with a dropdown of matches.
-//
-// No server round trips — the static ALL_RIVERS catalog is already
-// bundled in the client JS. The search is instant.
-
+// Search result types — states, rivers, and species each render
+// differently in the dropdown and navigate to different destinations.
 interface SearchResult {
+  type: 'state' | 'river' | 'species'
   id: string
-  name: string
-  state: string
+  label: string
+  sublabel: string
   path: string
 }
+
+// Build the state list once at module scope so we don't recompute
+// on every keystroke.
+const STATE_LIST = Object.entries(STATES).map(([key, state]) => ({
+  key,
+  name: state.name as string,
+  abbr: state.abbr as string,
+  slug: getStateSlug(key),
+  riverCount: (state.rivers as unknown[]).length,
+}))
+
+// Species names that appear across fisheries data. We search
+// against a static list of the common species names since the
+// full fisheries module is lazy-loaded. These cover the species
+// the fish icons support + the most commonly searched terms.
+const SEARCHABLE_SPECIES = [
+  'Brown Trout', 'Rainbow Trout', 'Brook Trout', 'Cutthroat Trout',
+  'Lake Trout', 'Steelhead', 'Chinook Salmon', 'Coho Salmon',
+  'Atlantic Salmon', 'Walleye', 'Muskie', 'Smallmouth Bass',
+  'Largemouth Bass', 'Channel Catfish', 'Northern Pike',
+  'Striped Bass', 'Bluegill', 'Crappie',
+]
 
 export default function HomeSearch() {
   const [query, setQuery] = useState('')
@@ -28,7 +46,6 @@ export default function HomeSearch() {
   const inputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
 
-  // Build results from the static catalog whenever the query changes.
   useEffect(() => {
     const q = query.trim().toLowerCase()
     if (q.length < 2) {
@@ -38,19 +55,53 @@ export default function HomeSearch() {
     }
 
     const matches: SearchResult[] = []
-    for (const r of ALL_RIVERS) {
-      const nameMatch = r.n.toLowerCase().includes(q)
-      const stateMatch = (r.stateName as string).toLowerCase().includes(q)
-      const abbr = (r.stateKey as string).toLowerCase() === q
-      if (nameMatch || stateMatch || abbr) {
+
+    // 1. State matches — show at the top so "Michigan" → state page
+    for (const s of STATE_LIST) {
+      if (s.name.toLowerCase().includes(q) || s.abbr.toLowerCase() === q) {
         matches.push({
-          id: r.id,
-          name: r.n,
-          state: r.stateName as string,
-          path: getRiverPath(r),
+          type: 'state',
+          id: `state-${s.key}`,
+          label: s.name,
+          sublabel: `${s.riverCount} rivers`,
+          path: `/rivers?state=${s.slug}`,
         })
       }
-      if (matches.length >= 8) break
+      if (matches.length >= 3) break // cap state results at 3
+    }
+
+    // 2. River name matches — prioritize name hits over state-only hits
+    let riverCount = 0
+    for (const r of ALL_RIVERS) {
+      if (riverCount >= 6) break
+      const nameMatch = r.n.toLowerCase().includes(q)
+      if (nameMatch) {
+        matches.push({
+          type: 'river',
+          id: r.id,
+          label: r.n,
+          sublabel: r.stateName as string,
+          path: getRiverPath(r),
+        })
+        riverCount++
+      }
+    }
+
+    // 3. Species matches — link to the hatches page (which shows
+    //    rivers where each species is present)
+    if (riverCount < 4) {
+      for (const sp of SEARCHABLE_SPECIES) {
+        if (sp.toLowerCase().includes(q)) {
+          matches.push({
+            type: 'species',
+            id: `species-${sp}`,
+            label: sp,
+            sublabel: 'Fish species',
+            path: '/hatches',
+          })
+          if (matches.length >= 10) break
+        }
+      }
     }
 
     setResults(matches)
@@ -85,6 +136,12 @@ export default function HomeSearch() {
     }
   }
 
+  const TYPE_BADGE: Record<string, { bg: string; color: string; label: string }> = {
+    state: { bg: '#E6F1FB', color: '#0C447C', label: 'State' },
+    river: { bg: '#f5f5f5', color: '#888', label: '' },
+    species: { bg: '#E1F5EE', color: '#085041', label: 'Species' },
+  }
+
   return (
     <div style={{ position: 'relative' }}>
       <input
@@ -110,7 +167,6 @@ export default function HomeSearch() {
         }}
       />
 
-      {/* Dropdown results */}
       {focused && results.length > 0 && (
         <div style={{
           position: 'absolute', top: 'calc(100% + 6px)',
@@ -118,33 +174,40 @@ export default function HomeSearch() {
           background: '#fff', borderRadius: '10px',
           boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)',
           overflow: 'hidden',
-          maxHeight: '320px', overflowY: 'auto',
+          maxHeight: '380px', overflowY: 'auto',
         }}>
-          {results.map((r, i) => (
-            <button
-              key={r.id}
-              onMouseDown={() => navigate(r.path)}
-              style={{
-                display: 'flex', alignItems: 'center',
-                justifyContent: 'space-between',
-                width: '100%', padding: '12px 16px',
-                fontFamily: mono, fontSize: '13px',
-                color: '#1a1a1a', textAlign: 'left',
-                background: i === selectedIndex ? '#f0f7f4' : '#fff',
-                border: 'none', borderBottom: '.5px solid #eee',
-                cursor: 'pointer',
-              }}
-            >
-              <span style={{ fontWeight: 500 }}>{r.name}</span>
-              <span style={{
-                fontSize: '10px', color: '#888',
-                padding: '2px 8px', borderRadius: '8px',
-                background: '#f5f5f5',
-              }}>
-                {r.state}
-              </span>
-            </button>
-          ))}
+          {results.map((r, i) => {
+            const badge = TYPE_BADGE[r.type]
+            return (
+              <button
+                key={r.id}
+                onMouseDown={() => navigate(r.path)}
+                style={{
+                  display: 'flex', alignItems: 'center',
+                  justifyContent: 'space-between',
+                  width: '100%', padding: '12px 16px',
+                  fontFamily: mono, fontSize: '13px',
+                  color: '#1a1a1a', textAlign: 'left',
+                  background: i === selectedIndex ? '#f0f7f4' : '#fff',
+                  border: 'none', borderBottom: '.5px solid #eee',
+                  cursor: 'pointer',
+                  gap: '8px',
+                }}
+              >
+                <span style={{ fontWeight: 500, flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  {r.label}
+                </span>
+                <span style={{
+                  fontSize: '10px', color: badge.color,
+                  padding: '2px 8px', borderRadius: '8px',
+                  background: badge.bg, flexShrink: 0,
+                  whiteSpace: 'nowrap',
+                }}>
+                  {badge.label || r.sublabel}
+                </span>
+              </button>
+            )
+          })}
         </div>
       )}
     </div>
