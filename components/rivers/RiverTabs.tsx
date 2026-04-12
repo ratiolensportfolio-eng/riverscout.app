@@ -223,6 +223,10 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
     (initialData?.accessPoints as AccessPointLite[] | undefined) ?? []
   )
   const [apModalOpen, setApModalOpen] = useState(false)
+  // When set, the modal is in edit mode for the given access
+  // point id. Submit dispatches to /api/access-points/edit
+  // instead of /submit. Cleared when the modal closes.
+  const [apEditingId, setApEditingId] = useState<string | null>(null)
   const [apReportOpen, setApReportOpen] = useState<string | null>(null) // access point id whose report form is open
   const [apBusyId, setApBusyId] = useState<string | null>(null)
   const [apHelpfulMarked, setApHelpfulMarked] = useState<Set<string>>(new Set())
@@ -707,51 +711,127 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
     } catch { /* swallow — next page reload recovers */ }
   }
 
-  // Submit a new access point.
+  // Open the modal in edit mode for an existing access point.
+  // Pre-fills the form with the row's current values so the user
+  // tweaks instead of retypes — replaces the slow Report Change
+  // → admin → admin-edits cycle for users who can edit directly
+  // (admins always; submitters while their row is still pending).
+  function openEditForAccessPoint(ap: AccessPointLite) {
+    setApEditingId(ap.id)
+    setApForm({
+      name: ap.name ?? '',
+      description: ap.description ?? '',
+      accessType: ap.access_type ?? '',
+      rampSurface: ap.ramp_surface ?? '',
+      trailerAccess: !!ap.trailer_access,
+      maxTrailerLengthFt: ap.max_trailer_length_ft != null ? String(ap.max_trailer_length_ft) : '',
+      parkingCapacity: ap.parking_capacity ?? '',
+      parkingFee: !!ap.parking_fee,
+      feeAmount: ap.fee_amount ?? '',
+      facilities: ap.facilities ?? [],
+      lat: ap.lat != null ? String(ap.lat) : '',
+      lng: ap.lng != null ? String(ap.lng) : '',
+      riverMile: ap.river_mile != null ? String(ap.river_mile) : '',
+      distanceToNextAccessMiles: ap.distance_to_next_access_miles != null ? String(ap.distance_to_next_access_miles) : '',
+      nextAccessName: ap.next_access_name ?? '',
+      floatTimeToNext: ap.float_time_to_next ?? '',
+      seasonalNotes: ap.seasonal_notes ?? '',
+      displayName: ap.submitted_by_name ?? '',
+    })
+    setApSubmitError(null)
+    setApModalOpen(true)
+  }
+
+  // Close the modal AND clear edit state. Use this everywhere
+  // the modal closes so the next "Add access point" click
+  // doesn't accidentally hit the previous edit row.
+  function closeAccessPointModal() {
+    setApModalOpen(false)
+    setApEditingId(null)
+  }
+
+  // Submit a new access point OR save edits to an existing one.
+  // Same form, different endpoint and field map.
   async function submitAccessPoint(e: React.FormEvent) {
     e.preventDefault()
     if (!apForm.name.trim()) {
       setApSubmitError('Name is required.')
       return
     }
-    if (!apForm.displayName.trim()) {
+    if (!apEditingId && !apForm.displayName.trim()) {
+      // Display name is only required when creating — edits
+      // don't change the original submitter's name.
       setApSubmitError('Display name is required.')
       return
     }
     setApSubmitting(true)
     setApSubmitError(null)
     try {
-      const res = await fetch('/api/access-points/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          riverId: river.id,
-          name: apForm.name,
-          description: apForm.description || null,
-          accessType: apForm.accessType || null,
-          rampSurface: apForm.rampSurface || null,
-          trailerAccess: apForm.trailerAccess,
-          maxTrailerLengthFt: apForm.maxTrailerLengthFt ? Number(apForm.maxTrailerLengthFt) : null,
-          parkingCapacity: apForm.parkingCapacity || null,
-          parkingFee: apForm.parkingFee,
-          feeAmount: apForm.feeAmount || null,
-          facilities: apForm.facilities,
-          lat: apForm.lat ? Number(apForm.lat) : null,
-          lng: apForm.lng ? Number(apForm.lng) : null,
-          riverMile: apForm.riverMile ? Number(apForm.riverMile) : null,
-          distanceToNextAccessMiles: apForm.distanceToNextAccessMiles ? Number(apForm.distanceToNextAccessMiles) : null,
-          nextAccessName: apForm.nextAccessName || null,
-          floatTimeToNext: apForm.floatTimeToNext || null,
-          seasonalNotes: apForm.seasonalNotes || null,
-          displayName: apForm.displayName,
-        }),
-      })
+      let res: Response
+      if (apEditingId) {
+        // Edit path. Build a snake_case patch matching the
+        // river_access_points columns. Empty strings become null
+        // so users can clear fields they want unset.
+        res = await fetch('/api/access-points/edit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            id: apEditingId,
+            patch: {
+              name: apForm.name,
+              description: apForm.description || null,
+              access_type: apForm.accessType || null,
+              ramp_surface: apForm.rampSurface || null,
+              trailer_access: apForm.trailerAccess,
+              max_trailer_length_ft: apForm.maxTrailerLengthFt ? Number(apForm.maxTrailerLengthFt) : null,
+              parking_capacity: apForm.parkingCapacity || null,
+              parking_fee: apForm.parkingFee,
+              fee_amount: apForm.feeAmount || null,
+              facilities: apForm.facilities,
+              lat: apForm.lat ? Number(apForm.lat) : null,
+              lng: apForm.lng ? Number(apForm.lng) : null,
+              river_mile: apForm.riverMile ? Number(apForm.riverMile) : null,
+              distance_to_next_access_miles: apForm.distanceToNextAccessMiles ? Number(apForm.distanceToNextAccessMiles) : null,
+              next_access_name: apForm.nextAccessName || null,
+              float_time_to_next: apForm.floatTimeToNext || null,
+              seasonal_notes: apForm.seasonalNotes || null,
+            },
+          }),
+        })
+      } else {
+        // Create path.
+        res = await fetch('/api/access-points/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            riverId: river.id,
+            name: apForm.name,
+            description: apForm.description || null,
+            accessType: apForm.accessType || null,
+            rampSurface: apForm.rampSurface || null,
+            trailerAccess: apForm.trailerAccess,
+            maxTrailerLengthFt: apForm.maxTrailerLengthFt ? Number(apForm.maxTrailerLengthFt) : null,
+            parkingCapacity: apForm.parkingCapacity || null,
+            parkingFee: apForm.parkingFee,
+            feeAmount: apForm.feeAmount || null,
+            facilities: apForm.facilities,
+            lat: apForm.lat ? Number(apForm.lat) : null,
+            lng: apForm.lng ? Number(apForm.lng) : null,
+            riverMile: apForm.riverMile ? Number(apForm.riverMile) : null,
+            distanceToNextAccessMiles: apForm.distanceToNextAccessMiles ? Number(apForm.distanceToNextAccessMiles) : null,
+            nextAccessName: apForm.nextAccessName || null,
+            floatTimeToNext: apForm.floatTimeToNext || null,
+            seasonalNotes: apForm.seasonalNotes || null,
+            displayName: apForm.displayName,
+          }),
+        })
+      }
       const data = await res.json()
       if (!res.ok) {
-        setApSubmitError(data.error || 'Failed to submit access point.')
+        setApSubmitError(data.error || `Failed to ${apEditingId ? 'save' : 'submit'} access point.`)
         return
       }
-      setApModalOpen(false)
+      closeAccessPointModal()
       // Reset most fields but keep the display name for repeat
       // submissions in the same session.
       setApForm(f => ({
@@ -3355,6 +3435,7 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                         reportOpen={apReportOpen === ap.id}
                         reportForm={apReportForm}
                         reportSubmitting={apReportSubmitting}
+                        onEdit={() => openEditForAccessPoint(ap)}
                         onConfirm={() => confirmAccessPoint(ap.id)}
                         onReport={() => setApReportOpen(prev => prev === ap.id ? null : ap.id)}
                         onReportFormChange={setApReportForm}
@@ -3367,10 +3448,10 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
               )}
             </div>
 
-            {/* Add-access-point modal */}
+            {/* Add / Edit access point modal */}
             {apModalOpen && (
               <div
-                onClick={() => setApModalOpen(false)}
+                onClick={closeAccessPointModal}
                 style={{
                   position: 'fixed', inset: 0, background: 'rgba(0,0,0,.45)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -3388,11 +3469,11 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '14px' }}>
                     <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '17px', fontWeight: 700, color: 'var(--rvdk)', margin: 0 }}>
-                      Add an access point — {river.n}
+                      {apEditingId ? `Edit access point — ${river.n}` : `Add an access point — ${river.n}`}
                     </h3>
                     <button
                       type="button"
-                      onClick={() => setApModalOpen(false)}
+                      onClick={closeAccessPointModal}
                       style={{ background: 'none', border: 'none', fontSize: '18px', color: 'var(--tx3)', cursor: 'pointer', padding: 0, lineHeight: 1 }}
                       aria-label="Close"
                     >
@@ -3557,17 +3638,20 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                       </ApField>
                     </ApSection>
 
-                    {/* Section 6 — Your name */}
-                    <ApSection title="Your name">
-                      <ApField label="Display name *">
-                        <input type="text" value={apForm.displayName} required maxLength={60}
-                          onChange={e => setApForm(f => ({ ...f, displayName: e.target.value }))}
-                          placeholder="What should we call you?" style={apInputStyle} />
-                      </ApField>
-                      <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', lineHeight: 1.5 }}>
-                        Your name appears publicly with your submission. Sign in is required so we can credit your contributor tier.
-                      </div>
-                    </ApSection>
+                    {/* Section 6 — Your name (only on create; edits
+                        keep the original submitter's name) */}
+                    {!apEditingId && (
+                      <ApSection title="Your name">
+                        <ApField label="Display name *">
+                          <input type="text" value={apForm.displayName} required maxLength={60}
+                            onChange={e => setApForm(f => ({ ...f, displayName: e.target.value }))}
+                            placeholder="What should we call you?" style={apInputStyle} />
+                        </ApField>
+                        <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', lineHeight: 1.5 }}>
+                          Your name appears publicly with your submission. Sign in is required so we can credit your contributor tier.
+                        </div>
+                      </ApSection>
+                    )}
 
                     {apSubmitError && (
                       <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--dg)', marginBottom: '10px' }}>
@@ -3582,7 +3666,9 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                         background: 'var(--rv)', color: '#fff', border: 'none',
                         cursor: apSubmitting ? 'wait' : 'pointer',
                       }}>
-                      {apSubmitting ? 'Submitting…' : 'Submit access point'}
+                      {apSubmitting
+                        ? (apEditingId ? 'Saving…' : 'Submitting…')
+                        : (apEditingId ? 'Save changes' : 'Submit access point')}
                     </button>
                   </form>
                 </div>
@@ -3978,6 +4064,13 @@ interface AccessPointRowProps {
   reportOpen: boolean
   reportForm: { changeType: string; notes: string }
   reportSubmitting: boolean
+  // Click-to-edit. Fires when the user clicks the body of the
+  // card (anywhere except an action button or the inline report
+  // form). Opens the create modal in edit mode pre-filled with
+  // this row's values — much faster than the report-change cycle
+  // for users who can edit directly (admins always; submitters
+  // while their row is still pending).
+  onEdit: () => void
   onConfirm: () => void
   onReport: () => void
   onReportFormChange: (f: { changeType: string; notes: string }) => void
@@ -3987,8 +4080,18 @@ interface AccessPointRowProps {
 
 function AccessPointRow({
   ap, next, busy, helpfulMarked, reportOpen, reportForm, reportSubmitting,
-  onConfirm, onReport, onReportFormChange, onSubmitReport, onMarkHelpful,
+  onEdit, onConfirm, onReport, onReportFormChange, onSubmitReport, onMarkHelpful,
 }: AccessPointRowProps) {
+  // Helper that wraps an event handler so it doesn't bubble up
+  // to the row's onEdit click handler. Used on every action
+  // button + the inline report form so clicking those doesn't
+  // accidentally open the edit modal.
+  function noBubble(fn: () => void) {
+    return (e: React.MouseEvent) => {
+      e.stopPropagation()
+      fn()
+    }
+  }
   // Color the timeline dot by verification state.
   const dotColor =
     ap.verification_status === 'verified' ? '#1D9E75' :
@@ -4026,8 +4129,24 @@ function AccessPointRow({
           )}
         </div>
 
-        {/* Body */}
-        <div style={{ flex: 1, minWidth: 0, paddingBottom: next ? '0' : '12px' }}>
+        {/* Body — click anywhere on the card body (except an
+            action button or the inline report form) to open the
+            edit modal pre-filled with this row's values.
+            Permissions are enforced server-side: admins can edit
+            anything, submitters can edit their own pending rows. */}
+        <div
+          onClick={onEdit}
+          role="button"
+          tabIndex={0}
+          onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onEdit() } }}
+          style={{
+            flex: 1, minWidth: 0, paddingBottom: next ? '0' : '12px',
+            cursor: 'pointer', borderRadius: 'var(--r)',
+            transition: 'background .15s',
+          }}
+          onMouseEnter={e => (e.currentTarget.style.background = 'var(--bg2)')}
+          onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
+        >
           {/* Heading row — name, badge */}
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap', marginBottom: '4px' }}>
             <h3 style={{
@@ -4108,22 +4227,35 @@ function AccessPointRow({
             {ap.confirmation_count > 0 && <span>{ap.confirmation_count} confirmation{ap.confirmation_count === 1 ? '' : 's'}</span>}
           </div>
 
-          {/* Action row */}
+          {/* Action row. Each button uses noBubble() so clicking
+              an action doesn't also fire the row's edit handler. */}
           <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '6px' }}>
-            <button onClick={onConfirm} disabled={busy} style={apActionBtnStyle}>
+            <button onClick={noBubble(onConfirm)} disabled={busy} style={apActionBtnStyle}>
               {busy ? 'Working…' : 'Mark still accurate'}
             </button>
-            <button onClick={onReport} style={apActionBtnStyle}>
+            <button onClick={noBubble(onReport)} style={apActionBtnStyle}>
               Report change
             </button>
-            <button onClick={onMarkHelpful} disabled={helpfulMarked} style={{ ...apActionBtnStyle, color: helpfulMarked ? 'var(--rv)' : 'var(--tx2)' }}>
+            <button onClick={noBubble(onMarkHelpful)} disabled={helpfulMarked} style={{ ...apActionBtnStyle, color: helpfulMarked ? 'var(--rv)' : 'var(--tx2)' }}>
               {helpfulMarked ? '✓ ' : ''}Helpful ({ap.helpful_count})
             </button>
+            <span style={{
+              marginLeft: 'auto',
+              fontFamily: apMono, fontSize: '9px', color: 'var(--tx3)',
+              padding: '4px 0',
+            }}>
+              click card to edit
+            </span>
           </div>
 
-          {/* Inline report-change form */}
+          {/* Inline report-change form. The whole div stops
+              propagation so typing/clicking inside it doesn't
+              fire the row's edit handler. */}
           {reportOpen && (
-            <div style={{ background: 'var(--bg2)', border: '.5px solid var(--bd)', borderRadius: 'var(--r)', padding: '10px 12px', marginBottom: '8px' }}>
+            <div
+              onClick={e => e.stopPropagation()}
+              style={{ background: 'var(--bg2)', border: '.5px solid var(--bd)', borderRadius: 'var(--r)', padding: '10px 12px', marginBottom: '8px' }}
+            >
               <div style={{ fontFamily: apMono, fontSize: '9px', color: 'var(--tx3)', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '.5px' }}>
                 What changed?
               </div>
@@ -4141,7 +4273,7 @@ function AccessPointRow({
                 rows={2}
                 style={{ ...apInputStyle, marginBottom: '6px', resize: 'vertical', fontFamily: 'Georgia, serif', fontSize: '12px' }} />
               <button
-                onClick={onSubmitReport}
+                onClick={noBubble(onSubmitReport)}
                 disabled={reportSubmitting || !reportForm.changeType}
                 style={{
                   fontFamily: apMono, fontSize: '10px', padding: '6px 12px', borderRadius: 'var(--r)',
