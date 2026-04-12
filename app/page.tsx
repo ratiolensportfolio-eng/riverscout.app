@@ -1,8 +1,10 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ALL_RIVERS, STATES } from '@/data/rivers'
 import { fetchGaugeData } from '@/lib/usgs'
 import { createSupabaseServerClient } from '@/lib/supabase-server'
 import USMap from '@/components/maps/USMap'
+import HomeSearch from '@/components/HomeSearch'
 import type { FlowCondition } from '@/types'
 
 export const revalidate = 900
@@ -68,48 +70,88 @@ export default async function HomePage() {
 
   return (
     <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)', display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
-      {/* Hero row */}
-      <div style={{ padding: '14px 20px 10px', flexShrink: 0 }}>
-        <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--rv)', letterSpacing: '1.5px', textTransform: 'uppercase', marginBottom: '4px' }}>
-          Live River Atlas
-        </div>
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: '20px', flexWrap: 'wrap' }}>
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '21px', fontWeight: 700, lineHeight: 1.2, color: 'var(--rvdk)', margin: 0 }}>
-            Paddle Every River in America
+      {/* ── Hero with background image ─────────────────────────
+          The canoe-on-river illustration (riverscout-hero.jpg)
+          fills the hero at 1440×600 via object-fit:cover. A 40%
+          dark overlay ensures white text reads cleanly on top.
+          Content is centered: wordmark → tagline → search bar. */}
+      <div style={{
+        position: 'relative',
+        width: '100%',
+        height: '600px',
+        overflow: 'hidden',
+        flexShrink: 0,
+      }}>
+        {/* Background image */}
+        <Image
+          src="/images/riverscout-hero.jpg"
+          alt="A canoe gliding down a winding river at dusk"
+          fill
+          priority
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
+          sizes="100vw"
+        />
+        {/* Dark overlay at 40% opacity */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'rgba(0, 0, 0, 0.40)',
+          zIndex: 1,
+        }} />
+
+        {/* Centered content */}
+        <div style={{
+          position: 'relative', zIndex: 2,
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', justifyContent: 'center',
+          height: '100%', padding: '0 24px',
+          textAlign: 'center',
+        }}>
+          {/* Wordmark */}
+          <h1 style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: '48px', fontWeight: 700,
+            color: '#fff', margin: '0 0 12px',
+            lineHeight: 1.1, letterSpacing: '-0.5px',
+            textShadow: '0 2px 12px rgba(0,0,0,.3)',
+          }}>
+            River<span style={{ color: '#9DC4EA' }}>Scout</span>
           </h1>
-          <div style={{ display: 'flex', gap: '18px', flexShrink: 0 }}>
-            {[
-              { n: String(riverCount), l: 'Rivers' },
-              { n: String(stateCount), l: 'States' },
-              { n: 'Live', l: 'USGS' },
-            ].map(s => (
-              <div key={s.l} style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '15px', fontWeight: 600, color: 'var(--rvdk)' }}>{s.n}</span>
-                <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px' }}>{s.l}</span>
-              </div>
-            ))}
+
+          {/* Tagline */}
+          <p style={{
+            fontFamily: "'IBM Plex Mono', monospace",
+            fontSize: '20px', fontWeight: 400,
+            color: '#fff', margin: '0 0 28px',
+            opacity: 0.92,
+            textShadow: '0 1px 6px rgba(0,0,0,.3)',
+            letterSpacing: '.5px',
+          }}>
+            Know before you go.
+          </p>
+
+          {/* Search bar */}
+          <div style={{ width: '100%', maxWidth: '520px' }}>
+            <HomeSearch />
           </div>
-        </div>
-        {/* Live conditions bar */}
-        <div style={{ display: 'flex', gap: '12px', marginTop: '8px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px' }}>
-          {totalOptimal > 0 && (
-            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--rv)', display: 'inline-block' }} />
-              <span style={{ color: 'var(--rv)' }}>{totalOptimal} optimal</span>
-            </span>
-          )}
-          {totalHigh > 0 && (
-            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--am)', display: 'inline-block' }} />
-              <span style={{ color: 'var(--am)' }}>{totalHigh} high</span>
-            </span>
-          )}
-          {totalFlood > 0 && (
-            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--dg)', display: 'inline-block' }} />
-              <span style={{ color: 'var(--dg)' }}>{totalFlood} flood</span>
-            </span>
-          )}
+
+          {/* Live stats — small, subtle, below the search bar */}
+          <div style={{
+            display: 'flex', gap: '16px', marginTop: '20px',
+            fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
+            color: 'rgba(255,255,255,.7)',
+          }}>
+            <span>{riverCount} rivers</span>
+            <span>·</span>
+            <span>{stateCount} states</span>
+            <span>·</span>
+            <span>Live USGS data</span>
+            {totalOptimal > 0 && (
+              <>
+                <span>·</span>
+                <span style={{ color: '#9FE1CB' }}>{totalOptimal} at optimal flow</span>
+              </>
+            )}
+          </div>
         </div>
       </div>
 
