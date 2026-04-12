@@ -4,9 +4,34 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import { getContributorTier, getNextTier, CONTRIBUTOR_TIERS } from '@/lib/contributor-tiers'
+import { ALL_RIVERS, getRiverPath } from '@/data/rivers'
 
 const mono = "'IBM Plex Mono', monospace"
 const serif = "'Playfair Display', serif"
+
+// Saved river card data — hydrated from the static catalog +
+// live USGS flow fetch. The weekly digest email shows the same
+// shape; this is the in-app equivalent.
+interface SavedRiverCard {
+  riverId: string
+  name: string
+  state: string
+  path: string     // /rivers/michigan/pine-river
+  cls: string
+  opt: string
+  cfs: number | null
+  condition: string
+  loading: boolean
+}
+
+const COND_COLORS: Record<string, string> = {
+  optimal: '#1D9E75', low: '#533AB7', high: '#BA7517',
+  flood: '#A32D2D', loading: '#aaa99a',
+}
+const COND_LABELS: Record<string, string> = {
+  optimal: 'Optimal', low: 'Below Optimal', high: 'Above Optimal',
+  flood: 'Flood', loading: 'Loading…',
+}
 
 interface ProfileData {
   display_name: string | null
@@ -80,6 +105,8 @@ export default function AccountPage() {
   const [editState, setEditState] = useState('')
   const [portalLoading, setPortalLoading] = useState(false)
   const [digestStatus, setDigestStatus] = useState<DigestStatus>({ state: 'idle' })
+  const [savedRiverCards, setSavedRiverCards] = useState<SavedRiverCard[]>([])
+  const [savedRiversLoading, setSavedRiversLoading] = useState(true)
   const [alerts, setAlerts] = useState<AlertsState>({
     flow: [], release: [], hatch: [],
     loading: true,
@@ -121,6 +148,90 @@ export default function AccountPage() {
         tripReports: trips.count ?? 0,
         improvements: (improvements.count ?? 0) + (helpfulAnswers.count ?? 0),
       })
+
+      // Fetch saved rivers — the river_id list from Supabase,
+      // hydrated with static catalog data (name, state, path, class,
+      // optimal CFS) from ALL_RIVERS, then live flow from USGS via
+      // /api/weather or direct gauge endpoint. The cards render like
+      // the weekly digest email but in-app.
+      try {
+        const { data: savedRows } = await supabase
+          .from('saved_rivers')
+          .select('river_id')
+          .eq('user_id', uid)
+          .order('created_at', { ascending: false })
+
+        const riverMap = new Map(ALL_RIVERS.map(r => [r.id, r]))
+        const cards: SavedRiverCard[] = []
+        for (const row of (savedRows ?? [])) {
+          const r = riverMap.get(row.river_id)
+          if (!r) continue
+          cards.push({
+            riverId: r.id,
+            name: r.n,
+            state: r.stateName as string,
+            path: getRiverPath(r),
+            cls: r.cls ?? '',
+            opt: r.opt ?? '',
+            cfs: null,
+            condition: 'loading',
+            loading: true,
+          })
+        }
+
+        setSavedRiverCards(cards)
+        setSavedRiversLoading(false)
+
+        // Fire live CFS fetches in parallel. We hit the USGS
+        // waterservices API directly (public, no key, CORS-friendly)
+        // rather than going through a server route, because we need
+        // CFS for N rivers simultaneously and our server routes
+        // don't have a batch-flow endpoint. Each fetch is best-
+        // effort — errors leave the card in "loading" state.
+        for (const card of cards) {
+          const river = riverMap.get(card.riverId)
+          if (!river?.g) continue
+          const gaugeId = river.g
+          const optStr = river.opt ?? ''
+          fetch(`https://waterservices.usgs.gov/nwis/iv/?format=json&sites=${gaugeId}&parameterCd=00060&period=PT1H`)
+            .then(res => res.ok ? res.json() : null)
+            .then(data => {
+              if (!data) return
+              const ts = data?.value?.timeSeries?.[0]
+              const val = ts?.values?.[0]?.value?.[0]?.value
+              const cfs = val ? Number(val) : null
+              // Derive condition from the river's optimal range.
+              // The opt field is a string like "300–1000" or
+              // "150–350".
+              let condition = 'loading'
+              if (cfs !== null) {
+                const match = optStr.match(/(\d+)\s*[–-]\s*(\d+)/)
+                if (match) {
+                  const lo = Number(match[1])
+                  const hi = Number(match[2])
+                  if (cfs >= lo && cfs <= hi) condition = 'optimal'
+                  else if (cfs < lo) condition = 'low'
+                  else if (cfs <= hi * 2) condition = 'high'
+                  else condition = 'flood'
+                } else {
+                  condition = 'optimal'
+                }
+              }
+              setSavedRiverCards(prev => prev.map(c =>
+                c.riverId === card.riverId
+                  ? { ...c, cfs, condition, loading: false }
+                  : c
+              ))
+            })
+            .catch(() => {
+              setSavedRiverCards(prev => prev.map(c =>
+                c.riverId === card.riverId ? { ...c, loading: false } : c
+              ))
+            })
+        }
+      } catch {
+        setSavedRiversLoading(false)
+      }
 
       // Fetch the user's alert subscriptions across all three tables.
       // We hit a service-role route because RLS on release_alerts and
@@ -423,6 +534,104 @@ export default function AccountPage() {
               color: digestStatus.state === 'success' ? 'var(--rv)' : 'var(--dg)',
             }}>
               {digestStatus.state === 'success' ? '\u2713' : '\u26A0'} {digestStatus.message}
+            </div>
+          )}
+        </div>
+
+        {/* Saved rivers — cards matching the weekly digest style.
+            Each card shows river name, state, class, live CFS,
+            condition badge, and a link to the river page. */}
+        <div id="saved" style={{ marginBottom: '20px', scrollMarginTop: '80px' }}>
+          <h2 style={{
+            fontFamily: serif, fontSize: '17px', fontWeight: 700,
+            color: 'var(--rvdk)', marginBottom: '4px',
+          }}>
+            Saved Rivers
+          </h2>
+          <p style={{
+            fontFamily: mono, fontSize: '10px', color: 'var(--tx3)',
+            marginBottom: '12px', lineHeight: 1.5,
+          }}>
+            Rivers you&apos;ve bookmarked. Live conditions update every 15 minutes.
+          </p>
+
+          {savedRiversLoading ? (
+            <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>Loading…</div>
+          ) : savedRiverCards.length === 0 ? (
+            <div style={{
+              padding: '16px', borderRadius: 'var(--r)',
+              border: '.5px dashed var(--bd2)', background: 'var(--bg)',
+              fontFamily: mono, fontSize: '11px', color: 'var(--tx2)',
+              lineHeight: 1.6,
+            }}>
+              You haven&apos;t saved any rivers yet. Click the <strong style={{ color: 'var(--rvdk)' }}>&#9825; Save</strong> button on any river page to add it here.
+            </div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {savedRiverCards.map(card => {
+                const condColor = COND_COLORS[card.condition] ?? COND_COLORS.loading
+                const condLabel = COND_LABELS[card.condition] ?? 'Loading…'
+                return (
+                  <Link
+                    key={card.riverId}
+                    href={card.path}
+                    style={{
+                      display: 'block', textDecoration: 'none',
+                      padding: '12px 14px', borderRadius: 'var(--r)',
+                      border: '.5px solid var(--bd)',
+                      background: card.condition === 'optimal' ? 'var(--rvlt)' : 'var(--bg)',
+                      transition: 'background .15s, border-color .15s',
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--rvmd)' }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--bd)' }}
+                  >
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '10px' }}>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '3px', flexWrap: 'wrap' }}>
+                          <span style={{ fontFamily: serif, fontSize: '14px', fontWeight: 600, color: 'var(--tx)' }}>
+                            {card.name}
+                          </span>
+                          <span style={{
+                            fontFamily: mono, fontSize: '9px', fontWeight: 600,
+                            padding: '2px 7px', borderRadius: '10px',
+                            background: 'var(--wtlt)', color: '#0C447C',
+                            border: '.5px solid #9DC4EA',
+                            textTransform: 'uppercase', letterSpacing: '.5px',
+                          }}>
+                            {card.state}
+                          </span>
+                        </div>
+                        <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                          {card.cls && <span>Class {card.cls}</span>}
+                          {card.opt && <span>Optimal: {card.opt} CFS</span>}
+                        </div>
+                      </div>
+                      <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                        {card.loading ? (
+                          <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>…</span>
+                        ) : card.cfs !== null ? (
+                          <>
+                            <div style={{ fontFamily: serif, fontSize: '18px', fontWeight: 700, color: '#0C447C', lineHeight: 1 }}>
+                              {card.cfs.toLocaleString()}
+                            </div>
+                            <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)' }}>CFS</div>
+                          </>
+                        ) : (
+                          <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>—</span>
+                        )}
+                        <span style={{
+                          display: 'inline-block', marginTop: '4px',
+                          fontFamily: mono, fontSize: '9px', fontWeight: 500,
+                          padding: '2px 8px', borderRadius: '10px',
+                          color: condColor, background: `${condColor}18`,
+                        }}>
+                          {condLabel}
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                )
+              })}
             </div>
           )}
         </div>
