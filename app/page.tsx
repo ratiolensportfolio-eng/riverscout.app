@@ -73,8 +73,34 @@ export default async function HomePage() {
           Navy background. Wordmark, tagline, and search bar sit
           above the interactive US conditions map. No separate
           image — the map IS the visual. */}
-      <section style={{
-        background: '#042C53',
+      {/* Braided-stream CSS background. Layered SVG data-URI curves
+          on a deep navy base to mimic the flowing water illustration
+          without requiring an image load. The streams use the same
+          teal/navy palette as the hero art. */}
+      <style>{`
+        .hero-braided {
+          position: relative;
+          overflow: hidden;
+          background: #031E3A;
+        }
+        .hero-braided::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background:
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='900' viewBox='0 0 1440 900'%3E%3Cdefs%3E%3ClinearGradient id='s1' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23094a7a' stop-opacity='0.6'/%3E%3Cstop offset='1' stop-color='%230a3560' stop-opacity='0'/%3E%3C/linearGradient%3E%3ClinearGradient id='s2' x1='0' y1='1' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%231a6b8a' stop-opacity='0.4'/%3E%3Cstop offset='1' stop-color='%23042c53' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M-50 200 C 200 150, 400 350, 700 280 S 1100 180, 1500 300' stroke='url(%23s1)' stroke-width='120' fill='none' stroke-linecap='round'/%3E%3Cpath d='M-100 450 C 150 380, 350 550, 650 480 S 1050 380, 1550 500' stroke='url(%23s1)' stroke-width='90' fill='none' stroke-linecap='round'/%3E%3Cpath d='M-80 650 C 200 600, 500 750, 800 680 S 1200 580, 1500 700' stroke='url(%23s2)' stroke-width='70' fill='none' stroke-linecap='round'/%3E%3Cpath d='M100 100 C 300 180, 500 80, 750 160 S 1100 60, 1400 150' stroke='url(%23s2)' stroke-width='50' fill='none' stroke-linecap='round'/%3E%3Cpath d='M-200 350 C 0 300, 300 420, 600 350 S 950 250, 1300 380' stroke='url(%23s1)' stroke-width='60' fill='none' stroke-linecap='round'/%3E%3Cpath d='M200 800 C 450 750, 700 850, 1000 780 S 1300 700, 1500 800' stroke='url(%23s2)' stroke-width='80' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/cover no-repeat,
+            radial-gradient(ellipse at 20% 30%, rgba(10, 75, 120, 0.5) 0%, transparent 60%),
+            radial-gradient(ellipse at 80% 70%, rgba(15, 90, 140, 0.4) 0%, transparent 55%),
+            radial-gradient(ellipse at 50% 50%, rgba(8, 60, 100, 0.3) 0%, transparent 70%);
+          z-index: 0;
+          pointer-events: none;
+        }
+        .hero-braided > * {
+          position: relative;
+          z-index: 1;
+        }
+      `}</style>
+      <section className="hero-braided" style={{
         width: '100%', flexShrink: 0,
         padding: '40px 20px 24px',
       }}>
@@ -141,9 +167,10 @@ export default async function HomePage() {
 
           {/* Map */}
           <div style={{
-            background: '#0a3560', borderRadius: '12px',
+            background: 'rgba(10, 53, 96, 0.85)', borderRadius: '12px',
             padding: '8px', overflow: 'hidden',
-            border: '1px solid rgba(255,255,255,.08)',
+            border: '1px solid rgba(255,255,255,.1)',
+            backdropFilter: 'blur(4px)',
           }}>
             <USMap stateFlowMap={stateFlowMap} stateConditions={stateConditions} />
           </div>
