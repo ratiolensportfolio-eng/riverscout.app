@@ -264,174 +264,171 @@ export default async function RiverPage({ params }: Props) {
     // scroll: <main> grows to fit, the tab content panel grows with
     // it, and the browser handles the page scrollbar.
     <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)', display: 'flex', flexDirection: 'column' }}>
-      {/* River header */}
-      <div style={{ padding: '12px 16px', borderBottom: '.5px solid var(--bd)', background: 'var(--wtlt)', flexShrink: 0 }}>
-        <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 700, color: '#042C53' }}>
-          {river.n}
-        </div>
-        {/* Designation badges */}
-        {(() => {
-          const badges = getDesignationBadges(river.desig)
-          return badges.length > 0 ? (
-            <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', margin: '4px 0 6px' }}>
-              {badges.map((b, i) => (
-                <span key={i} style={{
-                  fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px',
-                  padding: '2px 8px', borderRadius: '10px',
-                  color: b.color, background: b.bg, border: `.5px solid ${b.border}`,
-                  display: 'inline-flex', alignItems: 'center', gap: '3px',
-                  letterSpacing: '.3px',
-                }}>
-                  <span style={{ fontSize: '10px' }}>{b.icon}</span> {b.label}
-                </span>
-              ))}
-            </div>
-          ) : null
-        })()}
-        <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--wt)', margin: '2px 0 8px', letterSpacing: '.3px' }}>
-          {river.co} · {river.len} · Class {river.cls}
-        </div>
+      {/* ── River header — two-column layout ───────────────────
+          Left: river name, badges, metadata
+          Right: big CFS number, condition badge, rate, temp
+          Uses the full header width instead of stacking
+          everything in a single left-aligned column. */}
+      <div style={{
+        padding: '16px 20px', borderBottom: '.5px solid var(--bd)',
+        background: 'var(--wtlt)', flexShrink: 0,
+      }}>
+        <div style={{
+          display: 'flex', justifyContent: 'space-between',
+          alignItems: 'flex-start', gap: '20px', flexWrap: 'wrap',
+        }}>
+          {/* ── Left column: identity ── */}
+          <div style={{ flex: '1 1 300px', minWidth: 0 }}>
+            <h1 style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: '26px', fontWeight: 700,
+              color: '#042C53', margin: '0 0 6px', lineHeight: 1.2,
+            }}>
+              {river.n}
+            </h1>
 
-        {/* Live flow row — "340 cfs / 2.3 ft  [OPTIMAL]" */}
-        <div className="river-flow-row">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-            <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: 'var(--rv)' }} className="pulse-dot" />
-            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '28px', fontWeight: 700, color: '#0C447C', lineHeight: 1 }}>
-              {formatCfs(flow.cfs)}
-            </span>
-            <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--wt)' }}>CFS</span>
-            {flow.gaugeHeightFt !== null && (
-              <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', color: 'var(--tx2)', marginLeft: '6px' }}>
-                / {flow.gaugeHeightFt.toFixed(2)} ft
-              </span>
+            {/* Designation badges */}
+            {(() => {
+              const badges = getDesignationBadges(river.desig)
+              return badges.length > 0 ? (
+                <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', marginBottom: '8px' }}>
+                  {badges.map((b, i) => (
+                    <span key={i} style={{
+                      fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px',
+                      padding: '2px 8px', borderRadius: '10px',
+                      color: b.color, background: b.bg, border: `.5px solid ${b.border}`,
+                      display: 'inline-flex', alignItems: 'center', gap: '3px',
+                      letterSpacing: '.3px',
+                    }}>
+                      <span style={{ fontSize: '10px' }}>{b.icon}</span> {b.label}
+                    </span>
+                  ))}
+                </div>
+              ) : null
+            })()}
+
+            <div style={{
+              fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
+              color: 'var(--wt)', marginBottom: '6px', letterSpacing: '.3px',
+            }}>
+              {river.co} · {river.len} · Class {river.cls}
+            </div>
+
+            <div style={{
+              fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
+              color: 'var(--tx2)', marginBottom: '6px',
+            }}>
+              Optimal: <strong style={{ color: 'var(--rvdk)' }}>{river.opt}</strong> CFS · USGS #{river.g}
+            </div>
+
+            {/* Temp + safety on the left */}
+            {flow.tempC !== null && (
+              <div style={{
+                fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
+                color: isHypothermiaRisk(flow.tempC) ? 'var(--dg)' : 'var(--wt)',
+                marginBottom: '4px', fontWeight: isHypothermiaRisk(flow.tempC) ? 600 : 400,
+              }}>
+                Water temp: {celsiusToFahrenheit(flow.tempC)}°F
+                {isHypothermiaRisk(flow.tempC) && ' — Hypothermia risk, wear a drysuit'}
+              </div>
             )}
+
+            {river.safe_cfs && (
+              <div style={{
+                fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
+                color: '#7A4D0E', background: 'var(--amlt)',
+                border: '.5px solid var(--am)', borderRadius: 'var(--r)',
+                padding: '5px 10px', marginTop: '4px',
+                display: 'inline-flex', alignItems: 'center', gap: '6px',
+              }}>
+                <span style={{ fontSize: '11px' }}>&#9888;</span>
+                <span><strong>Safety limit:</strong> {river.safe_cfs}</span>
+              </div>
+            )}
+
+            {/* Actions row */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '10px' }}>
+              <SaveRiver riverId={river.id} riverName={river.n} />
+              <SaveOffline riverId={river.id} riverName={river.n} gaugeId={river.g} stateSlug={state} riverSlug={slug} />
+            </div>
           </div>
 
-          <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', padding: '4px 10px', borderRadius: '20px', fontWeight: 500 }} className={condClass}>
-            {COND_LABEL[flow.condition]}
-          </span>
-        </div>
+          {/* ── Right column: live flow data ── */}
+          <div style={{
+            flexShrink: 0, textAlign: 'right',
+            minWidth: '180px',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'flex-end', gap: '6px', marginBottom: '4px' }}>
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--rv)', flexShrink: 0 }} className="pulse-dot" />
+              <span style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: '42px', fontWeight: 700,
+                color: '#0C447C', lineHeight: 1,
+              }}>
+                {formatCfs(flow.cfs)}
+              </span>
+              <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '14px', color: 'var(--wt)' }}>CFS</span>
+            </div>
 
-        {/* Rate-of-change row — always rendered when we have CFS data.
-            Color palette per the rate severity:
-              Rising fast  (>300 cfs/hr): red    — potential flash flood
-              Rising       (100-300):     amber  — heads up
-              Rising slowly (<100):       light  — normal rise
-              Stable:                     gray   — quiet river, no drift
-              Falling slowly (<100):      lt blue — improving
-              Falling      (100-300):     blue
-              Falling fast (>300):        purple — rapid drainage
-              Rate unknown:               gray   — gauge data too sparse
+            {flow.gaugeHeightFt !== null && (
+              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', color: 'var(--tx2)', marginBottom: '6px' }}>
+                {flow.gaugeHeightFt.toFixed(2)} ft gauge height
+              </div>
+            )}
 
-            Earlier versions of this hid the row entirely for "Stable"
-            and "Rate unknown" because I thought it would be noise. It
-            backfired — a 2,000 cfs river that's holding steady drifts
-            10 cfs/hour, which is "stable" by the 25 cfs/hr threshold,
-            and users (correctly) interpret a missing line as "broken
-            page" rather than "river is quiet." Always render the row
-            so users know the system saw the data and it's just not
-            changing. */}
-        {flow.cfs !== null && (() => {
-          const rate = flow.changePerHour
-          const isStable = flow.rateLabel === 'Stable'
-          const isUnknown = flow.rateLabel === 'Rate unknown' || rate === null
+            <span style={{
+              fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
+              padding: '4px 14px', borderRadius: '20px', fontWeight: 600,
+              display: 'inline-block', marginBottom: '8px',
+            }} className={condClass}>
+              {COND_LABEL[flow.condition]}
+            </span>
 
-          // Pick color from the spec palette
-          let color: string
-          let arrow = ''
-          if (isUnknown) {
-            color = 'var(--tx3)'
-          } else if (isStable) {
-            color = 'var(--tx3)'  // gray — quiet
-            arrow = '\u2192'      // sideways arrow
-          } else {
-            const absRate = Math.abs(rate ?? 0)
-            const isRising = (rate ?? 0) > 0
-            arrow = isRising ? '\u2191' : '\u2193'
-            if (isRising) {
-              if (absRate > 300) color = '#A32D2D'        // red — rising fast
-              else if (absRate > 100) color = '#BA7517'   // amber — rising
-              else color = '#3CA86E'                       // light green — rising slowly
-            } else {
-              if (absRate > 300) color = '#6E4BB4'        // purple — falling fast
-              else if (absRate > 100) color = '#0C447C'   // blue — falling
-              else color = '#5B8DBF'                       // light blue — falling slowly
-            }
-          }
+            {/* Rate of change */}
+            {flow.cfs !== null && (() => {
+              const rate = flow.changePerHour
+              const isStable = flow.rateLabel === 'Stable'
+              const isUnknown = flow.rateLabel === 'Rate unknown' || rate === null
 
-          // Tooltip shows the calc context. title attribute renders on
-          // hover for desktop and is screen-reader accessible.
-          const tooltip = isUnknown
-            ? 'Rate of change is calculated from USGS readings over the past hour, updated every 15 minutes. This gauge does not currently have enough data points within the comparison window to compute a rate.'
-            : `Rate of change calculated from USGS readings over the past hour. ` +
-              `Updated every 15 minutes.\n\n` +
-              `Current: ${(rate ?? 0) > 0 ? '+' : ''}${(rate ?? 0).toLocaleString()} cfs/hr` +
-              (flow.changeIn3Hours !== null
-                ? `\n3-hour change: ${flow.changeIn3Hours > 0 ? '+' : ''}${flow.changeIn3Hours.toLocaleString()} cfs total`
-                : '')
+              let color: string
+              let arrow = ''
+              if (isUnknown) {
+                color = 'var(--tx3)'
+              } else if (isStable) {
+                color = 'var(--tx3)'
+                arrow = '\u2192'
+              } else {
+                const absRate = Math.abs(rate ?? 0)
+                const isRising = (rate ?? 0) > 0
+                arrow = isRising ? '\u2191' : '\u2193'
+                if (isRising) {
+                  if (absRate > 300) color = '#A32D2D'
+                  else if (absRate > 100) color = '#BA7517'
+                  else color = '#3CA86E'
+                } else {
+                  if (absRate > 300) color = '#6E4BB4'
+                  else if (absRate > 100) color = '#0C447C'
+                  else color = '#5B8DBF'
+                }
+              }
 
-          return (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '4px', flexWrap: 'wrap' }}>
-              <span
-                title={tooltip}
-                style={{
+              return (
+                <div style={{
                   fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
                   color, fontWeight: 600,
-                  display: 'inline-flex', alignItems: 'center', gap: '4px',
-                  cursor: 'help',
+                  display: 'flex', alignItems: 'center', justifyContent: 'flex-end',
+                  gap: '6px',
                 }}>
-                {arrow && <span style={{ fontSize: '13px' }}>{arrow}</span>}
-                {flow.rateLabel}
-                <span aria-hidden="true" style={{
-                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                  width: '12px', height: '12px', borderRadius: '50%',
-                  fontSize: '9px', fontWeight: 700,
-                  background: 'var(--bg2)', color: 'var(--tx3)',
-                  border: '.5px solid var(--bd2)',
-                  marginLeft: '2px',
-                }}>i</span>
-              </span>
-              {flow.changeIn3Hours !== null && Math.abs(flow.changeIn3Hours) >= 25 && (
-                <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)' }}>
-                  &middot; {flow.changeIn3Hours > 0 ? '+' : ''}{flow.changeIn3Hours.toLocaleString()} cfs in 3h
-                </span>
-              )}
-            </div>
-          )
-        })()}
-
-        {/* Temp warning */}
-        {flow.tempC !== null && (
-          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: isHypothermiaRisk(flow.tempC) ? 'var(--dg)' : 'var(--wt)', marginTop: '4px' }}>
-            Water temp: {celsiusToFahrenheit(flow.tempC)}°F
-            {isHypothermiaRisk(flow.tempC) && ' — Hypothermia risk, wear a drysuit'}
-          </div>
-        )}
-
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '4px' }}>
-          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)' }}>
-            Optimal: {river.opt} CFS · USGS #{river.g}
-          </div>
-          {/* Safety-critical CFS limit. Sourced from the
-              SuggestCorrection "Safety Critical" form, written
-              to the override layer on approval, surfaced here
-              as a high-priority warning. Renders only when the
-              field is set on the river. */}
-          {river.safe_cfs && (
-            <div style={{
-              fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
-              color: '#7A4D0E', background: 'var(--amlt)',
-              border: '.5px solid var(--am)', borderRadius: 'var(--r)',
-              padding: '6px 10px', marginTop: '6px',
-              display: 'inline-flex', alignItems: 'center', gap: '6px',
-            }}>
-              <span style={{ fontSize: '11px' }}>&#9888;</span>
-              <span><strong>Community-flagged safety limit:</strong> {river.safe_cfs}</span>
-            </div>
-          )}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            <SaveRiver riverId={river.id} riverName={river.n} />
-            <SaveOffline riverId={river.id} riverName={river.n} gaugeId={river.g} stateSlug={state} riverSlug={slug} />
+                  {arrow && <span style={{ fontSize: '13px' }}>{arrow}</span>}
+                  <span>{flow.rateLabel}</span>
+                  {flow.changeIn3Hours !== null && Math.abs(flow.changeIn3Hours) >= 25 && (
+                    <span style={{ fontWeight: 400, color: 'var(--tx3)' }}>
+                      ({flow.changeIn3Hours > 0 ? '+' : ''}{flow.changeIn3Hours.toLocaleString()} in 3h)
+                    </span>
+                  )}
+                </div>
+              )
+            })()}
           </div>
         </div>
       </div>
