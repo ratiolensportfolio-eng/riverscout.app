@@ -1897,9 +1897,11 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                 Data Quality
               </div>
               <p style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--tx2)', lineHeight: 1.6, margin: 0 }}>
-                River conditions are community-verified. CFS ranges, difficulty ratings, and trip sections may not reflect every flow level or seasonal change. Always check current conditions, scout unfamiliar rapids, and paddle within your skill level. If you spot an error, use the <strong style={{ color: 'var(--rv)' }}>Improve This River</strong> button at the top of the page &mdash; your local knowledge is what makes this atlas accurate.
+                River conditions are community-verified. CFS ranges, difficulty ratings, and access points may not reflect every flow level or seasonal change. Always check current conditions, scout unfamiliar rapids, and paddle within your skill level.
               </p>
             </div>
+
+            <TabInviteBar riverName={river.n} />
           </div>
         )}
 
@@ -2497,6 +2499,8 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                 </div>
               </div>
             )}
+
+            <TabInviteBar riverName={river.n} />
           </div>
         )}
 
@@ -3372,6 +3376,8 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                   ))}
                 </div>
               )}
+
+              <TabInviteBar riverName={river.n} />
             </div>
           )
         })()}
@@ -3807,6 +3813,8 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
             <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', marginTop: '16px', lineHeight: 1.5, fontStyle: 'italic' }}>
               Maps and guides are selected by RiverScout editors. Some links may earn a small commission that supports this site.
             </div>
+
+            <TabInviteBar riverName={river.n} />
           </div>
         )}
 
@@ -4379,4 +4387,46 @@ const apActionBtnStyle: React.CSSProperties = {
   fontFamily: apMono, fontSize: '9px', padding: '4px 9px', borderRadius: 'var(--r)',
   background: 'var(--bg)', color: 'var(--tx2)', border: '.5px solid var(--bd2)',
   cursor: 'pointer',
+}
+
+// Slim invite bar at the bottom of every major tab (Overview,
+// Q&A, Fishing, Maps). Makes every visitor feel personally
+// invited to contribute rather than just aware that a button
+// exists somewhere.
+function TabInviteBar({ riverName }: { riverName: string }) {
+  return (
+    <div style={{
+      marginTop: '20px', padding: '12px 14px',
+      background: 'var(--rvlt)', border: '.5px solid var(--rvmd)',
+      borderRadius: 'var(--r)',
+      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      gap: '12px', flexWrap: 'wrap',
+    }}>
+      <div style={{
+        fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
+        color: 'var(--rvdk)', lineHeight: 1.55, flex: '1 1 250px',
+      }}>
+        Know the {riverName}? Your local knowledge makes this page better for every paddler who comes after you.
+      </div>
+      <a
+        href="#"
+        onClick={(e) => {
+          e.preventDefault()
+          // Find and click the SuggestCorrection button on the page.
+          // It's rendered in the contextual prompt bar above the tabs.
+          const btn = document.querySelector<HTMLButtonElement>('[data-improve-river]')
+          if (btn) btn.click()
+        }}
+        style={{
+          fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
+          color: 'var(--rv)', textDecoration: 'none', fontWeight: 500,
+          padding: '6px 14px', borderRadius: 'var(--r)',
+          border: '.5px solid var(--rvmd)', background: 'var(--bg)',
+          flexShrink: 0,
+        }}
+      >
+        Improve This River &rarr;
+      </a>
+    </div>
+  )
 }

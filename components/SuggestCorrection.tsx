@@ -278,7 +278,7 @@ export default function SuggestCorrection({ riverId, riverName, stateKey, initia
 
   if (!open) {
     return (
-      <button onClick={() => setOpen(true)} style={{
+      <button onClick={() => setOpen(true)} data-improve-river style={{
         fontFamily: mono, fontSize: '10px', color: 'var(--rv)',
         background: 'var(--rvlt)', border: '.5px solid var(--rvmd)',
         borderRadius: '12px', cursor: 'pointer',

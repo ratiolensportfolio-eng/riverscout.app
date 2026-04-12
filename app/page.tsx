@@ -155,10 +155,55 @@ export default async function HomePage() {
         </div>
       </div>
 
-      {/* Map — fills remaining height */}
-      <div style={{ flex: 1, minHeight: 0, padding: '0 8px 8px', position: 'relative' }}>
-        <USMap stateFlowMap={stateFlowMap} stateConditions={stateConditions} />
-      </div>
+      {/* ── Conditions map section ─────────────────────────────
+          Full-width, dark navy background that transitions
+          cleanly from the hero. The interactive US map is the
+          first scroll section — no separate map page needed. */}
+      <section style={{
+        background: '#042C53',
+        padding: '32px 20px 24px',
+        width: '100%',
+      }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          {/* Section label with live pulse dot */}
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: '8px',
+            marginBottom: '16px',
+          }}>
+            <span className="pulse-dot" style={{
+              width: '8px', height: '8px', borderRadius: '50%',
+              background: '#1D9E75', display: 'inline-block',
+            }} />
+            <span style={{
+              fontFamily: "'IBM Plex Mono', monospace",
+              fontSize: '11px', fontWeight: 600,
+              color: 'rgba(255,255,255,.85)',
+              textTransform: 'uppercase', letterSpacing: '1.5px',
+            }}>
+              Conditions right now
+            </span>
+          </div>
+
+          {/* Map */}
+          <div style={{
+            background: '#0a3560', borderRadius: '12px',
+            padding: '8px', overflow: 'hidden',
+            border: '1px solid rgba(255,255,255,.08)',
+          }}>
+            <USMap stateFlowMap={stateFlowMap} stateConditions={stateConditions} />
+          </div>
+
+          {/* Hint */}
+          <div style={{
+            textAlign: 'center', marginTop: '14px',
+            fontFamily: "'IBM Plex Mono', monospace",
+            fontSize: '11px', color: 'rgba(255,255,255,.45)',
+            letterSpacing: '.3px',
+          }}>
+            Click any state to explore rivers.
+          </div>
+        </div>
+      </section>
 
       {/* Mission band */}
       <section className="mission-band" style={{

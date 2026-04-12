@@ -12,6 +12,7 @@ import { getDesignationBadges } from '@/lib/designations'
 import { RAPIDS } from '@/data/rapids'
 import { fetchRiverPageData } from '@/lib/river-page-data'
 import { hasFisheries } from '@/data/fisheries-keys'
+import { VERIFICATION_TAGS } from '@/lib/needs-verification'
 import { FISHERIES } from '@/data/fisheries'
 import { getNextReleaseForRiver } from '@/data/dam-releases'
 import SubscribeReleaseAlert from '@/components/rivers/SubscribeReleaseAlert'
@@ -431,10 +432,63 @@ export default async function RiverPage({ params }: Props) {
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
             <SaveRiver riverId={river.id} riverName={river.n} />
             <SaveOffline riverId={river.id} riverName={river.n} gaugeId={river.g} stateSlug={state} riverSlug={slug} />
-            <SuggestCorrection riverId={river.id} riverName={river.n} stateKey={river.stateKey} currentValues={currentValuesForSuggest} />
           </div>
         </div>
       </div>
+
+      {/* ── Contextual contribution prompt ───────────────────
+          Replaces the old generic "Improve This River" button
+          with a specific ask that references something actually
+          unverified on this river. Uses the needsVerification
+          tags, or a fallback generic invite if the river has
+          no open verification items. */}
+      {(() => {
+        // Pick the first unverified item to generate a specific ask.
+        // If everything is verified, show a softer generic prompt.
+        const firstTag = mergedNeedsVerification[0]
+        const tagMeta = firstTag ? (VERIFICATION_TAGS as Record<string, { label: string; description: string; suggestField: string }>)[firstTag] : null
+
+        const prompt = tagMeta
+          ? tagMeta.description
+          : prefetched.accessPoints.length === 0
+            ? `Know any put-in or take-out locations on the ${river.n}? Help fellow paddlers find the water.`
+            : `Paddle the ${river.n}? Your local knowledge keeps this page accurate for every paddler who uses it.`
+
+        const ctaField = tagMeta?.suggestField ?? ''
+
+        return (
+          <div style={{
+            flexShrink: 0, padding: '10px 16px',
+            background: 'var(--rvlt)', borderBottom: '.5px solid var(--rvmd)',
+            display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap',
+          }}>
+            <span style={{
+              fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px',
+              padding: '3px 8px', borderRadius: '10px',
+              background: 'var(--rv)', color: '#fff',
+              textTransform: 'uppercase', letterSpacing: '.5px', fontWeight: 600,
+              flexShrink: 0,
+            }}>
+              {tagMeta ? 'Help needed' : 'Know this river?'}
+            </span>
+            <div style={{ flex: '1 1 200px', minWidth: 0 }}>
+              <div style={{
+                fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
+                color: 'var(--rvdk)', lineHeight: 1.55,
+              }}>
+                {prompt}
+              </div>
+            </div>
+            <SuggestCorrection
+              riverId={river.id}
+              riverName={river.n}
+              stateKey={river.stateKey}
+              currentValues={currentValuesForSuggest}
+              initialField={ctaField || undefined}
+            />
+          </div>
+        )
+      })()}
 
       {/* Rapid Rise warning — fires when the river is rising at more
           than 500 cfs/hr. This is a hard safety threshold (think
