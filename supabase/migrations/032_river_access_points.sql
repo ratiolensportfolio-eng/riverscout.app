@@ -1,17 +1,12 @@
 -- Migration 032: River access points
 --
--- User-editable access points (put-ins, takeouts) per river,
--- with confirmation tracking for crowdsourced verification, a
--- separate change-reports table for admin triage, and a Q&A-style
--- helpful counter for marking individual points as useful.
---
--- This is the third user-editable layer in RiverScout (after
--- suggestions and Q&A). It uses its own tables rather than
--- piggybacking on suggestions because access points have a rich
--- structured shape (lat/lng, parking capacity, facilities array)
--- that doesn't fit the suggestions table's flat key/value model.
+-- Idempotent — safe to re-run if a previous attempt partially
+-- completed. Every CREATE uses IF NOT EXISTS, every policy DROP
+-- is guarded, and function/trigger replacements use CREATE OR
+-- REPLACE.
 
-create table public.river_access_points (
+-- ── Main table ────────────────────────────────────────────
+create table if not exists public.river_access_points (
   id                              uuid primary key default gen_random_uuid(),
   river_id                        text not null,
   name                            text not null,
@@ -37,7 +32,7 @@ create table public.river_access_points (
   next_access_name                text,
   float_time_to_next              text,
   seasonal_notes                  text,
-  submitted_by                    uuid references auth.users on delete set null,
+  submitted_by                    uuid,
   submitted_by_name               text,
   verified                        boolean default false,
   verification_status             text default 'pending'
@@ -45,8 +40,6 @@ create table public.river_access_points (
   helpful_count                   integer default 0,
   last_verified_at                timestamptz,
   last_verified_by                text,
-  -- AI pre-evaluation, mirrored from public.suggestions so the
-  -- admin queue can render confidence + reasoning consistently.
   ai_confidence                   text check (ai_confidence in ('high', 'medium', 'low')),
   ai_reasoning                    text,
   admin_notes                     text,
@@ -54,31 +47,31 @@ create table public.river_access_points (
   updated_at                      timestamptz default now()
 );
 
-create index idx_access_points_river
+create index if not exists idx_access_points_river
   on public.river_access_points (river_id, river_mile asc nulls last);
 
-create index idx_access_points_status
+create index if not exists idx_access_points_status
   on public.river_access_points (verification_status, created_at desc);
 
 -- ── Confirmations table ──────────────────────────────────
-create table public.river_access_point_confirmations (
+create table if not exists public.river_access_point_confirmations (
   id              uuid primary key default gen_random_uuid(),
   access_point_id uuid not null references public.river_access_points on delete cascade,
-  user_id         uuid not null references auth.users on delete cascade,
+  user_id         uuid not null,
   created_at      timestamptz default now(),
   unique (access_point_id, user_id)
 );
 
-create index idx_access_point_confirmations_ap
+create index if not exists idx_access_point_confirmations_ap
   on public.river_access_point_confirmations (access_point_id);
-create index idx_access_point_confirmations_user
+create index if not exists idx_access_point_confirmations_user
   on public.river_access_point_confirmations (user_id);
 
 -- ── Change reports table ─────────────────────────────────
-create table public.river_access_point_change_reports (
+create table if not exists public.river_access_point_change_reports (
   id              uuid primary key default gen_random_uuid(),
   access_point_id uuid not null references public.river_access_points on delete cascade,
-  user_id         uuid references auth.users on delete set null,
+  user_id         uuid,
   change_type     text not null check (change_type in (
     'ramp_damaged', 'parking_reduced', 'access_closed',
     'facilities_changed', 'other'
@@ -88,19 +81,25 @@ create table public.river_access_point_change_reports (
   created_at      timestamptz default now()
 );
 
-create index idx_access_point_change_reports_status
+create index if not exists idx_access_point_change_reports_status
   on public.river_access_point_change_reports (status, created_at desc);
 
 -- ── RLS ───────────────────────────────────────────────────
-
 alter table public.river_access_points enable row level security;
 alter table public.river_access_point_confirmations enable row level security;
 alter table public.river_access_point_change_reports enable row level security;
 
--- Public reads see everything except rejected. Per the user's
--- decision: pending submissions are visible immediately so a
--- freshly-submitted access point shows up with a gray "pending"
--- dot rather than waiting for admin approval.
+-- Drop + recreate policies so re-runs don't fail on "already exists"
+do $$ begin
+  drop policy if exists "Access points publicly readable" on public.river_access_points;
+  drop policy if exists "Logged in users can submit" on public.river_access_points;
+  drop policy if exists "Owners can edit own pending submissions" on public.river_access_points;
+  drop policy if exists "Confirmations publicly readable" on public.river_access_point_confirmations;
+  drop policy if exists "Logged in users can confirm" on public.river_access_point_confirmations;
+  drop policy if exists "Change reports publicly readable" on public.river_access_point_change_reports;
+  drop policy if exists "Logged in users can report changes" on public.river_access_point_change_reports;
+end $$;
+
 create policy "Access points publicly readable"
   on public.river_access_points for select
   using (verification_status != 'rejected');
@@ -109,8 +108,6 @@ create policy "Logged in users can submit"
   on public.river_access_points for insert
   with check (auth.uid() = submitted_by);
 
--- Submitter can fix typos while still pending. Locked once
--- verified — admin tools handle later edits via service role.
 create policy "Owners can edit own pending submissions"
   on public.river_access_points for update
   using (auth.uid() = submitted_by and verification_status = 'pending')
@@ -133,10 +130,6 @@ create policy "Logged in users can report changes"
   with check (auth.uid() = user_id);
 
 -- ── Helpful bump function ─────────────────────────────────
--- Q&A-style helpful click on individual access points. Anon
--- users can call it (matches how Q&A helpful works); admins can
--- prune obvious abuse from /admin. SECURITY DEFINER so we don't
--- need a blanket UPDATE policy on the parent row.
 create or replace function public.bump_access_point_helpful(
   target_id uuid
 ) returns void
@@ -156,8 +149,6 @@ grant execute on function public.bump_access_point_helpful(uuid) to anon, authen
 
 -- ── Triggers ──────────────────────────────────────────────
 
--- Touch updated_at on every UPDATE so the freshness indicator
--- reflects edits, not just the original create timestamp.
 create or replace function public.touch_river_access_points_updated_at()
 returns trigger
 language plpgsql
@@ -168,11 +159,12 @@ begin
 end;
 $$;
 
+-- Drop + recreate triggers (CREATE TRIGGER has no IF NOT EXISTS)
+drop trigger if exists trg_touch_river_access_points on public.river_access_points;
 create trigger trg_touch_river_access_points
   before update on public.river_access_points
   for each row execute function public.touch_river_access_points_updated_at();
 
--- Auto-verify when distinct confirmations hit 3.
 create or replace function public.maybe_auto_verify_access_point()
 returns trigger
 language plpgsql
@@ -199,12 +191,11 @@ begin
 end;
 $$;
 
+drop trigger if exists trg_maybe_auto_verify_access_point on public.river_access_point_confirmations;
 create trigger trg_maybe_auto_verify_access_point
   after insert on public.river_access_point_confirmations
   for each row execute function public.maybe_auto_verify_access_point();
 
--- When a change report comes in, flip a verified parent to
--- needs_review (amber state in the UI).
 create or replace function public.flag_access_point_needs_review()
 returns trigger
 language plpgsql
@@ -220,6 +211,7 @@ begin
 end;
 $$;
 
+drop trigger if exists trg_flag_access_point_needs_review on public.river_access_point_change_reports;
 create trigger trg_flag_access_point_needs_review
   after insert on public.river_access_point_change_reports
   for each row execute function public.flag_access_point_needs_review();
