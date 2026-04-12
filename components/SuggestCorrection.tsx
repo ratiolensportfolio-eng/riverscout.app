@@ -344,7 +344,7 @@ export default function SuggestCorrection({ riverId, riverName, stateKey, initia
                     Thank you for improving RiverScout.
                   </div>
                   <div style={{ fontFamily: mono, fontSize: '11px', color: 'var(--tx2)', lineHeight: 1.6, marginBottom: '12px' }}>
-                    Your local knowledge is what makes this atlas accurate for every paddler who uses it. We'll notify you when your suggestion goes live.
+                    Your local knowledge is what makes this atlas accurate for every paddler, angler, and guide who uses it. We'll notify you when your suggestion goes live.
                   </div>
                 </>
               )}

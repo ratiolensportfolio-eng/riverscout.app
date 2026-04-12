@@ -449,7 +449,7 @@ export default async function RiverPage({ params }: Props) {
           ? tagMeta.description
           : prefetched.accessPoints.length === 0
             ? `Know any put-in or take-out locations on the ${river.n}? Help fellow paddlers find the water.`
-            : `Paddle the ${river.n}? Your local knowledge keeps this page accurate for every paddler who uses it.`
+            : `Know the ${river.n}? Your local knowledge keeps this page accurate for every paddler, angler, and guide who uses it.`
 
         const ctaField = tagMeta?.suggestField ?? ''
 

@@ -4406,7 +4406,7 @@ function TabInviteBar({ riverName }: { riverName: string }) {
         fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
         color: 'var(--rvdk)', lineHeight: 1.55, flex: '1 1 250px',
       }}>
-        Know the {riverName}? Your local knowledge makes this page better for every paddler who comes after you.
+        Know the {riverName}? Your local knowledge makes this page better for every paddler, angler, and guide who comes after you.
       </div>
       <a
         href="#"
