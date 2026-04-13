@@ -5,7 +5,6 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  { name: 'Harris Station Put-in', lat: 45.289, lng: -69.941, type: 'put-in', description: 'Put-in below Harris Dam for the Kennebec Gorge.' },
   { name: 'The Forks', lat: 45.354, lng: -69.974, type: 'take-out', description: 'Take-out at the confluence with the Dead River.' },
 ]
 

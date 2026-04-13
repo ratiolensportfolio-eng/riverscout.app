@@ -4,8 +4,6 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 150 points
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Hesperia Dam', lat: 43.568, lng: -86.042, type: 'put-in', description: 'Below the dam on the upper White.' },
-  { name: 'Pines Point', lat: 43.531, lng: -86.105, type: 'campsite', description: 'USFS campground and access on the middle White.' },
   { name: 'Diamond Point', lat: 43.485, lng: -86.172, type: 'take-out', description: 'Lower White access.' },
 ]
 

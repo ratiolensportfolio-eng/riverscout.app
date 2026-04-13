@@ -3,10 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Lochsa River (IDAHO) — geometry from USGS NHDPlus HR
 // 13 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Fish Creek', lat: 46.213, lng: -115.231, type: 'put-in', description: 'Upper Lochsa put-in for the classic 30-mile Class IV run along US-12.' },
-  { name: 'Lowell', lat: 46.149, lng: -115.592, type: 'take-out', description: 'Take-out at the Lochsa/Selway confluence in the town of Lowell.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

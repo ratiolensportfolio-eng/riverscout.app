@@ -3,10 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Rogue River (OREGON) — geometry from USGS NHDPlus HR
 // 34 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Grave Creek Boat Launch', lat: 42.627, lng: -123.585, type: 'put-in', description: 'Start of the Wild & Scenic section — the classic 35-mile Rogue multi-day float.' },
-  { name: 'Foster Bar', lat: 42.517, lng: -124.065, type: 'take-out', description: 'Take-out for the Wild & Scenic Rogue float.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

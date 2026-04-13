@@ -5,7 +5,6 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 export const accessPoints: AccessPoint[] = [
   { name: 'Ed Banks / Hwy 246', lat: 34.376, lng: -94.238, type: 'put-in', description: 'Put-in for the Cossatot Falls section — the best Class IV whitewater in Arkansas.' },
-  { name: 'Sandbar Access', lat: 34.342, lng: -94.261, type: 'take-out', description: 'Take-out below the falls section.' },
 ]
 
 export const sections: RiverSection[] = []

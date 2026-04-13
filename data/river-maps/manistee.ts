@@ -26,8 +26,6 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // M-66 Boat Launch: approximately 44.4915, -85.2278.
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'M-72 Bridge', lat: 44.592, lng: -85.051, type: 'put-in', description: 'Upper Manistee access near the headwaters.' },
-  { name: 'CCC Bridge', lat: 44.541, lng: -85.182, type: 'access', description: 'USFS bridge crossing.' },
   { name: 'M-66 Boat Launch', lat: 44.4915, lng: -85.2278, type: 'access', description: 'Major USFS access on the upper-middle Manistee.' },
   { name: 'High Bridge', lat: 44.452, lng: -85.525, type: 'campsite', description: 'USFS campground right at the access — first come first served, 16 sites.' },
   { name: 'Red Bridge', lat: 44.42, lng: -85.66, type: 'access', description: 'USFS access above Hodenpyl Dam Pond.' },

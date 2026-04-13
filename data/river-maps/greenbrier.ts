@@ -3,11 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Greenbrier River (WEST VIRGINIA) — geometry from USGS NHDPlus HR
 // 68 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Durbin', lat: 38.553, lng: -79.823, type: 'put-in', description: 'Upper Greenbrier put-in at the town of Durbin.' },
-  { name: 'Marlinton', lat: 38.224, lng: -80.094, type: 'access', description: 'Town of Marlinton — the Greenbrier capital.' },
-  { name: 'Alderson', lat: 37.726, lng: -80.638, type: 'take-out', description: 'Historic town on the lower Greenbrier.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

@@ -3,12 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Eleven Point River (MISSOURI) — geometry from USGS NHDPlus HR
 // 26 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Greer Crossing', lat: 36.778, lng: -91.341, type: 'put-in', description: 'USFS put-in on Greer Spring — the second largest spring in Missouri.' },
-  { name: 'Turner\'s Mill', lat: 36.718, lng: -91.269, type: 'access', description: 'USFS access at the historic Turner\'s Mill ruins.' },
-  { name: 'Riverton', lat: 36.632, lng: -91.195, type: 'access', description: 'MDC access at Riverton.' },
-  { name: 'Highway 142 Bridge', lat: 36.564, lng: -91.165, type: 'take-out', description: 'End of the Wild & Scenic section.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

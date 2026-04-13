@@ -4,12 +4,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 270 points, 121/200 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Granite', lat: 39.078, lng: -106.431, type: 'put-in', description: 'Put-in for the Numbers section — continuous Class IV.' },
-  { name: 'Railroad Bridge', lat: 38.996, lng: -106.235, type: 'access', description: 'Take-out for the Numbers, put-in for Browns Canyon.' },
-  { name: 'Hecla Junction', lat: 38.891, lng: -106.115, type: 'access', description: 'BLM access, standard take-out for Browns Canyon National Monument.' },
-  { name: 'Royal Gorge Park', lat: 38.516, lng: -105.321, type: 'take-out', description: 'Put-in for the Royal Gorge — Class IV-V in a 1,000-foot deep granite canyon.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
 export const sections: RiverSection[] = [

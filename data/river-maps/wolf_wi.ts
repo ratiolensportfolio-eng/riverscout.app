@@ -4,10 +4,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 200 points, 56/56 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Big Smokey Falls', lat: 44.887, lng: -88.761, type: 'put-in', description: 'Menominee County access above the Wolf\'s famous whitewater section.' },
-  { name: 'Langlade (Hwy 55)', lat: 44.829, lng: -88.727, type: 'take-out', description: 'Standard take-out for the Wolf River whitewater section.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
 export const sections: RiverSection[] = [

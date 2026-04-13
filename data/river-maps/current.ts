@@ -4,10 +4,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 39 points, 14/200 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Montauk State Park', lat: 37.463, lng: -91.681, type: 'put-in', description: 'Put-in at the headwaters.' },
-  { name: 'Akers Ferry', lat: 37.369, lng: -91.548, type: 'campsite', description: 'NPS access at the historic Akers ferry crossing.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
 export const sections: RiverSection[] = [

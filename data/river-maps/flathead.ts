@@ -4,10 +4,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 155 points, 166/176 segments stitched
 
 // Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
-export const accessPoints: AccessPoint[] = [
-  { name: 'Bear Creek (Glacier NP)', lat: 48.259, lng: -113.375, type: 'put-in', description: 'Put-in for the Middle Fork Flathead along the southern boundary of Glacier National Park.' },
-  { name: 'West Glacier', lat: 48.496, lng: -113.981, type: 'take-out', description: 'Take-out at West Glacier, the western entrance to Glacier National Park.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // Middle Fork Flathead sections
 export const sections: RiverSection[] = [

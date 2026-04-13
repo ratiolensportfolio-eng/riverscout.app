@@ -6,7 +6,6 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
   { name: 'Davis Park (Conway)', lat: 44.033, lng: -71.128, type: 'put-in', description: 'Standard put-in for the Saco — New England\'s classic family canoe camping river.' },
-  { name: 'Canal Bridge', lat: 43.962, lng: -71.031, type: 'take-out', description: 'Mid-trip access.' },
 ]
 
 // River sections

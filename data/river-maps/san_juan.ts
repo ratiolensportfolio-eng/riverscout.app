@@ -3,10 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // San Juan River (UTAH) — geometry from USGS NHDPlus HR
 // 40 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Sand Island', lat: 37.147, lng: -109.896, type: 'put-in', description: 'BLM put-in for the San Juan.' },
-  { name: 'Mexican Hat', lat: 37.149, lng: -109.864, type: 'take-out', description: 'Mid-trip access or take-out for the upper San Juan.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

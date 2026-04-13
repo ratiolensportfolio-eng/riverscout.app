@@ -4,10 +4,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 220 points, 77/77 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'John Bryan State Park', lat: 39.796, lng: -83.862, type: 'put-in', description: 'State park access in the Little Miami gorge.' },
-  { name: 'Loveland Canoe Rental', lat: 39.269, lng: -84.264, type: 'take-out', description: 'The paddling hub of the Little Miami — multiple outfitters in downtown Loveland.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
 export const sections: RiverSection[] = [

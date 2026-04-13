@@ -6,7 +6,6 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
   { name: 'Ferebee Park Put-in', lat: 35.345, lng: -83.572, type: 'put-in', description: 'USFS put-in below Nantahala Dam.' },
-  { name: 'Nantahala Outdoor Center (NOC)', lat: 35.315, lng: -83.558, type: 'take-out', description: 'The most famous take-out in American paddling.' },
 ]
 
 // River sections

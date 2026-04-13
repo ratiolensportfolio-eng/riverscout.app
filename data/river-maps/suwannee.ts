@@ -4,7 +4,6 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 108 points
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Spirit of the Suwannee Music Park', lat: 30.351, lng: -82.926, type: 'put-in', description: 'Private park with river access (day-use fee).' },
   { name: 'Suwannee River State Park', lat: 30.388, lng: -83.171, type: 'campsite', description: 'State park at the confluence of the Suwannee and Withlacoochee.' },
 ]
 

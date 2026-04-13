@@ -4,8 +4,6 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 86 points
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Rifle River Recreation Area', lat: 44.374, lng: -84.051, type: 'campsite', description: 'State recreation area with paved ramp and campground.' },
-  { name: 'Sage Lake Road', lat: 44.328, lng: -84.018, type: 'access', description: 'Bridge access on the middle Rifle.' },
   { name: 'Omer City Park', lat: 44.049, lng: -83.854, type: 'take-out', description: 'City park at the end of the paddleable Rifle.' },
 ]
 

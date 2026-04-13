@@ -5,10 +5,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 // Note: river path has very few points; access points placed at path endpoints
-export const accessPoints: AccessPoint[] = [
-  { name: 'Lees Ferry', lat: 36.865, lng: -111.589, type: 'put-in', description: 'Mile 0 of the Grand Canyon.' },
-  { name: 'Diamond Creek Take-out', lat: 35.767, lng: -113.398, type: 'take-out', description: 'Standard take-out at mile 226.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
 export const sections: RiverSection[] = [

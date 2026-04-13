@@ -3,10 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Blackfoot River (MONTANA) — geometry from USGS NHDPlus HR
 // 112 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Ninemile Prairie', lat: 46.877, lng: -112.841, type: 'put-in', description: 'FWP access on the upper Blackfoot.' },
-  { name: 'Johnsrud Park', lat: 46.828, lng: -113.215, type: 'take-out', description: 'FWP access and day-use area.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

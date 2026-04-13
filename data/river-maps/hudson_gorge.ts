@@ -4,12 +4,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 17 points, 4/200 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Indian River Put-in', lat: 43.878, lng: -74.126, type: 'put-in', description: 'Upper Hudson Gorge commercial rafting put-in.' },
-  { name: 'North Creek', lat: 43.704, lng: -73.978, type: 'access', description: 'Town of North Creek — traditional take-out for the Hudson Gorge commercial run.' },
-  { name: 'Riparius', lat: 43.677, lng: -73.933, type: 'access', description: 'Small Adirondack hamlet.' },
-  { name: 'The Glen', lat: 43.632, lng: -73.882, type: 'take-out', description: 'Community of The Glen.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
 export const sections: RiverSection[] = [

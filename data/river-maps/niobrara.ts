@@ -4,10 +4,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 36 points, 14/200 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Cornell Bridge', lat: 42.824, lng: -100.151, type: 'put-in', description: 'Standard put-in for the Scenic River section of the Niobrara — Nebraska\'s most popular float.' },
-  { name: 'Rocky Ford', lat: 42.817, lng: -99.931, type: 'take-out', description: 'Standard take-out for the Scenic section.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
 export const sections: RiverSection[] = [

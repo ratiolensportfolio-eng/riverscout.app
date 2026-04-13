@@ -3,10 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Gallatin River (MONTANA) — geometry from USGS NHDPlus HR
 // 5 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Greek Creek', lat: 45.398, lng: -111.275, type: 'put-in', description: 'USFS access in the Gallatin Canyon south of Big Sky.' },
-  { name: 'Missouri Headwaters State Park', lat: 45.927, lng: -111.505, type: 'take-out', description: 'Where the Gallatin meets the Madison and Jefferson to form the Missouri River.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

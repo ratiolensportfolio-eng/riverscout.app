@@ -4,10 +4,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 15 points, 4/200 segments stitched
 
 // Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
-export const accessPoints: AccessPoint[] = [
-  { name: 'Corn Creek Put-in', lat: 45.19, lng: -114.34, type: 'put-in', description: 'USFS launch for the Main Salmon "River of No Return." Permit required (lottery).' },
-  { name: 'Vinegar Creek (Long Tom Bar)', lat: 45.535, lng: -115.622, type: 'take-out', description: 'Standard take-out for the Main Salmon expedition.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // Main Salmon River sections
 export const sections: RiverSection[] = [

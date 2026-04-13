@@ -3,11 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Deschutes River (OREGON) — geometry from USGS NHDPlus HR
 // 6 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Warm Springs Access', lat: 44.897, lng: -121.25, type: 'put-in', description: 'BLM access at the top of the Lower Deschutes.' },
-  { name: 'Trout Creek', lat: 44.825, lng: -121.154, type: 'access', description: 'Popular day-trip put-in for the Maupin section.' },
-  { name: 'Sandy Beach (Maupin)', lat: 45.175, lng: -121.076, type: 'take-out', description: 'Town of Maupin access.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

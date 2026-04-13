@@ -4,13 +4,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 197 points, 133/133 segments stitched
 
 // Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
-export const accessPoints: AccessPoint[] = [
-  { name: 'Burton\'s Landing', lat: 44.6215, lng: -84.7015, type: 'put-in', description: 'Start of the legendary Holy Water — flies-only, catch-and-release trophy trout water.' },
-  { name: 'Wakeley Bridge', lat: 44.594, lng: -84.752, type: 'access', description: 'End of the Holy Water section.' },
-  { name: 'Stephan Bridge', lat: 44.569, lng: -84.385, type: 'access', description: 'USFS access on the mainstream Au Sable.' },
-  { name: 'Keystone Landing', lat: 44.551, lng: -84.315, type: 'access', description: 'Dirt ramp, easy carry to water.' },
-  { name: 'Mio Dam Pond', lat: 44.508, lng: -84.131, type: 'take-out', description: 'Access below Mio Dam.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // Au Sable River sections with distances and paddle times
 export const sections: RiverSection[] = [

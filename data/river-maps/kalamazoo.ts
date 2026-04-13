@@ -4,7 +4,6 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 115 points
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Ceresco Dam', lat: 42.251, lng: -85.068, type: 'put-in', description: 'Access below the dam near Battle Creek.' },
   { name: 'Allegan City Dam', lat: 42.529, lng: -85.855, type: 'take-out', description: 'City access below the dam.' },
 ]
 

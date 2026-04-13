@@ -5,7 +5,6 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  { name: 'Kendallville Park', lat: 43.412, lng: -91.741, type: 'put-in', description: 'Put-in for Iowa\'s most scenic canoe river.' },
   { name: 'Bluffton', lat: 43.427, lng: -91.898, type: 'take-out', description: 'DNR access at the town of Bluffton.' },
 ]
 

@@ -3,10 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Mulberry River (ARKANSAS) — geometry from USGS NHDPlus HR
 // 12 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Wolf Pen', lat: 35.712, lng: -93.671, type: 'put-in', description: 'USFS put-in for the upper Mulberry — Arkansas\'s most remote Class III whitewater.' },
-  { name: 'Turner Bend', lat: 35.687, lng: -93.578, type: 'take-out', description: 'The classic Mulberry take-out at Turner Bend store — been running shuttle for paddlers since the 1970s.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

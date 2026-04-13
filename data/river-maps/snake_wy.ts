@@ -4,10 +4,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 113 points, 48/200 segments stitched
 
 // Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
-export const accessPoints: AccessPoint[] = [
-  { name: 'West Table Creek', lat: 43.442, lng: -110.975, type: 'put-in', description: 'Put-in for the Snake River Canyon — the whitewater section below Jackson Hole.' },
-  { name: 'Sheep Gulch Take-out', lat: 43.398, lng: -111.045, type: 'take-out', description: 'Standard take-out for the Snake River Canyon run.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // Snake River Canyon sections
 export const sections: RiverSection[] = [

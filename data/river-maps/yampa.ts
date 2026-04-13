@@ -3,10 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Yampa River (COLORADO) — geometry from USGS NHDPlus HR
 // 28 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Deerlodge Park', lat: 40.443, lng: -108.528, type: 'put-in', description: 'NPS put-in for the Yampa through Dinosaur National Monument.' },
-  { name: 'Echo Park', lat: 40.517, lng: -109.006, type: 'take-out', description: 'NPS access at the Yampa/Green River confluence in Dinosaur National Monument.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

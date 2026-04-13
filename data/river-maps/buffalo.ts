@@ -4,11 +4,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 39 points, 14/200 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Ponca Access', lat: 35.971, lng: -93.364, type: 'put-in', description: 'NPS access at the start of the upper Buffalo.' },
-  { name: 'Steel Creek', lat: 35.955, lng: -93.327, type: 'campsite', description: 'NPS campground and access.' },
-  { name: 'Kyles Landing', lat: 35.94, lng: -93.292, type: 'take-out', description: 'NPS access in the heart of the upper canyon.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
 export const sections: RiverSection[] = [

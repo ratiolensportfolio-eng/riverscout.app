@@ -4,12 +4,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 58 points, 21/200 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Summersville Dam Tailwaters', lat: 38.231, lng: -80.868, type: 'put-in', description: 'Upper Gauley put-in below Summersville Dam.' },
-  { name: 'Mason\'s Branch', lat: 38.195, lng: -80.908, type: 'access', description: 'Take-out for the Upper Gauley, put-in for the Lower.' },
-  { name: 'Peters Creek', lat: 38.17, lng: -80.935, type: 'access', description: 'Mid-Lower Gauley access.' },
-  { name: 'Swiss', lat: 38.151, lng: -80.962, type: 'take-out', description: 'Final take-out for the Lower Gauley at the confluence with the New River.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
 export const sections: RiverSection[] = [

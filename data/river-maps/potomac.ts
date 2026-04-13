@@ -5,7 +5,6 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  { name: 'Violettes Lock', lat: 39.071, lng: -77.25, type: 'put-in', description: 'C&O Canal NHP access above Great Falls.' },
   { name: 'Anglers Inn', lat: 38.996, lng: -77.239, type: 'take-out', description: 'Popular Class II-III put-in below Great Falls on the Maryland side.' },
 ]
 
