@@ -3,9 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Rifle River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 86 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Omer City Park', lat: 44.049, lng: -83.854, type: 'take-out', description: 'City park at the end of the paddleable Rifle.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

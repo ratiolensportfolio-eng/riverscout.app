@@ -4,10 +4,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 112 points
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Croton Dam', lat: 43.454, lng: -85.675, type: 'put-in', description: 'Below the dam — start of the best trout and steelhead water on the Muskegon.' },
-  { name: 'Pine Street Access', lat: 43.422, lng: -85.788, type: 'access', description: 'City of Newaygo access.' },
-  { name: 'Henning Park', lat: 43.385, lng: -85.892, type: 'access', description: 'County park with concrete ramp.' },
-  { name: 'Bridgeton Access', lat: 43.342, lng: -85.985, type: 'take-out', description: 'DNR access site.' },
+  { name: 'Croton Dam', lat: 43.43712, lng: -85.66410, type: 'put-in', description: 'Below the dam — start of the best trout and steelhead water on the Muskegon.' },
 ]
 
 export const sections: RiverSection[] = []

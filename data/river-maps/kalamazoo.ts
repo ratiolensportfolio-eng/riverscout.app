@@ -4,7 +4,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 115 points
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Allegan City Dam', lat: 42.529, lng: -85.855, type: 'take-out', description: 'City access below the dam.' },
+  { name: 'Allegan City Dam', lat: 42.52488, lng: -85.84581, type: 'take-out', description: 'City access below the dam.' },
 ]
 
 export const sections: RiverSection[] = []

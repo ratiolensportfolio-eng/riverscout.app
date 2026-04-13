@@ -4,7 +4,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 150 points
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Diamond Point', lat: 43.485, lng: -86.172, type: 'take-out', description: 'Lower White access.' },
+  { name: 'Diamond Point', lat: 43.47437, lng: -86.21191, type: 'take-out', description: 'Lower White access.' },
 ]
 
 export const sections: RiverSection[] = []

@@ -4,8 +4,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 138 points
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Veterans Memorial Park', lat: 44.665, lng: -86.018, type: 'put-in', description: 'Upper Platte launch in Honor.' },
-  { name: 'Platte River Point', lat: 44.711, lng: -86.104, type: 'take-out', description: 'Take-out where the Platte meets Lake Michigan in Sleeping Bear Dunes.' },
+  { name: 'Platte River Point', lat: 44.73193, lng: -86.15546, type: 'take-out', description: 'Take-out where the Platte meets Lake Michigan in Sleeping Bear Dunes.' },
 ]
 
 export const sections: RiverSection[] = []

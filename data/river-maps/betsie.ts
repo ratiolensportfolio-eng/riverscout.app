@@ -4,9 +4,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 120 points
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Grass Lake Road', lat: 44.568, lng: -85.851, type: 'put-in', description: 'Upper Betsie access.' },
-  { name: 'Kurick Road', lat: 44.542, lng: -85.905, type: 'access', description: 'Mid-river access.' },
-  { name: 'Thompsonville Bridge', lat: 44.513, lng: -85.954, type: 'take-out', description: 'Town of Thompsonville.' },
+  { name: 'Grass Lake Road', lat: 44.58271, lng: -85.85035, type: 'put-in', description: 'Upper Betsie access.' },
 ]
 
 export const sections: RiverSection[] = []

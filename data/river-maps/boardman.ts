@@ -4,10 +4,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 129 points
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Supply Road Bridge', lat: 44.683, lng: -85.412, type: 'put-in', description: 'Upper Boardman access.' },
-  { name: 'Brown Bridge Quiet Area', lat: 44.645, lng: -85.458, type: 'access', description: 'Former dam site, now restored to free-flowing river.' },
-  { name: 'Ranch Rudolf', lat: 44.618, lng: -85.492, type: 'campsite', description: 'Private campground with public river access (fee for parking).' },
-  { name: 'Hull Park', lat: 44.761, lng: -85.621, type: 'take-out', description: 'City park in downtown Traverse City.' },
+  { name: 'Brown Bridge Quiet Area', lat: 44.64963, lng: -85.49576, type: 'access', description: 'Former dam site, now restored to free-flowing river.' },
+  { name: 'Hull Park', lat: 44.75677, lng: -85.60970, type: 'take-out', description: 'City park in downtown Traverse City.' },
 ]
 
 export const sections: RiverSection[] = []
