@@ -132,7 +132,7 @@ export const STATES: StatesDB = {
       {
         id: 'betsie', n: 'Betsie River', lp: true, up: false, wild: false, nat: true, ww: false,
         co: 'Benzie Co.', len: '55 mi', cls: 'Riffles', opt: '150–500',
-        g: '04126530', avg: 260, histFlow: 235, mx: 242, my: 237, abbr: 'MI',
+        g: '', avg: 260, histFlow: 235, mx: 242, my: 237, abbr: 'MI',
         desc: "Flowing to Lake Michigan at Frankfort near the Sleeping Bear Dunes, the Betsie offers excellent salmon and steelhead runs. A scenic Natural River winding through Benzie County's rolling forests and farmland.",
         desig: 'Michigan Natural River',
         secs: ['Upper — Grass Lake to Thompsonville, gentle meadow paddle', 'Lower — Thompsonville to Betsie Lake, faster current through forested corridor'],
@@ -192,7 +192,7 @@ export const STATES: StatesDB = {
       {
         id: 'flat_river', n: 'Flat River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Montcalm / Ionia Co.', len: '80 mi', cls: 'Riffles', opt: '200–800',
-        g: '04116000', avg: 520, histFlow: 470, mx: 250, my: 265, abbr: 'MI',
+        g: '04116500', avg: 520, histFlow: 470, mx: 250, my: 265, abbr: 'MI',
         desc: "A central Lower Peninsula gem, the Flat River flows past the historic Fallasburg Covered Bridge and offers excellent smallmouth bass and steelhead fishing. Gentle Class I-II water through rolling farmland and hardwood forest.",
         desig: 'Michigan Designated Trout Stream (upper reach)',
         secs: ['Upper — Greenville to Belding, gentle meanders', 'Middle — Belding to Fallasburg, covered bridge and light rapids', 'Lower — Fallasburg to Lowell, confluence with Grand River'],
@@ -222,7 +222,7 @@ export const STATES: StatesDB = {
       {
         id: 'crystal_mi', n: 'Crystal River (Glen Arbor)', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Leelanau Co.', len: '2.5 mi', cls: 'Riffles', opt: '40–150',
-        g: '04127997', avg: 75, histFlow: 68, mx: 248, my: 228, abbr: 'MI',
+        g: '04126802', avg: 75, histFlow: 68, mx: 248, my: 228, abbr: 'MI',
         desc: "The shortest river in Michigan at just 2.5 miles, the Crystal flows with teal-blue, glass-clear water through Sleeping Bear Dunes National Lakeshore. An extremely popular short paddle and one of the most photographed waterways in the state.",
         desig: 'Sleeping Bear Dunes National Lakeshore',
         secs: ['Fisher Road to Glen Lake — 2.5 mi, the complete crystal-clear experience'],
@@ -252,7 +252,7 @@ export const STATES: StatesDB = {
       {
         id: 'black_cheboygan', n: 'Black River (Cheboygan)', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Cheboygan Co.', len: '40 mi', cls: 'Riffles', opt: '200–800',
-        g: '04131500', avg: 380, histFlow: 342, mx: 275, my: 240, abbr: 'MI',
+        g: '04132000', avg: 380, histFlow: 342, mx: 275, my: 240, abbr: 'MI',
         desc: "Flowing into Black Lake and then to Lake Huron, the Black River traverses some of the most remote northern Lower Peninsula landscape. A quiet, forested paddle far from the crowds of more popular rivers.",
         desig: 'None',
         secs: ['Upper — Clark Bridge to Black Lake, remote forest paddle', 'Lower — Black Lake outlet to Cheboygan, wider and gentler'],
@@ -342,7 +342,7 @@ export const STATES: StatesDB = {
       {
         id: 'little_muskegon', n: 'Little Muskegon River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Mecosta / Newaygo Co.', len: '50 mi', cls: 'Riffles', opt: '100–400',
-        g: '04121300', avg: 220, histFlow: 198, mx: 240, my: 258, abbr: 'MI',
+        g: '04121944', avg: 220, histFlow: 198, mx: 240, my: 258, abbr: 'MI',
         desc: "Quiet tributary of the Muskegon River flowing through the Manistee National Forest, the Little Muskegon offers excellent trout fishing and a peaceful, uncrowded paddle far from the busier main stem.",
         desig: 'None',
         secs: ['Upper — Morley to Croton, narrow forest meanders', 'Lower — Croton to Muskegon River confluence, wider and gentler'],
@@ -357,7 +357,7 @@ export const STATES: StatesDB = {
       {
         id: 'ocqueoc', n: 'Ocqueoc River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Presque Isle Co.', len: '30 mi', cls: 'Riffles', opt: '80–300',
-        g: '04133501', avg: 140, histFlow: 126, mx: 280, my: 242, abbr: 'MI',
+        g: '04132160', avg: 140, histFlow: 126, mx: 280, my: 242, abbr: 'MI',
         desc: "Home to Ocqueoc Falls, the only named waterfall in Michigan's Lower Peninsula. A small, intimate river in the remote northeastern LP with good trout fishing and a surprising natural landmark. Thirty miles of gentle forest paddling in Presque Isle County link the falls to Lake Huron.",
         desig: 'None',
         secs: ['Upper — Ocqueoc Falls area, scenic headwaters', 'Lower — Ocqueoc Falls to Lake Huron, gentle forest paddle'],
@@ -372,7 +372,7 @@ export const STATES: StatesDB = {
       {
         id: 'pigeon_mi', n: 'Pigeon River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Otsego Co.', len: '40 mi', cls: 'Riffles', opt: '100–400',
-        g: '04132500', avg: 190, histFlow: 171, mx: 272, my: 244, abbr: 'MI',
+        g: '04129500', avg: 190, histFlow: 171, mx: 272, my: 244, abbr: 'MI',
         desc: "Flowing through the Pigeon River Country State Forest — Michigan's elk country — the Pigeon is the most remote river in the Lower Peninsula. A wild, intimate paddle with a chance to see elk along the banks. The 40-mile river begins with a forest run from Pigeon Bridge to Elk Hill before gentling toward Mullett Lake.",
         desig: 'None',
         secs: ['Upper — Pigeon Bridge to Elk Hill, remote forest paddle through elk country', 'Lower — Elk Hill to Mullett Lake, wider and gentler'],
@@ -402,7 +402,7 @@ export const STATES: StatesDB = {
       {
         id: 'sturgeon_lp', n: 'Sturgeon River (LP)', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Otsego / Cheboygan Co.', len: '45 mi', cls: 'I–II', opt: '150–600',
-        g: '04131980', avg: 260, histFlow: 234, mx: 268, my: 238, abbr: 'MI',
+        g: '04127997', avg: 260, histFlow: 234, mx: 268, my: 238, abbr: 'MI',
         desc: "The fastest river in the Lower Peninsula with good current and Class I-II water that can challenge beginners. A scenic, forested paddle through the northern LP with reliable flow and a reputation for swift water. Designated a Michigan Natural River, the 45-mile run from Wolverine to Burt Lake features its fastest water through state forest above Rondo.",
         desig: 'Michigan Natural River',
         secs: ['Upper — Wolverine to Rondo, fast current through state forest', 'Lower — Rondo to Burt Lake, gentler but still moving'],
@@ -417,7 +417,7 @@ export const STATES: StatesDB = {
       {
         id: 'thunder_bay', n: 'Thunder Bay River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Montmorency / Alpena Co.', len: '70 mi', cls: 'Riffles', opt: '200–800',
-        g: '04135500', avg: 420, histFlow: 378, mx: 278, my: 248, abbr: 'MI',
+        g: '04135000', avg: 420, histFlow: 378, mx: 278, my: 248, abbr: 'MI',
         desc: "Flowing to Lake Huron at Alpena and the Thunder Bay National Marine Sanctuary, this northeastern LP river offers a scenic paddle through forested country to one of the Great Lakes' most significant underwater preserves.",
         desig: 'None',
         secs: ['Upper — Atlanta to Hillman, narrow forest paddle', 'Lower — Hillman to Alpena, wider current to Lake Huron'],
@@ -432,7 +432,7 @@ export const STATES: StatesDB = {
       {
         id: 'white_mi', n: 'White River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Newaygo / Oceana Co.', len: '50 mi', cls: 'Riffles', opt: '150–600',
-        g: '04122100', avg: 310, histFlow: 279, mx: 236, my: 255, abbr: 'MI',
+        g: '04122200', avg: 310, histFlow: 279, mx: 236, my: 255, abbr: 'MI',
         desc: "A Lake Michigan tributary at Hesperia with good steelhead and salmon runs, the White River is a scenic west Michigan paddle through the Manistee National Forest with reliable spring-fed flow.",
         desig: 'None',
         secs: ['Upper — Hesperia to Diamond Lake, narrow forest corridor', 'Lower — Diamond Lake to White Lake, wider and gentler to Lake Michigan'],
@@ -447,7 +447,7 @@ export const STATES: StatesDB = {
       {
         id: 'twohearted', n: 'Two Hearted River', lp: false, up: true, wild: true, nat: true, ww: false,
         co: 'Luce Co., UP', len: '20 mi', cls: 'I', opt: '100–500',
-        g: '04063700', avg: 290, histFlow: 275, mx: 250, my: 108, abbr: 'MI',
+        g: '04044800', avg: 290, histFlow: 275, mx: 250, my: 108, abbr: 'MI',
         desc: "Immortalized by Hemingway in 'Big Two-Hearted River' (1924). Flows through Lake Superior State Forest to a dune-backed beach at Lake Superior. Remote, undeveloped, wild — one of the finest wilderness paddles in the Midwest.",
         desig: 'Michigan Natural River · Lake Superior State Forest',
         secs: ['Reed and Green Bridge to Lake Superior — 20 mi definitive route'],
@@ -478,7 +478,7 @@ export const STATES: StatesDB = {
       {
         id: 'sturgeon_mi', n: 'Sturgeon River (LP)', lp: true, up: false, wild: false, nat: true, ww: true,
         co: 'Otsego / Cheboygan Co.', len: '75 mi', cls: 'I–II', opt: '100–400',
-        g: '04135700', avg: 220, histFlow: 200, mx: 270, my: 225, abbr: 'MI',
+        g: '04057510', avg: 220, histFlow: 200, mx: 270, my: 225, abbr: 'MI',
         desc: "The fastest river in the Lower Peninsula — the Sturgeon drops through northern Michigan hardwoods and cedar swamps with continuous Class I–II rapids and a swift current that keeps paddlers alert. The Sturgeon River Gorge section near Wolverine is a scenic highlight with steep, wooded banks and clear spring-fed water.",
         desig: 'Michigan Natural River',
         secs: ['Wolverine to Rondo — 15 mi, fastest section, continuous riffles', 'Rondo to Indian River — 20 mi, cedar swamp and mixed forest', 'Indian River to Burt Lake — 15 mi, wider, gentler finish'],
@@ -508,7 +508,7 @@ export const STATES: StatesDB = {
       {
         id: 'maple_mi', n: 'Maple River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Emmet / Charlevoix Co.', len: '35 mi', cls: 'Riffles', opt: '50–200',
-        g: '04128500', avg: 100, histFlow: 90, mx: 260, my: 218, abbr: 'MI',
+        g: '04114603', avg: 100, histFlow: 90, mx: 260, my: 218, abbr: 'MI',
         desc: "A small, clear-flowing stream in the tip of the Lower Peninsula near Pellston and the Inland Waterway. The Maple River offers intimate paddling through cedar swamps and northern hardwood forests, with good brook trout fishing and a quiet, undeveloped character that makes it a local favorite.",
         desig: 'None',
         secs: ['Brutus to Pellston — 15 mi, cedar swamp, narrow and winding', 'Pellston to Burt Lake — 20 mi, wider channel, riffles and pools'],
@@ -523,7 +523,7 @@ export const STATES: StatesDB = {
       {
         id: 'coldwater_mi', n: 'Coldwater River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Branch / Calhoun Co.', len: '65 mi', cls: 'Riffles', opt: '100–400',
-        g: '04104500', avg: 210, histFlow: 195, mx: 215, my: 290, abbr: 'MI',
+        g: '04096460', avg: 210, histFlow: 195, mx: 215, my: 290, abbr: 'MI',
         desc: "A gentle southern Michigan stream flowing through the rolling farmland and woodlots of Branch and Calhoun counties. The Coldwater River is a reliable warm-weather paddle with easy riffles, consistent spring-fed flow, and good smallmouth bass fishing. A classic Midwestern farm-country canoe trip.",
         desig: 'None',
         secs: ['Coldwater to Quincy — 20 mi, town-to-country transition', 'Quincy to Union City — 25 mi, best paddling, wooded banks', 'Union City to Kalamazoo River confluence — 20 mi, wider valley'],
@@ -538,7 +538,7 @@ export const STATES: StatesDB = {
       {
         id: 'boyne_mi', n: 'Boyne River', lp: true, up: false, wild: false, nat: false, ww: false,
         co: 'Charlevoix Co.', len: '24 mi', cls: 'I', opt: '40–250',
-        g: '04127918', avg: 95, histFlow: 86, mx: 257, my: 220, abbr: 'MI',
+        g: '', avg: 95, histFlow: 86, mx: 257, my: 220, abbr: 'MI',
         desc: "A short, cold, spring-fed northern Michigan river that drains the high country east of Boyne Mountain and empties into Lake Charlevoix at the town of Boyne City. The Boyne supports a self-sustaining wild brown trout population in its upper reaches and one of the strongest steelhead runs on the east side of Lake Michigan in its lower mile below the dam. The river is small, intimate, and intensely-fished — a Northern LP gem hidden in plain sight between the more famous Jordan and Pigeon rivers.",
         desig: 'Michigan Designated Trout Stream · Lake Charlevoix Watershed',
         secs: ['North Branch Boyne — Class I, wild brown trout headwaters', 'South Branch Boyne — Class I, brook and brown trout', 'Lower Boyne (below Boyne City Dam) — steelhead and lake-run brown trout fishery'],
@@ -579,7 +579,7 @@ export const STATES: StatesDB = {
       {
         id: 'gauley', n: 'Gauley River', ww: true, wild: true, mtnst: true, flat: false,
         co: 'Nicholas / Fayette Co.', len: '25 mi', cls: 'IV–V', opt: '2400–2800',
-        g: '03194700', avg: 1200, histFlow: 1050, mx: 280, my: 118, abbr: 'WV',
+        g: '03189600', avg: 1200, histFlow: 1050, mx: 280, my: 118, abbr: 'WV',
         desc: 'The crown jewel of East Coast whitewater — one of the most celebrated Class IV–V rivers on the planet. The legendary Gauley Season (22 dam-release weekends each fall) was created by the first U.S. law mandating recreational dam releases.',
         desig: 'Gauley River National Recreation Area (NPS) · Congressionally-Mandated Whitewater Releases · American Whitewater Stewardship',
         secs: ['Upper Gauley — Summersville Dam to Peters Creek, Class IV–V', 'Lower Gauley — Peters Creek to Swiss, Class III–IV'],
@@ -596,7 +596,7 @@ export const STATES: StatesDB = {
       {
         id: 'newriver', n: 'New River', ww: true, wild: true, mtnst: true, flat: false,
         co: 'Fayette / Raleigh Co.', len: '53 mi', cls: 'I–V', opt: '1500–6000',
-        g: '03189100', avg: 3200, histFlow: 2900, mx: 318, my: 126, abbr: 'WV',
+        g: '03185400', avg: 3200, histFlow: 2900, mx: 318, my: 126, abbr: 'WV',
         desc: "One of the oldest rivers on earth — predates the Appalachian Mountains and flows north through them. America's newest National Park (2020). The New River Gorge delivers Class III–V whitewater beneath the iconic New River Gorge Bridge.",
         desig: 'New River Gorge National Park (2020) · Wild & Scenic River · American Whitewater Stewardship',
         secs: ['Upper New (Sandstone to Grandview) — Class I–II, family-friendly', 'Grandview to Fayette Station — Class III–IV, most popular', 'The Dries — Class IV–V, low water technical'],
@@ -681,7 +681,7 @@ export const STATES: StatesDB = {
       {
         id: 'cranberry', n: 'Cranberry River', ww: false, wild: false, mtnst: true, flat: false,
         co: 'Pocahontas Co.', len: '20 mi', cls: 'I–II', opt: '100–600',
-        g: '03186500', avg: 180, histFlow: 160, mx: 388, my: 115, abbr: 'WV',
+        g: '03187500', avg: 180, histFlow: 160, mx: 388, my: 115, abbr: 'WV',
         desc: "A gem of the Monongahela National Forest, the Cranberry flows through the Cranberry Wilderness — one of the largest wilderness areas in the eastern United States. The river is small, cold, and crystalline, draining a unique boreal ecosystem of spruce and cranberry bogs more typical of Canada than Appalachia.",
         desig: 'Monongahela National Forest · Adjacent to Cranberry Wilderness',
         secs: ['Cranberry Glades to Woodrow — Class I–II, wilderness headwaters', 'Woodrow to Richwood — Class I–II, gentle forest run'],
@@ -696,7 +696,7 @@ export const STATES: StatesDB = {
       {
         id: 'meadow', n: 'Meadow River', ww: true, wild: false, mtnst: true, flat: false,
         co: 'Greenbrier / Fayette Co.', len: '60 mi', cls: 'I–IV', opt: '300–2000',
-        g: '03185000', avg: 600, histFlow: 520, mx: 382, my: 122, abbr: 'WV',
+        g: '03190400', avg: 600, histFlow: 520, mx: 382, my: 122, abbr: 'WV',
         desc: "The Meadow River Gorge is one of West Virginia\"s most demanding whitewater runs when it\"s flowing — a steep, technical Class III–IV creek-style run through a remote gorge in Fayette County. Above the gorge, the upper Meadow offers gentle Class I–II floating through Greenbrier County farmland. The river is rain-dependent and runs only after significant precipitation.",
         desig: 'West Virginia Scenic Rivers Program candidate',
         secs: ['Upper Meadow — Rupert to Nallen, Class I–II, pastoral valley', 'Meadow River Gorge — Class III–IV, expert whitewater', 'Lower Meadow — Class II, approach to Gauley confluence'],
@@ -711,7 +711,7 @@ export const STATES: StatesDB = {
       {
         id: 'cheat_narrows', n: 'Cheat Narrows & Lower Canyon', ww: true, wild: false, mtnst: true, flat: false,
         co: 'Preston / Tucker Co.', len: '78 mi', cls: 'III–V', opt: '1500–5000',
-        g: '03070500', avg: 2400, histFlow: 2200, mx: 395, my: 125, abbr: 'WV',
+        g: '03070260', avg: 2400, histFlow: 2200, mx: 395, my: 125, abbr: 'WV',
         desc: "The Cheat River drops through the Cheat Canyon on one of the most iconic big-water whitewater runs in the eastern U.S. Rapids like High Falls of Cheat, Coliseum, and Pete Morgan draw intermediate-to-expert boaters every spring. Above the canyon, the Cheat Narrows offers classic Class III–IV intermediate water, and the river supports an important smallmouth bass fishery.",
         desig: 'West Virginia Scenic Rivers Program · Monongahela National Forest',
         secs: ['Cheat Narrows — Albright to Jenkinsburg, Class III–IV, 11 mi', 'Cheat Canyon — Albright to Cheat Lake, Class IV–V, 11 mi classic', 'Upper Cheat — Parsons to St. George, Class II–III, family float'],
@@ -741,7 +741,7 @@ export const STATES: StatesDB = {
       {
         id: 'tygart_wv', n: 'Tygart Valley River — Valley Falls & Releases', ww: true, wild: false, mtnst: true, flat: false,
         co: 'Randolph / Barbour Co.', len: '162 mi', cls: 'II–IV', opt: '800–3000',
-        g: '03061000', avg: 1650, histFlow: 1500, mx: 400, my: 145, abbr: 'WV',
+        g: '03055000', avg: 1650, histFlow: 1500, mx: 400, my: 145, abbr: 'WV',
         desc: "The Tygart Valley River cuts a long, varied path through central West Virginia with multiple classic whitewater sections fed by dam releases from Tygart Lake. The Arden section (Class III–IV) and the dramatic Tygart Gorge below Valley Falls (Class IV–V) are both popular with Mid-Atlantic boaters. The river also holds a strong smallmouth bass fishery through its middle reaches.",
         desig: 'Tygart Lake State Park · Valley Falls State Park',
         secs: ['Arden Section — Arden to Philippi, Class III–IV, scheduled releases', 'Tygart Gorge — Valley Falls to Hammond, Class IV–V, expert dam release', 'Middle Tygart — Philippi to Grafton, Class I–II, smallmouth water'],
@@ -786,7 +786,7 @@ export const STATES: StatesDB = {
       {
         id: 'shavers_fork', n: 'Shavers Fork', ww: true, wild: false, mtnst: true, flat: false,
         co: 'Randolph Co.', len: '88 mi', cls: 'II–III', opt: '200–1000',
-        g: '03051000', avg: 410, histFlow: 375, mx: 395, my: 160, abbr: 'WV',
+        g: '03068600', avg: 410, histFlow: 375, mx: 395, my: 160, abbr: 'WV',
         desc: "Shavers Fork is a high-elevation tributary of the Tygart Valley River flowing through the Monongahela National Forest at elevations up to 3,500 feet. The upper river is one of West Virginia's most important native brook trout streams, while the middle reaches offer Class II–III whitewater paddling. The river parallels the Durbin & Greenbrier Valley scenic railroad through the Cheat Mountain backcountry.",
         desig: 'Monongahela National Forest · WV Native Brook Trout Stream',
         secs: ['Upper Shavers Fork — Cheat Bridge to Bemis, Class II, brook trout headwaters', 'Middle Shavers Fork — Bemis to Parsons, Class II–III, whitewater reach', 'High Falls of Cheat — dramatic waterfall near Glady, hike-in highlight'],
@@ -816,7 +816,7 @@ export const STATES: StatesDB = {
       {
         id: 'seneca_creek_wv', n: 'Seneca Creek', ww: false, wild: true, mtnst: true, flat: false,
         co: 'Pendleton Co.', len: '14 mi', cls: 'Riffles', opt: '20–120',
-        g: '03183500', avg: 55, histFlow: 50, mx: 360, my: 165, abbr: 'WV',
+        g: '01605890', avg: 55, histFlow: 50, mx: 360, my: 165, abbr: 'WV',
         desc: "Seneca Creek drains the highest peak in West Virginia \u2014 Spruce Knob \u2014 in the Spruce Knob-Seneca Rocks National Recreation Area. The creek flows 14 miles through hemlock and spruce forest at over 4,000 feet elevation, supporting one of the southernmost populations of native eastern brook trout. The Seneca Creek Backcountry Trail follows the creek for most of its length, opening one of the wildest and least-developed brook trout strongholds in the southern Appalachians.",
         desig: 'Spruce Knob-Seneca Rocks NRA \u00b7 Monongahela National Forest \u00b7 Native Brook Trout Stream',
         secs: ['Upper Seneca Creek \u2014 Spruce Knob area, native brook trout', 'Middle Seneca Creek \u2014 backcountry trail corridor', 'Lower Seneca Creek \u2014 confluence with North Fork South Branch'],
@@ -1211,7 +1211,7 @@ export const STATES: StatesDB = {
       {
         id: 'sf_boise', n: 'South Fork Boise River', ww: true, wild: false, remote: false, mtn: true,
         co: 'Elmore / Boise Co.', len: '65 mi', cls: 'III–IV', opt: '500–3000',
-        g: '13190000', avg: 1200, histFlow: 1050, mx: 348, my: 82, abbr: 'ID',
+        g: '13173630', avg: 1200, histFlow: 1050, mx: 348, my: 82, abbr: 'ID',
         desc: "The South Fork Boise is the best day-trip whitewater near Idaho\"s capital — a dam-controlled release from Anderson Ranch Reservoir that provides reliable Class III–IV flows from May through September. The river cuts through a basalt canyon with consistent gradient and warm summer water temperatures that make it Idaho\"s most popular intermediate kayaking run.",
         desig: 'Boise National Forest · Trout Unlimited Conservation',
         secs: ['Anderson Ranch Dam to Danskin — Class III–IV, best whitewater', 'Danskin to Neal Bridge — Class II–III, intermediate run', 'Neal Bridge to Arrowrock Reservoir — Class II, mellow float'],
@@ -1329,7 +1329,7 @@ export const STATES: StatesDB = {
       {
         id: 'north_umpqua', n: 'North Umpqua River', ww: false, wild: true, coastal: true, desert: false,
         co: 'Douglas Co.', len: '110 mi', cls: 'I–IV', opt: '1000–4000',
-        g: '14317600', avg: 2200, histFlow: 2000, mx: 200, my: 130, abbr: 'OR',
+        g: '14317500', avg: 2200, histFlow: 2000, mx: 200, my: 130, abbr: 'OR',
         desc: "One of the most beautiful rivers in the Pacific Northwest — emerald green, spring-fed, and remarkably stable from volcanic geology. The North Umpqua flows 110 miles through Umpqua National Forest with the famous 79-mile North Umpqua Trail running beside it. World-renowned summer steelhead and Chinook fishery. The Narrows deliver Class III–IV whitewater through a volcanic gorge.",
         desig: "National Wild & Scenic River (upper 33.8 miles) · Umpqua National Forest · Fly-Fishing-Only Section (above Steamboat Creek)",
         secs: ['Susan Creek to Toketee — Class I–II, volcanic canyon, best scenery', 'Toketee to Horseshoe Bend — Class III, popular family section', 'Narrows and Tioga (Glide area) — Class III–IV, best whitewater'],
@@ -1492,7 +1492,7 @@ export const STATES: StatesDB = {
       {
         id: 'tieton', n: 'Tieton River', ww: true, wild: false, pnw: false, eastside: true,
         co: 'Yakima Co.', len: '25 mi', cls: 'III–IV', opt: '1500–3000',
-        g: '12488500', avg: 1800, histFlow: 1600, mx: 322, my: 82, abbr: 'WA',
+        g: '12492500', avg: 1800, histFlow: 1600, mx: 322, my: 82, abbr: 'WA',
         desc: "The Tieton is Washington\"s most unique whitewater experience — a dam-release river that runs only during the annual September drawdown of Rimrock Lake. For three to four weeks each fall, the Bureau of Reclamation releases 1,500–2,500 cfs, transforming the normally dry Tieton into continuous Class III–IV whitewater. \"Flip-Flop,\" the signature rapid, has earned its name honestly.",
         desig: 'Wenatchee National Forest',
         secs: ['Rimrock Dam to Windy Point — Class III–IV, best whitewater', 'Windy Point to Naches — Class II–III, intermediate run'],
@@ -1563,7 +1563,7 @@ export const STATES: StatesDB = {
       {
         id: 'loyalsock', n: 'Loyalsock Creek', ww: true, wild: false, nat: true, scenic: true,
         co: 'Lycoming / Sullivan Co.', len: '64 mi', cls: 'II–IV', opt: '400–2000',
-        g: '01554000', avg: 890, histFlow: 820, mx: 580, my: 65, abbr: 'PA',
+        g: '01551850', avg: 890, histFlow: 820, mx: 580, my: 65, abbr: 'PA',
         desc: "Hidden gem of north-central Pennsylvania. The Loyalsock flows 64 miles through the Loyalsock State Forest in the ridge-and-valley Appalachians, with dramatic rapids and gorge scenery rarely seen in the East. Exceptional paddling late March through May.",
         desig: "Pennsylvania Natural Area (World's End State Park corridor)",
         secs: ["Alpine Run to World's End — Class II–III, gorge scenery", "World's End to Hillsgrove — Class III–IV, steepest whitewater", 'Lower Loyalsock to Montoursville — Class II, accessible'],
@@ -1579,7 +1579,7 @@ export const STATES: StatesDB = {
       {
         id: 'pinecreek', n: 'Pine Creek', ww: false, wild: false, nat: false, scenic: true,
         co: 'Tioga / Lycoming Co.', len: '73 mi', cls: 'I–II', opt: '300–1500',
-        g: '01553500', avg: 780, histFlow: 720, mx: 460, my: 50, abbr: 'PA',
+        g: '01549700', avg: 780, histFlow: 720, mx: 460, my: 50, abbr: 'PA',
         desc: "The Pennsylvania Grand Canyon. Pine Creek flows 73 miles through the deepest gorge in the eastern United States — walls rising 1,000 feet above the creek, maintained as a Pennsylvania State Forest. A 62-mile rail-trail runs the entire length of the gorge.",
         desig: 'Pennsylvania Grand Canyon · Tioga State Forest',
         secs: ['Ansonia to Tiadaghton — 28 mi, upper gorge, most scenic', 'Tiadaghton to Blackwell — 25 mi, mid-gorge classic', 'Blackwell to Waterville — 18 mi, lower gorge and rail-trail'],
@@ -1595,7 +1595,7 @@ export const STATES: StatesDB = {
       {
         id: 'clarion', n: 'Clarion River', ww: false, wild: true, nat: true, scenic: true,
         co: 'Clarion / Forest Co.', len: '120 mi', cls: 'I–II', opt: '400–2000',
-        g: '03031500', avg: 1200, histFlow: 1080, mx: 420, my: 70, abbr: 'PA',
+        g: '03028500', avg: 1200, histFlow: 1080, mx: 420, my: 70, abbr: 'PA',
         desc: "Pennsylvania's most beloved canoe river outside of the Delaware — 120 miles through the Allegheny National Forest with the Clarion River Gorge delivering Class I–III paddling through a remote hemlock and hardwood canyon. Designated a National Wild & Scenic River in 1996. Outstanding smallmouth bass fishing, multiple primitive campsites, and genuine Allegheny backcountry solitude.",
         desig: 'National Wild & Scenic River (1996) · Allegheny National Forest',
         secs: ['Upper Clarion — Ridgway to Clarion, Class I–II, open valley', 'Middle Clarion (Cooksburg Gorge) — Class II–III, the best 15-mile gorge section', 'Lower Clarion — Class I, widening toward the Allegheny River'],
@@ -1611,7 +1611,7 @@ export const STATES: StatesDB = {
       {
         id: 'lehigh', n: 'Lehigh River', ww: true, wild: false, nat: false, scenic: true,
         co: 'Carbon / Northampton Co.', len: '109 mi', cls: 'II–IV', opt: '800–3500',
-        g: '01452500', avg: 1850, histFlow: 1680, mx: 560, my: 85, abbr: 'PA',
+        g: '01451000', avg: 1850, histFlow: 1680, mx: 560, my: 85, abbr: 'PA',
         desc: "Pennsylvania's best whitewater east of the Yough — the Lehigh Gorge delivers 26 miles of Class II–IV rapids through a dramatic 1,000-foot-deep gorge in Lehigh Gorge State Park. A 26-mile rail-trail parallels the river the entire length, creating Pennsylvania's finest paddle-and-bike combination. Best on dam releases from Francis E. Walter Reservoir.",
         desig: 'Lehigh Gorge State Park · Francis E. Walter Dam Recreation Releases',
         secs: ['White Haven to Jim Thorpe — 26 mi, Lehigh Gorge, Class II–IV, the classic', 'Above White Haven — Class I–II, upper approach', 'Below Jim Thorpe — Class I–II, widening valley to Allentown'],
@@ -1627,7 +1627,7 @@ export const STATES: StatesDB = {
       {
         id: 'delaware_pa', n: 'Delaware River — Upper', ww: false, wild: true, nat: false, scenic: true,
         co: 'Pike / Monroe Co.', len: '70 mi', cls: 'I–II', opt: '2000–8000',
-        g: '01439500', avg: 4200, histFlow: 3800, mx: 590, my: 50, abbr: 'PA',
+        g: '01446700', avg: 4200, histFlow: 3800, mx: 590, my: 50, abbr: 'PA',
         desc: "The upper Delaware is one of the finest free-flowing rivers in the eastern U.S. — 70 miles of National Wild & Scenic River along the Pennsylvania-New Jersey border through the Delaware Water Gap National Recreation Area. Winter bald eagle concentrations here are among the highest in the Northeast. Gentle Class I–II water is ideal for multi-day canoe camping and eagle watching.",
         desig: 'National Wild & Scenic River (1978) · Delaware Water Gap National Recreation Area',
         secs: ['Hancock to Narrowsburg — 30 mi, remote and wild, eagle territory', 'Narrowsburg to Milford — 25 mi, Class I–II, scenic bluffs', 'Milford to Delaware Water Gap — 15 mi, most popular section'],
@@ -1687,7 +1687,7 @@ export const STATES: StatesDB = {
       {
         id: 'slippery_rock', n: 'Slippery Rock Creek', ww: true, wild: false, nat: false, scenic: true,
         co: 'Lawrence / Butler Co.', len: '50 mi', cls: 'II–IV', opt: '200–1500',
-        g: '03106000', avg: 380, histFlow: 345, mx: 495, my: 155, abbr: 'PA',
+        g: '03106500', avg: 380, histFlow: 345, mx: 495, my: 155, abbr: 'PA',
         desc: "Slippery Rock Creek drops through McConnells Mill State Park in one of the most dramatic sandstone gorges in Pennsylvania, delivering Class II–IV whitewater past historic grist mills and mossy boulder gardens. The gorge section is one of the premier intermediate whitewater runs in western PA, and the fall color through the gorge is some of the best in the state.",
         desig: 'Pennsylvania Scenic River · McConnells Mill State Park',
         secs: ['McConnells Mill Gorge — Class II–IV, 3 mi classic gorge run', 'Eckert Bridge to Harris Bridge — Class II–III, intermediate reach', 'Below Harris Bridge — Class I–II, pastoral outflow'],
@@ -1702,7 +1702,7 @@ export const STATES: StatesDB = {
       {
         id: 'kiski', n: 'Kiskiminetas River', ww: false, wild: false, nat: false, scenic: true,
         co: 'Westmoreland / Armstrong Co.', len: '27 mi', cls: 'I–II', opt: '800–3500',
-        g: '03049500', avg: 1850, histFlow: 1680, mx: 515, my: 175, abbr: 'PA',
+        g: '03048500', avg: 1850, histFlow: 1680, mx: 515, my: 175, abbr: 'PA',
         desc: "The Kiskiminetas — known locally as 'the Kiski' — is a Pennsylvania river recovery success story. Once dead from coal and steel pollution, the Kiski now supports a strong smallmouth bass fishery and Class I–II paddling through forested hills and historic river towns. The Kiski-Conemaugh Stream Team and decades of restoration have returned this river to life.",
         desig: 'Kiski-Conemaugh River Trail · Pennsylvania River of the Year (2018)',
         secs: ['Upper Kiski — Saltsburg to Avonmore, Class I–II, forested reach', 'Middle Kiski — Avonmore to Apollo, Class I, smallmouth water', 'Lower Kiski — Apollo to Allegheny confluence, Class I, final 10 mi'],
@@ -1747,7 +1747,7 @@ export const STATES: StatesDB = {
       {
         id: 'lackawaxen', n: 'Lackawaxen River', ww: false, wild: false, nat: false, scenic: true,
         co: 'Pike / Wayne Co.', len: '31 mi', cls: 'Riffles', opt: '200–800',
-        g: '01432000', avg: 480, histFlow: 430, mx: 620, my: 158, abbr: 'PA',
+        g: '01431500', avg: 480, histFlow: 430, mx: 620, my: 158, abbr: 'PA',
         desc: "The Lackawaxen River flows 31 miles through northeastern Pennsylvania past Zane Grey's historic home to join the Delaware River at Lackawaxen. The river is a tributary of the Upper Delaware Scenic and Recreational River and offers solid wild trout fishing in its upper reaches and smallmouth bass and paddling below. Historic D&H Canal remnants line the river valley.",
         desig: 'Upper Delaware Scenic and Recreational River tributary · PA Scenic River',
         secs: ['Upper Lackawaxen — Hawley to Rowland, Class I riffles, trout water', 'Middle Lackawaxen — Rowland to Kimbles, Class I, mixed trout and bass', 'Lower Lackawaxen — Kimbles to Delaware confluence, Class I, smallmouth water'],
@@ -1762,7 +1762,7 @@ export const STATES: StatesDB = {
       {
         id: 'kettle_creek_pa', n: 'Kettle Creek', ww: false, wild: false, nat: false, scenic: true,
         co: 'Potter / Clinton Co.', len: '60 mi', cls: 'Riffles', opt: '80–400',
-        g: '01545500', avg: 135, histFlow: 122, mx: 615, my: 178, abbr: 'PA',
+        g: '01545000', avg: 135, histFlow: 122, mx: 615, my: 178, abbr: 'PA',
         desc: "Kettle Creek is one of the PA Wilds' most celebrated wild trout streams, flowing through Susquehannock State Forest and the Kettle Creek Natural Area in the heart of Pennsylvania's largest remaining wilderness. The upper creek is Class A wild brown and brook trout water, while the middle reaches offer intimate canoeable riffles. Surrounding forests hold elk, black bear, and some of the darkest skies in the eastern U.S.",
         desig: 'PA Fish and Boat Class A Wild Trout · Susquehannock State Forest · Kettle Creek State Park',
         secs: ['Upper Kettle Creek — Oleona to Cross Fork, Class A wild trout headwaters', 'Middle Kettle Creek — Cross Fork to Kettle Creek State Park, riffles', 'Lower Kettle Creek — Kettle Creek Lake to West Branch Susquehanna'],
@@ -1823,7 +1823,7 @@ export const STATES: StatesDB = {
       {
         id: 'slate_run_pa', n: 'Slate Run', ww: false, wild: true, nat: false, scenic: true,
         co: 'Lycoming Co.', len: '14 mi', cls: 'Riffles', opt: '50–250',
-        g: '01545600', avg: 95, histFlow: 86, mx: 470, my: 60, abbr: 'PA',
+        g: '01548500', avg: 95, histFlow: 86, mx: 470, my: 60, abbr: 'PA',
         desc: "Slate Run flows 14 miles down a steep, hemlock-shaded gorge to join Pine Creek deep in the PA Wilds. Native brook trout and wild brown trout thrive in the cold, oxygen-rich pocket water, and the run is regulated as catch-and-release fly fishing only — one of just a handful of streams in Pennsylvania with that protection. The village of Slate Run sits at the confluence with Pine Creek, with the Slate Run Tackle Shop serving as the unofficial headquarters of PA Wilds fly fishing.",
         desig: 'PA Heritage Trout Angling Stream · Catch-and-Release Fly Fishing Only',
         secs: ['Upper Slate Run — headwaters to Cushman Branch, native brook trout', 'Middle Slate Run — Cushman Branch to Manor Fork, wild brown trout', 'Lower Slate Run — Manor Fork to Pine Creek confluence, larger wild browns'],
@@ -1838,7 +1838,7 @@ export const STATES: StatesDB = {
       {
         id: 'brodhead_pa', n: 'Brodhead Creek', ww: false, wild: false, nat: false, scenic: true,
         co: 'Monroe Co.', len: '22 mi', cls: 'I–II', opt: '100–500',
-        g: '01443500', avg: 320, histFlow: 290, mx: 590, my: 90, abbr: 'PA',
+        g: '01442500', avg: 320, histFlow: 290, mx: 590, my: 90, abbr: 'PA',
         desc: "The birthplace of American fly fishing and the spiritual home of the eastern Pocono fly fishing tradition. Brodhead Creek flows 22 miles down the eastern slope of the Poconos through Stroudsburg to the Delaware River, with cold tributaries from the Pocono plateau keeping the creek productive year-round. The Henryville House on the upper Brodhead — visited by Theodore Gordon, Edward Hewitt, George LaBranche, and a generation of American fly fishing pioneers in the late 1800s and early 1900s — was the cradle of American dry fly fishing alongside the Catskills.",
         desig: 'Brodhead Watershed Association · Pocono Fly Fishing Heritage',
         secs: ['Upper Brodhead — Henryville to Analomink, fly fishing heritage water', 'Middle Brodhead — Analomink to Stroudsburg, mixed wild and stocked', 'Lower Brodhead — Stroudsburg to Delaware confluence, wider valley'],
@@ -1927,7 +1927,7 @@ export const STATES: StatesDB = {
       {
         id: 'stillwater', n: 'Stillwater River', ww: true, wild: false, remote: false, fishing: true,
         co: 'Stillwater / Park Co.', len: '80 mi', cls: 'II–III', opt: '800–3500',
-        g: '06209500', avg: 1400, histFlow: 1280, mx: 382, my: 92, abbr: 'MT',
+        g: '06201800', avg: 1400, histFlow: 1280, mx: 382, my: 92, abbr: 'MT',
         desc: "Drains the Beartooth Mountains (one of the highest mountain ranges in the U.S.) through the Absaroka-Beartooth Wilderness to Columbus. The upper river through the Beartooth canyon delivers Class III–IV whitewater in a spectacular alpine gorge; the lower river is a blue-ribbon trout stream in classic Paradise Valley-adjacent scenery. World-class fly fishing for brown and rainbow trout.",
         desig: 'Absaroka-Beartooth Wilderness (headwaters) · Montana Blue-Ribbon Trout Stream',
         secs: ['Upper Stillwater — Beartooth canyon, Class III–IV, wilderness', 'Absaroka to Nye — Class II–III, mountain valley transition', 'Nye to Columbus — Class I–II, lower river, blue-ribbon fishing'],
@@ -2124,7 +2124,7 @@ export const STATES: StatesDB = {
       {
         id: 'caney_fork', n: 'Caney Fork', ww: false, wild: false, nat: false, appalachian: false,
         co: 'White / DeKalb Co.', len: '145 mi', cls: 'I–II', opt: '200–1500',
-        g: '03426500', avg: 2200, histFlow: 2000, mx: 470, my: 112, abbr: 'TN',
+        g: '03424500', avg: 2200, histFlow: 2000, mx: 470, my: 112, abbr: 'TN',
         desc: "One of Tennessee\"s premier tailwater fisheries — the Caney Fork below Great Falls Dam delivers trophy brown and rainbow trout in cold, clear water through the Cumberland Plateau. The dam-release schedule creates consistent flows for both paddling and fishing. The upper section above the dam offers scenic Class I–II floating through the Highland Rim.",
         desig: 'Tennessee Trophy Trout Stream · Great Falls Dam Tailwater',
         secs: ['Below Great Falls Dam — trophy trout tailwater, Class I–II', 'Rock Island to Center Hill — Class I, scenic canyon', 'Above Center Hill Lake — upper river, Class I–II'],
@@ -2154,7 +2154,7 @@ export const STATES: StatesDB = {
       {
         id: 'holston', n: 'Holston River — South Holston Tailwater', ww: false, wild: false, nat: false, appalachian: true,
         co: 'Sullivan Co.', len: '14 mi', cls: 'Riffles', opt: '300–2000',
-        g: '03497300', avg: 1200, histFlow: 1080, mx: 780, my: 340, abbr: 'TN',
+        g: '03487650', avg: 1200, histFlow: 1080, mx: 780, my: 340, abbr: 'TN',
         desc: "The 14-mile South Holston River tailwater below TVA's South Holston Dam is one of the finest cold-water trout fisheries in the Southeast. Year-round 50°F releases support a wild brown and stocked rainbow trout population that draws fly anglers from across the eastern United States. The signature sulfur hatch in May and June is one of the most consistent and predictable hatches in the region.",
         desig: 'TVA Tailwater · TWRA Trophy Trout Water',
         secs: ['South Holston Dam to Bluff City — 14 mi, Class I, world-class fly fishing'],
@@ -2169,7 +2169,7 @@ export const STATES: StatesDB = {
       {
         id: 'abrams_creek_tn', n: 'Abrams Creek', ww: false, wild: true, nat: false, appalachian: true,
         co: 'Blount Co.', len: '20 mi', cls: 'Riffles', opt: '40–200',
-        g: '03497500', avg: 95, histFlow: 86, mx: 760, my: 350, abbr: 'TN',
+        g: '03518100', avg: 95, histFlow: 86, mx: 760, my: 350, abbr: 'TN',
         desc: "Abrams Creek drains Cades Cove in Great Smoky Mountains National Park, flowing through the most photographed valley in the Smokies before disappearing into a deep limestone gorge. Wild rainbow trout dominate the upper sections through the cove, while native Southern Appalachian brook trout hold in the highest tributaries. The creek is one of only a handful of high-pH streams in the Smokies thanks to the limestone of Cades Cove, which makes it more productive than the typical acid-leached Smokies stream.",
         desig: 'Great Smoky Mountains National Park · Native Brook Trout Restoration Stream',
         secs: ['Cades Cove headwaters — Class I, wild rainbows in pastoral meadows', 'Abrams Falls section — short trail to a 20-ft waterfall', 'Lower gorge — Class II, deep canyon, larger wild rainbows'],
@@ -2184,7 +2184,7 @@ export const STATES: StatesDB = {
       {
         id: 'citico_creek_tn', n: 'Citico Creek', ww: false, wild: true, nat: false, appalachian: true,
         co: 'Monroe Co.', len: '17 mi', cls: 'Riffles', opt: '30–180',
-        g: '03518000', avg: 75, histFlow: 68, mx: 770, my: 355, abbr: 'TN',
+        g: '03518400', avg: 75, histFlow: 68, mx: 770, my: 355, abbr: 'TN',
         desc: "Citico Creek flows through the Citico Creek Wilderness in the Cherokee National Forest — one of the wildest and least-visited brook trout streams in the eastern United States. Native Southern Appalachian brook trout dominate the upper reaches above the impassable falls, with rainbow trout below. The creek's headwaters share the Unicoi crest with the Slickrock Creek wilderness on the North Carolina side, forming one of the largest contiguous brook trout strongholds remaining in the southeastern Appalachians.",
         desig: 'Citico Creek Wilderness · Cherokee National Forest · Native Brook Trout Stream',
         secs: ['Upper Citico — above the falls, native brook trout, hike-in only', 'Middle Citico — wild rainbows, deep pools and pocket water', 'Lower Citico — Tellico River confluence, larger water'],
@@ -2292,7 +2292,7 @@ export const STATES: StatesDB = {
       {
         id: 'merced', n: 'Merced River', ww: true, wild: true, sierra: true, coastal: false,
         co: 'Mariposa / Merced Co.', len: '81 mi', cls: 'II–V', opt: '600–3000',
-        g: '11274000', avg: 1200, histFlow: 1050, mx: 195, my: 108, abbr: 'CA',
+        g: '11264500', avg: 1200, histFlow: 1050, mx: 195, my: 108, abbr: 'CA',
         desc: "Flows from the Sierra Nevada through Yosemite National Park and the spectacular Merced River Canyon — one of the most scenic river corridors in California. The iconic Class IV–V Merced Gorge between Briceburg and Bagby delivers technical Sierra granite whitewater. The Yosemite Valley section flows past El Capitan and Half Dome. National Wild & Scenic River since 1987.",
         desig: 'National Wild & Scenic River (1987) · Yosemite National Park (upper reach)',
         secs: ['Yosemite Valley — Class I–II, past El Capitan and Half Dome', 'El Portal to Briceburg — Class III–IV, transition canyon', 'Briceburg to Bagby — Class IV–V, Merced Gorge, expert only'],
@@ -2640,7 +2640,7 @@ export const STATES: StatesDB = {
       {
         id: 'jackson_va', n: 'Jackson River', ww: false, wild: false, appalachian: true, piedmont: false,
         co: 'Highland / Bath Co.', len: '95 mi', cls: 'I–II', opt: '200–1000',
-        g: '02016000', avg: 480, histFlow: 440, mx: 400, my: 82, abbr: 'VA',
+        g: '02012500', avg: 480, histFlow: 440, mx: 400, my: 82, abbr: 'VA',
         desc: "Virginia\"s premier Blue-Ribbon trout tailwater — the Jackson River below Gathright Dam delivers cold, clear water through the Allegheny Highlands, supporting trophy brown and rainbow trout. The 95-mile river flows through some of the most remote mountain terrain in Virginia, with the dam-release section offering year-round fishing and gentle Class I–II paddling.",
         desig: 'Virginia Blue-Ribbon Trout Stream · Gathright Dam Tailwater · George Washington National Forest',
         secs: ['Below Gathright Dam — trophy trout tailwater, Class I–II', 'Falling Spring to Clifton Forge — Class I–II, mountain valley', 'Lower Jackson to James River — Class I, wide valley'],
@@ -2655,7 +2655,7 @@ export const STATES: StatesDB = {
       {
         id: 'south_branch', n: 'Potomac River — South Branch', ww: true, wild: false, appalachian: true, piedmont: false,
         co: 'Pendleton / Grant Co.', len: '130 mi', cls: 'I–III', opt: '300–2000',
-        g: '01636500', avg: 1200, histFlow: 1100, mx: 370, my: 60, abbr: 'VA',
+        g: '01608500', avg: 1200, histFlow: 1100, mx: 370, my: 60, abbr: 'VA',
         desc: "Smoke Hole Canyon — one of the deepest and most remote river gorges east of the Mississippi. The South Branch Potomac flows 130 miles through the Allegheny Mountains along the Virginia-West Virginia border, with the 25-mile Smoke Hole section delivering Class I–III whitewater through a 1,000-foot-deep canyon. Wild trout, cave formations, and zero road access make this one of the most wilderness-like rivers in the East.",
         desig: 'Smoke Hole Canyon · Spruce Knob-Seneca Rocks National Recreation Area',
         secs: ['Upper South Branch — Pendleton County, Class I–II, mountain headwaters', 'Smoke Hole Canyon — 25 mi, Class I–III, deepest gorge section', 'Below Smoke Hole to Petersburg — Class I–II, valley river'],
@@ -2700,7 +2700,7 @@ export const STATES: StatesDB = {
       {
         id: 'mossy_creek_va', n: 'Mossy Creek', ww: false, wild: false, appalachian: true, piedmont: false,
         co: 'Augusta / Rockingham Co.', len: '8 mi', cls: 'Riffles', opt: '20–120',
-        g: '01622000', avg: 45, histFlow: 41, mx: 360, my: 285, abbr: 'VA',
+        g: '01620850', avg: 45, histFlow: 41, mx: 360, my: 285, abbr: 'VA',
         desc: "Mossy Creek is the South\u2019s most legendary spring creek — a tiny, cold limestone stream in Virginia\u2019s Shenandoah Valley that produces brown trout up to 10 pounds in fewer than 10 miles of fishable water. Flowing entirely across private land but opened to public catch-and-release fishing through a unique landowner agreement, Mossy Creek is fly-fishing only with single barbless hooks. The cress and watercress beds, undercut banks, and 50\u00b0F year-round spring flows produce some of the most consistent dry-fly fishing for trophy browns in the eastern United States.",
         desig: 'VA Heritage Trout Water \u00b7 Catch-and-Release \u00b7 Fly Fishing Only',
         secs: ['Upper Mossy \u2014 narrow spring water, sight fishing', 'Middle Mossy \u2014 the trophy reach, undercut banks and weed beds', 'Lower Mossy \u2014 wider water before North River confluence'],
@@ -2715,7 +2715,7 @@ export const STATES: StatesDB = {
       {
         id: 'jackson_river_va', n: 'Jackson River \u2014 Lake Moomaw Tailwater', ww: false, wild: false, appalachian: true, piedmont: false,
         co: 'Bath / Alleghany Co.', len: '20 mi', cls: 'Riffles', opt: '300–1500',
-        g: '02011500', avg: 580, histFlow: 525, mx: 320, my: 290, abbr: 'VA',
+        g: '02012500', avg: 580, histFlow: 525, mx: 320, my: 290, abbr: 'VA',
         desc: "The 20-mile Jackson River tailwater below Gathright Dam (Lake Moomaw) is Virginia\u2019s premier trophy trout fishery \u2014 cold, oxygen-rich releases create wild brown and rainbow trout habitat unlike anything else in the state. The river flows through the Allegheny Highlands past historic Hot Springs and the Homestead resort. The lower section near Covington has been a contested public access fishery, with court rulings in the 2010s clarifying the public's right to fish much of the tailwater.",
         desig: 'VA Stocked Trout Water \u00b7 USACE Gathright Dam Tailwater \u00b7 Lake Moomaw',
         secs: ['Gathright Dam to Smith Bridge \u2014 5 mi, the upper trophy reach', 'Smith Bridge to Covington \u2014 10 mi, mixed wild and stocked', 'Lower Jackson \u2014 5 mi, larger water'],
@@ -2754,7 +2754,7 @@ export const STATES: StatesDB = {
       {
         id: 'cumberland', n: 'Cumberland River — Big South Fork', ww: true, wild: true, scenic: false, cave: false,
         co: 'McCreary Co., KY / Scott Co., TN', len: '123 mi', cls: 'I–IV', opt: '500–3000',
-        g: '03413200', avg: 1400, histFlow: 1280, mx: 490, my: 115, abbr: 'KY',
+        g: '03410600', avg: 1400, histFlow: 1280, mx: 490, my: 115, abbr: 'KY',
         desc: "The Big South Fork of the Cumberland cuts one of the deepest and most spectacular gorges in the eastern United States — 500-foot sandstone walls, no roads, and over 190 miles of river and creek within the Big South Fork National River and Recreation Area. The whitewater through the gorge alternates with broad still sections.",
         desig: 'Big South Fork National River and Recreation Area (NPS, 1974) · Daniel Boone National Forest',
         secs: ['Confluence to Burnt Mill Bridge — Class I–II, remote wilderness', 'Station Camp to Blue Heron — Class II–III, classic gorge float', 'Leatherwood Ford to Alum Ford — Class III–IV, most challenging'],
@@ -2771,7 +2771,7 @@ export const STATES: StatesDB = {
       {
         id: 'red_river', n: 'Red River Gorge', ww: false, wild: true, scenic: true, cave: false,
         co: 'Wolfe / Powell / Menifee Co.', len: '45 mi', cls: 'I–III', opt: '200–1500',
-        g: '03282000', avg: 680, histFlow: 620, mx: 390, my: 100, abbr: 'KY',
+        g: '03283500', avg: 680, histFlow: 620, mx: 390, my: 100, abbr: 'KY',
         desc: "The Red River Gorge is one of the most visually stunning river corridors in the eastern United States — a UNESCO-recognized natural area of sandstone arches, hemlock gorges, and ancient rock shelters carved into the Daniel Boone National Forest. World-famous rock climbing destination.",
         desig: 'Red River Gorge Geological Area · Daniel Boone National Forest · UNESCO Global Geopark candidate',
         secs: ['Sky Bridge to Nada Tunnel — Class I–II, iconic scenery', 'Nada Tunnel to Torrent — Class I–II, gorge walls', 'Lower Red to Kentucky River — Class I–III, opening valley'],
@@ -2804,7 +2804,7 @@ export const STATES: StatesDB = {
       {
         id: 'rockcastle', n: 'Rockcastle River', ww: false, wild: true, scenic: true, cave: false,
         co: 'Laurel / Rockcastle Co.', len: '50 mi', cls: 'I–III', opt: '300–1500',
-        g: '03281100', avg: 680, histFlow: 620, mx: 430, my: 113, abbr: 'KY',
+        g: '03214700', avg: 680, histFlow: 620, mx: 430, my: 113, abbr: 'KY',
         desc: "The most beautiful river in Kentucky — the Rockcastle flows through the heart of the Daniel Boone National Forest in spectacular sandstone gorge country. Class I–III rapids through dramatic palisades of Pennsylvanian sandstone, with world-class rock climbing on the canyon walls above. The river's clarity is exceptional — and it was Daniel Boone's favorite hunting ground.",
         desig: 'Wild & Scenic Study River · Daniel Boone National Forest · Kentucky Wild River',
         secs: ['Sublimity Bridge to Round Stone — Class I–II, upper gorge', 'Round Stone to Bee Rock — Class II–III, best whitewater, Clifty Wilderness', 'Bee Rock to Cumberland River — Class I–II, lower canyon'],
@@ -2820,7 +2820,7 @@ export const STATES: StatesDB = {
       {
         id: 'elkhorn', n: 'South Elkhorn Creek', ww: false, wild: false, scenic: true, cave: false,
         co: 'Fayette / Scott / Woodford Co.', len: '35 mi', cls: 'I–II', opt: '200–1000',
-        g: '03287500', avg: 420, histFlow: 385, mx: 395, my: 108, abbr: 'KY',
+        g: '03287700', avg: 420, histFlow: 385, mx: 395, my: 108, abbr: 'KY',
         desc: "The quintessential Bluegrass paddling creek — the South Elkhorn meanders 35 miles through the heart of horse country, passing thoroughbred farms, covered bridge ruins, and limestone palisades within sight of Lexington. Best Class I–II canoe and kayak stream in central Kentucky. Spring bluebells line the banks; great blue herons work every pool.",
         desig: 'Kentucky Scenic Stream · Fayette County Urban Wildlife Corridor',
         secs: ['Georgetown to Midway — Class I–II, gentle Bluegrass meander', 'Midway to Versailles — Class I, horse farm palisade country', 'Versailles to Frankfort — Class I–II, lower creek'],
@@ -2883,7 +2883,7 @@ export const STATES: StatesDB = {
       {
         id: 'cumberland_wolf_ky', n: 'Cumberland River \u2014 Wolf Creek Tailwater', ww: false, wild: false, scenic: true, cave: false,
         co: 'Russell / Wayne / Cumberland Co.', len: '75 mi', cls: 'Riffles', opt: '500–4000',
-        g: '03413200', avg: 2400, histFlow: 2160, mx: 480, my: 235, abbr: 'KY',
+        g: '03401000', avg: 2400, histFlow: 2160, mx: 480, my: 235, abbr: 'KY',
         desc: "The 75-mile Cumberland River tailwater below Wolf Creek Dam (Lake Cumberland) is the largest trophy trout fishery in the eastern United States by quality water mileage. Cold, oxygen-rich releases support a self-sustaining wild brown population alongside heavily stocked rainbows, browns, and cutthroats. The river has produced multiple state-record browns over 21 pounds. Below Hatchery Creek, the Cumberland alternates between long flat-water glides and productive riffles \u2014 best fished from a drift boat. The river is a state-designated trophy fishery with a strict slot limit on browns.",
         desig: 'USACE Tailwater \u00b7 KDFWR Trophy Trout Fishery \u00b7 Wolf Creek National Fish Hatchery',
         secs: ['Wolf Creek Dam to Hatchery Creek \u2014 5 mi, the upper trophy reach', 'Hatchery Creek to Helm\u2019s Landing \u2014 30 mi, drift boat heaven', 'Lower Cumberland \u2014 40 mi, mixed water'],
@@ -2898,7 +2898,7 @@ export const STATES: StatesDB = {
       {
         id: 'hatchery_creek_ky', n: 'Hatchery Creek', ww: false, wild: false, scenic: true, cave: false,
         co: 'Russell Co.', len: '1 mi', cls: 'Riffles', opt: '15–60',
-        g: '03413200', avg: 30, histFlow: 27, mx: 480, my: 232, abbr: 'KY',
+        g: '', avg: 30, histFlow: 27, mx: 480, my: 232, abbr: 'KY',
         desc: "Hatchery Creek is a one-of-a-kind engineered trout stream \u2014 a brand-new mile of meandering channel built in 2016 below Wolf Creek National Fish Hatchery to mimic a natural Appalachian limestone spring creek. Designed by fisheries biologists with riffles, undercut banks, log structures, and constant 55\u00b0F flows from the hatchery raceways, Hatchery Creek now supports wild brown and rainbow trout that escape into the Cumberland River below. It\u2019s become a teaching laboratory for trout-stream restoration nationwide and one of Kentucky\u2019s most popular catch-and-release trout fisheries.",
         desig: 'KDFWR Trophy Trout Fishery \u00b7 USFWS Wolf Creek NFH \u00b7 Catch-and-Release',
         secs: ['Hatchery raceway outflow to Cumberland River confluence \u2014 1 mi, engineered spring creek'],
@@ -2973,7 +2973,7 @@ export const STATES: StatesDB = {
       {
         id: 'green_nc', n: 'Green River Narrows', ww: true, wild: false, appalachian: true, piedmont: false,
         co: 'Polk Co.', len: '6 mi', cls: 'IV–V+', opt: '200–600',
-        g: '03504000', avg: 320, histFlow: 290, mx: 270, my: 112, abbr: 'NC',
+        g: '02150000', avg: 320, histFlow: 290, mx: 270, my: 112, abbr: 'NC',
         desc: "Six miles of the most technical creek kayaking in the eastern United States — the Green River Narrows has become a world-renowned destination for expert paddlers since the 1990s. A continuous sequence of Class IV–V+ drops through a narrow gorge of Piedmont granite, culminating in the famous Gorilla rapid (Class V+). The annual Green Race draws the world's fastest creek racers each November.",
         desig: 'Gorge section — Unmaintained road access only · Green River Preserve corridor',
         secs: ['Fishtop Access to Hwy 176 — Class IV–V+, the Narrows, 6 mi', 'Above Fishtop — Class III–IV, warm-up', 'Green River Lake to Narrows — Class II, upper river'],
@@ -3006,7 +3006,7 @@ export const STATES: StatesDB = {
       {
         id: 'nolichucky_nc', n: 'Nolichucky River — NC Section', ww: true, wild: false, appalachian: true, piedmont: false,
         co: 'Mitchell / Yancey Co.', len: '20 mi', cls: 'II–III', opt: '400–2000',
-        g: '03451500', avg: 920, histFlow: 840, mx: 280, my: 105, abbr: 'NC',
+        g: '03464500', avg: 920, histFlow: 840, mx: 280, my: 105, abbr: 'NC',
         desc: "The North Carolina headwaters of the Nolichucky — upstream of the famous Tennessee gorge. The NC section flows through the Black Mountains (home of Mount Mitchell, highest peak east of the Mississippi) delivering Class II–III whitewater in a dramatic Blue Ridge setting. This is the river before it enters the gorge — less intense but equally scenic.",
         desig: 'Pisgah National Forest · Blue Ridge Parkway Corridor',
         secs: ['Burnsville to Bald Creek — Class II–III, mountain valley', 'Bald Creek to Poplar — Class II, transition to gorge', 'Above the Gorge — Class II–III, approaching the TN line'],
@@ -3021,7 +3021,7 @@ export const STATES: StatesDB = {
       {
         id: 'tuckasegee', n: 'Tuckasegee River', ww: true, wild: false, appalachian: true, piedmont: false,
         co: 'Jackson Co.', len: '40 mi', cls: 'I–III', opt: '300–2000',
-        g: '03510000', avg: 1100, histFlow: 1000, mx: 255, my: 115, abbr: 'NC',
+        g: '03513000', avg: 1100, histFlow: 1000, mx: 255, my: 115, abbr: 'NC',
         desc: "The \"Tuck\" — western North Carolina\"s most accessible family and intermediate whitewater river. The Tuckasegee flows 40 miles through Jackson County past Sylva and Dillsboro, with dam-release sections providing consistent Class I–III rapids. The river is the primary paddling training ground for Western Carolina University and the gateway to the Smoky Mountains from the south.",
         desig: 'Tuckasegee River Blueway · Nantahala National Forest (headwaters)',
         secs: ['Dillsboro Dam section — Class II–III, dam-release whitewater', 'Sylva to Dillsboro — Class I–II, town float', 'Below Dillsboro to Fontana — Class I–II, lower river'],
@@ -3081,7 +3081,7 @@ export const STATES: StatesDB = {
       {
         id: 'little_tennessee', n: 'Little Tennessee River', ww: false, wild: false, appalachian: true, piedmont: false,
         co: 'Macon / Swain Co.', len: '135 mi', cls: 'Riffles', opt: '500–2500',
-        g: '03512000', avg: 1420, histFlow: 1280, mx: 284, my: 240, abbr: 'NC',
+        g: '03503000', avg: 1420, histFlow: 1280, mx: 284, my: 240, abbr: 'NC',
         desc: "The Little Tennessee flows from the Blue Ridge Mountains through the heart of Cherokee country past the Great Smoky Mountains and into Fontana Lake. The river is one of the finest smallmouth bass fisheries in western North Carolina, with beautiful Class I riffle water through forested valleys and historic Cherokee town sites. Below Fontana Dam, it becomes a cold tailwater trout stream.",
         desig: "Qualla Boundary · Great Smoky Mountains National Park adjacent",
         secs: ['Upper Little Tennessee — Otto to Franklin, Class I, pastoral valley', 'Middle Little Tennessee — Franklin to Fontana Lake, Class I riffles, smallmouth water', 'Below Fontana Dam — cold tailwater, wild trout reach'],
@@ -3126,7 +3126,7 @@ export const STATES: StatesDB = {
       {
         id: 'neuse', n: 'Neuse River', ww: false, wild: false, appalachian: false, piedmont: true,
         co: 'Wake / Craven Co.', len: '275 mi', cls: 'Riffles', opt: '800–3000',
-        g: '02091500', avg: 2450, histFlow: 2200, mx: 780, my: 355, abbr: 'NC',
+        g: '02087530', avg: 2450, histFlow: 2200, mx: 780, my: 355, abbr: 'NC',
         desc: "The Neuse River flows 275 miles from Falls Lake northwest of Raleigh to Pamlico Sound — the largest river entirely within North Carolina by drainage area. The Neuse supports a popular paddling scene around Raleigh, solid bass and catfish fishing throughout, and unique lower-river cypress swamps and tidal reaches. The Neuse River Trail is a 33-mile paved greenway along the river's Wake County reach.",
         desig: 'NC Paddle Trail · Neuse River Trail Greenway',
         secs: ['Falls Lake to Raleigh — Class I, greenway corridor', 'Raleigh to Smithfield — Class I riffles, smallmouth and largemouth', 'Lower Neuse — Kinston to Pamlico Sound, tidal blackwater'],
@@ -3156,7 +3156,7 @@ export const STATES: StatesDB = {
       {
         id: 'hazel_creek_nc', n: 'Hazel Creek', ww: false, wild: true, appalachian: true, piedmont: false,
         co: 'Swain Co.', len: '20 mi', cls: 'Riffles', opt: '40–250',
-        g: '03512000', avg: 110, histFlow: 99, mx: 770, my: 365, abbr: 'NC',
+        g: '03514000', avg: 110, histFlow: 99, mx: 770, my: 365, abbr: 'NC',
         desc: "Hazel Creek is the legendary backcountry trout stream of Great Smoky Mountains National Park \u2014 20 miles of wild rainbow and Southern Appalachian brook trout water draining the Smokies\u2019 highest ridges into Fontana Lake. Accessible only by boat shuttle across Fontana or a 30-mile backpack, Hazel Creek is the most remote brook trout fishery in the eastern United States. The creek runs through the abandoned community of Proctor and over a dozen historic Appalachian homesites, with backcountry campsites along the entire length.",
         desig: 'Great Smoky Mountains National Park \u00b7 Backcountry Wilderness Trout Stream',
         secs: ['Upper Hazel \u2014 brook trout headwaters near Welch Bald, hike-in only', 'Middle Hazel \u2014 wild rainbows through Proctor and the heritage logging corridor', 'Lower Hazel \u2014 Fontana Lake confluence, larger wild rainbows'],
@@ -3171,7 +3171,7 @@ export const STATES: StatesDB = {
       {
         id: 'wilson_creek_nc', n: 'Wilson Creek', ww: true, wild: true, appalachian: true, piedmont: false,
         co: 'Caldwell Co.', len: '23 mi', cls: 'II–IV', opt: '100–500',
-        g: '02141500', avg: 180, histFlow: 162, mx: 730, my: 365, abbr: 'NC',
+        g: '02140510', avg: 180, histFlow: 162, mx: 730, my: 365, abbr: 'NC',
         desc: "Wilson Creek drops out of the Pisgah National Forest down a steep gorge in the Brushy Mountains, delivering a unique combination of National Wild & Scenic River whitewater (Class II\u2013IV) and excellent wild trout fishing. The upper creek is catch-and-release flies-only water with wild rainbows and a small brook trout population, while the lower gorge attracts whitewater paddlers. The Wilson Creek Visitor Center is the gateway to one of the most underrated outdoor destinations in western North Carolina.",
         desig: 'National Wild & Scenic River (2000) \u00b7 Pisgah National Forest \u00b7 NC Heritage Trout Water',
         secs: ['Upper Wilson \u2014 catch-and-release wild trout, fly fishing only', 'Wilson Creek Gorge \u2014 Class II\u2013IV whitewater, USFS managed', 'Lower Wilson \u2014 Class II, family floating below the gorge'],
@@ -3186,7 +3186,7 @@ export const STATES: StatesDB = {
       {
         id: 'south_toe_nc', n: 'South Toe River', ww: false, wild: false, appalachian: true, piedmont: false,
         co: 'Yancey Co.', len: '24 mi', cls: 'Riffles', opt: '60–350',
-        g: '02153500', avg: 170, histFlow: 153, mx: 720, my: 360, abbr: 'NC',
+        g: '03463300', avg: 170, histFlow: 153, mx: 720, my: 360, abbr: 'NC',
         desc: "The South Toe River drains the eastern slope of Mount Mitchell \u2014 the highest peak east of the Mississippi \u2014 flowing 24 miles through Pisgah National Forest past Black Mountain Campground. The cold, fast water supports one of the most productive wild rainbow and stocked trout fisheries in western North Carolina. The river is a Hatchery Supported Trout Water from the headwaters to Newdale, then a Wild Trout Water below, and is one of the most-fished streams in the Pisgah Ranger District.",
         desig: 'Pisgah National Forest \u00b7 NC Hatchery Supported Trout Water (upper) \u00b7 NC Wild Trout Water (lower)',
         secs: ['Upper South Toe \u2014 Mt. Mitchell headwaters, Class I, hatchery-supported', 'Black Mountain Campground reach \u2014 most-fished section', 'Lower South Toe \u2014 wild trout water below Newdale'],
@@ -3275,7 +3275,7 @@ export const STATES: StatesDB = {
       {
         id: 'black_az', n: 'Black River', ww: false, wild: false, desert: false, canyon: false,
         co: 'Apache Co.', len: '70 mi', cls: 'I–II', opt: '200–1500',
-        g: '09489000', avg: 450, histFlow: 400, mx: 310, my: 95, abbr: 'AZ',
+        g: '09490500', avg: 450, histFlow: 400, mx: 310, my: 95, abbr: 'AZ',
         desc: "The Black River drains the White Mountains of eastern Arizona, flowing through ponderosa pine forests and the Fort Apache Reservation. One of the few mountain rivers in Arizona, it offers cool-water paddling and excellent native trout fishing far from the desert heat.",
         desig: 'Fort Apache Reservation (permit required)',
         secs: ['Upper Black River — Class I–II, mountain meadows', 'Reservation reach — Class I–II, forested canyon', 'Lower Black to Salt River — Class I, desert transition'],
@@ -3688,7 +3688,7 @@ export const STATES: StatesDB = {
       {
         id: 'san_antonio', n: 'San Antonio Creek', ww: false, wild: false, desert: false, canyon: false,
         co: 'Sandoval Co.', len: '20 mi', cls: 'I', opt: '30–200',
-        g: '08313350', avg: 45, histFlow: 40, mx: 255, my: 360, abbr: 'NM',
+        g: '', avg: 45, histFlow: 40, mx: 255, my: 360, abbr: 'NM',
         desc: "San Antonio Creek flows through the Valles Caldera National Preserve, a volcanic caldera formed 1.25 million years ago. The spring-fed creek meanders through vast mountain meadows inside the caldera, offering gentle paddling in one of the most unique geological settings in North America.",
         desig: 'Valles Caldera National Preserve',
         secs: ['Valles Caldera meadows — Class I, volcanic meadow creek', 'Below caldera to Jemez River — Class I, forested canyon'],
@@ -3759,7 +3759,7 @@ export const STATES: StatesDB = {
       {
         id: 'allagash', n: 'Allagash Wilderness Waterway', ww: false, wild: true, remote: true, fishing: true,
         co: 'Aroostook / Piscataquis Co.', len: '92 mi', cls: 'I–II', opt: '300–1200',
-        g: '01011500', avg: 620, histFlow: 560, mx: 890, my: 100, abbr: 'ME',
+        g: '01011100', avg: 620, histFlow: 560, mx: 890, my: 100, abbr: 'ME',
         desc: "First state-designated Wild and Scenic waterway in America (1966) — a 92-mile wilderness canoe route through Maine's North Woods. Remote lakes, boreal forest, moose, and brook trout define this iconic multi-day paddling expedition. The route travels from Telos Lake through Churchill Dam and on to Allagash Village, mixing flatwater portages with Class I–II river sections.",
         desig: 'Allagash Wilderness Waterway (Maine), National Wild & Scenic River',
         secs: ['Telos Lake to Chamberlain Lake — 15 mi, lake paddling and portages', 'Churchill Dam to Umsaskis Lake — 30 mi, river and lake sections', 'Long Lake to Allagash Village — 47 mi, river paddling with Class I–II rapids'],
@@ -3791,7 +3791,7 @@ export const STATES: StatesDB = {
       {
         id: 'dead_river', n: 'Dead River', ww: true, wild: false, remote: true, fishing: false,
         co: 'Somerset / Franklin Co.', len: '16 mi', cls: 'III–IV', opt: '2000–6000',
-        g: '01047000', avg: 2400, histFlow: 2160, mx: 890, my: 100, abbr: 'ME',
+        g: '01045000', avg: 2400, histFlow: 2160, mx: 890, my: 100, abbr: 'ME',
         desc: "Dam-release whitewater classic — Flagstaff Lake releases transform the Dead River into 16 miles of continuous Class III–IV big water through the Northern Forest. One of New England's premier scheduled-release whitewater runs, right next to the Kennebec.",
         desig: 'Maine Rivers · Northern Forest Corridor',
         secs: ['Grand Falls to Spencer Stream — 8 mi, Class III–IV, the upper gorge', 'Spencer Stream to The Forks — 8 mi, Class III, big-water runout'],
@@ -3821,7 +3821,7 @@ export const STATES: StatesDB = {
       {
         id: 'rapid_me', n: 'Rapid River', ww: true, wild: false, remote: true, fishing: true,
         co: 'Oxford Co.', len: '3 mi', cls: 'II–III', opt: '400–1500',
-        g: '01052500', avg: 620, histFlow: 558, mx: 890, my: 100, abbr: 'ME',
+        g: '', avg: 620, histFlow: 558, mx: 890, my: 100, abbr: 'ME',
         desc: "Three miles of legendary catch-and-release water between Lower Richardson Lake and Umbagog Lake in Maine's western mountains. The Rapid River is one of New England's most famous landlocked salmon and brook trout fisheries — cold, powerful, and stunningly clear. The short but intense Class II–III run through the Rangeley Lakes region delivers big water and bigger fish in a remote North Woods setting.",
         desig: 'Rangeley Lakes Region · Catch-and-Release Fishery',
         secs: ['Middle Dam to Cedar Stump — 1.5 mi, Class II–III, main rapids', 'Cedar Stump to Umbagog Lake — 1.5 mi, Class II, pool-and-drop'],
@@ -3851,7 +3851,7 @@ export const STATES: StatesDB = {
       {
         id: 'seboeis', n: 'Seboeis River', ww: true, wild: false, remote: true, fishing: true,
         co: 'Penobscot Co.', len: '30 mi', cls: 'II–III', opt: '300–1500',
-        g: '01030000', avg: 420, histFlow: 378, mx: 890, my: 100, abbr: 'ME',
+        g: '01029200', avg: 420, histFlow: 378, mx: 890, my: 100, abbr: 'ME',
         desc: "A remote North Woods river flowing 30 miles through the vast commercial timberlands of Penobscot County to the East Branch of the Penobscot. The Seboeis delivers continuous Class II–III whitewater through an uninhabited boreal forest landscape with wild brook trout in every pool. Access is via private logging roads — this is deep Maine backcountry, requiring self-sufficiency and a sense of adventure.",
         desig: 'North Maine Woods · Penobscot River Watershed',
         secs: ['Upper Seboeis — 10 mi, Class II–III, boreal forest headwaters', 'Middle Seboeis — 10 mi, Class II, continuous riffles', 'Lower Seboeis to East Branch — 10 mi, Class II, wider approach'],
@@ -4057,7 +4057,7 @@ export const STATES: StatesDB = {
       {
         id: 'willowemoc_ny', n: 'Willowemoc Creek', ww: false, wild: false, scenic: true, adirondack: false,
         co: 'Sullivan Co.', len: '27 mi', cls: 'Riffles', opt: '80–400',
-        g: '01420000', avg: 200, histFlow: 180, mx: 530, my: 195, abbr: 'NY',
+        g: '01419500', avg: 200, histFlow: 180, mx: 530, my: 195, abbr: 'NY',
         desc: "The Willowemoc is the sister stream to the Beaverkill and the other half of the cradle of American fly fishing. The two streams meet at Junction Pool in Roscoe \u2014 \u2018Trout Town USA\u2019 \u2014 the most famous pool in the country. The Willowemoc flows 27 miles down the Catskill slopes through Livingston Manor, past the Catskill Fly Fishing Center and Museum, with classic pool-riffle-run habitat for wild brown trout. Theodore Gordon, the father of American dry fly fishing, fished here regularly in the late 1800s.",
         desig: 'Catskill Fly Fishing Heritage \u00b7 NY State Scenic River \u00b7 Catskill Park',
         secs: ['Upper Willowemoc \u2014 DeBruce to Livingston Manor, intimate water', 'Middle Willowemoc \u2014 Livingston Manor to Roscoe, classic pool-riffle-run', 'Junction Pool \u2014 where the Willowemoc joins the Beaverkill, the most famous pool in American fly fishing'],
@@ -4128,7 +4128,7 @@ export const STATES: StatesDB = {
       {
         id: 'toccoa', n: 'Toccoa River', ww: true, wild: false, piedmont: false, appalachian: true,
         co: 'Fannin Co.', len: '30 mi', cls: 'I–II', opt: '300–1200',
-        g: '02392000', avg: 680, histFlow: 620, mx: 720, my: 390, abbr: 'GA',
+        g: '03559000', avg: 680, histFlow: 620, mx: 720, my: 390, abbr: 'GA',
         desc: "Blue Ridge mountains gem — the Toccoa River flows through Chattahoochee National Forest as a TVA tailwater from Blue Ridge Dam. Excellent trout fishing in cold, clear water with Class I–III rapids through Appalachian forest.",
         desig: 'Chattahoochee National Forest, Georgia Scenic River',
         secs: ['Blue Ridge Dam tailwater — Class I–II, premier trout water', 'Deep Hole to Shallowford Bridge — Class II–III, best whitewater', 'Shallowford Bridge to McCaysville — Class I–II, scenic float'],
@@ -4173,7 +4173,7 @@ export const STATES: StatesDB = {
       {
         id: 'amicalola', n: 'Amicalola Creek', ww: true, wild: false, piedmont: false, appalachian: true,
         co: 'Dawson Co.', len: '15 mi', cls: 'III–IV', opt: '200–1000',
-        g: '02334578', avg: 180, histFlow: 162, mx: 580, my: 340, abbr: 'GA',
+        g: '02390000', avg: 180, histFlow: 162, mx: 580, my: 340, abbr: 'GA',
         desc: "A steep creek run dropping through the north Georgia mountains near Amicalola Falls State Park — home to the tallest cascading waterfall east of the Mississippi at 729 feet. Amicalola Creek delivers technical Class III–IV whitewater through a forested mountain gorge, with continuous gradient, tight moves, and a wilderness setting minutes from the Appalachian Trail's southern approach.",
         desig: 'Amicalola Falls State Park · Appalachian Trail Approach',
         secs: ['Above Amicalola Falls — Class III, mountain headwaters', 'Below falls to Dawsonville — 10 mi, Class III–IV, steep creek run', 'Lower Amicalola — 5 mi, Class II, runout to Etowah confluence'],
@@ -4333,7 +4333,7 @@ export const STATES: StatesDB = {
       {
         id: 'cloquet', n: 'Cloquet River', ww: false, wild: false, bwca: false, fishing: true,
         co: 'St. Louis / Carlton Co.', len: '100 mi', cls: 'I–II', opt: '300–2000',
-        g: '04024098', avg: 820, histFlow: 738, mx: 350, my: 120, abbr: 'MN',
+        g: '04023000', avg: 820, histFlow: 738, mx: 350, my: 120, abbr: 'MN',
         desc: "A 100-mile wilderness paddling corridor on the edge of the Boundary Waters — the Cloquet River flows through the boreal forests of northern Minnesota from its headwaters near the BWCAW to the St. Louis River at Cloquet. Remote Class I–II paddling through dense spruce-fir forest with moose, wolves, and loons. One of Minnesota's finest multi-day canoe trips outside the Boundary Waters proper.",
         desig: 'Superior National Forest · Cloquet Valley State Forest',
         secs: ['Island Lake to Indian Lake — 30 mi, upper wilderness, portages', 'Indian Lake to Alden Lake — 35 mi, Class I–II, best paddling', 'Alden Lake to Cloquet — 35 mi, wider, approaching town'],
@@ -4418,7 +4418,7 @@ export const STATES: StatesDB = {
       {
         id: 'namekagon', n: 'Namekagon River', ww: false, wild: true, northwoods: true, fishing: true,
         co: 'Bayfield / Sawyer Co.', len: '98 mi', cls: 'I–II', opt: '200–800',
-        g: '05333500', avg: 480, histFlow: 432, mx: 560, my: 110, abbr: 'WI',
+        g: '05332000', avg: 480, histFlow: 432, mx: 560, my: 110, abbr: 'WI',
         desc: "The Namekagon is the northern arm of the St. Croix National Scenic Riverway — 98 miles of pristine northwoods paddling from Namekagon Lake near Cable to its confluence with the St. Croix at Riverside. Crystal-clear water over sand and gravel, Class I–II riffles, and virtually no development make this one of the finest multi-day canoe trips in the Midwest.",
         desig: 'St. Croix National Scenic Riverway (NPS) · National Wild & Scenic River',
         secs: ['Namekagon Lake to Hayward — 30 mi, intimate headwaters', 'Hayward to Trego — 35 mi, classic northwoods corridor', 'Trego to Riverside — 33 mi, wider river, excellent camping'],
@@ -4448,7 +4448,7 @@ export const STATES: StatesDB = {
       {
         id: 'flambeau', n: 'Flambeau River', ww: true, wild: true, northwoods: true, fishing: true,
         co: 'Price / Rusk Co.', len: '60 mi', cls: 'I–III', opt: '600–3,000',
-        g: '05357335', avg: 1600, histFlow: 1440, mx: 580, my: 110, abbr: 'WI',
+        g: '05359500', avg: 1600, histFlow: 1440, mx: 580, my: 110, abbr: 'WI',
         desc: "The North Fork Flambeau is Wisconsin's premier wilderness whitewater river — 60 miles of continuous Class I–III rapids through old-growth hemlock forests and remote northwoods. The Flambeau River State Forest protects the corridor, and multi-day trips offer a true backcountry experience with riverside campsites and minimal development.",
         desig: "Flambeau River State Forest · Wisconsin Outstanding Resource Water",
         secs: ["Nine Mile Creek to Oxbo — 15 mi, Class II–III, best whitewater", "Oxbo to Cedar Rapids — 20 mi, Class I–II, scenic forest run", "Upper North Fork — Park Falls to Nine Mile, 15 mi, Class I warmup"],
@@ -4494,7 +4494,7 @@ export const STATES: StatesDB = {
       {
         id: 'pine_wi', n: 'Pine River', ww: false, wild: false, northwoods: true, fishing: true,
         co: 'Florence / Forest Co.', len: '50 mi', cls: 'I–II', opt: '200–1000',
-        g: '04074950', avg: 320, histFlow: 288, mx: 350, my: 180, abbr: 'WI',
+        g: '04064000', avg: 320, histFlow: 288, mx: 350, my: 180, abbr: 'WI',
         desc: "A quiet Northwoods stream flowing through the Chequamegon-Nicolet National Forest in northeast Wisconsin. The Pine River offers intimate Class I–II paddling through old-growth pine and hemlock forests, with cold spring-fed water supporting wild brook trout. One of the most remote and least-visited paddling rivers in Wisconsin — solitude guaranteed.",
         desig: 'Chequamegon-Nicolet National Forest',
         secs: ['Chipmunk Rapids to Pine River — 15 mi, national forest headwaters', 'Pine River to Goodman — 20 mi, Class I–II, best paddling', 'Goodman to Menominee River — 15 mi, wider, approaching confluence'],
@@ -4509,7 +4509,7 @@ export const STATES: StatesDB = {
       {
         id: 'wisconsin', n: 'Wisconsin River', ww: false, wild: false, northwoods: false, fishing: true,
         co: 'Marathon / Portage Co.', len: '430 mi', cls: 'I–II', opt: '2000–15000',
-        g: '05401050', avg: 8500, histFlow: 7650, mx: 350, my: 180, abbr: 'WI',
+        g: '05400800', avg: 8500, histFlow: 7650, mx: 350, my: 180, abbr: 'WI',
         desc: "Wisconsin's longest river — 430 miles from Lac Vieux Desert on the Michigan border to the Mississippi River at Prairie du Chien. The Wisconsin Dells section carved dramatic sandstone canyons during glacial lake outburst floods 15,000 years ago. Below the Dells, the lower Wisconsin flows free for 92 miles as one of the longest undammed stretches in the Midwest — a designated State Riverway with sandbars, eagles, and classic canoe camping.",
         desig: 'Lower Wisconsin State Riverway · Wisconsin Dells',
         secs: ['Wisconsin Dells — 5 mi, sandstone canyon, Class I–II', 'Sauk City to Spring Green — 30 mi, Lower Wisconsin Riverway, sandbars', 'Spring Green to Muscoda — 30 mi, wider, island camping', 'Muscoda to Prairie du Chien — 32 mi, Mississippi confluence'],
@@ -4989,7 +4989,7 @@ export const STATES: StatesDB = {
       {
         id: 'bogue_chitto', n: 'Bogue Chitto River', scenic: true, swamp: false, bayou: false, fishing: true,
         co: 'Washington Parish', len: '100 mi', cls: 'I–II', opt: '300–2000',
-        g: '07375000', avg: 1200, histFlow: 1080, mx: 540, my: 430, abbr: 'LA',
+        g: '07375085', avg: 1200, histFlow: 1080, mx: 540, my: 430, abbr: 'LA',
         desc: "Louisiana's best canoe and kayak river — 100 miles of sandy-bottomed blackwater flowing through piney woods and hardwood bottoms from Mississippi to Lake Pontchartrain. White sandbars make perfect lunch stops and primitive campsites. The middle reach from Warnerton to Franklinton has the best sandbars and paddling, with the lower river protected by the Bogue Chitto National Wildlife Refuge.",
         desig: 'Bogue Chitto National Wildlife Refuge (lower reach)',
         secs: ['Upper — Tylertown MS to Warnerton, intimate headwaters', 'Middle — Warnerton to Franklinton, best sandbars and paddling', 'Lower — Franklinton to NWR, wider and slower'],
@@ -5004,7 +5004,7 @@ export const STATES: StatesDB = {
       {
         id: 'whiskey_chitto', n: 'Whiskey Chitto Creek', scenic: true, swamp: false, bayou: false, fishing: true,
         co: 'Allen / Beauregard Parish', len: '60 mi', cls: 'I–II', opt: '200–1200',
-        g: '08013500', avg: 480, histFlow: 432, mx: 540, my: 430, abbr: 'LA',
+        g: '08013720', avg: 480, histFlow: 432, mx: 540, my: 430, abbr: 'LA',
         desc: "Pristine piney woods paddling through the heart of southwest Louisiana. Whiskey Chitto winds through longleaf pine forests and hardwood bottoms with white sand beaches, gentle riffles, and some of the clearest water in the state. A Louisiana Natural & Scenic River, its 60-mile run narrows on the upper reach from Oakdale to Mittie and widens with sandbars on the lower creek.",
         desig: 'Louisiana Natural and Scenic River',
         secs: ['Upper — Oakdale to Mittie, narrow and intimate', 'Lower — Mittie to confluence, wider with sandbars'],
@@ -5019,7 +5019,7 @@ export const STATES: StatesDB = {
       {
         id: 'tchefuncte', n: 'Tchefuncte River', scenic: true, swamp: false, bayou: false, fishing: true,
         co: 'St. Tammany Parish', len: '70 mi', cls: 'I', opt: '100–600',
-        g: '07375330', avg: 280, histFlow: 252, mx: 555, my: 440, abbr: 'LA',
+        g: '07375000', avg: 280, histFlow: 252, mx: 555, my: 440, abbr: 'LA',
         desc: "The Northshore's favorite family paddling river — 70 miles of gentle blackwater winding through piney woods and cypress-tupelo swamps from Franklinton to Lake Pontchartrain. Sandy bottoms, tea-colored water, and easy access make the Tchefuncte one of Louisiana's most beginner-friendly paddle destinations.",
         desig: 'Louisiana Natural and Scenic River',
         secs: ['Upper — Franklinton to Covington, 40 mi, piney woods', 'Lower — Covington to Lake Pontchartrain, 30 mi, cypress swamp'],
@@ -5064,7 +5064,7 @@ export const STATES: StatesDB = {
       {
         id: 'lacombe', n: 'Bayou Lacombe', scenic: true, swamp: true, bayou: true, fishing: true,
         co: 'St. Tammany Parish', len: '30 mi', cls: 'I', opt: '50–300',
-        g: '07375050', avg: 120, histFlow: 108, mx: 555, my: 445, abbr: 'LA',
+        g: '', avg: 120, histFlow: 108, mx: 555, my: 445, abbr: 'LA',
         desc: "A narrow, intimate cypress bayou draining into Lake Pontchartrain — Bayou Lacombe offers quintessential Louisiana paddling through ancient bald cypress and water tupelo forests. The short length and easy access make it ideal for half-day paddles on the Northshore. The upper 15 miles form a cypress tunnel, with the lower half traversing the Big Branch Marsh National Wildlife Refuge.",
         desig: 'Big Branch Marsh National Wildlife Refuge (lower reach)',
         secs: ['Upper — Lacombe to Highway 190, 15 mi, cypress tunnel', 'Lower — Highway 190 to Lake Pontchartrain, 15 mi, NWR marshes'],
@@ -5103,7 +5103,7 @@ export const STATES: StatesDB = {
       {
         id: 'black_creek_ms', n: 'Black Creek', scenic: true, bluff: false, delta: false, fishing: true,
         co: 'Forrest / Lamar Co.', len: '40 mi', cls: 'I–II', opt: '200–1200',
-        g: '02479300', avg: 580, histFlow: 522, mx: 555, my: 395, abbr: 'MS',
+        g: '02480200', avg: 580, histFlow: 522, mx: 555, my: 395, abbr: 'MS',
         desc: "Mississippi's only National Wild and Scenic River — 40 miles of tea-colored blackwater winding through De Soto National Forest. Towering longleaf pines, white sand beaches, and a wilderness corridor that feels a century removed from modern Mississippi.",
         desig: 'National Wild & Scenic River (1986) · De Soto National Forest',
         secs: ['Fairley Bridge to Moody Landing — 21 mi, designated Wild section', 'Moody Landing to Big Creek confluence — 12 mi, Scenic section', 'Lower reach to Pascagoula — wider flatwater'],
@@ -5119,7 +5119,7 @@ export const STATES: StatesDB = {
       {
         id: 'okatoma', n: 'Okatoma Creek', scenic: true, bluff: false, delta: false, fishing: true,
         co: 'Covington / Jones Co.', len: '20 mi', cls: 'I–II', opt: '200–1000',
-        g: '02472500', avg: 440, histFlow: 396, mx: 555, my: 395, abbr: 'MS',
+        g: '02472800', avg: 440, histFlow: 396, mx: 555, my: 395, abbr: 'MS',
         desc: "Mississippi's most popular canoe stream — 20 miles of gentle Class I–II rapids, white sandbars, and piney woods through the heart of south Mississippi. Okatoma means 'red water people' in Choctaw. Designated a Mississippi Scenic Stream, the upper 10 miles from Seminary to Sanford holds the best rapids and is the classic day-trip run.",
         desig: 'Mississippi Scenic Stream',
         secs: ['Seminary to Sanford — 10 mi, upper run with best rapids', 'Sanford to Highway 29 — 10 mi, wider and mellower'],
@@ -5134,7 +5134,7 @@ export const STATES: StatesDB = {
       {
         id: 'wolf_ms', n: 'Wolf River', scenic: true, bluff: false, delta: false, fishing: false,
         co: 'Stone / Harrison Co.', len: '35 mi', cls: 'I', opt: '100–800',
-        g: '02481000', avg: 380, histFlow: 342, mx: 555, my: 395, abbr: 'MS',
+        g: '02481500', avg: 380, histFlow: 342, mx: 555, my: 395, abbr: 'MS',
         desc: "A pristine Gulf Coast blackwater stream flowing through some of the most undisturbed longleaf pine savanna remaining in the Southeast. The Wolf River's tannic waters, white sand bottom, and cathedral-like canopy make it one of Mississippi's most beautiful paddling experiences. Designated a Mississippi Scenic Stream, the 35-mile river is narrowest and wildest from McHenry to Landon before widening on the coastal plain.",
         desig: 'Mississippi Scenic Stream · Wolf River Conservation District',
         secs: ['Upper — McHenry to Landon, narrow and wild', 'Lower — Landon to Lyman, wider coastal plain'],
@@ -5149,7 +5149,7 @@ export const STATES: StatesDB = {
       {
         id: 'bowie', n: 'Bowie Creek', scenic: true, bluff: false, delta: false, fishing: true,
         co: 'Forrest Co.', len: '30 mi', cls: 'I–II', opt: '100–600',
-        g: '02473500', avg: 320, histFlow: 288, mx: 555, my: 395, abbr: 'MS',
+        g: '', avg: 320, histFlow: 288, mx: 555, my: 395, abbr: 'MS',
         desc: "A small but stunning Pine Belt blackwater creek — Bowie Creek winds 30 miles through De Soto National Forest with white sand beaches, tea-colored water, and longleaf pine uplands. One of Mississippi's most scenic short paddles and a hidden gem of the southern piney woods.",
         desig: 'De Soto National Forest',
         secs: ['Upper — Seminary area to Hattiesburg, 15 mi, narrow and wild', 'Lower — Hattiesburg to Leaf River confluence, 15 mi, wider'],
@@ -5194,7 +5194,7 @@ export const STATES: StatesDB = {
       {
         id: 'chunky', n: 'Chunky River', scenic: true, bluff: false, delta: false, fishing: true,
         co: 'Newton Co.', len: '40 mi', cls: 'I–II', opt: '100–800',
-        g: '02475000', avg: 380, histFlow: 342, mx: 560, my: 385, abbr: 'MS',
+        g: '02475500', avg: 380, histFlow: 342, mx: 560, my: 385, abbr: 'MS',
         desc: "Home to Dunn's Falls — one of the only true waterfalls in Mississippi — the Chunky River is a 40-mile gem winding through Newton County's piney woods. Class I-II riffles, rocky shoals, and the historic waterfall make the Chunky one of the most unique paddling experiences in the state.",
         desig: "Dunn's Falls Water Park · Newton County",
         secs: ["Upper — Chunky to Dunn's Falls, 15 mi, Class I–II riffles", "Lower — Dunn's Falls to Chickasawhay confluence, 25 mi, gentler"],
@@ -5233,7 +5233,7 @@ export const STATES: StatesDB = {
       {
         id: 'little_river_al', n: 'Little River Canyon', ww: true, scenic: true, appalachian: true, coastal: false,
         co: 'DeKalb Co.', len: '22 mi', cls: 'II–IV', opt: '300–2000',
-        g: '03572110', avg: 580, histFlow: 522, mx: 645, my: 380, abbr: 'AL',
+        g: '02399200', avg: 580, histFlow: 522, mx: 645, my: 380, abbr: 'AL',
         desc: "The deepest canyon east of the Rockies — Little River flows atop Lookout Mountain before plunging into a 600-foot gorge managed by the National Park Service. One of the only rivers in North America that flows its entire length atop a mountain.",
         desig: 'Little River Canyon National Preserve (NPS)',
         secs: ['Upper Canyon — above the falls, Class II scenic float', 'Canyon Mouth to Eberhart Point — Class III–IV, gorge run', 'Lower Canyon — Chair Factory Shoals to Highway 35, Class II–III'],
@@ -5265,7 +5265,7 @@ export const STATES: StatesDB = {
       {
         id: 'locust_fork', n: 'Locust Fork of the Black Warrior', ww: true, scenic: true, appalachian: true, coastal: false,
         co: 'Blount Co.', len: '30 mi', cls: 'II–IV', opt: '500–3000',
-        g: '02450000', avg: 1400, histFlow: 1260, mx: 645, my: 380, abbr: 'AL',
+        g: '02455300', avg: 1400, histFlow: 1260, mx: 645, my: 380, abbr: 'AL',
         desc: "Birmingham's backyard whitewater — 30 miles of Class II–IV rapids through sandstone gorges in Blount County. The Locust Fork delivers genuine Appalachian whitewater just 45 minutes from downtown Birmingham, with continuous rapids and dramatic bluff scenery.",
         desig: 'Alabama Scenic River · Black Warrior Clean Water Partnership',
         secs: ['Upper — Powell Falls to Swann Bridge, Class II–III', 'Middle — Swann Bridge to Nectar, Class III–IV gorge', 'Lower — Nectar to Cleveland, Class II, mellowing out'],
@@ -5296,7 +5296,7 @@ export const STATES: StatesDB = {
       {
         id: 'mulberry_al', n: 'Mulberry Fork', ww: true, scenic: true, appalachian: true, coastal: false,
         co: 'Blount / Cullman Co.', len: '50 mi', cls: 'I–III', opt: '300–2,000',
-        g: '02449500', avg: 1100, histFlow: 990, mx: 640, my: 378, abbr: 'AL',
+        g: '02450000', avg: 1100, histFlow: 990, mx: 640, my: 378, abbr: 'AL',
         desc: "Alabama's rain-dependent whitewater surprise — when the Mulberry Fork is running, it delivers genuine Class II–III rapids through a scenic Appalachian foothill gorge in Blount and Cullman counties. Sandstone bluffs, hardwood forests, and a remote corridor make this a favorite among Birmingham-area whitewater paddlers. The upper 25 miles above Garden City hold the Class II–III technical water, gentling to Class I–II on the run to the Locust Fork confluence.",
         desig: 'Alabama Scenic River',
         secs: ['Upper — Cullman County to Garden City, 25 mi, Class II–III', 'Lower — Garden City to Locust Fork confluence, 25 mi, Class I–II'],
@@ -5341,7 +5341,7 @@ export const STATES: StatesDB = {
       {
         id: 'flint_al', n: 'Flint Creek', ww: false, scenic: true, appalachian: false, coastal: false,
         co: 'Morgan Co.', len: '25 mi', cls: 'I', opt: '50–300',
-        g: '03443000', avg: 160, histFlow: 144, mx: 638, my: 370, abbr: 'AL',
+        g: '03575100', avg: 160, histFlow: 144, mx: 638, my: 370, abbr: 'AL',
         desc: "A short, gentle family float through the Wheeler National Wildlife Refuge corridor in Morgan County. Flint Creek offers easy Class I paddling, excellent birdwatching, and access to one of the most important migratory waterfowl refuges in the Tennessee Valley.",
         desig: 'Wheeler National Wildlife Refuge',
         secs: ['Flint Creek — Hartselle to Wheeler NWR, 15 mi, gentle float', 'Lower — Wheeler NWR to Tennessee River, 10 mi, refuge corridor'],
@@ -5365,7 +5365,7 @@ export const STATES: StatesDB = {
       {
         id: 'ichetucknee', n: 'Ichetucknee River', spring: true, scenic: true, coastal: false, wildlife: true,
         co: 'Columbia / Suwannee Co.', len: '6 mi', cls: 'I', opt: '200–400',
-        g: '02322800', avg: 310, histFlow: 279, mx: 660, my: 440, abbr: 'FL',
+        g: '02322700', avg: 310, histFlow: 279, mx: 660, my: 440, abbr: 'FL',
         desc: "A crystal spring-fed jewel flowing six miles through Ichetucknee Springs State Park — nine major springs produce 233 million gallons of water daily at a constant 72 degrees. The river's gin-clear turquoise water and lush aquatic vegetation make it one of the most visually stunning paddling experiences in North America.",
         desig: 'Ichetucknee Springs State Park · National Natural Landmark',
         secs: ['Headspring to Midpoint — 3 mi, springs and clear pools', 'Midpoint to Dampier Landing — 3 mi, wider and shaded'],
@@ -5814,7 +5814,7 @@ export const STATES: StatesDB = {
       {
         id: 'elkhorn_ne', n: 'Elkhorn River', scenic: true, prairie: true, sandhills: false, fishing: true,
         co: 'Antelope / Dodge Co.', len: '290 mi', cls: 'I', opt: '300–3000',
-        g: '06799500', avg: 1400, histFlow: 1260, mx: 405, my: 200, abbr: 'NE',
+        g: '06798900', avg: 1400, histFlow: 1260, mx: 405, my: 200, abbr: 'NE',
         desc: "Northeast Nebraska's family paddling river — 290 miles from the edge of the Sandhills to the Platte. The Elkhorn is wide, gentle, and sandy-bottomed with excellent sandbars for camping and swimming. Growing popularity as a multi-day canoe trail through rolling agricultural prairie.",
         desig: 'Elkhorn River Water Trail',
         secs: ['Norfolk to West Point — 70 mi, upper Elkhorn, prairie riffles', 'West Point to Fremont — 60 mi, wider channel, sandbar camping', 'Fremont to Platte confluence — 30 mi, lower Elkhorn, bigger water'],
@@ -5901,7 +5901,7 @@ export const STATES: StatesDB = {
       {
         id: 'cheyenne_sd', n: 'Cheyenne River', scenic: false, prairie: true, badlands: true, fishing: false,
         co: 'Pennington / Meade Co.', len: '295 mi', cls: 'I', opt: '500–5000',
-        g: '06438000', avg: 1400, histFlow: 1260, mx: 395, my: 135, abbr: 'SD',
+        g: '06408650', avg: 1400, histFlow: 1260, mx: 395, my: 135, abbr: 'SD',
         desc: "A 295-mile prairie odyssey from the Black Hills to the Missouri — the Cheyenne flows through the heart of Badlands National Park and the Pine Ridge Reservation. Remote, wild, and rarely paddled, this is South Dakota's great undiscovered river expedition. Sediment-laden and braided in the Badlands, clearer below the Wall.",
         desig: 'Badlands National Park corridor · Cheyenne River Sioux Reservation',
         secs: ['Black Hills to Wall — 100 mi, Badlands corridor, silty and braided', 'Wall to confluence — 195 mi, prairie river, wider channel'],
@@ -6127,7 +6127,7 @@ export const STATES: StatesDB = {
       {
         id: 'flint_hills', n: 'Flint Hills — South Fork Cottonwood', scenic: true, prairie: true, flinthills: true, fishing: false,
         co: 'Chase / Marion Co.', len: '40 mi', cls: 'I–II', opt: '200–1500',
-        g: '07179730', avg: 480, histFlow: 432, mx: 430, my: 270, abbr: 'KS',
+        g: '', avg: 480, histFlow: 432, mx: 430, my: 270, abbr: 'KS',
         desc: "Paddling through the last remaining tallgrass prairie ecosystem on earth. The Flint Hills are the only place where the original Great Plains grassland survives intact — four million acres of unplowed bluestem prairie stretching to every horizon. Spring burns turn the hills black, then impossibly green within weeks.",
         desig: 'Tallgrass Prairie National Preserve corridor · Kansas Scenic River candidate',
         secs: ['Marion to Cottonwood Falls — 25 mi, Flint Hills canyon', 'Cottonwood Falls to Emporia — 15 mi, wider valley, prairie views'],
@@ -6158,7 +6158,7 @@ export const STATES: StatesDB = {
       {
         id: 'fall_river_ks', n: 'Fall River', scenic: true, prairie: true, flinthills: true, fishing: true,
         co: 'Greenwood Co.', len: '65 mi', cls: 'I–II', opt: '200–1200',
-        g: '07167500', avg: 380, histFlow: 342, mx: 430, my: 270, abbr: 'KS',
+        g: '07168500', avg: 380, histFlow: 342, mx: 430, my: 270, abbr: 'KS',
         desc: "A hidden gem of the Flint Hills — the Fall River winds through scenic tallgrass prairie with limestone ledges, gentle riffles, and excellent fishing below Fall River Reservoir. One of the best small-river paddling experiences in Kansas, with reliable tailwater flows and virtually no crowds.",
         desig: 'Fall River State Park · Kansas Scenic Streams candidate',
         secs: ['Below Fall River Dam — 20 mi, reliable tailwater, best paddling', 'Climax to Severy — 25 mi, prairie riffles and pools', 'Severy to Verdigris confluence — 20 mi, wider valley'],
@@ -6220,7 +6220,7 @@ export const STATES: StatesDB = {
       {
         id: 'smoky_hill', n: 'Smoky Hill River', scenic: true, prairie: true, flinthills: false, fishing: false,
         co: 'Logan / Ellsworth Co.', len: '540 mi', cls: 'I', opt: '100–1000',
-        g: '06863500', avg: 380, histFlow: 342, mx: 430, my: 270, abbr: 'KS',
+        g: '06864500', avg: 380, histFlow: 342, mx: 430, my: 270, abbr: 'KS',
         desc: "A 540-mile journey from the high plains of western Kansas to Junction City, where it joins the Republican to form the Kansas River. The Smoky Hill passes near Castle Rock and Monument Rocks — dramatic chalk formations rising from the prairie. One of the great undiscovered expedition rivers of the Plains.",
         desig: 'Castle Rock Badlands · Monument Rocks National Natural Landmark',
         secs: ['Upper Smoky Hill — Logan Co., 80 mi, chalk bluffs and badlands', 'Hays to Ellsworth — 100 mi, wider prairie river', 'Lower Smoky Hill — Ellsworth to Junction City, 120 mi, deeper channel'],
@@ -6236,7 +6236,7 @@ export const STATES: StatesDB = {
       {
         id: 'marais', n: 'Marais des Cygnes River', scenic: true, prairie: true, flinthills: false, fishing: true,
         co: 'Miami / Linn Co.', len: '150 mi', cls: 'I', opt: '200–2000',
-        g: '06914000', avg: 1100, histFlow: 990, mx: 430, my: 270, abbr: 'KS',
+        g: '06913500', avg: 1100, histFlow: 990, mx: 430, my: 270, abbr: 'KS',
         desc: "'Marsh of the Swans' — this French-named river flows through eastern Kansas, home to the Marais des Cygnes National Wildlife Refuge and rich Civil War history. The river passes through some of Kansas's best remaining bottomland hardwood forest, with excellent birding and a haunting historical landscape. The 40-mile reach from Ottawa to Osawatomie crosses Bleeding Kansas country, with the National Wildlife Refuge corridor below offering the best wildlife viewing.",
         desig: 'Marais des Cygnes National Wildlife Refuge · Marais des Cygnes Massacre Memorial',
         secs: ['Ottawa to Osawatomie — 40 mi, eastern Kansas prairie and forest', 'Osawatomie to Trading Post — 40 mi, NWR corridor, best wildlife', 'Trading Post to Missouri line — 30 mi, wider river, bottomland forest'],
@@ -6277,7 +6277,7 @@ export const STATES: StatesDB = {
       {
         id: 'mountain_fork', n: 'Lower Mountain Fork', ww: true, scenic: true, ozark: false, prairie: false,
         co: 'McCurtain Co.', len: '12 mi', cls: 'I–III', opt: '200–1500',
-        g: '07338500', avg: 480, histFlow: 432, mx: 435, my: 320, abbr: 'OK',
+        g: '07339000', avg: 480, histFlow: 432, mx: 435, my: 320, abbr: 'OK',
         desc: "Oklahoma's premier coldwater river — a 12-mile tailwater below Broken Bow Dam in Beavers Bend State Park. The dam releases maintain year-round temperatures below 60 degrees, supporting the only significant trout fishery in Oklahoma. Class I–III rapids through the Ouachita Mountains.",
         desig: 'Beavers Bend State Park · Oklahoma Blue Ribbon Trout Stream',
         secs: ['Spillway to Presbyterian Falls — 4 mi, Class II–III, best whitewater', 'Presbyterian Falls to Beavers Bend — 8 mi, Class I–II, trout water'],
@@ -6324,7 +6324,7 @@ export const STATES: StatesDB = {
       {
         id: 'glover', n: 'Glover River', ww: true, scenic: true, ozark: false, prairie: false,
         co: 'McCurtain Co.', len: '35 mi', cls: 'I–III', opt: '100–1000',
-        g: '07338750', avg: 260, histFlow: 234, mx: 435, my: 320, abbr: 'OK',
+        g: '07337900', avg: 260, histFlow: 234, mx: 435, my: 320, abbr: 'OK',
         desc: "The last free-flowing river in Oklahoma — the Glover has never been dammed, channelized, or significantly altered. This rare distinction makes it a living time capsule of what Oklahoma's rivers looked like before European settlement. Class I–III whitewater through the Ouachita Mountains, with exceptional biodiversity.",
         desig: 'Oklahoma Scenic River candidate · Last free-flowing river in Oklahoma',
         secs: ['Upper Glover — 15 mi, Class II–III, forested mountain stream', 'Lower Glover — 20 mi, Class I–II, wider valley to Mountain Fork confluence'],
@@ -6355,7 +6355,7 @@ export const STATES: StatesDB = {
       {
         id: 'caney', n: 'Caney River', ww: false, scenic: true, ozark: false, prairie: true,
         co: 'Washington Co.', len: '150 mi', cls: 'I', opt: '200–1500',
-        g: '07177500', avg: 580, histFlow: 522, mx: 435, my: 320, abbr: 'OK',
+        g: '07174500', avg: 580, histFlow: 522, mx: 435, my: 320, abbr: 'OK',
         desc: "Flowing through the Tallgrass Prairie Preserve — the largest protected remnant of tallgrass prairie in the world, with 2,500 free-ranging bison. The Caney River offers a unique chance to paddle through a landscape that once covered 170 million acres of North America, now reduced to less than 4%.",
         desig: 'Tallgrass Prairie Preserve corridor · Osage County',
         secs: ['Tallgrass Prairie Preserve section — 30 mi, bison country, tallgrass views', 'Bartlesville to Ramona — 40 mi, prairie transition, wider channel'],
@@ -6581,7 +6581,7 @@ export const STATES: StatesDB = {
       {
         id: 'sabine', n: 'Sabine River', ww: false, scenic: true, desert: false, spring: false,
         co: 'Hunt / Van Zandt Co.', len: '510 mi', cls: 'Riffles', opt: '500–3000',
-        g: '08019500', avg: 1800, histFlow: 1620, mx: 460, my: 390, abbr: 'TX',
+        g: '08022040', avg: 1800, histFlow: 1620, mx: 460, my: 390, abbr: 'TX',
         desc: "The Sabine River forms much of the Texas-Louisiana border and flows 510 miles from the Blackland Prairie to the Gulf of Mexico. The upper Sabine through Hunt and Van Zandt counties offers easy paddling through bottomland hardwood forests, while the lower river passes through the vast Sabine National Wildlife Refuge and cypress-tupelo swamps near the coast.",
         desig: 'Texas Paddling Trail · Sabine National Wildlife Refuge',
         secs: ['Greenville to Emory — 30 mi, upper prairie river, easy float', 'Big Sandy to Logansport — 40 mi, East Texas piney woods', 'Orange to Gulf — 20 mi, coastal marsh and cypress swamp'],
@@ -6735,7 +6735,7 @@ export const STATES: StatesDB = {
       {
         id: 'mohican', n: 'Mohican River', ww: true, scenic: true, flat: false,
         co: 'Ashland / Knox Co.', len: '25 mi', cls: 'I–III', opt: '300–1500',
-        g: '03139000', avg: 680, histFlow: 610, mx: 680, my: 230, abbr: 'OH',
+        g: '03136000', avg: 680, histFlow: 610, mx: 680, my: 230, abbr: 'OH',
         desc: "Widely regarded as the best canoe river in Ohio. The Mohican cuts through sandstone gorges in Mohican State Park, delivering Class I–III rapids through old-growth hemlock forest. The Clear Fork and Black Fork merge to form the Mohican proper — all three branches offer excellent paddling.",
         desig: 'Mohican State Park · Ohio Scenic River · Mohican Memorial State Forest',
         secs: ['Clear Fork Gorge — Class II–III, hemlock canyon', 'Mohican proper — Class I–II, sandstone bluffs'],
@@ -6825,7 +6825,7 @@ export const STATES: StatesDB = {
       {
         id: 'tuscarawas', n: 'Tuscarawas River', ww: false, scenic: false, flat: true,
         co: 'Tuscarawas / Coshocton Co.', len: '130 mi', cls: 'I', opt: '500–3000',
-        g: '03117500', avg: 1600, histFlow: 1440, mx: 680, my: 230, abbr: 'OH',
+        g: '03115900', avg: 1600, histFlow: 1440, mx: 680, my: 230, abbr: 'OH',
         desc: "A 130-mile journey through Ohio's canal era history. The Tuscarawas River parallels the Ohio & Erie Canal towpath through the rolling hills of east-central Ohio, passing the restored German Separatist village of Zoar, Civil War-era towns, and the remnants of America's canal-building age. Gentle Class I flatwater paddling with deep historical resonance.",
         desig: 'Ohio & Erie Canalway National Heritage Area · Zoar Village NHS',
         secs: ['Bolivar to Zoar — 15 mi, canal history corridor', 'Zoar to Dover — 20 mi, scenic valley', 'Dover to Coshocton — 50 mi, wider river to Muskingum confluence'],
@@ -6840,7 +6840,7 @@ export const STATES: StatesDB = {
       {
         id: 'kokosing', n: 'Kokosing River', ww: false, scenic: true, flat: false,
         co: 'Knox Co.', len: '52 mi', cls: 'Riffles', opt: '100–400',
-        g: '03138500', avg: 220, histFlow: 200, mx: 680, my: 240, abbr: 'OH',
+        g: '03136500', avg: 220, histFlow: 200, mx: 680, my: 240, abbr: 'OH',
         desc: "A scenic gem flowing through the rolling hills of Knox County and the charming town of Mount Vernon. The Kokosing is one of Ohio's healthiest smallmouth bass streams — clear water over gravel riffles, wooded banks, and a pastoral landscape that feels far from any city. The Kokosing Gap Trail parallels the river for easy bike-and-paddle trips.",
         desig: 'Ohio State Scenic River · Kokosing Gap Trail',
         secs: ['Fredericktown to Mount Vernon — 15 mi, riffles and pools, best scenery', 'Mount Vernon to Millwood — 20 mi, scenic valley, good fishing', 'Millwood to Mohican confluence — 17 mi, wider water, wooded corridor'],
@@ -6870,7 +6870,7 @@ export const STATES: StatesDB = {
       {
         id: 'scioto', n: 'Scioto River', ww: false, scenic: false, flat: true,
         co: 'Franklin / Pickaway Co.', len: '231 mi', cls: 'Riffles', opt: '500–3000',
-        g: '03229500', avg: 1800, histFlow: 1620, mx: 680, my: 250, abbr: 'OH',
+        g: '03227500', avg: 1800, histFlow: 1620, mx: 680, my: 250, abbr: 'OH',
         desc: "The river that built Columbus — the Scioto flows 231 miles through the center of the state capital and some of Ohio's most productive farmland. Downtown Columbus has invested heavily in riverfront development, and the Scioto Mile and Scioto Audubon Metro Park offer accessible urban paddling. South of the city, the river widens into a quiet agricultural corridor to the Ohio River.",
         desig: 'Scioto Mile · Scioto Audubon Metro Park',
         secs: ['Dublin to Downtown Columbus — 15 mi, urban greenway, dam-free', 'Downtown to Circleville — 30 mi, suburban to rural transition', 'Circleville to Chillicothe — 40 mi, Pickaway Plains, historic corridor'],
@@ -6954,7 +6954,7 @@ export const STATES: StatesDB = {
       {
         id: 'sugar_creek', n: 'Sugar Creek', ww: false, scenic: true, flat: true,
         co: 'Montgomery / Parke Co.', len: '90 mi', cls: 'I–II', opt: '300–1500',
-        g: '03341500', avg: 920, histFlow: 830, mx: 630, my: 260, abbr: 'IN',
+        g: '03361630', avg: 920, histFlow: 830, mx: 630, my: 260, abbr: 'IN',
         desc: "Indiana's most scenic canoe river, flowing through covered bridge country in Parke and Montgomery counties. Sugar Creek passes sandstone bluffs, natural arches, and more covered bridges than any other river in the state. Turkey Run and Shades state parks bracket the best paddling stretch.",
         desig: 'Indiana Natural & Scenic River · Turkey Run State Park · Shades State Park',
         secs: ['Shades SP to Turkey Run SP — 15 mi, signature section', 'Turkey Run to Montezuma — 20 mi, wider river, covered bridges'],
@@ -6999,7 +6999,7 @@ export const STATES: StatesDB = {
       {
         id: 'muscatatuck', n: 'Muscatatuck River', ww: false, scenic: true, flat: true,
         co: 'Jennings / Jackson Co.', len: '100 mi', cls: 'Riffles', opt: '200–800',
-        g: '03365500', avg: 480, histFlow: 432, mx: 630, my: 260, abbr: 'IN',
+        g: '03367000', avg: 480, histFlow: 432, mx: 630, my: 260, abbr: 'IN',
         desc: "A scenic southern Indiana river flowing through forested hills and farmland. The Muscatatuck offers gentle paddling past limestone bluffs and through the Muscatatuck National Wildlife Refuge — one of the oldest refuges in the Midwest. The 15-mile Vernon-to-North-Vernon reach holds the best limestone bluff scenery before the river widens toward its confluence with the White River.",
         desig: 'Muscatatuck National Wildlife Refuge · Indiana Scenic River candidate',
         secs: ['Vernon to North Vernon — 15 mi, best limestone bluff section', 'Muscatatuck NWR — wildlife refuge paddle access', 'Lower Muscatatuck to White River — 20 mi, wider and slower'],
@@ -7188,7 +7188,7 @@ export const STATES: StatesDB = {
       {
         id: 'apple_il', n: 'Apple River', ww: true, scenic: true, flat: false,
         co: 'Jo Daviess Co.', len: '53 mi', cls: 'I–II', opt: '100–400',
-        g: '05418500', avg: 210, histFlow: 190, mx: 565, my: 220, abbr: 'IL',
+        g: '05419000', avg: 210, histFlow: 190, mx: 565, my: 220, abbr: 'IL',
         desc: "A hidden gem in the driftless region of northwest Illinois — the Apple River flows through the unglaciated hills of Jo Daviess County, offering Class I–II riffles through wooded bluffs and scenic ravines. Apple River Canyon State Park anchors the best paddling stretch. The surrounding landscape of steep-sided valleys and cold-water springs is unlike anything else in Illinois.",
         desig: 'Apple River Canyon State Park · Illinois Driftless Area',
         secs: ['Apple River Canyon SP — 8 mi, Class I–II, canyon section, best stretch', 'Stockton to Canyon SP — 15 mi, upper river, gentle riffles', 'Below Canyon SP to Mississippi — 20 mi, wider valley, easy float'],
@@ -7203,7 +7203,7 @@ export const STATES: StatesDB = {
       {
         id: 'rock_il', n: 'Rock River', ww: false, scenic: true, flat: false,
         co: 'Winnebago / Ogle / Whiteside Co.', len: '299 mi', cls: 'I–II', opt: '500–4000',
-        g: '05444000', avg: 3800, histFlow: 3420, mx: 620, my: 230, abbr: 'IL',
+        g: '05441500', avg: 3800, histFlow: 3420, mx: 620, my: 230, abbr: 'IL',
         desc: "The Rock River flows 299 miles from southern Wisconsin through northern Illinois \u2014 past Rockford, Dixon, and Sterling \u2014 before joining the Mississippi at the Quad Cities. The river is a major Midwest smallmouth bass and walleye fishery, with consistent riffles, deep pools, and large seasonal runs of walleye spawning below the low-head dams in Oregon and Dixon each spring. The Rock is also a strong channel catfish and flathead catfish destination, and the Rock River Trail Water Trail designates over 200 miles of paddling access from the Wisconsin line to the Mississippi.",
         desig: 'Rock River Trail Water Trail \u00b7 Illinois Smallmouth Fishery',
         secs: ['Upper Rock (Wisconsin line to Rockford) — Class I, upper smallmouth water', 'Middle Rock (Rockford to Dixon) — Class I–II, walleye spawning below dams', 'Lower Rock (Sterling to Mississippi confluence) — Class I, larger water and catfish'],
@@ -7242,7 +7242,7 @@ export const STATES: StatesDB = {
       {
         id: 'androscoggin', n: 'Androscoggin River', ww: true, scenic: true, wild: true,
         co: 'Coos Co.', len: '80 mi', cls: 'I–III', opt: '800–4000',
-        g: '01054200', avg: 2800, histFlow: 2520, mx: 845, my: 115, abbr: 'NH',
+        g: '01053600', avg: 2800, histFlow: 2520, mx: 845, my: 115, abbr: 'NH',
         desc: "The Androscoggin flows through the White Mountains in a broad valley of exceptional beauty. The Thirteen Mile Woods section is one of New England's premier wilderness canoe trips — moose, eagles, and unbroken boreal forest. Below Errol, Class II–III whitewater adds excitement through Pontook Reservoir to Milan.",
         desig: 'New Hampshire Rivers Management & Protection Program · White Mountain National Forest',
         secs: ['Thirteen Mile Woods — 13 mi, wilderness canoe classic', 'Errol to Milan — Class II–III, whitewater section', 'Milan to Berlin — Class I–II, valley run'],
@@ -7317,7 +7317,7 @@ export const STATES: StatesDB = {
       {
         id: 'swift_nh', n: 'Swift River', ww: true, scenic: true, wild: false,
         co: 'Carroll Co.', len: '25 mi', cls: 'I–III', opt: '200–1200',
-        g: '01064801', avg: 420, histFlow: 378, mx: 845, my: 115, abbr: 'NH',
+        g: '01064485', avg: 420, histFlow: 378, mx: 845, my: 115, abbr: 'NH',
         desc: "A White Mountain gem flowing alongside the Kancamagus Highway — one of America's most scenic drives. The Swift River delivers Class I–III whitewater through pristine mountain forest with swimming holes, covered bridges, and granite gorges. Rocky Gorge and Lower Falls are iconic New Hampshire destinations.",
         desig: 'White Mountain National Forest · Kancamagus Scenic Byway corridor',
         secs: ['Bear Notch to Rocky Gorge — Class II–III, mountain headwaters', 'Rocky Gorge to Conway — Class I–II, lower valley run'],
@@ -7332,7 +7332,7 @@ export const STATES: StatesDB = {
       {
         id: 'ellis', n: 'Ellis River', ww: true, scenic: true, wild: false,
         co: 'Coos Co.', len: '15 mi', cls: 'II–III', opt: '200–800',
-        g: '01064801', avg: 280, histFlow: 252, mx: 845, my: 115, abbr: 'NH',
+        g: '01064300', avg: 280, histFlow: 252, mx: 845, my: 115, abbr: 'NH',
         desc: "A compact White Mountain whitewater run through the covered bridge village of Jackson, New Hampshire. The Ellis River delivers Class II–III rapids through granite-walled channels with views of Wildcat Mountain and the Presidential Range. Historic covered bridges span the river at several points — Jackson's Honeymoon Bridge is one of the most photographed in New England.",
         desig: 'White Mountain National Forest · Jackson NH Covered Bridge corridor',
         secs: ['Pinkham Notch to Jackson — Class II–III, mountain run', 'Jackson to Glen — Class I–II, covered bridge section'],
@@ -7347,7 +7347,7 @@ export const STATES: StatesDB = {
       {
         id: 'contoocook', n: 'Contoocook River', ww: false, scenic: true, wild: false,
         co: 'Hillsborough / Merrimack Co.', len: '80 mi', cls: 'I–II', opt: '200–1200',
-        g: '01089000', avg: 620, histFlow: 558, mx: 845, my: 115, abbr: 'NH',
+        g: '01085000', avg: 620, histFlow: 558, mx: 845, my: 115, abbr: 'NH',
         desc: "Central New Hampshire's classic canoe river flows 80 miles through covered bridge country from Jaffrey to the Merrimack. The Contoocook passes through quintessential New England — white steepled churches, stone walls, and eight covered bridges including the last remaining Contoocook Railroad Bridge. Gentle Class I–II water perfect for family paddling.",
         desig: 'New Hampshire Rivers Management Program · Covered Bridge Scenic Byway',
         secs: ['Jaffrey to Peterborough — Class I, upper headwaters', 'Peterborough to Henniker — Class I–II, covered bridge corridor', 'Henniker to Penacook — Class I, lower river to Merrimack confluence'],
@@ -7416,7 +7416,7 @@ export const STATES: StatesDB = {
       {
         id: 'winooski', n: 'Winooski River', ww: true, scenic: true,
         co: 'Washington / Chittenden Co.', len: '90 mi', cls: 'I–III', opt: '500–4000',
-        g: '04289000', avg: 1800, histFlow: 1620, mx: 835, my: 125, abbr: 'VT',
+        g: '04286000', avg: 1800, histFlow: 1620, mx: 835, my: 125, abbr: 'VT',
         desc: "Vermont's most dynamic river flows 90 miles from Cabot through Montpelier and the Green Mountains to Lake Champlain at Burlington. The Winooski carves through dramatic gorges with Class I–III rapids, passing the state capital and Vermont's largest city. The river's recovery from severe industrial pollution is one of New England's great environmental success stories.",
         desig: 'Vermont Rivers Management Program · Winooski Valley Park District',
         secs: ['Montpelier to Waterbury — Class I–II, capital corridor', 'Waterbury to Bolton — Class II–III, Green Mountain gorges', 'Bolton to Burlington — Class I–II, Lake Champlain approach'],
@@ -7431,7 +7431,7 @@ export const STATES: StatesDB = {
       {
         id: 'battenkill', n: 'Battenkill', ww: false, scenic: true,
         co: 'Bennington Co.', len: '59 mi', cls: 'I–II', opt: '200–1000',
-        g: '01334500', avg: 480, histFlow: 432, mx: 835, my: 125, abbr: 'VT',
+        g: '01329000', avg: 480, histFlow: 432, mx: 835, my: 125, abbr: 'VT',
         desc: "The legendary Battenkill is America's most storied fly fishing river — home to Orvis headquarters in Manchester, Vermont since 1856. Crystal-clear water flows through covered bridges, marble quarry country, and the Taconic Mountains. Class I–II paddling through pastoral Vermont at its finest, with wild brown and brook trout visible in the gin-clear water.",
         desig: 'Vermont Scenic River candidate · Battenkill Conservancy',
         secs: ['Manchester to Arlington — Class I–II, Orvis country', 'Arlington to NY border — Class I, lower valley run'],
@@ -7605,7 +7605,7 @@ export const STATES: StatesDB = {
       {
         id: 'bantam', n: 'Bantam River', ww: false, scenic: true,
         co: 'Litchfield Co.', len: '15 mi', cls: 'I', opt: '50–200',
-        g: '01201500', avg: 120, histFlow: 108, mx: 830, my: 195, abbr: 'CT',
+        g: '', avg: 120, histFlow: 108, mx: 830, my: 195, abbr: 'CT',
         desc: "Connecticut's premier nature paddle — the Bantam River flows from Bantam Lake through the White Memorial Conservation Center, the state's largest nature center and wildlife sanctuary. Gentle Class I water winds through marshes, beaver ponds, and old-growth forest. The White Memorial Foundation protects 4,000 acres of habitat along the river — birding, wildlife viewing, and solitude minutes from Litchfield village.",
         desig: 'White Memorial Conservation Center · Bantam River Wildlife Management Area',
         secs: ['Bantam Lake to White Memorial — Class I, conservation center', 'White Memorial to Shepaug confluence — Class I, marsh and meadow'],
@@ -7674,7 +7674,7 @@ export const STATES: StatesDB = {
       {
         id: 'chipuxet', n: 'Chipuxet River', scenic: true, flat: true,
         co: 'Washington Co.', len: '10 mi', cls: 'I', opt: '30–150',
-        g: '01117420', avg: 60, histFlow: 54, mx: 860, my: 200, abbr: 'RI',
+        g: '01117350', avg: 60, histFlow: 54, mx: 860, my: 200, abbr: 'RI',
         desc: "A tiny gem flowing through the Great Swamp — Rhode Island's largest freshwater wetland. The Chipuxet is a short but magical paddle through cedar swamp and marsh near the University of Rhode Island campus. Class I flatwater winds through habitat that supported the decisive Great Swamp Fight of King Philip's War in 1675.",
         desig: 'Great Swamp Management Area · URI Environmental Research',
         secs: ['Great Swamp to Worden Pond — Class I, wetland paddle'],
@@ -7689,7 +7689,7 @@ export const STATES: StatesDB = {
       {
         id: 'hunt', n: 'Hunt River', scenic: true, flat: false,
         co: 'Kent Co.', len: '14 mi', cls: 'I', opt: '30–200',
-        g: '01117100', avg: 50, histFlow: 45, mx: 860, my: 200, abbr: 'RI',
+        g: '01116910', avg: 50, histFlow: 45, mx: 860, my: 200, abbr: 'RI',
         desc: "A suburban escape in East Greenwich — the Hunt River is a small, clean stream flowing through surprisingly intact forest habitat in Kent County. Class I paddling through wooded corridors with occasional small dams and stone remnants of colonial-era mills. A peaceful half-day paddle that proves even Rhode Island's developed areas hide natural treasures.",
         desig: 'Hunt River Watershed · East Greenwich Conservation Area',
         secs: ['Frenchtown to Potowomut — Class I, suburban forest corridor'],
@@ -7734,7 +7734,7 @@ export const STATES: StatesDB = {
       {
         id: 'woonasquatucket', n: 'Woonasquatucket River', scenic: true, flat: true,
         co: 'Providence Co.', len: '18 mi', cls: 'I', opt: '50–300',
-        g: '01114000', avg: 100, histFlow: 90, mx: 860, my: 200, abbr: 'RI',
+        g: '01114500', avg: 100, histFlow: 90, mx: 860, my: 200, abbr: 'RI',
         desc: "Providence's renaissance river — the Woonasquatucket flows 18 miles from North Smithfield through downtown Providence, where it meets the Moshassuck to form the Providence River at Waterplace Park. The famous WaterFire art installation illuminates the river on summer evenings. Once one of the most polluted rivers in New England, the Woonasquatucket's ongoing cleanup is a model of urban river revival.",
         desig: 'Woonasquatucket River Watershed Council · WaterFire Providence',
         secs: ['North Smithfield to Johnston — Class I, suburban corridor', 'Johnston to Providence — Class I, urban revival section'],
@@ -7773,7 +7773,7 @@ export const STATES: StatesDB = {
       {
         id: 'wharton', n: 'Pine Barrens — Batona Trail Rivers', ww: false, flat: true,
         co: 'Burlington Co.', len: '30 mi', cls: 'I', opt: '80–300',
-        g: '01410000', avg: 180, histFlow: 160, mx: 810, my: 225, abbr: 'NJ',
+        g: '', avg: 180, histFlow: 160, mx: 810, my: 225, abbr: 'NJ',
         desc: "Tea-colored cedar water through the heart of the New Jersey Pine Barrens — Wharton State Forest protects 115,000 acres of this unique ecosystem. The Mullica, Batsto, and Wading rivers wind through Atlantic white cedar swamps and pygmy pine forests. A landscape unlike anything else on the Eastern Seaboard.",
         desig: 'Wharton State Forest · Pinelands National Reserve · National Wild & Scenic River (Mullica)',
         secs: ['Batsto River — Class I, cedar swamp classic', 'Wading River — Class I, wider and sandier'],
@@ -7788,7 +7788,7 @@ export const STATES: StatesDB = {
       {
         id: 'mullica', n: 'Mullica River', ww: false, flat: true,
         co: 'Burlington / Atlantic Co.', len: '51 mi', cls: 'I', opt: '100–600',
-        g: '01410000', avg: 280, histFlow: 250, mx: 810, my: 225, abbr: 'NJ',
+        g: '01409400', avg: 280, histFlow: 250, mx: 810, my: 225, abbr: 'NJ',
         desc: "The crown jewel of the New Jersey Pine Barrens — 51 miles of pristine cedar water flowing through Wharton State Forest to the Great Bay estuary. The Mullica is the largest river entirely within the Pinelands National Reserve, its tea-colored water filtered through ancient sand aquifers that produce some of the purest surface water on the East Coast.",
         desig: 'Pinelands National Reserve · Wharton State Forest · NJ Wild & Scenic River',
         secs: ['Atsion to Pleasant Mills — Class I, cedar swamp classic', 'Pleasant Mills to Great Bay — tidal estuary'],
@@ -7818,7 +7818,7 @@ export const STATES: StatesDB = {
       {
         id: 'raritan', n: 'Raritan River', ww: false, flat: true,
         co: 'Somerset / Middlesex Co.', len: '85 mi', cls: 'I', opt: '300–3000',
-        g: '01402000', avg: 1800, histFlow: 1620, mx: 810, my: 225, abbr: 'NJ',
+        g: '01403000', avg: 1800, histFlow: 1620, mx: 810, my: 225, abbr: 'NJ',
         desc: "Central New Jersey's great river flows 85 miles through the heart of the state from the Highlands to Raritan Bay. The Raritan is the longest river entirely within New Jersey and anchors one of the most ambitious urban canoe trail projects in the Northeast. Class I paddling through surprisingly green corridors past Revolutionary War sites, colonial villages, and recovering riparian habitat.",
         desig: 'Raritan River Greenway · Delaware & Raritan Canal State Park',
         secs: ['Three Bridges to Raritan — Class I, upper valley', 'Raritan to New Brunswick — Class I, D&R Canal corridor', 'New Brunswick to Raritan Bay — tidal, estuary'],
@@ -7978,7 +7978,7 @@ export const STATES: StatesDB = {
       {
         id: 'broadkill', n: 'Broadkill River', scenic: true, tidal: true,
         co: 'Sussex Co.', len: '20 mi', cls: 'Riffles', opt: '20–100',
-        g: '01484100', avg: 55, histFlow: 50, mx: 810, my: 250, abbr: 'DE',
+        g: '', avg: 55, histFlow: 50, mx: 810, my: 250, abbr: 'DE',
         desc: "A quiet coastal plain river near Lewes and the Delaware Bay. The Broadkill winds through salt marsh and agricultural land before reaching the bay, offering gentle tidal paddling with excellent birding and access to Prime Hook National Wildlife Refuge.",
         desig: 'Prime Hook National Wildlife Refuge · Delaware Coastal Heritage Greenway',
         secs: ['Milton to Broadkill Beach — 12 mi, tidal meanders through marsh', 'Prime Hook NWR — paddle access to refuge marshes and impoundments'],
@@ -8245,7 +8245,7 @@ export const STATES: StatesDB = {
       {
         id: 'russian_ak', n: 'Russian River', kenai: true, bristol_bay: false, southcentral: false, southeast: false, salmon: true, trout: true,
         co: 'Kenai Peninsula Borough', len: '13 mi', cls: 'I–II', opt: '100–600',
-        g: '15258000', avg: 320, histFlow: 290, mx: 158, my: 511, abbr: 'AK',
+        g: '15264000', avg: 320, histFlow: 290, mx: 158, my: 511, abbr: 'AK',
         desc: 'The most concentrated sockeye salmon fishery in the world. The Russian River drains Lower Russian Lake and joins the Kenai at the famous Russian River Confluence \u2014 the centerpiece of Alaska\u2019s combat salmon fishing. During the peak of the early run (mid-June) and late run (late July), anglers stand shoulder-to-shoulder along the riverbank casting flies for sockeye holding in clear, cold water. The first 1.5 miles above the confluence is fly-fishing-only and one of the most beautiful and accessible sockeye fisheries in Alaska.',
         desig: 'Chugach National Forest · Russian River Falls · Fly-Fishing Only (lower 1.5 mi)',
         secs: ['Russian River Falls section — sockeye salmon viewing platform, peak July', 'Lower Russian (Falls to Kenai confluence) — 1.5 mi, fly-fishing only sockeye', 'Russian River Confluence with Kenai — combat salmon fishing'],
@@ -8260,7 +8260,7 @@ export const STATES: StatesDB = {
       {
         id: 'naknek_ak', n: 'Naknek River', kenai: false, bristol_bay: true, southcentral: false, southeast: false, salmon: true, trout: true,
         co: 'Lake and Peninsula Borough', len: '35 mi', cls: 'I–II', opt: '1000–6000',
-        g: '15301500', avg: 3500, histFlow: 3150, mx: 110, my: 525, abbr: 'AK',
+        g: '15297890', avg: 3500, histFlow: 3150, mx: 110, my: 525, abbr: 'AK',
         desc: 'The most famous trophy rainbow trout river on earth. The Naknek drains Naknek Lake in Katmai National Park and Preserve, supporting wild rainbows that routinely exceed 30 inches and 15 pounds \u2014 fish that grow large eating the eggs and flesh of the millions of sockeye salmon returning to the Bristol Bay watershed. The river also produces world-class king salmon, sockeye, silvers, char, and grayling. King Salmon, Alaska sits at the river mouth and is the access point for nearly every Bristol Bay sportfishing operation.',
         desig: 'Katmai National Park and Preserve · Bristol Bay Watershed · ADF&G Trophy Rainbow Trout',
         secs: ['Upper Naknek (Naknek Lake outlet) — trophy rainbow trout', 'Middle Naknek (Rapids Camp) — Class II rapids, drift boat water', 'Lower Naknek (King Salmon to Bristol Bay) — king salmon, 25 mi'],
@@ -8275,7 +8275,7 @@ export const STATES: StatesDB = {
       {
         id: 'brooks_ak', n: 'Brooks River', kenai: false, bristol_bay: true, southcentral: false, southeast: false, salmon: true, trout: true,
         co: 'Lake and Peninsula Borough', len: '1.5 mi', cls: 'I', opt: '100–500',
-        g: '15302200', avg: 280, histFlow: 252, mx: 115, my: 528, abbr: 'AK',
+        g: '', avg: 280, histFlow: 252, mx: 115, my: 528, abbr: 'AK',
         desc: 'The most famous bear-and-salmon river in the world. The Brooks River is a 1.5-mile tributary of the Naknek inside Katmai National Park, where dozens of brown bears gather each July to feed on sockeye salmon leaping the 6-foot Brooks Falls. The viewing platform at the falls is the most-photographed wildlife scene in Alaska. The river itself is fly-fishing-only and produces wild rainbow trout, char, grayling, and sockeye \u2014 but bear safety regulations close the river to fishing during the peak of the bear viewing season in early July.',
         desig: 'Katmai National Park and Preserve · Brooks Camp National Historic Landmark',
         secs: ['Brooks Falls viewing area — sockeye and brown bears, peak July', 'Brooks River main stem — 1.5 mi, fly-fishing only, char and rainbow trout', 'Brooks Lake outlet — trophy rainbow trout in fall'],
@@ -8305,7 +8305,7 @@ export const STATES: StatesDB = {
       {
         id: 'kvichak_ak', n: 'Kvichak River', kenai: false, bristol_bay: true, southcentral: false, southeast: false, salmon: true, trout: true,
         co: 'Lake and Peninsula Borough', len: '50 mi', cls: 'I–II', opt: '5000–25000',
-        g: '15300000', avg: 14000, histFlow: 12600, mx: 108, my: 532, abbr: 'AK',
+        g: '15300500', avg: 14000, histFlow: 12600, mx: 108, my: 532, abbr: 'AK',
         desc: 'The single largest sockeye salmon run on earth. The Kvichak River drains Lake Iliamna \u2014 Alaska\u2019s largest lake \u2014 and supports a sockeye run that has historically averaged over 10 million returning fish per year, with peak runs over 40 million. The river is also home to one of the great trophy rainbow trout fisheries in the world; Iliamna-system rainbows commonly exceed 30 inches feeding on the eggs and carcasses of the salmon return. Fly-out lodge fishing only \u2014 there is no road access to the Kvichak.',
         desig: 'Bristol Bay Watershed · Largest Sockeye Run on Earth · ADF&G Trophy Rainbow Trout',
         secs: ['Upper Kvichak (Lake Iliamna outlet) — trophy rainbow trout', 'Middle Kvichak (Igiugig village area) — sockeye and rainbow', 'Lower Kvichak (to Bristol Bay) — king salmon, sockeye'],
@@ -8395,7 +8395,7 @@ export const STATES: StatesDB = {
       {
         id: 'goodnews_ak', n: 'Goodnews River', kenai: false, bristol_bay: false, southcentral: false, southeast: false, salmon: true, trout: true,
         co: 'Bethel Census Area', len: '60 mi', cls: 'I–II', opt: '500–3000',
-        g: '15303600', avg: 1500, histFlow: 1350, mx: 90, my: 510, abbr: 'AK',
+        g: '', avg: 1500, histFlow: 1350, mx: 90, my: 510, abbr: 'AK',
         desc: 'The most famous trophy rainbow trout fly-out river in western Alaska. The Goodnews River drains the Ahklun Mountains and flows 60 miles through tundra and willow flats to Goodnews Bay on the Bering Sea coast. The river supports trophy wild rainbow trout, Dolly Varden char, grayling, all five species of Pacific salmon, and is famous for its arctic char fishery in the upper river. The Goodnews is fly-out only \u2014 most lodges operate from Dillingham or Bethel \u2014 and is widely considered one of the finest mixed-species sportfishing rivers in Alaska.',
         desig: 'Togiak National Wildlife Refuge · Western Alaska',
         secs: ['Upper Goodnews (Goodnews Lake) — trophy arctic char and rainbow trout', 'Middle Goodnews (Middle Fork confluence) — multi-day float', 'Lower Goodnews (Goodnews Bay) — king and silver salmon'],
@@ -8410,7 +8410,7 @@ export const STATES: StatesDB = {
       {
         id: 'karluk_ak', n: 'Karluk River', kenai: false, bristol_bay: false, southcentral: false, southeast: false, salmon: true, trout: true,
         co: 'Kodiak Island Borough', len: '24 mi', cls: 'I–II', opt: '300–2000',
-        g: '15296000', avg: 850, histFlow: 765, mx: 165, my: 535, abbr: 'AK',
+        g: '15296600', avg: 850, histFlow: 765, mx: 165, my: 535, abbr: 'AK',
         desc: 'The premier steelhead and silver salmon river of Kodiak Island. The Karluk River drains Karluk Lake on the southwestern side of Kodiak Island and flows 24 miles through the Kodiak National Wildlife Refuge to the Shelikof Strait. The river produces some of the largest silver salmon in Alaska \u2014 fish over 20 pounds are common during the September run \u2014 plus a self-sustaining wild steelhead run, sockeye, kings, and Dolly Varden. Kodiak brown bears share the river with anglers; the Karluk has one of the densest brown bear populations in North America.',
         desig: 'Kodiak National Wildlife Refuge · ADF&G Wild Steelhead Stream',
         secs: ['Upper Karluk (Karluk Lake outlet) — wild steelhead, sockeye', 'Middle Karluk (the Portage) — sockeye and king salmon', 'Lower Karluk (Karluk village) — silver salmon, fall run'],
@@ -8436,6 +8436,231 @@ export const STATES: StatesDB = {
         docs: [],
         revs: [],
         outs: [{ n: 'Yakutat Lodge', d: 'Situk River steelhead and salmon trips, road access from Yakutat', l: '' }],
+      },
+      {
+        id: 'yukon_ak', n: 'Yukon River', kenai: false, bristol_bay: false, southcentral: false, southeast: false, salmon: true, trout: false,
+        co: 'Yukon-Koyukuk Census Area', len: '1,980 mi', cls: 'I–II', opt: '100000–500000',
+        g: '15565447', avg: 225000, histFlow: 202500, mx: 130, my: 465, abbr: 'AK',
+        desc: 'North America\u2019s fourth-longest river and Alaska\u2019s great salmon highway. The Yukon produces the longest freshwater salmon migration on earth — fall chum and king salmon travel more than 2,000 miles from the Bering Sea to headwaters in the Yukon Territory. Subsistence fishing communities from Emmonak to Eagle depend on the runs, and sport anglers target kings, chum, and coho at dozens of tributary mouths. The lower river is wide, muddy, and slow; the upper river clears near the Canadian border. Access is by boat or plane from villages like Galena, Tanana, and Eagle.',
+        desig: 'Yukon-Charley Rivers National Preserve · Yukon Delta National Wildlife Refuge · ADF&G Subsistence Priority Fishery',
+        secs: ['Upper Yukon (Eagle to Circle) — 155 mi, wilderness float, kings and chum', 'Middle Yukon (Tanana to Galena) — 300 mi, subsistence and sport, silver salmon', 'Lower Yukon (Holy Cross to Emmonak) — 500 mi, commercial and subsistence fishery'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-contact', title: 'Athabascan and Yup\u2019ik Salmon Trade', text: 'The Yukon has been the central artery of interior Alaska and western Yukon Territory for over 10,000 years. Gwich\u2019in, Koyukon, Deg Hit\u2019an, and Yup\u2019ik peoples built summer fish camps every few miles along the river, and dried Yukon king salmon was traded from the Bering Sea coast to interior Athabascan communities across a thousand miles of watershed.', src: 'Tanana Chiefs Conference; Yukon River Inter-Tribal Watershed Council' }] },
+          { era: 'modern', entries: [{ yr: '2021', title: 'King Salmon Collapse and Fishing Closures', text: 'Yukon River Chinook returns collapsed to historic lows in 2020\u20132022, triggering complete closures of both subsistence and sport king fisheries basin-wide. The collapse has devastated subsistence-dependent villages and prompted emergency federal-state coordination. Summer chum runs have also crashed. Causes are likely a combination of marine conditions, warming temperatures, and bycatch.', src: 'ADF&G; Yukon River Inter-Tribal Fish Commission' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Yukon River Lodge (Eagle)', d: 'Upper Yukon float and fishing trips from Eagle', l: '' }],
+      },
+      {
+        id: 'kuskokwim_ak', n: 'Kuskokwim River', kenai: false, bristol_bay: false, southcentral: false, southeast: false, salmon: true, trout: true,
+        co: 'Bethel Census Area', len: '724 mi', cls: 'I–II', opt: '30000–150000',
+        g: '15304000', avg: 55000, histFlow: 49500, mx: 115, my: 500, abbr: 'AK',
+        desc: 'Alaska\u2019s second-longest river and one of the most important subsistence salmon fisheries in North America. The Kuskokwim drains the west slope of the Alaska Range and flows through vast tundra to Kuskokwim Bay, supporting Yup\u2019ik subsistence communities that depend on king, chum, and silver salmon. The upper river near McGrath and Nikolai holds sheefish, grayling, and rainbow trout, and the tributaries — Holitna, Aniak, Kwethluk — offer some of the most remote and productive fly-in fishing in Alaska. Access is by plane to villages; no road system reaches the river.',
+        desig: 'Yukon Delta NWR · ADF&G Subsistence Priority Fishery',
+        secs: ['Upper Kuskokwim (McGrath to Aniak) — 300 mi, grayling and sheefish', 'Middle Kuskokwim (Aniak to Bethel) — 200 mi, salmon subsistence', 'Lower Kuskokwim (Bethel to Bay) — 80 mi, silver salmon and whitefish'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-contact', title: 'Yup\u2019ik Homeland and Fish Camps', text: 'The Kuskokwim drainage is Yup\u2019ik and Deg Hit\u2019an Athabascan homeland, occupied for thousands of years. Over fifty villages line the river today, most reachable only by boat or plane, and subsistence salmon fishing remains the primary food source for Yup\u2019ik families. Traditional fish camps still operate at mouth-of-slough sites used for hundreds of generations.', src: 'Association of Village Council Presidents; Kuskokwim River Inter-Tribal Fish Commission' }] },
+          { era: 'modern', entries: [{ yr: '2014', title: 'Federal Subsistence Priority and King Closures', text: 'After years of declining Chinook returns, the Federal Subsistence Board assumed management of the lower Kuskokwim king salmon fishery in 2014, closing the river to non-subsistence users. The closures have continued most years since, reflecting ongoing stock-of-concern status for Kuskokwim kings.', src: 'Federal Subsistence Board; ADF&G' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Kuskokwim River Safaris', d: 'Fly-in fishing trips to upper-river tributaries', l: '' }],
+      },
+      {
+        id: 'gulkana_ak', n: 'Gulkana River', kenai: false, bristol_bay: false, southcentral: true, southeast: false, salmon: true, trout: true,
+        co: 'Copper River Census Area', len: '81 mi', cls: 'II–III', opt: '500–3000',
+        g: '15200280', avg: 1100, histFlow: 990, mx: 172, my: 505, abbr: 'AK',
+        desc: 'Alaska\u2019s only road-accessible Wild & Scenic River and one of the most popular float-fishing trips in the state. The Gulkana drains Summit Lake and flows 81 miles to join the Copper River, offering a classic 4-5 day float with excellent king salmon fishing in June, grayling all summer, and red salmon in the tributaries. The Main Branch is BLM Wild & Scenic, and the river passes through remote spruce taiga and gravel-bar country with abundant moose and the occasional brown bear. Put in at Paxson Lake; take out at Sourdough Creek or Gulkana.',
+        desig: 'BLM Wild & Scenic River · ADF&G Trophy Grayling Water',
+        secs: ['Paxson Lake put-in — 14 mi lake paddle to Canyon Rapids', 'Canyon Rapids — Class III portage, required for non-experts', 'Main Branch (Canyon to Sourdough) — 50 mi, kings and grayling', 'Lower Gulkana (Sourdough to Gulkana confluence) — 17 mi, road accessible'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-contact', title: 'Ahtna Athabascan Salmon Camps', text: 'The Gulkana (Ahtna: \u2018Gulkana\u2019 meaning \u2018the land where the water comes out\u2019) has been Ahtna Athabascan homeland for thousands of years. Seasonal fish camps along the Main Branch and at the Copper River confluence supported generations of families during the king salmon runs. Ahtna allotments along the river remain in family ownership today.', src: 'Ahtna, Incorporated; Chitina Traditional Indian Village Council' }] },
+          { era: 'modern', entries: [{ yr: '1980', title: 'National Wild & Scenic Designation', text: 'Congress designated the Main Branch Gulkana as a National Wild & Scenic River in 1980 under ANILCA, protecting 47 miles as "Wild" and "Recreational." The designation makes the Gulkana the only road-accessible Wild & Scenic River in Alaska and has preserved the river\u2019s free-flowing character despite its proximity to the Richardson Highway.', src: 'BLM Glennallen Field Office' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Gulkana River Outfitters', d: 'Raft and canoe rentals, shuttles for the 4-day Paxson to Sourdough float', l: '' }],
+      },
+      {
+        id: 'deshka_ak', n: 'Deshka River', kenai: false, bristol_bay: false, southcentral: true, southeast: false, salmon: true, trout: true,
+        co: 'Matanuska-Susitna Borough', len: '56 mi', cls: 'I', opt: '300–2000',
+        g: '15294100', avg: 550, histFlow: 495, mx: 147, my: 502, abbr: 'AK',
+        desc: 'The most popular king salmon river in southcentral Alaska after the Kenai. The Deshka is a clearwater tributary of the Susitna, draining Kroto Creek and the Peters Hills to join the Big Su about 40 miles northwest of Anchorage. The river is reached by boat from Deshka Landing or Susitna Landing — no road access to the river itself. Kings run early (late May to mid-June), and silvers fill the river in August. The clearwater is rare in the glacial Susitna drainage, making the Deshka a sight-fishing destination for fly anglers targeting chrome-bright kings.',
+        desig: 'ADF&G Stock of Concern (Chinook) · Matanuska-Susitna Borough Recreational River',
+        secs: ['Upper Deshka (Kroto Creek headwaters) — wilderness, no road access', 'Middle Deshka (Deshka Landing to mouth) — 25 mi, king and silver salmon', 'Mouth at Susitna — boat access from Deshka Landing'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-contact', title: 'Dena\u2019ina Athabascan Salmon Camps', text: 'The Deshka watershed is part of Dena\u2019ina Athabascan homeland, with seasonal fish camps along the clearwater river during summer king and silver runs. The Dena\u2019ina name for the river reflects its clearwater character in contrast to the glacial Susitna mainstream.', src: 'Matanuska-Susitna Borough Cultural Resources' }] },
+          { era: 'modern', entries: [{ yr: '2018', title: 'Chinook Stock of Concern Designation', text: 'ADF&G designated the Deshka Chinook population as a Stock of Management Concern in 2018 after years of below-escapement returns. Recreational king fishing has been restricted or closed in most years since, with emergency orders commonly issued mid-season to protect the run.', src: 'Alaska Department of Fish and Game' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Deshka Landing', d: 'Boat launch and marina, primary access to the Deshka and lower Susitna', l: '' }],
+      },
+      {
+        id: 'little_susitna_ak', n: 'Little Susitna River', kenai: false, bristol_bay: false, southcentral: true, southeast: false, salmon: true, trout: false,
+        co: 'Matanuska-Susitna Borough', len: '110 mi', cls: 'I–II', opt: '300–1500',
+        g: '15290000', avg: 450, histFlow: 405, mx: 150, my: 503, abbr: 'AK',
+        desc: 'Southcentral Alaska\u2019s most accessible road-side salmon river. The Little Susitna ("Little Su") drains Mint Glacier in the Talkeetna Mountains and flows through the Matanuska-Susitna Valley to Cook Inlet, with road access at Houston, Schrock Road, and the Burma Road public use area. The river supports strong kings (June) and a massive silver salmon run (August-September) that draws anglers from across Anchorage and the Valley. Pinks run in even years, and the upper river above the Parks Highway offers a more remote experience.',
+        desig: 'ADF&G Recreational Priority Fishery · Matanuska-Susitna Borough',
+        secs: ['Upper Little Su (Hatcher Pass to Houston) — 40 mi, remote wilderness', 'Middle Little Su (Houston to Burma Landing) — 40 mi, road accessible, kings and silvers', 'Lower Little Su (Burma to Cook Inlet) — 30 mi, tidal, boat access only'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-contact', title: 'Dena\u2019ina Athabascan Homeland', text: 'The Little Susitna drainage has been Dena\u2019ina Athabascan homeland for over 1,000 years. The Dena\u2019ina fished seasonal camps along the river and traded dried salmon with interior Ahtna communities over the Knik-Palmer pass.', src: 'Chickaloon Native Village; Dena\u2019ina Qenaga' }] },
+          { era: 'modern', entries: [{ yr: '1985', title: 'Burma Road Public Use Area', text: 'ADF&G and the Mat-Su Borough developed the Burma Road public use area in the 1980s to concentrate bank fishing pressure on the lower Little Su and reduce trespass on private land. The Burma parking area is now one of the busiest silver salmon fishing sites in southcentral Alaska.', src: 'Alaska Department of Fish and Game' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Little Susitna River Outfitters', d: 'Silver salmon guide trips and boat rentals out of Burma Landing', l: '' }],
+      },
+      {
+        id: 'chena_ak', n: 'Chena River', kenai: false, bristol_bay: false, southcentral: false, southeast: false, salmon: true, trout: true,
+        co: 'Fairbanks North Star Borough', len: '100 mi', cls: 'I', opt: '200–2000',
+        g: '15493000', avg: 900, histFlow: 810, mx: 160, my: 450, abbr: 'AK',
+        desc: 'Fairbanks\u2019s home river and interior Alaska\u2019s premier grayling fishery. The Chena drains the White Mountains and flows through the Chena River State Recreation Area to the Tanana River near downtown Fairbanks. The river is legendary for wild Arctic grayling — catch-and-release only — plus burbot, pike, and sheefish in the lower river. The upper Chena is a classic canoe trip through taiga spruce forest with dozens of public-use cabins available by permit. Road access along Chena Hot Springs Road makes the upper river one of the most accessible wilderness floats in the state.',
+        desig: 'Chena River State Recreation Area · ADF&G Catch-and-Release Grayling Water',
+        secs: ['Upper Chena (Forty-mile to Rosehip CG) — 40 mi, catch-and-release grayling', 'Middle Chena (Rosehip to Fairbanks) — 40 mi, mixed water', 'Lower Chena (Fairbanks to Tanana) — 20 mi, pike and burbot'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-contact', title: 'Tanana Athabascan Summer Camps', text: 'The Chena has been Tanana Athabascan country for thousands of years, with summer camps along the lower river where the Tanana people fished for whitefish, pike, and grayling. The modern city of Fairbanks sits on traditional Tanana fishing ground, and the Tanana name Ch\u2019eno means "river of the cliffs."', src: 'Tanana Chiefs Conference; Fairbanks Native Association' }] },
+          { era: 'modern', entries: [{ yr: '1982', title: 'Chena River State Recreation Area', text: 'Alaska established the 254,000-acre Chena River State Recreation Area in 1982, protecting the upper Chena corridor for recreation and subsistence. The SRA includes public-use cabins, campgrounds, and trails, and has helped keep the upper Chena one of the cleanest and most accessible wild rivers in Alaska.', src: 'Alaska State Parks' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Chena River Alaska', d: 'Guided float trips for grayling from Fairbanks', l: '' }],
+      },
+      {
+        id: 'tanana_ak', n: 'Tanana River', kenai: false, bristol_bay: false, southcentral: false, southeast: false, salmon: true, trout: false,
+        co: 'Fairbanks North Star Borough', len: '584 mi', cls: 'I–II', opt: '10000–80000',
+        g: '15515500', avg: 33000, histFlow: 29700, mx: 155, my: 455, abbr: 'AK',
+        desc: 'The major tributary of the Yukon and one of the biggest rivers in interior Alaska. The Tanana drains the north slope of the Alaska Range and flows past Fairbanks, carrying glacial silt from hundreds of miles of Alaska Range glaciers. Sheefish (Arctic "tarpon") grow to over 40 pounds in the Tanana and its sloughs, and the river supports chum and king salmon runs, plus northern pike, burbot, and whitefish in backwater channels. The Tanana River Valley is one of the few roaded parts of interior Alaska, with access from Fairbanks, Nenana, and Tok.',
+        desig: 'ADF&G Sheefish Fishery · Subsistence Priority',
+        secs: ['Upper Tanana (Tok to Delta) — 150 mi, pike and burbot', 'Middle Tanana (Delta to Fairbanks) — 100 mi, mixed water', 'Lower Tanana (Fairbanks to Yukon) — 200 mi, sheefish and salmon'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-contact', title: 'Tanana Athabascan Homeland', text: 'The Tanana is the ancestral homeland of the Tanana Athabascan peoples, whose name for the river gave the region its modern name. Fish camps along the Tanana were central to summer subsistence, and the river provided a winter travel route by dog sled between interior villages for thousands of years.', src: 'Tanana Chiefs Conference' }] },
+          { era: 'modern', entries: [{ yr: '1971', title: 'Alaska Native Claims Settlement Act', text: 'ANCSA (1971) resolved land claims in the Tanana basin and created Doyon Limited, the Alaska Native regional corporation for the interior. Doyon is now one of the largest private landowners in the United States and manages extensive lands along the Tanana for subsistence, timber, and minerals.', src: 'Doyon, Limited; Tanana Chiefs Conference' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Alaska River Adventures (Tanana)', d: 'Sheefish and pike trips out of Nenana', l: '' }],
+      },
+      {
+        id: 'kobuk_ak', n: 'Kobuk River', kenai: false, bristol_bay: false, southcentral: false, southeast: false, salmon: true, trout: true,
+        co: 'Northwest Arctic Borough', len: '347 mi', cls: 'I–II', opt: '2000–15000',
+        g: '15744500', avg: 6500, histFlow: 5850, mx: 115, my: 420, abbr: 'AK',
+        desc: 'The northernmost major salmon river in North America and Alaska\u2019s premier sheefish fishery. The Kobuk drains the Brooks Range and flows through Gates of the Arctic and Kobuk Valley National Parks to Kotzebue Sound. Sheefish ("Connie") run up the Kobuk each July and grow to 50-plus pounds, drawing fly-in anglers from Kotzebue and Ambler. The river also holds chum salmon, Dolly Varden, and grayling, and is one of the classic multi-day wilderness floats in Alaska — remote, grizzly country with no road access and very few people.',
+        desig: 'Kobuk Valley National Park · Gates of the Arctic NP · National Wild & Scenic River',
+        secs: ['Upper Kobuk (Walker Lake to Kobuk) — 110 mi, wilderness float', 'Middle Kobuk (Kobuk to Ambler) — 90 mi, sheefish country', 'Lower Kobuk (Ambler to Kotzebue Sound) — 147 mi, commercial and subsistence fishery'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-contact', title: 'I\u00f1upiaq Kobuk River Peoples', text: 'The Kobuk is I\u00f1upiaq (Kuuvaum I\u00f1upiat) homeland, and the river supports subsistence salmon, sheefish, caribou, and moose harvests for villages including Ambler, Kobuk, Shungnak, and Kiana. The I\u00f1upiaq name for the river is Kuuvak, meaning "big river."', src: 'Maniilaq Association; NANA Regional Corporation' }] },
+          { era: 'modern', entries: [{ yr: '1980', title: 'Kobuk Valley National Park', text: 'ANILCA (1980) designated 1.75 million acres as Kobuk Valley National Park, protecting the caribou migration corridor and the Great Kobuk Sand Dunes. A 110-mile section of the upper Kobuk was also designated Wild & Scenic, preserving one of Alaska\u2019s most pristine watersheds.', src: 'NPS Kobuk Valley National Park' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Arctic Wild', d: 'Guided multi-day Kobuk River floats out of Bettles', l: '' }],
+      },
+      {
+        id: 'nenana_ak', n: 'Nenana River', kenai: false, bristol_bay: false, southcentral: false, southeast: false, salmon: false, trout: true,
+        co: 'Denali Borough', len: '140 mi', cls: 'II–V', opt: '3000–15000',
+        g: '15518040', avg: 4200, histFlow: 3780, mx: 155, my: 465, abbr: 'AK',
+        desc: 'Interior Alaska\u2019s premier whitewater river and one of the few Alaskan rivers with sustained commercial rafting. The Nenana drains the Alaska Range and flows along the east boundary of Denali National Park before joining the Tanana. The upper river is a gentle Class II float through the park boundary, but the Nenana Canyon section near Healy is Class IV with big-water features visible from the Parks Highway. Fishing is modest by Alaska standards — grayling in clear tributaries and occasional whitefish — but the whitewater and Denali backdrop draw paddlers from across the country.',
+        desig: 'ADF&G Recreational River · Denali National Park Boundary Corridor',
+        secs: ['Upper Nenana (Cantwell to McKinley Village) — 50 mi, Class II, scenic float', 'Nenana Canyon (Healy area) — 10 mi, Class IV commercial rafting', 'Lower Nenana (Healy to Tanana confluence) — 80 mi, Class II'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-contact', title: 'Ahtna and Tanana Athabascan Route', text: 'The Nenana has been used for millennia as a travel corridor between Ahtna Athabascan communities in the upper Copper River basin and Tanana Athabascan villages on the Tanana River. The river\u2019s name in Athabascan means "a good place to camp between the rivers."', src: 'Tanana Chiefs Conference' }] },
+          { era: 'modern', entries: [{ yr: '1923', title: 'Alaska Railroad and Mears Memorial Bridge', text: 'The Alaska Railroad crossed the Nenana at Nenana in 1923 with the completion of the Mears Memorial Bridge — a 700-foot steel-truss span that was the longest bridge in Alaska for decades. The bridge and railroad opened the Tanana Valley to settlement and established the whitewater-rafting industry in Nenana Canyon.', src: 'Alaska Railroad Corporation' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Denali Raft Adventures', d: 'Class IV Nenana Canyon rafting out of Healy', l: '' }, { n: 'Nenana Raft Adventures', d: 'Commercial rafting on the Nenana Canyon', l: '' }],
+      },
+      {
+        id: 'klutina_ak', n: 'Klutina River', kenai: false, bristol_bay: false, southcentral: true, southeast: false, salmon: true, trout: true,
+        co: 'Copper River Census Area', len: '63 mi', cls: 'II–IV', opt: '1000–5000',
+        g: '15206000', avg: 1800, histFlow: 1620, mx: 175, my: 507, abbr: 'AK',
+        desc: 'The premier road-accessible sockeye salmon river in the Copper River drainage. The Klutina drains Klutina Lake and flows to join the Copper at Copper Center on the Richardson Highway. Sockeye (red) salmon return to the Klutina in massive numbers each July, and the river supports a very popular dipnet and rod-and-reel sockeye fishery. The upper river above Klutina Lake is Class IV wilderness whitewater; the lower river below the lake is Class II-III and widely floated in rafts. Ahtna-owned land controls much of the river corridor; fee access applies in many reaches.',
+        desig: 'Ahtna Corporation Lands · ADF&G Sockeye Priority Fishery',
+        secs: ['Klutina Lake — 20 mi lake access, trout and char', 'Middle Klutina (Lake to Amerada Road) — 25 mi, Class II-III float', 'Lower Klutina (Amerada to Copper Center) — 18 mi, sockeye fishery'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-contact', title: 'Ahtna Athabascan Copper Center', text: 'The Klutina-Copper confluence at Copper Center has been Ahtna Athabascan homeland for thousands of years, and is the administrative center of the Ahtna regional corporation today. Seasonal salmon camps along the Klutina supported Ahtna families during the summer red salmon runs.', src: 'Ahtna, Incorporated; Copper River Native Association' }] },
+          { era: 'modern', entries: [{ yr: '2020', title: 'Klutina River Access Lawsuit', text: 'A long-running dispute between Ahtna Incorporated and the State of Alaska over public access across Ahtna land on the Klutina River was partially resolved in 2020, establishing a fee-based public access system for the lower river. The settlement preserved Ahtna land rights while maintaining recreational access to the sockeye fishery.', src: 'Ahtna, Incorporated; Alaska Department of Natural Resources' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Klutina River Lodge', d: 'Lodge and guided sockeye fishing at Copper Center', l: '' }],
+      },
+      {
+        id: 'chilkat_ak', n: 'Chilkat River', kenai: false, bristol_bay: false, southcentral: false, southeast: true, salmon: true, trout: true,
+        co: 'Haines Borough', len: '52 mi', cls: 'I–II', opt: '500–4000',
+        g: '15056500', avg: 1400, histFlow: 1260, mx: 205, my: 490, abbr: 'AK',
+        desc: 'Home of the Alaska Chilkat Bald Eagle Preserve — the largest concentration of bald eagles on earth. The Chilkat drains the Chilkat Range northwest of Haines and flows to Chilkat Inlet, supporting strong runs of king, sockeye, silver, and chum salmon. A unique geothermal upwelling keeps a section of the lower river ice-free in winter, drawing 3,000-plus bald eagles each November for the late chum salmon run. The river is road-accessible along the Haines Highway and offers bank and boat fishing for salmon through the summer plus Dolly Varden year-round.',
+        desig: 'Alaska Chilkat Bald Eagle Preserve · Tongass National Forest · ADF&G Salmon Fishery',
+        secs: ['Upper Chilkat (Klukwan to Tsirku confluence) — 15 mi, Dolly Varden and char', 'Middle Chilkat (Tsirku to Chilkat Lake) — 20 mi, sockeye in July', 'Lower Chilkat (Haines Highway to estuary) — 17 mi, silver salmon and eagle viewing'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-contact', title: 'Chilkat Tlingit Homeland', text: 'The Chilkat is the homeland of the Jilk\u00e1at \u1e96waan \u2014 the Chilkat Tlingit \u2014 who have lived along the river for thousands of years. The village of Klukwan on the upper Chilkat is one of the oldest continuously-occupied Tlingit settlements in Alaska, and the Chilkat Trail was a major pre-contact trade route between the Tlingit coast and interior Athabascan nations.', src: 'Chilkat Indian Village of Klukwan; Sealaska Heritage Institute' }] },
+          { era: 'modern', entries: [{ yr: '1982', title: 'Alaska Chilkat Bald Eagle Preserve', text: 'Alaska established the 48,000-acre Alaska Chilkat Bald Eagle Preserve in 1982 to protect the fall chum salmon run and the 3,000+ bald eagles that congregate along the geothermal upwelling reach of the river each November. The preserve is administered by Alaska State Parks.', src: 'Alaska State Parks' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Chilkat River Adventures', d: 'Float trips through the Bald Eagle Preserve out of Haines', l: '' }],
+      },
+      {
+        id: 'togiak_ak', n: 'Togiak River', kenai: false, bristol_bay: true, southcentral: false, southeast: false, salmon: true, trout: true,
+        co: 'Dillingham Census Area', len: '48 mi', cls: 'I–II', opt: '1000–5000',
+        g: '', avg: 2200, histFlow: 1980, mx: 108, my: 535, abbr: 'AK',
+        desc: 'One of the finest all-species salmon rivers in Alaska. The Togiak drains Togiak Lake in Togiak National Wildlife Refuge and flows through tundra and spruce-birch forest to Bristol Bay, supporting strong runs of all five Pacific salmon species plus trophy rainbow trout, Dolly Varden, and Arctic char. The river is fly-in only, accessed by float plane from Dillingham or King Salmon, and is almost entirely within Togiak NWR wilderness. Multiple wilderness lodges operate on the river, and the catch-and-release rainbow trout fishery on the upper Togiak is considered one of the top three in Bristol Bay.',
+        desig: 'Togiak National Wildlife Refuge · National Wilderness (upper river)',
+        secs: ['Upper Togiak (Togiak Lake to Kemuk River) — 18 mi, wilderness trout water', 'Middle Togiak (Kemuk to Native Allotments) — 20 mi, five-species salmon', 'Lower Togiak (Togiak village to Bay) — 10 mi, subsistence fishery'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-contact', title: 'Yup\u2019ik Togiak Homeland', text: 'The Togiak River drainage is Yup\u2019ik homeland, and the village of Togiak at the river mouth is one of the oldest continuously-occupied Yup\u2019ik settlements in Bristol Bay. The Togiak supports a major subsistence fishery for all five salmon species plus herring in the estuary, and traditional camps line the river at key tributary mouths.', src: 'Bristol Bay Native Corporation; Traditional Council of Togiak' }] },
+          { era: 'modern', entries: [{ yr: '1980', title: 'Togiak National Wildlife Refuge', text: 'ANILCA (1980) established the 4.3-million-acre Togiak NWR, protecting the entire Togiak River drainage and the surrounding tundra. Most of the refuge is congressionally-designated Wilderness, ensuring the Togiak remains one of the most pristine major salmon rivers in North America.', src: 'USFWS Togiak National Wildlife Refuge' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Togiak River Lodge', d: 'Fly-in wilderness lodge for rainbows and all-five salmon', l: '' }],
+      },
+      {
+        id: 'kanektok_ak', n: 'Kanektok River', kenai: false, bristol_bay: false, southcentral: false, southeast: false, salmon: true, trout: true,
+        co: 'Bethel Census Area', len: '85 mi', cls: 'I–II', opt: '500–3000',
+        g: '', avg: 1400, histFlow: 1260, mx: 105, my: 535, abbr: 'AK',
+        desc: 'The "Chosen River" — widely considered one of the best multi-species sportfishing rivers in Alaska. The Kanektok drains Kagati Lake in the Ahklun Mountains and flows through Togiak National Wildlife Refuge to Kuskokwim Bay at Quinhagak. The river is almost entirely wilderness, accessed by float plane, and supports trophy rainbow trout, all five Pacific salmon species, Dolly Varden, and Arctic grayling. Guided float trips (7-8 days) from Kagati Lake to Quinhagak are the classic Kanektok experience, with a dozen productive side channels and clearwater tributaries along the way.',
+        desig: 'Togiak National Wildlife Refuge · ADF&G Trophy Rainbow Water',
+        secs: ['Upper Kanektok (Kagati Lake to North Fork) — 20 mi, trout and char', 'Middle Kanektok (North Fork to Native Allotments) — 40 mi, five-species salmon', 'Lower Kanektok (Quinhagak village to mouth) — 25 mi, silvers and subsistence'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-contact', title: 'Yup\u2019ik Quinhagak Homeland', text: 'The Kanektok drainage has been Yup\u2019ik homeland for thousands of years, with the village of Quinhagak at the river mouth occupied continuously for at least 700 years. Archaeological excavations at the Nunalleq site near Quinhagak have recovered over 100,000 pre-contact artifacts, making it one of the most important Arctic archaeological sites in North America.', src: 'Nunalleq Archaeology Project; Qanirtuuq Incorporated' }] },
+          { era: 'modern', entries: [{ yr: '1980', title: 'Togiak Wilderness Designation', text: 'ANILCA (1980) designated most of the Kanektok drainage as Togiak Wilderness within the refuge, protecting the river from development and preserving its wild character. Commercial fly-fishing guide services operate under special use permits that limit total user-days on the river each year.', src: 'USFWS Togiak National Wildlife Refuge' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Alaska West', d: 'Weekly tent-camp float trips on the Kanektok', l: '' }],
+      },
+      {
+        id: 'taku_ak', n: 'Taku River', kenai: false, bristol_bay: false, southcentral: false, southeast: true, salmon: true, trout: true,
+        co: 'Juneau City and Borough', len: '54 mi (US portion)', cls: 'II–III', opt: '3000–20000',
+        g: '15041200', avg: 16000, histFlow: 14400, mx: 215, my: 505, abbr: 'AK',
+        desc: 'The largest undammed river flowing into Southeast Alaska and the most productive salmon river in the Juneau area. The Taku drains the Coast Mountains of British Columbia and flows into Taku Inlet south of Juneau, supporting strong runs of king, sockeye, coho, pink, and chum salmon plus steelhead and Dolly Varden. The river is accessible only by boat or float plane from Juneau, and is a key subsistence fishery for Juneau-area Tlingit families. The glacial headwaters and transboundary character put the river at the center of US-Canada mining and fisheries negotiations.',
+        desig: 'Tongass National Forest · Transboundary Watershed · ADF&G Commercial and Sport Fishery',
+        secs: ['Canyon Island — 15 mi upriver from mouth, jet boat access', 'Taku Lodge reach — 20 mi, king and sockeye', 'US-Canada Border — 54 mi upstream, end of US reach'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-contact', title: 'T\u2019aak\u00fa \u1e96waan Tlingit Homeland', text: 'The Taku River is the homeland of the T\u2019aak\u00fa \u1e96waan \u2014 the Taku Tlingit \u2014 and the traditional trade route between coastal Tlingit and interior Tahltan Athabascan nations. The Taku salmon runs supported one of the largest pre-contact Tlingit populations in Southeast Alaska, and the T\u2019aak\u00fa \u1e96waan maintain traditional fishing rights on the river today.', src: 'Central Council of Tlingit and Haida Indian Tribes; Douglas Indian Association' }] },
+          { era: 'modern', entries: [{ yr: '2015', title: 'Tulsequah Chief Mine Transboundary Controversy', text: 'Ongoing concerns about acid drainage from the abandoned Tulsequah Chief Mine on the Canadian side of the Taku have become a flashpoint for US-Canada transboundary mining disputes. Juneau-area Tlingit tribes and ADF&G have pressed for cleanup and stronger protections for the Taku salmon runs from proposed new BC mining development.', src: 'Southeast Alaska Indigenous Transboundary Commission; ADF&G' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Taku Lodge', d: 'Historic remote lodge with king and sockeye fishing, fly-in from Juneau', l: '' }],
+      },
+      {
+        id: 'deep_creek_ak', n: 'Deep Creek', kenai: true, bristol_bay: false, southcentral: false, southeast: false, salmon: true, trout: true,
+        co: 'Kenai Peninsula Borough', len: '25 mi', cls: 'I', opt: '50–500',
+        g: '', avg: 120, histFlow: 108, mx: 153, my: 516, abbr: 'AK',
+        desc: 'The most popular saltwater-launch king salmon fishery in Alaska and a strong resident stream in its own right. Deep Creek flows from the Caribou Hills through Ninilchik to lower Cook Inlet, and the state maintains a tractor-launch boat ramp at the mouth that sends hundreds of boats offshore each day during the Cook Inlet king salmon season. The creek itself supports king salmon in May-June and silvers in August, plus wild steelhead in fall. Steelhead are catch-and-release only. Road access along the Sterling Highway makes Deep Creek one of the easiest Kenai streams to fish without a boat.',
+        desig: 'Deep Creek State Recreation Area · ADF&G Steelhead Catch-and-Release Water',
+        secs: ['Upper Deep Creek (Caribou Hills) — 10 mi, wild steelhead and resident Dolly Varden', 'Middle Deep Creek (Ninilchik area) — 10 mi, kings in late May and silvers in August', 'Deep Creek mouth — tractor-launch boat ramp to Cook Inlet halibut and king fishery'],
+        history: [
+          { era: 'native', entries: [{ yr: 'Pre-contact', title: 'Dena\u2019ina Athabascan Fishing Ground', text: 'Deep Creek is part of the Dena\u2019ina Athabascan (Kenaitze) traditional fishing area, with seasonal camps at the mouth during the king and silver salmon runs. The Dena\u2019ina name for the creek reflects its steep-cut banks and deep pools in the lower reach.', src: 'Kenaitze Indian Tribe' }] },
+          { era: 'modern', entries: [{ yr: '1960s', title: 'Deep Creek Tractor Launch Established', text: 'The tractor-launch system at the Deep Creek mouth \u2014 where tractors pull trailers through the surf to launch small boats directly into Cook Inlet \u2014 was established in the 1960s as a solution to the lack of sheltered harbor on the lower Kenai Peninsula. It remains one of the most unusual boat-launch systems in North America and launches thousands of boats during the summer king and halibut seasons.', src: 'Alaska State Parks' }] },
+        ],
+        docs: [],
+        revs: [],
+        outs: [{ n: 'Ninilchik Charters', d: 'Kings and halibut out of Deep Creek tractor launch', l: '' }],
       },
     ],
   },
@@ -8479,7 +8704,7 @@ export const STATES: StatesDB = {
       {
         id: 'anahulu_hi', n: 'Anahulu River', kauai: false, oahu: true, big_island: false, navigable: true, cultural: false,
         co: 'Honolulu County (Oahu)', len: '6 mi', cls: 'Flat', opt: '10–150',
-        g: '16294900', avg: 35, histFlow: 32, mx: 230, my: 525, abbr: 'HI',
+        g: '', avg: 35, histFlow: 32, mx: 230, my: 525, abbr: 'HI',
         desc: 'The Anahulu River flows 6 miles down the Wai\u02bbanae Range to Hale\u02bbiwa Beach Park on Oahu\u2019s North Shore, ending at the iconic Anahulu Bridge \u2014 a graceful concrete arch built in 1921 that has become one of Oahu\u2019s most-photographed landmarks. The river is tidal and brackish in its lower reach, supporting one of the most popular kayak and stand-up paddleboard rentals in Hawaii. The slow lower mile is family-friendly flatwater with palm trees, mangroves, and views of the North Shore surf in the distance.',
         desig: 'Hale\u02bbiwa Historic District · Anahulu Stream Bridge (National Register of Historic Places, 1979)',
         secs: ['Anahulu Bridge \u2014 Hale\u02bbiwa, kayak rentals and SUP launch', 'Lower Anahulu \u2014 1 mi tidal estuary, mangroves and palm trees', 'Upper Anahulu \u2014 narrow, no public access'],

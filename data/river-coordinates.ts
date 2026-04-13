@@ -431,4 +431,19 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   goodnews_ak: [59.12, -161.55],       // Goodnews Bay
   karluk_ak: [57.57, -154.45],         // Karluk village
   situk_ak: [59.55, -139.55],          // Situk Bridge / Yakutat
+  yukon_ak: [64.50, -165.00],          // Pilot Station (lower Yukon)
+  kuskokwim_ak: [60.80, -161.75],      // Bethel
+  gulkana_ak: [62.53, -145.55],        // Sourdough gauge
+  deshka_ak: [61.73, -150.32],         // Deshka Landing
+  little_susitna_ak: [61.55, -149.80], // Burma Landing
+  chena_ak: [64.80, -147.85],          // Fairbanks
+  tanana_ak: [64.57, -149.10],         // Nenana
+  kobuk_ak: [66.87, -156.63],          // Ambler
+  nenana_ak: [63.55, -148.90],         // Healy / Nenana Canyon
+  klutina_ak: [61.95, -145.32],        // Copper Center
+  chilkat_ak: [59.35, -135.95],        // Klukwan / Haines
+  togiak_ak: [59.05, -160.40],         // Togiak village
+  kanektok_ak: [59.75, -161.90],       // Quinhagak
+  taku_ak: [58.42, -134.02],           // Taku Inlet / Juneau
+  deep_creek_ak: [60.05, -151.67],     // Ninilchik / Deep Creek mouth
 }
