@@ -20,6 +20,12 @@ export default function AuthNav() {
   // header gracefully shows just the email until then.
   const [contributorCount, setContributorCount] = useState<number | null>(null)
   const wrapperRef = useRef<HTMLDivElement | null>(null)
+  const buttonRef = useRef<HTMLButtonElement | null>(null)
+  // Dropdown position is measured from the button when the menu opens
+  // so it can render with position:fixed and escape the nav-pills
+  // `overflow-x: auto` scroll container on mobile (which was clipping
+  // the dropdown and making it unreachable).
+  const [menuPos, setMenuPos] = useState<{ top: number; right: number } | null>(null)
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
@@ -66,24 +72,47 @@ export default function AuthNav() {
     return () => { cancelled = true }
   }, [user])
 
-  // Close on outside click + escape key. We register both because
-  // either one is a typical "I'm done with this menu" gesture and
-  // it's annoying to be stuck with a dropdown the user can't close
-  // without finding the exact button.
+  // Measure button position whenever the menu opens so the dropdown
+  // can render with position:fixed at the right spot. Also re-measure
+  // on resize / scroll so the menu doesn't float out of place.
   useEffect(() => {
     if (!open) return
-    function onClick(e: MouseEvent) {
-      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
-        setOpen(false)
-      }
+    function measure() {
+      const btn = buttonRef.current
+      if (!btn) return
+      const rect = btn.getBoundingClientRect()
+      setMenuPos({
+        top: rect.bottom + 6,
+        right: window.innerWidth - rect.right,
+      })
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    window.addEventListener('scroll', measure, true)
+    return () => {
+      window.removeEventListener('resize', measure)
+      window.removeEventListener('scroll', measure, true)
+    }
+  }, [open])
+
+  // Close on outside click/tap + escape key. Uses pointerdown so it
+  // fires on both mouse and touch without the legacy mobile tap-delay.
+  useEffect(() => {
+    if (!open) return
+    function onPointer(e: PointerEvent | MouseEvent) {
+      const target = e.target as Node
+      if (wrapperRef.current?.contains(target)) return
+      // Menu is now portaled via fixed position, so also check menu itself.
+      if ((target as HTMLElement).closest?.('[data-auth-menu]')) return
+      setOpen(false)
     }
     function onKey(e: KeyboardEvent) {
       if (e.key === 'Escape') setOpen(false)
     }
-    document.addEventListener('mousedown', onClick)
+    document.addEventListener('pointerdown', onPointer as EventListener)
     document.addEventListener('keydown', onKey)
     return () => {
-      document.removeEventListener('mousedown', onClick)
+      document.removeEventListener('pointerdown', onPointer as EventListener)
       document.removeEventListener('keydown', onKey)
     }
   }, [open])
@@ -110,6 +139,7 @@ export default function AuthNav() {
   return (
     <div ref={wrapperRef} style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
       <button
+        ref={buttonRef}
         type="button"
         onClick={() => setOpen(o => !o)}
         aria-haspopup="menu"
@@ -148,20 +178,22 @@ export default function AuthNav() {
         </span>
       </button>
 
-      {open && (
+      {open && menuPos && (
         <div
           role="menu"
+          data-auth-menu
           style={{
-            position: 'absolute',
-            top: 'calc(100% + 6px)',
-            right: 0,
+            position: 'fixed',
+            top: menuPos.top,
+            right: menuPos.right,
             minWidth: '200px',
+            maxWidth: 'calc(100vw - 16px)',
             background: 'var(--bg)',
             border: '.5px solid var(--bd2)',
             borderRadius: 'var(--r)',
             boxShadow: '0 8px 24px rgba(0,0,0,.10)',
             overflow: 'hidden',
-            zIndex: 200,
+            zIndex: 1000,
           }}
         >
           {/* Header — show full email so the user can confirm which
