@@ -3,6 +3,7 @@ import { ALL_RIVERS, STATES, getRiverPath } from '@/data/rivers'
 import { fetchGaugeData, formatCfs } from '@/lib/usgs'
 import { RAPIDS } from '@/data/rapids'
 import { PRO_FEATURES, PRO_PRICE } from '@/types'
+import { SHOW_PRO_TIER } from '@/lib/features'
 import AlertSubscriber from '@/components/alerts/AlertSubscriber'
 
 // Revalidate every 15 minutes
@@ -92,6 +93,7 @@ export default async function AlertsPage() {
 
       {/* Pro upgrade pitch — flow alerts are free; Pro adds email delivery
           and deeper analytics. Tone: helpful suggestion, not a barrier. */}
+      {SHOW_PRO_TIER && (
       <div style={{ padding: '0 28px 20px' }}>
         <div style={{
           background: 'var(--rvdk)', borderRadius: 'var(--rlg)', padding: '24px 28px',
@@ -150,6 +152,7 @@ export default async function AlertsPage() {
           </div>
         </div>
       </div>
+      )}
 
       {/* Live flow grid */}
       <div style={{ padding: '0 28px 16px' }}>

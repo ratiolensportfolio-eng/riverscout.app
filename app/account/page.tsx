@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import { getContributorTier, getNextTier, CONTRIBUTOR_TIERS } from '@/lib/contributor-tiers'
 import { ALL_RIVERS, getRiverPath } from '@/data/rivers'
+import { SHOW_PRO_TIER } from '@/lib/features'
 
 const mono = "'IBM Plex Mono', monospace"
 const serif = "'Playfair Display', serif"
@@ -398,7 +399,7 @@ export default function AccountPage() {
         </h1>
 
         {/* Pro status */}
-        {profile?.is_pro ? (
+        {SHOW_PRO_TIER && (profile?.is_pro ? (
           <div style={{
             padding: '16px', background: 'var(--rvlt)', border: '.5px solid var(--rvmd)',
             borderRadius: 'var(--rlg)', marginBottom: '20px',
@@ -443,7 +444,7 @@ export default function AccountPage() {
               Upgrade to Pro &rarr;
             </Link>
           </div>
-        )}
+        ))}
 
         {/* Weekly digest — free for all users, prominent placement so
             users can find and toggle it easily. */}

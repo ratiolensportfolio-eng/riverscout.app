@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import type { User } from '@supabase/supabase-js'
 import ContributorBadge from '@/components/ContributorBadge'
+import { SHOW_PRO_TIER } from '@/lib/features'
 
 const mono = "'IBM Plex Mono', monospace"
 
@@ -203,9 +204,11 @@ export default function AuthNav() {
           <MenuLink href="/outfitters/dashboard" onClick={() => setOpen(false)}>
             Outfitter dashboard
           </MenuLink>
-          <MenuLink href="/pro" onClick={() => setOpen(false)}>
-            Upgrade to Pro
-          </MenuLink>
+          {SHOW_PRO_TIER && (
+            <MenuLink href="/pro" onClick={() => setOpen(false)}>
+              Upgrade to Pro
+            </MenuLink>
+          )}
 
           {/* Sign out — separated visually because it's a different
               kind of action (destructive-ish, ends the session). */}

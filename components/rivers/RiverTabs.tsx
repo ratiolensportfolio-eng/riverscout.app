@@ -48,6 +48,7 @@ import { hasRiverMap, loadRiverMap } from '@/data/river-maps'
 import { hasFisheries } from '@/data/fisheries-keys'
 import { RAPIDS } from '@/data/rapids'
 import FishIcon from '@/components/icons/FishIcons'
+import { SHOW_PRO_TIER } from '@/lib/features'
 import { getHatchTrigger } from '@/lib/hatch-triggers'
 import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 import type { RiverFisheries } from '@/types'
@@ -1672,7 +1673,7 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                     </div>
 
                     {/* AI interpretation upsell for free users */}
-                    {!overviewIsPro && (
+                    {SHOW_PRO_TIER && !overviewIsPro && (
                       <div style={{
                         borderTop: '.5px solid var(--bd)',
                         padding: '10px 14px', background: 'var(--bg2)',
@@ -1799,7 +1800,7 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                 ) : (
                   <div style={{ padding: '12px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', textAlign: 'center' }}>Loading historical data...</div>
                 )
-              ) : (
+              ) : SHOW_PRO_TIER ? (
                 <div style={{
                   padding: '14px 16px', background: 'var(--bg2)',
                   border: '.5px solid var(--bd)', borderRadius: 'var(--r)',
@@ -1818,7 +1819,7 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                     Upgrade to Pro &rarr;
                   </a>
                 </div>
-              )}
+              ) : null}
             </div>
 
             {/* Custom Optimal CFS Range */}
@@ -1872,7 +1873,7 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                     </button>
                   </div>
                 </div>
-              ) : (
+              ) : SHOW_PRO_TIER ? (
                 <div style={{
                   padding: '10px 14px', background: 'var(--bg2)', border: '.5px solid var(--bd)',
                   borderRadius: 'var(--r)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', flexWrap: 'wrap',
@@ -1884,7 +1885,7 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                     Upgrade to Pro &rarr;
                   </a>
                 </div>
-              )}
+              ) : null}
             </div>
 
             {/* Credibility disclaimer */}
@@ -2616,7 +2617,7 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                         }}>
                           Set Hex Hatch Alert &rarr;
                         </button>
-                      ) : stockingAlertEmail ? (
+                      ) : stockingAlertEmail && SHOW_PRO_TIER ? (
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'flex-start' }}>
                           <span style={{ fontFamily: mono, fontSize: '10px', color: 'var(--rvmd)', lineHeight: 1.5 }}>
                             We&apos;ll email you when water temp hits the Hex trigger &mdash; hatch alerts are a Pro feature.
@@ -2876,7 +2877,7 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                                     Cancel
                                   </button>
                                 </div>
-                              ) : (
+                              ) : SHOW_PRO_TIER ? (
                                 <div style={{
                                   padding: '10px 12px', borderRadius: 'var(--r)',
                                   background: 'var(--bg)', border: '.5px solid var(--bd)',
@@ -2897,7 +2898,7 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                                     </span>
                                   </div>
                                 </div>
-                              )}
+                              ) : null}
                             </div>
                           )}
                         </div>
@@ -3312,7 +3313,7 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                                   }}>
                                   {stockingAlertSubmitting ? 'Setting alert...' : 'Set Stocking Alert'}
                                 </button>
-                              ) : (
+                              ) : SHOW_PRO_TIER ? (
                                 <div style={{
                                   padding: '12px 14px', borderRadius: 'var(--r)',
                                   background: 'var(--bg2)', border: '.5px solid var(--bd)',
@@ -3333,7 +3334,7 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                                     $4.99/month &middot; cancel anytime
                                   </div>
                                 </div>
-                              )}
+                              ) : null}
                             </div>
                           )}
                         </div>

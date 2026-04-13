@@ -11,6 +11,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import AuthNav from './AuthNav'
+import { SHOW_PRO_TIER } from '@/lib/features'
 
 const serif = "'Playfair Display', serif"
 
@@ -36,7 +37,8 @@ const PILLS: Pill[] = [
   { label: 'Alerts',      href: '/alerts',              match: /^\/alerts/ },
   { label: 'Community',   href: '/about/improvements',  match: /^\/about|^\/profile/ },
   { label: 'Outfitters',  href: '/outfitters',          match: /^\/outfitters/ },
-  { label: 'Pro',         href: '/pro',                 match: /^\/pro/, alwaysHighlight: true },
+  ...(SHOW_PRO_TIER ? [{ label: 'Pro', href: '/pro', match: /^\/pro/, alwaysHighlight: true } as Pill] : []),
+  { label: 'Contact',     href: '/contact',             match: /^\/contact/ },
 ]
 
 export default function GlobalNav() {

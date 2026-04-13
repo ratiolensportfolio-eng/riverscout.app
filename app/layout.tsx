@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import LargeTextToggle from '@/components/LargeTextToggle'
 import GlobalNav from '@/components/GlobalNav'
+import LaunchBanner from '@/components/LaunchBanner'
 
 export const metadata: Metadata = {
   title: 'RiverScout — Paddle Every River in America',
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             up around it. The GlobalNav lives inside the wrapper
             so it scales with the rest of the page. */}
         <div id="rs-zoom-target">
+          <LaunchBanner />
           <GlobalNav />
           {children}
         </div>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { RAPIDS } from '@/data/rapids'
+import { SHOW_PRO_TIER } from '@/lib/features'
 
 interface FlowAlert {
   id: string
@@ -284,6 +285,7 @@ export default function AlertSubscriber({ rivers }: Props) {
 
             {/* Pro gate notice — subscriptions are free and unlimited; email
                 delivery is what Pro unlocks. Keep the tone soft. */}
+            {SHOW_PRO_TIER && (
             <div style={{
               marginTop: '12px', padding: '10px 12px',
               background: 'var(--rvlt)', border: '.5px solid var(--rvmd)',
@@ -303,6 +305,7 @@ export default function AlertSubscriber({ rivers }: Props) {
                 Upgrade to Pro &rarr;
               </a>
             </div>
+            )}
           </div>
 
           {/* Active alerts */}
