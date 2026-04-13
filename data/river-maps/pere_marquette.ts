@@ -4,8 +4,16 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 129 points
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Bowman Bridge', lat: 43.8955, lng: -85.937, type: 'access', description: 'Major access point.' },
-  { name: 'Rainbow Rapids Access', lat: 43.881, lng: -85.989, type: 'access', description: 'Small pull-off near Rainbow Rapids — the most technical water on the PM.' },
+  { name: 'Forks Bridge', lat: 43.85663, lng: -85.84114, type: 'put-in', description: 'Upper put-in. 1.5 miles / 20 minutes to M-37.' },
+  { name: 'M-37', lat: 43.85755, lng: -85.85147, type: 'access', description: '3.5 miles / 1.5 hours to Green Cottage.' },
+  { name: 'Green Cottage', lat: 43.86164, lng: -85.88113, type: 'access', description: '3.5 miles / 1.5 hours to Gleason\u2019s Landing.' },
+  { name: 'Gleason\u2019s Landing', lat: 43.87103, lng: -85.91960, type: 'access', description: '2.5 miles / 1 hour to Bowman\u2019s Bridge.' },
+  { name: 'Bowman\u2019s Bridge', lat: 43.88890, lng: -85.94190, type: 'access', description: '9 miles / 2.5 hours to Rainbow Rapids. Most popular float.' },
+  { name: 'Rainbow Rapids', lat: 43.92259, lng: -85.97616, type: 'access', description: '3 miles / 1 hour to Sulak. Most technical water on the PM.' },
+  { name: 'Sulak Landing', lat: 43.92615, lng: -86.00589, type: 'access', description: '3 miles / 1 hour to Upper Branch Bridge.' },
+  { name: 'Upper Branch Bridge', lat: 43.92847, lng: -86.02057, type: 'access', description: '2.5 miles / 1.5 hours to Lower Branch Bridge.' },
+  { name: 'Lower Branch Bridge', lat: 43.93533, lng: -86.05066, type: 'access', description: '8 miles / 2.5 hours to Walhalla Bridge.' },
+  { name: 'Walhalla Bridge', lat: 43.93296, lng: -86.11515, type: 'take-out', description: 'Standard take-out for the full PM float.' },
 ]
 
 export const sections: RiverSection[] = []
