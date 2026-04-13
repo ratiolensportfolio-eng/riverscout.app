@@ -5,27 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Kendallville",
-    lat: 43.3854,
-    lng: -91.8523,
-    type: "put-in",
-    description: "Upper put-in in the Driftless Area. Limestone bluffs begin immediately downstream.",
-  },
-  {
-    name: "Bluffton",
-    lat: 43.4083,
-    lng: -91.5777,
-    type: "access",
-    description: "Mid-river access near Bluffton. Good rest stop with small-town amenities.",
-  },
-  {
-    name: "Decorah",
-    lat: 43.3085,
-    lng: -91.7748,
-    type: "take-out",
-    description: "Take-out near Decorah. Scenic Driftless bluffs and cold-water trout streams throughout.",
-  },
+  { name: 'Kendallville Park', lat: 43.412, lng: -91.741, type: 'put-in', description: 'Put-in for Iowa\'s most scenic canoe river.' },
+  { name: 'Bluffton', lat: 43.427, lng: -91.898, type: 'take-out', description: 'DNR access at the town of Bluffton.' },
 ]
 
 // River sections

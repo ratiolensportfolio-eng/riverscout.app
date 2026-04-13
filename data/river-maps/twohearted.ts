@@ -3,7 +3,11 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Two Hearted River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 120 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'High Bridge', lat: 46.632, lng: -85.351, type: 'put-in', description: 'Upper Two Hearted access deep in the Lake Superior State Forest.' },
+  { name: 'Reed & Green Bridge', lat: 46.685, lng: -85.292, type: 'access', description: 'DNR access on the lower Two Hearted.' },
+  { name: 'Two Hearted River Campground', lat: 46.712, lng: -85.251, type: 'campsite', description: 'DNR campground at the Lake Superior mouth.' },
+]
 
 export const sections: RiverSection[] = []
 

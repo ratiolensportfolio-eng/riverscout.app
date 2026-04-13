@@ -5,41 +5,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Buena Vista",
-    lat: 38.689,
-    lng: -106.046,
-    type: "put-in",
-    description: "Popular put-in for the upper Arkansas. Easy river access near downtown Buena Vista.",
-  },
-  {
-    name: "Fisherman\"s Bridge",
-    lat: 38.6517,
-    lng: -106.051,
-    type: "access",
-    description: "Mid-river access below Buena Vista. Bridge crossing with parking.",
-  },
-  {
-    name: "Ruby Mountain",
-    lat: 38.5718,
-    lng: -106.0545,
-    type: "access",
-    description: "Start of Browns Canyon National Monument. Wilderness-only access from here downstream.",
-  },
-  {
-    name: "Hecla Junction",
-    lat: 38.5416,
-    lng: -105.995,
-    type: "access",
-    description: "Take-out for Browns Canyon. BLM-managed put-in/take-out with parking and restrooms.",
-  },
-  {
-    name: "Salida",
-    lat: 38.4984,
-    lng: -105.925,
-    type: "take-out",
-    description: "Take-out near downtown Salida. Riverside park with easy access.",
-  },
+  { name: 'Granite', lat: 39.078, lng: -106.431, type: 'put-in', description: 'Put-in for the Numbers section — continuous Class IV.' },
+  { name: 'Railroad Bridge', lat: 38.996, lng: -106.235, type: 'access', description: 'Take-out for the Numbers, put-in for Browns Canyon.' },
+  { name: 'Hecla Junction', lat: 38.891, lng: -106.115, type: 'access', description: 'BLM access, standard take-out for Browns Canyon National Monument.' },
+  { name: 'Royal Gorge Park', lat: 38.516, lng: -105.321, type: 'take-out', description: 'Put-in for the Royal Gorge — Class IV-V in a 1,000-foot deep granite canyon.' },
 ]
 
 // River sections

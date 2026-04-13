@@ -3,7 +3,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Kern River (CALIFORNIA) — geometry from USGS NHDPlus HR
 // 14 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Johnsondale Bridge', lat: 35.967, lng: -118.538, type: 'put-in', description: 'Upper Kern put-in — Class IV-V.' },
+  { name: 'Riverside Park (Kernville)', lat: 35.755, lng: -118.425, type: 'take-out', description: 'Town of Kernville access.' },
+]
 
 export const sections: RiverSection[] = []
 

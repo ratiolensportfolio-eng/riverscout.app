@@ -5,34 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Milford",
-    lat: 41.3106,
-    lng: -74.7925,
-    type: "put-in",
-    description: "Put-in at Milford, PA. Northern gateway to the Delaware Water Gap National Recreation Area.",
-  },
-  {
-    name: "Dingmans Ferry",
-    lat: 41.2253,
-    lng: -74.8656,
-    type: "access",
-    description: "Dingmans Ferry access. Near Dingmans Falls, the tallest waterfall in Pennsylvania.",
-  },
-  {
-    name: "Bushkill",
-    lat: 41.0961,
-    lng: -74.9692,
-    type: "access",
-    description: "Bushkill access point. Close to Bushkill Falls, the \"Niagara of Pennsylvania.\"",
-  },
-  {
-    name: "Delaware Water Gap",
-    lat: 40.9691,
-    lng: -75.1308,
-    type: "take-out",
-    description: "Take-out at Delaware Water Gap. River cuts through Kittatinny Ridge between Mt. Minsi and Mt. Tammany.",
-  },
+  { name: 'Dingmans Ferry', lat: 41.217, lng: -74.863, type: 'put-in', description: 'NPS access in Delaware Water Gap NRA.' },
+  { name: 'Kittatinny Point (Water Gap)', lat: 40.968, lng: -75.126, type: 'take-out', description: 'NPS visitor center at the Delaware Water Gap itself — the iconic river gap through Kittatinny Ridge.' },
 ]
 
 // River sections

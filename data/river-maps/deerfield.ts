@@ -5,27 +5,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Fife Brook Dam",
-    lat: 42.6889,
-    lng: -72.9736,
-    type: "put-in",
-    description: "Put-in below Fife Brook Dam. Dam-controlled releases provide reliable flows for paddling.",
-  },
-  {
-    name: "Zoar Gap",
-    lat: 42.6509,
-    lng: -72.9532,
-    type: "access",
-    description: "Zoar Gap rapid, the signature Class III drop on the Deerfield. Boulder garden with big waves.",
-  },
-  {
-    name: "Charlemont",
-    lat: 42.6259,
-    lng: -72.8628,
-    type: "take-out",
-    description: "Take-out near Charlemont. Multiple outfitters in the area for shuttle service.",
-  },
+  { name: 'Fife Brook Dam', lat: 42.639, lng: -72.942, type: 'put-in', description: 'Dam release put-in for the most popular rafting run in New England.' },
+  { name: 'Zoar Gap', lat: 42.617, lng: -72.905, type: 'access', description: 'The signature Class III rapid.' },
+  { name: 'Charlemont', lat: 42.629, lng: -72.868, type: 'access', description: 'Town of Charlemont access.' },
+  { name: 'Shelburne Falls', lat: 42.605, lng: -72.739, type: 'take-out', description: 'Historic village with the Bridge of Flowers.' },
 ]
 
 // River sections

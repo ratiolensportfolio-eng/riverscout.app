@@ -5,34 +5,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Summersville Dam",
-    lat: 38.2706,
-    lng: -80.6815,
-    type: "put-in",
-    description: "Upper Gauley put-in below Summersville Dam. Seasonal releases Sept-Oct draw huge crowds.",
-  },
-  {
-    name: "Pillow Rock",
-    lat: 38.2860,
-    lng: -80.7081,
-    type: "access",
-    description: "Iconic Class V rapid on the Upper Gauley. Scout or portage river-left.",
-  },
-  {
-    name: "Peters Creek",
-    lat: 38.2988,
-    lng: -80.7697,
-    type: "access",
-    description: "Divides Upper and Lower Gauley. Common take-out for Upper, put-in for Lower.",
-  },
-  {
-    name: "Swiss",
-    lat: 38.2555,
-    lng: -80.8222,
-    type: "take-out",
-    description: "Lower Gauley take-out at the Swiss access area.",
-  },
+  { name: 'Summersville Dam Tailwaters', lat: 38.231, lng: -80.868, type: 'put-in', description: 'Upper Gauley put-in below Summersville Dam.' },
+  { name: 'Mason\'s Branch', lat: 38.195, lng: -80.908, type: 'access', description: 'Take-out for the Upper Gauley, put-in for the Lower.' },
+  { name: 'Peters Creek', lat: 38.17, lng: -80.935, type: 'access', description: 'Mid-Lower Gauley access.' },
+  { name: 'Swiss', lat: 38.151, lng: -80.962, type: 'take-out', description: 'Final take-out for the Lower Gauley at the confluence with the New River.' },
 ]
 
 // River sections

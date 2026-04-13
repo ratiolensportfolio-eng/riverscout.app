@@ -3,7 +3,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Rappahannock River (VIRGINIA) — geometry from USGS NHDPlus HR
 // 14 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Kelly\'s Ford', lat: 38.471, lng: -77.771, type: 'put-in', description: 'Historic Civil War crossing, now a popular canoe/kayak launch.' },
+  { name: 'City Dock (Fredericksburg)', lat: 38.301, lng: -77.461, type: 'take-out', description: 'City of Fredericksburg access at the fall line.' },
+]
 
 export const sections: RiverSection[] = []
 

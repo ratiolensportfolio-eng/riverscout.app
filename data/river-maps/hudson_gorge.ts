@@ -5,27 +5,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Indian River Confluence",
-    lat: 43.9526,
-    lng: -74.0687,
-    type: "put-in",
-    description: "Put-in for the Hudson River Gorge at the Indian River confluence. Remote Adirondack access.",
-  },
-  {
-    name: "Blue Ledge",
-    lat: 43.9616,
-    lng: -74.0903,
-    type: "access",
-    description: "Iconic Class IV section of the gorge. Towering cliff walls and continuous whitewater.",
-  },
-  {
-    name: "North River",
-    lat: 43.9695,
-    lng: -74.094,
-    type: "take-out",
-    description: "Take-out for the Hudson Gorge run at North River. Shuttle road access.",
-  },
+  { name: 'Indian River Put-in', lat: 43.878, lng: -74.126, type: 'put-in', description: 'Upper Hudson Gorge commercial rafting put-in.' },
+  { name: 'North Creek', lat: 43.704, lng: -73.978, type: 'access', description: 'Town of North Creek — traditional take-out for the Hudson Gorge commercial run.' },
+  { name: 'Riparius', lat: 43.677, lng: -73.933, type: 'access', description: 'Small Adirondack hamlet.' },
+  { name: 'The Glen', lat: 43.632, lng: -73.882, type: 'take-out', description: 'Community of The Glen.' },
 ]
 
 // River sections

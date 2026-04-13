@@ -5,27 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Great Falls Overlook",
-    lat: 38.9919,
-    lng: -77.2482,
-    type: "put-in",
-    description: "Put-in above Great Falls. Expert paddlers only above the falls. Overlook viewpoint at Great Falls Park.",
-  },
-  {
-    name: "Great Falls",
-    lat: 38.9837,
-    lng: -77.245,
-    type: "portage",
-    description: "Class V+ Great Falls of the Potomac. Mandatory portage for most paddlers. Extremely dangerous hydraulics.",
-  },
-  {
-    name: "Carderock",
-    lat: 38.9689,
-    lng: -77.2008,
-    type: "take-out",
-    description: "Take-out at Carderock Recreation Area. Popular climbing and picnic area with river access.",
-  },
+  { name: 'Violettes Lock', lat: 39.071, lng: -77.25, type: 'put-in', description: 'C&O Canal NHP access above Great Falls.' },
+  { name: 'Anglers Inn', lat: 38.996, lng: -77.239, type: 'take-out', description: 'Popular Class II-III put-in below Great Falls on the Maryland side.' },
 ]
 
 // River sections

@@ -3,7 +3,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Pine Creek (PENNSYLVANIA) — geometry from USGS NHDPlus HR
 // 18 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Ansonia', lat: 41.735, lng: -77.346, type: 'put-in', description: 'Put-in for the PA Grand Canyon of Pine Creek.' },
+  { name: 'Blackwell', lat: 41.569, lng: -77.383, type: 'take-out', description: 'Mid-canyon access at the town of Blackwell.' },
+]
 
 export const sections: RiverSection[] = []
 

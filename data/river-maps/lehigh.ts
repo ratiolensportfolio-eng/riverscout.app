@@ -3,7 +3,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Lehigh River (PENNSYLVANIA) — geometry from USGS NHDPlus HR
 // 14 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'White Haven', lat: 41.062, lng: -75.776, type: 'put-in', description: 'Put-in for the Lehigh Gorge — Class II-III dam-release whitewater through Lehigh Gorge State Park.' },
+  { name: 'Jim Thorpe', lat: 40.869, lng: -75.732, type: 'take-out', description: 'Standard take-out for the Lehigh Gorge.' },
+]
 
 export const sections: RiverSection[] = []
 

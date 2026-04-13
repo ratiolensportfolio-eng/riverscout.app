@@ -5,41 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Montauk",
-    lat: 37.4409,
-    lng: -91.6561,
-    type: "put-in",
-    description: "Montauk State Park put-in. Spring-fed headwaters of the Current River.",
-  },
-  {
-    name: "Cedar Grove",
-    lat: 37.4352,
-    lng: -91.6549,
-    type: "access",
-    description: "Cedar Grove access point with picnic area.",
-  },
-  {
-    name: "Akers Ferry",
-    lat: 37.4271,
-    lng: -91.6439,
-    type: "access",
-    description: "Historic Akers Ferry crossing. Campground and canoe rental nearby.",
-  },
-  {
-    name: "Round Spring",
-    lat: 37.4280,
-    lng: -91.6428,
-    type: "access",
-    description: "Round Spring access with cave tours and NPS campground.",
-  },
-  {
-    name: "Two Rivers",
-    lat: 37.4294,
-    lng: -91.6145,
-    type: "take-out",
-    description: "Two Rivers access at the Jacks Fork confluence. End point for Ozark NSR floats.",
-  },
+  { name: 'Montauk State Park', lat: 37.463, lng: -91.681, type: 'put-in', description: 'Put-in at the headwaters.' },
+  { name: 'Akers Ferry', lat: 37.369, lng: -91.548, type: 'campsite', description: 'NPS access at the historic Akers ferry crossing.' },
 ]
 
 // River sections

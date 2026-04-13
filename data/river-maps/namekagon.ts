@@ -3,7 +3,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Namekagon River (WISCONSIN) — geometry from USGS NHDPlus HR
 // 128 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Cable (Namekagon Dam)', lat: 46.201, lng: -91.294, type: 'put-in', description: 'NPS access at the headwaters.' },
+  { name: 'Hayward Landing', lat: 46.012, lng: -91.466, type: 'take-out', description: 'NPS access near the town of Hayward.' },
+]
 
 export const sections: RiverSection[] = []
 

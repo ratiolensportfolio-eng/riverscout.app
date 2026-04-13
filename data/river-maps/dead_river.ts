@@ -3,7 +3,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Dead River (MAINE) — geometry from USGS NHDPlus HR
 // 168 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Spencer Stream', lat: 45.162, lng: -70.219, type: 'put-in', description: 'Put-in for the Dead River below Long Falls Dam.' },
+  { name: 'The Forks (Dead River confluence)', lat: 45.354, lng: -69.974, type: 'take-out', description: 'Take-out where the Dead meets the Kennebec at The Forks.' },
+]
 
 export const sections: RiverSection[] = []
 

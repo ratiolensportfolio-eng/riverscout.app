@@ -3,7 +3,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Pigeon River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 146 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Pigeon Bridge Campground', lat: 45.021, lng: -84.412, type: 'campsite', description: 'DNR campground on the upper Pigeon.' },
+  { name: 'Tin Bridge', lat: 45.058, lng: -84.348, type: 'take-out', description: 'Mid-trip access in Pigeon River Country.' },
+]
 
 export const sections: RiverSection[] = []
 

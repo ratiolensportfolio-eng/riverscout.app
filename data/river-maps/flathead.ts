@@ -5,27 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
 export const accessPoints: AccessPoint[] = [
-  {
-    name: 'Schafer Meadows',
-    lat: 47.9962,
-    lng: -113.0583,
-    type: 'put-in',
-    description: 'Fly-in put-in at Schafer Meadows airstrip deep in the Bob Marshall Wilderness. No road access.',
-  },
-  {
-    name: 'Bear Creek',
-    lat: 48.1098,
-    lng: -113.3024,
-    type: 'access',
-    description: 'Mid-river access at Bear Creek confluence. Transition from wilderness float to canyon whitewater.',
-  },
-  {
-    name: 'West Glacier',
-    lat: 48.5024,
-    lng: -113.9309,
-    type: 'take-out',
-    description: 'Take-out at West Glacier near the Glacier National Park entrance. End of the Middle Fork run.',
-  },
+  { name: 'Bear Creek (Glacier NP)', lat: 48.259, lng: -113.375, type: 'put-in', description: 'Put-in for the Middle Fork Flathead along the southern boundary of Glacier National Park.' },
+  { name: 'West Glacier', lat: 48.496, lng: -113.981, type: 'take-out', description: 'Take-out at West Glacier, the western entrance to Glacier National Park.' },
 ]
 
 // Middle Fork Flathead sections

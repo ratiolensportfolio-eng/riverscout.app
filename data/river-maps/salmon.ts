@@ -5,27 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
 export const accessPoints: AccessPoint[] = [
-  {
-    name: 'Corn Creek',
-    lat: 45.0291,
-    lng: -113.9157,
-    type: 'put-in',
-    description: 'Main Salmon "River of No Return" launch site. Permit required. USFS ranger station and boat ramp.',
-  },
-  {
-    name: 'Allison Bar',
-    lat: 45.0497,
-    lng: -113.9155,
-    type: 'campsite',
-    description: 'Popular mid-trip camp along the Main Salmon. Sandy beach with good upstream eddy.',
-  },
-  {
-    name: 'Vinegar Creek',
-    lat: 45.0697,
-    lng: -113.9168,
-    type: 'take-out',
-    description: 'Take-out for Main Salmon wilderness float. Also known as Carey Creek access. Jet boat shuttle available.',
-  },
+  { name: 'Corn Creek Put-in', lat: 45.19, lng: -114.34, type: 'put-in', description: 'USFS launch for the Main Salmon "River of No Return." Permit required (lottery).' },
+  { name: 'Vinegar Creek (Long Tom Bar)', lat: 45.535, lng: -115.622, type: 'take-out', description: 'Standard take-out for the Main Salmon expedition.' },
 ]
 
 // Main Salmon River sections

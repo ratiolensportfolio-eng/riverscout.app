@@ -3,7 +3,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Brazos River (TEXAS) — geometry from USGS NHDPlus HR
 // 5 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Possum Kingdom State Park', lat: 32.869, lng: -98.525, type: 'put-in', description: 'State park below Possum Kingdom Dam.' },
+  { name: 'Rochelle Park (Palo Pinto)', lat: 32.762, lng: -98.312, type: 'take-out', description: 'County park access on the middle Brazos.' },
+]
 
 export const sections: RiverSection[] = []
 

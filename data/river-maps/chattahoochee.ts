@@ -5,34 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Buford Dam",
-    lat: 34.1228,
-    lng: -84.0976,
-    type: "put-in",
-    description: "Put-in below Buford Dam at the Chattahoochee River National Recreation Area. Cold-water trout fishery.",
-  },
-  {
-    name: "Jones Bridge",
-    lat: 33.9901,
-    lng: -84.1985,
-    type: "access",
-    description: "Jones Bridge unit of the NRA. Popular access with parking, trails, and river access.",
-  },
-  {
-    name: "Powers Island",
-    lat: 33.9113,
-    lng: -84.4469,
-    type: "access",
-    description: "Popular tubing and kayaking put-in. Easy float to Paces Ferry. Summer weekend crowds.",
-  },
-  {
-    name: "Paces Ferry",
-    lat: 33.8488,
-    lng: -84.4588,
-    type: "take-out",
-    description: "Take-out at Paces Ferry unit near Vinings. End of the popular tubing section.",
-  },
+  { name: 'Powers Island', lat: 33.927, lng: -84.437, type: 'put-in', description: 'NPS unit of Chattahoochee River NRA.' },
+  { name: 'Paces Mill', lat: 33.869, lng: -84.441, type: 'take-out', description: 'NPS access in the Cobb County unit.' },
 ]
 
 // River sections

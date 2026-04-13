@@ -5,34 +5,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Chili Bar",
-    lat: 38.7941,
-    lng: -120.5995,
-    type: "put-in",
-    description: "Put-in for the South Fork American. Popular Class III day trip starts here.",
-  },
-  {
-    name: "Coloma (Marshall Gold Discovery SHP)",
-    lat: 38.7879,
-    lng: -120.6756,
-    type: "access",
-    description: "Mid-river access at Coloma, site of the 1848 gold discovery. River-left beach access.",
-  },
-  {
-    name: "Salmon Falls",
-    lat: 38.7829,
-    lng: -120.7789,
-    type: "access",
-    description: "Mid-point access dividing the upper run from the Gorge section.",
-  },
-  {
-    name: "Folsom Lake",
-    lat: 38.7654,
-    lng: -120.8076,
-    type: "take-out",
-    description: "Take-out where the South Fork enters Folsom Lake. Water level varies seasonally.",
-  },
+  { name: 'Chili Bar Put-in', lat: 38.758, lng: -120.81, type: 'put-in', description: 'Standard put-in for the South Fork American — California\'s most commercially rafted river.' },
+  { name: 'Camp Lotus', lat: 38.791, lng: -120.907, type: 'campsite', description: 'Private campground with river access.' },
+  { name: 'Salmon Falls (Folsom Lake)', lat: 38.801, lng: -121.043, type: 'take-out', description: 'Take-out at the head of Folsom Lake.' },
 ]
 
 // River sections

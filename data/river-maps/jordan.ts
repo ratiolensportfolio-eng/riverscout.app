@@ -3,7 +3,11 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Jordan River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 138 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Graves Crossing', lat: 44.943, lng: -84.982, type: 'put-in', description: 'Upper Jordan access.' },
+  { name: 'Old State Road Bridge', lat: 44.918, lng: -85.012, type: 'access', description: 'Mid-trip access on the Jordan.' },
+  { name: 'Webster Bridge', lat: 44.892, lng: -85.058, type: 'take-out', description: 'Most popular take-out on the Jordan.' },
+]
 
 export const sections: RiverSection[] = []
 

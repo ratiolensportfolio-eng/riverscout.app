@@ -5,27 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Langlade",
-    lat: 45.1147,
-    lng: -88.6502,
-    type: "put-in",
-    description: "Put-in near Langlade for the Wolf River. Gateway to Wisconsin\"s best whitewater.",
-  },
-  {
-    name: "Big Smokey Falls",
-    lat: 44.95,
-    lng: -88.6473,
-    type: "access",
-    description: "Big Smokey Falls, the Wolf River\"s most famous rapid. Class IV ledge drop on the Menominee Reservation.",
-  },
-  {
-    name: "Keshena",
-    lat: 44.8828,
-    lng: -88.6343,
-    type: "take-out",
-    description: "Take-out near Keshena on the Menominee Reservation. End of the classic Wolf River run.",
-  },
+  { name: 'Big Smokey Falls', lat: 44.887, lng: -88.761, type: 'put-in', description: 'Menominee County access above the Wolf\'s famous whitewater section.' },
+  { name: 'Langlade (Hwy 55)', lat: 44.829, lng: -88.727, type: 'take-out', description: 'Standard take-out for the Wolf River whitewater section.' },
 ]
 
 // River sections

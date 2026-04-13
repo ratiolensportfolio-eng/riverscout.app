@@ -3,7 +3,20 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Pere Marquette River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 129 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'M-37 Bridge', lat: 43.9168, lng: -85.8525, type: 'put-in', description: 'Start of the flies-only water.' },
+  { name: 'Green Cottage', lat: 43.9085, lng: -85.898, type: 'access', description: 'Small access in the heart of the flies-only water.' },
+  { name: 'Bowman Bridge', lat: 43.8955, lng: -85.937, type: 'access', description: 'Major access point.' },
+  { name: 'Rainbow Rapids Access', lat: 43.881, lng: -85.989, type: 'access', description: 'Small pull-off near Rainbow Rapids — the most technical water on the PM.' },
+  { name: 'Upper Branch Bridge', lat: 43.872, lng: -86.029, type: 'access', description: 'Bridge access on the middle river.' },
+  { name: 'Gleasons Landing', lat: 43.8575, lng: -86.068, type: 'access', description: 'One of the most popular launches on the entire PM.' },
+  { name: 'Sulak Landing', lat: 43.838, lng: -86.1245, type: 'access', description: 'USFS access site on the middle PM.' },
+  { name: 'Walhalla Bridge', lat: 43.81, lng: -86.172, type: 'access', description: 'Bridge access near the town of Walhalla.' },
+  { name: 'Maple Leaf Landing', lat: 43.785, lng: -86.2195, type: 'access', description: 'USFS landing on the lower-middle PM.' },
+  { name: 'Indian Bridge', lat: 43.764, lng: -86.262, type: 'access', description: 'Bridge access on the lower PM above Scottville.' },
+  { name: 'Scottville Riverside Park', lat: 43.7452, lng: -86.278, type: 'access', description: 'City park with a proper concrete ramp and ample parking.' },
+  { name: 'Suttons Landing', lat: 43.7235, lng: -86.331, type: 'take-out', description: 'Final take-out at Pere Marquette Lake before the river flows into Lake Michigan at Ludington.' },
+]
 
 export const sections: RiverSection[] = []
 

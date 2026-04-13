@@ -5,34 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
 export const accessPoints: AccessPoint[] = [
-  {
-    name: 'West Table Creek',
-    lat: 43.326,
-    lng: -111.2021,
-    type: 'put-in',
-    description: 'Upper put-in for Snake River Canyon. Popular commercial rafting launch south of Jackson Hole.',
-  },
-  {
-    name: 'Sheep Gulch',
-    lat: 43.3196,
-    lng: -111.1831,
-    type: 'access',
-    description: 'Mid-canyon access point. Alternate put-in or lunch stop for canyon trips.',
-  },
-  {
-    name: 'Lunch Counter Rapid',
-    lat: 43.3018,
-    lng: -111.1507,
-    type: 'access',
-    description: 'Class III wave train and the canyon"s most famous rapid. Popular kayak surfing spot.',
-  },
-  {
-    name: 'South Park Bridge',
-    lat: 43.2326,
-    lng: -111.1189,
-    type: 'take-out',
-    description: 'Primary take-out for Snake River Canyon runs. Large parking area and boat ramp off US-26.',
-  },
+  { name: 'West Table Creek', lat: 43.442, lng: -110.975, type: 'put-in', description: 'Put-in for the Snake River Canyon — the whitewater section below Jackson Hole.' },
+  { name: 'Sheep Gulch Take-out', lat: 43.398, lng: -111.045, type: 'take-out', description: 'Standard take-out for the Snake River Canyon run.' },
 ]
 
 // Snake River Canyon sections

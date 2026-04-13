@@ -3,7 +3,11 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Huron River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 107 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Proud Lake Recreation Area', lat: 42.572, lng: -83.551, type: 'put-in', description: 'State recreation area on the upper Huron.' },
+  { name: 'Delhi Metropark', lat: 42.338, lng: -83.882, type: 'access', description: 'Metropark with paved ramp.' },
+  { name: 'Gallup Park', lat: 42.287, lng: -83.722, type: 'take-out', description: 'City of Ann Arbor park with a livery and boat launch.' },
+]
 
 export const sections: RiverSection[] = []
 

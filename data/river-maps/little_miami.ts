@@ -5,34 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "John Bryan SP",
-    lat: 39.7096,
-    lng: -83.9757,
-    type: "put-in",
-    description: "Put-in at John Bryan State Park. Limestone gorge with small Class I-II ledges.",
-  },
-  {
-    name: "Yellow Springs",
-    lat: 39.7055,
-    lng: -83.9825,
-    type: "access",
-    description: "Yellow Springs access near the village. Bike trail parallels the river.",
-  },
-  {
-    name: "Xenia",
-    lat: 39.6965,
-    lng: -84.0063,
-    type: "access",
-    description: "Xenia river access. Junction of multiple bike trail segments.",
-  },
-  {
-    name: "Morrow",
-    lat: 39.3560,
-    lng: -84.1308,
-    type: "take-out",
-    description: "Take-out at Morrow. Southern endpoint for popular Little Miami canoe livery trips.",
-  },
+  { name: 'John Bryan State Park', lat: 39.796, lng: -83.862, type: 'put-in', description: 'State park access in the Little Miami gorge.' },
+  { name: 'Loveland Canoe Rental', lat: 39.269, lng: -84.264, type: 'take-out', description: 'The paddling hub of the Little Miami — multiple outfitters in downtown Loveland.' },
 ]
 
 // River sections

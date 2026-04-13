@@ -5,27 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Ocoee Dam #2",
-    lat: 35.0034,
-    lng: -84.4002,
-    type: "put-in",
-    description: "Put-in for the Middle Ocoee below Dam #2. Scheduled releases create reliable whitewater.",
-  },
-  {
-    name: "Olympic Section Start",
-    lat: 35.0951,
-    lng: -84.5470,
-    type: "access",
-    description: "Start of the Upper/Olympic section. Site of the 1996 Olympic whitewater events.",
-  },
-  {
-    name: "US-64 Bridge",
-    lat: 35.1097,
-    lng: -84.5672,
-    type: "take-out",
-    description: "Take-out for the Olympic section near the US-64 bridge.",
-  },
+  { name: 'Ocoee #2 Put-in (Powerhouse)', lat: 35.094, lng: -84.516, type: 'put-in', description: 'TVA powerhouse put-in for the Middle Ocoee.' },
+  { name: 'Ocoee #2 Take-out (Caution Light)', lat: 35.072, lng: -84.468, type: 'take-out', description: 'Standard take-out for the Middle Ocoee.' },
 ]
 
 // River sections

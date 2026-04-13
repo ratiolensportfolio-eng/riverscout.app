@@ -3,7 +3,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // New River (WEST VIRGINIA) — geometry from USGS NHDPlus HR
 // 18 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Cunard Put-in', lat: 38.067, lng: -81.053, type: 'put-in', description: 'NPS access for the New River Gorge.' },
+  { name: 'Fayette Station', lat: 38.07, lng: -81.083, type: 'take-out', description: 'Take-out under the New River Gorge Bridge — the iconic 876-foot arch bridge.' },
+]
 
 export const sections: RiverSection[] = []
 

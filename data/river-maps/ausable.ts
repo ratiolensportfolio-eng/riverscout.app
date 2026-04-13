@@ -5,62 +5,11 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Burton's Landing",
-    lat: 44.6597,
-    lng: -84.7099,
-    type: "put-in",
-    description: "Most popular put-in near Grayling. Paved parking lot, vault toilets, and easy river access. Canoe liveries run shuttles here. Holy Waters catch-and-release section begins downstream.",
-  },
-  {
-    name: "Keystone Landing",
-    lat: 44.665,
-    lng: -84.6282,
-    type: "access",
-    description: "USFS access site east of Grayling. Small gravel parking area and carry-down launch. Good mid-trip stop on the Holy Waters stretch.",
-  },
-  {
-    name: "Wakeley Bridge",
-    lat: 44.6605,
-    lng: -84.5104,
-    type: "access",
-    description: "Bridge access with roadside parking. Quieter section of the upper Au Sable. Popular with fly anglers targeting brown trout.",
-  },
-  {
-    name: "Mio Dam",
-    lat: 44.6602,
-    lng: -84.1302,
-    type: "portage",
-    description: "Mandatory portage around Mio Dam. Take out on river-left above the dam. Carry trail leads to put-in below the powerhouse. Parking and vault toilets available at Mio Dam Pond.",
-  },
-  {
-    name: "McKinley Bridge",
-    lat: 44.6613,
-    lng: -84.0288,
-    type: "access",
-    description: "Access below Mio on the mainstream Au Sable. Gravel parking area near the bridge. Good starting point for the middle Au Sable. Vault toilet on site.",
-  },
-  {
-    name: "Loud Dam",
-    lat: 44.64,
-    lng: -83.9103,
-    type: "portage",
-    description: "Mandatory portage around Loud Dam (Consumers Energy). Signed portage trail on river-left. Carry distance approximately 0.25 miles. Limited parking.",
-  },
-  {
-    name: "Five Channels Dam",
-    lat: 44.6286,
-    lng: -83.8546,
-    type: "portage",
-    description: "Mandatory portage around Five Channels Dam. Take out on river-left and follow the marked portage trail. Last dam before the lower Au Sable flatwater to Lake Huron.",
-  },
-  {
-    name: "Oscoda",
-    lat: 44.4452,
-    lng: -83.4743,
-    type: "take-out",
-    description: "Final take-out at Oscoda near the Lake Huron mouth. Public boat launch with paved ramp, large parking lot, restrooms, and picnic area. End point for multi-day Au Sable trips.",
-  },
+  { name: 'Burton\'s Landing', lat: 44.6215, lng: -84.7015, type: 'put-in', description: 'Start of the legendary Holy Water — flies-only, catch-and-release trophy trout water.' },
+  { name: 'Wakeley Bridge', lat: 44.594, lng: -84.752, type: 'access', description: 'End of the Holy Water section.' },
+  { name: 'Stephan Bridge', lat: 44.569, lng: -84.385, type: 'access', description: 'USFS access on the mainstream Au Sable.' },
+  { name: 'Keystone Landing', lat: 44.551, lng: -84.315, type: 'access', description: 'Dirt ramp, easy carry to water.' },
+  { name: 'Mio Dam Pond', lat: 44.508, lng: -84.131, type: 'take-out', description: 'Access below Mio Dam.' },
 ]
 
 // Au Sable River sections with distances and paddle times

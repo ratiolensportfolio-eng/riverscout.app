@@ -5,62 +5,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Boxley",
-    lat: 35.9819,
-    lng: -92.7522,
-    type: "put-in",
-    description: "Upper Buffalo put-in near Boxley Valley. Scenic elk-viewing area.",
-  },
-  {
-    name: "Ponca",
-    lat: 35.9839,
-    lng: -92.7463,
-    type: "access",
-    description: "Access at Ponca, gateway to the Buffalo National River wilderness.",
-  },
-  {
-    name: "Steel Creek",
-    lat: 35.9864,
-    lng: -92.7426,
-    type: "access",
-    description: "Steel Creek campground and access. Popular bluff views.",
-  },
-  {
-    name: "Kyles Landing",
-    lat: 35.9970,
-    lng: -92.7379,
-    type: "access",
-    description: "Kyles Landing river access with primitive camping.",
-  },
-  {
-    name: "Pruitt (Hwy 7)",
-    lat: 35.9979,
-    lng: -92.7356,
-    type: "access",
-    description: "Pruitt access at Hwy 7 bridge. Divides Upper and Middle Buffalo.",
-  },
-  {
-    name: "Hasty",
-    lat: 35.9976,
-    lng: -92.6955,
-    type: "access",
-    description: "Hasty access point on the Middle Buffalo.",
-  },
-  {
-    name: "Gilbert",
-    lat: 36.0007,
-    lng: -92.6892,
-    type: "access",
-    description: "Gilbert general store and river access. Historic mining town.",
-  },
-  {
-    name: "Rush",
-    lat: 36.0007,
-    lng: -92.6892,
-    type: "take-out",
-    description: "Rush Landing take-out. Historic zinc mining ghost town with interpretive trails.",
-  },
+  { name: 'Ponca Access', lat: 35.971, lng: -93.364, type: 'put-in', description: 'NPS access at the start of the upper Buffalo.' },
+  { name: 'Steel Creek', lat: 35.955, lng: -93.327, type: 'campsite', description: 'NPS campground and access.' },
+  { name: 'Kyles Landing', lat: 35.94, lng: -93.292, type: 'take-out', description: 'NPS access in the heart of the upper canyon.' },
 ]
 
 // River sections

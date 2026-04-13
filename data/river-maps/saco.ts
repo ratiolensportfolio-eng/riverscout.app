@@ -5,34 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "North Conway",
-    lat: 44.0426,
-    lng: -71.1328,
-    type: "put-in",
-    description: "Put-in near North Conway, NH. Views of Mt. Washington on clear days.",
-  },
-  {
-    name: "Conway",
-    lat: 43.9838,
-    lng: -71.1173,
-    type: "access",
-    description: "Conway village access point. Midway stop on day trips.",
-  },
-  {
-    name: "Center Conway",
-    lat: 44.0004,
-    lng: -71.0505,
-    type: "access",
-    description: "Center Conway access near the NH/ME border.",
-  },
-  {
-    name: "Fryeburg ME",
-    lat: 44.0272,
-    lng: -70.9769,
-    type: "take-out",
-    description: "Take-out at Fryeburg, Maine. Sandy beaches and gentle meanders through farmland.",
-  },
+  { name: 'Davis Park (Conway)', lat: 44.033, lng: -71.128, type: 'put-in', description: 'Standard put-in for the Saco — New England\'s classic family canoe camping river.' },
+  { name: 'Canal Bridge', lat: 43.962, lng: -71.031, type: 'take-out', description: 'Mid-trip access.' },
 ]
 
 // River sections

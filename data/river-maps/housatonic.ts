@@ -5,27 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Falls Village",
-    lat: 41.9528,
-    lng: -73.3700,
-    type: "put-in",
-    description: "Put-in below Falls Village dam. Class III-IV rapids in the first mile during high water.",
-  },
-  {
-    name: "West Cornwall",
-    lat: 41.8684,
-    lng: -73.3683,
-    type: "access",
-    description: "West Cornwall covered bridge access. Iconic 1864 covered bridge over the Housatonic.",
-  },
-  {
-    name: "Kent",
-    lat: 41.7229,
-    lng: -73.4845,
-    type: "take-out",
-    description: "Take-out in Kent, CT. Bulls Bridge gorge (Class IV, expert only) lies just downstream.",
-  },
+  { name: 'Falls Village', lat: 41.953, lng: -73.368, type: 'put-in', description: 'Put-in below the dam for the Housatonic\'s Class II-III whitewater section through the Litchfield Hills.' },
+  { name: 'West Cornwall Covered Bridge', lat: 41.872, lng: -73.365, type: 'take-out', description: 'The iconic 1864 covered bridge — most photographed spot on the Housatonic.' },
 ]
 
 // River sections

@@ -5,27 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
 export const accessPoints: AccessPoint[] = [
-  {
-    name: 'Canyon Dam',
-    lat: 29.8786,
-    lng: -98.5007,
-    type: 'put-in',
-    description: 'Put-in below Canyon Lake dam. Cold, clear tailwater fed by dam releases. Year-round trout fishery.',
-  },
-  {
-    name: 'Gruene',
-    lat: 29.7347,
-    lng: -98.1047,
-    type: 'access',
-    description: 'Access near historic Gruene. Take-out for the upper trout water section or put-in for the tubing stretch.',
-  },
-  {
-    name: 'New Braunfels',
-    lat: 29.6979,
-    lng: -98.1071,
-    type: 'take-out',
-    description: 'Take-out in New Braunfels. End of the popular tubing and floating section through town.',
-  },
+  { name: 'Canyon Lake Dam (Below)', lat: 29.869, lng: -98.193, type: 'put-in', description: 'Put-in below Canyon Dam for the cold-water tailrace — Texas\'s only year-round trout fishery.' },
+  { name: 'Gruene (Rockin\' R)', lat: 29.736, lng: -98.105, type: 'take-out', description: 'Historic Gruene access.' },
 ]
 
 // Guadalupe River sections

@@ -3,7 +3,12 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Cumberland River — Big South Fork (KENTUCKY) — geometry from USGS NHDPlus HR
 // 49 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Cumberland Falls State Park', lat: 36.839, lng: -84.345, type: 'put-in', description: 'The "Niagara of the South" — 125 ft wide, 68 ft drop.' },
+  { name: 'Williamsburg', lat: 36.744, lng: -84.155, type: 'access', description: 'Kentucky Highway 92 access in Williamsburg.' },
+  { name: 'Wolf Creek Dam Tailwater', lat: 36.87, lng: -85.145, type: 'access', description: 'Below Wolf Creek Dam on Lake Cumberland.' },
+  { name: 'Winfrey\'s Ferry', lat: 36.81, lng: -85.278, type: 'take-out', description: 'KDFWR access site on the Cumberland tailwater.' },
+]
 
 export const sections: RiverSection[] = []
 

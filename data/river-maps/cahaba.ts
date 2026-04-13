@@ -5,27 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Grants Mill",
-    lat: 33.4797,
-    lng: -86.7126,
-    type: "put-in",
-    description: "Put-in at Grants Mill in Birmingham. Urban headwaters of Alabama\"s longest free-flowing river.",
-  },
-  {
-    name: "Cahaba Lily Preserve",
-    lat: 33.2608,
-    lng: -86.897,
-    type: "access",
-    description: "Access at the Cahaba River National Wildlife Refuge. The Cahaba lily (Hymenocallis coronaria) blooms on rocky shoals in May\u2013June.",
-  },
-  {
-    name: "Centreville",
-    lat: 32.9499,
-    lng: -87.1411,
-    type: "take-out",
-    description: "Take-out at Centreville. End of the most popular Cahaba paddling corridor.",
-  },
+  { name: 'Cahaba River NWR (Bibb County)', lat: 33.072, lng: -87.066, type: 'put-in', description: 'US Fish & Wildlife access in the Cahaba River National Wildlife Refuge.' },
+  { name: 'Centreville', lat: 32.939, lng: -87.117, type: 'take-out', description: 'Town of Centreville access.' },
 ]
 
 // River sections

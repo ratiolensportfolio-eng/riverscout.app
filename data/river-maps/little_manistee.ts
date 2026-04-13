@@ -3,7 +3,11 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Little Manistee River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 136 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Old M-37 Bridge', lat: 44.185, lng: -85.861, type: 'put-in', description: 'Upper Little Manistee access.' },
+  { name: 'Spencer Bridge', lat: 44.151, lng: -85.928, type: 'access', description: 'USFS access.' },
+  { name: 'Nine Mile Bridge', lat: 44.118, lng: -86.012, type: 'take-out', description: 'Lower Little Manistee access.' },
+]
 
 export const sections: RiverSection[] = []
 

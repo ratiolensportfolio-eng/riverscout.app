@@ -5,34 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
 export const accessPoints: AccessPoint[] = [
-  {
-    name: 'Highway 28 Bridge',
-    lat: 34.9693,
-    lng: -83.1198,
-    type: 'put-in',
-    description: 'Section III put-in at the Highway 28 bridge. Parking and river access on the SC side.',
-  },
-  {
-    name: 'Bull Sluice',
-    lat: 34.9292,
-    lng: -83.152,
-    type: 'access',
-    description: 'Class IV Bull Sluice rapid. Mandatory scout on river left. Iconic Chattooga rapid visible from the trail.',
-  },
-  {
-    name: 'Woodall Shoals',
-    lat: 34.8972,
-    lng: -83.1896,
-    type: 'access',
-    description: 'Section IV put-in below Bull Sluice. Access via Woodall Shoals trail. Start of the expert-only Section IV.',
-  },
-  {
-    name: 'Lake Tugaloo',
-    lat: 34.7561,
-    lng: -83.3266,
-    type: 'take-out',
-    description: 'Take-out on Lake Tugaloo at the bottom of Section IV. Flatwater paddle to the ramp after Five Falls.',
-  },
+  { name: 'US-76 Bridge (Bull Sluice)', lat: 34.817, lng: -83.312, type: 'put-in', description: 'The classic Section III/IV put-in/dividing line.' },
+  { name: 'Lake Tugaloo Take-out', lat: 34.755, lng: -83.332, type: 'take-out', description: 'Final take-out at the top of Lake Tugaloo.' },
 ]
 
 // Chattooga River sections

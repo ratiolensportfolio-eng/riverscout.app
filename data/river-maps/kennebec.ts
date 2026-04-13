@@ -5,27 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Harris Dam",
-    lat: 45.2846,
-    lng: -69.9920,
-    type: "put-in",
-    description: "Put-in below Harris Dam. Scheduled releases create reliable whitewater from spring through fall.",
-  },
-  {
-    name: "Magic Falls",
-    lat: 45.2500,
-    lng: -69.9902,
-    type: "access",
-    description: "Magic Falls \u2014 the signature Class IV rapid of the Kennebec. Big waves and hydraulics at higher flows.",
-  },
-  {
-    name: "The Forks",
-    lat: 45.1540,
-    lng: -69.9561,
-    type: "take-out",
-    description: "Take-out at The Forks, where the Dead River meets the Kennebec. Outfitter hub for northern Maine whitewater.",
-  },
+  { name: 'Harris Station Put-in', lat: 45.289, lng: -69.941, type: 'put-in', description: 'Put-in below Harris Dam for the Kennebec Gorge.' },
+  { name: 'The Forks', lat: 45.354, lng: -69.974, type: 'take-out', description: 'Take-out at the confluence with the Dead River.' },
 ]
 
 // River sections

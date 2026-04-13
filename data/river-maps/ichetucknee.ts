@@ -5,27 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Headspring",
-    lat: 29.9833,
-    lng: -82.759,
-    type: "put-in",
-    description: "Ichetucknee Headspring put-in inside the state park. Crystal-clear 72\u00b0F spring water year-round.",
-  },
-  {
-    name: "Midpoint",
-    lat: 29.9777,
-    lng: -82.7593,
-    type: "access",
-    description: "Mid-river access point. Alternate put-in when headspring launch is at capacity.",
-  },
-  {
-    name: "Dampier Landing",
-    lat: 29.9591,
-    lng: -82.7614,
-    type: "take-out",
-    description: "Take-out at Dampier Landing. End of the tubing and paddling run through the state park.",
-  },
+  { name: 'Headspring', lat: 29.984, lng: -82.762, type: 'put-in', description: 'Ichetucknee Springs State Park.' },
+  { name: 'US-27 Takeout (Dampier\'s Landing)', lat: 29.956, lng: -82.758, type: 'take-out', description: 'Southern take-out for the Ichetucknee float.' },
 ]
 
 // River sections

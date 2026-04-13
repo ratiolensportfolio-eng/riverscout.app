@@ -5,27 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Berry Bridge",
-    lat: 42.9081,
-    lng: -100.4547,
-    type: "put-in",
-    description: "Put-in at Berry Bridge. Starting point for the most popular Niobrara float.",
-  },
-  {
-    name: "Smith Falls SP",
-    lat: 42.9025,
-    lng: -100.3750,
-    type: "access",
-    description: "Smith Falls State Park \u2014 tallest waterfall in Nebraska (63 ft). Worth a stop to hike to the falls.",
-  },
-  {
-    name: "Rocky Ford",
-    lat: 42.9025,
-    lng: -100.3750,
-    type: "take-out",
-    description: "Rocky Ford take-out. End of the most popular Niobrara tubing and canoeing section.",
-  },
+  { name: 'Cornell Bridge', lat: 42.824, lng: -100.151, type: 'put-in', description: 'Standard put-in for the Scenic River section of the Niobrara — Nebraska\'s most popular float.' },
+  { name: 'Rocky Ford', lat: 42.817, lng: -99.931, type: 'take-out', description: 'Standard take-out for the Scenic section.' },
 ]
 
 // River sections

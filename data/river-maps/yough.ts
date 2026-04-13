@@ -5,34 +5,8 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Confluence",
-    lat: 39.8153,
-    lng: -79.3649,
-    type: "put-in",
-    description: "Put-in for the Middle Yough at Confluence, PA. Easy access near town.",
-  },
-  {
-    name: "Ohiopyle Falls",
-    lat: 39.8692,
-    lng: -79.4955,
-    type: "portage",
-    description: "Mandatory portage around Ohiopyle Falls (Class VI). Carry river-left through the state park.",
-  },
-  {
-    name: "Ohiopyle Launch",
-    lat: 39.8707,
-    lng: -79.4901,
-    type: "put-in",
-    description: "Put-in for the Lower Yough below Ohiopyle Falls. Managed launch with scheduled entry times on busy days.",
-  },
-  {
-    name: "Bruner Run",
-    lat: 39.9653,
-    lng: -79.5210,
-    type: "take-out",
-    description: "Standard take-out for the Lower Yough.",
-  },
+  { name: 'Ohiopyle Falls Launch', lat: 39.869, lng: -79.495, type: 'put-in', description: 'Put-in below Ohiopyle Falls for the Lower Yough (Class III-IV).' },
+  { name: 'Bruner Run Take-out', lat: 39.84, lng: -79.508, type: 'take-out', description: 'Standard take-out for the Lower Yough.' },
 ]
 
 // River sections
