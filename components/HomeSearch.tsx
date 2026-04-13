@@ -64,7 +64,7 @@ export default function HomeSearch() {
           id: `state-${s.key}`,
           label: s.name,
           sublabel: `${s.riverCount} rivers`,
-          path: `/rivers?state=${s.slug}`,
+          path: `/state/${s.key}`,
         })
       }
       if (matches.length >= 3) break // cap state results at 3
