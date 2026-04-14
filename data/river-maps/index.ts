@@ -1417,6 +1417,2841 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  alabama_al: () => import('./alabama_al').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  alatna_ak: () => import('./alatna_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  allagash_me: () => import('./allagash_me').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  alsea_or: () => import('./alsea_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  altahama_ga: () => import('./altahama_ga').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  alum_oh: () => import('./alum_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  american_ca: () => import('./american_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  anacostia_md: () => import('./anacostia_md').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  andreafsky_ak: () => import('./andreafsky_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  aniakchak_ak: () => import('./aniakchak_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  apalachia_lake_nc: () => import('./apalachia_lake_nc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  apalachicola_fl: () => import('./apalachicola_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  appomattox_va: () => import('./appomattox_va').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  arkansas_ks: () => import('./arkansas_ks').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  ashaway_ri: () => import('./ashaway_ri').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  ashley_sc: () => import('./ashley_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  ashtabula_oh: () => import('./ashtabula_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  assabet_ma: () => import('./assabet_ma').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  aucilla_fl: () => import('./aucilla_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  auglaize_oh: () => import('./auglaize_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  baraboo_wi: () => import('./baraboo_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  barren_ky: () => import('./barren_ky').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  bayou_bartholomew_ar: () => import('./bayou_bartholomew_ar').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  bayou_teche_la: () => import('./bayou_teche_la').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  bear_id: () => import('./bear_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  beaver_ak: () => import('./beaver_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  beaver_ny: () => import('./beaver_ny').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  beaver_ri: () => import('./beaver_ri').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  big_cedar_ia: () => import('./big_cedar_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  big_darby_oh: () => import('./big_darby_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  big_fork_mn: () => import('./big_fork_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  big_pine_in: () => import('./big_pine_in').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  big_piney_mo: () => import('./big_piney_mo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  big_sioux_ia: () => import('./big_sioux_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  big_south_fork_cumberland_tn: () => import('./big_south_fork_cumberland_tn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  big_walnut_in: () => import('./big_walnut_in').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  big_walnut_oh: () => import('./big_walnut_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  big_wood_id: () => import('./big_wood_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  bighorn_wy: () => import('./bighorn_wy').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  birch_ak: () => import('./birch_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  black_hawk_ia: () => import('./black_hawk_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  black_mo: () => import('./black_mo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  black_oh: () => import('./black_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  blackfoot_id: () => import('./blackfoot_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  blackstone_ma: () => import('./blackstone_ma').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  blackwater_fl: () => import('./blackwater_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  blanchard_oh: () => import('./blanchard_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  blue_earth_mn: () => import('./blue_earth_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  blue_mo: () => import('./blue_mo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  boone_ia: () => import('./boone_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  bourbeuse_mo: () => import('./bourbeuse_mo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  boyer_ia: () => import('./boyer_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  brule_mi: () => import('./brule_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  brule_wi_2: () => import('./brule_wi_2').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  bruneau_id: () => import('./bruneau_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  bryant_mo: () => import('./bryant_mo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  buck_ky: () => import('./buck_ky').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  buck_oh: () => import('./buck_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  buffalo_ar: () => import('./buffalo_ar').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  buffalo_ia: () => import('./buffalo_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  buffalo_tn: () => import('./buffalo_tn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  buggs_island_beechwood_flats_water_trail_va: () => import('./buggs_island_beechwood_flats_water_trail_va').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  burt_lake_mi: () => import('./burt_lake_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  caesar_oh: () => import('./caesar_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  calumet_il: () => import('./calumet_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  canyon_ca: () => import('./canyon_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  captina_oh: () => import('./captina_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  carp_mi: () => import('./carp_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  carson_nv: () => import('./carson_nv').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  cashie_nc: () => import('./cashie_nc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  castor_mo: () => import('./castor_mo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  catawba_sc: () => import('./catawba_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  cedar_mn: () => import('./cedar_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  cedar_ne: () => import('./cedar_ne').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  chariton_ia: () => import('./chariton_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  charley_ak: () => import('./charley_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  chattahoochee_ga: () => import('./chattahoochee_ga').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  chattooga_sc_2: () => import('./chattooga_sc_2').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  chatuge_lake_nc: () => import('./chatuge_lake_nc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  chauga_sc: () => import('./chauga_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  cheoah_nc: () => import('./cheoah_nc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  chicago_il: () => import('./chicago_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  chickahominy_water_trail_va: () => import('./chickahominy_water_trail_va').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  chilikadrotna_ak: () => import('./chilikadrotna_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  chipola_fl: () => import('./chipola_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  chippewa_mn: () => import('./chippewa_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  chippewa_wi: () => import('./chippewa_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  choctawhatchee_fl: () => import('./choctawhatchee_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  clarks_fork_of_the_yellowstone_wy: () => import('./clarks_fork_of_the_yellowstone_wy').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  clear_ca: () => import('./clear_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  clear_tn: () => import('./clear_tn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  clear_tn_2: () => import('./clear_tn_2').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  clearwater_id: () => import('./clearwater_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  clinch_tn: () => import('./clinch_tn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  clinton_mi: () => import('./clinton_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  coal_wv: () => import('./coal_wv').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  colorado_co: () => import('./colorado_co').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  colorado_nv: () => import('./colorado_nv').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  colorado_ut: () => import('./colorado_ut').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  combahee_sc: () => import('./combahee_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  conestoga_pa: () => import('./conestoga_pa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  conneaut_oh: () => import('./conneaut_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  conodoguinet_pa: () => import('./conodoguinet_pa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  conotton_oh: () => import('./conotton_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  coosaw_river_icw_sc: () => import('./coosaw_river_icw_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  coosawhatchie_sc: () => import('./coosawhatchie_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  cottonwood_mn: () => import('./cottonwood_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  courtois_mo: () => import('./courtois_mo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  crooked_ar: () => import('./crooked_ar').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  crooked_or: () => import('./crooked_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  crow_river_north_mn: () => import('./crow_river_north_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  crow_river_south_mn: () => import('./crow_river_south_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  cumberland_ky: () => import('./cumberland_ky').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  daddys_tn: () => import('./daddys_tn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  dan_va: () => import('./dan_va').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  deep_id: () => import('./deep_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  deep_in: () => import('./deep_in').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  deer_oh: () => import('./deer_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  delaware_pa_2: () => import('./delaware_pa_2').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  delta_ak: () => import('./delta_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  dennison_ak: () => import('./dennison_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  des_moines_mn: () => import('./des_moines_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  detroit_mi: () => import('./detroit_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  dirty_devil_ut: () => import('./dirty_devil_ut').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  dolores_co: () => import('./dolores_co').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  donner_und_blitzen_or: () => import('./donner_und_blitzen_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  driftwood_in: () => import('./driftwood_in').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  duck_oh: () => import('./duck_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  dupage_il: () => import('./dupage_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  east_branch_ashtabula_oh: () => import('./east_branch_ashtabula_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  east_branch_chagrin_oh: () => import('./east_branch_chagrin_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  east_branch_salmon_brook_ct: () => import('./east_branch_salmon_brook_ct').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  east_branch_whitefish_mi: () => import('./east_branch_whitefish_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  east_fork_andreafsky_ak: () => import('./east_fork_andreafsky_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  east_fork_carson_ca: () => import('./east_fork_carson_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  east_fork_des_moines_ia: () => import('./east_fork_des_moines_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  east_fork_white_in: () => import('./east_fork_white_in').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  east_nishnabotna_ia: () => import('./east_nishnabotna_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  eau_claire_wi: () => import('./eau_claire_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  econfina_fl: () => import('./econfina_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  econolockhatchee_fl: () => import('./econolockhatchee_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  eightmile_ct: () => import('./eightmile_ct').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  elk_mo: () => import('./elk_mo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  elk_or: () => import('./elk_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  elkhart_in: () => import('./elkhart_in').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  elkhorn_ky: () => import('./elkhorn_ky').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  embarras_il: () => import('./embarras_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  encampment_wy: () => import('./encampment_wy').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  english_ia: () => import('./english_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  escalante_co: () => import('./escalante_co').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  escalante_ut: () => import('./escalante_ut').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  everglades_fl: () => import('./everglades_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  fawn_in: () => import('./fawn_in').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  flatrock_in: () => import('./flatrock_in').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  flint_mi: () => import('./flint_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  fontana_lake_nc: () => import('./fontana_lake_nc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  fortymile_ak: () => import('./fortymile_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  fox_wi: () => import('./fox_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  fraser_co: () => import('./fraser_co').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  french_broad_tn: () => import('./french_broad_tn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  french_pa: () => import('./french_pa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  gasper_ky: () => import('./gasper_ky').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  generals_cut_ga: () => import('./generals_cut_ga').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  grand_ia: () => import('./grand_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  grand_mi: () => import('./grand_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  grand_mo: () => import('./grand_mo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  grande_ronde_or: () => import('./grande_ronde_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  grande_ronde_wa: () => import('./grande_ronde_wa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  great_pee_dee_sc: () => import('./great_pee_dee_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  green_fall_ct: () => import('./green_fall_ct').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  green_nc_2: () => import('./green_nc_2').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  green_ut: () => import('./green_ut').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  greenville_oh: () => import('./greenville_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  gunnison_co: () => import('./gunnison_co').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  guyandotte_wv: () => import('./guyandotte_wv').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  hamlin_lake_mi: () => import('./hamlin_lake_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  harpeth_tn: () => import('./harpeth_tn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  hatchie_tn: () => import('./hatchie_tn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  hiwassee_nc: () => import('./hiwassee_nc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  holmes_fl: () => import('./holmes_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  holston_tn: () => import('./holston_tn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  hudson_ny: () => import('./hudson_ny').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  huron_oh: () => import('./huron_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  hurricane_ar: () => import('./hurricane_ar').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  huzzah_mo: () => import('./huzzah_mo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  illinois_il: () => import('./illinois_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  indian_mi: () => import('./indian_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  iowa_ia: () => import('./iowa_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  iroquois_il: () => import('./iroquois_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  iroquois_in: () => import('./iroquois_in').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  ivishak_ak: () => import('./ivishak_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  james_mo: () => import('./james_mo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  jarbidge_id: () => import('./jarbidge_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  john_ak: () => import('./john_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  johns_va: () => import('./johns_va').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  kankakee_in: () => import('./kankakee_in').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  kansas_ks: () => import('./kansas_ks').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  kaskaskia_il: () => import('./kaskaskia_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  kennebec_me: () => import('./kennebec_me').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  killbuck_oh: () => import('./killbuck_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  kishwaukee_il: () => import('./kishwaukee_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  kiski_conemaugh_pa: () => import('./kiski_conemaugh_pa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  klickitat_wa: () => import('./klickitat_wa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  la_moine_il: () => import('./la_moine_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lake_erie_mi: () => import('./lake_erie_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lake_eustis_run_fl: () => import('./lake_eustis_run_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lake_glenville_nc: () => import('./lake_glenville_nc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lake_harris_run_fl: () => import('./lake_harris_run_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lake_huron_mi: () => import('./lake_huron_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lake_louisa_state_park_trail_fl: () => import('./lake_louisa_state_park_trail_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lake_michigan_il: () => import('./lake_michigan_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lake_michigan_mi: () => import('./lake_michigan_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lake_red_rock_ia: () => import('./lake_red_rock_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lake_santeelah_nc: () => import('./lake_santeelah_nc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lake_st_clair_mi: () => import('./lake_st_clair_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lake_superior_mi: () => import('./lake_superior_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lake_superior_mn: () => import('./lake_superior_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lake_superior_wi: () => import('./lake_superior_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lamine_mo: () => import('./lamine_mo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lamprey_nh: () => import('./lamprey_nh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lawsons_fork_sc: () => import('./lawsons_fork_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  licking_oh: () => import('./licking_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  little_al: () => import('./little_al').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  little_beaver_oh: () => import('./little_beaver_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  little_cedar_ia: () => import('./little_cedar_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  little_darby_oh: () => import('./little_darby_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  little_fork_mn: () => import('./little_fork_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  little_manatee_fl: () => import('./little_manatee_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  little_muskingum_oh: () => import('./little_muskingum_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  little_pee_dee_sc: () => import('./little_pee_dee_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  little_scioto_oh: () => import('./little_scioto_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  little_sioux_ia: () => import('./little_sioux_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  little_south_fork_cumberland_ky: () => import('./little_south_fork_cumberland_ky').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  little_tn: () => import('./little_tn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lizard_ia: () => import('./lizard_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  logging_cabin_ak: () => import('./logging_cabin_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  long_prairie_mn: () => import('./long_prairie_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  loramie_oh: () => import('./loramie_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lower_elkhorn_ne: () => import('./lower_elkhorn_ne').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lower_ochlockonee_river_state_trail_fl: () => import('./lower_ochlockonee_river_state_trail_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lower_saluda_sc: () => import('./lower_saluda_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lower_suwannee_national_wildlife_refuge_trail_fl: () => import('./lower_suwannee_national_wildlife_refuge_trail_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lower_suwannee_river_trail_fl: () => import('./lower_suwannee_river_trail_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  loyalhanna_pa: () => import('./loyalhanna_pa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  lumber_nc: () => import('./lumber_nc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  mahoning_oh: () => import('./mahoning_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  manitowish_wi: () => import('./manitowish_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  mathews_county_blueways_va: () => import('./mathews_county_blueways_va').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  mattaponi_and_pamunkey_rivers_trail_va: () => import('./mattaponi_and_pamunkey_rivers_trail_va').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  mattole_ca: () => import('./mattole_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  maumee_in: () => import('./maumee_in').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  maury_river_water_trail_va: () => import('./maury_river_water_trail_va').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  meherrin_river_trail_va: () => import('./meherrin_river_trail_va').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  middle_branch_ontonagon_mi: () => import('./middle_branch_ontonagon_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  middle_fork_clearwater_id: () => import('./middle_fork_clearwater_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  middle_fork_eel_ca: () => import('./middle_fork_eel_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  middle_fork_feather_ca: () => import('./middle_fork_feather_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  middle_fork_flathead_mt: () => import('./middle_fork_flathead_mt').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  middle_fork_fortymile_ak: () => import('./middle_fork_fortymile_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  middle_fork_kings_ca: () => import('./middle_fork_kings_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  middle_fork_salmon_id: () => import('./middle_fork_salmon_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  middle_fork_smith_ca: () => import('./middle_fork_smith_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  middle_fork_vermillion_il: () => import('./middle_fork_vermillion_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  middle_grand_mi: () => import('./middle_grand_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  middle_ia: () => import('./middle_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  middle_raccoon_ia: () => import('./middle_raccoon_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  middle_saluda_sc: () => import('./middle_saluda_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  middle_susquehanna_pa: () => import('./middle_susquehanna_pa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  mill_wv: () => import('./mill_wv').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  minnesota_mn: () => import('./minnesota_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  mississinewa_in: () => import('./mississinewa_in').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  mississippi_ia: () => import('./mississippi_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  mississippi_il: () => import('./mississippi_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  mississippi_mn: () => import('./mississippi_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  mississippi_mo: () => import('./mississippi_mo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  missouri_ia: () => import('./missouri_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  missouri_mo: () => import('./missouri_mo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  missouri_mt_2: () => import('./missouri_mt_2').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  molalla_or: () => import('./molalla_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  mongaup_ny: () => import('./mongaup_ny').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  monogahela_pa: () => import('./monogahela_pa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  monongahela_wv: () => import('./monongahela_wv').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  montreal_wi: () => import('./montreal_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  moose_ak: () => import('./moose_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  muddy_ut: () => import('./muddy_ut').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  mulchatna_ak: () => import('./mulchatna_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  mullett_lake_mi: () => import('./mullett_lake_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  muskingum_oh: () => import('./muskingum_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  myakka_fl: () => import('./myakka_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  nantahala_lake_nc: () => import('./nantahala_lake_nc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  nashua_ma: () => import('./nashua_ma').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  new_ca: () => import('./new_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  new_nc: () => import('./new_nc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  new_tn: () => import('./new_tn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  niangua_mo: () => import('./niangua_mo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  nippersink_il: () => import('./nippersink_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  nissitissit_nh: () => import('./nissitissit_nh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  noatak_ak: () => import('./noatak_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  nolichucky_nc_2: () => import('./nolichucky_nc_2').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  nonvianuk_ak: () => import('./nonvianuk_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_branch_chicago_il: () => import('./north_branch_chicago_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_branch_potomac_md: () => import('./north_branch_potomac_md').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_branch_susquehanna_pa: () => import('./north_branch_susquehanna_pa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_fork_american_ca: () => import('./north_fork_american_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_fork_edisto_sc: () => import('./north_fork_edisto_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_fork_eel_ca: () => import('./north_fork_eel_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_fork_feather_ca: () => import('./north_fork_feather_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_fork_flambeau_wi: () => import('./north_fork_flambeau_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_fork_flathead_mt: () => import('./north_fork_flathead_mt').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_fork_fortymile_ak: () => import('./north_fork_fortymile_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_fork_john_day_or: () => import('./north_fork_john_day_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_fork_koyukuk_ak: () => import('./north_fork_koyukuk_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_fork_maquoketa_ia: () => import('./north_fork_maquoketa_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_fork_mokelumne_ca: () => import('./north_fork_mokelumne_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_fork_owyhee_id: () => import('./north_fork_owyhee_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_fork_owyhee_or: () => import('./north_fork_owyhee_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_fork_paint_oh: () => import('./north_fork_paint_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_fork_rogue_or: () => import('./north_fork_rogue_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_fork_shoshone_wy: () => import('./north_fork_shoshone_wy').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_fork_smith_ca: () => import('./north_fork_smith_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_fork_trinity_ca: () => import('./north_fork_trinity_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_fork_virgin_ut: () => import('./north_fork_virgin_ut').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_ia: () => import('./north_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_platte_co: () => import('./north_platte_co').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_platte_wy: () => import('./north_platte_wy').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_raccoon_ia: () => import('./north_raccoon_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_saluda_sc: () => import('./north_saluda_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_skunk_ia: () => import('./north_skunk_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_sylamore_ar: () => import('./north_sylamore_ar').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  north_tyger_sc: () => import('./north_tyger_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  northern_forest_canoe_trail_me: () => import('./northern_forest_canoe_trail_me').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  northern_forest_canoe_trail_nh: () => import('./northern_forest_canoe_trail_nh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  northern_forest_canoe_trail_ny: () => import('./northern_forest_canoe_trail_ny').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  northern_forest_canoe_trail_vt: () => import('./northern_forest_canoe_trail_vt').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  nowitna_ak: () => import('./nowitna_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  obed_tn: () => import('./obed_tn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  occoquan_water_trail_va: () => import('./occoquan_water_trail_va').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  ocheyedan_ia: () => import('./ocheyedan_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  ochlockonee_fl: () => import('./ochlockonee_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  ocmulgee_ga: () => import('./ocmulgee_ga').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  oconaluftee_nc: () => import('./oconaluftee_nc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  oh_be_joyful_co: () => import('./oh_be_joyful_co').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  ohio_brush_oh: () => import('./ohio_brush_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  ohio_il: () => import('./ohio_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  ohio_in: () => import('./ohio_in').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  ohio_pa: () => import('./ohio_pa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  okanogan_wa: () => import('./okanogan_wa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  ontonagon_mi: () => import('./ontonagon_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  osage_fork_gasconade_mo: () => import('./osage_fork_gasconade_mo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  osage_mo: () => import('./osage_mo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  ottawa_oh: () => import('./ottawa_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  otter_tail_mn: () => import('./otter_tail_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  owyhee_id: () => import('./owyhee_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  owyhee_or: () => import('./owyhee_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  pacolet_sc: () => import('./pacolet_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  paint_mi: () => import('./paint_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  paint_oh: () => import('./paint_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  paw_paw_mi: () => import('./paw_paw_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  pawcatuck_ct: () => import('./pawcatuck_ct').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  payette_id: () => import('./payette_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  payette_river_north_id: () => import('./payette_river_north_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  payette_river_south_id: () => import('./payette_river_south_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  pecatonica_il: () => import('./pecatonica_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  persimmon_lake_nc: () => import('./persimmon_lake_nc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  pigeon_in: () => import('./pigeon_in').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  pigg_va: () => import('./pigg_va').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  pike_wi: () => import('./pike_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  pine_mn: () => import('./pine_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  pomme_de_terre_mn: () => import('./pomme_de_terre_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  popple_wi: () => import('./popple_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  portage_oh: () => import('./portage_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  potomac_md: () => import('./potomac_md').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  presque_isle_mi: () => import('./presque_isle_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  price_ut: () => import('./price_ut').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  putnam_county_blueways_fl: () => import('./putnam_county_blueways_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  pymatuning_oh: () => import('./pymatuning_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  quartzville_or: () => import('./quartzville_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  queen_ri: () => import('./queen_ri').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  raccoon_ia: () => import('./raccoon_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  raccoon_oh: () => import('./raccoon_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  rappahannock_river_water_trail_va: () => import('./rappahannock_river_water_trail_va').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  rathbun_lake_ia: () => import('./rathbun_lake_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  raystown_branch_juniata_pa: () => import('./raystown_branch_juniata_pa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  red_cedar_wi: () => import('./red_cedar_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  red_ky: () => import('./red_ky').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  red_lake_mn: () => import('./red_lake_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  red_river_of_the_north_mn: () => import('./red_river_of_the_north_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  red_wi: () => import('./red_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  redwood_mn: () => import('./redwood_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  reedy_sc: () => import('./reedy_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  richland_ar: () => import('./richland_ar').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  rio_grande_co: () => import('./rio_grande_co').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  rio_grande_nm: () => import('./rio_grande_nm').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  rio_grande_tx: () => import('./rio_grande_tx').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  rivanna_river_water_trail_va: () => import('./rivanna_river_water_trail_va').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  river_raisin_mi: () => import('./river_raisin_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  rock_ia: () => import('./rock_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  rock_springs_run_fl: () => import('./rock_springs_run_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  rock_wi: () => import('./rock_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  rocky_oh: () => import('./rocky_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  ruby_lake_nv: () => import('./ruby_lake_nv').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  rum_mn: () => import('./rum_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  russell_ky_2: () => import('./russell_ky_2').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  s_fork_alsea_or: () => import('./s_fork_alsea_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  sac_mo: () => import('./sac_mo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  saint_joe_id: () => import('./saint_joe_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  saint_joseph_oh: () => import('./saint_joseph_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  saint_joseph_river_fort_wayne_in: () => import('./saint_joseph_river_fort_wayne_in').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  saint_joseph_river_south_bend_in: () => import('./saint_joseph_river_south_bend_in').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  saint_marys_fl: () => import('./saint_marys_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  saint_marys_oh: () => import('./saint_marys_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  salkehatchie_sc: () => import('./salkehatchie_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  salmon_ak: () => import('./salmon_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  salmon_brook_ct: () => import('./salmon_brook_ct').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  salmon_id: () => import('./salmon_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  salmon_or: () => import('./salmon_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  salt_il: () => import('./salt_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  salt_oh: () => import('./salt_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  san_miguel_co: () => import('./san_miguel_co').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  san_rafael_ut: () => import('./san_rafael_ut').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  sandusky_oh: () => import('./sandusky_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  sandy_oh: () => import('./sandy_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  santee_sc: () => import('./santee_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  satilla_ga: () => import('./satilla_ga').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  sauk_mn: () => import('./sauk_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  scioto_brush_oh: () => import('./scioto_brush_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  scott_ca: () => import('./scott_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  selawik_ak: () => import('./selawik_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  shasta_ca: () => import('./shasta_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  sheboygan_wi: () => import('./sheboygan_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  sheenjek_ak: () => import('./sheenjek_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  sheep_id: () => import('./sheep_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  shell_rock_ia: () => import('./shell_rock_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  shenango_pa: () => import('./shenango_pa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  shoal_mo: () => import('./shoal_mo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  shoal_river_state_fl: () => import('./shoal_river_state_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  shunock_ct: () => import('./shunock_ct').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  similkameen_wa: () => import('./similkameen_wa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  siuslaw_or: () => import('./siuslaw_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  skunk_ia: () => import('./skunk_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  slate_ky: () => import('./slate_ky').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  snake_id: () => import('./snake_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  snake_mn: () => import('./snake_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  snake_river_henrys_id: () => import('./snake_river_henrys_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  snake_wy_2: () => import('./snake_wy_2').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_branch_black_mi: () => import('./south_branch_black_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_branch_elkhart_in: () => import('./south_branch_elkhart_in').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_branch_ontonagon_mi: () => import('./south_branch_ontonagon_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_fork_american_ca: () => import('./south_fork_american_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_fork_edisto_sc: () => import('./south_fork_edisto_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_fork_eel_ca: () => import('./south_fork_eel_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_fork_flambeau_wi: () => import('./south_fork_flambeau_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_fork_flathead_mt: () => import('./south_fork_flathead_mt').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_fork_fortymile_ak: () => import('./south_fork_fortymile_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_fork_holston_tn: () => import('./south_fork_holston_tn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_fork_iowa_ia: () => import('./south_fork_iowa_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_fork_kings_ca: () => import('./south_fork_kings_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_fork_licking_ky: () => import('./south_fork_licking_ky').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_fork_merced_ca: () => import('./south_fork_merced_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_fork_of_the_snake_id: () => import('./south_fork_of_the_snake_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_fork_owyhee_id: () => import('./south_fork_owyhee_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_fork_owyhee_nv: () => import('./south_fork_owyhee_nv').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_fork_shenandoah_va: () => import('./south_fork_shenandoah_va').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_fork_smith_ca: () => import('./south_fork_smith_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_fork_trinity_ca: () => import('./south_fork_trinity_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_fork_yuba_ca: () => import('./south_fork_yuba_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_raccoon_ia: () => import('./south_raccoon_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_saluda_sc: () => import('./south_saluda_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_skunk_ia: () => import('./south_skunk_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  south_tyger_sc: () => import('./south_tyger_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  spoon_il: () => import('./spoon_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  squannacook_ma: () => import('./squannacook_ma').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  st_clair_mi: () => import('./st_clair_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  st_croix_wi: () => import('./st_croix_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  st_johns_fl: () => import('./st_johns_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  st_joseph_mi: () => import('./st_joseph_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  st_marys_mi: () => import('./st_marys_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  stevens_sc: () => import('./stevens_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  stillwater_oh: () => import('./stillwater_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  stone_lakes_ca: () => import('./stone_lakes_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  stono_sc: () => import('./stono_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  straight_mn: () => import('./straight_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  sturgeon_mi_2: () => import('./sturgeon_mi_2').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  suffolk_blue_water_trail_va: () => import('./suffolk_blue_water_trail_va').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  sugar_oh: () => import('./sugar_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  sugar_wi: () => import('./sugar_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  sultan_wa: () => import('./sultan_wa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  sunfish_oh: () => import('./sunfish_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  suwannee_ga: () => import('./suwannee_ga').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  swan_mt: () => import('./swan_mt').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  swatara_pa: () => import('./swatara_pa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  symmes_oh: () => import('./symmes_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  table_rock_or: () => import('./table_rock_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  tallapoosa_ga: () => import('./tallapoosa_ga').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  tangle_ak: () => import('./tangle_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  taunton_ma: () => import('./taunton_ma').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  tennessee_tn: () => import('./tennessee_tn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  teton_id: () => import('./teton_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  tidal_delaware_pa: () => import('./tidal_delaware_pa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  timucuan_ecological_and_historic_preserve_trail_fl: () => import('./timucuan_ecological_and_historic_preserve_trail_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  tinkers_oh: () => import('./tinkers_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  tlikakila_ak: () => import('./tlikakila_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  tomahawk_wi: () => import('./tomahawk_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  totagatic_wi: () => import('./totagatic_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  town_sc: () => import('./town_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  trammel_ky: () => import('./trammel_ky').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  trout_vt: () => import('./trout_vt').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  twelve_mile_sc: () => import('./twelve_mile_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  twin_oh: () => import('./twin_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  tygarts_ky: () => import('./tygarts_ky').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  umbagog_lake_nh: () => import('./umbagog_lake_nh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  umpqua_or: () => import('./umpqua_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  umpqua_river_south_or: () => import('./umpqua_river_south_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  unalakleet_ak: () => import('./unalakleet_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  upper_cheat_wv: () => import('./upper_cheat_wv').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  upper_elkhorn_ne: () => import('./upper_elkhorn_ne').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  upper_green_ky: () => import('./upper_green_ky').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  upper_james_river_water_trail_va: () => import('./upper_james_river_water_trail_va').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  upper_saluda_sc: () => import('./upper_saluda_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  upper_suwannee_river_trail_fl: () => import('./upper_suwannee_river_trail_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  usquepaug_ri: () => import('./usquepaug_ri').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  valley_nc: () => import('./valley_nc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  van_duzen_ca: () => import('./van_duzen_ca').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  vermilion_mn: () => import('./vermilion_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  virginia_seaside_water_trail_va: () => import('./virginia_seaside_water_trail_va').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  wabash_il: () => import('./wabash_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  waccamaw_river_icw_sc: () => import('./waccamaw_river_icw_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  walhonding_oh: () => import('./walhonding_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  wallowa_or: () => import('./wallowa_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  watonwan_mn: () => import('./watonwan_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  wekiva_river_rock_springs_run_fl: () => import('./wekiva_river_rock_springs_run_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  west_branch_dupage_il: () => import('./west_branch_dupage_il').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  west_branch_farmington_ct: () => import('./west_branch_farmington_ct').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  west_branch_ontonagon_mi: () => import('./west_branch_ontonagon_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  west_branch_penobscot_me: () => import('./west_branch_penobscot_me').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  west_branch_salmon_brook_ct: () => import('./west_branch_salmon_brook_ct').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  west_branch_susquehanna_pa: () => import('./west_branch_susquehanna_pa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  west_branch_whitefish_mi: () => import('./west_branch_whitefish_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  west_chickamauga_ga: () => import('./west_chickamauga_ga').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  west_fork_bruneau_id: () => import('./west_fork_bruneau_id').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  west_fork_cedar_ia: () => import('./west_fork_cedar_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  west_fork_dennison_ak: () => import('./west_fork_dennison_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  west_fork_drakes_ky: () => import('./west_fork_drakes_ky').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  west_fork_tuckasegee_nc: () => import('./west_fork_tuckasegee_nc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  west_nishnabotna_ia: () => import('./west_nishnabotna_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  white_oak_oh: () => import('./white_oak_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  white_or: () => import('./white_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  white_ut: () => import('./white_ut').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  white_wi: () => import('./white_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  whitewater_ia: () => import('./whitewater_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  willamette_or: () => import('./willamette_or').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  wills_oh: () => import('./wills_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  wind_ak: () => import('./wind_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  winnebago_ia: () => import('./winnebago_ia').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  withlacoochee_fl: () => import('./withlacoochee_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  withlacoochee_river_north_trail_fl: () => import('./withlacoochee_river_north_trail_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  wolf_tn: () => import('./wolf_tn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  wood_ct: () => import('./wood_ct').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  yahara_wi: () => import('./yahara_wi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  yakima_wa: () => import('./yakima_wa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  yellow_breeches_pa: () => import('./yellow_breeches_pa').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  yellow_fl: () => import('./yellow_fl').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  yellow_ga: () => import('./yellow_ga').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  yellow_ia_2: () => import('./yellow_ia_2').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  zumbro_river_middle_mn: () => import('./zumbro_river_middle_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  zumbro_river_north_branch_mn: () => import('./zumbro_river_north_branch_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  zumbro_river_south_branch_mn: () => import('./zumbro_river_south_branch_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
 }
 
 export function hasRiverMap(riverId: string): boolean {
