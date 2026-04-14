@@ -3,7 +3,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Flat River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 102 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Stubblefield Access', lat: 36.78845, lng: -93.72060, type: 'access' },
+]
 
 export const sections: RiverSection[] = []
 

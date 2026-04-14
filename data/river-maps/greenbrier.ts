@@ -3,7 +3,21 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Greenbrier River (WEST VIRGINIA) — geometry from USGS NHDPlus HR
 // 68 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Barger Springs', lat: 37.61475, lng: -80.77520, type: 'access', description: 'WVDNR — parking: yes' },
+  { name: 'Bellepoint', lat: 37.65138, lng: -80.88328, type: 'access', description: 'WVDOH — parking: yes' },
+  { name: 'Willowwood', lat: 37.64346, lng: -80.80695, type: 'access', description: 'WVDNR-WRS — parking: yes' },
+  { name: 'Talcott', lat: 37.65001, lng: -80.75107, type: 'access', description: 'WVDNR-WRS, WVDOH — parking: yes' },
+  { name: 'Lowell', lat: 37.65146, lng: -80.73017, type: 'access', description: 'WVDNR-WRS — parking: yes' },
+  { name: 'Pence Springs', lat: 37.68038, lng: -80.72476, type: 'access', description: 'WVDOH — parking: yes' },
+  { name: 'St Rt 3 Bridge', lat: 37.72631, lng: -80.64987, type: 'access', description: 'WVDOH — parking: yes' },
+  { name: 'Roncerverte City Park', lat: 37.74506, lng: -80.46770, type: 'access', description: 'WVDNR, City of Roncerverte — parking: yes' },
+  { name: 'I-64 Bridge', lat: 37.79015, lng: -80.38448, type: 'access', description: 'WVDOH' },
+  { name: 'US RT 60 Bridge', lat: 37.78226, lng: -80.39888, type: 'access', description: 'WVDNR — parking: yes' },
+  { name: 'Anthony', lat: 37.89655, lng: -80.32542, type: 'access', description: 'USFS — parking: yes' },
+  { name: 'Renick', lat: 37.98973, lng: -80.35694, type: 'access', description: 'WVDNR — parking: yes' },
+  { name: 'Jiffy Foam', lat: 37.72567, lng: -80.48956, type: 'access', description: 'NA — parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

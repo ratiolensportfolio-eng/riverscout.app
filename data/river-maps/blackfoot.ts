@@ -3,7 +3,14 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Blackfoot River (MONTANA) — geometry from USGS NHDPlus HR
 // 112 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Government Dam Road Bridge', lat: 43.00102, lng: -111.72964, type: 'access', description: 'BLM — parking: yes' },
+  { name: 'Sage Hen Flats', lat: 43.01978, lng: -111.82528, type: 'access', description: 'BLM — restrooms, parking: yes' },
+  { name: 'Cutthroat Trout', lat: 43.03976, lng: -111.85615, type: 'access', description: 'BLM — restrooms, parking: yes' },
+  { name: 'Graves Creek', lat: 43.04435, lng: -111.91033, type: 'access', description: 'BLM — restrooms, parking: yes' },
+  { name: 'Morgans Bridge', lat: 43.05975, lng: -111.92615, type: 'access', description: 'BLM — restrooms, parking: yes' },
+  { name: 'Trail Creek Bridge', lat: 43.13064, lng: -111.91190, type: 'access', description: 'BLM — restrooms, parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

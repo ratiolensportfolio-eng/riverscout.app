@@ -3,7 +3,20 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Chippewa River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 108 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: '730th Street Boat Launch', lat: 44.74278, lng: -91.79217, type: 'access', description: 'Town of Peru' },
+  { name: 'Holcombe Flowage Access', lat: 45.23464, lng: -91.15930, type: 'access', description: 'Xcel Energy' },
+  { name: 'Holcombe Flowage Access', lat: 45.27203, lng: -91.15358, type: 'access', description: 'Xcel Energy' },
+  { name: 'River Street Boat Launch', lat: 44.62929, lng: -91.96746, type: 'access', description: 'Public Works Dept.' },
+  { name: 'Chippewa River Access Moon\'s Landing', lat: 45.50090, lng: -91.25211, type: 'access', description: 'Town of Thornapple' },
+  { name: 'Fletcher Road Boat Ramp', lat: 45.39179, lng: -91.28920, type: 'access', description: 'Town of Thornapple' },
+  { name: 'Holcombe Flowage Access', lat: 45.25305, lng: -91.15516, type: 'access', description: 'Town of Birch Creek' },
+  { name: 'Tyrone Canoe Landing', lat: 44.71418, lng: -91.84422, type: 'access', description: 'Xcel Energy' },
+  { name: 'Chippewa River Carry-in  Access', lat: 45.30327, lng: -91.18610, type: 'access', description: 'Rusk County' },
+  { name: 'Holcombe Flowage Access', lat: 45.23538, lng: -91.13233, type: 'access', description: 'Xcel Energy' },
+  { name: 'Chippewa River Boat Ramp', lat: 45.48810, lng: -91.25483, type: 'access', description: 'Rusk County Forestry' },
+  { name: 'Hatch Road Boat Access', lat: 45.33871, lng: -91.32619, type: 'access', description: 'Rusk County Forestry' },
+]
 
 export const sections: RiverSection[] = []
 

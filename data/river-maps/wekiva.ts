@@ -3,7 +3,16 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Wekiva River (FLORIDA) — geometry from USGS NHDPlus HR
 // 106 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'King\'s Landing', lat: 28.76830, lng: -81.50240, type: 'access', description: 'FL DEP — parking: yes' },
+  { name: 'Wekiva Springs State Park', lat: 28.71513, lng: -81.44933, type: 'access', description: 'FL DEP — restrooms, parking: overnight, fee' },
+  { name: 'Wekiva Island', lat: 28.71396, lng: -81.44428, type: 'access', description: 'FL DEP — parking: yes, fee' },
+  { name: 'Wilson\'s Landing Park', lat: 28.80849, lng: -81.41751, type: 'access', description: 'FL DEP — restrooms, parking: yes' },
+  { name: 'Katie\'s Landing', lat: 28.82920, lng: -81.41270, type: 'access', description: 'FL DEP — restrooms, parking: yes' },
+  { name: 'High Banks Landing', lat: 28.89040, lng: -81.35470, type: 'access', description: 'FL DEP — parking: yes' },
+  { name: 'Wekiva Island Canoe Rentals & Boat Launch', lat: 28.71339, lng: -81.44487, type: 'access', description: '  — restrooms, parking: yes' },
+  { name: 'Wekiwa Springs State Park Canoe Launch', lat: 28.71253, lng: -81.45952, type: 'access', description: 'Florida Department Of Environmental Protection — restrooms, parking: yes, fee' },
+]
 
 export const sections: RiverSection[] = []
 

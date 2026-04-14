@@ -5,8 +5,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  { name: 'Ocoee #2 Put-in (Powerhouse)', lat: 35.094, lng: -84.516, type: 'put-in', description: 'TVA powerhouse put-in for the Middle Ocoee.' },
-  { name: 'Ocoee #2 Take-out (Caution Light)', lat: 35.072, lng: -84.468, type: 'take-out', description: 'Standard take-out for the Middle Ocoee.' },
+  { name: 'Ocoee Dam #3', lat: 35.04263, lng: -84.46471, type: 'access', description: 'Cherokee National Forest — restrooms, parking: yes' },
+  { name: 'Ocoee Whitewater Center', lat: 35.06659, lng: -84.46131, type: 'access', description: 'Cherokee National Forest — restrooms, parking: yes' },
+  { name: 'Ocoee Dam #2', lat: 35.08295, lng: -84.49162, type: 'access', description: 'Cherokee National Forest — restrooms, parking: yes' },
+  { name: 'Middle Ocoee Take-Out', lat: 35.09699, lng: -84.54864, type: 'access', description: 'Cherokee National Forest — parking: yes' },
 ]
 
 // River sections

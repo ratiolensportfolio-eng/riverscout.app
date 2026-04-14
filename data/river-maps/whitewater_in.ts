@@ -3,7 +3,13 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Whitewater River (INDIANA) — geometry from USGS NHDPlus HR
 // 13 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Connersville Canoe Site', lat: 39.62167, lng: -85.13882, type: 'access', description: 'Indiana Department of Natural Resources' },
+  { name: 'Whitewater State Park', lat: 39.60527, lng: -84.96985, type: 'access', description: 'Indiana Department of Natural Resources' },
+  { name: 'Old Plantation Access', lat: 37.47417, lng: -89.84854, type: 'access' },
+  { name: 'Whitewater River Access', lat: 39.18223, lng: -84.79145, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Whitewater River Access', lat: 39.18504, lng: -84.79412, type: 'access', description: 'parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

@@ -5,8 +5,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
 export const accessPoints: AccessPoint[] = [
-  { name: 'US-76 Bridge (Bull Sluice)', lat: 34.817, lng: -83.312, type: 'put-in', description: 'The classic Section III/IV put-in/dividing line.' },
-  { name: 'Lake Tugaloo Take-out', lat: 34.755, lng: -83.332, type: 'take-out', description: 'Final take-out at the top of Lake Tugaloo.' },
+  { name: 'Tugaloo Lake Boat Ramp', lat: 34.73667, lng: -83.34559, type: 'access' },
+  { name: 'Highway 28 Put-In', lat: 34.90785, lng: -83.18127, type: 'access' },
+  { name: 'Earl\'s Ford', lat: 34.87957, lng: -83.22871, type: 'access' },
+  { name: 'Highway 76 Bridge', lat: 34.81405, lng: -83.30644, type: 'access' },
 ]
 
 // Chattooga River sections

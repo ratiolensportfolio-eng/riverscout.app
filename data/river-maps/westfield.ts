@@ -3,7 +3,12 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Westfield River (MASSACHUSETTS) — geometry from USGS NHDPlus HR
 // 129 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Gardner State Park', lat: 42.27263, lng: -72.86571, type: 'access', description: 'parking: yes, fee' },
+  { name: 'Knightville Dam', lat: 42.28776, lng: -72.86428, type: 'access', description: 'parking: yes' },
+  { name: 'Jacob\'s Ladder Pulloff', lat: 42.22568, lng: -72.87103, type: 'access', description: 'parking: yes' },
+  { name: 'Chester Pulloff', lat: 42.26142, lng: -72.95907, type: 'access', description: 'parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

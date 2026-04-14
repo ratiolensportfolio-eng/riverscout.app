@@ -3,7 +3,26 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Meramec River (MISSOURI) — geometry from USGS NHDPlus HR
 // 29 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Redhorse Access', lat: 38.28237, lng: -90.93224, type: 'access' },
+  { name: 'River \'Round Conservation Area', lat: 38.35603, lng: -90.87296, type: 'access' },
+  { name: 'Sand Ford Access', lat: 38.25246, lng: -91.08067, type: 'access' },
+  { name: 'Sand Ford Access', lat: 38.25274, lng: -91.07985, type: 'access' },
+  { name: 'Blue Springs Creek Conservation Area', lat: 38.11708, lng: -91.15813, type: 'access' },
+  { name: 'Campbell Bridge Access', lat: 38.08186, lng: -91.15013, type: 'access' },
+  { name: 'Campbell Bridge Access', lat: 38.08308, lng: -91.14996, type: 'access' },
+  { name: 'Riverview Access', lat: 37.99237, lng: -91.42556, type: 'access' },
+  { name: 'Sappington Bridge Access', lat: 38.15799, lng: -91.10892, type: 'access' },
+  { name: 'Sappington Bridge Access', lat: 38.15831, lng: -91.10906, type: 'access' },
+  { name: 'Bird\'s Nest Access (Crawford County)', lat: 37.99667, lng: -91.36055, type: 'access' },
+  { name: 'Scotts Ford Access', lat: 37.97802, lng: -91.45674, type: 'access' },
+  { name: 'Woodson K. Woods Memorial Conservation Area', lat: 37.95107, lng: -91.50851, type: 'access' },
+  { name: 'Pacific Palisades Conservation Area', lat: 38.47710, lng: -90.71528, type: 'access' },
+  { name: 'Flamm City Access', lat: 38.41728, lng: -90.34747, type: 'access' },
+  { name: 'Allenton Access', lat: 38.47461, lng: -90.66043, type: 'access' },
+  { name: 'Meramec Landing (Valley Park)', lat: 38.54629, lng: -90.48443, type: 'access' },
+  { name: 'Route 66 State Park Access (MO DNR)', lat: 38.50209, lng: -90.59164, type: 'access' },
+]
 
 export const sections: RiverSection[] = []
 

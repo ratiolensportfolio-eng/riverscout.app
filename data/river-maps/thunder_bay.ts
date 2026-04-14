@@ -3,7 +3,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Thunder Bay River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 107 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Thunder Lake Access', lat: 45.24977, lng: -88.24091, type: 'access', description: 'Town of Stephenson' },
+]
 
 export const sections: RiverSection[] = []
 

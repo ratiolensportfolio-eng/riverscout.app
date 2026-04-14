@@ -4,7 +4,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 220 points, 77/77 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Little Miami River Access', lat: 39.49800, lng: -84.10048, type: 'access', description: 'parking: yes' },
+]
 
 // River sections
 export const sections: RiverSection[] = [

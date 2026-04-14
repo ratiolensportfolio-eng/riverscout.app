@@ -5,20 +5,14 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Medora",
-    lat: 46.9219,
-    lng: -103.5287,
-    type: "put-in",
-    description: "Put-in at Medora, gateway to Theodore Roosevelt National Park. The river carves through colorful Badlands buttes from here north.",
-  },
-  {
-    name: "North Unit, Theodore Roosevelt NP",
-    lat: 47.2033,
-    lng: -103.602,
-    type: "take-out",
-    description: "Take-out near the North Unit of Theodore Roosevelt National Park. Remote Badlands scenery with bison, wild horses, and elk.",
-  },
+  { name: 'Nubin Hill Access', lat: 33.93794, lng: -93.35396, type: 'access', description: 'AGFC' },
+  { name: 'Terrell Access', lat: 34.02323, lng: -93.66944, type: 'access', description: 'ASP' },
+  { name: 'Hwy 19 Access', lat: 33.95553, lng: -93.44385, type: 'access', description: 'AGFC' },
+  { name: 'Hinds Bluff Walk-in Access', lat: 34.12749, lng: -93.69377, type: 'access', description: 'AGFC' },
+  { name: 'Factory Site Access', lat: 34.10178, lng: -93.71516, type: 'access', description: 'AGFC' },
+  { name: 'Hwy 27 Access', lat: 34.04863, lng: -93.72045, type: 'access', description: 'AGFC' },
+  { name: 'Hwy. 67 Access', lat: 33.87785, lng: -93.30453, type: 'access', description: 'AGFC' },
+  { name: 'Reed Barringer Access', lat: 33.81572, lng: -93.13992, type: 'access', description: 'AGFC' },
 ]
 
 // River sections

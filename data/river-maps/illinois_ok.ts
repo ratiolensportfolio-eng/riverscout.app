@@ -5,27 +5,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Tenkiller Ferry",
-    lat: 35.8509,
-    lng: -94.9144,
-    type: "put-in",
-    description: "Upper Illinois River put-in near Tenkiller Ferry area. Popular Oklahoma paddling destination.",
-  },
-  {
-    name: "No Head Hollow",
-    lat: 35.8183,
-    lng: -94.9185,
-    type: "access",
-    description: "Mid-river access at No Head Hollow. Scenic Ozark bluffs along the river.",
-  },
-  {
-    name: "Tahlequah",
-    lat: 35.7004,
-    lng: -94.9569,
-    type: "take-out",
-    description: "Take-out near Tahlequah, capital of the Cherokee Nation. Multiple outfitter access points.",
-  },
+  { name: 'Illinois River Boat Ramp', lat: 36.16684, lng: -94.43459, type: 'access', description: 'AGFC' },
 ]
 
 // River sections

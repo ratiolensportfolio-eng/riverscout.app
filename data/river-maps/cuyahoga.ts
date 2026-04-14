@@ -3,7 +3,37 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Cuyahoga River (OHIO) — geometry from USGS NHDPlus HR
 // 29 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Lock 29 Trailhead', lat: 41.24286, lng: -81.55016, type: 'access', description: 'Cuyahoga Valley National Park — restrooms' },
+  { name: 'Lock 39 Trailhead', lat: 41.39387, lng: -81.62972, type: 'access', description: 'Cuyahoga Valley National Park' },
+  { name: 'Village of Boston', lat: 41.26218, lng: -81.55855, type: 'access', description: 'Cuyahoga Valley National Park — restrooms' },
+  { name: 'Vaughn Road', lat: 41.28928, lng: -81.56505, type: 'access', description: 'Cuyahoga Valley National Park — restrooms' },
+  { name: 'Station Road Bridge Trailhead', lat: 41.31854, lng: -81.58708, type: 'access', description: 'Cuyahoga Valley National Park — restrooms' },
+  { name: 'Canal Visitor\'s Center', lat: 41.37189, lng: -81.61530, type: 'access', description: 'Cuyahoga Valley National Park — restrooms' },
+  { name: 'Cuyahoga River Access', lat: 41.46470, lng: -81.12753, type: 'access', description: 'parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.42556, lng: -81.15640, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.32600, lng: -81.17249, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.24509, lng: -81.28579, type: 'access', description: 'parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.14976, lng: -81.36726, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.14232, lng: -81.43830, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.13869, lng: -81.48026, type: 'access', description: 'parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.11795, lng: -81.52457, type: 'access', description: 'parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.13586, lng: -81.54780, type: 'access', description: 'parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.24286, lng: -81.55016, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.26218, lng: -81.55855, type: 'access' },
+  { name: 'Cuyahoga River Access', lat: 41.28928, lng: -81.56505, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.31854, lng: -81.58708, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.49503, lng: -81.70315, type: 'access', description: 'parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.38809, lng: -81.15789, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.37189, lng: -81.61530, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.48862, lng: -81.70108, type: 'access', description: 'parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.49701, lng: -81.70149, type: 'access', description: 'parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.28352, lng: -81.21689, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.16842, lng: -81.34673, type: 'access', description: 'parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.15410, lng: -81.35951, type: 'access', description: 'parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.15283, lng: -81.36045, type: 'access', description: 'parking: yes' },
+  { name: 'Cuyahoga River Access', lat: 41.14996, lng: -81.36288, type: 'access', description: 'parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

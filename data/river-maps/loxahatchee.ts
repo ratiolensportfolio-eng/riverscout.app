@@ -3,7 +3,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Loxahatchee River (FLORIDA) — geometry from USGS NHDPlus HR
 // 56 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Riverbend Park', lat: 26.93461, lng: -80.17653, type: 'access', description: 'FL DEP — restrooms, parking: yes' },
+  { name: 'Jonathan Dickinson State Park', lat: 26.98806, lng: -80.14268, type: 'access', description: 'Florida Department Of Environmental Protection — restrooms, parking: yes, fee' },
+]
 
 export const sections: RiverSection[] = []
 

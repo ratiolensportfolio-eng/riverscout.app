@@ -3,7 +3,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Thornapple River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 28 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Thornapple Flowage Access', lat: 45.41139, lng: -91.21605, type: 'access', description: 'Xcel Energy' },
+]
 
 export const sections: RiverSection[] = []
 

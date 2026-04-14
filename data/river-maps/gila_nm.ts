@@ -3,7 +3,12 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Gila River (NEW MEXICO) — geometry from USGS NHDPlus HR
 // 36 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Nichol\'s Canyon', lat: 32.65018, lng: -108.84493, type: 'access', description: 'Bureau of Land Management — parking: yes' },
+  { name: 'Fisherman\'s Point', lat: 32.63197, lng: -108.85473, type: 'access', description: 'Bureau of Land Management — parking: yes' },
+  { name: 'Spring-on-the-Bluff', lat: 32.63399, lng: -108.87653, type: 'access', description: 'Bureau of Land Management — parking: yes' },
+  { name: 'Game Department Road Bridge', lat: 32.69326, lng: -108.73247, type: 'access', description: 'New Mexico State Land' },
+]
 
 export const sections: RiverSection[] = []
 

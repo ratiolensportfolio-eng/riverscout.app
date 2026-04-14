@@ -3,7 +3,44 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // New River (WEST VIRGINIA) — geometry from USGS NHDPlus HR
 // 18 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Cooleys Landing Public Boat Ramp', lat: 26.11688, lng: -80.14971, type: 'access', description: 'City Of Fort Lauderdale — restrooms, parking: yes, fee' },
+  { name: 'Snidow Park Landing', lat: 37.31471, lng: -80.64266, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Narrows', lat: 37.33680, lng: -80.81055, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Rich Creek', lat: 37.36843, lng: -80.81938, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Glen Lyn', lat: 37.37183, lng: -80.85827, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Whitethorne', lat: 37.19843, lng: -80.56540, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Claytor Dam', lat: 37.08859, lng: -80.57892, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Austinville', lat: 36.85390, lng: -80.91846, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Byllesby Pool', lat: 36.77364, lng: -80.93661, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Mouth of Wilson', lat: 36.58529, lng: -81.31431, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Bridle Creek', lat: 36.59588, lng: -81.24224, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Independence', lat: 36.57220, lng: -81.15243, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Baywood', lat: 36.61377, lng: -81.04581, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Riverside', lat: 36.67262, lng: -81.02221, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Oldtown', lat: 36.68132, lng: -80.97357, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Ivanhoe', lat: 36.82234, lng: -80.94944, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'New Creek Lake, Dam #14', lat: 39.26497, lng: -79.13397, type: 'access', description: 'NA' },
+  { name: 'Hawks Nest State Park', lat: 38.11854, lng: -81.11975, type: 'access', description: 'No Control Sign — parking: yes' },
+  { name: 'Bluestone Lake Tailwaters', lat: 37.64380, lng: -80.88379, type: 'access', description: 'USACOE WVDNR — restrooms, parking: yes' },
+  { name: 'Fayette Station', lat: 38.06715, lng: -81.08196, type: 'access', description: 'New River Gorge National River — restrooms, parking: yes' },
+  { name: 'Cunard River Access', lat: 37.99899, lng: -81.02238, type: 'access', description: 'New River Gorge National River — restrooms, parking: yes' },
+  { name: 'Stone Cliff River Access', lat: 37.93435, lng: -81.06393, type: 'access', description: 'New River Gorge National River — parking: yes' },
+  { name: 'Dent River Access', lat: 37.90212, lng: -81.03231, type: 'access', description: 'New River Gorge National River — parking: yes' },
+  { name: 'McCreery River Access', lat: 37.84909, lng: -81.09158, type: 'access', description: 'New River Gorge National River — parking: yes' },
+  { name: 'Grandview Sandbar River Access', lat: 37.85736, lng: -81.05375, type: 'access', description: 'New River Gorge National River — parking: yes' },
+  { name: 'Glade Creek River Access', lat: 37.82941, lng: -81.01459, type: 'access', description: 'New River Gorge National River — parking: yes' },
+  { name: 'Mill Creek River Access', lat: 37.83300, lng: -81.05162, type: 'access', description: 'New River Gorge National River — parking: yes' },
+  { name: 'Sandstone Falls River Access', lat: 37.76072, lng: -80.89977, type: 'access', description: 'New River Gorge National River — parking: yes' },
+  { name: 'Sandstone Falls Takeout', lat: 37.75439, lng: -80.91731, type: 'access', description: 'New River Gorge National River — parking: yes' },
+  { name: 'Brookside River Access', lat: 37.72214, lng: -80.89165, type: 'access', description: 'New River Gorge National River — parking: yes' },
+  { name: 'Helms Beach River Access', lat: 37.72314, lng: -80.89501, type: 'access', description: 'New River Gorge National River — parking: yes' },
+  { name: 'Tug Creek River Access', lat: 37.69616, lng: -80.88298, type: 'access', description: 'New River Gorge National River — parking: yes' },
+  { name: 'Akers River Access', lat: 37.68359, lng: -80.88052, type: 'access', description: 'New River Gorge National River — parking: yes' },
+  { name: 'Brooklyn River Access', lat: 37.98394, lng: -81.02774, type: 'access', description: 'New River Gorge National River — parking: yes' },
+  { name: 'Dun Glen River Access', lat: 37.95350, lng: -81.07560, type: 'access', description: 'New River Gorge National River — parking: yes' },
+  { name: 'Meadow Creek River Access', lat: 37.79618, lng: -80.92149, type: 'access', description: 'New River Gorge National River — parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

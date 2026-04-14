@@ -3,7 +3,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Jordan River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 138 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Jordan Park Boat Ramp', lat: 44.57809, lng: -89.50073, type: 'access', description: 'Portage County Parks Department' },
+  { name: 'Jordan Park Canoe Launch', lat: 44.58070, lng: -89.49761, type: 'access', description: 'Portage County Parks Department' },
+]
 
 export const sections: RiverSection[] = []
 

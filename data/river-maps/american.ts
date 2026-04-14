@@ -5,7 +5,16 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  { name: 'Chili Bar Put-in', lat: 38.758, lng: -120.81, type: 'put-in', description: 'Standard put-in for the South Fork American — California\'s most commercially rafted river.' },
+  { name: 'Sailor Bar / Illinois BTAF', lat: 38.63398, lng: -121.23402, type: 'access', description: 'Sacramento County Regional Parks — parking: yes, fee' },
+  { name: 'Upper Sunrise Recreation Area', lat: 38.63203, lng: -121.23570, type: 'access', description: 'Sacramento County Regional Parks — parking: yes, fee' },
+  { name: 'Lower Sunrise Recreation Area', lat: 38.63219, lng: -121.27087, type: 'access', description: 'Sacramento County Regional Parks — parking: yes' },
+  { name: 'Fair Oaks', lat: 38.63317, lng: -121.27087, type: 'access', description: 'Sacramento County Regional Parks — parking: yes' },
+  { name: 'Rossmoor Bar', lat: 38.62953, lng: -121.29523, type: 'access', description: 'Sacramento County Regional Parks — parking: yes, fee' },
+  { name: 'River Bend Park', lat: 38.59656, lng: -121.33086, type: 'access', description: 'Sacramento County Regional Parks — parking: yes, fee' },
+  { name: 'Harrington BTAF', lat: 38.58024, lng: -121.34120, type: 'access', description: 'Sacramento County Regional Parks — parking: yes' },
+  { name: 'Watt Ave BTAF', lat: 38.56645, lng: -121.38085, type: 'access', description: 'Sacramento County Regional Parks — parking: yes, fee' },
+  { name: 'Howe Ave BLF', lat: 38.55985, lng: -121.40502, type: 'access', description: 'Sacramento County Regional Parks — parking: yes, fee' },
+  { name: 'Discovery Park', lat: 38.60047, lng: -121.50884, type: 'access', description: 'Sacramento County Regional Parks — parking: yes, fee' },
 ]
 
 // River sections

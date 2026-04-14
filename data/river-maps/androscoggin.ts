@@ -3,7 +3,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Androscoggin River (NEW HAMPSHIRE) — geometry from USGS NHDPlus HR
 // 59 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Steamer Diamond Boat Launch', lat: 44.79159, lng: -71.10827, type: 'access', description: 'Umbagog National Wildlife Refuge — parking: yes' },
+  { name: 'State Boat Launch Androscoggin River', lat: 44.78737, lng: -71.12114, type: 'access', description: 'Umbagog National Wildlife Refuge — restrooms, parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

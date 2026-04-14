@@ -5,7 +5,21 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  { name: 'Ferebee Park Put-in', lat: 35.345, lng: -83.572, type: 'put-in', description: 'USFS put-in below Nantahala Dam.' },
+  { name: 'Nantahala River', lat: 35.37250, lng: -83.56380, type: 'access', description: 'Informal' },
+  { name: 'Duke Big Choga', lat: 35.17919, lng: -83.68639, type: 'access', description: 'Duke Energy' },
+  { name: 'Duke Rocky Branch', lat: 35.18198, lng: -83.65622, type: 'access', description: 'Duke Energy' },
+  { name: 'USFS Slot Falls', lat: 35.24810, lng: -83.63947, type: 'access', description: 'USFS' },
+  { name: 'USFS Whiteoak', lat: 35.25032, lng: -83.64001, type: 'access', description: 'USFS' },
+  { name: 'USFS Cascades', lat: 35.24804, lng: -83.64364, type: 'access', description: 'USFS' },
+  { name: 'USFS Upper Nantahala', lat: 35.24708, lng: -83.65357, type: 'access', description: 'USFS' },
+  { name: 'USFS Upper Nantahala', lat: 35.24830, lng: -83.65532, type: 'access', description: 'USFS' },
+  { name: 'USFS Nantahala Commercial', lat: 35.27314, lng: -83.67706, type: 'access', description: 'USFS' },
+  { name: 'USFS Nantahala', lat: 35.27414, lng: -83.68089, type: 'access', description: 'USFS' },
+  { name: 'USFS Ferebee', lat: 35.30309, lng: -83.65318, type: 'access', description: 'USFS' },
+  { name: 'USFS Surfers', lat: 35.33294, lng: -83.62786, type: 'access', description: 'USFS' },
+  { name: 'USFS Nantahala Falls', lat: 35.33331, lng: -83.59705, type: 'access', description: 'USFS' },
+  { name: 'USFS Nantahala Commercial', lat: 35.33149, lng: -83.59361, type: 'access', description: 'USFS' },
+  { name: 'USFS Nantahala Commercial 2', lat: 35.33187, lng: -83.59093, type: 'access', description: 'USFS' },
 ]
 
 // River sections

@@ -3,7 +3,21 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // San Juan River (UTAH) — geometry from USGS NHDPlus HR
 // 40 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Montezuma Creek Access
+', lat: 37.25788, lng: -109.31055, type: 'access', description: 'Navajo Nation
+ — parking: no
+' },
+  { name: 'Sand Island Recreation Area
+', lat: 37.26149, lng: -109.61254, type: 'access', description: 'BLM, Monticello Field Office
+ — restrooms, parking: yes, fee' },
+  { name: 'Mexican Hat Boat Ramp
+', lat: 37.14706, lng: -109.85382, type: 'access', description: 'BLM, Monticello Field Office
+ — restrooms, parking: yes, fee' },
+  { name: 'Clay Hills Boat Ramp
+', lat: 37.29337, lng: -110.39928, type: 'access', description: 'BLM, Monticello Field Office
+ — restrooms, parking: yes, fee' },
+]
 
 export const sections: RiverSection[] = []
 

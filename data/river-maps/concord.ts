@@ -3,7 +3,13 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Concord River (MASSACHUSETTS) — geometry from USGS NHDPlus HR
 // 78 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Carlisle-Bedford Bridge', lat: 42.50911, lng: -71.31320, type: 'access', description: 'parking: yes' },
+  { name: 'Great Meadows National Wildlife Refuge', lat: 42.47884, lng: -71.33581, type: 'access' },
+  { name: 'Old North Bridge', lat: 42.46911, lng: -71.35034, type: 'access', description: 'parking: yes' },
+  { name: 'Old Calf Pasture', lat: 42.46617, lng: -71.35567, type: 'access', description: 'parking: yes' },
+  { name: 'Muldoon Park', lat: 42.62577, lng: -71.29573, type: 'access', description: 'City of Lowell — parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

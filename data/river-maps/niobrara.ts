@@ -4,7 +4,16 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 36 points, 14/200 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Fort Niobrara Launch', lat: 42.90066, lng: -100.48335, type: 'access', description: 'NPS, USFWS — restrooms, parking: overnight, fee' },
+  { name: 'Berry Bridge', lat: 42.90210, lng: -100.36260, type: 'access', description: 'restrooms' },
+  { name: 'Smith Falls State Park - Nickols Landing', lat: 42.89302, lng: -100.30773, type: 'access', description: 'NPS, NE State Parks — restrooms, parking: overnight, fee' },
+  { name: 'Brewer Bridge', lat: 42.87567, lng: -100.26589, type: 'access', description: 'parking: overnight' },
+  { name: 'Norden Bridge', lat: 42.78706, lng: -100.03507, type: 'access' },
+  { name: 'Meadville Bridge', lat: 42.75222, lng: -99.85139, type: 'access', description: 'restrooms, fee' },
+  { name: 'Hwy 7 Bridge', lat: 42.72259, lng: -99.58931, type: 'access' },
+  { name: 'Hwy 137 Bridge', lat: 42.78150, lng: -99.33493, type: 'access' },
+]
 
 // River sections
 export const sections: RiverSection[] = [

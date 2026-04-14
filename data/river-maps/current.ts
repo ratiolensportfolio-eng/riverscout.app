@@ -4,7 +4,15 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 39 points, 14/200 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Johnston\'s Eddy Boat Ramp', lat: 36.35778, lng: -90.77929, type: 'access', description: 'AGFC' },
+  { name: 'T. L. Wright Memorial Access (Doniphan)', lat: 36.61410, lng: -90.83158, type: 'access' },
+  { name: 'T. L. Wright Memorial Access (Doniphan)', lat: 36.61413, lng: -90.83163, type: 'access' },
+  { name: 'Van Buren Riverfront Park', lat: 36.99240, lng: -91.01445, type: 'access' },
+  { name: 'Van Buren Riverfront Park', lat: 36.99248, lng: -91.01492, type: 'access' },
+  { name: 'Rocky Creek Conservation Area', lat: 37.16916, lng: -91.16859, type: 'access' },
+  { name: 'Two Rivers Access (NPS Ozark NCR)', lat: 37.19030, lng: -91.27596, type: 'access' },
+]
 
 // River sections
 export const sections: RiverSection[] = [

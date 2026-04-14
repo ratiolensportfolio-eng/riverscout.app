@@ -5,27 +5,19 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Shades State Park",
-    lat: 39.9431,
-    lng: -87.0812,
-    type: "put-in",
-    description: "Put-in at Shades State Park. Deep sandstone canyons and old-growth forest along the banks.",
-  },
-  {
-    name: "Turkey Run State Park",
-    lat: 39.9169,
-    lng: -87.1425,
-    type: "access",
-    description: "Mid-river access at Turkey Run State Park. Indiana\"s covered-bridge country with dramatic sandstone gorges.",
-  },
-  {
-    name: "Cox Ford Covered Bridge",
-    lat: 39.8932,
-    lng: -87.1643,
-    type: "take-out",
-    description: "Take-out at the historic Cox Ford Covered Bridge. One of Indiana\"s most photogenic river landmarks.",
-  },
+  { name: 'Atterbury FWA', lat: 39.36323, lng: -85.99716, type: 'access', description: 'Indiana Department of Natural Resources' },
+  { name: 'Sugar Creek Access', lat: 40.70029, lng: -81.59831, type: 'access', description: 'parking: yes' },
+  { name: 'Sugar Creek Access', lat: 40.63568, lng: -81.55414, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Sugar Creek Access', lat: 40.63702, lng: -81.54743, type: 'access', description: 'parking: yes' },
+  { name: 'Sugar Lake', lat: 41.56417, lng: -79.94589, type: 'access', description: 'PFBC — parking: yes' },
+  { name: 'Sugar Maple Lake - North Access', lat: 46.10419, lng: -89.07432, type: 'access', description: ' ' },
+  { name: 'Sugar Maple Lake - South Access', lat: 46.10183, lng: -89.07413, type: 'access', description: ' ' },
+  { name: 'Albany Park', lat: 42.71006, lng: -89.43967, type: 'access', description: 'Village of Albany' },
+  { name: 'County X Ramp', lat: 42.79994, lng: -89.48626, type: 'access', description: 'Town of Brooklyn' },
+  { name: 'Sugar River Access', lat: 42.54246, lng: -89.34133, type: 'access', description: 'Wildlife Technician' },
+  { name: 'Albany Wildlife Area', lat: 42.73354, lng: -89.44297, type: 'access', description: 'Wildlife Technician' },
+  { name: 'Sugar River Park Boat Ramp', lat: 42.51879, lng: -89.30577, type: 'access', description: 'Public Works - Parks Division' },
+  { name: 'Sugar River Carry-in', lat: 42.54999, lng: -89.36640, type: 'access', description: ' ' },
 ]
 
 // River sections

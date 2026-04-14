@@ -5,27 +5,17 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  {
-    name: "Arcadia Management Area",
-    lat: 41.5668,
-    lng: -71.7149,
-    type: "put-in",
-    description: "Put-in at the Arcadia Management Area. Narrow, winding stream through Rhode Island\"s largest wildlife management area.",
-  },
-  {
-    name: "Wyoming",
-    lat: 41.516,
-    lng: -71.7035,
-    type: "access",
-    description: "Mid-river access near the village of Wyoming. Small rapids and riffles through wooded corridor.",
-  },
-  {
-    name: "Alton",
-    lat: 41.4565,
-    lng: -71.7109,
-    type: "take-out",
-    description: "Take-out near Alton. The Wood River widens here before joining the Pawcatuck River system.",
-  },
+  { name: 'Wood River Wetland canoe launch', lat: 42.58114, lng: -121.93133, type: 'access', description: 'BLM — restrooms, parking: yes' },
+  { name: 'Petric Park', lat: 42.58799, lng: -121.93148, type: 'access', description: 'Klamath County — restrooms, parking: yes' },
+  { name: 'Barberville', lat: 41.54067, lng: -71.69647, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Hope Valley Dam', lat: 41.50318, lng: -71.71665, type: 'access', description: 'parking: yes' },
+  { name: 'Wyoming Dam Fishing Access', lat: 41.51588, lng: -71.70287, type: 'access', description: 'parking: yes' },
+  { name: 'Wood River at Route 165', lat: 41.57292, lng: -71.72098, type: 'access', description: 'parking: yes' },
+  { name: 'Alton Pond Landing', lat: 41.43810, lng: -71.72233, type: 'access', description: 'parking: yes' },
+  { name: 'Hope Valley Fishing Access', lat: 41.51202, lng: -71.70640, type: 'access', description: 'parking: yes' },
+  { name: 'Switch Road Wood River Access', lat: 41.49350, lng: -71.71578, type: 'access', description: 'parking: yes' },
+  { name: 'Wyoming Pond at Skunk Hill Road', lat: 41.52228, lng: -71.69183, type: 'access', description: 'parking: yes' },
+  { name: 'Woodville Dam Portage', lat: 41.45963, lng: -71.71907, type: 'access' },
 ]
 
 // River sections

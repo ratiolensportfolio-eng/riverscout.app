@@ -3,7 +3,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Etowah River (GEORGIA) — geometry from USGS NHDPlus HR
 // 19 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'State Route 1 Loop', lat: 34.23221, lng: -85.11623, type: 'access', description: 'DNR-WRD — parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

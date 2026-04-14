@@ -4,7 +4,15 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 58 points, 21/200 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Jodie', lat: 38.22603, lng: -81.15235, type: 'access', description: 'WVDNR — parking: yes' },
+  { name: 'Persinger Creek', lat: 38.29911, lng: -80.76943, type: 'access', description: 'NPS — parking: yes' },
+  { name: 'Gauley Tailwaters River Access', lat: 38.21835, lng: -80.88952, type: 'access', description: 'Gauley River National Recreation Area — parking: yes' },
+  { name: 'Gauley Tailwaters River Access', lat: 38.21537, lng: -80.88852, type: 'access', description: 'Gauley River National Recreation Area — parking: yes' },
+  { name: 'Masons Branch River Access', lat: 38.22306, lng: -80.99017, type: 'access', description: 'Gauley River National Recreation Area — parking: yes' },
+  { name: 'Woods Ferry River Access', lat: 38.20393, lng: -81.01512, type: 'access', description: 'Gauley River National Recreation Area — parking: yes' },
+  { name: 'Upper Swiss River Access', lat: 38.22368, lng: -81.12067, type: 'access', description: 'Gauley River National Recreation Area — parking: yes' },
+]
 
 // River sections
 export const sections: RiverSection[] = [

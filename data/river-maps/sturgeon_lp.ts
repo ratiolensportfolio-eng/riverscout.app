@@ -3,7 +3,15 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Sturgeon River (LP) (MICHIGAN) — geometry from USGS NHDPlus HR
 // 132 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Round Lake Boat Launch', lat: 46.15878, lng: -86.75556, type: 'access', description: 'Hiawatha National Forest' },
+  { name: 'County Road 440', lat: 46.16166, lng: -86.69467, type: 'access', description: 'Hiawatha National Forest' },
+  { name: 'County Road 442', lat: 46.03924, lng: -86.75223, type: 'access', description: 'Hiawatha National Forest' },
+  { name: 'Fourteen Mile Bridge Boat Launch', lat: 45.98949, lng: -86.67988, type: 'access', description: 'Hiawatha National Forest' },
+  { name: 'Flowing Well Campground', lat: 45.93690, lng: -86.70710, type: 'access', description: 'Hiawatha National Forest — restrooms, parking: overnight' },
+  { name: 'County Road 497', lat: 45.85095, lng: -86.66917, type: 'access', description: 'Hiawatha National Forest' },
+  { name: 'Sturgeon Lake', lat: 44.62849, lng: -92.63205, type: 'access', description: 'U.S. Corps Of Engineers' },
+]
 
 export const sections: RiverSection[] = []
 

@@ -4,7 +4,20 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 155 points, 166/176 segments stitched
 
 // Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Cascadilla Creek', lat: 48.42470, lng: -113.77035, type: 'access', description: 'Flathead National Forest — restrooms, parking: overnight' },
+  { name: 'Schafer Meadows', lat: 48.07773, lng: -113.24842, type: 'put-in', description: 'Flathead National Forest' },
+  { name: 'Bear Creek', lat: 48.23379, lng: -113.56619, type: 'access', description: 'Flathead National Forest — restrooms, parking: overnight' },
+  { name: 'Paola Creek', lat: 48.34360, lng: -113.64005, type: 'access', description: 'Flathead National Forest — restrooms, parking: overnight' },
+  { name: 'Mocassin Creek', lat: 48.48030, lng: -113.84703, type: 'access', description: 'Flathead National Forest — restrooms, parking: overnight' },
+  { name: 'West Glacier', lat: 48.50469, lng: -113.99354, type: 'access', description: 'Flathead National Forest — restrooms, parking: yes' },
+  { name: 'Blankenship Bridge', lat: 48.46551, lng: -114.07037, type: 'access', description: 'Flathead County — restrooms, parking: overnight' },
+  { name: 'Canadian Border', lat: 49.00044, lng: -114.47522, type: 'access', description: 'Flathead National Forest — restrooms, parking: overnight' },
+  { name: 'Ford Access', lat: 48.87462, lng: -114.37374, type: 'access', description: 'Flathead National Forest — restrooms, parking: overnight' },
+  { name: 'Polebridge Access', lat: 48.78279, lng: -114.28317, type: 'access', description: 'Flathead National Forest — restrooms, parking: overnight' },
+  { name: 'Big Creek Campground', lat: 48.60267, lng: -114.16227, type: 'access', description: 'Flathead National Forest — restrooms, parking: overnight, fee' },
+  { name: 'Glacier Rim Access', lat: 48.49295, lng: -114.12654, type: 'access', description: 'Flathead National Forest — restrooms, parking: overnight' },
+]
 
 // Middle Fork Flathead sections
 export const sections: RiverSection[] = [

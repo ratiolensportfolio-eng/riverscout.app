@@ -5,8 +5,34 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  { name: 'Powers Island', lat: 33.927, lng: -84.437, type: 'put-in', description: 'NPS unit of Chattahoochee River NRA.' },
-  { name: 'Paces Mill', lat: 33.869, lng: -84.441, type: 'take-out', description: 'NPS access in the Cobb County unit.' },
+  { name: 'Garrard Landing', lat: 33.97353, lng: -84.26344, type: 'access', description: 'City of Roswell — restrooms, parking: yes' },
+  { name: 'Island Ford', lat: 33.98731, lng: -84.32406, type: 'access', description: 'Chattahooche River National Recreation Area — restrooms, parking: yes, fee' },
+  { name: 'Riverside Park', lat: 34.00283, lng: -84.35727, type: 'access', description: 'City of Roswell — restrooms, parking: yes' },
+  { name: 'Rowing Dock', lat: 34.00212, lng: -84.36191, type: 'access', description: 'City of Roswell — restrooms, parking: yes' },
+  { name: 'Azalea Park Boat Ramp', lat: 34.00170, lng: -84.36340, type: 'access', description: 'City of Roswell — restrooms, parking: yes' },
+  { name: 'Jones Bridge', lat: 33.99871, lng: -84.24805, type: 'access', description: 'Chattahooche River National Recreation Area — restrooms, parking: yes, fee' },
+  { name: 'Jones Bridge', lat: 34.00008, lng: -84.23932, type: 'access', description: 'Chattahooche River National Recreation Area — restrooms, parking: yes, fee' },
+  { name: 'Medlock Bridge', lat: 33.99592, lng: -84.20200, type: 'access', description: 'Chattahooche River National Recreation Area — parking: yes, fee' },
+  { name: 'Abbotts Bridge', lat: 34.02465, lng: -84.17223, type: 'access', description: 'Chattahooche River National Recreation Area — restrooms, parking: yes, fee' },
+  { name: 'Settles Bridge', lat: 34.09837, lng: -84.10960, type: 'access', description: 'Chattahooche River National Recreation Area — parking: yes, fee' },
+  { name: 'Johnson Ferry', lat: 33.94548, lng: -84.40403, type: 'access', description: 'Chattahooche River National Recreation Area — restrooms, parking: yes, fee' },
+  { name: 'Powers Island', lat: 33.90401, lng: -84.44183, type: 'access', description: 'Chattahooche River National Recreation Area — parking: yes, fee' },
+  { name: 'Akers Mill Access Point', lat: 33.88847, lng: -84.44362, type: 'access', description: 'Chattahooche River National Recreation Area — restrooms, parking: yes, fee' },
+  { name: 'East Palisades', lat: 33.87820, lng: -84.44272, type: 'access', description: 'Chattahooche River National Recreation Area — parking: yes, fee' },
+  { name: 'Paces Mill', lat: 33.87043, lng: -84.45246, type: 'access', description: 'Chattahooche River National Recreation Area — restrooms, parking: yes, fee' },
+  { name: 'Buford Dam Access', lat: 34.15793, lng: -84.07725, type: 'access', description: 'Chattahooche River National Recreation Area — restrooms, parking: yes, fee' },
+  { name: 'Riverside Park', lat: 34.00487, lng: -84.34723, type: 'access', description: 'City of Roswell — restrooms, parking: yes' },
+  { name: 'Morgan Falls Park', lat: 33.97190, lng: -84.37889, type: 'access', description: 'Sandy Springs, Fulton County — restrooms, parking: yes' },
+  { name: 'Campellton Road (SR166/154)', lat: 33.69393, lng: -84.62984, type: 'access', description: 'DNR-WRD — parking: yes' },
+  { name: 'Hollingsworth Ferry', lat: 33.39454, lng: -85.03316, type: 'access', description: 'DNR-WRD — parking: yes' },
+  { name: 'Morgan Falls Park', lat: 33.96546, lng: -84.38239, type: 'access', description: 'DNR-WRD — parking: yes' },
+  { name: 'Rotary Park', lat: 32.44480, lng: -84.97704, type: 'access', description: 'DNR-WRD — parking: yes' },
+  { name: 'Mossy Creek Hand Launch', lat: 34.49558, lng: -83.67314, type: 'access', description: 'DNR-WRD — parking: yes' },
+  { name: 'Below Andrews Dam', lat: 31.25442, lng: -85.10708, type: 'access', description: 'COE — parking: yes, fee' },
+  { name: 'Lower Pool Park', lat: 34.15821, lng: -84.07760, type: 'access', description: 'COE — parking: yes, fee' },
+  { name: 'Chattachoochee Bend SP', lat: 33.43000, lng: -85.01216, type: 'access', description: 'DNR-PRHS — parking: yes' },
+  { name: 'LULA BRIDGE WMA', lat: 34.43736, lng: -83.68103, type: 'access', description: 'Unknown' },
+  { name: 'LULA BRIDGE WMA', lat: 34.41505, lng: -83.70782, type: 'access', description: 'Unknown' },
 ]
 
 // River sections

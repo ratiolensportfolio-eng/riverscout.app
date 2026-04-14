@@ -4,7 +4,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 14 points
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Ed Banks / Hwy 246', lat: 34.376, lng: -94.238, type: 'put-in', description: 'Put-in for the Cossatot Falls section — the best Class IV whitewater in Arkansas.' },
+  { name: 'Hwy 246 State Park Picnic Area', lat: 34.37960, lng: -94.23682, type: 'access', description: 'Cassatot River State Park — parking: yes' },
+  { name: 'Ed Banks Rd', lat: 34.33963, lng: -94.25089, type: 'access', description: 'Cassatot River State Park — parking: yes' },
+  { name: 'Hwy 278 Bridge', lat: 34.29588, lng: -94.17602, type: 'access', description: 'Cassatot River State Park — parking: yes' },
 ]
 
 export const sections: RiverSection[] = []
