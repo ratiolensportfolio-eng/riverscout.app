@@ -6423,4 +6423,289 @@ export const FISHERIES: Record<string, RiverFisheries> = {
     guides: [],
   },
 
+  // ── ADFG AWC-sourced fisheries (auto-imported 2026-04-14) ──
+  noatak_ak: {
+    species: [
+      { name: 'Chum Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Pink Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Sockeye Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Dolly Varden', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Sheefish', type: 'anadromous', primary: false, notes: 'present' },
+      { name: 'Whitefish', type: 'resident', primary: false, notes: 'rearing' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  nowitna_ak: {
+    species: [
+      { name: 'Chum Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Sheefish', type: 'anadromous', primary: false, notes: 'present' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  sheenjek_ak: {
+    species: [
+      { name: 'Chum Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'present' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  selawik_ak: {
+    species: [
+      { name: 'Sheefish', type: 'anadromous', primary: false, notes: 'present' },
+      { name: 'Whitefish', type: 'resident', primary: false, notes: 'present' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  east_fork_andreafsky_ak: {
+    species: [
+      { name: 'Chum Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Pink Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Sockeye Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Sheefish', type: 'anadromous', primary: false, notes: 'present' },
+      { name: 'Whitefish', type: 'resident', primary: false, notes: 'present' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  andreafsky_ak: {
+    species: [
+      { name: 'Chum Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'rearing' },
+      { name: 'Pink Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Sockeye Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Sheefish', type: 'anadromous', primary: false, notes: 'present' },
+      { name: 'Whitefish', type: 'resident', primary: false, notes: 'present' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  wind_ak: {
+    species: [
+      { name: 'Chum Salmon', type: 'anadromous', primary: true, notes: 'spawning' },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true, notes: 'spawning' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'spawning' },
+      { name: 'Pink Salmon', type: 'anadromous', primary: true, notes: 'spawning' },
+      { name: 'Sockeye Salmon', type: 'anadromous', primary: true, notes: 'spawning' },
+      { name: 'Whitefish', type: 'resident', primary: false, notes: 'present' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  alatna_ak: {
+    species: [
+      { name: 'Chum Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Sheefish', type: 'anadromous', primary: false, notes: 'present' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  north_fork_koyukuk_ak: {
+    species: [
+      { name: 'Chum Salmon', type: 'anadromous', primary: true, notes: 'spawning' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'spawning' },
+      { name: 'Whitefish', type: 'resident', primary: false, notes: 'present' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  mulchatna_ak: {
+    species: [
+      { name: 'Chum Salmon', type: 'anadromous', primary: true, notes: 'spawning' },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true, notes: 'spawning, rearing' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'spawning, rearing' },
+      { name: 'Pink Salmon', type: 'anadromous', primary: true, notes: 'spawning' },
+      { name: 'Sockeye Salmon', type: 'anadromous', primary: true, notes: 'spawning, rearing' },
+      { name: 'Whitefish', type: 'resident', primary: false, notes: 'present' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  unalakleet_ak: {
+    species: [
+      { name: 'Chum Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Pink Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Sockeye Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Dolly Varden', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Whitefish', type: 'resident', primary: false, notes: 'present' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  charley_ak: {
+    species: [
+      { name: 'Chum Salmon', type: 'anadromous', primary: true, notes: 'spawning' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'present' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  ivishak_ak: {
+    species: [
+      { name: 'Chum Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Dolly Varden', type: 'anadromous', primary: true, notes: 'present' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  chilikadrotna_ak: {
+    species: [
+      { name: 'Chum Salmon', type: 'anadromous', primary: true, notes: 'spawning' },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true, notes: 'spawning' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'spawning, rearing' },
+      { name: 'Sockeye Salmon', type: 'anadromous', primary: true, notes: 'spawning, rearing' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  nonvianuk_ak: {
+    species: [
+      { name: 'Chum Salmon', type: 'anadromous', primary: true, notes: 'spawning' },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'spawning' },
+      { name: 'Sockeye Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Whitefish', type: 'resident', primary: false, notes: 'present' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  john_ak: {
+    species: [
+      { name: 'Chum Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Whitefish', type: 'resident', primary: false, notes: 'present' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  fortymile_ak: {
+    species: [
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'present' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  delta_ak: {
+    species: [
+      { name: 'Chum Salmon', type: 'anadromous', primary: true, notes: 'spawning' },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true, notes: 'spawning, rearing' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  moose_ak: {
+    species: [
+      { name: 'Coho Salmon', type: 'anadromous', primary: true, notes: 'spawning, rearing' },
+      { name: 'Chinook Salmon', type: 'anadromous', primary: true, notes: 'spawning' },
+      { name: 'Pink Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Sockeye Salmon', type: 'anadromous', primary: true, notes: 'present' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  aniakchak_ak: {
+    species: [
+      { name: 'Chum Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Pink Salmon', type: 'anadromous', primary: true, notes: 'present' },
+      { name: 'Sockeye Salmon', type: 'anadromous', primary: true, notes: 'present' },
+    ],
+    designations: ['ADFG Anadromous Waters Catalog — specified under AS 16.05.871'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
 }
