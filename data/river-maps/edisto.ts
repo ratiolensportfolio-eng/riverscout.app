@@ -3,7 +3,25 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Edisto River — polyline from National Rivers Project (NRP).
 // 5995 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Zig Zag Landing', lat: 33.21693, lng: -80.84443, type: 'access', description: 'Bamberg County — parking: yes' },
+  { name: 'Canady\'s Bridge/T. Coke Weeks Landing', lat: 33.06477, lng: -80.61307, type: 'access', description: 'SCDNR / SCDOT — parking: yes' },
+  { name: 'Mars Old Field Landing', lat: 33.05479, lng: -80.44962, type: 'access', description: 'Colleton County — parking: yes' },
+  { name: 'Messervy Landing', lat: 33.00016, lng: -80.40527, type: 'access', description: 'SCDNR — parking: yes' },
+  { name: 'Good Hope Landing', lat: 32.96580, lng: -80.41780, type: 'access', description: 'Colleton County — parking: yes' },
+  { name: 'Long Creek Landing', lat: 32.93426, lng: -80.40170, type: 'access', description: 'Colleton County — parking: yes' },
+  { name: 'Sullivan\'s Ferry', lat: 32.91213, lng: -80.40676, type: 'access', description: 'Colleton County — parking: yes' },
+  { name: 'Lowndes Landing', lat: 32.87078, lng: -80.40330, type: 'access', description: 'Colleton County — parking: yes' },
+  { name: 'Martin\'s Landing', lat: 32.84363, lng: -80.39454, type: 'access', description: 'Charleston County — parking: yes' },
+  { name: 'West Bank Landing', lat: 32.73625, lng: -80.45163, type: 'access', description: 'Colleton County — parking: yes' },
+  { name: 'Willtown Bluff Landing', lat: 32.67895, lng: -80.41621, type: 'access', description: 'Charleston County — parking: yes' },
+  { name: 'Whetstone Crossroads', lat: 33.17770, lng: -80.80240, type: 'access', description: 'parking: yes' },
+  { name: 'Green Pond Church Landing', lat: 33.12586, lng: -80.68968, type: 'access', description: 'parking: yes' },
+  { name: 'Colleton State Park', lat: 33.06435, lng: -80.61330, type: 'access', description: 'SCPRT — restrooms, parking: yes' },
+  { name: 'Minnie Gruber Rumph Landing at Stokes Bridge', lat: 33.06088, lng: -80.52549, type: 'access', description: 'parking: yes' },
+  { name: 'Givhans Ferry State Park', lat: 33.03050, lng: -80.39027, type: 'access', description: 'SCPRT — restrooms, parking: yes' },
+  { name: 'Simmons Landing (Private)', lat: 33.10429, lng: -80.67147, type: 'access', description: 'parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

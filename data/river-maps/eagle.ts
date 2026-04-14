@@ -3,7 +3,31 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Eagle River — polyline from National Rivers Project (NRP).
 // 983 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Eagle Lake Boat Ramp', lat: 33.24060, lng: -92.16516, type: 'access', description: 'USFWS' },
+  { name: 'Eagle River Water & Sanitation Plant', lat: 39.65417, lng: -106.62668, type: 'access', description: 'parking: yes' },
+  { name: 'Wolcott Boat Ramp', lat: 39.71328, lng: -106.69794, type: 'access', description: 'Bureau of Land Managemant — restrooms, parking: yes' },
+  { name: 'Chambers Park/Eagle Visitors Center', lat: 39.65751, lng: -106.82854, type: 'access', description: 'Eagle, Colorado — parking: yes' },
+  { name: 'Community Site', lat: 39.65169, lng: -106.98508, type: 'access', description: 'Bureau of Land Managemant — parking: yes' },
+  { name: 'Duck Pond River Access', lat: 39.64313, lng: -107.02454, type: 'access', description: 'Eagle County — restrooms, parking: yes' },
+  { name: 'Eagle Lake Public Boat Ramp (Polk County)', lat: 27.98190, lng: -81.76039, type: 'access', description: 'City Of Eagle Lake — restrooms, parking: yes' },
+  { name: 'Eagle Lake', lat: 41.42546, lng: -85.54373, type: 'access', description: 'Indiana Department of Natural Resources' },
+  { name: 'Eagle Creek Reservoir', lat: 39.83078, lng: -86.30006, type: 'access', description: 'Indiana Department of Natural Resources' },
+  { name: 'Eagle Lake Wetland Complex', lat: 43.13767, lng: -93.72951, type: 'access', description: 'Iowa DNR' },
+  { name: 'Eagle Lake', lat: 43.48873, lng: -94.82611, type: 'access', description: 'Iowa DNR' },
+  { name: 'Big Eagle Creek Ramp', lat: 38.39299, lng: -84.52963, type: 'access', description: 'parking: yes' },
+  { name: 'Sparta City Park Carrydown', lat: 38.67693, lng: -84.90489, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Morehead State University', lat: 38.19240, lng: -83.43473, type: 'access', description: 'parking: yes' },
+  { name: 'Eagle Lake', lat: 45.07943, lng: -93.40581, type: 'access', description: 'DNR T&W' },
+  { name: 'Eagle Lake', lat: 45.28625, lng: -93.90710, type: 'access', description: 'DNR T&W' },
+  { name: 'Eagle Lake Carry-in Access', lat: 45.25712, lng: -88.22672, type: 'access', description: 'Town of Stephenson' },
+  { name: 'Minnetonka Drive Boat Ramp', lat: 42.70554, lng: -88.13722, type: 'access', description: 'Town of Dover' },
+  { name: 'Eagle Lake Boat Launch', lat: 45.94039, lng: -89.20598, type: 'access', description: 'Forestry, Land & Recreation Dept.' },
+  { name: 'Eagle Lake County Park Boat Launch', lat: 42.70980, lng: -88.12059, type: 'access', description: 'Parks Department' },
+  { name: 'Eagle Lake Access', lat: 42.69619, lng: -88.12477, type: 'access', description: 'Town of Dover' },
+  { name: 'Eagle River Boat Ramp', lat: 45.89410, lng: -89.14074, type: 'access', description: 'Wisconsin Valley Improvement' },
+  { name: 'Eagle Spring Lake (and Lulu Lake)', lat: 42.85514, lng: -88.43494, type: 'access' },
+]
 
 export const sections: RiverSection[] = []
 

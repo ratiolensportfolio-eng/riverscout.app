@@ -3,7 +3,26 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Kankakee River — polyline from National Rivers Project (NRP).
 // 4991 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Kankakee River Launch', lat: 41.35923, lng: -88.21758, type: 'access', description: 'Illinois Department of Natural Resources — parking: yes' },
+  { name: 'Area 9 Boat Launch', lat: 41.22660, lng: -88.05521, type: 'access', description: 'Illinois Department of Natural Resources — parking: yes' },
+  { name: 'Chippewa Boat Launch', lat: 41.20656, lng: -88.01140, type: 'access', description: 'Illinois Department of Natural Resources — parking: yes' },
+  { name: 'Wilmington Dam', lat: 41.30059, lng: -88.15150, type: 'access' },
+  { name: 'Bird Park Access Point', lat: 41.11962, lng: -87.87636, type: 'access', description: 'Kankakee Valley Park District — parking: yes' },
+  { name: 'Kankakee Dam', lat: 41.11366, lng: -87.86749, type: 'access' },
+  { name: 'Potawatomi Boat launch', lat: 41.07583, lng: -87.80857, type: 'access', description: 'St. Charles Park District — parking: yes' },
+  { name: 'Momence Dam', lat: 41.16131, lng: -87.66409, type: 'access' },
+  { name: 'Momence Boat Launch (Undeveloped)', lat: 41.16636, lng: -87.65065, type: 'access', description: 'Momence Park District — parking: yes' },
+  { name: 'Shelby', lat: 41.18307, lng: -87.34037, type: 'access', description: 'Indiana Department of Natural Resources' },
+  { name: 'Dunns Bridge', lat: 41.22003, lng: -86.96896, type: 'access', description: 'Indiana Department of Natural Resources' },
+  { name: 'Kankakee River', lat: 41.31746, lng: -86.74589, type: 'access', description: 'Indiana Department of Natural Resources' },
+  { name: 'Kankakee River (Lake County Park Dept)', lat: 41.21950, lng: -87.27408, type: 'access', description: 'Indiana Department of Natural Resources' },
+  { name: 'Kankakee River / Campgrnd, White Oak', lat: 41.16782, lng: -87.45780, type: 'access', description: 'Indiana Department of Natural Resources' },
+  { name: 'Kingsbury F&W Area', lat: 41.49023, lng: -86.58163, type: 'access', description: 'Indiana Department of Natural Resources' },
+  { name: 'Kankakee & Yellow Rivers, The Points', lat: 41.27121, lng: -86.82597, type: 'access', description: 'Indiana Department of Natural Resources' },
+  { name: 'Kankakee River / Black Oak Bayou', lat: 41.16843, lng: -87.49670, type: 'access', description: 'Indiana Department of Natural Resources' },
+  { name: 'LaSalle', lat: 41.17023, lng: -87.45820, type: 'access', description: 'Indiana Department of Natural Resources' },
+]
 
 export const sections: RiverSection[] = []
 

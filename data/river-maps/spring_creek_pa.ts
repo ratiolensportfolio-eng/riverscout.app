@@ -3,7 +3,35 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Spring Creek — polyline from National Rivers Project (NRP).
 // 553 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Cold Springs Access', lat: 36.47680, lng: -91.52428, type: 'access', description: 'AGFC' },
+  { name: 'Dam 3 Access Paved Ramp', lat: 36.46620, lng: -91.52795, type: 'access', description: 'AGFC' },
+  { name: 'Bayou Access Ramp', lat: 36.43318, lng: -91.52841, type: 'access', description: 'AGFC' },
+  { name: 'Lasseter Walk-In Access', lat: 36.48901, lng: -91.53273, type: 'access', description: 'AGFC' },
+  { name: 'Ravenden Boat Ramp', lat: 36.22486, lng: -91.25055, type: 'access', description: 'AGFC' },
+  { name: 'Hardy Beach Boat Ramp', lat: 36.31262, lng: -91.47297, type: 'access', description: 'AGFC' },
+  { name: 'LB Boat Ramp', lat: 36.25348, lng: -91.40698, type: 'access', description: 'AGFC' },
+  { name: 'Imboden Boat Ramp', lat: 36.20377, lng: -91.16970, type: 'access', description: 'AGFC' },
+  { name: 'Spring Lake Boat Ramp', lat: 35.15026, lng: -93.42549, type: 'access', description: 'USFS' },
+  { name: 'Spring Lake Park Public Boat Ramp', lat: 26.97385, lng: -82.12176, type: 'access', description: 'Charlotte County — restrooms, parking: yes' },
+  { name: 'Spring Creek Park - Turner Landing Canoe Launch', lat: 30.75202, lng: -85.19745, type: 'access', description: 'Jackson County — parking: yes' },
+  { name: 'Spring Creek - Big Bend Wildlife Management Area', lat: 29.97236, lng: -83.74508, type: 'access', description: 'Florida Fish And Wildlife Conservation Commission — parking: yes' },
+  { name: 'Spring Warrior Fish Camp', lat: 29.92043, lng: -83.67080, type: 'access', description: 'Private — parking: yes, fee' },
+  { name: 'Spring Creek Landing', lat: 30.07901, lng: -84.32961, type: 'access', description: 'parking: yes' },
+  { name: 'Brinson Bridge Landing (SR38)', lat: 30.97528, lng: -84.74572, type: 'access', description: 'DNR-WRD — parking: yes' },
+  { name: 'Spring Mill Lake', lat: 38.73698, lng: -86.41271, type: 'access', description: 'Indiana Department of Natural Resources' },
+  { name: 'Spring Run Complex', lat: 43.38270, lng: -95.06213, type: 'access', description: 'Iowa DNR' },
+  { name: 'Spring Run Complex', lat: 43.37385, lng: -95.05248, type: 'access', description: 'Iowa DNR' },
+  { name: 'Spring Run Complex', lat: 43.39139, lng: -95.02194, type: 'access', description: 'Iowa DNR' },
+  { name: 'Spring Run Complex', lat: 43.40452, lng: -95.03313, type: 'access', description: 'Iowa DNR' },
+  { name: 'Lamar Access', lat: 37.52801, lng: -94.27005, type: 'access' },
+  { name: 'La Russell Access', lat: 37.15014, lng: -94.06177, type: 'access' },
+  { name: 'Spring Lake', lat: 43.53924, lng: -89.30482, type: 'access', description: 'Park Lake Management District' },
+  { name: 'Spring (Spirit) Lake Access', lat: 43.78714, lng: -88.99709, type: 'access', description: 'Highway Dept.' },
+  { name: 'Spring Lake', lat: 42.91144, lng: -88.37569, type: 'access' },
+  { name: 'SPRING LAKE BOAT RAMP', lat: 43.96983, lng: -87.89436, type: 'access', description: 'Planning & Parks Division' },
+  { name: 'Spring Lake Access', lat: 43.68571, lng: -89.16452, type: 'access', description: 'Highway Dept.' },
+]
 
 export const sections: RiverSection[] = []
 

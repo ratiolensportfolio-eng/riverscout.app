@@ -3,7 +3,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Cannon River — polyline from National Rivers Project (NRP).
 // 2942 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Cannon Creek Ramp', lat: 36.67797, lng: -83.70270, type: 'access', description: 'parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

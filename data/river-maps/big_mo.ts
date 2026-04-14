@@ -3,7 +3,14 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Big River — polyline from National Rivers Project (NRP).
 // 17820 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Big Creek Wildlife Area - Usacoe', lat: 41.81955, lng: -93.75638, type: 'access', description: 'Iowa DNR' },
+  { name: 'Big Creek Wildlife Area - Usacoe', lat: 41.83502, lng: -93.75478, type: 'access', description: 'Iowa DNR' },
+  { name: 'Brown\'s Ford Access', lat: 38.21284, lng: -90.70618, type: 'access' },
+  { name: 'Mammoth Access', lat: 38.12133, lng: -90.67588, type: 'access' },
+  { name: 'Merrill Horse Access', lat: 38.16345, lng: -90.70937, type: 'access' },
+  { name: 'Washington State Park Access (MO DNR)', lat: 38.08584, lng: -90.66240, type: 'access' },
+]
 
 export const sections: RiverSection[] = []
 

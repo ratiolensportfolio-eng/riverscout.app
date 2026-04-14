@@ -3,7 +3,15 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Lumber River — polyline from National Rivers Project (NRP).
 // 3031 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Chalk Banks', lat: 34.92639, lng: -79.35467, type: 'access', description: 'NC Parks — restrooms, parking: overnight' },
+  { name: 'WRC Boat Ramp', lat: 34.90108, lng: -79.34824, type: 'access', description: 'NC Parks — restrooms, parking: yes' },
+  { name: 'Princess Ann', lat: 34.38795, lng: -79.00098, type: 'access', description: 'NC Parks — restrooms, parking: overnight' },
+  { name: 'Causey Landing', lat: 34.29279, lng: -79.07795, type: 'access', description: 'Horry County — parking: yes' },
+  { name: 'Ricefield Cove', lat: 34.22212, lng: -79.13020, type: 'access', description: 'Horry County — parking: yes' },
+  { name: 'Fair Bluff, NC', lat: 34.31375, lng: -79.03852, type: 'access', description: 'parking: yes' },
+  { name: 'Highway 9 Bridge', lat: 34.22540, lng: -79.13478, type: 'access', description: 'parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

@@ -22,6 +22,12 @@ create index if not exists idx_flow_alerts_email on flow_alerts(email);
 -- Enable RLS
 alter table flow_alerts enable row level security;
 
+-- Drop + recreate so re-runs don't fail on "already exists"
+drop policy if exists "Anyone can create alerts" on flow_alerts;
+drop policy if exists "Anyone can read alerts by email" on flow_alerts;
+drop policy if exists "Anyone can delete alerts" on flow_alerts;
+drop policy if exists "Anyone can update alerts" on flow_alerts;
+
 -- Allow anonymous inserts (no auth required for MVP)
 create policy "Anyone can create alerts" on flow_alerts
   for insert with check (true);

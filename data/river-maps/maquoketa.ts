@@ -4,12 +4,12 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 68 points
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Adirondack Shelter', lat: 42.07174, lng: -90.69889, type: 'access', description: ' ' },
+  { name: 'Adirondack Shelter', lat: 42.07174, lng: -90.69889, type: 'access' },
   { name: 'Buzzard Ridge', lat: 42.14690, lng: -90.87648, type: 'access', description: 'Jackson CCB — restrooms' },
   { name: 'Pin Oak Access', lat: 42.45541, lng: -91.43246, type: 'access', description: 'Delaware CCB' },
   { name: 'Bailey\'S Ford Park', lat: 42.44310, lng: -91.40963, type: 'access', description: 'Delaware CCB — restrooms' },
-  { name: 'Canton Access', lat: 42.16262, lng: -90.89435, type: 'access', description: ' ' },
-  { name: 'Hartwick Access', lat: 42.41018, lng: -91.36356, type: 'access', description: ' ' },
+  { name: 'Canton Access', lat: 42.16262, lng: -90.89435, type: 'access' },
+  { name: 'Hartwick Access', lat: 42.41018, lng: -91.36356, type: 'access' },
   { name: 'Highway 52 Access', lat: 42.15727, lng: -90.33920, type: 'access', description: 'Jackson CCB' },
   { name: 'Joinerville Park', lat: 42.08106, lng: -90.75152, type: 'access', description: 'Jackson CCB' },
   { name: 'Maquoketa City Access', lat: 42.07525, lng: -90.67003, type: 'access', description: 'Maquoketa' },

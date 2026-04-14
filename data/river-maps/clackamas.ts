@@ -3,7 +3,11 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Clackamas River — polyline from National Rivers Project (NRP).
 // 864 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Cazadero Dam', lat: 45.25200, lng: -122.29800, type: 'access', description: 'BLM' },
+  { name: 'Rivermill Dam', lat: 45.30650, lng: -122.36638, type: 'access', description: 'BLM' },
+  { name: 'Williamette', lat: 45.37216, lng: -122.60294, type: 'access', description: 'BLM' },
+]
 
 export const sections: RiverSection[] = []
 

@@ -3,7 +3,26 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Chagrin River — polyline from National Rivers Project (NRP).
 // 2365 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Chagrin River Access', lat: 41.45830, lng: -81.40621, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Chagrin River Access', lat: 41.54949, lng: -81.41766, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Chagrin River Access', lat: 41.56963, lng: -81.41321, type: 'access', description: 'parking: yes' },
+  { name: 'Chagrin River Access', lat: 41.57463, lng: -81.41707, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Chagrin River Access', lat: 41.59244, lng: -81.39662, type: 'access', description: 'parking: yes' },
+  { name: 'Chagrin River Access', lat: 41.63096, lng: -81.40174, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Chagrin River Access', lat: 41.64183, lng: -81.40257, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Chagrin River Access', lat: 41.66260, lng: -81.42202, type: 'access', description: 'parking: yes' },
+  { name: 'Chagrin River Access', lat: 41.64905, lng: -81.40559, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Chagrin River Access', lat: 41.42286, lng: -81.39898, type: 'access', description: 'parking: yes' },
+  { name: 'Chagrin River Access', lat: 41.43954, lng: -81.40770, type: 'access', description: 'parking: yes' },
+  { name: 'Chagrin River Access', lat: 41.65829, lng: -81.40694, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Chagrin River Access', lat: 41.66745, lng: -81.42285, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Chagrin River Access', lat: 41.58946, lng: -81.40267, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Chagrin River Access', lat: 41.65673, lng: -81.41058, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Chagrin River Access', lat: 41.65939, lng: -81.41817, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Chagrin River Access', lat: 41.66946, lng: -81.43229, type: 'access', description: 'parking: yes' },
+  { name: 'Chagrin River Access', lat: 41.66922, lng: -81.43244, type: 'access', description: 'parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

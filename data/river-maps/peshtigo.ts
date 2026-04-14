@@ -15,7 +15,7 @@ export const accessPoints: AccessPoint[] = [
   { name: 'County BB (Klingsborns) Peshtigo River Access', lat: 44.98879, lng: -87.66582, type: 'access', description: 'Wildlife Biologist' },
   { name: 'NW Front Street Boat Ramp', lat: 45.05584, lng: -87.74897, type: 'access', description: 'Parks & Recreation Department' },
   { name: 'Boat Launch #14 - Thunder River', lat: 45.26932, lng: -88.18680, type: 'access', description: 'Peshtigo River State Forest' },
-  { name: 'Peshtigo Harbor Access - End of Harbor Road', lat: 44.97401, lng: -87.65649, type: 'access', description: ' ' },
+  { name: 'Peshtigo Harbor Access - End of Harbor Road', lat: 44.97401, lng: -87.65649, type: 'access' },
   { name: 'Peshtigo River Access 2 - Browns Road', lat: 45.61069, lng: -88.59283, type: 'access', description: 'US Forest Service' },
   { name: 'Peshtigo Lake Access', lat: 45.58265, lng: -88.89160, type: 'access', description: 'Public Works Dept.' },
 ]

@@ -3,7 +3,11 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Maurice River — polyline from National Rivers Project (NRP).
 // 5363 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Menantico Ponds Wildlife Management Area', lat: 39.36744, lng: -74.99718, type: 'access', description: 'NJ Department of Environmental Protection — parking: yes, fee' },
+  { name: 'Fowser Landing', lat: 39.37701, lng: -75.03652, type: 'access', description: 'Millville, NJ — parking: yes' },
+  { name: 'Cumberland Pond', lat: 39.37408, lng: -74.94639, type: 'access', description: 'NJ Department of Environmental Protection — parking: yes, fee' },
+]
 
 export const sections: RiverSection[] = []
 

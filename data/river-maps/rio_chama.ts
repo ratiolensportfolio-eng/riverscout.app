@@ -3,7 +3,11 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Rio Chama — polyline from National Rivers Project (NRP).
 // 590 points, stitched from 2 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'El Vado Ranch', lat: 36.58239, lng: -106.72814, type: 'access', description: 'Cooper\'s El Vado Ranch — restrooms, parking: overnight, fee' },
+  { name: 'Chavez Canyon Boat Launch', lat: 36.36439, lng: -106.68093, type: 'access', description: 'Santa Fe National Forest — restrooms, parking: yes' },
+  { name: 'Big Eddy Boat Take-Out', lat: 36.31229, lng: -106.58356, type: 'access', description: 'Santa Fe National Forest — restrooms, parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

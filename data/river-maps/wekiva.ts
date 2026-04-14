@@ -10,7 +10,7 @@ export const accessPoints: AccessPoint[] = [
   { name: 'Wilson\'s Landing Park', lat: 28.80849, lng: -81.41751, type: 'access', description: 'FL DEP — restrooms, parking: yes' },
   { name: 'Katie\'s Landing', lat: 28.82920, lng: -81.41270, type: 'access', description: 'FL DEP — restrooms, parking: yes' },
   { name: 'High Banks Landing', lat: 28.89040, lng: -81.35470, type: 'access', description: 'FL DEP — parking: yes' },
-  { name: 'Wekiva Island Canoe Rentals & Boat Launch', lat: 28.71339, lng: -81.44487, type: 'access', description: '  — restrooms, parking: yes' },
+  { name: 'Wekiva Island Canoe Rentals & Boat Launch', lat: 28.71339, lng: -81.44487, type: 'access', description: 'restrooms, parking: yes' },
   { name: 'Wekiwa Springs State Park Canoe Launch', lat: 28.71253, lng: -81.45952, type: 'access', description: 'Florida Department Of Environmental Protection — restrooms, parking: yes, fee' },
 ]
 

@@ -3,7 +3,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Cache la Poudre — polyline from National Rivers Project (NRP).
 // 946 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Long Draw Reservoir', lat: 40.50306, lng: -105.77140, type: 'access', description: 'parking: yes' },
+  { name: 'Big South Campground', lat: 40.63331, lng: -105.80732, type: 'access', description: 'parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

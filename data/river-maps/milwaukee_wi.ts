@@ -3,7 +3,14 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Milwaukee River — polyline from National Rivers Project (NRP).
 // 4577 points, stitched from 4 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Village Grove Park Boat Ramp', lat: 43.23436, lng: -87.95718, type: 'access', description: 'Parks Department' },
+  { name: 'Grafton Boat Ramp', lat: 43.32088, lng: -87.94894, type: 'access' },
+  { name: 'Thiensville Boat Ramp', lat: 43.23101, lng: -87.97859, type: 'access' },
+  { name: 'MILWAUKEE RIVER CANOE LAUNCH', lat: 43.51734, lng: -88.22337, type: 'access', description: 'Village of Kewauskum' },
+  { name: 'Waubedonia Park Canoe Launch', lat: 43.46839, lng: -87.97311, type: 'access', description: 'Planning & Parks Dept.' },
+  { name: 'RIVERVIEW PARK CANOE LAUNCH', lat: 43.23319, lng: -87.96260, type: 'access', description: 'Parks Department' },
+]
 
 export const sections: RiverSection[] = []
 

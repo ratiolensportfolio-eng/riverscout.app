@@ -3,7 +3,31 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Tuckasegee River — polyline from National Rivers Project (NRP).
 // 3758 points, stitched from 2 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Island Park', lat: 35.43128, lng: -83.44256, type: 'access', description: 'Town of Bryson City' },
+  { name: 'Ela', lat: 35.45288, lng: -83.39338, type: 'access', description: 'TVA' },
+  { name: 'Duke at Barkers Creek', lat: 35.38898, lng: -83.29492, type: 'access', description: 'Duke Energy' },
+  { name: 'Dillsboro', lat: 35.36762, lng: -83.25236, type: 'access', description: 'Duke Energy' },
+  { name: 'Dillsboro', lat: 35.36726, lng: -83.25102, type: 'access', description: 'Duke Energy' },
+  { name: 'Duke at Dillsboro', lat: 35.36567, lng: -83.24849, type: 'access', description: 'Duke Energy' },
+  { name: 'Duke at Yellowbird Branch', lat: 35.36390, lng: -83.24643, type: 'access', description: 'Duke Energy' },
+  { name: 'Jack the Dipper', lat: 35.34147, lng: -83.20210, type: 'access', description: 'Informal' },
+  { name: 'Duke Shook Cove', lat: 35.25435, lng: -83.10606, type: 'access', description: 'Duke Energy' },
+  { name: 'Duke at Tuckasegee Power Plant', lat: 35.24765, lng: -83.12827, type: 'access', description: 'Duke Energy' },
+  { name: 'Moody Bridge', lat: 35.28790, lng: -83.14369, type: 'access', description: 'Informal' },
+  { name: 'East LaPort', lat: 35.29825, lng: -83.14722, type: 'access', description: 'Jackson County Parks & Recreation' },
+  { name: 'Duke Cullowhee', lat: 35.31481, lng: -83.17588, type: 'access', description: 'Duke Energy' },
+  { name: 'Duke Tuckasegee', lat: 35.33402, lng: -83.19656, type: 'access', description: 'Duke Energy' },
+  { name: 'Webster', lat: 35.34115, lng: -83.22563, type: 'access', description: 'Duke Energy' },
+  { name: 'Duke Dillsboro', lat: 35.36676, lng: -83.24896, type: 'access', description: 'Duke Energy' },
+  { name: 'Tuckasegee Outfitters', lat: 35.38509, lng: -83.29102, type: 'access', description: 'Tuckasegee Outfitters' },
+  { name: 'Wilmot', lat: 35.40372, lng: -83.31258, type: 'access', description: 'Informal' },
+  { name: 'Duke Whittier', lat: 35.43281, lng: -83.36042, type: 'access', description: 'Duke Energy' },
+  { name: 'Governors Island', lat: 35.43152, lng: -83.41484, type: 'access', description: 'Swain County' },
+  { name: 'Horse Arena', lat: 35.42140, lng: -83.45929, type: 'access', description: 'Informal' },
+  { name: 'Duke West Fork', lat: 35.23471, lng: -83.12445, type: 'access', description: 'Duke Energy' },
+  { name: 'Duke East Fork', lat: 35.25970, lng: -83.10675, type: 'access', description: 'Duke Energy' },
+]
 
 export const sections: RiverSection[] = []
 

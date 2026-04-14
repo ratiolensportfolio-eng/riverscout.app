@@ -3,7 +3,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Coosa River — polyline from National Rivers Project (NRP).
 // 4931 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Old River Road', lat: 34.25176, lng: -85.38073, type: 'access', description: 'DNR-WRD — parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

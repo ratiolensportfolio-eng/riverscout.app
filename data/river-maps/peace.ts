@@ -7,7 +7,7 @@ export const accessPoints: AccessPoint[] = [
   { name: 'Wauchula Griffin Road Public Boat Ramp - Fwc # R-4', lat: 27.54047, lng: -81.79172, type: 'access', description: 'Hardee County — parking: yes' },
   { name: 'Gardner Boat Ramp', lat: 27.34641, lng: -81.82628, type: 'access', description: 'Hardee County — parking: yes' },
   { name: 'Pioneer Park And Public Boat Ramp (Zolfo Springs)', lat: 27.50354, lng: -81.80566, type: 'access', description: 'Hardee County — restrooms, parking: yes' },
-  { name: 'Wauchula Riverside Park And Public Boat Ramp', lat: 27.55080, lng: -81.79476, type: 'access', description: '  — parking: yes' },
+  { name: 'Wauchula Riverside Park And Public Boat Ramp', lat: 27.55080, lng: -81.79476, type: 'access', description: 'parking: yes' },
   { name: 'Punta Gorda Municipal Marina (Aka. Laishley Park)', lat: 26.93868, lng: -82.05173, type: 'access', description: 'City Of Punta Gorda — restrooms, parking: yes' },
   { name: 'Darst Park Public Boat Ramp', lat: 26.95212, lng: -82.00975, type: 'access', description: 'Charlotte County — parking: yes' },
   { name: 'Harbor Heights Park Public Boat Ramp', lat: 26.99011, lng: -81.99554, type: 'access', description: 'Charlotte County — restrooms, parking: yes' },

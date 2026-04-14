@@ -3,7 +3,31 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Menominee River — polyline from National Rivers Project (NRP).
 // 1338 points, stitched from 2 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Menominee River Access', lat: 45.19542, lng: -87.74223, type: 'access', description: 'Assistant Parks Administrator' },
+  { name: 'Boom Landing', lat: 45.10066, lng: -87.62360, type: 'access', description: 'Recreation Department' },
+  { name: 'Stephenson Island Boat Landing', lat: 45.10265, lng: -87.62894, type: 'access', description: 'Recreation Department' },
+  { name: 'Menominee River Access', lat: 45.17892, lng: -87.73656, type: 'access', description: 'Town of Porterfield' },
+  { name: 'White Rapids Dam Access', lat: 45.48400, lng: -87.80366, type: 'access', description: 'WE Energies' },
+  { name: 'Grogan Road Access', lat: 45.44169, lng: -87.85588, type: 'access', description: 'Town of Wausaukee' },
+  { name: 'Pemene Boat Landing', lat: 45.62370, lng: -87.79780, type: 'access', description: 'Property Manager' },
+  { name: 'Riverside Park Boat Ramp', lat: 45.79390, lng: -87.99932, type: 'access', description: 'City Hall' },
+  { name: '6th Street Slip', lat: 45.09529, lng: -87.60787, type: 'access', description: 'Recreation Department' },
+  { name: 'Menominee River Access', lat: 45.93290, lng: -88.14471, type: 'access', description: 'Town of Florence' },
+  { name: 'Bear Point Access', lat: 45.34118, lng: -87.84642, type: 'access', description: 'Assistant Parks Administrator' },
+  { name: 'Menominee River Access', lat: 45.34991, lng: -87.77712, type: 'access', description: 'Town of Wagner' },
+  { name: 'Menominee River Park Boat Launch', lat: 45.28007, lng: -87.69965, type: 'access', description: 'Assistant Parks Administrator' },
+  { name: 'Twin Island Park Carry-in Access', lat: 45.25999, lng: -87.71249, type: 'access', description: 'Assistant Parks Administratr' },
+  { name: 'Grand Rapids Flowage Access', lat: 45.36365, lng: -87.66038, type: 'access', description: 'Wisconsin Public Service' },
+  { name: 'Chalk Hill Flowage Access', lat: 45.55081, lng: -87.81974, type: 'access', description: 'WE Energies' },
+  { name: 'Menominee River Access', lat: 45.55949, lng: -87.83483, type: 'access', description: 'Town of Beecher' },
+  { name: 'Shortcut Road Boat Ramp', lat: 45.56938, lng: -87.84093, type: 'access', description: 'Town of Beecher' },
+  { name: 'Saler Boat Landing', lat: 45.68327, lng: -87.78350, type: 'access', description: 'Property Manager' },
+  { name: 'Quiver Carry-in', lat: 45.65429, lng: -87.82716, type: 'access', description: 'Property Manager' },
+  { name: 'Menominee River Access', lat: 45.36795, lng: -87.87882, type: 'access', description: 'Town of Wausaukee' },
+  { name: 'Menominee River-Hwy JJ Access', lat: 45.32594, lng: -87.66328, type: 'access', description: 'Wildlife Biologist' },
+  { name: 'Sportsman Lane Boat Ramp', lat: 45.78252, lng: -88.07783, type: 'access', description: 'H-A Conservation Club' },
+]
 
 export const sections: RiverSection[] = []
 

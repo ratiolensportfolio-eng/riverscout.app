@@ -3,7 +3,15 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Rainbow River — polyline from National Rivers Project (NRP).
 // 136 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Rainbow Lake Boat Launch', lat: 60.71837, lng: -150.81795, type: 'access', description: 'Kenai National Wildlife Refuge — restrooms, parking: yes' },
+  { name: 'Kp Hole Marion County Park', lat: 29.08709, lng: -82.42896, type: 'access', description: 'Marion County — restrooms, parking: yes, fee' },
+  { name: 'Rainbow Flowage - Dam Access', lat: 45.83412, lng: -89.54599, type: 'access', description: 'Wisconsin Valley Improvement' },
+  { name: 'Rainbow Flowage - Rainbow Lake Road Carry-In', lat: 45.84345, lng: -89.54092, type: 'access', description: 'NHAL Recreation Team Leader' },
+  { name: 'Rainbow Flowage - Oxbow Road Access', lat: 45.86367, lng: -89.49647, type: 'access', description: 'NHAL Recreation Team Leader' },
+  { name: 'Rainbow Flowage - Stormy Landing Road. Access', lat: 45.87836, lng: -89.50518, type: 'access', description: 'NHAL Recreation Team Leader' },
+  { name: 'Rainbow Flowage - Daves Landing Access', lat: 45.86964, lng: -89.52973, type: 'access', description: 'NHAL Recreation Team Leader' },
+]
 
 export const sections: RiverSection[] = []
 

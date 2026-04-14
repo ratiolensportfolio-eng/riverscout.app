@@ -33,8 +33,8 @@ export const accessPoints: AccessPoint[] = [
   { name: 'County Road M Landing', lat: 46.20658, lng: -91.22772, type: 'access', description: 'restrooms, parking: overnight' },
   { name: 'Namekagon Dam Landing', lat: 46.22445, lng: -91.14851, type: 'access', description: 'restrooms, parking: overnight' },
   { name: 'Cable Wayside Access', lat: 46.18758, lng: -91.32061, type: 'access', description: 'NPS Visitor Center' },
-  { name: 'Namekagon River Canoe Launch', lat: 46.08318, lng: -92.11438, type: 'access', description: ' ' },
-  { name: 'Larsen Bridge Landing', lat: 46.10688, lng: -91.38509, type: 'access', description: ' ' },
+  { name: 'Namekagon River Canoe Launch', lat: 46.08318, lng: -92.11438, type: 'access' },
+  { name: 'Larsen Bridge Landing', lat: 46.10688, lng: -91.38509, type: 'access' },
   { name: 'Squaw Bend Bridge Access', lat: 46.17130, lng: -91.33035, type: 'access', description: 'NPS Visitor Center' },
 ]
 

@@ -3,7 +3,18 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Great Egg Harbor River — polyline from National Rivers Project (NRP).
 // 19972 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Shady River Marina', lat: 39.39861, lng: -74.71720, type: 'access', description: 'Shady River Marina — parking: yes, fee' },
+  { name: 'River Beach Campground and Marina', lat: 39.30616, lng: -74.79710, type: 'access', description: 'River Beach Campground and Marina — parking: yes, fee' },
+  { name: 'Penny Pot Park', lat: 39.57548, lng: -74.82233, type: 'access', description: 'Atlantic County — parking: yes' },
+  { name: 'Weymouth Furnace Park', lat: 39.51783, lng: -74.77919, type: 'access', description: 'Atlantic County — restrooms, parking: yes' },
+  { name: 'Lake Lenape Park', lat: 39.45682, lng: -74.73858, type: 'access', description: 'Atlantic County — restrooms, parking: yes, fee' },
+  { name: 'Tuckahoe Wildlife Management Area', lat: 39.29520, lng: -74.74002, type: 'access', description: 'NJ Department of Environmental Protection — parking: yes, fee' },
+  { name: 'Beesley\'s Point Municipal Boat Ramp', lat: 39.28755, lng: -74.62699, type: 'access', description: 'Upper Township — parking: yes, fee' },
+  { name: 'Kennedy Park Municipal Ramp', lat: 39.30626, lng: -74.60761, type: 'access', description: 'Somers Point — restrooms, parking: yes, fee' },
+  { name: 'Palace Outfitters', lat: 39.51290, lng: -74.77865, type: 'access', description: 'Palace Outfitters — restrooms, parking: yes, fee' },
+  { name: 'Winding River Campground & Canoe', lat: 39.49291, lng: -74.76960, type: 'access', description: 'Winding River Campground & Canoe — restrooms, parking: yes, fee' },
+]
 
 export const sections: RiverSection[] = []
 

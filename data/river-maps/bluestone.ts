@@ -3,7 +3,16 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Bluestone River — polyline from National Rivers Project (NRP).
 // 509 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Eads Mill', lat: 37.47868, lng: -81.07165, type: 'access', description: 'parking: yes' },
+  { name: 'Bluestone State Park', lat: 37.61529, lng: -80.93120, type: 'access', description: 'WV State Parks — restrooms, parking: overnight' },
+  { name: 'Bertha Campground', lat: 37.57012, lng: -80.87746, type: 'access', description: 'WVDNR — parking: yes' },
+  { name: 'Bull Falls Campground', lat: 37.54010, lng: -80.90982, type: 'access', description: 'WVDNR — parking: yes' },
+  { name: 'Bluestone Lake', lat: 37.61275, lng: -80.91725, type: 'access', description: 'NA — parking: yes' },
+  { name: 'Shanklins Ferry Campground', lat: 37.47514, lng: -80.87172, type: 'access', description: 'WVDNR, WVSP — parking: yes' },
+  { name: 'Cedar Branch Campground', lat: 37.50146, lng: -80.84972, type: 'access', description: 'WVDNR, WVSP — restrooms, parking: yes' },
+  { name: 'Indian Creek Campground', lat: 37.51338, lng: -80.84236, type: 'access', description: 'WVDNR, WVSP — restrooms, parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

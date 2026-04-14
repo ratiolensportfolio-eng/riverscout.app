@@ -14,7 +14,7 @@ export const accessPoints: AccessPoint[] = [
   { name: 'Rand Recreation Area', lat: 42.59364, lng: -123.58170, type: 'access', description: 'BLM — restrooms, parking: yes' },
   { name: 'Almeda County Park', lat: 42.60629, lng: -123.57942, type: 'access', description: 'Josephine County Parks — restrooms, parking: yes, fee' },
   { name: 'Argo Boat Launch', lat: 42.62531, lng: -123.59713, type: 'access', description: 'BLM — restrooms, parking: yes' },
-  { name: 'Grave Creek Boat Launch ', lat: 42.65037, lng: -123.58581, type: 'access', description: 'BLM — restrooms, parking: yes' },
+  { name: 'Grave Creek Boat Launch', lat: 42.65037, lng: -123.58581, type: 'access', description: 'BLM — restrooms, parking: yes' },
   { name: 'Foster Bar Boating Facility', lat: 42.63233, lng: -124.04926, type: 'access', description: 'USFS — restrooms, parking: overnight' },
   { name: 'Agness Boat Landing', lat: 42.55080, lng: -124.06636, type: 'access', description: 'restrooms, parking: yes' },
   { name: 'Quosatana Boat Ramp', lat: 42.49981, lng: -124.23053, type: 'access', description: 'USFS — restrooms, parking: yes' },

@@ -3,7 +3,49 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Trinity River — polyline from National Rivers Project (NRP).
 // 2288 points, stitched from 7 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Hells Gate Campground', lat: 40.36998, lng: -123.31563, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Forest Glen Campground', lat: 40.37478, lng: -123.32855, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Klondike Mine', lat: 40.40770, lng: -123.39704, type: 'access', description: 'parking: yes' },
+  { name: 'Oak Flat', lat: 40.56223, lng: -123.45709, type: 'access' },
+  { name: 'Hyampom', lat: 40.60827, lng: -123.45118, type: 'access' },
+  { name: 'Big Slide Campground', lat: 40.66532, lng: -123.49820, type: 'access', description: 'restrooms, parking: overnight' },
+  { name: 'Surprise Creek', lat: 40.78877, lng: -123.55959, type: 'access', description: 'parking: yes' },
+  { name: 'Low Water Bridge', lat: 40.83469, lng: -123.56816, type: 'access', description: 'parking: yes' },
+  { name: 'Sandy Bar', lat: 40.88047, lng: -123.60430, type: 'access', description: 'parking: yes' },
+  { name: 'South Fork Bridge', lat: 40.88946, lng: -123.60202, type: 'access', description: 'parking: yes' },
+  { name: 'Camp Kimtu Community Park and Campground', lat: 40.94913, lng: -123.61508, type: 'access', description: 'Willow Creek Community Services District — restrooms, parking: yes, fee' },
+  { name: 'Big Rock', lat: 40.94727, lng: -123.63276, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Tish Tang', lat: 41.02220, lng: -123.63487, type: 'access', description: 'Hoopa Tribal Forestry — restrooms, parking: yes, fee' },
+  { name: 'Tunnel Flat', lat: 40.88407, lng: -123.54638, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Hawkins Bar', lat: 40.87339, lng: -123.52745, type: 'access', description: 'parking: yes' },
+  { name: 'Gray\'s Falls', lat: 40.85088, lng: -123.48214, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'E Fork Confluence', lat: 40.96313, lng: -123.34838, type: 'access', description: 'parking: yes' },
+  { name: 'Cedar Flat', lat: 40.79045, lng: -123.43966, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Hayden Flat', lat: 40.78447, lng: -123.34337, type: 'access', description: 'restrooms, parking: overnight, fee' },
+  { name: 'Del Loma', lat: 40.77569, lng: -123.32530, type: 'access', description: 'parking: yes' },
+  { name: 'White\'s Bar', lat: 40.75514, lng: -123.28374, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Pigeon Point Campground', lat: 40.76728, lng: -123.13292, type: 'access', description: 'restrooms, parking: overnight, fee' },
+  { name: 'Hobo Gulch', lat: 40.92488, lng: -123.15658, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'E Fork Rd Bridge', lat: 40.78298, lng: -123.12938, type: 'access', description: 'parking: yes' },
+  { name: 'Bagdad River Access', lat: 40.77043, lng: -123.12446, type: 'access', description: 'BLM — restrooms, parking: yes' },
+  { name: 'Junction City Gravel Bar', lat: 40.74623, lng: -123.06651, type: 'access', description: 'BLM — parking: overnight' },
+  { name: 'Douglas City Campground', lat: 40.64867, lng: -122.95397, type: 'access', description: 'BLM — restrooms, parking: yes' },
+  { name: 'Steel Bridge Day Use Area', lat: 40.67561, lng: -122.91836, type: 'access', description: 'BLM — restrooms, parking: yes' },
+  { name: 'Bucktail Hole', lat: 40.70788, lng: -122.84707, type: 'access', description: 'BLM — restrooms, parking: yes' },
+  { name: 'Rush Creek', lat: 40.72101, lng: -122.82805, type: 'access', description: 'BLM — restrooms, parking: overnight' },
+  { name: 'Old Lewiston Bridge', lat: 40.70816, lng: -122.80848, type: 'access', description: 'BLM — parking: overnight' },
+  { name: 'Lewiston Dam', lat: 40.72015, lng: -122.80352, type: 'access', description: 'parking: overnight' },
+  { name: 'Big Flat River Access', lat: 40.74117, lng: -123.21657, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'French Bar', lat: 40.77658, lng: -123.30998, type: 'access', description: 'parking: yes' },
+  { name: 'Indian Creek', lat: 40.65943, lng: -122.91199, type: 'access', description: 'BLM — parking: yes' },
+  { name: 'Chop Tree', lat: 40.65377, lng: -122.96173, type: 'access', description: 'BLM — parking: overnight' },
+  { name: 'Dump Hole', lat: 40.65412, lng: -122.95305, type: 'access', description: 'BLM — parking: overnight' },
+  { name: 'Lorenz Gulch', lat: 40.66337, lng: -122.96574, type: 'access', description: 'BLM — restrooms, parking: yes' },
+  { name: 'Dutton Ramp (Last Chance)', lat: 40.67429, lng: -122.96981, type: 'access', description: 'BLM — parking: overnight' },
+  { name: 'Evans Bar', lat: 40.67775, lng: -123.02739, type: 'access', description: 'FS — parking: yes' },
+  { name: 'Sky Ranch River Access', lat: 40.72221, lng: -123.04806, type: 'access', description: 'BLM — parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

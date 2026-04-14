@@ -3,7 +3,42 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // James River — polyline from National Rivers Project (NRP).
 // 916 points, stitched from 2 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'James D. Beville Park Lake', lat: 37.46984, lng: -86.28154, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Shelvin Rock Access', lat: 36.99565, lng: -93.36973, type: 'access' },
+  { name: 'Delaware Town Access', lat: 37.05114, lng: -93.39137, type: 'access' },
+  { name: 'Hooten Town Access', lat: 36.93961, lng: -93.38618, type: 'access' },
+  { name: 'H. L. Kerr Access', lat: 36.83234, lng: -93.44664, type: 'access' },
+  { name: 'Ralph Cox Memorial Access', lat: 36.80698, lng: -93.46171, type: 'access' },
+  { name: 'Joe Crighton Access', lat: 37.15573, lng: -93.19935, type: 'access' },
+  { name: 'Scottsville', lat: 37.79704, lng: -78.49327, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Wingina', lat: 37.63597, lng: -78.71990, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Midway', lat: 37.66925, lng: -78.71472, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Hardware River', lat: 37.74026, lng: -78.40782, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'West View', lat: 37.64254, lng: -78.01038, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Snowden', lat: 37.59691, lng: -79.38933, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Springwood', lat: 37.54767, lng: -79.74252, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Buchanan', lat: 37.52999, lng: -79.67940, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Arcadia', lat: 37.55463, lng: -79.63717, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Irongate', lat: 37.77391, lng: -79.78267, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Horseshoe Bend', lat: 37.58909, lng: -79.72784, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Craig Creek', lat: 37.64575, lng: -79.81447, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'New Canton', lat: 37.70970, lng: -78.29982, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Columbia', lat: 37.74941, lng: -78.16275, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Cartersville', lat: 37.66946, lng: -78.08685, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Osborne Pike Landing', lat: 37.40093, lng: -77.38585, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Deep Bottom', lat: 37.40724, lng: -77.30538, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Huguenot Bridge', lat: 37.56050, lng: -77.54589, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Beaumont', lat: 37.66452, lng: -77.89051, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Watkins Landing', lat: 37.58829, lng: -77.71294, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Ancarrow\'s Landing', lat: 37.51986, lng: -77.41871, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Dutch Gap', lat: 37.38190, lng: -77.37676, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Robious Landing', lat: 37.55914, lng: -77.64737, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Bent Creek', lat: 37.53552, lng: -78.82786, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Joshua Falls', lat: 37.41929, lng: -79.04056, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Lawnes Creek', lat: 37.13920, lng: -76.67590, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'James P Bailey Lake', lat: 37.29369, lng: -81.18021, type: 'access', description: 'WVDNR — parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

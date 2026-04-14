@@ -3,7 +3,13 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Wateree River — polyline from National Rivers Project (NRP).
 // 7351 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Lugoff Boat Ramp', lat: 34.33344, lng: -80.69973, type: 'access', description: 'Duke Power — parking: yes' },
+  { name: 'US 1 Bridge Access Point', lat: 34.24505, lng: -80.65379, type: 'access', description: 'South Carolina Department of Transportation — parking: yes' },
+  { name: 'US-76 Bridge Access', lat: 33.94703, lng: -80.62865, type: 'access', description: 'South Carolina Department of Transportation — parking: yes' },
+  { name: 'Access point below Wateree Dam', lat: 34.33217, lng: -80.69819, type: 'access', description: 'parking: yes' },
+  { name: 'Oxbow Road', lat: 34.02340, lng: -80.60728, type: 'access', description: 'parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

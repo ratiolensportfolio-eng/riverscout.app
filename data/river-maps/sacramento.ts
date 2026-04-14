@@ -3,7 +3,15 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Sacramento River — polyline from National Rivers Project (NRP).
 // 1313 points, stitched from 2 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Balls Ferry', lat: 40.41733, lng: -122.19307, type: 'access', description: 'Shasta County — parking: yes' },
+  { name: 'Reading Island', lat: 40.38924, lng: -122.19798, type: 'access', description: 'BLM — parking: yes' },
+  { name: 'Barge Hole (Old Battle Creek)', lat: 40.34542, lng: -122.18407, type: 'access', description: 'CA Dept Fish and Game — parking: yes' },
+  { name: 'Jellys Ferry River Access', lat: 40.31778, lng: -122.18882, type: 'access', description: 'BLM — restrooms, parking: yes' },
+  { name: 'Bend Bridge Boat Ramp', lat: 40.26296, lng: -122.22335, type: 'access', description: 'Tehama County — restrooms, parking: yes' },
+  { name: 'River Park Boat Launch', lat: 40.17250, lng: -122.22757, type: 'access', description: 'City of Red Bluff — restrooms, parking: yes' },
+  { name: 'Keswick Boat Ramp', lat: 40.63176, lng: -122.45206, type: 'access', description: 'BLM — restrooms, parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

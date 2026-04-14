@@ -3,7 +3,21 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Clinch River — polyline from National Rivers Project (NRP).
 // 4631 points, stitched from 17 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Highway 61 Bridge', lat: 36.12361, lng: -84.11341, type: 'access', description: 'County — restrooms, parking: overnight' },
+  { name: 'Gallaher', lat: 35.90720, lng: -84.39420, type: 'access', description: 'TWRA — restrooms, parking: overnight' },
+  { name: 'Hickory Creek Park', lat: 35.89297, lng: -84.25711, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Melton Lake Dam/Park', lat: 35.88257, lng: -84.29724, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'TN 95 Ramp', lat: 35.88757, lng: -84.32326, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'St Paul', lat: 36.90308, lng: -82.30758, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Blackford Bridge', lat: 36.99657, lng: -81.94378, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Puckett\'s Hole', lat: 36.96997, lng: -82.01379, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Nash\'s Ford', lat: 36.96709, lng: -82.07909, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Carterton', lat: 36.91521, lng: -82.22150, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Dungannon', lat: 36.83108, lng: -82.46220, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'Clinch Port', lat: 36.67595, lng: -82.74248, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+  { name: 'State Line', lat: 36.59921, lng: -82.88019, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
+]
 
 export const sections: RiverSection[] = []
 

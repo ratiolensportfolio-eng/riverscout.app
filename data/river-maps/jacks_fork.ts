@@ -3,7 +3,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Jacks Fork River — polyline from National Rivers Project (NRP).
 // 1585 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Buttin Rock Access', lat: 37.15399, lng: -91.35890, type: 'access' },
+  { name: 'Eminence (Joshua T Chilton Mem Access)', lat: 37.15267, lng: -91.35352, type: 'access' },
+]
 
 export const sections: RiverSection[] = []
 

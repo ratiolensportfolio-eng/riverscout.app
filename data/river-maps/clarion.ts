@@ -11,7 +11,7 @@ export const accessPoints: AccessPoint[] = [
   { name: 'Johnsonburg Access', lat: 41.49890, lng: -78.68144, type: 'access', description: 'Unknown — parking: yes' },
   { name: '322 Bridge Access', lat: 41.22315, lng: -79.40199, type: 'access', description: 'Unknown — parking: yes' },
   { name: 'Dear Creek Access', lat: 41.17213, lng: -79.47761, type: 'access', description: 'Unknown — parking: yes' },
-  { name: 'Callensburg Access', lat: 41.13029, lng: -79.55465, type: 'access', description: 'Unknown — parking:  ' },
+  { name: 'Callensburg Access', lat: 41.13029, lng: -79.55465, type: 'access', description: 'Unknown' },
   { name: 'Alum Rock Access Point', lat: 41.13419, lng: -79.62440, type: 'access', description: 'Unknown — parking: yes' },
   { name: 'Wilcox Canoe Launch', lat: 41.57929, lng: -78.68925, type: 'access', description: 'Jones Township — parking: yes' },
   { name: 'Pale Whale Canoe Livery', lat: 41.32880, lng: -79.20456, type: 'access', description: 'Mike McMurray - Pale Whale Canoe Livery — parking: yes, fee' },

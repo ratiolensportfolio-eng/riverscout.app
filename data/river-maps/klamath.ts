@@ -3,7 +3,49 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Klamath River — polyline from National Rivers Project (NRP).
 // 82 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Iron Gate Fish Hatchery', lat: 41.93084, lng: -122.44245, type: 'access', description: 'Pacific Gas & Electric Company — parking: yes' },
+  { name: 'Klamathon Bridge', lat: 41.89939, lng: -122.50807, type: 'access', description: 'parking: yes' },
+  { name: 'Collier\'s', lat: 41.85643, lng: -122.57114, type: 'access', description: 'CalTrans — parking: yes' },
+  { name: 'Ash Creek', lat: 41.83193, lng: -122.62614, type: 'access', description: 'Klamath National Forest — parking: yes' },
+  { name: 'Tree of Heaven', lat: 41.83095, lng: -122.66122, type: 'access', description: 'Klamath National Forest — restrooms, parking: overnight' },
+  { name: 'Cayuse', lat: 41.85322, lng: -122.69467, type: 'access', description: 'Klamath National Forest — parking: yes' },
+  { name: 'Skeahan Bar', lat: 41.85866, lng: -122.70480, type: 'access', description: 'Klamath National Forest — parking: overnight, fee' },
+  { name: 'Schoolhouse Wave', lat: 41.86278, lng: -122.73526, type: 'access', description: 'Klamath National Forest — parking: yes' },
+  { name: 'Gottville', lat: 41.85835, lng: -122.75021, type: 'access', description: 'Klamath National Forest — restrooms, parking: overnight' },
+  { name: 'Brown Bear', lat: 41.82339, lng: -122.96192, type: 'access', description: 'Klamath National Forest — parking: overnight' },
+  { name: 'Blue Heron', lat: 41.78738, lng: -123.02962, type: 'access', description: 'Klamath National Forest — parking: overnight' },
+  { name: 'Sarah Totten', lat: 41.78803, lng: -123.05312, type: 'access', description: 'Klamath National Forest — restrooms, parking: overnight' },
+  { name: 'Rocky Point', lat: 41.81600, lng: -123.12746, type: 'access', description: 'Klamath National Forest — restrooms, parking: yes' },
+  { name: 'Sluice Box', lat: 41.84248, lng: -123.22005, type: 'access', description: 'Klamath National Forest — restrooms, parking: overnight' },
+  { name: 'Portuguese Creek', lat: 41.86253, lng: -123.24915, type: 'access', description: 'Klamath National Forest — parking: overnight' },
+  { name: 'Savage Rapids', lat: 41.86260, lng: -123.26960, type: 'access', description: 'Klamath National Forest — parking: overnight' },
+  { name: 'Seattle Creek', lat: 41.84442, lng: -123.30246, type: 'access', description: 'Klamath National Forest — parking: yes' },
+  { name: 'China Point', lat: 41.80148, lng: -123.31443, type: 'access', description: 'Klamath National Forest — parking: overnight' },
+  { name: 'Gordons Ferry', lat: 41.78083, lng: -123.32876, type: 'access', description: 'Klamath National Forest — parking: overnight' },
+  { name: 'Indian Creek', lat: 41.78993, lng: -123.37908, type: 'access', description: 'Klamath National Forest — restrooms, parking: yes' },
+  { name: 'Curly Jack', lat: 41.78612, lng: -123.39178, type: 'access', description: 'Klamath National Forest — restrooms, parking: overnight' },
+  { name: 'Wingate Bar', lat: 41.72267, lng: -123.43711, type: 'access', description: 'Klamath National Forest — restrooms, parking: overnight' },
+  { name: 'Independence Bridge', lat: 41.65985, lng: -123.44990, type: 'access', description: 'Klamath National Forest — restrooms, parking: overnight' },
+  { name: 'Coon Creek', lat: 41.61364, lng: -123.49582, type: 'access', description: 'Klamath National Forest — restrooms, parking: yes' },
+  { name: 'Elliot Creek', lat: 41.59682, lng: -123.50876, type: 'access', description: 'Six Rivers National Forest — parking: yes' },
+  { name: 'Dillon Creek', lat: 41.57544, lng: -123.53945, type: 'access', description: 'Six Rivers National Forest — parking: overnight' },
+  { name: 'Blue Nose', lat: 41.56613, lng: -123.52785, type: 'access', description: 'Six Rivers National Forest — parking: yes' },
+  { name: 'Persidio Bar', lat: 41.54503, lng: -123.52955, type: 'access', description: 'Six Rivers National Forest — restrooms, parking: overnight' },
+  { name: 'Ti Bar', lat: 41.52726, lng: -123.52855, type: 'access', description: 'Six Rivers National Forest — restrooms, parking: overnight' },
+  { name: 'Rock Creek', lat: 41.51545, lng: -123.52953, type: 'access', description: 'Six Rivers National Forest — parking: overnight' },
+  { name: 'Stuarts Bar', lat: 41.44632, lng: -123.50168, type: 'access', description: 'Six Rivers National Forest — parking: yes' },
+  { name: 'Green Riffle River', lat: 41.43373, lng: -123.50616, type: 'access', description: 'Six Rivers National Forest — parking: yes' },
+  { name: 'Dolan\'s Bar', lat: 41.31647, lng: -123.52723, type: 'access', description: 'Six Rivers National Forest — restrooms, parking: yes' },
+  { name: 'Forks of Salmon', lat: 41.25638, lng: -123.32533, type: 'access', description: 'parking: yes' },
+  { name: 'Somes Bar', lat: 41.37868, lng: -123.48707, type: 'access', description: 'parking: yes' },
+  { name: 'Ishi Pishi Bridge', lat: 41.37753, lng: -123.49493, type: 'access', description: 'parking: yes' },
+  { name: 'Ferry Point', lat: 41.67134, lng: -123.43248, type: 'access', description: 'Klamath National Forest — restrooms, parking: overnight' },
+  { name: 'Access 1- Copco Reservoir', lat: 41.96400, lng: -122.26200, type: 'access', description: 'BLM' },
+  { name: 'Snag Hole', lat: 41.82934, lng: -122.60478, type: 'access', description: 'BLM — parking: overnight' },
+  { name: 'John C Boyle', lat: 42.12270, lng: -122.04800, type: 'access', description: 'BLM' },
+  { name: 'John C Boyle Power House/ Spring Island', lat: 42.08988, lng: -122.07239, type: 'access', description: 'BLM' },
+]
 
 export const sections: RiverSection[] = []
 

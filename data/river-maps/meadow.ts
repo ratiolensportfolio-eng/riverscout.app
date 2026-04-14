@@ -3,7 +3,14 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Meadow River — polyline from National Rivers Project (NRP).
 // 174 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Meadow Lake', lat: 41.38727, lng: -94.43896, type: 'access', description: 'Iowa DNR' },
+  { name: 'Meadow Lake', lat: 41.38175, lng: -94.44138, type: 'access', description: 'Iowa DNR' },
+  { name: 'Meadow Grounds Lake - Under drawdown', lat: 39.91169, lng: -78.05283, type: 'access', description: 'PFBC — parking: yes' },
+  { name: 'Charmco Roadside Park', lat: 37.99977, lng: -80.75091, type: 'access', description: 'WVDOH, Western Greenbrier Youth Park — parking: yes' },
+  { name: 'Lake Sherwood', lat: 38.00812, lng: -80.00963, type: 'access', description: 'US Park Service — restrooms, parking: yes' },
+  { name: 'At town of Hines', lat: 37.97745, lng: -80.71156, type: 'access', description: 'NA — parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

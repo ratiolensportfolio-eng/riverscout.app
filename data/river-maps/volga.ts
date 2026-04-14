@@ -3,7 +3,18 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Volga River — polyline from National Rivers Project (NRP).
 // 9288 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Big Rock', lat: 42.84348, lng: -91.78260, type: 'access', description: 'NA' },
+  { name: 'Clocks Island', lat: 42.84300, lng: -91.81907, type: 'access', description: 'NA — restrooms' },
+  { name: 'Garber Access', lat: 42.74217, lng: -91.26949, type: 'access', description: 'Garber' },
+  { name: 'Littleport Access', lat: 42.75370, lng: -91.36918, type: 'access', description: 'Littleport' },
+  { name: 'Mederville Access', lat: 42.76353, lng: -91.42013, type: 'access', description: 'Mederville' },
+  { name: 'Osborne Access', lat: 42.79135, lng: -91.44192, type: 'access', description: 'Clayton CCB — restrooms' },
+  { name: 'Twin Bridge Park', lat: 42.81782, lng: -91.87917, type: 'access', description: 'Fayette CCB — restrooms' },
+  { name: 'Volga City Park', lat: 42.80186, lng: -91.53714, type: 'access', description: 'Garber' },
+  { name: 'Volga River Access', lat: 42.86460, lng: -91.74053, type: 'access', description: 'Iowa DNR' },
+  { name: 'Volga River Campground', lat: 42.86230, lng: -91.76332, type: 'access', description: 'Iowa DNR — restrooms' },
+]
 
 export const sections: RiverSection[] = []
 

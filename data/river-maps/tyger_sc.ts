@@ -3,7 +3,17 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Tyger River — polyline from National Rivers Project (NRP).
 // 1240 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Rose Hill Boat Ramp (Gist Bridge)', lat: 34.61532, lng: -81.66632, type: 'access', description: 'US Forest Service — parking: yes' },
+  { name: 'Beatys Bridge Boat Ramp', lat: 34.58565, lng: -81.59226, type: 'access', description: 'US Forest Service — parking: yes' },
+  { name: 'Tyger-10 Nature Park - Walnut Grove Road', lat: 34.75527, lng: -81.92733, type: 'access', description: 'Tyger River Foundation — parking: yes' },
+  { name: 'Old Hills Bridge', lat: 34.73460, lng: -81.89015, type: 'access', description: 'parking: yes' },
+  { name: 'Highway 56 Bridge', lat: 34.69299, lng: -81.83143, type: 'access' },
+  { name: 'Cedar Bluff Bridge Access', lat: 34.66593, lng: -81.73934, type: 'access', description: 'parking: yes' },
+  { name: 'Minnow Bridge Road Access', lat: 34.63945, lng: -81.69633, type: 'access', description: 'parking: yes' },
+  { name: 'Highway 121-72 Bridge', lat: 34.53610, lng: -81.54781, type: 'access', description: 'parking: yes' },
+  { name: 'Gordon\'s Bridge', lat: 34.49435, lng: -81.46798, type: 'access', description: 'parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

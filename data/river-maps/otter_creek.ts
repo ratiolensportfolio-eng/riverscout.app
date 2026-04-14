@@ -3,7 +3,22 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Otter Creek — polyline from National Rivers Project (NRP).
 // 7086 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Otter Creek Boat Ramp', lat: 30.38653, lng: -85.96692, type: 'access', description: 'parking: yes' },
+  { name: 'Otter Lake Boat Ramp (North Fork Of Rd)', lat: 30.02383, lng: -84.41748, type: 'access', description: 'United States Fish And Wildlife Service — parking: yes' },
+  { name: 'West Otter Lake', lat: 41.64381, lng: -85.16941, type: 'access', description: 'Indiana Department of Natural Resources' },
+  { name: 'Blue Grass FWA Otter Pit', lat: 38.06564, lng: -87.45838, type: 'access', description: 'Indiana Department of Natural Resources' },
+  { name: 'Otter Creek Marsh', lat: 41.95662, lng: -92.45454, type: 'access', description: 'Iowa DNR' },
+  { name: 'Otter Creek Marsh', lat: 41.93596, lng: -92.43027, type: 'access', description: 'Iowa DNR' },
+  { name: 'Otter Creek Marsh', lat: 41.93724, lng: -92.41645, type: 'access', description: 'Iowa DNR' },
+  { name: 'Blue Hole Picnic Area on Otter Creek', lat: 37.94386, lng: -86.02968, type: 'access', description: 'parking: yes' },
+  { name: 'Garnettsville Picnic Area on Otter Creek', lat: 37.92411, lng: -86.03092, type: 'access', description: 'parking: yes' },
+  { name: 'Otter Creek Outdoor Recreation Area Carrydown', lat: 37.95838, lng: -86.05221, type: 'access', description: 'parking: yes' },
+  { name: 'Lamine River Conservation Area', lat: 38.72741, lng: -92.97735, type: 'access' },
+  { name: 'Otter Lake Access', lat: 45.43513, lng: -88.52276, type: 'access', description: 'Town of Wabeno' },
+  { name: 'Otter Lake Recreational County Park Boat Launch', lat: 45.44319, lng: -89.54829, type: 'access', description: 'Forestry, Land & Parks Dept.' },
+  { name: 'Otter Lake Park Boat Ramp', lat: 45.44870, lng: -89.18287, type: 'access', description: 'Forestry, Rec. & Parks' },
+]
 
 export const sections: RiverSection[] = []
 

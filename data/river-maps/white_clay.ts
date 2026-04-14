@@ -3,7 +3,18 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // White Clay Creek — polyline from National Rivers Project (NRP).
 // 31434 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Churchmans Road', lat: 39.68561, lng: -75.63251, type: 'access', description: 'DE Divicion of Fish & Wildlife — parking: yes' },
+  { name: 'Chambers Rock Road', lat: 39.73326, lng: -75.76020, type: 'access', description: 'Delaware State Parks — parking: yes' },
+  { name: 'Hopkins Bridge Road Visitor’s Center', lat: 39.72676, lng: -75.76732, type: 'access', description: 'Delaware State Parks — restrooms, parking: yes' },
+  { name: 'Wedgewood Road Footbridge', lat: 39.71523, lng: -75.76029, type: 'access', description: 'Delaware State Parks — parking: yes' },
+  { name: 'Paper Mill Road Park', lat: 39.68951, lng: -75.74957, type: 'access', description: 'Newark, DE — parking: yes' },
+  { name: 'Windy Mill Park', lat: 39.69129, lng: -75.71496, type: 'access', description: 'New Castle County — parking: yes' },
+  { name: 'Sycamore Gardens Park', lat: 39.69427, lng: -75.70047, type: 'access', description: 'New Castle County — parking: yes' },
+  { name: 'Brookhaven Sheffield Manor Park', lat: 39.69969, lng: -75.68474, type: 'access', description: 'New Castle County — parking: yes' },
+  { name: 'Historic Hale Byrnes House', lat: 39.70133, lng: -75.65037, type: 'access', description: 'DE Division of Cultural Affairs — parking: yes' },
+  { name: 'London Tract Rd Parking Lot', lat: 39.74953, lng: -75.77086, type: 'access', description: 'PA DCNR — parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

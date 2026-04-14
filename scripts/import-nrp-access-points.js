@@ -106,16 +106,26 @@ function inferAccessType(f) {
   return 'carry_in'  // default — we don't have enough info to pick boat_ramp vs carry_in
 }
 
+// Strip CR/LF inside any text we emit — NRP fields sometimes have
+// trailing newlines that broke the Vercel build (san_juan.ts).
+function clean(s) {
+  if (s == null) return null
+  return String(s).replace(/\s*[\r\n]+\s*/g, ' ').trim() || null
+}
+
 function buildDescription(f) {
   const p = f.properties
   const bits = []
-  if (p.Access_Site_Management2) bits.push(p.Access_Site_Management2)
+  if (p.Access_Site_Management2) bits.push(clean(p.Access_Site_Management2))
   const amenities = []
   if (p.Restrooms === 1) amenities.push('restrooms')
-  if (p.Parking && p.Parking !== 'No') amenities.push(`parking: ${p.Parking.toLowerCase()}`)
+  if (p.Parking && p.Parking !== 'No') {
+    const parkClean = clean(p.Parking)
+    if (parkClean) amenities.push(`parking: ${parkClean.toLowerCase()}`)
+  }
   if (p.Fee === 1) amenities.push('fee')
   if (amenities.length) bits.push(amenities.join(', '))
-  return bits.join(' \u2014 ') || null
+  return bits.filter(Boolean).join(' \u2014 ') || null
 }
 
 function pinType(f) {
@@ -179,7 +189,7 @@ async function main() {
     for (const f of feats) {
       const [lng, lat] = f.geometry.coordinates
       const p = f.properties
-      const name = (p.Site_Name || '').replace(/'/g, "''")
+      const name = (clean(p.Site_Name) || '').replace(/'/g, "''")
       if (!name) continue
       const desc = (buildDescription(f) || '').replace(/'/g, "''")
       const accessType = inferAccessType(f)
@@ -204,7 +214,7 @@ async function main() {
     const entries = feats.map(f => {
       const [lng, lat] = f.geometry.coordinates
       const p = f.properties
-      const name = (p.Site_Name || '').replace(/'/g, "\\'")
+      const name = (clean(p.Site_Name) || '').replace(/'/g, "\\'")
       if (!name) return null
       const desc = (buildDescription(f) || '').replace(/'/g, "\\'")
       const type = pinType(f)

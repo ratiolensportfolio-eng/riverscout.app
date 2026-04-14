@@ -3,7 +3,14 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Hoback River — polyline from National Rivers Project (NRP).
 // 389 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Hoback Granite Confluence River Access', lat: 43.28321, lng: -110.53208, type: 'access', description: 'Bridger-Teton National Forest — parking: yes' },
+  { name: 'Ledges River Access Trail', lat: 43.31331, lng: -110.68622, type: 'access', description: 'Bridger-Teton National Forest — parking: yes' },
+  { name: 'Hoback River at Rodgers Point River Access', lat: 43.31980, lng: -110.72988, type: 'access', description: 'Bridger-Teton National Forest — parking: yes' },
+  { name: 'Hoback Campground River Access', lat: 43.28109, lng: -110.59388, type: 'access', description: 'Bridger-Teton National Forest — restrooms, parking: yes' },
+  { name: 'Mile 156.5 Undeveloped River Access Point', lat: 43.28131, lng: -110.61547, type: 'access', description: 'Bridger-Teton National Forest — parking: yes' },
+  { name: 'Above Hoback Granite River Access', lat: 43.28190, lng: -110.53261, type: 'access', description: 'Bridger-Teton National Forest — parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

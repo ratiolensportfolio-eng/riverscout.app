@@ -3,7 +3,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Cottonwood River — polyline from National Rivers Project (NRP).
 // 3832 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Cottonwood Pit (Greene-Sullivan)', lat: 38.99098, lng: -87.23540, type: 'access', description: 'Indiana Department of Natural Resources' },
+]
 
 export const sections: RiverSection[] = []
 

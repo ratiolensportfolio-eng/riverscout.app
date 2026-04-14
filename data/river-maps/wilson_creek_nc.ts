@@ -3,7 +3,14 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Wilson Creek — polyline from National Rivers Project (NRP).
 // 30 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Spillway Access', lat: 33.22005, lng: -91.54417, type: 'access', description: 'AGFC' },
+  { name: 'Wilson Lake Access', lat: 33.21813, lng: -91.52610, type: 'access', description: 'AGFC' },
+  { name: 'Wilson Reservoir Recreation Management Area', lat: 41.67572, lng: -116.34371, type: 'access', description: 'Bureau of Land Management — restrooms, parking: overnight, fee' },
+  { name: 'Wilson Creek Put-In', lat: 35.93393, lng: -81.74461, type: 'access', description: 'Pisgah National Forest — parking: yes' },
+  { name: 'Wilson Creek Take-Out', lat: 35.91621, lng: -81.73011, type: 'access', description: 'Pisgah National Forest — restrooms, parking: yes' },
+  { name: 'Wilson Lake Landing', lat: 46.12022, lng: -90.11946, type: 'access', description: 'Forestry & Parks Dept.' },
+]
 
 export const sections: RiverSection[] = []
 

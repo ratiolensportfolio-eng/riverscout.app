@@ -3,7 +3,26 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // McKenzie River — polyline from National Rivers Project (NRP).
 // 2427 points, stitched from 7 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Goodpastute', lat: 44.14826, lng: -122.58764, type: 'access', description: 'BLM' },
+  { name: 'Leaburg Dam', lat: 44.13861, lng: -122.61126, type: 'access', description: 'BLM' },
+  { name: 'Hayden Bridge - 24 miles', lat: 44.07126, lng: -122.96105, type: 'access', description: 'BLM' },
+  { name: 'Olallie Access', lat: 44.25442, lng: -122.04010, type: 'access', description: 'USFS — restrooms, parking: yes' },
+  { name: 'Paradise Boat Launch', lat: 44.18544, lng: -122.08849, type: 'access', description: 'USFS — restrooms, parking: yes' },
+  { name: 'Finn Rock Landing', lat: 44.12837, lng: -122.37976, type: 'access', description: 'McKenzie River Trust — parking: yes' },
+  { name: 'Silver Creek Boat Landing', lat: 44.11622, lng: -122.44291, type: 'access', description: 'BLM — restrooms, parking: yes' },
+  { name: 'Rennie Landing', lat: 44.12445, lng: -122.46821, type: 'access', description: 'BLM' },
+  { name: 'Helfrich Landing', lat: 44.12771, lng: -122.53495, type: 'access', description: 'Lane County Parks — restrooms, parking: yes, fee' },
+  { name: 'Lloyd Knox Park', lat: 44.13860, lng: -122.61135, type: 'access', description: 'EWEB — restrooms, parking: yes' },
+  { name: 'Leaburg Boat Slide', lat: 44.13654, lng: -122.61044, type: 'access', description: 'City of Eugene — restrooms, parking: yes' },
+  { name: 'Greenwood Landing', lat: 44.11986, lng: -122.63265, type: 'access', description: 'Lane County Parks — restrooms, parking: yes' },
+  { name: 'Leaburg Landing', lat: 44.10435, lng: -122.68089, type: 'access', description: 'Lane County Parks — restrooms, parking: yes, fee' },
+  { name: 'Deerhorn Ramp', lat: 44.09138, lng: -122.71575, type: 'access', description: 'Lane County Parks — restrooms, parking: yes, fee' },
+  { name: 'Taylor Landing', lat: 44.07604, lng: -122.74348, type: 'access', description: 'BLM — restrooms, parking: yes' },
+  { name: 'Hendricks Bridge', lat: 44.05616, lng: -122.82956, type: 'access', description: 'Lane County Parks — restrooms, parking: yes, fee' },
+  { name: 'Hayden Bridge Landing', lat: 44.07259, lng: -122.96543, type: 'access', description: 'Lane County Parks — restrooms, parking: yes, fee' },
+  { name: 'Armitage Park Ramp', lat: 44.11226, lng: -123.04800, type: 'access', description: 'Lane County Parks — restrooms, parking: yes, fee' },
+]
 
 export const sections: RiverSection[] = []
 

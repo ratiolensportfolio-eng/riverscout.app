@@ -7,7 +7,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 export const accessPoints: AccessPoint[] = [
   { name: 'Black Hawk Point', lat: 43.47407, lng: -91.29495, type: 'access', description: 'Iowa DNR' },
   { name: 'Lidtke Park', lat: 43.46515, lng: -92.27908, type: 'access', description: 'Howard CCB — restrooms' },
-  { name: 'Wild Landing', lat: 43.42885, lng: -91.39733, type: 'access', description: '  — restrooms' },
+  { name: 'Wild Landing', lat: 43.42885, lng: -91.39733, type: 'access', description: 'restrooms' },
   { name: 'Bluffton Access', lat: 43.40625, lng: -91.89919, type: 'access', description: 'Iowa DNR' },
   { name: 'Bluffton Fir Preserve', lat: 43.41031, lng: -91.91187, type: 'access', description: 'Winneshiek CCB' },
   { name: 'Canoe Creek Access', lat: 43.36717, lng: -91.61656, type: 'access', description: 'Iowa DNR' },

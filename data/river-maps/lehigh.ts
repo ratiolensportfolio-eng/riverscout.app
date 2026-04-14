@@ -23,7 +23,7 @@ export const accessPoints: AccessPoint[] = [
   { name: 'North Catasauqua', lat: 40.66533, lng: -75.48264, type: 'access', description: 'North Catasauqua Boro' },
   { name: 'Catasauqua', lat: 40.64763, lng: -75.47197, type: 'access', description: 'Catasauqua Boro — parking: yes' },
   { name: 'Sand Island Access', lat: 40.61509, lng: -75.38631, type: 'access', description: 'City of Bethlehem — parking: yes' },
-  { name: 'Cementon', lat: 40.69016, lng: -75.50488, type: 'access', description: ' ' },
+  { name: 'Cementon', lat: 40.69016, lng: -75.50488, type: 'access' },
   { name: 'Lehigh Gap Access', lat: 40.78212, lng: -75.60713, type: 'access', description: 'Lehigh County — parking: yes' },
 ]
 

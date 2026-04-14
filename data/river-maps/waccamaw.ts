@@ -3,7 +3,26 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Waccamaw River — polyline from National Rivers Project (NRP).
 // 195 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Wortham\'s Ferry', lat: 33.92430, lng: -78.67154, type: 'access', description: 'parking: yes' },
+  { name: 'Anderson Landing', lat: 33.91114, lng: -78.71492, type: 'access', description: 'SCDNR — parking: yes' },
+  { name: 'Red Bluff Landing', lat: 33.89901, lng: -78.83974, type: 'access', description: 'parking: yes' },
+  { name: 'Reaves Ferry', lat: 33.85044, lng: -78.89786, type: 'access', description: 'International Paper Co — parking: yes' },
+  { name: 'Lee\'s Landing', lat: 33.84545, lng: -78.97682, type: 'access', description: 'Horry County — parking: yes' },
+  { name: 'Conway Marina', lat: 33.82891, lng: -79.04468, type: 'access', description: 'City of Conway — parking: yes' },
+  { name: 'Savannah Bluff Landing', lat: 33.81665, lng: -79.04212, type: 'access', description: 'Horry County — parking: yes' },
+  { name: 'Pitch Landing', lat: 33.80078, lng: -79.05488, type: 'access', description: 'Horry County — parking: yes' },
+  { name: 'Toddville', lat: 33.75471, lng: -79.06921, type: 'access', description: 'Horry County — parking: yes' },
+  { name: 'Bucksville', lat: 33.72985, lng: -79.05258, type: 'access', description: 'Horry County — parking: yes' },
+  { name: 'Peachtree Landing', lat: 33.69482, lng: -79.04779, type: 'access', description: 'South Carolina Department of Transportation — parking: yes' },
+  { name: 'Enterprise Landing', lat: 33.66832, lng: -79.06099, type: 'access', description: 'Horry County — parking: yes' },
+  { name: 'Bucksport Landing', lat: 33.65157, lng: -79.09556, type: 'access', description: 'Grand Strand Water & Sewer Authority — parking: yes' },
+  { name: 'Wacca Wache Marina', lat: 33.56183, lng: -79.08585, type: 'access', description: 'Georgetown County — parking: yes' },
+  { name: 'Hagley Landing', lat: 33.43644, lng: -79.18212, type: 'access', description: 'South Carolina Department of Transportation — parking: yes' },
+  { name: 'Big Savannah Bluff Landing', lat: 33.88780, lng: -78.77306, type: 'access', description: 'parking: yes' },
+  { name: 'Cox Ferry Recreation Area', lat: 33.79184, lng: -79.05024, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Jackson Bluff Landing', lat: 33.77266, lng: -79.06040, type: 'access', description: 'parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

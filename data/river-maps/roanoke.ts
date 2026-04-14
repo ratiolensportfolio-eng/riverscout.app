@@ -3,7 +3,20 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Roanoke River — polyline from National Rivers Project (NRP).
 // 470 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Gaston/Roanoke Rapids Access', lat: 36.48260, lng: -77.64430, type: 'access', description: 'NCWR — parking: yes' },
+  { name: 'Weldon Outake (prior to rapids)', lat: 36.42986, lng: -77.59113, type: 'access', description: 'parking: yes' },
+  { name: 'Weldon Access', lat: 36.42739, lng: -77.59090, type: 'access', description: 'NCWR — restrooms, parking: yes' },
+  { name: 'Odom Access', lat: 36.32455, lng: -77.44008, type: 'access', description: 'NCWR — parking: yes' },
+  { name: 'Edwards Ferry - 258 Access', lat: 36.20841, lng: -77.38341, type: 'access', description: 'NCWR — parking: yes' },
+  { name: 'Lewiston-Woodville - Weeping Mary Access', lat: 36.09744, lng: -77.25009, type: 'access', description: 'NCWR — parking: yes' },
+  { name: 'Hamilton  Access', lat: 35.94732, lng: -77.20259, type: 'access', description: 'NCWR — parking: yes' },
+  { name: 'Williamston  Access', lat: 35.85998, lng: -77.04111, type: 'access', description: 'NCWR — restrooms, parking: yes' },
+  { name: 'Astoria Landing Access', lat: 35.82189, lng: -76.90279, type: 'access', description: 'NCWR — parking: yes' },
+  { name: 'Plymouth - Water Street  Access', lat: 35.86670, lng: -76.75300, type: 'access', description: 'NCWR — parking: yes' },
+  { name: 'Plymouth - East end of Water Street Access', lat: 35.86810, lng: -76.74950, type: 'access', description: 'Town of Plymouth — parking: yes' },
+  { name: 'NC Highway 45 Bridge Access', lat: 35.91260, lng: -76.72060, type: 'access', description: 'NCWR — parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

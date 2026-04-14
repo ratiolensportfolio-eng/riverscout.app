@@ -3,7 +3,11 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Rockcastle River — polyline from National Rivers Project (NRP).
 // 700 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Beaver Creek WMA Marina', lat: 36.96053, lng: -84.35348, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'Bee Rock Recreation Area', lat: 37.02782, lng: -84.32803, type: 'access', description: 'restrooms, parking: yes' },
+  { name: 'I-75 Bridge', lat: 37.24146, lng: -84.23944, type: 'access', description: 'parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

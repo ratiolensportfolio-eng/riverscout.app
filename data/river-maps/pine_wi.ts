@@ -3,7 +3,33 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Pine River — polyline from National Rivers Project (NRP).
 // 3604 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Dobson Bridge River Access', lat: 44.18000, lng: -85.75889, type: 'access', description: 'Huron-Manistee National Forests — restrooms, parking: yes, fee' },
+  { name: 'Low Bridge Canoe Landing', lat: 44.21612, lng: -85.90338, type: 'access', description: 'Huron-Manistee National Forests — restrooms, parking: yes, fee' },
+  { name: 'Peterson Bridge North Day Use and Boat Launch Area', lat: 44.20328, lng: -85.79827, type: 'access', description: 'Huron-Manistee National Forests — restrooms, parking: yes, fee' },
+  { name: 'Peterson Bridge South Campground', lat: 44.20206, lng: -85.79785, type: 'access', description: 'Huron-Manistee National Forests — restrooms, parking: overnight, fee' },
+  { name: 'Clark Farm', lat: 41.43190, lng: -77.49594, type: 'access', description: 'Bureau of Forestry' },
+  { name: 'Black Walnut Bottom', lat: 41.44801, lng: -77.51791, type: 'access', description: 'Bureau of Forestry' },
+  { name: 'Blackwell', lat: 41.55618, lng: -77.38180, type: 'access', description: 'Bureau of Forestry — parking: yes' },
+  { name: 'Hamilton Bottom', lat: 41.34884, lng: -77.40229, type: 'access', description: 'Bureau of Forestry' },
+  { name: 'Gamble Run', lat: 41.50739, lng: -77.45685, type: 'access', description: 'Bureau of Forestry — parking: yes' },
+  { name: 'Ross Run', lat: 41.42059, lng: -77.48903, type: 'access', description: 'Bureau of Forestry — parking: yes' },
+  { name: 'Slate Run', lat: 41.47123, lng: -77.50261, type: 'access', description: 'Bureau of Forestry — parking: yes' },
+  { name: 'Torbert Canoe Access', lat: 41.21963, lng: -77.32050, type: 'access', description: 'Bureau of Forestry' },
+  { name: 'Bonnell Flats', lat: 41.27806, lng: -77.31878, type: 'access', description: 'PA Forestry' },
+  { name: 'Rattlesnake Rock', lat: 41.54047, lng: -77.40554, type: 'access', description: 'Bureau of Forestry' },
+  { name: 'Tiadaghton', lat: 41.64586, lng: -77.44417, type: 'access' },
+  { name: 'Ansonia', lat: 41.74526, lng: -77.42829, type: 'access', description: 'Bureau of Forestry — parking: yes' },
+  { name: 'Pine River Access- Oxbow Put-In', lat: 45.83722, lng: -88.22494, type: 'access', description: 'Wildlife Biologist' },
+  { name: 'Pine River Access - Lost Lake Road', lat: 45.89324, lng: -88.55764, type: 'access', description: 'US Forest Service' },
+  { name: 'Pine River Access', lat: 45.88047, lng: -88.34450, type: 'access', description: 'Wildlife Biologist' },
+  { name: 'Pine River Access - White Ash Road', lat: 45.83940, lng: -88.33902, type: 'access', description: 'Wildlfe Biologist' },
+  { name: 'Pine River Access - Hwy 101', lat: 45.85347, lng: -88.35054, type: 'access', description: 'Wildlife Biologist' },
+  { name: 'Pine River Carry-In- Goodman Grade North', lat: 45.90258, lng: -88.42095, type: 'access' },
+  { name: 'Pine River Access', lat: 45.83963, lng: -88.14053, type: 'access' },
+  { name: 'Pine River Canoe Access- Oxbow Take-Out', lat: 45.84326, lng: -88.22438, type: 'access', description: 'Wildlife Biologist' },
+  { name: 'Pine River Access', lat: 45.83963, lng: -88.14053, type: 'access', description: 'WE Energies' },
+]
 
 export const sections: RiverSection[] = []
 

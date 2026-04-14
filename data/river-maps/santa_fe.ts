@@ -3,7 +3,30 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Santa Fe River — polyline from National Rivers Project (NRP).
 // 1449 points, stitched from 2 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Camp Mckinney', lat: 29.74100, lng: -82.05510, type: 'access', description: 'parking: yes, fee' },
+  { name: 'Ellie Ray\'S River Landing', lat: 29.89842, lng: -82.86609, type: 'access', description: 'restrooms, parking: yes, fee' },
+  { name: 'Gc Butler Boat Landing (Aka Wanamake Boat Ramp)', lat: 29.88839, lng: -82.87753, type: 'access', description: 'Gilchrist County — parking: yes' },
+  { name: 'Santa Fe River Park', lat: 29.86439, lng: -82.73996, type: 'access', description: 'Gilchrist County — parking: yes' },
+  { name: 'Santa Fe River At 108Th Place Public Boat Ramp', lat: 29.89646, lng: -82.76344, type: 'access', description: 'Gilchrist County — parking: yes' },
+  { name: 'Oriole Beach Public Boat Ramp', lat: 30.37356, lng: -87.09198, type: 'access', description: 'Santa Rosa County — parking: yes' },
+  { name: 'Woodlawn Beach Public Boat Ramp', lat: 30.38708, lng: -86.99679, type: 'access', description: 'Santa Rosa County — restrooms, parking: yes' },
+  { name: 'Navarre Beach Public Boat Ramp - Fwc # Wb-47', lat: 30.38360, lng: -86.86350, type: 'access', description: 'Santa Rosa County — restrooms, parking: yes' },
+  { name: 'Rum Island', lat: 29.83372, lng: -82.67863, type: 'access', description: 'Columbia County — restrooms, parking: yes' },
+  { name: 'Bible Camp Road Public Boat Ramp', lat: 29.92669, lng: -82.55959, type: 'access', description: 'Columbia County — parking: yes' },
+  { name: 'Hollingsworth Bluff - Fwc # 28', lat: 29.86927, lng: -82.74432, type: 'access', description: 'Columbia County — parking: yes' },
+  { name: 'O\'Leno State Park Canoe Launch', lat: 29.91498, lng: -82.57955, type: 'access', description: 'Florida Department Of Environmental Protection — restrooms, parking: yes, fee' },
+  { name: 'Liza Jackson Park', lat: 30.40586, lng: -86.63810, type: 'access', description: 'City Of Fort Walton Beach — restrooms, parking: yes, fee' },
+  { name: 'Brook\'s Bridge Bait & Tackle', lat: 30.39939, lng: -86.60020, type: 'access', description: 'restrooms, parking: yes, fee' },
+  { name: 'Santa Fe Lake Park', lat: 29.71364, lng: -82.06329, type: 'access', description: 'Alachua County — restrooms, parking: yes' },
+  { name: 'High Springs Boat Launch (Highway 41)', lat: 29.85180, lng: -82.61146, type: 'access', description: 'Alachua County — parking: yes' },
+  { name: 'Poe Springs Park', lat: 29.82634, lng: -82.65366, type: 'access', description: 'Alachua County — parking: yes' },
+  { name: 'Melrose Boat Ramp (12 Hp Or Smaller)', lat: 29.71278, lng: -82.05214, type: 'access', description: 'Alachua County — parking: yes' },
+  { name: 'Worthington Springs Seay Park Boat Ramp', lat: 29.92218, lng: -82.42646, type: 'access', description: 'Town Of Worthington Springs — parking: yes' },
+  { name: 'William Guy Lemon Park - Fwc # Wb-53', lat: 29.91207, lng: -82.86013, type: 'access', description: 'Suwannee County — parking: yes' },
+  { name: 'Quietwater Beach boat ramp', lat: 30.33888, lng: -87.14558, type: 'access', description: 'Pensacola Beach — parking: yes, fee' },
+  { name: 'Mary Esther City Pier and Boat Ramp', lat: 30.40672, lng: -86.65059, type: 'access', description: 'City of Mary Esther — parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 

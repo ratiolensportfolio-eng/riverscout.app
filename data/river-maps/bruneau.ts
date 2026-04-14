@@ -3,7 +3,11 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Bruneau River — polyline from National Rivers Project (NRP).
 // 3768 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Bruneau Launch Site (Indian Hot Springs)', lat: 42.34230, lng: -115.64406, type: 'access', description: 'BLM / Private — parking: yes' },
+  { name: 'Bruneau River Take-out', lat: 42.77557, lng: -115.71886, type: 'access', description: 'Private — parking: yes' },
+  { name: 'Bruneau River Take-out Roberson East and West trai', lat: 42.65163, lng: -115.70149, type: 'access', description: 'BLM — parking: yes' },
+]
 
 export const sections: RiverSection[] = []
 
