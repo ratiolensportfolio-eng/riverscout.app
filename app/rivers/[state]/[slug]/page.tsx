@@ -375,6 +375,7 @@ export default async function RiverPage({ params, searchParams }: Props) {
             condition={flow.condition}
             gaugeId={activeGaugeId}
             currentCfs={flow.cfs}
+            avgFlow={river.avg}
           />
 
           {/* ── Right column: live flow data ── */}

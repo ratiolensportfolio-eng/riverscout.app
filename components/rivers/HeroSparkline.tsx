@@ -31,6 +31,11 @@ interface Props {
   condition: FlowCondition
   gaugeId: string
   currentCfs: number | null
+  // Historical average flow for this river — drives the reference
+  // band (±10% around avg) and the dashed midline label so users
+  // can see at a glance whether current flow is above or below
+  // normal-for-time-of-year. Pass 0 (or omit) when unknown to skip.
+  avgFlow?: number
 }
 
 const CONDITION_STROKE: Record<FlowCondition, string> = {
@@ -76,7 +81,7 @@ function fmtDate(d: Date) {
   return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
 }
 
-export default function HeroSparkline({ readings, optRange, condition, gaugeId, currentCfs }: Props) {
+export default function HeroSparkline({ readings, optRange, condition, gaugeId, currentCfs, avgFlow }: Props) {
   const [forecast, setForecast] = useState<ForecastPoint[] | null>(null)
   const [forecastFailed, setForecastFailed] = useState(false)
   const [hover, setHover] = useState<{ x: number; y: number; label: string } | null>(null)
@@ -124,12 +129,22 @@ export default function HeroSparkline({ readings, optRange, condition, gaugeId, 
   ]
   if (!all.length) return null
 
-  const W = 600, H = 80, PAD_X = 4, PAD_Y = 6
+  const W = 600, H = 130, PAD_X = 4, PAD_Y = 8
   const minDate = all[0].date.getTime()
   const maxDate = all.at(-1)!.date.getTime()
   const dateSpan = Math.max(maxDate - minDate, 24 * 60 * 60 * 1000)
-  const minV = Math.min(...all.map(p => p.v), optBand?.[0] ?? Infinity)
-  const maxV = Math.max(...all.map(p => p.v), optBand?.[1] ?? -Infinity)
+  // Include avg-flow band in the y-extent so the reference line
+  // is always visible even when actual readings are far above or
+  // below the historical norm.
+  const avgBandHigh = avgFlow && avgFlow > 0 ? avgFlow * 1.1 : null
+  const avgBandLow  = avgFlow && avgFlow > 0 ? avgFlow * 0.9 : null
+  const yExtents = [
+    ...all.map(p => p.v),
+    ...(optBand ? optBand : []),
+    ...(avgBandHigh != null ? [avgBandHigh, avgBandLow!] : []),
+  ]
+  const minV = Math.min(...yExtents)
+  const maxV = Math.max(...yExtents)
   const vSpan = Math.max(maxV - minV, 1)
 
   const xOf = (d: Date) => PAD_X + ((d.getTime() - minDate) / dateSpan) * (W - 2 * PAD_X)
@@ -211,7 +226,7 @@ export default function HeroSparkline({ readings, optRange, condition, gaugeId, 
       <svg
         viewBox={`0 0 ${W} ${H}`}
         preserveAspectRatio="none"
-        style={{ width: '100%', height: '80px', display: 'block' }}
+        style={{ width: '100%', height: '130px', display: 'block', background: 'transparent' }}
         onMouseMove={onMove}
         onMouseLeave={() => setHover(null)}
       >
@@ -238,6 +253,30 @@ export default function HeroSparkline({ readings, optRange, condition, gaugeId, 
             y={yOf(optBand[1])} height={Math.max(yOf(optBand[0]) - yOf(optBand[1]), 1)}
             fill="rgba(29, 158, 117, 0.08)"
           />
+        )}
+        {/* Historical-average reference band — ±10% around avgFlow.
+            Drawn AFTER the optimal band so the teal stays visible
+            even where the two overlap. */}
+        {avgFlow && avgFlow > 0 && avgBandHigh != null && avgBandLow != null && (
+          <>
+            <rect
+              x={0} width={W}
+              y={yOf(avgBandHigh)} height={Math.max(yOf(avgBandLow) - yOf(avgBandHigh), 1)}
+              fill="rgba(120, 140, 150, 0.08)"
+            />
+            <line
+              x1={0} x2={W}
+              y1={yOf(avgFlow)} y2={yOf(avgFlow)}
+              stroke="rgba(110, 120, 130, 0.45)" strokeWidth={0.6} strokeDasharray="3,3"
+            />
+            <text
+              x={4} y={yOf(avgFlow) - 3}
+              fontFamily="'IBM Plex Mono', monospace" fontSize="9"
+              fill="rgba(100, 110, 120, 0.7)"
+            >
+              {avgFlow.toLocaleString()} avg
+            </text>
+          </>
         )}
         {/* Today divider — only when forecast extends past today */}
         {futureDaily.length > 0 && (
@@ -291,7 +330,7 @@ export default function HeroSparkline({ readings, optRange, condition, gaugeId, 
       <style>{`
         @media (max-width: 768px) {
           .hero-sparkline { flex-basis: 100% !important; max-width: none !important; }
-          .hero-sparkline > svg { height: 60px !important; }
+          .hero-sparkline > svg { height: 90px !important; }
         }
       `}</style>
     </div>
@@ -299,25 +338,33 @@ export default function HeroSparkline({ readings, optRange, condition, gaugeId, 
 }
 
 function SkeletonPulse() {
+  // Transparent skeleton — no box / gray rectangle. Just a soft
+  // pulsing horizontal sweep so the user sees something is loading
+  // without the chart slot looking heavy.
   return (
     <div
       className="hero-sparkline"
       style={{
-        flex: '1 1 220px', minWidth: 0, maxWidth: '360px',
-        height: '80px', borderRadius: '6px',
-        background: 'linear-gradient(90deg, #eee 0%, #f5f5f5 50%, #eee 100%)',
-        backgroundSize: '200% 100%',
-        animation: 'sparkline-pulse 1.5s ease-in-out infinite',
+        flex: '1 1 320px', minWidth: 0, maxWidth: '600px',
+        height: '130px', position: 'relative',
+        background: 'transparent',
       }}
     >
+      <div style={{
+        position: 'absolute', top: '50%', left: 0, right: 0,
+        height: '2px', transform: 'translateY(-50%)',
+        background: 'linear-gradient(90deg, transparent 0%, rgba(80, 110, 150, 0.18) 50%, transparent 100%)',
+        backgroundSize: '200% 100%',
+        animation: 'sparkline-pulse 1.5s ease-in-out infinite',
+      }} />
       <style>{`
         @keyframes sparkline-pulse {
           0%   { background-position: 200% 0; }
           100% { background-position: -200% 0; }
         }
         @media (max-width: 768px) {
-          .hero-sparkline { flex-basis: 100% !important; max-width: none !important; height: 60px !important; }
-          .hero-sparkline > svg { height: 60px !important; }
+          .hero-sparkline { flex-basis: 100% !important; max-width: none !important; height: 90px !important; }
+          .hero-sparkline > svg { height: 90px !important; }
         }
       `}</style>
     </div>
