@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import { FISHERIES } from '@/data/fisheries'
 import { ALL_RIVERS, getRiverPath } from '@/data/rivers'
-import { fetchGaugeData, formatCfs, celsiusToFahrenheit } from '@/lib/usgs'
+import { fetchGaugeDataBatch, formatCfs, celsiusToFahrenheit } from '@/lib/usgs'
+import type { FlowData } from '@/types'
 import { getHatchTrigger } from '@/lib/hatch-triggers'
 import { evaluateHatchConditions, parseTimingString } from '@/lib/hatch-conditions'
 import { FishIcon, SPECIES_ICON_LEGEND, hasFishIcon } from '@/components/icons/FishIcons'
@@ -69,18 +70,18 @@ export default async function HatchesPage() {
   const riverIds = Object.keys(FISHERIES)
   const riverMap = new Map(ALL_RIVERS.map(r => [r.id, r]))
 
-  // Fetch flow data for all rivers with hatches
-  const flowResults = await Promise.allSettled(
-    riverIds.map(id => {
-      const river = riverMap.get(id)
-      if (!river) return Promise.reject('no river')
-      return fetchGaugeData(river.g, river.opt).then(flow => ({ id, flow }))
-    })
-  )
-
-  const flowMap = new Map<string, Awaited<ReturnType<typeof fetchGaugeData>>>()
-  for (const r of flowResults) {
-    if (r.status === 'fulfilled') flowMap.set(r.value.id, r.value.flow)
+  // Batched USGS fetch — was ~50 parallel single-site requests for
+  // every river that has hatches data; now collapses to chunks of 80.
+  const inputs: Array<{ gaugeId: string; optRange: string; id: string }> = []
+  for (const id of riverIds) {
+    const r = riverMap.get(id)
+    if (r) inputs.push({ gaugeId: r.g, optRange: r.opt, id })
+  }
+  const batch = await fetchGaugeDataBatch(inputs.map(x => ({ gaugeId: x.gaugeId, optRange: x.optRange })))
+  const flowMap = new Map<string, FlowData>()
+  for (const x of inputs) {
+    const f = batch.get(x.gaugeId)
+    if (f) flowMap.set(x.id, f)
   }
 
   // Evaluate all hatches

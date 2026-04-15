@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { fetchGaugeData } from '@/lib/usgs'
+import { fetchGaugeDataBatch } from '@/lib/usgs'
 import { getRiver } from '@/data/rivers'
 
 // POST /api/conditions
@@ -9,13 +9,10 @@ import { getRiver } from '@/data/rivers'
 // Body: { riverIds: string[] }
 // Returns: { conditions: { [riverId]: { cfs, condition } } }
 //
-// We chunk the lookups to avoid blasting USGS with 375 simultaneous
-// requests on a cold cache. Each chunk runs in parallel via
-// Promise.allSettled, so a slow gauge can't block the whole batch.
-// fetchGaugeData has its own underlying 15-min cache, so subsequent
-// requests within the cache window cost nothing.
-
-const CHUNK_SIZE = 30
+// Uses fetchGaugeDataBatch which collapses N USGS calls into a
+// single ?sites=A,B,C... request (chunked at 80 sites). Was 30
+// parallel single-site requests per chunk; now one HTTP call per
+// 80 rivers.
 
 export async function POST(req: NextRequest) {
   try {
@@ -26,27 +23,20 @@ export async function POST(req: NextRequest) {
     }
 
     const ids = riverIds.filter((x): x is string => typeof x === 'string').slice(0, 500)
-    const conditions: Record<string, { cfs: number | null; condition: string }> = {}
+    const inputs: Array<{ id: string; gaugeId: string; optRange: string }> = []
+    for (const id of ids) {
+      const r = getRiver(id)
+      if (r) inputs.push({ id, gaugeId: r.g, optRange: r.opt })
+    }
 
-    for (let i = 0; i < ids.length; i += CHUNK_SIZE) {
-      const chunk = ids.slice(i, i + CHUNK_SIZE)
-      const results = await Promise.allSettled(
-        chunk.map(async id => {
-          const river = getRiver(id)
-          if (!river) return { id, cfs: null, condition: 'loading' as const }
-          try {
-            const flow = await fetchGaugeData(river.g, river.opt)
-            return { id, cfs: flow.cfs, condition: flow.condition }
-          } catch {
-            return { id, cfs: null, condition: 'loading' as const }
-          }
-        })
-      )
-      for (const r of results) {
-        if (r.status === 'fulfilled') {
-          conditions[r.value.id] = { cfs: r.value.cfs, condition: r.value.condition }
-        }
-      }
+    const batch = await fetchGaugeDataBatch(inputs.map(x => ({ gaugeId: x.gaugeId, optRange: x.optRange })))
+
+    const conditions: Record<string, { cfs: number | null; condition: string }> = {}
+    for (const x of inputs) {
+      const f = batch.get(x.gaugeId)
+      conditions[x.id] = f
+        ? { cfs: f.cfs, condition: f.condition }
+        : { cfs: null, condition: 'loading' }
     }
 
     return NextResponse.json({ conditions })

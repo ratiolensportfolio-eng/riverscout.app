@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ALL_RIVERS, STATES, getRiverPath } from '@/data/rivers'
-import { fetchGaugeData, formatCfs } from '@/lib/usgs'
+import { fetchGaugeDataBatch, formatCfs } from '@/lib/usgs'
+import type { FlowData } from '@/types'
 import { RAPIDS } from '@/data/rapids'
 import { PRO_FEATURES, PRO_PRICE } from '@/types'
 import { SHOW_PRO_TIER } from '@/lib/features'
@@ -10,16 +11,16 @@ import AlertSubscriber from '@/components/alerts/AlertSubscriber'
 export const revalidate = 900
 
 export default async function AlertsPage() {
-  // Fetch flow data for all rivers in parallel
-  const flowResults = await Promise.allSettled(
-    ALL_RIVERS.map(r => fetchGaugeData(r.g, r.opt).then(flow => ({ id: r.id, flow })))
+  // Fetch flow data for every river in batched USGS calls (chunks of
+  // 80 sites). Was 1100+ parallel single-site requests — slow and
+  // hitting USGS rate limits.
+  const batch = await fetchGaugeDataBatch(
+    ALL_RIVERS.map(r => ({ gaugeId: r.g, optRange: r.opt }))
   )
-
-  const flowMap: Record<string, Awaited<ReturnType<typeof fetchGaugeData>>> = {}
-  for (const result of flowResults) {
-    if (result.status === 'fulfilled') {
-      flowMap[result.value.id] = result.value.flow
-    }
+  const flowMap: Record<string, FlowData> = {}
+  for (const r of ALL_RIVERS) {
+    const f = batch.get(r.g)
+    if (f) flowMap[r.id] = f
   }
 
   const stateNames = Object.fromEntries(Object.entries(STATES).map(([k, s]) => [k, s.name]))

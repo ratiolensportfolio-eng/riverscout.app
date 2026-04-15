@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { ALL_RIVERS, STATES } from '@/data/rivers'
-import { fetchGaugeData } from '@/lib/usgs'
+import { fetchGaugeDataBatch } from '@/lib/usgs'
 import { createSupabaseServerClient } from '@/lib/supabase-server'
 import USMap from '@/components/maps/USMap'
 import HomeSearch from '@/components/HomeSearch'
@@ -12,19 +12,22 @@ export default async function HomePage() {
   const stateCount = Object.keys(STATES).length
   const riverCount = ALL_RIVERS.length
 
-  // Fetch live conditions for all rivers in parallel
+  // Fetch live conditions for every river via batched USGS calls
+  // (chunks of 80 sites). Was 1100+ parallel single-site requests
+  // — slow and prone to USGS rate-limiting on the homepage SSR.
   const rivers = ALL_RIVERS
-  const results = await Promise.allSettled(
-    rivers.map((r: typeof rivers[number]) => fetchGaugeData(r.g, r.opt).then(flow => ({ id: r.id, stateKey: r.stateKey, name: r.n, flow })))
+  const batch = await fetchGaugeDataBatch(
+    rivers.map(r => ({ gaugeId: r.g, optRange: r.opt }))
   )
 
   // Build per-state condition summary
   type StateCondition = { optimal: number; low: number; high: number; flood: number; total: number; topCfs: { name: string; cfs: number; condition: FlowCondition }[] }
   const stateConditions: Record<string, StateCondition> = {}
 
-  for (const result of results) {
-    if (result.status !== 'fulfilled') continue
-    const { stateKey, flow, name } = result.value
+  for (const r of rivers) {
+    const flow = batch.get(r.g)
+    if (!flow) continue
+    const stateKey = r.stateKey
     if (!stateConditions[stateKey]) stateConditions[stateKey] = { optimal: 0, low: 0, high: 0, flood: 0, total: 0, topCfs: [] }
     const sc = stateConditions[stateKey]
     sc.total++
@@ -33,7 +36,7 @@ export default async function HomePage() {
     else if (flow.condition === 'high') sc.high++
     else if (flow.condition === 'flood') sc.flood++
     if (flow.cfs !== null) {
-      sc.topCfs.push({ name, cfs: flow.cfs, condition: flow.condition })
+      sc.topCfs.push({ name: r.n, cfs: flow.cfs, condition: flow.condition })
     }
   }
 
