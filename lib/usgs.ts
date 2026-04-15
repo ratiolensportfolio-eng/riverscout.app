@@ -12,6 +12,10 @@ interface USGSValue {
 }
 
 interface USGSTimeSeries {
+  // sourceInfo identifies which gauge a series belongs to. Required
+  // when batching many sites in one request — without it we can't
+  // tell which gauge each timeSeries entry is for.
+  sourceInfo: { siteCode: Array<{ value: string }> }
   variable: { variableCode: Array<{ value: string }> }
   values: Array<{ value: USGSValue[] }>
 }
@@ -211,6 +215,122 @@ export async function fetchGaugeData(gaugeId: string, optRange: string): Promise
       tempC,
       readings,
       fetchedAt: new Date(),
+    }
+  } catch {
+    return emptyFlow()
+  }
+}
+
+// Batched variant — fetch flow data for many USGS gauges in a single
+// request. Used by the state page to avoid firing 50+ parallel
+// USGS calls when the state has lots of rivers.
+//
+// USGS supports up to ~100 sites per `?sites=A,B,C` query. We chunk
+// at 80 to leave headroom. Each input must be the rivers' opt range
+// so we can compute condition per gauge — pass an empty string if you
+// only need cfs.
+//
+// Returns Map<gaugeId, FlowData>. Missing gauges return emptyFlow.
+//
+// Routes any letter-bearing IDs through the WSC single-gauge adapter
+// since WSC doesn't support batched site queries.
+export async function fetchGaugeDataBatch(
+  inputs: Array<{ gaugeId: string; optRange: string }>,
+): Promise<Map<string, FlowData>> {
+  const out = new Map<string, FlowData>()
+
+  // Partition into USGS (digit-only) and WSC (any letter). Empty
+  // gauge IDs go straight to emptyFlow without network.
+  const usgs: Array<{ gaugeId: string; optRange: string }> = []
+  const wsc: Array<{ gaugeId: string; optRange: string }> = []
+  for (const x of inputs) {
+    if (!x.gaugeId) { out.set(x.gaugeId, emptyFlow()); continue }
+    if (/[A-Z]/.test(x.gaugeId)) wsc.push(x)
+    else usgs.push(x)
+  }
+
+  // WSC rivers stay on the single-gauge fetch path (low N).
+  if (wsc.length) {
+    const { fetchWscGaugeData } = await import('./wsc')
+    const settled = await Promise.allSettled(
+      wsc.map(x => fetchWscGaugeData(x.gaugeId, x.optRange)),
+    )
+    settled.forEach((res, i) => {
+      out.set(wsc[i].gaugeId, res.status === 'fulfilled' ? res.value : emptyFlow())
+    })
+  }
+
+  if (!usgs.length) return out
+
+  const optByGauge = new Map(usgs.map(x => [x.gaugeId, x.optRange]))
+
+  // Chunk to stay well under USGS's ~100-site cap.
+  const CHUNK = 80
+  for (let i = 0; i < usgs.length; i += CHUNK) {
+    const chunk = usgs.slice(i, i + CHUNK)
+    const sites = chunk.map(x => x.gaugeId).join(',')
+    const url = `${IV_BASE}?format=json&sites=${sites}&parameterCd=00060,00065,00010&siteStatus=active&period=P7D`
+    const json = await fetchExternalJson<{ value?: { timeSeries?: USGSTimeSeries[] } }>(url, {
+      timeoutMs: 15000,
+      retries: 1,
+      nextRevalidate: USGS_REVALIDATE_SECONDS,
+    })
+    if (!json) {
+      // Whole chunk failed; mark each as empty and move on.
+      for (const x of chunk) out.set(x.gaugeId, emptyFlow())
+      continue
+    }
+
+    // Group returned series by site code.
+    const bySite = new Map<string, USGSTimeSeries[]>()
+    for (const ts of json.value?.timeSeries ?? []) {
+      const sid = ts.sourceInfo.siteCode[0]?.value
+      if (!sid) continue
+      const arr = bySite.get(sid) ?? []
+      arr.push(ts)
+      bySite.set(sid, arr)
+    }
+
+    for (const x of chunk) {
+      const series = bySite.get(x.gaugeId) ?? []
+      out.set(x.gaugeId, parseTimeSeries(series, optByGauge.get(x.gaugeId) ?? ''))
+    }
+  }
+
+  return out
+}
+
+// Pure parser — extracted from fetchGaugeData so the batched path
+// can reuse it. Takes a single gauge's USGSTimeSeries[] and produces
+// a FlowData. Empty input → emptyFlow.
+function parseTimeSeries(series: USGSTimeSeries[], optRange: string): FlowData {
+  if (!series.length) return emptyFlow()
+  try {
+    let cfs: number | null = null
+    let gaugeHeightFt: number | null = null
+    let tempC: number | null = null
+    const readings: Array<{ t: string; v: number }> = []
+
+    for (const ts of series) {
+      const code = ts.variable.variableCode[0]?.value
+      const vals = ts.values[0]?.value ?? []
+      const valid = vals.filter(v => v.value !== '-999999' && !isNaN(Number(v.value)))
+      if (code === '00060') {
+        for (const v of valid) readings.push({ t: v.dateTime, v: Number(v.value) })
+        if (valid.length > 0) cfs = Number(valid[valid.length - 1].value)
+      } else if (code === '00065') {
+        if (valid.length > 0) gaugeHeightFt = Math.round(Number(valid[valid.length - 1].value) * 100) / 100
+      } else if (code === '00010') {
+        if (valid.length > 0) tempC = Number(valid[valid.length - 1].value)
+      }
+    }
+
+    const rate = calculateRateOfChange(readings)
+    const condition: FlowCondition = cfs !== null ? getFlowCondition(cfs, optRange) : 'loading'
+    return {
+      cfs, gaugeHeightFt, condition,
+      trend: rate.trend, changePerHour: rate.changePerHour, changeIn3Hours: rate.changeIn3Hours,
+      rateLabel: rate.rateLabel, percentile: null, tempC, readings, fetchedAt: new Date(),
     }
   } catch {
     return emptyFlow()

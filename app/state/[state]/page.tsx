@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getState, STATES, getRiverPath } from '@/data/rivers'
-import { fetchGaugeData, formatCfs } from '@/lib/usgs'
+import { fetchGaugeDataBatch, formatCfs } from '@/lib/usgs'
 import { fetchPermittedRiverIds } from '@/lib/permits'
 import { STATE_MAP_CONFIG } from '@/data/state-centers'
 import { RIVER_COORDS } from '@/data/river-coordinates'
@@ -33,18 +33,17 @@ export default async function StatePage({ params }: Props) {
   const state = getState(stateKey)
   if (!state) notFound()
 
-  // Fetch live CFS for all rivers in this state plus the global
-  // permitted-river-ID set in parallel. The permit query is one round
-  // trip regardless of state size, so it's free to add here.
-  const [results, permittedRiverIds] = await Promise.all([
-    Promise.allSettled(state.rivers.map(r => fetchGaugeData(r.g, r.opt))),
+  // Fetch live CFS for every river in this state in a single batched
+  // USGS request (was N parallel requests — slow on big states like
+  // MI/OH which have 50+ rivers). fetchGaugeDataBatch handles
+  // chunking, the WSC-vs-USGS routing, and skips empty gauge IDs
+  // without firing a network call.
+  const [batch, permittedRiverIds] = await Promise.all([
+    fetchGaugeDataBatch(state.rivers.map(r => ({ gaugeId: r.g, optRange: r.opt }))),
     fetchPermittedRiverIds(),
   ])
   const flowMap = new Map<string, FlowData | null>(
-    state.rivers.map((r, i) => {
-      const res = results[i]
-      return [r.id, res.status === 'fulfilled' ? res.value : null]
-    })
+    state.rivers.map(r => [r.id, batch.get(r.g) ?? null])
   )
 
   return (
