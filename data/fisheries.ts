@@ -6708,4 +6708,261 @@ export const FISHERIES: Record<string, RiverFisheries> = {
     guides: [],
   },
 
+  // ── ODFW FHD-sourced fisheries (auto-imported 2026-04-14) ──
+  willamette_or: {
+    species: [
+      { name: 'Fall Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Spring Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true },
+      { name: 'Summer Steelhead', type: 'anadromous', primary: true },
+      { name: 'Winter Steelhead', type: 'anadromous', primary: true },
+      { name: 'Coastal Cutthroat Trout', type: 'resident', primary: false },
+    ],
+    designations: ['ODFW Fish Habitat Distribution — documented presence'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  umpqua_or: {
+    species: [
+      { name: 'Fall Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Spring Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true },
+      { name: 'Summer Steelhead', type: 'anadromous', primary: true },
+      { name: 'Winter Steelhead', type: 'anadromous', primary: true },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+      { name: 'Coastal Cutthroat Trout', type: 'resident', primary: false },
+    ],
+    designations: ['ODFW Fish Habitat Distribution — documented presence'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  umpqua_river_south_or: {
+    species: [
+      { name: 'Fall Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Spring Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true },
+      { name: 'Winter Steelhead', type: 'anadromous', primary: true },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+      { name: 'Coastal Cutthroat Trout', type: 'resident', primary: false },
+    ],
+    designations: ['ODFW Fish Habitat Distribution — documented presence'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  grande_ronde_or: {
+    species: [
+      { name: 'Fall Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Spring Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true },
+      { name: 'Summer Steelhead', type: 'anadromous', primary: true },
+      { name: 'Bull Trout', type: 'resident', primary: true },
+      { name: 'Sockeye Salmon', type: 'anadromous', primary: false },
+    ],
+    designations: ['ODFW Fish Habitat Distribution — documented presence'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  white_or: {
+    species: [
+      { name: 'Summer Steelhead', type: 'anadromous', primary: true },
+    ],
+    designations: ['ODFW Fish Habitat Distribution — documented presence'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  alsea_or: {
+    species: [
+      { name: 'Fall Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Spring Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true },
+      { name: 'Winter Steelhead', type: 'anadromous', primary: true },
+      { name: 'Coastal Cutthroat Trout', type: 'resident', primary: false },
+    ],
+    designations: ['ODFW Fish Habitat Distribution — documented presence'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  north_fork_john_day_or: {
+    species: [
+      { name: 'Spring Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Summer Steelhead', type: 'anadromous', primary: true },
+      { name: 'Bull Trout', type: 'resident', primary: true },
+    ],
+    designations: ['ODFW Fish Habitat Distribution — documented presence'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  salmon_or: {
+    species: [
+      { name: 'Fall Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Spring Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true },
+      { name: 'Summer Steelhead', type: 'anadromous', primary: true },
+      { name: 'Winter Steelhead', type: 'anadromous', primary: true },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+      { name: 'Coastal Cutthroat Trout', type: 'resident', primary: false },
+    ],
+    designations: ['ODFW Fish Habitat Distribution — documented presence'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  siuslaw_or: {
+    species: [
+      { name: 'Fall Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true },
+      { name: 'Winter Steelhead', type: 'anadromous', primary: true },
+      { name: 'Coastal Cutthroat Trout', type: 'resident', primary: false },
+      { name: 'Chum Salmon', type: 'anadromous', primary: false },
+    ],
+    designations: ['ODFW Fish Habitat Distribution — documented presence'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  crooked_or: {
+    species: [
+      { name: 'Spring Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Summer Steelhead', type: 'anadromous', primary: true },
+      { name: 'Bull Trout', type: 'resident', primary: true },
+    ],
+    designations: ['ODFW Fish Habitat Distribution — documented presence'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  molalla_or: {
+    species: [
+      { name: 'Spring Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true },
+      { name: 'Summer Steelhead', type: 'anadromous', primary: true },
+      { name: 'Winter Steelhead', type: 'anadromous', primary: true },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+      { name: 'Coastal Cutthroat Trout', type: 'resident', primary: false },
+    ],
+    designations: ['ODFW Fish Habitat Distribution — documented presence'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  quartzville_or: {
+    species: [
+      { name: 'Spring Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Winter Steelhead', type: 'anadromous', primary: true },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+      { name: 'Coastal Cutthroat Trout', type: 'resident', primary: false },
+    ],
+    designations: ['ODFW Fish Habitat Distribution — documented presence'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  wallowa_or: {
+    species: [
+      { name: 'Fall Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Spring Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true },
+      { name: 'Summer Steelhead', type: 'anadromous', primary: true },
+      { name: 'Bull Trout', type: 'resident', primary: true },
+      { name: 'Sockeye Salmon', type: 'anadromous', primary: false },
+    ],
+    designations: ['ODFW Fish Habitat Distribution — documented presence'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  s_fork_alsea_or: {
+    species: [
+      { name: 'Fall Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Spring Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true },
+      { name: 'Winter Steelhead', type: 'anadromous', primary: true },
+      { name: 'Coastal Cutthroat Trout', type: 'resident', primary: false },
+    ],
+    designations: ['ODFW Fish Habitat Distribution — documented presence'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  table_rock_or: {
+    species: [
+      { name: 'Spring Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true },
+      { name: 'Summer Steelhead', type: 'anadromous', primary: true },
+      { name: 'Winter Steelhead', type: 'anadromous', primary: true },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+      { name: 'Coastal Cutthroat Trout', type: 'resident', primary: false },
+    ],
+    designations: ['ODFW Fish Habitat Distribution — documented presence'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  elk_or: {
+    species: [
+      { name: 'Fall Chinook Salmon', type: 'anadromous', primary: true },
+      { name: 'Coho Salmon', type: 'anadromous', primary: true },
+      { name: 'Winter Steelhead', type: 'anadromous', primary: true },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+      { name: 'Coastal Cutthroat Trout', type: 'resident', primary: false },
+    ],
+    designations: ['ODFW Fish Habitat Distribution — documented presence'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
+  north_fork_rogue_or: {
+    species: [
+      { name: 'Coho Salmon', type: 'anadromous', primary: true },
+      { name: 'Summer Steelhead', type: 'anadromous', primary: true },
+      { name: 'Winter Steelhead', type: 'anadromous', primary: true },
+      { name: 'Rainbow Trout', type: 'resident', primary: false },
+      { name: 'Coastal Cutthroat Trout', type: 'resident', primary: false },
+    ],
+    designations: ['ODFW Fish Habitat Distribution — documented presence'],
+    spawning: [],
+    hatches: [],
+    runs: [],
+    guides: [],
+  },
+
 }
