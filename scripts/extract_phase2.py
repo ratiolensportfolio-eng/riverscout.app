@@ -226,8 +226,9 @@ def main():
             slugs = [r["slug"] for r in rivers]
             states = sorted(set(r["state"] for r in rivers))
             print(f"  HUC4 {huc4}  ({len(rivers)} rivers, {'/'.join(states)})")
-            print(f"    Rivers: {', '.join(slugs[:6)}{'...' if len(slugs) > 6 else ''}")
-            print(f"    {S3_BASE}/NHDPLUS_H_{huc4}_HU4_GDB.zip")
+            preview = ', '.join(slugs[:6])
+            suffix = '...' if len(slugs) > 6 else ''
+            print(f"    Rivers: {preview}{suffix}")
             print()
 
         print(f"  TOTAL: {len(missing_hucs)} HUC4s to download ({total_missing_rivers} rivers)")
