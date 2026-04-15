@@ -264,10 +264,17 @@ export async function fetchGaugeDataBatch(
 
   const optByGauge = new Map(usgs.map(x => [x.gaugeId, x.optRange]))
 
-  // Chunk to stay well under USGS's ~100-site cap.
+  // Chunk to stay well under USGS's ~100-site cap. Run all chunks
+  // in parallel — the homepage SSR was 30s+ when chunks ran serially
+  // (1109 rivers / 80 = 14 chunks × ~2s each = serial wall time).
+  // USGS happily handles parallel batched requests; we cap at 14
+  // concurrent which is well within their tolerance for a single
+  // origin.
   const CHUNK = 80
-  for (let i = 0; i < usgs.length; i += CHUNK) {
-    const chunk = usgs.slice(i, i + CHUNK)
+  const chunks: Array<typeof usgs> = []
+  for (let i = 0; i < usgs.length; i += CHUNK) chunks.push(usgs.slice(i, i + CHUNK))
+
+  await Promise.all(chunks.map(async chunk => {
     const sites = chunk.map(x => x.gaugeId).join(',')
     const url = `${IV_BASE}?format=json&sites=${sites}&parameterCd=00060,00065,00010&siteStatus=active&period=P7D`
     const json = await fetchExternalJson<{ value?: { timeSeries?: USGSTimeSeries[] } }>(url, {
@@ -276,9 +283,8 @@ export async function fetchGaugeDataBatch(
       nextRevalidate: USGS_REVALIDATE_SECONDS,
     })
     if (!json) {
-      // Whole chunk failed; mark each as empty and move on.
       for (const x of chunk) out.set(x.gaugeId, emptyFlow())
-      continue
+      return
     }
 
     // Group returned series by site code.
@@ -295,7 +301,7 @@ export async function fetchGaugeDataBatch(
       const series = bySite.get(x.gaugeId) ?? []
       out.set(x.gaugeId, parseTimeSeries(series, optByGauge.get(x.gaugeId) ?? ''))
     }
-  }
+  }))
 
   return out
 }
