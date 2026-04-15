@@ -78,6 +78,12 @@ export interface River {
   // rivers and by hand for dam-controlled rivers (e.g. Kananaskis AB
   // — TransAlta scheduled releases, no WSC realtime station).
   noGaugeAvailable?: boolean
+  // Optional reference to a multi-river paddling system (e.g. the
+  // Black Fork → Mohican → Walhonding → Muskingum → Ohio chain).
+  // Renders as a small "Part of: ..." note on the river page hero
+  // with links between the connected rivers. The order in riverIds
+  // is the upstream-to-downstream traversal order.
+  connectedRoute?: { name: string; riverIds: string[] }
   // Boolean filter flags (vary by state)
   [key: string]: unknown
 }

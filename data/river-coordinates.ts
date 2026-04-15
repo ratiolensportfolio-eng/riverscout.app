@@ -4,6 +4,10 @@
 
 export const RIVER_COORDS: Record<string, [number, number]> = {
 
+  // ── Ohio: Mohican / Black Fork / Walhonding / Muskingum system ──
+  // Approximate centroid coords for the connected paddling route.
+  black_fork_oh: [40.8, -82.4],         // Mid-Black Fork between Charles Mill and Loudonville
+
   // ── Canada (Alberta + BC) — at WSC station coordinates ────────
   bow_ab: [51.050, -114.051],
   kananaskis_ab: [51.034, -115.054],          // Approximate centre of the run; no active gauge.

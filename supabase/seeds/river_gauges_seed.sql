@@ -46,6 +46,17 @@ insert into public.river_gauges (river_id, gauge_id, gauge_name, gauge_source, r
   ('new_river', '03185400', 'NEW RIVER AT THURMOND, WV',   'usgs', 'At Thurmond',   37.9536, -81.0728, false),
   ('new_river', '380649081083301', 'NEW RIVER BELOW HAWKS NEST DAM, WV', 'usgs', 'Below Hawks Nest (Fayetteville area)', 38.1136, -81.1425, false);
 
+-- ── Muskingum (OH) — 5 gauges along 112 miles ─────────────────
+-- Coshocton (top of river) → Beverly (above Marietta confluence).
+-- Primary set to McConnelsville to match data/rivers.ts.
+delete from public.river_gauges where river_id = 'muskingum_oh';
+insert into public.river_gauges (river_id, gauge_id, gauge_name, gauge_source, river_section, lat, lng, is_primary) values
+  ('muskingum_oh', '03150000', 'Muskingum River at McConnelsville OH', 'usgs', 'At McConnelsville (mid-river)', 39.6451, -81.8499, true),
+  ('muskingum_oh', '03140500', 'Muskingum River near Coshocton OH',   'usgs', 'Near Coshocton (head, Three Rivers)', 40.2789, -81.8485, false),
+  ('muskingum_oh', '03144500', 'Muskingum River at Dresden OH',       'usgs', 'At Dresden',                39.9978, -81.9612, false),
+  ('muskingum_oh', '03148000', 'Muskingum River at Zanesville OH',    'usgs', 'At Zanesville',             39.9320, -82.0070, false),
+  ('muskingum_oh', '03150500', 'Muskingum River at Beverly OH',       'usgs', 'At Beverly (lower river)',  39.5364, -81.6353, false);
+
 -- ── Colorado (AZ) — 2 gauges ──────────────────────────────────
 delete from public.river_gauges where river_id = 'colorado';
 insert into public.river_gauges (river_id, gauge_id, gauge_name, gauge_source, river_section, lat, lng, is_primary) values

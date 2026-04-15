@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { getRiverBySlug, getStateSlug, getRiverSlug, ALL_RIVERS } from '@/data/rivers'
 import { fetchGaugeData, formatCfs, celsiusToFahrenheit, isHypothermiaRisk } from '@/lib/usgs'
 import HeroSparkline from '@/components/rivers/HeroSparkline'
+import ConnectedRouteBadge from '@/components/rivers/ConnectedRouteBadge'
 import RiverTabs from '@/components/rivers/RiverTabs'
 import SuggestCorrection from '@/components/SuggestCorrection'
 import SaveOffline from '@/components/SaveOffline'
@@ -317,6 +318,16 @@ export default async function RiverPage({ params, searchParams }: Props) {
                 </div>
               ) : null
             })()}
+
+            {/* Multi-river paddling system (e.g. Black Fork → Mohican
+                → Walhonding → Muskingum → Ohio). Surfaces only when
+                the river opted into a connectedRoute group. */}
+            {river.connectedRoute && (
+              <ConnectedRouteBadge
+                currentRiverId={river.id}
+                route={river.connectedRoute}
+              />
+            )}
 
             <div style={{
               fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
