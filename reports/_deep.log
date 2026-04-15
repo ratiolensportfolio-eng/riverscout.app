@@ -1,0 +1,29 @@
+[A] Full sweep: 335 outfitter URLs (~34 sec at 100ms throttle)
+[A] 50/335  alive=28 dead=22 invalid=0
+[A] 100/335  alive=57 dead=43 invalid=0
+[A] 150/335  alive=89 dead=61 invalid=0
+[A] 200/335  alive=121 dead=79 invalid=0
+[A] 250/335  alive=145 dead=105 invalid=0
+[A] 300/335  alive=169 dead=131 invalid=0
+[A] DONE: 142 dead of 335
+[B] Re-checking 865 USGS gauges (batched 11 chunks)
+[B] chunk 0-80: live=61 no-series=17 stale=2
+[B] chunk 80-160: live=129 no-series=24 stale=7
+[B] chunk 160-240: live=190 no-series=43 stale=7
+[B] chunk 240-320: live=254 no-series=54 stale=12
+[B] chunk 320-400: live=322 no-series=66 stale=12
+[B] chunk 400-480: live=395 no-series=71 stale=14
+[B] chunk 480-560: live=466 no-series=79 stale=15
+[B] chunk 560-640: live=531 no-series=92 stale=17
+[B] chunk 640-720: live=599 no-series=100 stale=21
+[B] chunk 720-800: live=668 no-series=109 stale=23
+[B] chunk 800-865: live=710 no-series=121 stale=34
+[B] DONE: live=710 no-series=121 stale=34
+[C] Morning brief written.
+
+═══════════════════════════════════════
+OVERNIGHT DEEP RUN COMPLETE
+Reports:
+  - reports/10b-outfitter-dead-links-FULL-2026-04-15.md
+  - reports/11b-broken-gauges-categorized-2026-04-15.md
+  - reports/_MORNING_BRIEF-2026-04-15.md
