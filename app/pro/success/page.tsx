@@ -26,8 +26,8 @@ export default function ProSuccess() {
             'Stocking and hatch alert emails',
             'Offline river pages',
             '10-year historical flow analysis',
-            'AI forecast interpretation',
             'Custom CFS ranges',
+            'River journal and trip statistics',
           ].map((f, i) => (
             <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '5px 0', fontFamily: mono, fontSize: '12px', color: 'var(--rvdk)' }}>
               <span style={{ color: 'var(--rv)', fontWeight: 700 }}>&#10003;</span>

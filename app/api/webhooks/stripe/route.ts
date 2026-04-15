@@ -108,8 +108,8 @@ export async function POST(req: NextRequest) {
             &#9889; Stocking alert emails &mdash; the moment your river is stocked<br/>
             &#9889; Hatch alert emails &mdash; when water temp hits the trigger<br/>
             &#9889; 10-year historical flow analysis<br/>
-            &#9889; AI forecast interpretation<br/>
             &#9889; Custom CFS ranges per river<br/>
+            &#9889; River journal and trip statistics<br/>
             &#9889; Offline river pages
           </div>
         </div>

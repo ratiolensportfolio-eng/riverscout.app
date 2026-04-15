@@ -337,7 +337,6 @@ export const PRO_FEATURES: ProFeature[] = [
   { icon: '\u26A1', title: 'Hatch alert emails', description: "Water temp hit the hex hatch trigger? We'll tell you", available: true },
   { icon: '\u26A1', title: 'Offline river pages', description: 'Full data with no cell service', available: true },
   { icon: '\u26A1', title: 'Historical flow analysis', description: '10-year CFS patterns and seasonal charts', available: true },
-  { icon: '\u26A1', title: 'AI forecast interpretation', description: 'Plain-language forecast with confidence intervals', available: true },
   { icon: '\u26A1', title: 'Custom CFS ranges', description: 'Set your personal optimal window per river', available: true },
   { icon: '\u26A1', title: 'River journal and trip statistics', description: 'Your paddling history in one place', available: true },
   { icon: '\u26A1', title: 'Float plan saved templates', description: 'Pre-filled for your regular rivers', available: false },
