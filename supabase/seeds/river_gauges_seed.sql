@@ -10,6 +10,18 @@
 
 begin;
 
+-- ── Manistee (MI) — 4 main-stem gauges ───────────────────────
+-- Upstream → downstream: Grayling (headwaters), Sherman (mid),
+-- Mesick (below Hodenpyl Dam), Wellston (below Tippy Dam — the
+-- main paddling + steelhead section). The Little Manistee (gauge
+-- 04126195) is a separate tributary and not seeded here.
+delete from public.river_gauges where river_id = 'manistee';
+insert into public.river_gauges (river_id, gauge_id, gauge_name, gauge_source, river_section, lat, lng, is_primary) values
+  ('manistee', '04124000', 'MANISTEE RIVER NEAR SHERMAN, MI',  'usgs', 'Near Sherman (mid-river)',           44.4364, -85.6987, true),
+  ('manistee', '04123500', 'MANISTEE RIVER NEAR GRAYLING, MI', 'usgs', 'Near Grayling (headwaters)',         44.6931, -84.8471, false),
+  ('manistee', '04124200', 'MANISTEE RIVER NEAR MESICK, MI',   'usgs', 'Near Mesick (below Hodenpyl Dam)',   44.3631, -85.8209, false),
+  ('manistee', '04125550', 'MANISTEE RIVER NEAR WELLSTON, MI', 'usgs', 'Near Wellston (below Tippy Dam)',    44.2594, -85.9416, false);
+
 -- ── Au Sable (MI) — 4 gauges ──────────────────────────────────
 delete from public.river_gauges where river_id = 'ausable';
 insert into public.river_gauges (river_id, gauge_id, gauge_name, gauge_source, river_section, lat, lng, is_primary) values
