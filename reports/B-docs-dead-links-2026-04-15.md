@@ -1,0 +1,335 @@
+# docs[].url Dead-Link Check — 2026-04-15
+
+Unique URLs in data/rivers.ts `docs` arrays: **954** (1359 total references)
+Alive: **626**, dead: **328**
+
+## Dead URLs (affecting these rivers)
+
+- https://www.rivers.gov/sites/rivers/files/documents/plans/pine-plan.pdf  (HTTP 403) — used by 1 river: pine_mi
+- https://www.michigan.gov/-/media/Project/Websites/dnr/Documents/Fisheries/NaturalRivers/AuSable_plan.pdf  (connect/timeout) — used by 1 river: ausable
+- https://www.researchgate.net/publication/265100820_Au_Sable_River_Assessment  (HTTP 403) — used by 1 river: ausable
+- https://pubs.usgs.gov/publication/70048280  (HTTP 404) — used by 1 river: manistee
+- http://www.thumbtrails.com/  (HTTP 404) — used by 1 river: lake_huron_mi
+- http://www.eup-planning.org/PDF/WATERTRAILS/StMarys%20River%20Access%20Inventory%20Final.pdf  (connect/timeout) — used by 1 river: st_marys_mi
+- http://flintriver.org/blog/watertrail/  (connect/timeout) — used by 1 river: flint_mi
+- https://www.fws.gov/uploadedFiles/Region_3/NWRS/Zone_2/Detroit_River/Sections/Refuge_Gateway/Detroit%20Heritage%20River%20Water%20Trail.pdf  (HTTP 403) — used by 1 river: detroit_mi
+- http://www.bluewaysofstclair.org/blueways.asp?ait=cl&tid=1  (HTTP 404) — used by 1 river: st_clair_mi
+- https://www.rivers.gov/river/sturgeon-hiawatha  (HTTP 403) — used by 1 river: sturgeon_mi_2
+- https://www.co.monroe.mi.us/Parks-Recreation/Monroe_County_Water_Trail_Master_Plan_final__1_.pdf  (HTTP 404) — used by 2 rivers: lake_erie_mi, river_raisin_mi
+- http://www.michhttp://www.michiganwatertrails.org/trail.asp?ait=ctv&ctid=35iganwatertrails.org/  (connect/timeout) — used by 1 river: grand_mi
+- https://www.rivers.gov/river/whitefish  (HTTP 403) — used by 2 rivers: east_branch_whitefish_mi, west_branch_whitefish_mi
+- https://www.rivers.gov/river/indian  (HTTP 403) — used by 1 river: indian_mi
+- https://www.americanwhitewater.org/content/River/detail/id/10262/  (HTTP 502) — used by 1 river: west_branch_whitefish_mi
+- https://www.rivers.gov/river/ontonagon  (HTTP 403) — used by 4 rivers: middle_branch_ontonagon_mi, west_branch_ontonagon_mi, ontonagon_mi, south_branch_ontonagon_mi
+- https://www.rivers.gov/river/carp  (HTTP 403) — used by 1 river: carp_mi
+- https://www.rivers.gov/river/presque-isle  (HTTP 403) — used by 1 river: presque_isle_mi
+- https://www.rivers.gov/river/paint  (HTTP 403) — used by 1 river: paint_mi
+- http://coalrivergroup.com/pages/Water-Trail.cfm  (HTTP 404) — used by 1 river: coal_wv
+- http://www.monriversummit.org/UMWT/  (connect/timeout) — used by 1 river: monongahela_wv
+- https://www.americanwhitewater.org/content/Project/view/id/122/  (HTTP 404) — used by 1 river: arkansas
+- https://rivers.gov/sites/rivers/files/documents/plans/cache-la-poudre-plan.pdf  (HTTP 403) — used by 1 river: poudre
+- http://www.americanwhitewater.org/content/River/detail/id/3375/  (HTTP 502) — used by 1 river: oh_be_joyful_co
+- https://rivers.gov/carp/sites/rivers/files/documents/plans/salmon-wilderness-plan.pdf  (HTTP 403) — used by 1 river: salmon
+- https://rivers.gov/sites/rivers/files/2023-07/clearwater-plan.pdf  (HTTP 403) — used by 1 river: lochsa
+- https://www.americanwhitewater.org/content/Article/view/article_id/nIufCO6a4pChhP4mL9ydQ/  (HTTP 404) — used by 2 rivers: lochsa, selway
+- https://www.rivers.gov/carp/sites/rivers/files/documents/plans/salmon-wilderness-plan.pdf  (HTTP 403) — used by 1 river: mf_salmon
+- https://www.fs.usda.gov/Internet/FSE_DOCUMENTS/fseprd584420.pdf  (HTTP 404) — used by 1 river: hells_canyon
+- https://tedtruebloodtu.org/conservation-projects/lower-boise-river/  (connect/timeout) — used by 1 river: sf_boise
+- https://www.rivers.gov/river/salmon-middle-fork  (HTTP 403) — used by 2 rivers: salmon_id, middle_fork_salmon_id
+- https://www.americanwhitewater.org/content/River/detail/id/611/  (HTTP 502) — used by 1 river: salmon_id
+- https://www.americanwhitewater.org/content/River/detail/id/612/  (HTTP 502) — used by 1 river: salmon_id
+- https://www.rivers.gov/river/snake  (HTTP 403) — used by 2 rivers: snake_id, snake_wy_2
+- https://www.americanwhitewater.org/content/River/detail/id/633/  (HTTP 502) — used by 1 river: snake_id
+- https://www.americanwhitewater.org/content/River/detail/id/634/  (HTTP 502) — used by 1 river: snake_id
+- https://www.americanwhitewater.org/content/River/detail/id/618/  (HTTP 502) — used by 1 river: middle_fork_salmon_id
+- https://www.rivers.gov/river/saint-joe  (HTTP 403) — used by 1 river: saint_joe_id
+- https://www.americanwhitewater.org/content/River/detail/id/639/  (HTTP 502) — used by 1 river: saint_joe_id
+- https://www.rivers.gov/river/owyhee-idaho  (HTTP 403) — used by 2 rivers: owyhee_id, owyhee_or
+- https://www.rivers.gov/river/bruneau  (HTTP 403) — used by 1 river: bruneau_id
+- https://www.rivers.gov/river/owyhee-south-fork  (HTTP 403) — used by 1 river: south_fork_owyhee_id
+- https://www.rivers.gov/river/jarbidge  (HTTP 403) — used by 1 river: jarbidge_id
+- https://www.rivers.gov/river/sheep  (HTTP 403) — used by 1 river: sheep_id
+- https://www.rivers.gov/river/clearwater-middle-fork  (HTTP 403) — used by 1 river: middle_fork_clearwater_id
+- https://www.americanwhitewater.org/content/River/detail/id/541/  (HTTP 502) — used by 1 river: middle_fork_clearwater_id
+- https://www.rivers.gov/river/owyhee-north-fork-idaho  (HTTP 403) — used by 2 rivers: north_fork_owyhee_id, north_fork_owyhee_or
+- https://www.rivers.gov/river/deep-idaho  (HTTP 403) — used by 1 river: deep_id
+- https://www.rivers.gov/river/bruneau-west-fork  (HTTP 403) — used by 1 river: west_fork_bruneau_id
+- https://rivers.gov/sites/rivers/files/documents/plans/rogue-plan.pdf  (HTTP 403) — used by 1 river: rogue
+- https://www.americanwhitewater.org/content/Project/view/id/rogue/  (HTTP 404) — used by 1 river: rogue
+- https://www.blm.gov/or/districts/prineville/plans/files/lower_deschutes_rmp.pdf  (HTTP 404) — used by 1 river: deschutes
+- https://www.rivers.gov/sites/rivers/files/documents/plans/mckenzie-plan.pdf  (HTTP 403) — used by 1 river: mckenzie
+- https://www.rivers.gov/sites/rivers/files/documents/plans/illinois-plan.pdf  (HTTP 403) — used by 1 river: illinois_or
+- https://www.rivers.gov/sites/rivers/files/documents/plans/north-umpqua-plan.pdf  (HTTP 403) — used by 1 river: north_umpqua
+- https://www.americanwhitewater.org/content/River/detail/id/1560/  (HTTP 502) — used by 1 river: umpqua_or
+- https://www.rivers.gov/river/grande-ronde  (HTTP 403) — used by 1 river: grande_ronde_or
+- https://www.rivers.gov/river/white  (HTTP 403) — used by 1 river: white_or
+- https://www.rivers.gov/river/john-day-north-fork  (HTTP 403) — used by 1 river: north_fork_john_day_or
+- https://www.rivers.gov/river/donner-und-blitzen  (HTTP 403) — used by 1 river: donner_und_blitzen_or
+- https://www.americanwhitewater.org/content/River/detail/id/1556/  (HTTP 502) — used by 1 river: siuslaw_or
+- https://www.rivers.gov/river/crooked  (HTTP 403) — used by 1 river: crooked_or
+- https://www.rivers.gov/river/molalla  (HTTP 403) — used by 2 rivers: molalla_or, table_rock_or
+- https://www.rivers.gov/river/quartzville  (HTTP 403) — used by 1 river: quartzville_or
+- https://www.rivers.gov/river/wallowa  (HTTP 403) — used by 1 river: wallowa_or
+- https://www.rivers.gov/river/elk-river  (HTTP 403) — used by 1 river: elk_or
+- http://www.pacificorp.com/es/hydro/hl/wr/rr.html  (HTTP 404) — used by 1 river: north_fork_rogue_or
+- https://rivers.gov/sites/rivers/files/documents/plans/skagit-plan.pdf  (HTTP 403) — used by 1 river: skagit
+- https://www.rivers.gov/rivers/grande-ronde.php  (HTTP 403) — used by 1 river: grande_ronde_wa
+- https://www.rivers.gov/rivers/klickitat.php  (HTTP 403) — used by 1 river: klickitat_wa
+- https://www.rivers.gov/river/klickitat  (HTTP 403) — used by 1 river: klickitat_wa
+- https://www.americanwhitewater.org/content/River/detail/id/2245/  (HTTP 502) — used by 1 river: sultan_wa
+- https://www.americanwhitewater.org/content/River/detail/id/3112/  (HTTP 502) — used by 1 river: sultan_wa
+- https://www.americanwhitewater.org/content/River/state-summary/state/WA/  (HTTP 502) — used by 1 river: sultan_wa
+- https://www.fs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb5108032.pdf  (HTTP 404) — used by 1 river: clarion
+- http://home.earthlink.net/~sacc  (connect/timeout) — used by 1 river: raystown_branch_juniata_pa
+- http://www.mbcomp.com/swatara  (connect/timeout) — used by 1 river: swatara_pa
+- http://www.tidaltrail.org/  (connect/timeout) — used by 1 river: tidal_delaware_pa
+- http://www.co.lancaster.pa.us/parks/cwp/view.asp?a=3&Q=564665&PM=1  (HTTP 404) — used by 1 river: conestoga_pa
+- http://pa-cumberlandcounty.civicplus.com/index.aspx?nid=951  (connect/timeout) — used by 2 rivers: conodoguinet_pa, yellow_breeches_pa
+- https://www.rivers.gov/sites/rivers/files/documents/plans/flathead-plan.pdf  (HTTP 403) — used by 1 river: flathead
+- https://rivers.gov/sites/rivers/files/documents/plans/upper-missouri-plan.pdf  (connect/timeout) — used by 1 river: missouri_mt
+- https://www.rivers.gov/river/missouri-montana  (HTTP 403) — used by 1 river: missouri_mt_2
+- https://www.fs.usda.gov/Internet/FSE_DOCUMENTS/stelprd3842665.pdf  (connect/timeout) — used by 1 river: south_fork_flathead_mt
+- https://www.rivers.gov/river/flathead  (HTTP 403) — used by 3 rivers: south_fork_flathead_mt, middle_fork_flathead_mt, north_fork_flathead_mt
+- https://www.americanwhitewater.org/content/River/detail/id/1005/  (HTTP 502) — used by 1 river: south_fork_flathead_mt
+- https://www.americanwhitewater.org/content/River/detail/id/3777/  (HTTP 502) — used by 1 river: south_fork_flathead_mt
+- http://www.americanwhitewater.org/content/River/detail/id/3774/  (HTTP 502) — used by 1 river: middle_fork_flathead_mt
+- http://www.americanwhitewater.org/content/River/detail/id/3776/  (HTTP 502) — used by 1 river: middle_fork_flathead_mt
+- http://www.americanwhitewater.org/content/River/detail/id/1003/  (HTTP 502) — used by 1 river: middle_fork_flathead_mt
+- http://www.americanwhitewater.org/content/River/detail/id/1004/  (HTTP 502) — used by 1 river: north_fork_flathead_mt
+- https://www.americanwhitewater.org/content/River/detail/id/1028/  (HTTP 502) — used by 1 river: swan_mt
+- https://www.rivers.gov/sites/rivers/files/documents/plans/obed-plan.pdf  (HTTP 403) — used by 1 river: obeds
+- https://www.americanwhitewater.org/content/Wiki/regions:se:ongoing_projects  (HTTP 404) — used by 2 rivers: ocoee, nantahala
+- https://www.tn.gov/content/dam/tn/environment/water/duck-river-watershed-planning-partnership/drwpp_initial-report-11-20-2025.pdf  (connect/timeout) — used by 1 river: duck_river
+- http://www.americanwhitewater.org/content/River/detail/id/1719/  (HTTP 502) — used by 1 river: big_south_fork_cumberland_tn
+- http://www.americanwhitewater.org/content/River/detail/id/1720/  (HTTP 502) — used by 1 river: big_south_fork_cumberland_tn
+- http://www.buffalocanoeing.com/  (connect/timeout) — used by 1 river: buffalo_tn
+- https://www.rivers.gov/river/obed  (HTTP 403) — used by 3 rivers: obed_tn, clear_tn_2, daddys_tn
+- http://www.americanwhitewater.org/content/River/detail/id/1773/  (HTTP 502) — used by 1 river: obed_tn
+- http://www.americanwhitewater.org/content/River/detail/id/1774/  (HTTP 502) — used by 1 river: obed_tn
+- http://www.americanwhitewater.org/content/River/detail/id/1765/  (HTTP 502) — used by 1 river: new_tn
+- http://www.americanwhitewater.org/content/River/detail/id/1730/  (HTTP 502) — used by 1 river: clear_tn_2
+- http://www.americanwhitewater.org/content/River/detail/id/1731/  (HTTP 502) — used by 1 river: clear_tn_2
+- http://www.americanwhitewater.org/content/River/detail/id/1732/  (HTTP 502) — used by 1 river: clear_tn_2
+- http://www.americanwhitewater.org/content/River/detail/id/1775/  (HTTP 502) — used by 1 river: daddys_tn
+- https://www.fs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb5126197.pdf  (HTTP 404) — used by 1 river: tuolumne
+- https://www.rivers.gov/rivers/sites/rivers/files/documents/plans/kern-plan.pdf  (HTTP 403) — used by 1 river: kern
+- https://www.rivers.gov/sites/rivers/files/documents/plans/merced-plan.pdf  (HTTP 403) — used by 1 river: merced
+- https://www.rivers.gov/river/feather  (HTTP 403) — used by 1 river: middle_fork_feather_ca
+- https://www.americanwhitewater.org/content/River/detail/id/4435/  (HTTP 502) — used by 1 river: middle_fork_feather_ca
+- https://www.americanwhitewater.org/content/River/detail/id/193/  (HTTP 502) — used by 1 river: middle_fork_feather_ca
+- https://www.americanwhitewater.org/content/River/detail/id/194/  (HTTP 502) — used by 1 river: middle_fork_feather_ca
+- https://www.rivers.gov/river/trinity  (HTTP 403) — used by 3 rivers: south_fork_trinity_ca, new_ca, north_fork_trinity_ca
+- http://www.americanwhitewater.org/content/River/detail/id/3719/#main  (HTTP 502) — used by 1 river: south_fork_trinity_ca
+- http://www.americanwhitewater.org/content/River/detail/id/4498/#main  (HTTP 502) — used by 1 river: south_fork_trinity_ca
+- http://www.americanwhitewater.org/content/River/detail/id/4499/#main  (HTTP 502) — used by 1 river: south_fork_trinity_ca
+- http://www.americanwhitewater.org/content/River/detail/id/4500/#main  (HTTP 502) — used by 1 river: south_fork_trinity_ca
+- http://www.americanwhitewater.org/content/River/detail/id/321/#main  (HTTP 502) — used by 1 river: south_fork_trinity_ca
+- https://www.rivers.gov/river/eel  (HTTP 403) — used by 4 rivers: middle_fork_eel_ca, south_fork_eel_ca, north_fork_eel_ca, van_duzen_ca
+- http://www.americanwhitewater.org/content/River/detail/id/185/#main  (HTTP 502) — used by 1 river: middle_fork_eel_ca
+- https://www.rivers.gov/rivers/rivers/river/kings  (HTTP 403) — used by 2 rivers: middle_fork_kings_ca, south_fork_kings_ca
+- http://www.americanwhitewater.org/content/River/detail/id/227/#main  (HTTP 502) — used by 1 river: middle_fork_kings_ca
+- https://www.americanwhitewater.org/content/River/detail/id/162/  (HTTP 502) — used by 1 river: east_fork_carson_ca
+- https://www.americanwhitewater.org/content/River/detail/id/161/  (HTTP 502) — used by 1 river: east_fork_carson_ca
+- https://www.theamericanriver.com/rivers/north-fork  (HTTP 404) — used by 1 river: north_fork_american_ca
+- https://www.rivers.gov/river/american-north-fork  (HTTP 403) — used by 1 river: north_fork_american_ca
+- https://www.americanwhitewater.org/content/River/detail/id/139/  (HTTP 502) — used by 1 river: north_fork_american_ca
+- https://www.fws.gov/refuge/Stone_Lakes/  (HTTP 403) — used by 1 river: stone_lakes_ca
+- https://www.fws.gov/refuge/stone-lakes/visit-us/tours  (HTTP 403) — used by 1 river: stone_lakes_ca
+- https://www.rivers.gov/river/klamath-california  (HTTP 403) — used by 1 river: scott_ca
+- https://www.americanwhitewater.org/content/River/detail/id/295/#main  (HTTP 502) — used by 1 river: scott_ca
+- https://www.americanwhitewater.org/content/River/detail/id/148/  (HTTP 502) — used by 1 river: south_fork_american_ca
+- http://www.americanwhitewater.org/content/River/detail/id/10554/#main  (HTTP 502) — used by 1 river: south_fork_kings_ca
+- http://www.americanwhitewater.org/content/River/detail/id/258/#main  (HTTP 502) — used by 1 river: new_ca
+- http://www.americanwhitewater.org/content/River/detail/id/196/  (HTTP 502) — used by 1 river: north_fork_feather_ca
+- https://www.americanwhitewater.org/content/River/detail/id/198/  (HTTP 502) — used by 1 river: north_fork_feather_ca
+- https://www.rivers.gov/river/smith  (HTTP 403) — used by 3 rivers: north_fork_smith_ca, middle_fork_smith_ca, south_fork_smith_ca
+- http://www.americanwhitewater.org/content/River/detail/id/298/#tab-map  (HTTP 502) — used by 1 river: north_fork_smith_ca
+- http://www.americanwhitewater.org/content/River/detail/id/320/#main  (HTTP 502) — used by 1 river: north_fork_trinity_ca
+- https://www.rivers.gov/river/merced  (HTTP 403) — used by 1 river: south_fork_merced_ca
+- http://www.americanwhitewater.org/content/River/detail/id/10710/  (HTTP 502) — used by 1 river: south_fork_merced_ca
+- http://www.americanwhitewater.org/content/River/detail/id/297/  (HTTP 502) — used by 1 river: middle_fork_smith_ca
+- http://www.americanwhitewater.org/content/River/detail/id/297/#main  (HTTP 502) — used by 1 river: middle_fork_smith_ca
+- http://www.americanwhitewater.org/content/River/detail/id/299/#main  (HTTP 502) — used by 1 river: south_fork_smith_ca
+- http://www.regionalparks.saccounty.net/Pages/default.aspx  (connect/timeout) — used by 1 river: american_ca
+- https://www.rivers.gov/river/american  (HTTP 403) — used by 1 river: american_ca
+- http://www.americanwhitewater.org/content/River/detail/id/4538/#main  (HTTP 502) — used by 1 river: american_ca
+- http://www.americanwhitewater.org/content/River/detail/id/187/#main  (HTTP 502) — used by 1 river: north_fork_eel_ca
+- http://www.americanwhitewater.org/content/River/detail/id/329/  (HTTP 502) — used by 1 river: van_duzen_ca
+- https://www.nature.org/en-us/get-involved/how-to-help/places-we-protect/clinch-valley/  (HTTP 404) — used by 1 river: clinch_va
+- http://deq.state.va.us/Programs/CoastalZoneManagement/CZMIssuesInitiatives/SeasideWaterTrail.aspx  (connect/timeout) — used by 1 river: virginia_seaside_water_trail_va
+- http://www.visitfranklincountyva.org/rivers/  (connect/timeout) — used by 1 river: pigg_va
+- http://www.whittlesmill.org/Meherrin-River.html#anchor_81  (connect/timeout) — used by 1 river: meherrin_river_trail_va
+- http://www.mpra.org/  (HTTP 403) — used by 1 river: mattaponi_and_pamunkey_rivers_trail_va
+- http://www.danriver.org/  (connect/timeout) — used by 1 river: dan_va
+- http://www.upperjamesriverwatertrail.com/main/index.php  (connect/timeout) — used by 1 river: upper_james_river_water_trail_va
+- http://nansemondriverpreservationalliance.org/  (connect/timeout) — used by 1 river: suffolk_blue_water_trail_va
+- http://www.upperreach.org/index.php?option=com_docman&task=doc_view&gid=1&Itemid=192  (HTTP 404) — used by 1 river: buggs_island_beechwood_flats_water_trail_va
+- http://www.jamesriverassociation.org/enjoy-the-james/james-river-maps  (connect/timeout) — used by 1 river: chickahominy_water_trail_va
+- http://www.baygateways.net/general.cfm?id=45  (connect/timeout) — used by 1 river: maury_river_water_trail_va
+- http://www.americanwhitewater.org/content/River/detail/id/1956/  (HTTP 502) — used by 1 river: johns_va
+- https://www.nps.gov/maca/learn/management/upload/MACA-General-Management-Plan-WebVersion.pdf  (HTTP 404) — used by 1 river: green_river
+- https://www.americanwhitewater.org/content/River/detail/id/671/  (HTTP 502) — used by 1 river: red_ky
+- http://fw.ky.gov/Education/Pages/Elkhorn-Creek.aspx  (HTTP 404) — used by 1 river: elkhorn_ky
+- https://www.americanwhitewater.org/content/River/detail/id/2010/  (HTTP 502) — used by 1 river: russell_ky_2
+- https://rivers.gov/sites/rivers/files/2023-01/chattooga-study.pdf  (HTTP 403) — used by 1 river: chattooga
+- https://www.americanwhitewater.org/content/Project/view/id/chattooga/  (HTTP 404) — used by 1 river: chattooga
+- https://www.hookandbullet.com/fishing-persimmon-lake-murphy-nc/  (connect/timeout) — used by 1 river: persimmon_lake_nc
+- http://www.paddlehiwassee.com/hiwasseeriver.htm  (connect/timeout) — used by 1 river: hiwassee_nc
+- https://www.americanwhitewater.org/content/River/detail/id/1751/  (connect/timeout) — used by 1 river: hiwassee_nc
+- https://www.rivers.gov/river/lumber  (HTTP 403) — used by 1 river: lumber_nc
+- http://www.lumberriverconservancy.org/lumber_river.html  (HTTP 404) — used by 1 river: lumber_nc
+- https://www.rivers.gov/river/new  (HTTP 403) — used by 1 river: new_nc
+- http://www.ncparks.gov/Visit/parks/neri/main.php  (HTTP 403) — used by 1 river: new_nc
+- https://www.americanwhitewater.org/content/River/detail/id/1107/  (HTTP 502) — used by 1 river: oconaluftee_nc
+- http://www.americanwhitewater.org/content/River/detail/id/3146/  (HTTP 502) — used by 1 river: cheoah_nc
+- https://www.americanwhitewater.org/content/River/detail/id/3146/  (HTTP 502) — used by 1 river: cheoah_nc
+- https://www.americanwhitewater.org/content/River/detail/id/2290/  (HTTP 502) — used by 1 river: west_fork_tuckasegee_nc
+- https://www.americanwhitewater.org/content/River/detail/id/1766/  (HTTP 502) — used by 1 river: nolichucky_nc_2
+- https://rivers.gov/apps/sites/rivers/files/documents/plans/snake-headwaters-plan-usfs.pdf  (HTTP 403) — used by 1 river: snake_wy
+- https://wgfd.wyo.gov/Fishing-and-Boating/Boating-and-Watercraft  (HTTP 404) — used by 1 river: north_platte_wy
+- http://www.nps.gov/grte/planyourvisit/upload/Floating14.pdf  (HTTP 404) — used by 1 river: snake_wy_2
+- http://www.fs.usda.gov/recarea/btnf/recreation/wateractivities/recarea/?recid=71667&actid=79  (connect/timeout) — used by 1 river: snake_wy_2
+- https://www.rivers.gov/river/snake-river-headwaters  (HTTP 403) — used by 1 river: snake_wy_2
+- http://www.americanwhitewater.org/content/River/detail/id/6367/#main  (HTTP 502) — used by 1 river: snake_wy_2
+- http://www.americanwhitewater.org/content/River/detail/id/3460/revision/1193249/#main  (HTTP 502) — used by 1 river: snake_wy_2
+- https://www.americanwhitewater.org/content/River/detail/id/2472/  (HTTP 502) — used by 1 river: snake_wy_2
+- https://www.americanwhitewater.org/content/River/detail/id/2473/  (HTTP 502) — used by 1 river: snake_wy_2
+- https://www.americanwhitewater.org/content/River/detail/id/6370/  (HTTP 502) — used by 1 river: snake_wy_2
+- https://www.rivers.gov/river/green  (HTTP 403) — used by 1 river: green_ut
+- https://www.americanwhitewater.org/content/River/view/river-detail/1861/main  (connect/timeout) — used by 1 river: muddy_ut
+- https://www.rivers.gov/rivers/river/virgin  (HTTP 403) — used by 1 river: north_fork_virgin_ut
+- http://www.virginriver.org/guide/guidetemple.htm  (connect/timeout) — used by 1 river: north_fork_virgin_ut
+- http://www.virginriver.org/guide/guidestair.htm  (connect/timeout) — used by 1 river: north_fork_virgin_ut
+- http://www.americanwhitewater.org/content/River/detail/id/6819/#main  (HTTP 502) — used by 1 river: north_fork_virgin_ut
+- http://www.americanwhitewater.org/content/River/detail/id/1880/#main  (HTTP 502) — used by 1 river: north_fork_virgin_ut
+- https://www.rivers.gov/sites/rivers/files/documents/plans/rio-grande-plan.pdf  (HTTP 403) — used by 1 river: taos_box
+- https://rivers.gov/sites/rivers/files/documents/plans/rio-chama-plan.pdf  (HTTP 403) — used by 1 river: rio_chama
+- https://www.rivers.gov/river/rio-grande-new-mexico  (HTTP 403) — used by 1 river: rio_grande_nm
+- https://www.americanwhitewater.org/content/River/search  (HTTP 502) — used by 1 river: rio_grande_nm
+- https://kenlockwood.tu.org/tu-projects/penobscot-river-restoration  (connect/timeout) — used by 1 river: penobscot
+- https://www.northernforestcanoetrail.org/trip-planner/  (HTTP 404) — used by 4 rivers: northern_forest_canoe_trail_me, northern_forest_canoe_trail_ny, northern_forest_canoe_trail_nh, northern_forest_canoe_trail_vt
+- http://www.americanwhitewater.org/content/River/detail/id/755/  (HTTP 502) — used by 1 river: allagash_me
+- http://www.americanwhitewater.org/content/River/detail/id/438/  (HTTP 502) — used by 1 river: kennebec_me
+- https://www.americanwhitewater.org/content/River/detail/id/868/  (HTTP 502) — used by 1 river: west_branch_penobscot_me
+- https://www.nps.gov/upde/learn/management/planning.htm  (HTTP 404) — used by 1 river: delaware_ny
+- http://www.americanwhitewater.org/content/River/detail/id/1352/  (HTTP 502) — used by 1 river: moose_ny
+- https://www.americanwhitewater.org/content/River/detail/id/1349/  (HTTP 502) — used by 1 river: mongaup_ny
+- http://srwt.pcgeorgia.com/  (connect/timeout) — used by 1 river: satilla_ga
+- http://www.secoastpaddlingtrail.com/  (connect/timeout) — used by 5 rivers: satilla_ga, generals_cut_ga, waccamaw_river_icw_sc, coosaw_river_icw_sc, stono_sc
+- http://www.secoastpaddlingtrail.com/trail-maps/  (connect/timeout) — used by 5 rivers: satilla_ga, generals_cut_ga, waccamaw_river_icw_sc, coosaw_river_icw_sc, stono_sc
+- https://www.fws.gov/refuge/okefenokee/  (HTTP 403) — used by 1 river: suwannee_ga
+- https://www.fws.gov/uploadedFiles/OkeMapSide2015_FINAL.pdf  (HTTP 403) — used by 1 river: suwannee_ga
+- https://chattahoochee.org/our-work/headwaters-regional-office/chattahoochee-river-water-trail/  (HTTP 404) — used by 1 river: chattahoochee_ga
+- https://www.yellowriverwatertrail.org/  (connect/timeout) — used by 1 river: yellow_ga
+- https://rootsrated.com/chattanooga-tn/flat-water-paddling/west-chickamauga-creek  (HTTP 405) — used by 1 river: west_chickamauga_ga
+- https://www.visitharalson.org/canoe  (HTTP 404) — used by 1 river: tallapoosa_ga
+- https://www.americanwhitewater.org/content/River/detail/id/3685/  (HTTP 502) — used by 1 river: fox_wi
+- https://www.americanwhitewater.org/content/River/detail/id/2887/#main  (HTTP 502) — used by 1 river: baraboo_wi
+- https://www.nrtdatabase.org/trailDetail.php?recordID=3918  (connect/timeout) — used by 1 river: rock_wi
+- https://www.americanwhitewater.org/content/River/detail/id/2756/  (HTTP 502) — used by 1 river: totagatic_wi
+- https://www.americanwhitewater.org/content/River/detail/id/2282/  (HTTP 502) — used by 1 river: brule_wi_2
+- https://www.americanwhitewater.org/content/River/detail/id/3472/  (HTTP 502) — used by 1 river: sheboygan_wi
+- https://www.americanwhitewater.org/content/River/detail/id/2301/  (HTTP 502) — used by 1 river: montreal_wi
+- https://www.americanwhitewater.org/content/River/state-summary/state/WI/  (HTTP 502) — used by 7 rivers: montreal_wi, south_fork_flambeau_wi, popple_wi, eau_claire_wi, red_wi, white_wi...
+- https://www.americanwhitewater.org/content/River/detail/id/2313/  (HTTP 502) — used by 1 river: red_wi
+- https://www.rivers.gov/river/st-croix  (HTTP 403) — used by 1 river: st_croix_wi
+- http://www.americanwhitewater.org/content/River/detail/id/2839/  (HTTP 502) — used by 1 river: st_croix_wi
+- http://www.americanwhitewater.org/content/River/detail/id/2314/#main  (HTTP 502) — used by 1 river: st_croix_wi
+- http://www.americanwhitewater.org/content/River/detail/id/2840/#main  (HTTP 502) — used by 1 river: st_croix_wi
+- http://www.iowadnr.gov/Things-to-Do/Canoeing-Kayak  (HTTP 404) — used by 30 rivers: iowa_ia, mississippi_ia, little_sioux_ia, missouri_ia, north_raccoon_ia, south_skunk_ia...
+- https://www.iowadnr.gov/Fishing/Where-to-Fish/Lakes-Ponds-Reservoirs/LakeDetails/lakeCode/RRO63  (HTTP 404) — used by 1 river: lake_red_rock_ia
+- http://iowawatertrails.org/?page_id=13  (connect/timeout) — used by 1 river: lizard_ia
+- https://rivers.gov/documents/plans/eleven-point-management-direction.pdf  (HTTP 403) — used by 1 river: eleven_point
+- http://southwestpaddler.com/docs/grandmo2.html  (connect/timeout) — used by 1 river: grand_mo
+- http://kayakmo.com/detail.php?type=R&name=os  (HTTP 404) — used by 1 river: osage_mo
+- http://southwestpaddler.com/docs/castor2.html  (connect/timeout) — used by 1 river: castor_mo
+- https://mdc.mo.gov/your-property/greener-communities/missouri-watershed-inventory-and-assessment/sac-river  (HTTP 404) — used by 1 river: sac_mo
+- https://mdc.mo.gov/your-property/greener-communities/missouri-watershed-inventory-and-assessment/blue-river  (HTTP 404) — used by 1 river: blue_mo
+- https://rivers.gov/sites/rivers/files/documents/plans/buffalo-plan.pdf  (HTTP 403) — used by 1 river: buffalo
+- http://www.arkansas.com/outdoors/water-activities/canoeing-rafting-kayaking/  (HTTP 404) — used by 4 rivers: buffalo_ar, north_sylamore_ar, hurricane_ar, richland_ar
+- https://www.americanwhitewater.org/content/River/state-summary/state/AR/  (HTTP 502) — used by 1 river: buffalo_ar
+- https://www.rivers.gov/rivers/richland.php  (HTTP 403) — used by 1 river: richland_ar
+- https://www.mvn.usace.army.mil/portals/56/docs/pao/brochures/atchafalayabasinproject.pdf  (HTTP 403) — used by 1 river: atchafalaya
+- https://www.fws.gov/sites/default/files/documents/Bogue%20Chitto_2011_CCP.pdf  (HTTP 403) — used by 1 river: bogue_chitto
+- https://rivers.gov/sites/rivers/files/2023-01/black-creek-study-deis.pdf  (HTTP 403) — used by 1 river: black_creek_ms
+- https://www.alabamascenicrivertrail.com/  (HTTP 521) — used by 1 river: alabama_al
+- https://www.americanwhitewater.org/content/River/state-summary/state/AL/  (HTTP 502) — used by 1 river: little_al
+- https://www.mysuwanneeriver.com/DocumentCenter/View/12027/Suwannee-River-Basin-SWIM-Plan  (HTTP 404) — used by 1 river: suwannee
+- http://www.dep.state.fl.us/gwt/guide/paddle.htm  (connect/timeout) — used by 1 river: econfina_fl
+- http://www.dep.state.fl.us/gwt/FGTS_Plan/PDF/FGTS_Plan_2013-17_publication.pdf  (connect/timeout) — used by 1 river: econfina_fl
+- https://www.rivers.gov/river/wekiva  (HTTP 403) — used by 1 river: rock_springs_run_fl
+- https://www.rivers.gov/river/chattooga  (HTTP 403) — used by 1 river: chattooga_sc_2
+- https://rivers.gov/sites/rivers/files/documents/plans/niobrara-plan.pdf  (HTTP 403) — used by 1 river: niobrara
+- http://outdoornebraska.gov/wp-content/uploads/2015/11/NGPC_Trails_Elkhorn_River.pdf  (HTTP 404) — used by 2 rivers: lower_elkhorn_ne, upper_elkhorn_ne
+- http://outdoornebraska.gov/watertrails/  (HTTP 403) — used by 3 rivers: lower_elkhorn_ne, upper_elkhorn_ne, cedar_ne
+- http://outdoornebraska.gov/wp-content/uploads/2015/11/NGPC_Trails_Cedar_River.pdf  (HTTP 403) — used by 1 river: cedar_ne
+- https://rivers.gov/sites/rivers/files/documents/plans/missouri-plan-nps.pdf  (HTTP 403) — used by 1 river: missouri_sd
+- https://www.rivers.gov/river/missouri-nebraska-south-dakota  (HTTP 403) — used by 1 river: missouri_sd
+- https://www.rivers.gov/river/rio-grande-texas  (HTTP 403) — used by 1 river: rio_grande_tx
+- http://www.americanwhitewater.org/content/River/detail/id/1824/  (HTTP 502) — used by 1 river: rio_grande_tx
+- http://www.americanwhitewater.org/content/River/detail/id/1825/  (HTTP 502) — used by 1 river: rio_grande_tx
+- http://www.americanwhitewater.org/content/River/detail/id/1821/  (HTTP 502) — used by 1 river: rio_grande_tx
+- http://www.americanwhitewater.org/content/River/detail/id/1823/#main  (HTTP 502) — used by 1 river: rio_grande_tx
+- https://www.usbr.gov/mp/troa/final/troa_final_09-08_full.pdf  (connect/timeout) — used by 1 river: truckee
+- https://www.nps.gov/lake/planyourvisit/boating.htm  (HTTP 404) — used by 1 river: colorado_nv
+- https://carson.org/government/departments-g-z/parks-recreation-open-space/brochures-maps-master-plans-and-reports/carson-river-aquatic-trail-map  (HTTP 404) — used by 1 river: carson_nv
+- https://www.fws.gov/refuge/Ruby_Lake/  (HTTP 403) — used by 1 river: ruby_lake_nv
+- https://www.fws.gov/refuge/Ruby_Lake/Visit/Boating_Regulations.html  (HTTP 403) — used by 1 river: ruby_lake_nv
+- https://www.americanwhitewater.org/content/River/detail/id/4141/  (HTTP 502) — used by 1 river: south_fork_owyhee_nv
+- https://www.rivers.gov/rivers/river/little-beaver  (HTTP 403) — used by 1 river: little_beaver_oh
+- http://www.americanwhitewater.org/content/River/detail/id/3126/#main  (HTTP 502) — used by 1 river: little_beaver_oh
+- http://www.americanwhitewater.org/content/River/detail/id/1470/#main  (HTTP 502) — used by 1 river: little_beaver_oh
+- http://www.americanwhitewater.org/content/River/detail/id/1471/#main  (HTTP 502) — used by 1 river: little_beaver_oh
+- https://www.americanwhitewater.org/content/River/detail/id/1479/  (HTTP 502) — used by 1 river: tinkers_oh
+- https://www.in.gov/dnr/outdoor/4461.htm  (HTTP 404) — used by 16 rivers: ohio_in, east_fork_white_in, mississinewa_in, iroquois_in, flatrock_in, big_walnut_in...
+- http://www.kankakeeriverwatertrail.org/index.php  (connect/timeout) — used by 1 river: kankakee_in
+- http://dnr.state.il.us/lands/landmgt/parks/r3/NATLRIV.HTM  (connect/timeout) — used by 1 river: middle_fork_vermillion_il
+- https://www.rivers.gov/river/vermilion-middle-fork  (HTTP 403) — used by 1 river: middle_fork_vermillion_il
+- https://www.des.nh.gov/sites/g/files/ehbemt341/files/documents/saco-swift-plan.pdf  (HTTP 403) — used by 1 river: saco
+- https://lakesrpc.nh.gov/wp-content/uploads/2025/08/Pemi-River-Corridor-Mgment-Plan-2013.pdf  (HTTP 404) — used by 1 river: pemi
+- https://www.fws.gov/refuge/Umbagog/  (HTTP 403) — used by 1 river: umbagog_lake_nh
+- https://www.fws.gov/refuge/Umbagog/visit/boating.html  (HTTP 403) — used by 1 river: umbagog_lake_nh
+- http://www.lampreyriver.org/UploadedFiles/Files/LampreyTourGuide.pdf  (HTTP 404) — used by 1 river: lamprey_nh
+- https://www.rivers.gov/river/lamprey  (HTTP 403) — used by 1 river: lamprey_nh
+- https://www.americanwhitewater.org/content/River/detail/id/10746/  (HTTP 502) — used by 1 river: lamprey_nh
+- https://www.rivers.gov/river/nashua  (HTTP 403) — used by 3 rivers: nissitissit_nh, nashua_ma, squannacook_ma
+- https://dec.vermont.gov/sites/dec/files/wsm/mapp/docs/pl_basin7.finalplan.pdf  (HTTP 403) — used by 1 river: lamoille
+- https://dec.vermont.gov/sites/dec/files/documents/mp_WaterQualityAssessmentReport_Basin9_WhiteRiver_2016-12.pdf  (HTTP 403) — used by 1 river: white_vt
+- https://www.rivers.gov/river/missisquoi-trout  (HTTP 403) — used by 1 river: trout_vt
+- https://rivers.gov/sites/rivers/files/2023-01/housatonic-study.pdf  (HTTP 403) — used by 1 river: housatonic
+- https://rivers.gov/carp/apps/sites/rivers/files/documents/plans/farmington-upper-plan.pdf  (HTTP 403) — used by 1 river: farmington
+- https://www.rivers.gov/river/wood-pawcatuck  (HTTP 403) — used by 8 rivers: pawcatuck_ct, wood_ct, green_fall_ct, shunock_ct, beaver_ri, queen_ri...
+- https://www.rivers.gov/river/eightmile  (HTTP 403) — used by 1 river: eightmile_ct
+- https://www.rivers.gov/river/farmington-west-branch  (HTTP 403) — used by 1 river: west_branch_farmington_ct
+- https://www.rivers.gov/river/farmington  (HTTP 403) — used by 3 rivers: west_branch_salmon_brook_ct, east_branch_salmon_brook_ct, salmon_brook_ct
+- https://rivers.gov/sites/rivers/files/documents/plans/wood-pawcatuck-plan.pdf  (HTTP 403) — used by 1 river: pawcatuck
+- https://www.americanwhitewater.org/content/River/detail/id/2588/  (HTTP 502) — used by 1 river: anacostia_md
+- https://www.americanwhitewater.org/content/Article/view/article_id/YQBDfHlOcZNNJJyPd41uh  (HTTP 404) — used by 1 river: deerfield
+- https://www.rivers.gov/sites/rivers/files/documents/plans/suasco-river-conservation-plan.pdf  (HTTP 403) — used by 1 river: concord
+- https://www.rivers.gov/river/taunton  (HTTP 403) — used by 1 river: taunton_ma
+- https://www.americanwhitewater.org/content/River/detail/id/10536/  (HTTP 502) — used by 1 river: blackstone_ma
+- https://www.rivers.gov/river/sudbury-assabet-concord  (HTTP 403) — used by 1 river: assabet_ma
+- https://dnr.alaska.gov/parks/units/kenai/krsma.htm  (HTTP 404) — used by 1 river: kenai_ak
+- http://www.americanwhitewater.org/content/River/detail/id/3159/#main  (HTTP 502) — used by 1 river: noatak_ak
+- https://www.rivers.gov/river/nowitna  (HTTP 403) — used by 1 river: nowitna_ak
+- https://www.rivers.gov/river/sheenjek  (HTTP 403) — used by 1 river: sheenjek_ak
+- https://www.rivers.gov/river/selawik  (HTTP 403) — used by 1 river: selawik_ak
+- https://www.rivers.gov/river/andreafsky  (HTTP 403) — used by 2 rivers: east_fork_andreafsky_ak, andreafsky_ak
+- https://www.rivers.gov/river/birch  (HTTP 403) — used by 1 river: birch_ak
+- https://www.rivers.gov/river/wind  (HTTP 403) — used by 1 river: wind_ak
+- https://www.rivers.gov/river/beaver  (HTTP 403) — used by 1 river: beaver_ak
+- http://www.americanwhitewater.org/content/River/detail/id/3155/  (HTTP 502) — used by 1 river: alatna_ak
+- http://www.americanwhitewater.org/content/River/detail/id/3155/#main  (HTTP 502) — used by 1 river: alatna_ak
+- https://www.rivers.gov/river/charley  (HTTP 403) — used by 1 river: charley_ak
+- http://www.americanwhitewater.org/content/River/detail/id/5/#main  (HTTP 502) — used by 1 river: charley_ak
+- https://www.rivers.gov/river/ivishak  (HTTP 403) — used by 1 river: ivishak_ak
+- https://www.rivers.gov/river/fortymile  (HTTP 403) — used by 7 rivers: north_fork_fortymile_ak, middle_fork_fortymile_ak, fortymile_ak, south_fork_fortymile_ak, dennison_ak, logging_cabin_ak...
+- https://www.americanwhitewater.org/content/River/detail/id/2551/  (HTTP 502) — used by 2 rivers: north_fork_fortymile_ak, middle_fork_fortymile_ak
+- https://www.americanwhitewater.org/content/River/detail/id/18/  (HTTP 502) — used by 1 river: fortymile_ak
+- https://www.rivers.gov/river/delta  (HTTP 403) — used by 2 rivers: delta_ak, tangle_ak
+- https://www.americanwhitewater.org/content/River/state-summary/?state=AK  (HTTP 502) — used by 1 river: delta_ak
+- https://www.fws.gov/refuge/kenai/visit-us/activities/boating---non-motorized  (HTTP 403) — used by 1 river: moose_ak
+- https://www.fws.gov/refuge/kenai/visit-us  (HTTP 403) — used by 1 river: moose_ak
+- https://www.rivers.gov/river/aniakchak  (HTTP 403) — used by 1 river: aniakchak_ak
+- http://www.americanwhitewater.org/content/River/detail/id/2/#main  (HTTP 502) — used by 1 river: aniakchak_ak
+- https://www.americanwhitewater.org/content/River/detail/id/4357/  (HTTP 502) — used by 3 rivers: south_fork_fortymile_ak, dennison_ak, west_fork_dennison_ak

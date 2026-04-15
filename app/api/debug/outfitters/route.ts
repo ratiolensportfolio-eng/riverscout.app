@@ -12,10 +12,12 @@ export async function GET() {
     .select('*', { count: 'exact', head: true })
   results['1_total_outfitters'] = { count: total, error: e1?.message || null }
 
-  // 2. Count by tier
+  // 2. Count by tier — debug route, cap at 5000 to keep payload
+  // reasonable even if outfitters grows.
   const { data: allOutfitters, error: e2 } = await supabase
     .from('outfitters')
     .select('id, business_name, tier, active, river_ids, created_at')
+    .limit(5000)
 
   if (allOutfitters) {
     const byTier: Record<string, number> = {}

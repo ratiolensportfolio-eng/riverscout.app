@@ -1,0 +1,30 @@
+[A] Proposing replacements for 86 suspect gauges
+[A] DONE: 22 swap proposals, 64 no confident alternate
+[B] Checking 954 unique docs URLs (1359 total refs)
+[B] 50/954  alive=34 dead=16
+[B] 100/954  alive=77 dead=23
+[B] 150/954  alive=108 dead=42
+[B] 200/954  alive=141 dead=59
+[B] 250/954  alive=172 dead=78
+[B] 300/954  alive=188 dead=112
+[B] 350/954  alive=207 dead=143
+[B] 400/954  alive=237 dead=163
+[B] 450/954  alive=265 dead=185
+[B] 500/954  alive=299 dead=201
+[B] 550/954  alive=332 dead=218
+[B] 600/954  alive=374 dead=226
+[B] 650/954  alive=411 dead=239
+[B] 700/954  alive=447 dead=253
+[B] 750/954  alive=489 dead=261
+[B] 800/954  alive=529 dead=271
+[B] 850/954  alive=572 dead=278
+[B] 900/954  alive=598 dead=302
+[B] 950/954  alive=624 dead=326
+[B] DONE: 328 dead of 954 unique docs URLs
+[C] DONE: 6 same-state duplicate groups, 100 cross-state name overlaps
+
+═══════════════════════════════════════
+OVERNIGHT DEEP-2 COMPLETE
+  reports/A-replacement-gauges-2026-04-15.md
+  reports/B-docs-dead-links-2026-04-15.md
+  reports/C-duplicate-rivers-2026-04-15.md

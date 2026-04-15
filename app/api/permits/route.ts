@@ -64,6 +64,7 @@ export async function GET(req: NextRequest) {
     .select('*')
     .order('state_key', { ascending: true })
     .order('river_name', { ascending: true })
+    .limit(2000)
 
   if (error) {
     console.error('[permits GET] error:', error)

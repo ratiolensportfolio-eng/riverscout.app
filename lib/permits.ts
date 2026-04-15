@@ -46,6 +46,7 @@ export async function fetchPermittedRiverIds(): Promise<Set<string>> {
   const { data, error } = await supabase
     .from('river_permits')
     .select('river_id')
+    .limit(2000)
 
   if (error || !data) return new Set()
   return new Set(data.map(r => r.river_id))

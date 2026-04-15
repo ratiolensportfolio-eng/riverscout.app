@@ -75,10 +75,15 @@ export async function GET(req: NextRequest) {
 
   // Pull the dedupe log so we can skip alerts we've already sent.
   // The log only matters for releases that are still in the
-  // future or just-passed window — old logs are noise.
+  // future or just-passed window — old logs are noise. Cap at a
+  // generous 50k so the cron doesn't pull the full history every
+  // run; older rows never affect the "already sent" set because
+  // the release IDs they reference have long since expired.
   const { data: logData, error: logErr } = await supabase
     .from('release_alert_log')
     .select('alert_id, release_id')
+    .order('created_at', { ascending: false })
+    .limit(50000)
   if (logErr) {
     console.error('[cron/release-alerts] log fetch:', logErr)
     return NextResponse.json({ ok: false, error: logErr.message }, { status: 500 })

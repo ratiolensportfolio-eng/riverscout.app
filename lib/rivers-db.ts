@@ -29,11 +29,14 @@ export async function fetchStatesFromDB(): Promise<StatesDB | null> {
 
     if (statesErr || !states || states.length === 0) return null
 
-    // Fetch all rivers
+    // Fetch all rivers. .limit() acts as a safety cap — the rivers
+    // table is currently <2000 rows but we don't want an uncapped
+    // SELECT if it ever grows.
     const { data: rivers, error: riversErr } = await supabase
       .from('rivers')
       .select('*')
       .order('state_key, name')
+      .limit(5000)
 
     if (riversErr || !rivers) return null
 
@@ -42,11 +45,13 @@ export async function fetchStatesFromDB(): Promise<StatesDB | null> {
       .from('river_history')
       .select('*')
       .order('river_id, sort_order')
+      .limit(20000)
 
     // Fetch documents
     const { data: docs } = await supabase
       .from('river_documents')
       .select('*')
+      .limit(10000)
 
     // Fetch seed reviews
     const { data: reviews } = await supabase
