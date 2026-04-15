@@ -1,0 +1,32 @@
+Task 6 (Polylines): 1014/1123 rivers have map files (90%)
+Task 7 (Desc audit): 125 short, 35 NRP-boilerplate descriptions need rewriting
+Task 9 (Missing fisheries): 81 rivers in MI/MT/OR/CO/PA need fisheries data
+Task 5 (Sitemap): 1175 URLs total; sitemap.ts present
+Task 12 (DB perf): 221 Supabase calls scanned; 51 unfiltered (potential full-table scans)
+Task 1 (USGS gauge discovery): 340 confident attaches proposed, 115 need review, 24 truly ungauged
+Task 4 (NRP preview): 1025 new candidates available — preview only, no import
+Task 2 (WSC matching): 13 Canadian rivers — 12 gauged, 0 need attention
+Task 8 (Q&A seed): 1123 rivers have zero Q&A — starter questions templated, not inserted
+Task 11 (Broken USGS): 121 gauges returned no series, 34 stale (-999999)
+Task 10 (Dead links): sampled 60 outfitter URLs — 28 dead, 32 alive, 0 invalid
+Task 3 (Historical avg): sampled 50/865 USGS gauges; 44 have data, 6 don't. Lazy-fill is wired — no batch write needed.
+
+═══════════════════════════════════════
+OVERNIGHT RUN COMPLETE
+═══════════════════════════════════════
+Reports written to C:\Users\Alaney\Desktop\Riverscout\reports
+
+Per-task summaries:
+  • Task 6 (Polylines): 1014/1123 rivers have map files (90%)
+  • Task 7 (Desc audit): 125 short, 35 NRP-boilerplate descriptions need rewriting
+  • Task 9 (Missing fisheries): 81 rivers in MI/MT/OR/CO/PA need fisheries data
+  • Task 5 (Sitemap): 1175 URLs total; sitemap.ts present
+  • Task 12 (DB perf): 221 Supabase calls scanned; 51 unfiltered (potential full-table scans)
+  • Task 1 (USGS gauge discovery): 340 confident attaches proposed, 115 need review, 24 truly ungauged
+  • Task 4 (NRP preview): 1025 new candidates available — preview only, no import
+  • Task 2 (WSC matching): 13 Canadian rivers — 12 gauged, 0 need attention
+  • Task 8 (Q&A seed): 1123 rivers have zero Q&A — starter questions templated, not inserted
+  • Task 11 (Broken USGS): 121 gauges returned no series, 34 stale (-999999)
+  • Task 10 (Dead links): sampled 60 outfitter URLs — 28 dead, 32 alive, 0 invalid
+  • Task 3 (Historical avg): sampled 50/865 USGS gauges; 44 have data, 6 don't. Lazy-fill is wired — no batch write needed.
+

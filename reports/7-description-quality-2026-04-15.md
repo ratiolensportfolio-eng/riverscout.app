@@ -1,0 +1,88 @@
+# Description Quality Audit — 2026-04-15
+
+Rivers with short desc (<100 chars): **125**
+Rivers with generic NRP boilerplate: **35**
+
+## Short desc rivers (first 50)
+- `clinton_mi` (MI, 25 chars): Clinton River Water Trail
+- `st_joseph_mi` (MI, 46 chars): 66.6 mile water trail on the St. Joseph River.
+- `coal_wv` (WV, 0 chars): (empty)
+- `monongahela_wv` (WV, 0 chars): (empty)
+- `upper_cheat_wv` (WV, 0 chars): (empty)
+- `mill_wv` (WV, 0 chars): (empty)
+- `big_wood_id` (ID, 65 chars): Floatable in small craft but mostly used by wade fishing anglers.
+- `umpqua_or` (OR, 0 chars): (empty)
+- `umpqua_river_south_or` (OR, 0 chars): (empty)
+- `okanogan_wa` (WA, 0 chars): (empty)
+- `west_branch_susquehanna_pa` (PA, 34 chars): 240 miles - Cherry Tree to Sunbury
+- `delaware_pa_2` (PA, 38 chars): 250 miles - Hancock, NY to Trenton, NJ
+- `north_branch_susquehanna_pa` (PA, 24 chars): New York line to Sunbury
+- `kiski_conemaugh_pa` (PA, 32 chars): 86 miles - Johnstown to Freeport
+- `raystown_branch_juniata_pa` (PA, 28 chars): 60 miles - Bedford to Saxton
+- `middle_susquehanna_pa` (PA, 32 chars): 51 miles - Sunbury to Harrisburg
+- `swatara_pa` (PA, 35 chars): 60 miles - Pine Grove to Middletown
+- `conodoguinet_pa` (PA, 80 chars): 40 miles - North Middleton Township to Mouth (confluence with Susquehanna River)
+- `loyalhanna_pa` (PA, 32 chars): 30 miles - Ligonier to Saltsburg
+- `monogahela_pa` (PA, 89 chars): Monongahela R - 16 miles - Youghiogheny River Confluence to Mouth (Ohio River Co
+- `shenango_pa` (PA, 51 chars): 23 miles - Pymatuning State Park Launch to Big Bend
+- `french_broad_tn` (TN, 0 chars): (empty)
+- `tennessee_tn` (TN, 0 chars): (empty)
+- `wolf_tn` (TN, 0 chars): (empty)
+- `harpeth_tn` (TN, 0 chars): (empty)
+- `clinch_tn` (TN, 0 chars): (empty)
+- `holston_tn` (TN, 0 chars): (empty)
+- `south_fork_holston_tn` (TN, 0 chars): (empty)
+- `buffalo_tn` (TN, 0 chars): (empty)
+- `little_tn` (TN, 0 chars): (empty)
+- `virginia_seaside_water_trail_va` (VA, 0 chars): (empty)
+- `mathews_county_blueways_va` (VA, 0 chars): (empty)
+- `pigg_va` (VA, 0 chars): (empty)
+- `meherrin_river_trail_va` (VA, 0 chars): (empty)
+- `mattaponi_and_pamunkey_rivers_trail_va` (VA, 0 chars): (empty)
+- `dan_va` (VA, 0 chars): (empty)
+- `upper_james_river_water_trail_va` (VA, 0 chars): (empty)
+- `rivanna_river_water_trail_va` (VA, 0 chars): (empty)
+- `rappahannock_river_water_trail_va` (VA, 0 chars): (empty)
+- `suffolk_blue_water_trail_va` (VA, 0 chars): (empty)
+- `occoquan_water_trail_va` (VA, 0 chars): (empty)
+- `buggs_island_beechwood_flats_water_trail_va` (VA, 0 chars): (empty)
+- `south_fork_shenandoah_va` (VA, 0 chars): (empty)
+- `maury_river_water_trail_va` (VA, 0 chars): (empty)
+- `bighorn_wy` (WY, 0 chars): (empty)
+- `encampment_wy` (WY, 0 chars): (empty)
+- `muddy_ut` (UT, 70 chars): Seldom runnable, but keep an eye on the gauge during late May to June.
+- `price_ut` (UT, 0 chars): (empty)
+- `kennebec_me` (ME, 93 chars): Beautiful class IV gorge with dam release flows that American Whitewater worked 
+- `mississippi_ia` (IA, 90 chars): Many public access points exist along the Mississippi River along the eastern Io
+
+## NRP boilerplate rivers (first 30)
+- `raccoon_oh` (OH): Paddling access exists along Raccoon Creek in southern Ohio. (Ohio DNR)
+- `wills_oh` (OH): Paddling access exists along Willis Creek in southern Ohio. (Ohio DNR)
+- `auglaize_oh` (OH): Paddling access exists along the Auglaize River in northwest Ohio. (Ohio DNR)
+- `paint_oh` (OH): Paddling access exists along Paint Creek in southern Ohio. (Ohio DNR)
+- `blanchard_oh` (OH): Paddling access exists along the Blanchard River in northwest Ohio. (Ohio DNR)
+- `killbuck_oh` (OH): Paddling access exists along Killbuck Creek in northern Ohio. (Ohio DNR)
+- `big_walnut_oh` (OH): Paddling access exists along Big Walnut Creek in central Ohio. (Ohio DNR)
+- `little_muskingum_oh` (OH): Paddling access exists along the Little Muskingum River in southeastern Ohio. (Ohio DNR)
+- `symmes_oh` (OH): Paddling access exists along Symmes Creek in southern Ohio. (Ohio DNR)
+- `licking_oh` (OH): Paddling access exists along the Licking River in northern Ohio. (Ohio DNR)
+- `deer_oh` (OH): Paddling access exists along Deer Creek in south-central Ohio. (Ohio DNR)
+- `huron_oh` (OH): Paddling access exists along the Huron River in northern Ohio. (Ohio DNR)
+- `saint_marys_oh` (OH): Paddling access exists along the Saint Marys River in northwestern Ohio. (Ohio DNR)
+- `ohio_brush_oh` (OH): Paddling access exists along Ohio Brush Creek in southern Ohio. (Ohio DNR)
+- `alum_oh` (OH): Paddling access exists along Alum Creek in central Ohio. (Ohio DNR)
+- `duck_oh` (OH): Paddling access exists along Duck Creek in east Ohio. (Ohio DNR)
+- `north_fork_paint_oh` (OH): Paddling access exists along the North Fork of Paint Creek in southern Ohio. (Ohio DNR)
+- `twin_oh` (OH): Paddling access exists along Twin Creek in eastern Ohio. (Ohio DNR)
+- `salt_oh` (OH): Paddling access exists along Salt Creek in southern Ohio. (Ohio DNR)
+- `sugar_oh` (OH): Paddling access exists along Sugar Creek in northeastern Ohio. (Ohio DNR)
+- `saint_joseph_oh` (OH): Paddling access exists along the Saint Joseph River in northwestern Ohio. (Ohio DNR)
+- `ottawa_oh` (OH): Paddling access exists along the Ottawa River in north-west Ohio. (Ohio DNR)
+- `sandy_oh` (OH): Paddling access exists along Sandy Creek in southern Ohio. (Ohio DNR)
+- `captina_oh` (OH): Paddling access exists along Captina Creek in eastern Ohio. (Ohio DNR)
+- `conotton_oh` (OH): Paddling access exists along Conotton Creek in eastern Ohio. (Ohio DNR)
+- `loramie_oh` (OH): Paddling access exists along Loramie Creek in western Ohio. (Ohio DNR)
+- `white_oak_oh` (OH): Paddling access exists along White Oak Creek in eastern Ohio. (Ohio DNR)
+- `scioto_brush_oh` (OH): Paddling access exists along Scioto Brush Creek in southern Ohio. (Ohio DNR)
+- `pymatuning_oh` (OH): Paddling access exists along Pymatuning Creek in northeastern Ohio. (Ohio DNR)
+- `caesar_oh` (OH): Paddling access exists along Caesar Creek in southwest Ohio. (Ohio DNR)
