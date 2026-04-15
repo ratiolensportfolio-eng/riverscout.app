@@ -11,6 +11,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { supabase } from '@/lib/supabase'
 
 interface Gauge {
   id: string
@@ -74,6 +75,16 @@ export default function GaugeSwitcher({ riverId, currentGaugeId }: Props) {
 
   function pick(g: Gauge) {
     try { localStorage.setItem(STORAGE_PREFIX + riverId, g.gauge_id) } catch { /* ignore */ }
+    // Persist to the user's profile so the dashboard + other devices
+    // honor the choice. Best-effort — fails silently for anon users.
+    supabase.auth.getUser().then(({ data }) => {
+      const uid = data.user?.id
+      if (!uid) return
+      fetch('/api/profile/gauge-preference', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId: uid, riverId, gaugeId: g.gauge_id }),
+      }).catch(() => { /* keep local-only on network error */ })
+    }).catch(() => { /* ignore — anon */ })
     setOpen(false)
     router.push(`?gauge=${g.gauge_id}`, { scroll: false })
   }

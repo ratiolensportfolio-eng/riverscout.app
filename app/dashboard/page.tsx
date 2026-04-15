@@ -61,13 +61,14 @@ export default async function DashboardPage() {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/login?next=/dashboard')
 
-  // Profile + saved rivers, in parallel.
-  const [profileRes, savedRes] = await Promise.all([
+  // Profile + saved rivers + gauge preferences, in parallel.
+  const [profileRes, savedRes, gaugePrefRes] = await Promise.all([
     supabase.from('profiles').select('home_state, weekly_digest_opted_in').eq('id', user.id).maybeSingle(),
     // Order by user-set position first, then most-recently-saved.
     supabase.from('saved_rivers').select('river_id, created_at, position').eq('user_id', user.id)
       .order('position', { ascending: true, nullsFirst: false })
       .order('created_at', { ascending: false }),
+    supabase.from('user_gauge_preferences').select('river_id, gauge_id').eq('user_id', user.id),
   ])
   const profile = profileRes.data
   const homeState = profile?.home_state ?? null
@@ -77,12 +78,22 @@ export default async function DashboardPage() {
     .map(id => ALL_RIVERS.find(r => r.id === id))
     .filter((r): r is NonNullable<typeof r> => !!r)
 
+  // Map river_id → preferred gauge_id. When set we substitute the
+  // user's chosen gauge for that river's primary g in the flow
+  // batch fetch, so the dashboard card matches what they last saw
+  // on the river page.
+  const gaugePref = new Map<string, string>(
+    (gaugePrefRes.data ?? []).map(r => [r.river_id, r.gauge_id])
+  )
+  const effectiveGaugeFor = (r: { id: string; g: string }) => gaugePref.get(r.id) || r.g
+
   // Live flow data for the saved rivers + active hazards for the
   // same set, both in parallel. Hazards drive the colored card
-  // borders and the greeting line.
+  // borders and the greeting line. Gauge IDs come from the user's
+  // saved preference when set, else the river's primary g.
   const [flowBatch, hazardsRes] = await Promise.all([
     savedRivers.length
-      ? fetchGaugeDataBatch(savedRivers.map(r => ({ gaugeId: r.g, optRange: r.opt })))
+      ? fetchGaugeDataBatch(savedRivers.map(r => ({ gaugeId: effectiveGaugeFor(r), optRange: r.opt })))
       : Promise.resolve(new Map<string, FlowData>()),
     savedRivers.length
       ? supabase
@@ -113,7 +124,7 @@ export default async function DashboardPage() {
         .map(r => {
           const c = RIVER_COORDS[r.id]
           if (!c) return null
-          const flow = flowBatch.get(r.g)
+          const flow = flowBatch.get(effectiveGaugeFor(r))
           return {
             id: r.id, name: r.n, lat: c[0], lng: c[1],
             condition: (flow?.condition ?? 'loading') as FlowCondition,
@@ -124,7 +135,7 @@ export default async function DashboardPage() {
         .filter((d): d is NonNullable<typeof d> => !!d)
     : []
 
-  const optimalCount = savedRivers.filter(r => flowBatch.get(r.g)?.condition === 'optimal').length
+  const optimalCount = savedRivers.filter(r => flowBatch.get(effectiveGaugeFor(r))?.condition === 'optimal').length
 
   // Smarter greeting — priority:
   //   1. Critical hazard on any saved river (life-safety)
@@ -140,7 +151,7 @@ export default async function DashboardPage() {
     const critical = savedRivers.find(r => hazardByRiver.get(r.id)?.severity === 'critical')
     const warning  = savedRivers.find(r => hazardByRiver.get(r.id)?.severity === 'warning')
     const risingFast = savedRivers.filter(r => {
-      const f = flowBatch.get(r.g)
+      const f = flowBatch.get(effectiveGaugeFor(r))
       return f?.changePerHour != null && f.changePerHour > 100
     })
     if (critical) {
@@ -216,7 +227,7 @@ export default async function DashboardPage() {
               )}
               <DraggableCardList userId={user.id} riverIds={savedRivers.map(r => r.id)}>
                 {savedRivers.map(r => {
-                const flow = flowBatch.get(r.g)
+                const flow = flowBatch.get(effectiveGaugeFor(r))
                 const cond = (flow?.condition ?? 'loading') as FlowCondition
                 const tempF = flow?.tempC != null ? Math.round(flow.tempC * 9 / 5 + 32) : null
                 const hazard = hazardByRiver.get(r.id)
