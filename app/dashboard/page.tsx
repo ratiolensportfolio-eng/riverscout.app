@@ -7,7 +7,16 @@ import { fetchGaugeDataBatch } from '@/lib/usgs'
 import { RIVER_COORDS } from '@/data/river-coordinates'
 import { STATE_MAP_CONFIG } from '@/data/state-centers'
 import StateRiverMap from '@/components/maps/StateRiverMap'
+import DraggableCardList from '@/components/dashboard/DraggableCardList'
+import DigestSubscribePrompt from '@/components/dashboard/DigestSubscribePrompt'
 import type { FlowData, FlowCondition } from '@/types'
+
+interface Hazard {
+  river_id: string
+  severity: 'info' | 'warning' | 'critical'
+  hazard_type: string
+  title: string
+}
 
 export const dynamic = 'force-dynamic'
 
@@ -55,19 +64,44 @@ export default async function DashboardPage() {
   // Profile + saved rivers, in parallel.
   const [profileRes, savedRes] = await Promise.all([
     supabase.from('profiles').select('home_state, weekly_digest_opted_in').eq('id', user.id).maybeSingle(),
-    supabase.from('saved_rivers').select('river_id, created_at').eq('user_id', user.id).order('created_at', { ascending: false }),
+    // Order by user-set position first, then most-recently-saved.
+    supabase.from('saved_rivers').select('river_id, created_at, position').eq('user_id', user.id)
+      .order('position', { ascending: true, nullsFirst: false })
+      .order('created_at', { ascending: false }),
   ])
   const profile = profileRes.data
   const homeState = profile?.home_state ?? null
+  const digestOptedIn = profile?.weekly_digest_opted_in ?? null
   const savedIds: string[] = (savedRes.data ?? []).map(r => r.river_id)
   const savedRivers = savedIds
     .map(id => ALL_RIVERS.find(r => r.id === id))
     .filter((r): r is NonNullable<typeof r> => !!r)
 
-  // Live flow data for the saved rivers in one batched USGS call.
-  const flowBatch = savedRivers.length
-    ? await fetchGaugeDataBatch(savedRivers.map(r => ({ gaugeId: r.g, optRange: r.opt })))
-    : new Map<string, FlowData>()
+  // Live flow data for the saved rivers + active hazards for the
+  // same set, both in parallel. Hazards drive the colored card
+  // borders and the greeting line.
+  const [flowBatch, hazardsRes] = await Promise.all([
+    savedRivers.length
+      ? fetchGaugeDataBatch(savedRivers.map(r => ({ gaugeId: r.g, optRange: r.opt })))
+      : Promise.resolve(new Map<string, FlowData>()),
+    savedRivers.length
+      ? supabase
+          .from('river_hazards')
+          .select('river_id, severity, hazard_type, title')
+          .in('river_id', savedRivers.map(r => r.id))
+          .eq('active', true)
+          .gt('expires_at', new Date().toISOString())
+      : Promise.resolve({ data: [] as Hazard[] }),
+  ])
+  // Per-river highest-severity hazard (critical > warning > info).
+  const SEVERITY_RANK: Record<string, number> = { critical: 3, warning: 2, info: 1 }
+  const hazardByRiver = new Map<string, Hazard>()
+  for (const h of (hazardsRes.data ?? []) as Hazard[]) {
+    const cur = hazardByRiver.get(h.river_id)
+    if (!cur || SEVERITY_RANK[h.severity] > SEVERITY_RANK[cur.severity]) {
+      hazardByRiver.set(h.river_id, h)
+    }
+  }
 
   const stateInfo = homeState ? STATES[homeState] : null
   const mapConfig = homeState ? STATE_MAP_CONFIG[homeState] : null
@@ -92,13 +126,36 @@ export default async function DashboardPage() {
 
   const optimalCount = savedRivers.filter(r => flowBatch.get(r.g)?.condition === 'optimal').length
 
-  // Greeting line — keep simple. Hazard / weather logic deferred.
+  // Smarter greeting — priority:
+  //   1. Critical hazard on any saved river (life-safety)
+  //   2. Warning hazard
+  //   3. Multiple rivers rising fast (post-rain proxy via flow rate)
+  //   4. Optimal-count line, weekend-aware
+  //   5. Generic time-based fallback
   const greetingPrefix = timeBasedGreeting()
-  const greeting = savedRivers.length === 0
-    ? `${greetingPrefix} Welcome to your dashboard.`
-    : optimalCount > 0
-      ? `${greetingPrefix} ${optimalCount} of your rivers ${optimalCount === 1 ? 'is' : 'are'} at optimal flow right now.`
-      : `${greetingPrefix} Conditions across your saved rivers are below.`
+  const day = new Date().getDay()
+  const isWeekend = day === 0 || day === 6
+  let greeting = `${greetingPrefix} Welcome to your dashboard.`
+  if (savedRivers.length > 0) {
+    const critical = savedRivers.find(r => hazardByRiver.get(r.id)?.severity === 'critical')
+    const warning  = savedRivers.find(r => hazardByRiver.get(r.id)?.severity === 'warning')
+    const risingFast = savedRivers.filter(r => {
+      const f = flowBatch.get(r.g)
+      return f?.changePerHour != null && f.changePerHour > 100
+    })
+    if (critical) {
+      greeting = `Heads up — there's an active critical hazard on the ${critical.n}.`
+    } else if (warning) {
+      greeting = `Heads up — there's an active hazard alert on the ${warning.n}.`
+    } else if (risingFast.length >= 2) {
+      greeting = `${greetingPrefix} ${risingFast.length} of your rivers are rising fast — check before you put in.`
+    } else if (optimalCount > 0) {
+      const tail = isWeekend ? 'this weekend.' : 'right now.'
+      greeting = `${greetingPrefix} ${optimalCount} of your rivers ${optimalCount === 1 ? 'is' : 'are'} at optimal flow ${tail}`
+    } else {
+      greeting = `${greetingPrefix} Conditions across your saved rivers are below.`
+    }
+  }
 
   return (
     <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)' }}>
@@ -141,7 +198,7 @@ export default async function DashboardPage() {
           )}
         </div>
 
-        {/* Right — saved river cards */}
+        {/* Right — saved river cards (drag-reorderable) */}
         <div className="dashboard-cards">
           {savedRivers.length === 0 ? (
             <EmptyState
@@ -149,72 +206,113 @@ export default async function DashboardPage() {
               body="Save rivers from any river page and they'll appear here with live conditions."
               cta={<Link href="/rivers" style={{ color: 'var(--rvdk)', textDecoration: 'underline' }}>Browse all rivers →</Link>}
             />
-          ) : savedRivers.map(r => {
-            const flow = flowBatch.get(r.g)
-            const cond = (flow?.condition ?? 'loading') as FlowCondition
-            const tempF = flow?.tempC != null ? Math.round(flow.tempC * 9 / 5 + 32) : null
-            return (
-              <div key={r.id} style={{
-                border: '.5px solid var(--bd)', borderRadius: 'var(--r)',
-                background: 'var(--bg)', padding: '14px 16px', marginBottom: '10px',
-              }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px', flexWrap: 'wrap' }}>
-                  <div>
-                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '17px', fontWeight: 600, color: '#042C53' }}>
-                      <Link href={getRiverPath(r)} style={{ color: 'inherit', textDecoration: 'none' }}>{r.n}</Link>
-                    </div>
-                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', marginTop: '2px' }}>
-                      {STATES[r.stateKey]?.name ?? r.abbr}{r.cls && ' · Class ' + r.cls}
-                    </div>
-                  </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '26px', fontWeight: 700, color: '#0C447C', lineHeight: 1 }}>
-                      {flow?.cfs != null ? flow.cfs.toLocaleString() : '—'}
-                    </div>
-                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--wt)' }}>cfs</div>
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginTop: '8px', alignItems: 'center', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px' }}>
-                  <span style={{
-                    padding: '2px 10px', borderRadius: '12px', fontWeight: 600,
-                    background: COND_COLOR[cond] + '22', color: COND_COLOR[cond],
-                    border: '.5px solid ' + COND_COLOR[cond] + '88',
-                  }}>{COND_LABEL[cond]}</span>
-                  {flow?.rateLabel && flow.rateLabel !== 'Rate unknown' && (
-                    <span style={{ color: 'var(--tx2)' }}>
-                      {flow.trend === 'up' ? '↑' : flow.trend === 'down' ? '↓' : '→'} {flow.rateLabel}
-                    </span>
-                  )}
-                  {tempF != null && (
-                    <span style={{ color: tempF < 50 ? 'var(--dg)' : 'var(--tx2)' }}>
-                      {tempF}°F{tempF < 50 && ' · hypothermia risk'}
-                    </span>
-                  )}
-                  {flow?.fetchedAt && (
-                    <span style={{ color: 'var(--tx3)', marginLeft: 'auto' }}>
-                      Updated {new Date(flow.fetchedAt).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}
-                    </span>
-                  )}
-                </div>
-
-                <div style={{ display: 'flex', gap: '8px', marginTop: '10px' }}>
-                  <Link href={getRiverPath(r)} style={{
-                    fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
-                    background: 'var(--rvlt)', color: 'var(--rvdk)',
-                    border: '.5px solid var(--rvmd)',
-                    padding: '5px 12px', borderRadius: '12px', textDecoration: 'none',
-                  }}>View full page</Link>
-                  <Link href={`/rivers/${r.stateKey}/${r.id}#alerts`} style={{
-                    fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
-                    background: 'transparent', color: 'var(--tx2)',
+          ) : (
+            <>
+              {/* Subscribe-later prompt for users who explicitly
+                  declined the digest during onboarding. Hidden if
+                  they opted in OR never saw the prompt (null). */}
+              {digestOptedIn === false && (
+                <DigestSubscribePrompt userId={user.id} />
+              )}
+              <DraggableCardList userId={user.id} riverIds={savedRivers.map(r => r.id)}>
+                {savedRivers.map(r => {
+                const flow = flowBatch.get(r.g)
+                const cond = (flow?.condition ?? 'loading') as FlowCondition
+                const tempF = flow?.tempC != null ? Math.round(flow.tempC * 9 / 5 + 32) : null
+                const hazard = hazardByRiver.get(r.id)
+                // Colored left border by hazard severity. Critical = red,
+                // warning = amber, info = teal. None when no active hazard.
+                const borderL = hazard?.severity === 'critical' ? '4px solid #A32D2D'
+                              : hazard?.severity === 'warning'  ? '4px solid #BA7517'
+                              : hazard?.severity === 'info'     ? '4px solid #1D9E75'
+                              : undefined
+                return (
+                  <div key={r.id} style={{
                     border: '.5px solid var(--bd)',
-                    padding: '5px 12px', borderRadius: '12px', textDecoration: 'none',
-                  }}>Set alert</Link>
-                </div>
-              </div>
-            )
-          })}
+                    borderLeft: borderL,
+                    borderRadius: 'var(--r)',
+                    background: 'var(--bg)', padding: '14px 16px', marginBottom: '10px',
+                  }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px', flexWrap: 'wrap' }}>
+                      <div>
+                        <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '17px', fontWeight: 600, color: '#042C53' }}>
+                          <Link href={getRiverPath(r)} style={{ color: 'inherit', textDecoration: 'none' }}>{r.n}</Link>
+                        </div>
+                        <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', marginTop: '2px' }}>
+                          {STATES[r.stateKey]?.name ?? r.abbr}{r.cls && ' · Class ' + r.cls}
+                        </div>
+                      </div>
+                      <div style={{ textAlign: 'right' }}>
+                        <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '26px', fontWeight: 700, color: '#0C447C', lineHeight: 1 }}>
+                          {flow?.cfs != null ? flow.cfs.toLocaleString() : '—'}
+                        </div>
+                        <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--wt)' }}>cfs</div>
+                      </div>
+                    </div>
+
+                    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginTop: '8px', alignItems: 'center', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px' }}>
+                      <span style={{
+                        padding: '2px 10px', borderRadius: '12px', fontWeight: 600,
+                        background: COND_COLOR[cond] + '22', color: COND_COLOR[cond],
+                        border: '.5px solid ' + COND_COLOR[cond] + '88',
+                      }}>{COND_LABEL[cond]}</span>
+                      {flow?.rateLabel && flow.rateLabel !== 'Rate unknown' && (
+                        <span style={{ color: 'var(--tx2)' }}>
+                          {flow.trend === 'up' ? '↑' : flow.trend === 'down' ? '↓' : '→'} {flow.rateLabel}
+                        </span>
+                      )}
+                      {tempF != null && (
+                        <span style={{ color: tempF < 50 ? 'var(--dg)' : 'var(--tx2)' }}>
+                          {tempF}°F{tempF < 50 && ' · hypothermia risk'}
+                        </span>
+                      )}
+                      {flow?.fetchedAt && (
+                        <span style={{ color: 'var(--tx3)', marginLeft: 'auto' }}>
+                          Updated {new Date(flow.fetchedAt).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Hazard strip — visible at the bottom when active. */}
+                    {hazard && (
+                      <div style={{
+                        marginTop: '10px', padding: '6px 10px',
+                        borderRadius: 'var(--r)',
+                        background: hazard.severity === 'critical' ? 'rgba(163, 45, 45, 0.08)'
+                                  : hazard.severity === 'warning'  ? 'rgba(186, 117, 23, 0.08)'
+                                  :                                  'rgba(29, 158, 117, 0.08)',
+                        color:      hazard.severity === 'critical' ? '#A32D2D'
+                                  : hazard.severity === 'warning'  ? '#7A4D0E'
+                                  :                                  '#085041',
+                        fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
+                        display: 'flex', alignItems: 'center', gap: '6px',
+                      }}>
+                        <span aria-hidden>{hazard.severity === 'critical' ? '⚠' : '⚠'}</span>
+                        <strong style={{ textTransform: 'uppercase', letterSpacing: '.3px' }}>{hazard.severity}</strong>
+                        <span style={{ flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{hazard.title}</span>
+                      </div>
+                    )}
+
+                    <div style={{ display: 'flex', gap: '8px', marginTop: '10px' }}>
+                      <Link href={getRiverPath(r)} style={{
+                        fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
+                        background: 'var(--rvlt)', color: 'var(--rvdk)',
+                        border: '.5px solid var(--rvmd)',
+                        padding: '5px 12px', borderRadius: '12px', textDecoration: 'none',
+                      }}>View full page</Link>
+                      <Link href={`/rivers/${r.stateKey}/${r.id}#alerts`} style={{
+                        fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
+                        background: 'transparent', color: 'var(--tx2)',
+                        border: '.5px solid var(--bd)',
+                        padding: '5px 12px', borderRadius: '12px', textDecoration: 'none',
+                      }}>Set alert</Link>
+                    </div>
+                  </div>
+                )
+              })}
+              </DraggableCardList>
+            </>
+          )}
         </div>
       </div>
 
