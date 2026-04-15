@@ -4,6 +4,7 @@ import { fetchGaugeDataBatch } from '@/lib/usgs'
 import { createSupabaseServerClient } from '@/lib/supabase-server'
 import USMap from '@/components/maps/USMap'
 import HomeSearch from '@/components/HomeSearch'
+import HomepageGuard from '@/components/onboarding/HomepageGuard'
 import type { FlowCondition } from '@/types'
 
 export const revalidate = 900
@@ -72,6 +73,7 @@ export default async function HomePage() {
 
   return (
     <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)', display: 'flex', flexDirection: 'column', overflow: 'auto' }}>
+      <HomepageGuard />
       {/* ── Hero + Map — one unified section ────────────────────
           Navy background. Wordmark, tagline, and search bar sit
           above the interactive US conditions map. No separate
