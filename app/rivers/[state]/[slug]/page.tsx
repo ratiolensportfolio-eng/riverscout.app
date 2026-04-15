@@ -22,6 +22,7 @@ export const revalidate = 900
 
 interface Props {
   params: Promise<{ state: string; slug: string }>
+  searchParams: Promise<{ gauge?: string }>
 }
 
 export async function generateStaticParams() {
@@ -133,15 +134,24 @@ const COND_LABEL: Record<string, string> = {
   loading: 'Loading…',
 }
 
-export default async function RiverPage({ params }: Props) {
+export default async function RiverPage({ params, searchParams }: Props) {
   const { state, slug } = await params
+  const sp = await searchParams
   const staticRiver = getRiverBySlug(state, slug)
   if (!staticRiver) notFound()
+
+  // Multi-gauge support: when the URL has ?gauge=<id> AND that id is
+  // a known gauge for this river, fetch flow from that gauge instead
+  // of the river's primary. The GaugeSwitcher component sets this
+  // param when the user picks a non-primary gauge from the popover.
+  // Validation is handled by the API route — for performance we
+  // trust the param here and just feed it to fetchGaugeData.
+  const activeGaugeId = sp.gauge && /^[A-Za-z0-9]+$/.test(sp.gauge) ? sp.gauge : staticRiver.g
 
   // Fire flow data and the batched river-page query in parallel.
   // Both go to different upstreams (USGS vs Supabase) so they can race.
   const [flow, prefetched] = await Promise.all([
-    fetchGaugeData(staticRiver.g, staticRiver.opt),
+    fetchGaugeData(activeGaugeId, staticRiver.opt),
     fetchRiverPageData(staticRiver.id, staticRiver.stateKey),
   ])
 

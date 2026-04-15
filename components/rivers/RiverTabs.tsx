@@ -39,6 +39,7 @@ const RiverMap = dynamic(() => import('@/components/maps/RiverMap'), {
   ssr: false,
 })
 import RiverPermits from '@/components/rivers/RiverPermits'
+import GaugeSwitcher from '@/components/rivers/GaugeSwitcher'
 import { hasRiverMap, loadRiverMap } from '@/data/river-maps'
 // FISHERIES (~4200 lines, ~150 kB) is dynamically imported when the user
 // clicks the Fishing tab. See `loadFisheries` below.
@@ -1078,6 +1079,7 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
               ) : river.noGaugeAvailable ? (
                 <span style={{ color: 'var(--tx3)' }}>No realtime gauge — see release schedule</span>
               ) : null}
+              <GaugeSwitcher riverId={river.id} currentGaugeId={river.g} />
             </div>
 
             {/* Canadian beta banner — surfaces above the designation
