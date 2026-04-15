@@ -17,8 +17,11 @@ export default async function HomePage() {
   // (chunks of 80 sites). Was 1100+ parallel single-site requests
   // — slow and prone to USGS rate-limiting on the homepage SSR.
   const rivers = ALL_RIVERS
+  // PT2H — homepage only needs current cfs + condition per state.
+  // 7-day readings would be ~30x larger payload for no UI benefit.
   const batch = await fetchGaugeDataBatch(
-    rivers.map(r => ({ gaugeId: r.g, optRange: r.opt }))
+    rivers.map(r => ({ gaugeId: r.g, optRange: r.opt })),
+    { period: 'PT2H' },
   )
 
   // Build per-state condition summary

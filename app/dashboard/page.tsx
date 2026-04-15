@@ -93,7 +93,10 @@ export default async function DashboardPage() {
   // saved preference when set, else the river's primary g.
   const [flowBatch, hazardsRes] = await Promise.all([
     savedRivers.length
-      ? fetchGaugeDataBatch(savedRivers.map(r => ({ gaugeId: effectiveGaugeFor(r), optRange: r.opt })))
+      ? fetchGaugeDataBatch(
+          savedRivers.map(r => ({ gaugeId: effectiveGaugeFor(r), optRange: r.opt })),
+          { period: 'P1D' },  // 1 day = enough for trend/rate; keeps payload small
+        )
       : Promise.resolve(new Map<string, FlowData>()),
     savedRivers.length
       ? supabase

@@ -14,8 +14,10 @@ export default async function AlertsPage() {
   // Fetch flow data for every river in batched USGS calls (chunks of
   // 80 sites). Was 1100+ parallel single-site requests — slow and
   // hitting USGS rate limits.
+  // PT2H — alerts list only needs current cfs + condition per row.
   const batch = await fetchGaugeDataBatch(
-    ALL_RIVERS.map(r => ({ gaugeId: r.g, optRange: r.opt }))
+    ALL_RIVERS.map(r => ({ gaugeId: r.g, optRange: r.opt })),
+    { period: 'PT2H' },
   )
   const flowMap: Record<string, FlowData> = {}
   for (const r of ALL_RIVERS) {

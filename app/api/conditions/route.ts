@@ -29,7 +29,10 @@ export async function POST(req: NextRequest) {
       if (r) inputs.push({ id, gaugeId: r.g, optRange: r.opt })
     }
 
-    const batch = await fetchGaugeDataBatch(inputs.map(x => ({ gaugeId: x.gaugeId, optRange: x.optRange })))
+    const batch = await fetchGaugeDataBatch(
+      inputs.map(x => ({ gaugeId: x.gaugeId, optRange: x.optRange })),
+      { period: 'PT2H' },
+    )
 
     const conditions: Record<string, { cfs: number | null; condition: string }> = {}
     for (const x of inputs) {

@@ -77,7 +77,10 @@ export default async function HatchesPage() {
     const r = riverMap.get(id)
     if (r) inputs.push({ gaugeId: r.g, optRange: r.opt, id })
   }
-  const batch = await fetchGaugeDataBatch(inputs.map(x => ({ gaugeId: x.gaugeId, optRange: x.optRange })))
+  const batch = await fetchGaugeDataBatch(
+    inputs.map(x => ({ gaugeId: x.gaugeId, optRange: x.optRange })),
+    { period: 'PT2H' },
+  )
   const flowMap = new Map<string, FlowData>()
   for (const x of inputs) {
     const f = batch.get(x.gaugeId)

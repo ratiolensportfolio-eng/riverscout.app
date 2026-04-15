@@ -39,7 +39,8 @@ export default async function StatePage({ params }: Props) {
   // chunking, the WSC-vs-USGS routing, and skips empty gauge IDs
   // without firing a network call.
   const [batch, permittedRiverIds] = await Promise.all([
-    fetchGaugeDataBatch(state.rivers.map(r => ({ gaugeId: r.g, optRange: r.opt }))),
+    // PT2H — state list cards only need current cfs + condition.
+    fetchGaugeDataBatch(state.rivers.map(r => ({ gaugeId: r.g, optRange: r.opt })), { period: 'PT2H' }),
     fetchPermittedRiverIds(),
   ])
   const flowMap = new Map<string, FlowData | null>(

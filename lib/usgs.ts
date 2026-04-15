@@ -236,7 +236,13 @@ export async function fetchGaugeData(gaugeId: string, optRange: string): Promise
 // since WSC doesn't support batched site queries.
 export async function fetchGaugeDataBatch(
   inputs: Array<{ gaugeId: string; optRange: string }>,
+  options: { period?: 'PT2H' | 'P1D' | 'P7D' } = {},
 ): Promise<Map<string, FlowData>> {
+  // period defaults to P7D for backward compat (river page sparkline
+  // needs the readings array). Pass 'PT2H' from list views (homepage,
+  // state page, alerts, dashboard) — they only need cfs + condition,
+  // and the smaller payload is ~30x faster per chunk.
+  const period = options.period ?? 'P7D'
   const out = new Map<string, FlowData>()
 
   // Partition into USGS (digit-only) and WSC (any letter). Empty
@@ -276,7 +282,7 @@ export async function fetchGaugeDataBatch(
 
   await Promise.all(chunks.map(async chunk => {
     const sites = chunk.map(x => x.gaugeId).join(',')
-    const url = `${IV_BASE}?format=json&sites=${sites}&parameterCd=00060,00065,00010&siteStatus=active&period=P7D`
+    const url = `${IV_BASE}?format=json&sites=${sites}&parameterCd=00060,00065,00010&siteStatus=active&period=${period}`
     const json = await fetchExternalJson<{ value?: { timeSeries?: USGSTimeSeries[] } }>(url, {
       timeoutMs: 15000,
       retries: 1,
