@@ -8,6 +8,13 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   // Approximate centroid coords for the connected paddling route.
   black_fork_oh: [40.8, -82.4],         // Mid-Black Fork between Charles Mill and Loudonville
 
+  // ── Ontario (WSC station centroids) ──────────────────────────
+  grand_on: [43.133, -80.267],          // Brantford gauge (primary)
+  speed_on: [43.422, -80.333],          // Cambridge
+  eramosa_on: [43.548, -80.182],        // Above Guelph
+  french_on: [46.069, -80.612],         // Dry Pine Bay (mid-river)
+  magnetawan_on: [45.773, -80.482],     // Britt (mouth)
+
   // ── Canada (Alberta + BC) — at WSC station coordinates ────────
   bow_ab: [51.050, -114.051],
   kananaskis_ab: [51.034, -115.054],          // Approximate centre of the run; no active gauge.

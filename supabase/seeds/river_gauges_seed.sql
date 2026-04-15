@@ -46,6 +46,14 @@ insert into public.river_gauges (river_id, gauge_id, gauge_name, gauge_source, r
   ('new_river', '03185400', 'NEW RIVER AT THURMOND, WV',   'usgs', 'At Thurmond',   37.9536, -81.0728, false),
   ('new_river', '380649081083301', 'NEW RIVER BELOW HAWKS NEST DAM, WV', 'usgs', 'Below Hawks Nest (Fayetteville area)', 38.1136, -81.1425, false);
 
+-- ── Grand River (ON) — 2 WSC gauges + GRCA supplementary network ──
+-- The WSC stations are the realtime federal feed; GRCA maintains
+-- additional gauges at grandriver.ca that we don't fetch yet.
+delete from public.river_gauges where river_id = 'grand_on';
+insert into public.river_gauges (river_id, gauge_id, gauge_name, gauge_source, river_section, lat, lng, is_primary) values
+  ('grand_on', '02GB001', 'GRAND RIVER AT BRANTFORD',  'wsc', 'At Brantford (downstream paddling section)', 43.133, -80.267, true),
+  ('grand_on', '02GA003', 'GRAND RIVER AT GALT',       'wsc', 'At Galt / Cambridge (mid-river)',           43.353, -80.316, false);
+
 -- ── Muskingum (OH) — 5 gauges along 112 miles ─────────────────
 -- Coshocton (top of river) → Beverly (above Marietta confluence).
 -- Primary set to McConnelsville to match data/rivers.ts.
