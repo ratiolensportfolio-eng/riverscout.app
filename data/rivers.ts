@@ -9320,6 +9320,29 @@ export const STATES: StatesDB = {
     ],
   },
 
+  // ── CANADA (BETA) ──────────────────────────────────────────────
+  // Initial Alberta launch — 8 rivers using Environment Canada Water
+  // Survey (WSC) realtime stations. Discharge is fetched in m³/s and
+  // converted to CFS automatically by lib/wsc.ts. Kananaskis has no
+  // active WSC realtime station (dam-controlled by TransAlta with
+  // scheduled releases) and is flagged noGaugeAvailable: true.
+  // Key is "canada" (not "ca") because "ca" is California's slot.
+  canada: {
+    name: 'Canada', abbr: 'CA', label: 'Canadian Rivers (Beta)', country: 'ca',
+    filters: ['all', 'ab', 'bc'],
+    fL: { all: 'All', ab: 'Alberta', bc: 'British Columbia' },
+    rivers: [
+      { id: 'bow_ab', n: 'Bow River', ab: true, bc: false, co: 'Alberta', len: '', cls: '', opt: '', g: '05BH004', gaugeSource: 'wsc', avg: 0, histFlow: 0, mx: 0, my: 0, abbr: 'AB', desc: 'Glacier-fed river flowing through Banff and Calgary. WSC gauge: BOW RIVER AT CALGARY (05BH004).', desig: '', secs: [], history: [], docs: [], revs: [], outs: [], needsVerification: ['class-rating-pending', 'map-position-missing'], dataSource: 'nrp' },
+      { id: 'kananaskis_ab', n: 'Kananaskis River', ab: true, bc: false, co: 'Alberta', len: '', cls: '', opt: '', g: '', gaugeSource: 'wsc', noGaugeAvailable: true, avg: 0, histFlow: 0, mx: 0, my: 0, abbr: 'AB', desc: 'Dam-controlled whitewater run on TransAlta scheduled releases. No WSC realtime gauge — check TransAlta release schedule for flow.', desig: '', secs: [], history: [], docs: [], revs: [], outs: [], needsVerification: ['class-rating-pending', 'map-position-missing'], dataSource: 'nrp' },
+      { id: 'athabasca_ab', n: 'Athabasca River', ab: true, bc: false, co: 'Alberta', len: '', cls: '', opt: '', g: '07BE001', gaugeSource: 'wsc', avg: 0, histFlow: 0, mx: 0, my: 0, abbr: 'AB', desc: 'Wild & Scenic-equivalent (Canadian Heritage River). Glacier-fed from Columbia Icefield. WSC gauge: ATHABASCA RIVER AT ATHABASCA (07BE001).', desig: 'Canadian Heritage River', secs: [], history: [], docs: [], revs: [], outs: [], needsVerification: ['class-rating-pending', 'map-position-missing'], dataSource: 'nrp' },
+      { id: 'kicking_horse_bc', n: 'Kicking Horse River', ab: false, bc: true, co: 'British Columbia', len: '', cls: '', opt: '', g: '08NA006', gaugeSource: 'wsc', avg: 0, histFlow: 0, mx: 0, my: 0, abbr: 'BC', desc: 'Class IV+ whitewater through Yoho National Park. WSC gauge: KICKING HORSE RIVER AT GOLDEN (08NA006). Note: river enters Alberta border but the run + gauge are in BC.', desig: 'Yoho National Park', secs: [], history: [], docs: [], revs: [], outs: [], needsVerification: ['class-rating-pending', 'map-position-missing'], dataSource: 'nrp' },
+      { id: 'north_saskatchewan_ab', n: 'North Saskatchewan River', ab: true, bc: false, co: 'Alberta', len: '', cls: '', opt: '', g: '05DC001', gaugeSource: 'wsc', avg: 0, histFlow: 0, mx: 0, my: 0, abbr: 'AB', desc: 'Canadian Heritage River. Headwaters at Saskatchewan Glacier. WSC gauge: NORTH SASKATCHEWAN RIVER NEAR ROCKY MOUNTAIN HOUSE (05DC001).', desig: 'Canadian Heritage River', secs: [], history: [], docs: [], revs: [], outs: [], needsVerification: ['class-rating-pending', 'map-position-missing'], dataSource: 'nrp' },
+      { id: 'red_deer_ab', n: 'Red Deer River', ab: true, bc: false, co: 'Alberta', len: '', cls: '', opt: '', g: '05CC002', gaugeSource: 'wsc', avg: 0, histFlow: 0, mx: 0, my: 0, abbr: 'AB', desc: 'Canadian Heritage River through the Alberta badlands. WSC gauge: RED DEER RIVER AT RED DEER (05CC002).', desig: 'Canadian Heritage River', secs: [], history: [], docs: [], revs: [], outs: [], needsVerification: ['class-rating-pending', 'map-position-missing'], dataSource: 'nrp' },
+      { id: 'elbow_ab', n: 'Elbow River', ab: true, bc: false, co: 'Alberta', len: '', cls: '', opt: '', g: '05BJ004', gaugeSource: 'wsc', avg: 0, histFlow: 0, mx: 0, my: 0, abbr: 'AB', desc: 'Tributary of the Bow flowing through Calgary. WSC gauge: ELBOW RIVER AT BRAGG CREEK (05BJ004) — above Glenmore Dam.', desig: '', secs: [], history: [], docs: [], revs: [], outs: [], needsVerification: ['class-rating-pending', 'map-position-missing'], dataSource: 'nrp' },
+      { id: 'sunwapta_ab', n: 'Sunwapta River', ab: true, bc: false, co: 'Alberta', len: '', cls: '', opt: '', g: '07AA007', gaugeSource: 'wsc', avg: 0, histFlow: 0, mx: 0, my: 0, abbr: 'AB', desc: 'Glacial river within Jasper National Park. WSC gauge: SUNWAPTA RIVER AT ATHABASCA GLACIER (07AA007).', desig: 'Jasper National Park', secs: [], history: [], docs: [], revs: [], outs: [], needsVerification: ['class-rating-pending', 'map-position-missing'], dataSource: 'nrp' },
+    ],
+  },
+
 }
 
 // ── Derived helpers ───────────────────────────────────────────────

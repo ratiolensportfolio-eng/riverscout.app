@@ -1067,8 +1067,33 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
               {river.histFlow != null && (
                 <span>Hist. median: <strong style={{ color: 'var(--tx2)' }}>{river.histFlow.toLocaleString()} cfs</strong></span>
               )}
-              <span>USGS <strong style={{ color: 'var(--tx2)' }}>#{river.g}</strong></span>
+              {river.g ? (
+                river.gaugeSource === 'wsc' ? (
+                  <span title="Environment Canada Water Survey">
+                    🇨🇦 WSC <strong style={{ color: 'var(--tx2)' }}>#{river.g}</strong>
+                  </span>
+                ) : (
+                  <span>USGS <strong style={{ color: 'var(--tx2)' }}>#{river.g}</strong></span>
+                )
+              ) : river.noGaugeAvailable ? (
+                <span style={{ color: 'var(--tx3)' }}>No realtime gauge — see release schedule</span>
+              ) : null}
             </div>
+
+            {/* Canadian beta banner — surfaces above the designation
+                so the user knows flow data is via WSC and coverage is
+                in beta. Only shown for rivers in the canada state block. */}
+            {river.abbr === 'AB' || river.abbr === 'BC' ? (
+              <div style={{
+                fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
+                color: '#085041', background: '#E1F5EE',
+                padding: '7px 10px', borderRadius: 'var(--r)',
+                marginBottom: '10px', lineHeight: 1.5,
+                border: '.5px solid #9FE1CB',
+              }}>
+                🇨🇦 <strong>Canadian river — beta coverage.</strong> Flow data via Environment Canada Water Survey (WSC) instead of USGS. Some features may be incomplete.
+              </div>
+            ) : null}
 
             {/* Designation */}
             {river.desig && (

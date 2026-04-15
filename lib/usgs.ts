@@ -140,6 +140,14 @@ function calculateRateOfChange(
 // Each `period=P7D` request returns ~672 readings per parameter (every
 // 15 min). The cfs readings drive the rate-of-change calculation.
 export async function fetchGaugeData(gaugeId: string, optRange: string): Promise<FlowData> {
+  // Route Canadian gauges to the WSC adapter. WSC station numbers
+  // always include uppercase letters (e.g. "05BH004"); USGS site
+  // numbers are all-digit. Lazy-import to keep the existing USGS
+  // bundle tree-shakeable for callers that never see Canadian rivers.
+  if (/[A-Z]/.test(gaugeId)) {
+    const { fetchWscGaugeData } = await import('./wsc')
+    return fetchWscGaugeData(gaugeId, optRange)
+  }
   const url = `${IV_BASE}?format=json&sites=${gaugeId}&parameterCd=00060,00065,00010&siteStatus=active&period=P7D`
 
   const json = await fetchExternalJson<{ value?: { timeSeries?: USGSTimeSeries[] } }>(url, {

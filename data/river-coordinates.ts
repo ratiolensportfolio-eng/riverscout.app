@@ -3,6 +3,17 @@
 // Format: [latitude, longitude]
 
 export const RIVER_COORDS: Record<string, [number, number]> = {
+
+  // ── Canada (Alberta + BC) — at WSC station coordinates ────────
+  bow_ab: [51.050, -114.051],
+  kananaskis_ab: [51.034, -115.054],          // Approximate centre of the run; no active gauge.
+  athabasca_ab: [54.722, -113.288],
+  kicking_horse_bc: [51.301, -116.972],
+  north_saskatchewan_ab: [52.377, -114.941],
+  red_deer_ab: [52.271, -113.823],
+  elbow_ab: [50.949, -114.570],
+  sunwapta_ab: [52.216, -117.232],
+
   // Michigan LP
   ausable: [44.60, -84.13],
   manistee: [44.25, -85.98],

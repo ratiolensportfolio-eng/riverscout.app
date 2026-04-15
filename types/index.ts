@@ -68,6 +68,16 @@ export interface River {
   // Each string is a short machine-readable tag (e.g. "cfs-range-wide",
   // "class-v-portage-note"). Surfaces in the Improve This River workflow.
   needsVerification?: string[]
+  // Which agency provides the live gauge feed. 'usgs' (US default) and
+  // 'wsc' (Environment Canada Water Survey) are wired today; 'manual'
+  // is reserved for future overrides.
+  gaugeSource?: 'usgs' | 'wsc' | 'manual'
+  // True when the river genuinely has no realtime gauge available
+  // within range. Distinguishes "no gauge attempted" from "no gauge
+  // exists." Set by scripts/apply-usgs-gauges.js for AK wilderness
+  // rivers and by hand for dam-controlled rivers (e.g. Kananaskis AB
+  // — TransAlta scheduled releases, no WSC realtime station).
+  noGaugeAvailable?: boolean
   // Boolean filter flags (vary by state)
   [key: string]: unknown
 }
@@ -83,6 +93,10 @@ export interface State {
   filters: string[]
   fL: StateFilters
   rivers: River[]
+  // Country code. Defaults to 'us' when unset. 'ca' marks Canadian
+  // states/provinces — used by UI to pick the right Mapbox view,
+  // show the WSC badge, and surface the beta banner.
+  country?: 'us' | 'ca'
 }
 
 export interface StatesDB {

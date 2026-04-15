@@ -175,7 +175,7 @@ export default async function HomePage() {
             <USMap stateFlowMap={stateFlowMap} stateConditions={stateConditions} />
           </div>
 
-          {/* Hint */}
+          {/* Hint + country switch */}
           <div style={{
             textAlign: 'center', marginTop: '14px',
             fontFamily: "'IBM Plex Mono', monospace",
@@ -183,6 +183,25 @@ export default async function HomePage() {
             letterSpacing: '.3px',
           }}>
             Click any state to explore rivers.
+          </div>
+          <div style={{
+            textAlign: 'center', marginTop: '8px',
+            fontFamily: "'IBM Plex Mono', monospace",
+            fontSize: '10px',
+          }}>
+            <a
+              href="/state/canada"
+              style={{
+                color: 'rgba(255,255,255,.7)',
+                textDecoration: 'none',
+                background: 'rgba(255,255,255,.06)',
+                border: '.5px solid rgba(255,255,255,.18)',
+                padding: '5px 12px', borderRadius: '14px',
+                letterSpacing: '.3px',
+              }}
+            >
+              🇨🇦 Canadian rivers (beta)
+            </a>
           </div>
         </div>
       </section>

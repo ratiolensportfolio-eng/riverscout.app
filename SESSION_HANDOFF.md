@@ -153,3 +153,62 @@ ones are tagged `dataSource: 'nrp'` and need curation.
 | `scripts/apply-usgs-gauges.js` | Set g + noGaugeAvailable on rivers.ts |
 | `scripts/split-nrp-sql.js` | Chunk 3.3 MB access SQL for SQL Editor |
 | `scripts/fix-nrp-newlines.js` | (deleted) Was too aggressive on `'`-rich files |
+
+---
+
+## QUEUED — Multi-gauge support (do AFTER Canada project)
+
+User-provided spec (verbatim):
+
+### Database
+New table `public.river_gauges` — see migration shell below. Field
+`river_section` holds names like "Above Croton Dam", "Lower
+Section", "South Branch", "Main Stem at Mio".
+
+```sql
+create table public.river_gauges (
+  id uuid primary key default gen_random_uuid(),
+  river_id text not null references rivers(id),
+  gauge_id text not null,
+  gauge_name text not null,
+  gauge_source text default 'usgs' check (gauge_source in ('usgs', 'wsc', 'manual')),
+  river_section text,
+  river_mile numeric,
+  is_primary boolean default false,
+  lat numeric,
+  lng numeric,
+  notes text,
+  created_at timestamptz default now()
+);
+```
+
+### Hero panel
+- Single gauge: unchanged.
+- Multi-gauge: CFS number is clickable → popover with selectable
+  list (each row shows live CFS for that gauge). Selection
+  persists in localStorage. When non-primary gauge selected,
+  show subtle `river_section` label below CFS.
+
+### Maps & Guides tab
+- Toggle to overlay gauge layer.
+- Each gauge = numbered pin at its lat/lng, colored by condition
+  (green / amber / red). Click pin → select gauge + show CFS tooltip.
+
+### Admin
+- Gauge management UI on `/admin/rivers/[id]`: add/remove/reorder.
+- USGS station-number lookup that auto-populates gauge name,
+  coords, and current reading for verification before save.
+
+### Seed data on first ship
+Multi-gauge demos for these rivers (find correct station numbers,
+verify they return live data):
+
+| River | Sections / gauges |
+|---|---|
+| Au Sable MI | Mio, Parmalee, South Branch at Roscommon, North Branch at Lovells |
+| Muskegon MI | above Croton Dam, below Croton Dam, at Newaygo |
+| Pere Marquette MI | at Scottville, at Baldwin |
+| Gauley WV | Summersville Dam release, below Swiss |
+| New WV | at Hinton, at Thurmond, at Fayetteville |
+| Colorado AZ | Lees Ferry, Diamond Creek |
+

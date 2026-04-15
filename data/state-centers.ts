@@ -58,4 +58,9 @@ export const STATE_MAP_CONFIG: Record<string, { center: [number, number]; zoom: 
   // so all 5 priority rivers are in frame at the default zoom. Most
   // are on Kauai, with one on Oahu and one on the Big Island.
   hi: { center: [-157.5, 20.7], zoom: 6.5 },
+  // Canada (beta) — initial 8-river launch is concentrated along the
+  // AB/BC mountain corridor. Center on Banff so all rivers from
+  // Sunwapta (Jasper) down to Kicking Horse (Golden) and Bow (Calgary)
+  // are visible at the default zoom.
+  canada: { center: [-115.5, 52.5], zoom: 5.0 },
 }
