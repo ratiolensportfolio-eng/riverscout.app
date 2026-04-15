@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getRiverBySlug, getStateSlug, getRiverSlug, ALL_RIVERS } from '@/data/rivers'
 import { fetchGaugeData, formatCfs, celsiusToFahrenheit, isHypothermiaRisk } from '@/lib/usgs'
+import HeroSparkline from '@/components/rivers/HeroSparkline'
 import RiverTabs from '@/components/rivers/RiverTabs'
 import SuggestCorrection from '@/components/SuggestCorrection'
 import SaveOffline from '@/components/SaveOffline'
@@ -362,6 +363,19 @@ export default async function RiverPage({ params, searchParams }: Props) {
               <SaveOffline riverId={river.id} riverName={river.n} gaugeId={river.g} stateSlug={state} riverSlug={slug} />
             </div>
           </div>
+
+          {/* ── Middle column: 10-day CFS sparkline ── */}
+          {/* Renders skeleton until the forecast portion arrives;
+              historical (past 7 days) appears immediately from the
+              already-fetched flow.readings. On mobile the sparkline
+              wraps below the CFS column rather than between. */}
+          <HeroSparkline
+            readings={flow.readings}
+            optRange={river.opt}
+            condition={flow.condition}
+            gaugeId={activeGaugeId}
+            currentCfs={flow.cfs}
+          />
 
           {/* ── Right column: live flow data ── */}
           <div style={{
