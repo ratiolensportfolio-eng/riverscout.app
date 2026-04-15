@@ -104,13 +104,10 @@ export async function POST(req: NextRequest) {
         <div style="background: #E1F5EE; border: 1px solid #9FE1CB; border-radius: 8px; padding: 16px; margin-bottom: 20px;">
           <div style="font-family: monospace; font-size: 10px; color: #085041; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">Your Pro Features</div>
           <div style="font-family: monospace; font-size: 12px; color: #1a1a18; line-height: 2;">
-            &#9889; Flow alert emails &mdash; when your river hits optimal CFS<br/>
             &#9889; Stocking alert emails &mdash; the moment your river is stocked<br/>
             &#9889; Hatch alert emails &mdash; when water temp hits the trigger<br/>
             &#9889; 10-year historical flow analysis<br/>
-            &#9889; Custom CFS ranges per river<br/>
-            &#9889; River journal and trip statistics<br/>
-            &#9889; Offline river pages
+            &#9889; Custom CFS ranges per river
           </div>
         </div>
         <div style="text-align: center; margin: 24px 0;">

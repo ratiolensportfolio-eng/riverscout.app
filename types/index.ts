@@ -326,21 +326,17 @@ export const PRO_PRICE = {
   yearly: 19.00,    // ~$1.58/mo, ~21% off monthly
 }
 
-// Features exclusive to RiverScout Pro. Everything not on this list is
-// available in the free tier. The site should work end-to-end without
-// ever hitting one of these — Pro is for paddlers and anglers who want
-// the site to come to them (push notifications, deeper analytics,
-// offline access, personal history).
+// Features exclusive to RiverScout Pro. Source-of-truth is the actual
+// is_pro check in the codebase — every entry here corresponds to a
+// real server- or client-side gate. If it's not enforced anywhere, it
+// doesn't go on this list. Marketing-ahead-of-implementation is how
+// you lose customers.
 export const PRO_FEATURES: ProFeature[] = [
-  { icon: '\u26A1', title: 'Flow alert emails', description: 'Get notified the moment your river hits optimal', available: true },
   { icon: '\u26A1', title: 'Stocking alert emails', description: 'Know the moment your river is stocked', available: true },
   { icon: '\u26A1', title: 'Hatch alert emails', description: "Water temp hit the hex hatch trigger? We'll tell you", available: true },
-  { icon: '\u26A1', title: 'Offline river pages', description: 'Full data with no cell service', available: true },
   { icon: '\u26A1', title: 'Historical flow analysis', description: '10-year CFS patterns and seasonal charts', available: true },
   { icon: '\u26A1', title: 'Custom CFS ranges', description: 'Set your personal optimal window per river', available: true },
-  { icon: '\u26A1', title: 'River journal and trip statistics', description: 'Your paddling history in one place', available: true },
   { icon: '\u26A1', title: 'Float plan saved templates', description: 'Pre-filled for your regular rivers', available: false },
-  { icon: '\u26A1', title: 'Early access to new features', description: 'New states and tools before anyone else', available: true },
 ]
 
 export const OUTFITTER_TIERS: OutfitterTierConfig[] = [
