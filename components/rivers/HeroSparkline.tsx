@@ -124,7 +124,7 @@ export default function HeroSparkline({ readings, optRange, condition, gaugeId, 
   ]
   if (!all.length) return null
 
-  const W = 320, H = 80, PAD_X = 6, PAD_Y = 8
+  const W = 600, H = 80, PAD_X = 4, PAD_Y = 6
   const minDate = all[0].date.getTime()
   const maxDate = all.at(-1)!.date.getTime()
   const dateSpan = Math.max(maxDate - minDate, 24 * 60 * 60 * 1000)
@@ -141,17 +141,40 @@ export default function HeroSparkline({ readings, optRange, condition, gaugeId, 
   // Bridge first future to last past so the line is continuous
   const futurePoints = splitIdx === -1 ? [] : all.slice(splitIdx === 0 ? 0 : splitIdx - 1)
 
-  const pathFor = (pts: Point[]) =>
-    pts.map((p, i) => `${i === 0 ? 'M' : 'L'} ${xOf(p.date).toFixed(1)} ${yOf(p.v).toFixed(1)}`).join(' ')
+  // Monotone (Fritsch-Carlson) cubic interpolation — produces smooth
+  // curves without overshooting between data points. Same algorithm
+  // d3-shape uses for curveMonotoneX. Falls back to a straight line
+  // when there are fewer than 3 points.
+  const pathFor = (pts: Point[]) => {
+    if (pts.length === 0) return ''
+    const px = pts.map(p => xOf(p.date))
+    const py = pts.map(p => yOf(p.v))
+    if (pts.length === 1) return `M${px[0].toFixed(1)},${py[0].toFixed(1)}`
+    if (pts.length === 2) return `M${px[0].toFixed(1)},${py[0].toFixed(1)}L${px[1].toFixed(1)},${py[1].toFixed(1)}`
+    const n = pts.length
+    const dx: number[] = [], dy: number[] = [], m: number[] = []
+    for (let i = 0; i < n - 1; i++) {
+      dx[i] = px[i + 1] - px[i]
+      dy[i] = py[i + 1] - py[i]
+      m[i] = dx[i] === 0 ? 0 : dy[i] / dx[i]
+    }
+    const tangents: number[] = [m[0]]
+    for (let i = 1; i < n - 1; i++) {
+      tangents.push(m[i - 1] * m[i] <= 0 ? 0 : (m[i - 1] + m[i]) / 2)
+    }
+    tangents.push(m[n - 2])
+    let path = `M${px[0].toFixed(1)},${py[0].toFixed(1)}`
+    for (let i = 0; i < n - 1; i++) {
+      const cx1 = px[i] + dx[i] / 3
+      const cy1 = py[i] + (tangents[i] * dx[i]) / 3
+      const cx2 = px[i + 1] - dx[i] / 3
+      const cy2 = py[i + 1] - (tangents[i + 1] * dx[i]) / 3
+      path += ` C${cx1.toFixed(1)},${cy1.toFixed(1)} ${cx2.toFixed(1)},${cy2.toFixed(1)} ${px[i + 1].toFixed(1)},${py[i + 1].toFixed(1)}`
+    }
+    return path
+  }
 
   const stroke = CONDITION_STROKE[condition] ?? CONDITION_STROKE.loading
-
-  // Background tint: amber if currently above optimal, blue if below.
-  let bgTint = 'transparent'
-  if (optBand && currentCfs !== null) {
-    if (currentCfs > optBand[1]) bgTint = 'rgba(186, 117, 23, 0.05)'
-    else if (currentCfs < optBand[0]) bgTint = 'rgba(63, 119, 224, 0.05)'
-  }
 
   const todayX = (() => {
     if (today.getTime() <= minDate) return PAD_X
@@ -181,18 +204,34 @@ export default function HeroSparkline({ readings, optRange, condition, gaugeId, 
       ref={containerRef}
       className="hero-sparkline"
       style={{
-        flex: '1 1 220px', minWidth: 0, maxWidth: '360px',
+        flex: '1 1 320px', minWidth: 0, maxWidth: '600px',
         position: 'relative', alignSelf: 'center',
       }}
     >
       <svg
         viewBox={`0 0 ${W} ${H}`}
         preserveAspectRatio="none"
-        style={{ width: '100%', height: '80px', display: 'block', background: bgTint, borderRadius: '6px' }}
+        style={{ width: '100%', height: '80px', display: 'block' }}
         onMouseMove={onMove}
         onMouseLeave={() => setHover(null)}
       >
-        {/* Optimal band */}
+        {/* Above-optimal red tint — entire chart area above optBand max */}
+        {optBand && yOf(optBand[1]) > PAD_Y && (
+          <rect
+            x={0} width={W}
+            y={PAD_Y} height={Math.max(yOf(optBand[1]) - PAD_Y, 0)}
+            fill="rgba(163, 45, 45, 0.04)"
+          />
+        )}
+        {/* Below-optimal blue tint — chart area below optBand min */}
+        {optBand && yOf(optBand[0]) < H - PAD_Y && (
+          <rect
+            x={0} width={W}
+            y={yOf(optBand[0])} height={Math.max(H - PAD_Y - yOf(optBand[0]), 0)}
+            fill="rgba(63, 119, 224, 0.03)"
+          />
+        )}
+        {/* Optimal band — soft green between min and max */}
         {optBand && (
           <rect
             x={0} width={W}
@@ -202,22 +241,22 @@ export default function HeroSparkline({ readings, optRange, condition, gaugeId, 
         )}
         {/* Today divider — only when forecast extends past today */}
         {futureDaily.length > 0 && (
-          <line x1={todayX} x2={todayX} y1={PAD_Y} y2={H - PAD_Y} stroke="#aaa99a" strokeWidth={0.5} strokeDasharray="2,2" />
+          <line x1={todayX} x2={todayX} y1={PAD_Y} y2={H - PAD_Y} stroke="rgba(60, 60, 60, 0.25)" strokeWidth={0.5} strokeDasharray="1,3" />
         )}
-        {/* Past line */}
+        {/* Past line — smooth monotone curve */}
         {pastPoints.length > 1 && (
-          <path d={pathFor(pastPoints)} fill="none" stroke={stroke} strokeWidth={1.6} strokeLinejoin="round" strokeLinecap="round" />
+          <path d={pathFor(pastPoints)} fill="none" stroke={stroke} strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" />
         )}
-        {/* Forecast line — dashed, lighter */}
+        {/* Forecast line — dashed, lighter, same smooth curve */}
         {futurePoints.length > 1 && (
-          <path d={pathFor(futurePoints)} fill="none" stroke={stroke} strokeOpacity={0.55} strokeWidth={1.6} strokeDasharray="3,3" strokeLinejoin="round" strokeLinecap="round" />
+          <path d={pathFor(futurePoints)} fill="none" stroke={stroke} strokeOpacity={0.5} strokeWidth={2} strokeDasharray="4,3" strokeLinejoin="round" strokeLinecap="round" />
         )}
-        {/* Current dot — last historical point */}
+        {/* Current dot — last historical point, larger */}
         {pastPoints.length > 0 && (
           <circle
             cx={xOf(pastPoints.at(-1)!.date)}
             cy={yOf(pastPoints.at(-1)!.v)}
-            r={2.8} fill={stroke}
+            r={3.5} fill={stroke}
           />
         )}
         {/* Hover marker */}

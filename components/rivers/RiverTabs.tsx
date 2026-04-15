@@ -49,7 +49,7 @@ import { hasRiverMap, loadRiverMap } from '@/data/river-maps'
 import { hasFisheries } from '@/data/fisheries-keys'
 import { RAPIDS } from '@/data/rapids'
 import FishIcon from '@/components/icons/FishIcons'
-import { SHOW_PRO_TIER } from '@/lib/features'
+import { SHOW_PRO_TIER, SHOW_NOAA_FORECAST } from '@/lib/features'
 import { getHatchTrigger } from '@/lib/hatch-triggers'
 import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 import type { RiverFisheries } from '@/types'
@@ -1481,7 +1481,11 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                 Rebuilt with a real chart: condition-zone background bands
                 (low/optimal/high/flood from river.opt), color-coded bars
                 per condition, peak + low markers with values, hovered-bar
-                callout, and a legend. AI interpretation stays Pro. */}
+                callout, and a legend. AI interpretation stays Pro.
+                Hidden by SHOW_NOAA_FORECAST flag — NOAA gauge mappings
+                only cover a fraction of our rivers, so most pages were
+                rendering "no forecast" until coverage is broader. */}
+            {SHOW_NOAA_FORECAST && (
             <div style={{ marginTop: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
                 <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px' }}>
@@ -1730,6 +1734,7 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                 <div style={{ padding: '12px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', textAlign: 'center' }}>Loading forecast...</div>
               )}
             </div>
+            )}
 
             {/* Historical Flow Analysis */}
             <div style={{ marginTop: '16px' }}>
