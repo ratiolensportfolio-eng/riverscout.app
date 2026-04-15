@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
     if (!isPro) {
       return NextResponse.json({
         error: 'pro_required',
-        message: 'Stocking alerts are a Pro feature. Upgrade to Pro for $4.99/month.',
+        message: 'Stocking alerts are a Pro feature. Upgrade to Pro for $1.99/month.',
       }, { status: 403 })
     }
 

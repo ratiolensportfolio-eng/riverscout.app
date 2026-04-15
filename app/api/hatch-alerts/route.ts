@@ -69,7 +69,7 @@ export async function POST(req: NextRequest) {
       if (!profile?.is_pro && !isAdmin) {
         return NextResponse.json({
           error: 'pro_required',
-          message: 'Hatch alerts are a Pro feature. Upgrade for $4.99/month.',
+          message: 'Hatch alerts are a Pro feature. Upgrade for $1.99/month.',
         }, { status: 403 })
       }
     }
