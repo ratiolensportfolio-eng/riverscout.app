@@ -426,6 +426,41 @@ export function celsiusToFahrenheit(c: number): number {
 }
 
 export function isHypothermiaRisk(tempC: number | null): boolean {
+  // Kept for backward compat — true whenever any cold-water tier
+  // applies (≤60°F). Prefer coldWaterMessage()/coldWaterSeverity()
+  // for new code so the wording matches the right tier.
   if (tempC === null) return false
-  return celsiusToFahrenheit(tempC) < 55
+  return celsiusToFahrenheit(tempC) <= 60
+}
+
+// Threshold-based cold-water warning — single source of truth across
+// the river page hero, dashboard cards, flow-alert emails, and the
+// weekly digest. Returns null when water is warm enough that no
+// warning is appropriate (>60°F) or when temperature is unknown.
+//
+// Tiers (matched on Fahrenheit so the bands line up with how
+// paddlers actually think about water temp):
+//   ≤40°F  →  'Dangerous cold water — high hypothermia risk'
+//   ≤50°F  →  'Cold water immersion risk — review cold water safety before launching'
+//   ≤60°F  →  'Cold water — dress for immersion, not air temperature'
+export function coldWaterMessage(tempC: number | null): string | null {
+  if (tempC === null) return null
+  const f = celsiusToFahrenheit(tempC)
+  if (f <= 40) return 'Dangerous cold water — high hypothermia risk'
+  if (f <= 50) return 'Cold water immersion risk — review cold water safety before launching'
+  if (f <= 60) return 'Cold water — dress for immersion, not air temperature'
+  return null
+}
+
+// Severity level for styling — 'critical' (≤40), 'warning' (≤50),
+// 'caution' (≤60), or null. Lets the UI pick the right color
+// without parsing the message string.
+export type ColdWaterSeverity = 'critical' | 'warning' | 'caution' | null
+export function coldWaterSeverity(tempC: number | null): ColdWaterSeverity {
+  if (tempC === null) return null
+  const f = celsiusToFahrenheit(tempC)
+  if (f <= 40) return 'critical'
+  if (f <= 50) return 'warning'
+  if (f <= 60) return 'caution'
+  return null
 }

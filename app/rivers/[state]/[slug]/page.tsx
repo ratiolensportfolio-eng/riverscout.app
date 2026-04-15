@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getRiverBySlug, getStateSlug, getRiverSlug, ALL_RIVERS } from '@/data/rivers'
-import { fetchGaugeData, formatCfs, celsiusToFahrenheit, isHypothermiaRisk } from '@/lib/usgs'
+import { fetchGaugeData, formatCfs, celsiusToFahrenheit, coldWaterMessage, coldWaterSeverity } from '@/lib/usgs'
 import HeroSparkline from '@/components/rivers/HeroSparkline'
 import ConnectedRouteBadge from '@/components/rivers/ConnectedRouteBadge'
 import { createSupabaseServerClient } from '@/lib/supabase-server'
@@ -375,17 +375,26 @@ export default async function RiverPage({ params, searchParams }: Props) {
               Optimal: <strong style={{ color: 'var(--rvdk)' }}>{river.opt}</strong> CFS · USGS #{river.g}
             </div>
 
-            {/* Temp + safety on the left */}
-            {flow.tempC !== null && (
-              <div style={{
-                fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
-                color: isHypothermiaRisk(flow.tempC) ? 'var(--dg)' : 'var(--wt)',
-                marginBottom: '4px', fontWeight: isHypothermiaRisk(flow.tempC) ? 600 : 400,
-              }}>
-                Water temp: {celsiusToFahrenheit(flow.tempC)}°F
-                {isHypothermiaRisk(flow.tempC) && ' — Hypothermia risk, wear a drysuit'}
-              </div>
-            )}
+            {/* Temp + cold-water safety on the left. Tier-based copy
+                from coldWaterMessage(): ≤60 caution, ≤50 warning,
+                ≤40 critical. Color tracks severity. */}
+            {flow.tempC !== null && (() => {
+              const sev = coldWaterSeverity(flow.tempC)
+              const msg = coldWaterMessage(flow.tempC)
+              const color = sev === 'critical' ? 'var(--dg)'
+                          : sev === 'warning'  ? '#A32D2D'
+                          : sev === 'caution'  ? '#7A4D0E'
+                          :                       'var(--wt)'
+              return (
+                <div style={{
+                  fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
+                  color, marginBottom: '4px', fontWeight: sev ? 600 : 400,
+                }}>
+                  Water temp: {celsiusToFahrenheit(flow.tempC)}°F
+                  {msg && ` — ${msg}`}
+                </div>
+              )
+            })()}
 
             {river.safe_cfs && (
               <div style={{

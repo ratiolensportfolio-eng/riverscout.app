@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { cookies } from 'next/headers'
 import { createServerClient } from '@supabase/ssr'
 import { ALL_RIVERS, getRiverPath, STATES } from '@/data/rivers'
-import { fetchGaugeDataBatch } from '@/lib/usgs'
+import { fetchGaugeDataBatch, coldWaterMessage, coldWaterSeverity } from '@/lib/usgs'
 import { RIVER_COORDS } from '@/data/river-coordinates'
 import { STATE_MAP_CONFIG } from '@/data/state-centers'
 import StateRiverMap from '@/components/maps/StateRiverMap'
@@ -275,11 +275,19 @@ export default async function DashboardPage() {
                           {flow.trend === 'up' ? '↑' : flow.trend === 'down' ? '↓' : '→'} {flow.rateLabel}
                         </span>
                       )}
-                      {tempF != null && (
-                        <span style={{ color: tempF < 50 ? 'var(--dg)' : 'var(--tx2)' }}>
-                          {tempF}°F{tempF < 50 && ' · hypothermia risk'}
-                        </span>
-                      )}
+                      {tempF != null && (() => {
+                        const sev = coldWaterSeverity(flow!.tempC)
+                        const msg = coldWaterMessage(flow!.tempC)
+                        const color = sev === 'critical' ? 'var(--dg)'
+                                    : sev === 'warning'  ? '#A32D2D'
+                                    : sev === 'caution'  ? '#7A4D0E'
+                                    :                       'var(--tx2)'
+                        return (
+                          <span style={{ color }} title={msg ?? undefined}>
+                            {tempF}°F{msg && ' · ' + msg}
+                          </span>
+                        )
+                      })()}
                       {flow?.fetchedAt && (
                         <span style={{ color: 'var(--tx3)', marginLeft: 'auto' }}>
                           Updated {new Date(flow.fetchedAt).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}

@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import type { River, FlowData } from '@/types'
-import { formatCfs, celsiusToFahrenheit, isHypothermiaRisk } from '@/lib/usgs'
+import { formatCfs, celsiusToFahrenheit } from '@/lib/usgs'
 import { supabase } from '@/lib/supabase'
 
 // Lazy-load Mapbox-backed map component. ssr: false because Mapbox GL JS
@@ -151,8 +151,16 @@ function gearList(cls: string, tempC: number | null): string[] {
     'Snacks / high-energy food',
     'Float plan left with someone',
   ]
-  const cold = (tempC !== null && celsiusToFahrenheit(tempC) < 60) || tempC === null
-  if (cold) base.splice(3, 0, 'Wetsuit or drysuit (cold water risk)')
+  // Cold water tier — message escalates with severity. When temp is
+  // unknown we still warn (safer default) using the mid-tier copy.
+  const f = tempC !== null ? celsiusToFahrenheit(tempC) : null
+  const coldGearLine = f === null
+    ? 'Cold water — dress for immersion, not air temperature'
+    : f <= 40 ? 'Dangerous cold water — dress for full immersion'
+    : f <= 50 ? 'Cold water immersion risk — dress for the water, not the air'
+    : f <= 60 ? 'Cold water — dress for immersion, not air temperature'
+    : null
+  if (coldGearLine) base.splice(3, 0, coldGearLine)
 
   const clsNum = parseInt(cls.replace(/\D.*/, ''))
   if (clsNum >= 3) {

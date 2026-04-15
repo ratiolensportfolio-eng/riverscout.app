@@ -62,6 +62,10 @@ export function flowAlertEmail(
   gaugeHeightFt?: number | null,
   changePerHour?: number | null,
   rateLabel?: string | null,
+  // Water temperature in Celsius. When supplied AND the water is
+  // ≤60°F, a tier-coded cold-water safety block renders below the
+  // condition line. Optional — call sites without temp data omit.
+  tempC?: number | null,
 ): string {
   const conditionLabel = condition === 'optimal' ? 'Optimal conditions'
     : condition === 'high' ? 'High water'
@@ -109,6 +113,36 @@ export function flowAlertEmail(
     ? `${cfs.toLocaleString()} cfs / ${gaugeHeightFt.toFixed(2)} ft`
     : `${cfs.toLocaleString()} cfs`
 
+  // Cold-water safety block. Mirrors the tiered messages used in
+  // app/rivers/[state]/[slug]/page.tsx and the dashboard so the
+  // language is consistent across the product.
+  let coldWaterHtml = ''
+  if (typeof tempC === 'number') {
+    const f = Math.round(tempC * 9 / 5 + 32)
+    let coldMsg: string | null = null
+    let bg = '#f5e9e9', border = '#A32D2D', color = '#A32D2D'
+    if (f <= 40) {
+      coldMsg = 'Dangerous cold water — high hypothermia risk'
+    } else if (f <= 50) {
+      coldMsg = 'Cold water immersion risk — review cold water safety before launching'
+      bg = '#fbf1e1'; border = '#BA7517'; color = '#7A4D0E'
+    } else if (f <= 60) {
+      coldMsg = 'Cold water — dress for immersion, not air temperature'
+      bg = '#fbf6e1'; border = '#BA9517'; color = '#7A6010'
+    }
+    if (coldMsg) {
+      coldWaterHtml = `
+        <div style="margin-top: 14px; padding: 10px 14px; background: ${bg}; border-left: 3px solid ${border}; border-radius: 4px;">
+          <div style="font-family: monospace; font-size: 11px; color: ${color}; font-weight: 600; margin-bottom: 2px;">
+            Water temp: ${f}°F
+          </div>
+          <div style="font-family: monospace; font-size: 12px; color: ${color}; line-height: 1.5;">
+            ${coldMsg}
+          </div>
+        </div>`
+    }
+  }
+
   const sponsorBlock = sponsor ? `
     <tr>
       <td style="padding: 24px 0 0;">
@@ -151,7 +185,7 @@ export function flowAlertEmail(
         </div>
         <div style="font-size: 16px; color: ${conditionColor}; font-weight: 600; margin-bottom: 4px;">
           ${conditionLabel}
-        </div>${trendLineHtml}
+        </div>${trendLineHtml}${coldWaterHtml}
         <div style="font-family: monospace; font-size: 12px; color: #aaa99a; margin-top: 12px;">
           Optimal range: ${optRange} cfs · Live data from USGS
         </div>
@@ -907,6 +941,18 @@ function renderRiverCard(river: DigestRiver): string {
       <div style="font-family: monospace; font-size: 12px; color: #666660; margin-bottom: 6px;">
         ${river.waterTempF !== null ? `Water: ${river.waterTempF}\u00B0F` : 'Water temp unavailable'} \u00B7 Weather: ${escapeHtml(river.weatherSummary)}
       </div>
+      ${river.waterTempF !== null && river.waterTempF <= 60 ? (() => {
+        const f = river.waterTempF as number
+        const msg = f <= 40 ? 'Dangerous cold water — high hypothermia risk'
+                  : f <= 50 ? 'Cold water immersion risk — review cold water safety before launching'
+                  :           'Cold water — dress for immersion, not air temperature'
+        const color = f <= 40 ? '#A32D2D' : f <= 50 ? '#7A4D0E' : '#7A6010'
+        const bg    = f <= 40 ? '#f5e9e9' : f <= 50 ? '#fbf1e1' : '#fbf6e1'
+        return `
+      <div style="margin: 4px 0 10px; padding: 6px 10px; background: ${bg}; border-left: 3px solid ${color}; border-radius: 4px; font-family: monospace; font-size: 11px; color: ${color}; line-height: 1.45;">
+        ${msg}
+      </div>`
+      })() : ''}
 
       <div style="font-family: monospace; font-size: 12px; color: ${paddlingColor}; font-weight: 600; margin-bottom: 12px;">
         Paddling: ${paddlingIcon} ${paddlingLabel}${

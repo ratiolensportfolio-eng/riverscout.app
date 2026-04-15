@@ -151,6 +151,7 @@ export async function GET(req: NextRequest) {
           flow.gaugeHeightFt,
           flow.changePerHour,
           flow.rateLabel,
+          flow.tempC,
         )
 
         const emailSent = await sendEmail({
