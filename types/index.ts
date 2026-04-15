@@ -322,8 +322,8 @@ export interface ProFeature {
 }
 
 export const PRO_PRICE = {
-  monthly: 4.99,
-  yearly: 39.99,    // ~$3.33/mo
+  monthly: 2.99,
+  yearly: 29.00,    // ~$2.42/mo, ~19% off monthly
 }
 
 // Features exclusive to RiverScout Pro. Everything not on this list is
