@@ -4,6 +4,27 @@ import { getRiverBySlug, getStateSlug, getRiverSlug, ALL_RIVERS } from '@/data/r
 import { fetchGaugeData, formatCfs, celsiusToFahrenheit, isHypothermiaRisk } from '@/lib/usgs'
 import HeroSparkline from '@/components/rivers/HeroSparkline'
 import ConnectedRouteBadge from '@/components/rivers/ConnectedRouteBadge'
+import { createSupabaseServerClient } from '@/lib/supabase-server'
+
+// Lazy lookup of the active gauge's cached avg + section name from
+// the river_gauges table. Returns null when no row exists for that
+// (river_id, gauge_id) pair — the caller falls back to the river's
+// static avg in that case. We don't trigger the USGS-stats refill
+// here; that happens in the GaugeSwitcher's API call.
+async function fetchActiveGaugeMeta(riverId: string, gaugeId: string): Promise<{ avg_flow_cfs: number | null; river_section: string | null } | null> {
+  try {
+    const supabase = await createSupabaseServerClient()
+    const { data } = await supabase
+      .from('river_gauges')
+      .select('avg_flow_cfs, river_section')
+      .eq('river_id', riverId)
+      .eq('gauge_id', gaugeId)
+      .maybeSingle()
+    return data ?? null
+  } catch {
+    return null
+  }
+}
 import RiverTabs from '@/components/rivers/RiverTabs'
 import SuggestCorrection from '@/components/SuggestCorrection'
 import SaveOffline from '@/components/SaveOffline'
@@ -149,13 +170,24 @@ export default async function RiverPage({ params, searchParams }: Props) {
   // Validation is handled by the API route — for performance we
   // trust the param here and just feed it to fetchGaugeData.
   const activeGaugeId = sp.gauge && /^[A-Za-z0-9]+$/.test(sp.gauge) ? sp.gauge : staticRiver.g
+  const isNonPrimary = activeGaugeId !== staticRiver.g
 
-  // Fire flow data and the batched river-page query in parallel.
-  // Both go to different upstreams (USGS vs Supabase) so they can race.
-  const [flow, prefetched] = await Promise.all([
+  // Fire flow data, page batch, and (if a gauge was switched) the
+  // active gauge's cached avg + section name in parallel.
+  const [flow, prefetched, activeGaugeMeta] = await Promise.all([
     fetchGaugeData(activeGaugeId, staticRiver.opt),
     fetchRiverPageData(staticRiver.id, staticRiver.stateKey),
+    isNonPrimary ? fetchActiveGaugeMeta(staticRiver.id, activeGaugeId) : Promise.resolve(null),
   ])
+
+  // Active gauge avg + section: if the user picked a non-primary
+  // gauge AND we have a cached avg in river_gauges, override the
+  // static river.avg + show the section name below the CFS number.
+  // Falls back gracefully when the gauge isn't in the DB or the
+  // avg hasn't been populated yet (the /api/rivers/[id]/gauges
+  // route lazy-fills it on first call).
+  const activeAvg = activeGaugeMeta?.avg_flow_cfs ?? staticRiver.avg
+  const activeSection = activeGaugeMeta?.river_section ?? null
 
   // Apply admin-approved field overrides on top of the static river
   // record. The override layer (lib/river-page-data.ts) reads from
@@ -386,7 +418,7 @@ export default async function RiverPage({ params, searchParams }: Props) {
             condition={flow.condition}
             gaugeId={activeGaugeId}
             currentCfs={flow.cfs}
-            avgFlow={river.avg}
+            avgFlow={activeAvg}
           />
 
           {/* ── Right column: live flow data ── */}
@@ -405,6 +437,15 @@ export default async function RiverPage({ params, searchParams }: Props) {
               </span>
               <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '14px', color: 'var(--wt)' }}>CFS</span>
             </div>
+
+            {/* Section label — only shown when a non-primary gauge is
+                selected, so the user always knows which section the
+                CFS reading represents. */}
+            {activeSection && (
+              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', marginBottom: '4px', letterSpacing: '.3px' }}>
+                {activeSection}
+              </div>
+            )}
 
             {flow.gaugeHeightFt !== null && (
               <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', color: 'var(--tx2)', marginBottom: '6px' }}>
@@ -641,7 +682,14 @@ export default async function RiverPage({ params, searchParams }: Props) {
       })()}
 
       {/* Tabbed content — fills remaining height */}
-      <RiverTabs river={river} flow={flow} initialData={prefetched} />
+      {/* When a non-primary gauge is selected, override river.avg so
+          the "Avg flow: X cfs" stat below the hero matches the
+          currently displayed gauge. */}
+      <RiverTabs
+        river={isNonPrimary && activeAvg !== staticRiver.avg ? { ...river, avg: activeAvg } : river}
+        flow={flow}
+        initialData={prefetched}
+      />
     </main>
   )
 }

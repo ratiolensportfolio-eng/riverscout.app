@@ -337,6 +337,40 @@ function parseTimeSeries(series: USGSTimeSeries[], optRange: string): FlowData {
   }
 }
 
+// Long-term mean discharge for a USGS gauge — averages all the
+// annual mean values the statistics service publishes (typically
+// the full station record). Used as the per-gauge avg flow shown
+// below the sparkline and as the sparkline's reference midline.
+//
+// Returns null if the station has no discharge stats (rare —
+// stage-only gauges, brand-new sites). Cached server-side via
+// Next's data cache for one day; the river_gauges table holds a
+// longer-term cache populated by /api/rivers/[id]/gauges.
+export async function fetchUsgsLongTermMean(siteId: string): Promise<number | null> {
+  const url = `${STAT_BASE}?format=rdb&sites=${siteId}&statReportType=annual&statType=mean&parameterCd=00060`
+  // Use raw fetch — the rdb format isn't JSON.
+  try {
+    const res = await fetch(url, { next: { revalidate: 86400 } })
+    if (!res.ok) return null
+    const body = await res.text()
+    const lines = body.split('\n').filter(l => l && !l.startsWith('#'))
+    if (lines.length < 3) return null
+    const header = lines[0].split('\t')
+    const meanIdx = header.indexOf('mean_va')
+    if (meanIdx < 0) return null
+    const vals: number[] = []
+    for (const line of lines.slice(2)) {
+      const cells = line.split('\t')
+      const v = parseFloat(cells[meanIdx])
+      if (isFinite(v) && v > 0) vals.push(v)
+    }
+    if (!vals.length) return null
+    return Math.round(vals.reduce((s, x) => s + x, 0) / vals.length)
+  } catch {
+    return null
+  }
+}
+
 // Fetch historical percentile for today's date
 export async function fetchPercentile(gaugeId: string): Promise<number | null> {
   const now = new Date()

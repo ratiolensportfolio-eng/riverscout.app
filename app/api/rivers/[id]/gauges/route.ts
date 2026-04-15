@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
-import { fetchGaugeData } from '@/lib/usgs'
+import { fetchGaugeData, fetchUsgsLongTermMean } from '@/lib/usgs'
 
 // GET /api/rivers/[id]/gauges
 //
@@ -27,6 +27,7 @@ interface GaugeRow {
   lat: number | null
   lng: number | null
   notes: string | null
+  avg_flow_cfs: number | null
 }
 
 export async function GET(_req: NextRequest, context: { params: Promise<{ id: string }> }) {
@@ -41,13 +42,45 @@ export async function GET(_req: NextRequest, context: { params: Promise<{ id: st
 
   const { data, error } = await supabase
     .from('river_gauges')
-    .select('id, gauge_id, gauge_name, gauge_source, river_section, river_mile, is_primary, lat, lng, notes')
+    .select('id, gauge_id, gauge_name, gauge_source, river_section, river_mile, is_primary, lat, lng, notes, avg_flow_cfs')
     .eq('river_id', id)
     .order('is_primary', { ascending: false })
     .order('river_mile', { ascending: true, nullsFirst: false })
 
   if (error || !data?.length) {
     return NextResponse.json({ gauges: [] })
+  }
+  const rows = data as GaugeRow[]
+
+  // Lazy-populate avg_flow_cfs from USGS stats for any gauge that
+  // doesn't have it cached yet. Only USGS gauges (digit-only IDs)
+  // have a stats endpoint — WSC doesn't expose one in the same
+  // shape, so we leave WSC avg_flow_cfs null for now.
+  const needAvg = rows.filter(g => g.avg_flow_cfs == null && g.gauge_source === 'usgs' && g.gauge_id)
+  if (needAvg.length) {
+    const fetched = await Promise.allSettled(
+      needAvg.map(g => fetchUsgsLongTermMean(g.gauge_id))
+    )
+    const updates: Array<{ gauge_id: string; avg: number }> = []
+    fetched.forEach((res, i) => {
+      const avg = res.status === 'fulfilled' ? res.value : null
+      if (avg != null) {
+        needAvg[i].avg_flow_cfs = avg
+        updates.push({ gauge_id: needAvg[i].gauge_id, avg })
+      }
+    })
+    // Persist back so the next caller doesn't re-fetch.
+    if (updates.length) {
+      await Promise.allSettled(
+        updates.map(u =>
+          supabase
+            .from('river_gauges')
+            .update({ avg_flow_cfs: u.avg, avg_flow_fetched_at: new Date().toISOString() })
+            .eq('river_id', id)
+            .eq('gauge_id', u.gauge_id),
+        ),
+      )
+    }
   }
 
   // Fetch live cfs for each. fetchGaugeData internally routes to USGS
@@ -56,9 +89,9 @@ export async function GET(_req: NextRequest, context: { params: Promise<{ id: st
   // condition classification. (Condition is computed against the
   // river's main opt range on the page.)
   const flows = await Promise.allSettled(
-    data.map(g => fetchGaugeData(g.gauge_id, ''))
+    rows.map(g => fetchGaugeData(g.gauge_id, ''))
   )
-  const out = (data as GaugeRow[]).map((g, i) => ({
+  const out = rows.map((g, i) => ({
     ...g,
     current_cfs: flows[i].status === 'fulfilled' ? flows[i].value.cfs : null,
     fetched_at: flows[i].status === 'fulfilled' ? flows[i].value.fetchedAt : null,
