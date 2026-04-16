@@ -245,21 +245,94 @@ export interface UserProfile {
   homeState: string | null
   avatarUrl: string | null
   createdAt: string
+  // Leaderboard counters (mig 041). Cached aggregates — the AI
+  // verifier bumps these when a submission flips to 'verified'.
+  totalVerifiedTrips: number
+  totalVerifiedCatches: number
+  contributionScore: number
 }
 
 // ── Trip Report Types ─────────────────────────────────────────────
+//
+// Matches public.trip_reports (mig 041). Auth-required, AI-verified.
+// Public feeds filter on status = 'verified'. Personal views include
+// pending/flagged rows for the authoring user.
+
+export type VerificationStatus = 'pending' | 'verified' | 'flagged' | 'rejected'
 
 export interface TripReport {
   id: string
-  riverId: string
-  userId: string
-  userDisplayName: string
-  rating: number
-  text: string
-  flowCfs: number | null
-  date: string
-  photos: string[]
-  createdAt: string
+  user_id: string | null
+  river_id: string
+  trip_date: string
+  cfs_at_time: number | null
+  water_temp: number | null
+  duration_hours: number | null
+  party_size: number | null
+  watercraft: string | null
+  report_text: string
+  conditions_rating: number | null
+  ai_verified: boolean
+  ai_confidence: number | null
+  ai_verification_notes: string | null
+  verified_at: string | null
+  status: VerificationStatus
+  created_at: string
+}
+
+// ── Fish Catch Types ──────────────────────────────────────────────
+//
+// Matches public.fish_catches (mig 041). Species list drives the
+// leaderboard tabs — keep in sync with LEADERBOARD_SPECIES.
+
+export interface FishCatch {
+  id: string
+  user_id: string | null
+  river_id: string
+  catch_date: string
+  species: string
+  weight_lbs: number | null
+  length_inches: number | null
+  photo_url: string | null
+  photo_exif_lat: number | null
+  photo_exif_lng: number | null
+  photo_exif_timestamp: string | null
+  river_proximity_verified: boolean
+  ai_species_confirmed: boolean
+  ai_weight_plausible: boolean
+  verification_status: VerificationStatus
+  catch_and_release: boolean
+  notes: string | null
+  created_at: string
+}
+
+// Species tabs on /leaderboard. The order here is the display order
+// of the tabs. Adding a species here automatically surfaces it in
+// the leaderboard; removing hides it (existing rows stay in the
+// database, just aren't surfaced).
+export const LEADERBOARD_SPECIES = [
+  'Brown Trout',
+  'Rainbow Trout',
+  'Brook Trout',
+  'Walleye',
+  'Smallmouth Bass',
+  'Steelhead',
+  'Atlantic Salmon',
+] as const
+export type LeaderboardSpecies = typeof LEADERBOARD_SPECIES[number]
+
+// Plausibility ceilings for AI weight-check. Well above IGFA all-
+// tackle records so we only flag truly-impossible claims (someone
+// reporting a 30 lb brook trout), not merely exceptional catches.
+// Lookups use this map; unknown species skip the ceiling check.
+export const SPECIES_MAX_PLAUSIBLE_LBS: Record<string, number> = {
+  'Brown Trout':      50,   // IGFA record ~44 lb
+  'Rainbow Trout':    55,   // IGFA record ~48 lb
+  'Brook Trout':      18,   // IGFA record ~14.5 lb
+  'Walleye':          30,   // IGFA record ~25 lb
+  'Smallmouth Bass':  14,   // IGFA record ~11.9 lb
+  'Steelhead':        45,   // IGFA record ~42 lb
+  'Atlantic Salmon':  85,   // IGFA record ~79 lb
 }
 
 // ── Outfitter Types ───────────────────────────────────────────────
