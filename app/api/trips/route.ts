@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 import { ALL_RIVERS } from '@/data/rivers'
 import { verifyTripReport } from '@/lib/ai-verify'
+import { sanitizeText, moderateContent, checkRateLimit, notifyAdminFlagged } from '@/lib/content-moderation'
 
 // /api/trips
 //
@@ -85,16 +86,36 @@ export async function POST(req: NextRequest) {
     if (!userId || !riverId || !tripDate || !reportText) {
       return NextResponse.json({ error: 'userId, riverId, tripDate, reportText required' }, { status: 400 })
     }
-    if (typeof reportText !== 'string' || reportText.trim().length < 20) {
+    const cleanReport = sanitizeText(reportText, 5000)
+    if (cleanReport.length < 20) {
       return NextResponse.json({ error: 'reportText must be at least 20 characters' }, { status: 400 })
     }
+    const cleanWatercraft = watercraft ? sanitizeText(watercraft, 60) : null
 
     const supabase = client()
     if (!supabase) return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
 
+    // Rate limit
+    const rl = await checkRateLimit(supabase, userId, 'trip_report')
+    if (!rl.allowed) {
+      return NextResponse.json({ error: 'Rate limit exceeded (3 trip reports/hour). Try again later.', retryAfterMs: rl.retryAfterMs }, { status: 429 })
+    }
+
     const river = ALL_RIVERS.find(r => r.id === riverId)
     if (!river) {
       return NextResponse.json({ error: 'Unknown riverId' }, { status: 400 })
+    }
+
+    // Content moderation — runs before the heavier AI verification
+    // so spam gets rejected cheaply without burning a verification call.
+    const mod = await moderateContent(cleanReport)
+    if (!mod.approved) {
+      notifyAdminFlagged({ contentType: 'trip report', excerpt: cleanReport, userId, riverId })
+      return NextResponse.json({
+        ok: true,
+        report: null,
+        verification: { status: 'flagged', score: 0, notes: `Flagged by moderation: ${mod.reason}` },
+      })
     }
 
     // Inline AI verification. Falls back to 'pending' with a descriptive
@@ -103,7 +124,7 @@ export async function POST(req: NextRequest) {
     const ai = await verifyTripReport({
       riverName: river.n,
       stateKey: river.stateKey,
-      reportText,
+      reportText: cleanReport,
       tripDate,
       cfsAtTime: cfsAtTime == null || cfsAtTime === '' ? null : Number(cfsAtTime),
       waterTemp: waterTemp == null || waterTemp === '' ? null : Number(waterTemp),
@@ -121,8 +142,8 @@ export async function POST(req: NextRequest) {
         water_temp: waterTemp == null || waterTemp === '' ? null : Number(waterTemp),
         duration_hours: durationHours == null || durationHours === '' ? null : Number(durationHours),
         party_size: partySize == null || partySize === '' ? null : parseInt(partySize, 10),
-        watercraft: watercraft || null,
-        report_text: reportText.trim(),
+        watercraft: cleanWatercraft,
+        report_text: cleanReport,
         conditions_rating: conditionsRating == null || conditionsRating === '' ? null : parseInt(conditionsRating, 10),
         ai_verified: ai.status === 'verified',
         ai_confidence: ai.score,

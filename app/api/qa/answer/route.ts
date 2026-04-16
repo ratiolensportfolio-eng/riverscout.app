@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createSupabaseServerClient } from '@/lib/supabase-server'
+import { sanitizeText, moderateContent, checkRateLimit, notifyAdminFlagged } from '@/lib/content-moderation'
 
 // POST /api/qa/answer
 // Body: { questionId, answer, displayName }
@@ -35,14 +36,9 @@ export async function POST(req: NextRequest) {
     if (!answer || typeof answer !== 'string') {
       return NextResponse.json({ error: 'answer required' }, { status: 400 })
     }
-    const trimmedA = answer.trim()
+    const trimmedA = sanitizeText(answer, MAX_ANSWER_LEN)
     if (trimmedA.length === 0) {
       return NextResponse.json({ error: 'Answer cannot be empty' }, { status: 400 })
-    }
-    if (trimmedA.length > MAX_ANSWER_LEN) {
-      return NextResponse.json({
-        error: `Answer must be ${MAX_ANSWER_LEN} characters or fewer`,
-      }, { status: 400 })
     }
     if (!displayName || typeof displayName !== 'string') {
       return NextResponse.json({ error: 'displayName required' }, { status: 400 })
@@ -78,7 +74,17 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'This question is no longer accepting answers' }, { status: 410 })
     }
 
-    const trimmedName = displayName.trim().slice(0, MAX_NAME_LEN)
+    const trimmedName = sanitizeText(displayName, MAX_NAME_LEN)
+
+    // Rate limit
+    const rl = await checkRateLimit(supabase, user.id, 'qa_answer')
+    if (!rl.allowed) {
+      return NextResponse.json({ error: 'Rate limit exceeded. Try again later.', retryAfterMs: rl.retryAfterMs }, { status: 429 })
+    }
+
+    // AI moderation
+    const mod = await moderateContent(trimmedA)
+    const status = mod.approved ? 'active' : 'pending'
 
     const { error } = await supabase
       .from('river_answers')
@@ -88,6 +94,7 @@ export async function POST(req: NextRequest) {
         user_id: user.id,
         display_name: trimmedName,
         answer: trimmedA,
+        status,
       })
 
     if (error) {
@@ -95,7 +102,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: `Failed to post answer: ${error.message}` }, { status: 500 })
     }
 
-    return NextResponse.json({ ok: true, message: 'Answer posted.' })
+    if (!mod.approved) {
+      notifyAdminFlagged({ contentType: 'Q&A answer', excerpt: trimmedA, userId: user.id, riverId: parent.river_id })
+    }
+
+    return NextResponse.json({ ok: true, message: mod.approved ? 'Answer posted.' : 'Answer submitted for review.', moderated: !mod.approved })
   } catch (err) {
     console.error('[qa/answer] error:', err)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })

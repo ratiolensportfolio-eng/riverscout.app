@@ -6,6 +6,7 @@ import { sendEmail, improvementApprovedEmail, ADMIN_EMAIL } from '@/lib/email'
 import { VERIFICATION_TAGS } from '@/lib/needs-verification'
 import { getRiver, getStateSlug, getRiverSlug } from '@/data/rivers'
 import { getContributorTier, didJustLevelUp } from '@/lib/contributor-tiers'
+import { sanitizeText, sanitizeUrl, moderateContent, checkRateLimit, notifyAdminFlagged } from '@/lib/content-moderation'
 
 // Bust the ISR cache for a specific river page so an approved
 // override (or rollback) takes effect on the next request rather
@@ -135,11 +136,17 @@ export async function POST(req: NextRequest) {
     }
 
     // For non-safety / non-permit fields, also require currentValue.
-    // Permit updates are descriptive ("application date moved to Feb
-    // 1") rather than a single old→new value swap, so currentValue
-    // is optional and we synthesize a placeholder.
     if (!isSafetyCritical && !isPermitUpdate && !currentValue) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
+    }
+
+    // Sanitize all text inputs
+    const cleanSuggested = sanitizeText(suggestedValue, 5000)
+    const cleanReason = sanitizeText(reason, 2000)
+    const cleanCurrent = currentValue ? sanitizeText(currentValue, 5000) : 'Not specified'
+    const cleanSourceUrl = sourceUrl ? sanitizeUrl(sourceUrl) : null
+    if (!cleanSuggested || !cleanReason) {
+      return NextResponse.json({ error: 'Fields cannot be empty after sanitization' }, { status: 400 })
     }
 
     // AI pre-evaluation (with enhanced prompt for safety-critical)
@@ -147,9 +154,12 @@ export async function POST(req: NextRequest) {
       ? 'This is a safety-critical submission about dangerous CFS levels. Weight your confidence assessment accordingly and flag any concerns. '
       : ''
 
+    // Content moderation before the heavier AI evaluation
+    const mod = await moderateContent(`${cleanSuggested} ${cleanReason}`)
+
     const ai = await evaluateSuggestion(
       riverName || riverId, stateKey || '', field,
-      currentValue || 'Not specified', suggestedValue, reason, sourceUrl || null,
+      cleanCurrent, cleanSuggested, cleanReason, cleanSourceUrl,
       safetyPromptPrefix,
     )
 
@@ -170,6 +180,20 @@ export async function POST(req: NextRequest) {
     const { createClient } = await import('@supabase/supabase-js')
     const supabase = createClient(url, serviceKey, { auth: { persistSession: false } })
 
+    // Rate limit (only when userId is present — anon corrections skip)
+    if (userId) {
+      const rl = await checkRateLimit(supabase, userId, 'suggestion')
+      if (!rl.allowed) {
+        return NextResponse.json({ error: 'Rate limit exceeded. Try again later.', retryAfterMs: rl.retryAfterMs }, { status: 429 })
+      }
+    }
+
+    // If moderation flagged it, override status to pending and don't
+    // auto-apply regardless of AI confidence. The admin will review.
+    const effectiveStatus = mod.approved ? 'pending' : 'pending'
+    // (All suggestions start pending anyway — but flagged ones also
+    // get a moderation note and an admin notification below.)
+
     const insertData: Record<string, unknown> = {
       river_id: riverId,
       river_name: riverName || riverId,
@@ -177,13 +201,19 @@ export async function POST(req: NextRequest) {
       user_id: userId || null,
       user_email: userEmail || null,
       field,
-      current_value: currentValue || 'Not specified',
-      suggested_value: suggestedValue,
-      reason: reason.slice(0, 2000),
-      source_url: sourceUrl || null,
-      status: 'pending',
+      current_value: cleanCurrent,
+      suggested_value: cleanSuggested,
+      reason: cleanReason,
+      source_url: cleanSourceUrl,
+      status: effectiveStatus,
       ai_confidence: ai.confidence,
-      ai_reasoning: ai.reasoning,
+      ai_reasoning: !mod.approved
+        ? `[MODERATION FLAGGED: ${mod.reason}] ${ai.reasoning}`
+        : ai.reasoning,
+    }
+
+    if (!mod.approved) {
+      notifyAdminFlagged({ contentType: 'community correction', excerpt: cleanReason, userId: userId || null, riverId })
     }
 
     // Tag safety-critical and permit-update submissions so the admin

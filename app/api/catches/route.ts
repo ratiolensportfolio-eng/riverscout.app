@@ -3,6 +3,7 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 import { ALL_RIVERS } from '@/data/rivers'
 import { verifyCatchPhoto, checkRiverProximity, classifyCatch } from '@/lib/ai-verify'
 import { SPECIES_MAX_PLAUSIBLE_LBS } from '@/types'
+import { sanitizeText, checkRateLimit } from '@/lib/content-moderation'
 
 // /api/catches
 //
@@ -94,6 +95,12 @@ export async function POST(req: NextRequest) {
     const supabase = client()
     if (!supabase) return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
 
+    // Rate limit
+    const rl = await checkRateLimit(supabase, userId, 'fish_catch')
+    if (!rl.allowed) {
+      return NextResponse.json({ error: 'Rate limit exceeded. Try again later.', retryAfterMs: rl.retryAfterMs }, { status: 429 })
+    }
+
     const river = ALL_RIVERS.find(r => r.id === riverId)
     if (!river) {
       return NextResponse.json({ error: 'Unknown riverId' }, { status: 400 })
@@ -153,7 +160,7 @@ export async function POST(req: NextRequest) {
         ai_weight_plausible: vision.weightPlausible,
         verification_status: status,
         catch_and_release: catchAndRelease !== false,
-        notes: (notes ? `${notes}\n\n` : '') + `[verification] ${combinedNotes}`,
+        notes: (notes ? `${sanitizeText(notes, 1000)}\n\n` : '') + `[verification] ${combinedNotes}`,
       })
       .select()
       .single()

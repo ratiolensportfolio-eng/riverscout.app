@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createSupabaseClient } from '@/lib/supabase'
 import { sendEmail, hazardAlertEmail } from '@/lib/email'
 import { getRiver, getStateSlug, getRiverSlug } from '@/data/rivers'
+import { sanitizeText, moderateContent, checkRateLimit, notifyAdminFlagged } from '@/lib/content-moderation'
 
 const VALID_TYPES = ['strainer', 'hydraulic', 'access_closure', 'debris', 'flood', 'other']
 const VALID_SEVERITIES = ['info', 'warning', 'critical']
@@ -63,7 +64,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'auth_required' }, { status: 401 })
     }
 
-    // Field validation
+    // Field validation + sanitization
     if (!riverId || !hazardType || !severity || !title || !description) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
     }
@@ -73,11 +74,12 @@ export async function POST(req: NextRequest) {
     if (!VALID_SEVERITIES.includes(severity)) {
       return NextResponse.json({ error: 'Invalid severity' }, { status: 400 })
     }
-    if (title.length > 140) {
-      return NextResponse.json({ error: 'Title too long (max 140 chars)' }, { status: 400 })
-    }
-    if (description.length > 2000) {
-      return NextResponse.json({ error: 'Description too long (max 2000 chars)' }, { status: 400 })
+    const cleanTitle = sanitizeText(title, 140)
+    const cleanDesc = sanitizeText(description, 500)
+    const cleanLocation = locationDescription ? sanitizeText(locationDescription, 200) : null
+    const cleanReporter = reporterName ? sanitizeText(reporterName, 60) : null
+    if (!cleanTitle || !cleanDesc) {
+      return NextResponse.json({ error: 'Title and description cannot be empty after sanitization' }, { status: 400 })
     }
 
     // Resolve river metadata from the static river database so we can
@@ -101,6 +103,15 @@ export async function POST(req: NextRequest) {
     const { createClient } = await import('@supabase/supabase-js')
     const supabase = createClient(url, serviceKey, { auth: { persistSession: false } })
 
+    // Rate limit
+    const rl = await checkRateLimit(supabase, userId, 'hazard')
+    if (!rl.allowed) {
+      return NextResponse.json({ error: 'Rate limit exceeded. Try again later.', retryAfterMs: rl.retryAfterMs }, { status: 429 })
+    }
+
+    // AI moderation
+    const mod = await moderateContent(`${cleanTitle}: ${cleanDesc}`)
+
     const { data: inserted, error } = await supabase
       .from('river_hazards')
       .insert({
@@ -109,16 +120,21 @@ export async function POST(req: NextRequest) {
         state_key: river.stateKey,
         hazard_type: hazardType,
         severity,
-        title,
-        description,
-        location_description: locationDescription || null,
+        title: cleanTitle,
+        description: cleanDesc,
+        location_description: cleanLocation,
         mile_marker: typeof mileMarker === 'number' ? mileMarker : null,
         reported_by: userId,
-        reporter_name: reporterName || null,
+        reporter_name: cleanReporter,
         reporter_email: userEmail || null,
+        active: mod.approved,
       })
       .select()
       .single()
+
+    if (!mod.approved && inserted) {
+      notifyAdminFlagged({ contentType: 'hazard report', excerpt: cleanDesc, userId, riverId })
+    }
 
     if (error || !inserted) {
       console.error('[hazards] insert error:', error)

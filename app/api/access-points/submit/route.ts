@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createSupabaseServerClient } from '@/lib/supabase-server'
 import { ALL_RIVERS } from '@/data/rivers'
 import { sendEmail, ADMIN_EMAIL } from '@/lib/email'
+import { sanitizeText, moderateContent, checkRateLimit, notifyAdminFlagged } from '@/lib/content-moderation'
 
 // POST /api/access-points/submit
 //
@@ -188,30 +189,56 @@ export async function POST(req: NextRequest) {
     const { createClient } = await import('@supabase/supabase-js')
     const supabase = createClient(url, serviceKey, { auth: { persistSession: false } })
 
+    // Rate limit
+    const rl = await checkRateLimit(supabase, user.id, 'access_point')
+    if (!rl.allowed) {
+      return NextResponse.json({ error: 'Rate limit exceeded. Try again later.', retryAfterMs: rl.retryAfterMs }, { status: 429 })
+    }
+
+    // Sanitize text fields
+    const cleanName = sanitizeText(body.name, 120)
+    const cleanDesc = body.description ? sanitizeText(body.description, 280) : null
+    const cleanDisplayName = sanitizeText(body.displayName, 60)
+    const cleanNextAccess = body.nextAccessName ? sanitizeText(body.nextAccessName, 120) : null
+    const cleanFloatTime = body.floatTimeToNext ? sanitizeText(body.floatTimeToNext, 60) : null
+    const cleanSeasonalNotes = body.seasonalNotes ? sanitizeText(body.seasonalNotes, 500) : null
+    const cleanFeeAmount = body.feeAmount ? sanitizeText(body.feeAmount, 60) : null
+
+    // AI moderation on the combined text fields
+    const modText = [cleanName, cleanDesc, cleanSeasonalNotes].filter(Boolean).join(' ')
+    const mod = await moderateContent(modText)
+    if (!mod.approved) {
+      notifyAdminFlagged({ contentType: 'access point', excerpt: modText, userId: user.id, riverId: body.riverId })
+    }
+
     const insertRow = {
       river_id: body.riverId,
-      name: body.name.trim().slice(0, 120),
-      description: body.description?.slice(0, 280) || null,
+      name: cleanName,
+      description: cleanDesc,
       access_type: body.accessType || null,
       ramp_surface: body.rampSurface || null,
       trailer_access: !!body.trailerAccess,
       max_trailer_length_ft: body.maxTrailerLengthFt ?? null,
       parking_capacity: body.parkingCapacity || null,
       parking_fee: !!body.parkingFee,
-      fee_amount: body.feeAmount || null,
+      fee_amount: cleanFeeAmount,
       facilities: Array.isArray(body.facilities) ? body.facilities.slice(0, 20) : [],
       lat: body.lat ?? null,
       lng: body.lng ?? null,
       river_mile: body.riverMile ?? null,
       distance_to_next_access_miles: body.distanceToNextAccessMiles ?? null,
-      next_access_name: body.nextAccessName || null,
-      float_time_to_next: body.floatTimeToNext || null,
-      seasonal_notes: body.seasonalNotes || null,
+      next_access_name: cleanNextAccess,
+      float_time_to_next: cleanFloatTime,
+      seasonal_notes: cleanSeasonalNotes,
       submitted_by: user.id,
-      submitted_by_name: body.displayName.trim().slice(0, 60),
-      verification_status: 'pending' as const,
-      ai_confidence: ai.confidence,
-      ai_reasoning: ai.reasoning,
+      submitted_by_name: cleanDisplayName,
+      verification_status: mod.approved ? 'pending' as const : 'pending' as const,
+      ai_confidence: !mod.approved
+        ? 'low' as const
+        : ai.confidence,
+      ai_reasoning: !mod.approved
+        ? `[MODERATION FLAGGED: ${mod.reason}] ${ai.reasoning}`
+        : ai.reasoning,
     }
 
     const { error } = await supabase.from('river_access_points').insert(insertRow)
