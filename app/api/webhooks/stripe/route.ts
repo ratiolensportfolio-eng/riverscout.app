@@ -28,8 +28,10 @@ function isProCheckout(meta: Record<string, string>): boolean {
 // POST /api/webhooks/stripe — handle Stripe webhook events
 export async function POST(req: NextRequest) {
   const body = await req.text()
-  const sig = req.headers.get('stripe-signature')
-
+  const sig = req.headers.get('stripe-signature') ?? req.headers.get('Stripe-Signature')
+console.log('[STRIPE] sig:', sig?.slice(0, 25))
+console.log('[STRIPE] whsec prefix:', process.env.STRIPE_WEBHOOK_SECRET?.slice(0, 10))
+console.log('[STRIPE] body len:', body.length)
   if (!sig) {
     return NextResponse.json({ error: 'Missing signature' }, { status: 400 })
   }

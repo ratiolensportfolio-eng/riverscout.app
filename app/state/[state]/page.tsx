@@ -1,5 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import { cookies } from 'next/headers'
+import { createServerClient } from '@supabase/ssr'
 import { getState, STATES, getRiverPath } from '@/data/rivers'
 import { fetchGaugeDataBatch, formatCfs } from '@/lib/usgs'
 import { fetchPermittedRiverIds } from '@/lib/permits'
@@ -10,7 +12,10 @@ import { getDesignationBadges } from '@/lib/designations'
 import { RAPIDS } from '@/data/rapids'
 import type { FlowData, FlowCondition } from '@/types'
 
-export const revalidate = 900
+// Per-user gauge preferences make this page auth-dependent, so we
+// can't statically cache. Anon visitors still get the primary-gauge
+// view; logged-in users get their picks from user_gauge_preferences.
+export const dynamic = 'force-dynamic'
 
 interface Props {
   params: Promise<{ state: string }>
@@ -33,6 +38,32 @@ export default async function StatePage({ params }: Props) {
   const state = getState(stateKey)
   if (!state) notFound()
 
+  // If logged in, honor the user's gauge picks so the CFS shown here
+  // matches what they chose via GaugeSwitcher on the river page.
+  // Dashboard uses the same pattern — see app/dashboard/page.tsx.
+  const cookieStore = await cookies()
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll: () => cookieStore.getAll(),
+        setAll: () => { /* read-only in a server component */ },
+      },
+    },
+  )
+  const { data: { user } } = await supabase.auth.getUser()
+  const gaugePref = new Map<string, string>()
+  if (user) {
+    const { data } = await supabase
+      .from('user_gauge_preferences')
+      .select('river_id, gauge_id')
+      .eq('user_id', user.id)
+      .in('river_id', state.rivers.map(r => r.id))
+    for (const row of data ?? []) gaugePref.set(row.river_id, row.gauge_id)
+  }
+  const effectiveGaugeFor = (r: { id: string; g: string }) => gaugePref.get(r.id) || r.g
+
   // Fetch live CFS for every river in this state in a single batched
   // USGS request (was N parallel requests — slow on big states like
   // MI/OH which have 50+ rivers). fetchGaugeDataBatch handles
@@ -40,11 +71,14 @@ export default async function StatePage({ params }: Props) {
   // without firing a network call.
   const [batch, permittedRiverIds] = await Promise.all([
     // PT2H — state list cards only need current cfs + condition.
-    fetchGaugeDataBatch(state.rivers.map(r => ({ gaugeId: r.g, optRange: r.opt })), { period: 'PT2H' }),
+    fetchGaugeDataBatch(
+      state.rivers.map(r => ({ gaugeId: effectiveGaugeFor(r), optRange: r.opt })),
+      { period: 'PT2H' },
+    ),
     fetchPermittedRiverIds(),
   ])
   const flowMap = new Map<string, FlowData | null>(
-    state.rivers.map(r => [r.id, batch.get(r.g) ?? null])
+    state.rivers.map(r => [r.id, batch.get(effectiveGaugeFor(r)) ?? null])
   )
 
   return (

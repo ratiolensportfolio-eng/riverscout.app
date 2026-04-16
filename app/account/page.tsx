@@ -156,11 +156,26 @@ export default function AccountPage() {
       // /api/weather or direct gauge endpoint. The cards render like
       // the weekly digest email but in-app.
       try {
-        const { data: savedRows } = await supabase
-          .from('saved_rivers')
-          .select('river_id')
-          .eq('user_id', uid)
-          .order('created_at', { ascending: false })
+        const [savedRes, gaugePrefRes] = await Promise.all([
+          supabase
+            .from('saved_rivers')
+            .select('river_id')
+            .eq('user_id', uid)
+            .order('created_at', { ascending: false }),
+          supabase
+            .from('user_gauge_preferences')
+            .select('river_id, gauge_id')
+            .eq('user_id', uid),
+        ])
+        const savedRows = savedRes.data
+        // Preferred gauge per river — substituted for the river's
+        // primary g when the user has explicitly picked another
+        // gauge via GaugeSwitcher on a river page. Without this the
+        // account "Saved Rivers" cards would silently revert to the
+        // primary gauge and drift from what the user saw last.
+        const gaugePref = new Map<string, string>(
+          (gaugePrefRes.data ?? []).map(r => [r.river_id, r.gauge_id]),
+        )
 
         const riverMap = new Map(ALL_RIVERS.map(r => [r.id, r]))
         const cards: SavedRiverCard[] = []
@@ -192,7 +207,7 @@ export default function AccountPage() {
         for (const card of cards) {
           const river = riverMap.get(card.riverId)
           if (!river?.g) continue
-          const gaugeId = river.g
+          const gaugeId = gaugePref.get(card.riverId) ?? river.g
           const optStr = river.opt ?? ''
           fetch(`https://waterservices.usgs.gov/nwis/iv/?format=json&sites=${gaugeId}&parameterCd=00060&period=PT1H`)
             .then(res => res.ok ? res.json() : null)
