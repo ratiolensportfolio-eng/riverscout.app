@@ -151,6 +151,12 @@ function LoginForm() {
         <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textAlign: 'center', marginTop: '20px', lineHeight: 1.6 }}>
           No password needed. Sign in with Google or a magic link sent to your email.
         </div>
+        <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textAlign: 'center', marginTop: '10px', lineHeight: 1.6 }}>
+          By continuing, you agree to our{' '}
+          <Link href="/terms" style={{ color: 'var(--rvdk)', textDecoration: 'underline' }}>Terms</Link>{' '}
+          and{' '}
+          <Link href="/privacy" style={{ color: 'var(--rvdk)', textDecoration: 'underline' }}>Privacy Policy</Link>.
+        </div>
       </div>
     </main>
   )

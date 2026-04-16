@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import LargeTextToggle from '@/components/LargeTextToggle'
 import GlobalNav from '@/components/GlobalNav'
+import GlobalFooter from '@/components/GlobalFooter'
 import LaunchBanner from '@/components/LaunchBanner'
 
 export const metadata: Metadata = {
@@ -69,6 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <LaunchBanner />
           <GlobalNav />
           {children}
+          <GlobalFooter />
         </div>
         <LargeTextToggle />
         <script dangerouslySetInnerHTML={{ __html: `
