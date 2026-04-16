@@ -48,6 +48,15 @@ export async function POST(req: NextRequest) {
       .eq('id', userId)
       .maybeSingle()
 
+    console.log('[post-signin]', {
+      userId: userId.slice(0, 8),
+      hasProfile: !!profile,
+      email: profile?.email,
+      createdAt: profile?.created_at,
+      hasResendKey: !!process.env.RESEND_API_KEY,
+      hasAudienceId: !!process.env.RESEND_AUDIENCE_ID,
+    })
+
     if (!profile?.email) {
       // No profile row yet — handle_new_user trigger hasn't run or
       // failed silently. Not worth retrying here; next sign-in will
@@ -56,12 +65,17 @@ export async function POST(req: NextRequest) {
     }
 
     const ageMs = Date.now() - new Date(profile.created_at).getTime()
+    console.log('[post-signin] age_min:', Math.round(ageMs / 60000))
     if (ageMs > NEW_SIGNUP_WINDOW_MS) {
-      return NextResponse.json({ ok: true, skipped: 'returning-user' })
+      return NextResponse.json({
+        ok: true, skipped: 'returning-user',
+        age_minutes: Math.round(ageMs / 60000),
+      })
     }
 
     const added = await upsertResendContact(profile.email, { source: 'signup' })
-    return NextResponse.json({ ok: true, added })
+    console.log('[post-signin] upsertResendContact returned:', added)
+    return NextResponse.json({ ok: true, added, email: profile.email })
   } catch (err) {
     console.error('[post-signin] error:', err)
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
