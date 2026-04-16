@@ -19,19 +19,54 @@ async function getServiceRoleClient() {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { email, riverId, riverName, threshold, stateKey } = body
+    const { email, riverId, riverName, threshold, stateKey, minCfs, maxCfs } = body
 
-    if (!email || !riverId || !riverName || !threshold) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
+    if (!email || !riverId || !riverName) {
+      return NextResponse.json({ error: 'email, riverId, riverName required' }, { status: 400 })
     }
 
-    if (!['optimal', 'high', 'flood', 'any'].includes(threshold)) {
+    // Either min/max CFS OR a threshold enum is required. New UI
+    // submits min/max; legacy callers still pass threshold. When
+    // both are sent, min/max wins at evaluation time — stored on
+    // the row, threshold stays as a hint.
+    const hasRange = minCfs != null || maxCfs != null
+    if (!hasRange && !threshold) {
+      return NextResponse.json({ error: 'minCfs/maxCfs or threshold required' }, { status: 400 })
+    }
+    if (threshold && !['optimal', 'high', 'flood', 'any'].includes(threshold)) {
       return NextResponse.json({ error: 'Invalid threshold. Must be optimal, high, flood, or any' }, { status: 400 })
+    }
+
+    // Sanity: min <= max when both present; coerce to ints.
+    const minCfsInt = minCfs == null || minCfs === '' ? null : parseInt(String(minCfs), 10)
+    const maxCfsInt = maxCfs == null || maxCfs === '' ? null : parseInt(String(maxCfs), 10)
+    if (minCfsInt != null && maxCfsInt != null && minCfsInt > maxCfsInt) {
+      return NextResponse.json({ error: 'minCfs cannot exceed maxCfs' }, { status: 400 })
     }
 
     const supabase = await getServiceRoleClient()
     if (!supabase) {
       return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
+    }
+
+    // Flow alerts are Pro — matches the hatch_alerts gate. We only
+    // enforce when userId is supplied (anonymous submissions via
+    // email-only are legacy-friendly no-ops at the cron layer if
+    // the user isn't Pro; the UI surfaces the Pro prompt on the 403).
+    const { userId } = body
+    if (userId) {
+      const { data: profile } = await supabase
+        .from('user_profiles')
+        .select('is_pro, email')
+        .eq('id', userId)
+        .single()
+      const isAdmin = profile?.email && ['paddle.rivers.us@gmail.com'].includes(profile.email.toLowerCase())
+      if (!profile?.is_pro && !isAdmin) {
+        return NextResponse.json({
+          error: 'pro_required',
+          message: 'Flow alerts are a Pro feature. Upgrade for $1.99/month.',
+        }, { status: 403 })
+      }
     }
 
     // Upsert — if same email+river already exists, update threshold.
@@ -42,11 +77,14 @@ export async function POST(req: NextRequest) {
       .from('flow_alerts')
       .upsert(
         {
+          user_id: userId || null,
           email,
           river_id: riverId,
           river_name: riverName,
           state_key: stateKey || null,
-          threshold,
+          threshold: threshold || 'any',
+          min_cfs: minCfsInt,
+          max_cfs: maxCfsInt,
           active: true,
           updated_at: new Date().toISOString(),
         },

@@ -3,9 +3,8 @@ import { ALL_RIVERS, STATES, getRiverPath } from '@/data/rivers'
 import { fetchGaugeDataBatch, formatCfs } from '@/lib/usgs'
 import type { FlowData } from '@/types'
 import { RAPIDS } from '@/data/rapids'
-import { PRO_FEATURES, PRO_PRICE } from '@/types'
-import { SHOW_PRO_TIER } from '@/lib/features'
-import AlertSubscriber from '@/components/alerts/AlertSubscriber'
+import { hasReleases } from '@/data/dam-releases'
+import SetAnAlert from '@/components/alerts/SetAnAlert'
 
 // Revalidate every 15 minutes
 export const revalidate = 900
@@ -36,15 +35,20 @@ export default async function AlertsPage() {
     loading: { background: 'var(--bg3)', color: 'var(--tx3)' },
   }
 
-  // Build river options for the subscriber component
+  // Build river options for the new SetAnAlert component. Only id/
+  // name/state are needed there; condition/cfs are not displayed in
+  // the dropdowns so we omit them to keep the payload slim.
   const riverOptions = ALL_RIVERS.map(r => ({
     id: r.id,
     name: r.n,
     stateKey: r.stateKey,
     stateName: stateNames[r.stateKey] ?? r.stateKey,
-    condition: flowMap[r.id]?.condition ?? 'loading',
-    cfs: flowMap[r.id]?.cfs ?? null,
   }))
+
+  // Dammed rivers with scheduled releases. Used to constrain the
+  // river selector in the Dam Release Alert form so users can't
+  // subscribe to a river with no scheduled releases.
+  const dammedRiverIds = ALL_RIVERS.map(r => r.id).filter(hasReleases)
 
   // Count conditions
   const counts = { optimal: 0, low: 0, high: 0, flood: 0 }
@@ -91,71 +95,10 @@ export default async function AlertsPage() {
         </div>
       </div>
 
-      {/* Alert subscription section */}
-      <AlertSubscriber rivers={riverOptions} />
-
-      {/* Pro upgrade pitch — flow alerts are free; Pro adds email delivery
-          and deeper analytics. Tone: helpful suggestion, not a barrier. */}
-      {SHOW_PRO_TIER && (
-      <div style={{ padding: '0 28px 20px' }}>
-        <div style={{
-          background: 'var(--rvdk)', borderRadius: 'var(--rlg)', padding: '24px 28px',
-          color: '#fff', position: 'relative', overflow: 'hidden',
-        }}>
-          <div style={{
-            position: 'absolute', top: '-20px', right: '-20px', width: '120px', height: '120px',
-            borderRadius: '50%', background: 'rgba(255,255,255,.04)',
-          }} />
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '20px' }}>
-            <div style={{ flex: '1 1 300px' }}>
-              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', letterSpacing: '2px', textTransform: 'uppercase', opacity: 0.7, marginBottom: '6px' }}>
-                Want us to notify you automatically?
-              </div>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 700, marginBottom: '4px' }}>
-                RiverScout Pro
-              </div>
-              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', opacity: 0.8, lineHeight: 1.6, marginTop: '4px', marginBottom: '10px' }}>
-                Flow alert emails are a Pro feature. Subscribing to a river above is free — upgrade if you want the emails delivered automatically.
-              </div>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '28px', fontWeight: 700, lineHeight: 1 }}>
-                ${PRO_PRICE.monthly}<span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', opacity: 0.6 }}>/month</span>
-              </div>
-              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', opacity: 0.6, marginTop: '4px' }}>
-                or ${PRO_PRICE.yearly}/year &middot; cancel anytime
-              </div>
-            </div>
-            <div style={{ flex: '1 1 300px' }}>
-              {PRO_FEATURES.slice(0, 6).map((f, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '10px' }}>
-                  <span style={{ fontSize: '14px', flexShrink: 0, marginTop: '1px' }}>{f.icon}</span>
-                  <div>
-                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      {f.title}
-                      {!f.available && (
-                        <span style={{ fontSize: '9px', opacity: 0.5, fontWeight: 400 }}>coming soon</span>
-                      )}
-                    </div>
-                    <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', opacity: 0.6, marginTop: '1px' }}>
-                      {f.description}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div style={{ marginTop: '16px', display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
-            <Link href="/pro" style={{
-              fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', fontWeight: 500,
-              padding: '9px 24px', borderRadius: 'var(--r)',
-              background: '#fff', color: 'var(--rvdk)',
-              textDecoration: 'none', letterSpacing: '.3px',
-            }}>
-              Upgrade to Pro &rarr;
-            </Link>
-          </div>
-        </div>
-      </div>
-      )}
+      {/* Set an alert — 3 cards (Flow, Hatch, Release) + inline
+          expanding form. Replaces the old email-box subscriber and
+          the green Pro upsell banner. Pro gating is inline per form. */}
+      <SetAnAlert rivers={riverOptions} dammedRiverIds={dammedRiverIds} />
 
       {/* Live flow grid */}
       <div style={{ padding: '0 28px 16px' }}>
