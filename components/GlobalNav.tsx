@@ -29,7 +29,7 @@ interface Pill {
 }
 
 const PILLS: Pill[] = [
-  { label: 'Map',         href: '/',                    match: /^\/$|^\/state(\/|$)/ },
+  { label: 'Map',         href: '/map',                  match: /^\/map$|^\/state(\/|$)/ },
   { label: 'Rivers',      href: '/rivers',              match: /^\/rivers/ },
   { label: 'Releases',    href: '/releases',            match: /^\/releases/ },
   { label: 'Search',      href: '/search',              match: /^\/search/ },

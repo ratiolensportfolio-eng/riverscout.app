@@ -173,13 +173,26 @@ export default async function DashboardPage() {
 
   return (
     <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)' }}>
-      <div style={{ padding: '20px 24px', borderBottom: '.5px solid var(--bd)', background: 'var(--wtlt)' }}>
-        <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '22px', margin: '0 0 4px', color: '#042C53' }}>
-          Your dashboard
-        </h1>
-        <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', color: 'var(--tx2)' }}>
-          {greeting}
+      <div style={{ padding: '20px 24px', borderBottom: '.5px solid var(--bd)', background: 'var(--wtlt)', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '10px' }}>
+        <div>
+          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '22px', margin: '0 0 4px', color: '#042C53' }}>
+            Your dashboard
+            {stateInfo && (
+              <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', fontWeight: 400, color: 'var(--tx3)', marginLeft: '10px' }}>
+                {stateInfo.name}
+              </span>
+            )}
+          </h1>
+          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', color: 'var(--tx2)' }}>
+            {greeting}
+          </div>
         </div>
+        <Link href="/map" style={{
+          fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
+          color: 'var(--rvdk)', textDecoration: 'none',
+          background: 'var(--rvlt)', border: '.5px solid var(--rvmd)',
+          padding: '5px 12px', borderRadius: '14px', whiteSpace: 'nowrap',
+        }}>Browse all 50 states →</Link>
       </div>
 
       <div className="dashboard-grid">
@@ -193,8 +206,9 @@ export default async function DashboardPage() {
                 stateCenter={mapConfig.center}
                 stateZoom={mapConfig.zoom}
               />
-              <div style={{ padding: '8px 14px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--tx3)' }}>
+              <div style={{ padding: '8px 14px', fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'var(--tx3)', display: 'flex', justifyContent: 'space-between' }}>
                 <Link href={`/state/${homeState}`} style={{ color: 'var(--rvdk)' }}>Explore {stateInfo.name} rivers →</Link>
+                <Link href="/map" style={{ color: 'var(--tx3)' }}>All rivers →</Link>
               </div>
             </>
           ) : savedRivers.length === 0 ? (
