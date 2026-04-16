@@ -23,33 +23,76 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'Profile not found' }, { status: 404 })
   }
 
-  // Get trip reports by this user's email
-  const { data: reports } = await supabase
-    .from('trip_reports')
-    .select('id, river_id, river_name, rating, trip_date, created_at')
-    .eq('author_name', profile.display_name)
-    .order('created_at', { ascending: false })
-    .limit(20)
+  // Get verified trip reports + all verified catches + user_profile
+  // counters + hazard/access-point badge signals, in parallel.
+  // Everything is scoped to profile.id (the auth.users uuid).
+  const [
+    reportsRes, catchesRes, userProfileRes,
+    improvementsRes, hazardsRes, accessPointsRes,
+  ] = await Promise.all([
+    supabase
+      .from('trip_reports')
+      .select('id, river_id, trip_date, cfs_at_time, conditions_rating, created_at')
+      .eq('user_id', profile.id)
+      .eq('status', 'verified')
+      .order('trip_date', { ascending: false })
+      .limit(100),
+    supabase
+      .from('fish_catches')
+      .select('id, river_id, catch_date, species, weight_lbs, length_inches, photo_url')
+      .eq('user_id', profile.id)
+      .eq('verification_status', 'verified')
+      .order('weight_lbs', { ascending: false, nullsFirst: false })
+      .limit(50),
+    supabase
+      .from('user_profiles')
+      .select('total_verified_trips, total_verified_catches, contribution_score')
+      .eq('id', profile.id)
+      .maybeSingle(),
+    supabase
+      .from('suggestions')
+      .select('id, river_id, river_name, field, reviewed_at')
+      .eq('user_id', profile.id)
+      .eq('status', 'approved')
+      .order('reviewed_at', { ascending: false })
+      .limit(20),
+    // Badge signals: any hazard reported OR any access point submitted
+    // earns the corresponding badge. Count-only, head:true for speed.
+    supabase
+      .from('river_hazards')
+      .select('*', { count: 'exact', head: true })
+      .eq('reported_by', profile.id),
+    supabase
+      .from('river_access_points')
+      .select('*', { count: 'exact', head: true })
+      .eq('submitted_by', profile.id),
+  ])
 
-  // Get approved improvements
-  const { data: improvements } = await supabase
-    .from('suggestions')
-    .select('id, river_id, river_name, field, reviewed_at')
-    .eq('user_email', username + '@%') // partial match won't work, need to match by user_id
-    .eq('status', 'approved')
-    .order('reviewed_at', { ascending: false })
-    .limit(20)
+  const reports = reportsRes.data ?? []
+  const catches = catchesRes.data ?? []
+  const userProfile = userProfileRes.data ?? {
+    total_verified_trips: 0, total_verified_catches: 0, contribution_score: 0,
+  }
+  const allImprovements = improvementsRes.data ?? []
+  const hazardsReported = hazardsRes.count ?? 0
+  const accessPointsSubmitted = accessPointsRes.count ?? 0
 
-  // Try matching improvements by user_id instead
-  const { data: improvementsByUid } = await supabase
-    .from('suggestions')
-    .select('id, river_id, river_name, field, reviewed_at')
-    .eq('user_id', profile.id)
-    .eq('status', 'approved')
-    .order('reviewed_at', { ascending: false })
-    .limit(20)
+  // Personal bests — best (heaviest) verified catch per species.
+  // Seed with the already-sorted catches list so the first seen row
+  // per species wins.
+  const personalBests = new Map<string, typeof catches[number]>()
+  for (const c of catches) {
+    if (!personalBests.has(c.species)) personalBests.set(c.species, c)
+  }
 
-  const allImprovements = (improvementsByUid && improvementsByUid.length > 0) ? improvementsByUid : (improvements || [])
+  // Trip count breakdown by river — for the "Verified trips" section.
+  const tripCountByRiver = new Map<string, number>()
+  for (const r of reports) {
+    tripCountByRiver.set(r.river_id, (tripCountByRiver.get(r.river_id) ?? 0) + 1)
+  }
+  const tripsByRiver = Array.from(tripCountByRiver.entries())
+    .map(([river_id, count]) => ({ river_id, count }))
+    .sort((a, b) => b.count - a.count)
 
   // Get saved rivers (only if requesting user is the owner)
   let savedRivers: Array<{ river_id: string }> = []
@@ -88,19 +131,51 @@ export async function GET(req: NextRequest) {
   const helpfulAnswers = helpfulAnswersRes.count ?? 0
   const totalContributions = approvedCount + helpfulAnswers
 
+  // Top-angler badge: user has any top-10 verified catch per species.
+  // A single query ordered by species then weight gives us the top 10
+  // per species; if this user appears for any species, they earn the
+  // badge. Cheap because the species+weight index covers it.
+  let isTopAngler = false
+  if (userProfile.total_verified_catches > 0) {
+    // Check against each species the user has catches in.
+    const userSpecies = new Set(catches.map(c => c.species))
+    for (const sp of userSpecies) {
+      const { data: top10 } = await supabase
+        .from('fish_catches')
+        .select('user_id')
+        .eq('verification_status', 'verified')
+        .eq('species', sp)
+        .order('weight_lbs', { ascending: false, nullsFirst: false })
+        .limit(10)
+      if ((top10 ?? []).some(r => r.user_id === profile.id)) {
+        isTopAngler = true
+        break
+      }
+    }
+  }
+
   return NextResponse.json({
     profile,
-    reports: reports || [],
+    reports,
+    catches: Array.from(personalBests.values()),  // personal best per species
+    tripsByRiver,
     improvements: allImprovements,
     savedRivers,
     stats: {
-      // Keep the old field name for back-compat — the UI passes
-      // it straight into getContributorTier(). Renaming would
-      // require touching every consumer; the value semantics
-      // (total contribution points) are unchanged.
+      // approvedImprovements stays named for the contributor-tier UI
+      // (it reads this field straight). Semantics = total contribution
+      // points. Unchanged from before.
       approvedImprovements: totalContributions,
-      tripReports: reports?.length || 0,
+      tripReports: userProfile.total_verified_trips,
+      verifiedCatches: userProfile.total_verified_catches,
+      contributionScore: userProfile.contribution_score,
       isContributor: totalContributions > 0,
+    },
+    badges: {
+      hazardReporter: hazardsReported > 0,
+      accessPointVerifier: accessPointsSubmitted > 0,
+      qaContributor: helpfulAnswers > 0,
+      topAngler: isTopAngler,
     },
   })
 }

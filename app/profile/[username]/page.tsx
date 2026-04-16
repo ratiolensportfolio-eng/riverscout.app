@@ -4,9 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
-import { fetchGaugeData, formatCfs } from '@/lib/usgs'
-import { getRiverPath } from '@/data/rivers'
-import type { FlowCondition } from '@/types'
+import { ALL_RIVERS, getRiverPath } from '@/data/rivers'
 import { getContributorTier, getNextTier } from '@/lib/contributor-tiers'
 
 const mono = "'IBM Plex Mono', monospace"
@@ -20,10 +18,6 @@ const fieldLabels: Record<string, string> = {
   outfitters: 'Outfitters', history: 'History', other: 'Other',
 }
 
-const condColors: Record<string, string> = {
-  optimal: '#1D9E75', low: '#533AB7', high: '#BA7517', flood: '#A32D2D', loading: '#aaa99a',
-}
-
 interface Profile {
   id: string
   username: string
@@ -34,13 +28,38 @@ interface Profile {
   created_at: string
 }
 
+// Matches the trip_reports columns returned by /api/profile. The
+// rating→conditions_rating rename came with mig 041; the old schema
+// is gone so we only support the new shape.
 interface Report {
   id: string
   river_id: string
-  river_name: string
-  rating: number
-  trip_date: string | null
+  trip_date: string
+  cfs_at_time: number | null
+  conditions_rating: number | null
   created_at: string
+}
+
+interface Catch {
+  id: string
+  river_id: string
+  catch_date: string
+  species: string
+  weight_lbs: number | null
+  length_inches: number | null
+  photo_url: string | null
+}
+
+interface TripsByRiverEntry {
+  river_id: string
+  count: number
+}
+
+interface Badges {
+  hazardReporter: boolean
+  accessPointVerifier: boolean
+  qaContributor: boolean
+  topAngler: boolean
 }
 
 interface Improvement {
@@ -72,14 +91,24 @@ export default function ProfilePage() {
 
   const [profile, setProfile] = useState<Profile | null>(null)
   const [reports, setReports] = useState<Report[]>([])
+  const [catches, setCatches] = useState<Catch[]>([])
+  const [tripsByRiver, setTripsByRiver] = useState<TripsByRiverEntry[]>([])
   const [improvements, setImprovements] = useState<Improvement[]>([])
   const [savedRivers, setSavedRivers] = useState<SavedRiver[]>([])
-  const [stats, setStats] = useState({ approvedImprovements: 0, tripReports: 0, isContributor: false })
+  const [stats, setStats] = useState({
+    approvedImprovements: 0,
+    tripReports: 0,
+    verifiedCatches: 0,
+    contributionScore: 0,
+    isContributor: false,
+  })
+  const [badges, setBadges] = useState<Badges>({
+    hazardReporter: false, accessPointVerifier: false, qaContributor: false, topAngler: false,
+  })
   const [loading, setLoading] = useState(true)
   const [notFound, setNotFound] = useState(false)
   const [currentUserId, setCurrentUserId] = useState<string | null>(null)
   const [isOwner, setIsOwner] = useState(false)
-  const [savedFlows, setSavedFlows] = useState<Record<string, { cfs: number | null; condition: FlowCondition }>>({})
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
@@ -98,23 +127,19 @@ export default function ProfilePage() {
         setNotFound(true)
       } else {
         setProfile(data.profile)
-        setReports(data.reports)
-        setImprovements(data.improvements)
-        setSavedRivers(data.savedRivers)
+        setReports(data.reports ?? [])
+        setCatches(data.catches ?? [])
+        setTripsByRiver(data.tripsByRiver ?? [])
+        setImprovements(data.improvements ?? [])
+        setSavedRivers(data.savedRivers ?? [])
         setStats(data.stats)
+        setBadges(data.badges ?? { hazardReporter: false, accessPointVerifier: false, qaContributor: false, topAngler: false })
         setIsOwner(currentUserId === data.profile?.id)
       }
       setLoading(false)
     }
     if (username) load()
   }, [username, currentUserId])
-
-  // Fetch live CFS for saved rivers
-  useEffect(() => {
-    if (savedRivers.length === 0) return
-    // We can't call USGS directly from client — use the rivers data
-    // Saved rivers just show the river_id for now, live CFS would need a server endpoint
-  }, [savedRivers])
 
   if (loading) {
     return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: mono, color: 'var(--tx3)' }}>Loading...</div>
@@ -182,22 +207,38 @@ export default function ProfilePage() {
         </div>
 
         {/* Stats bar */}
-        <div style={{ display: 'flex', gap: '16px', marginBottom: '24px', padding: '12px', background: 'var(--bg2)', borderRadius: 'var(--r)', border: '.5px solid var(--bd)' }}>
-          <div style={{ textAlign: 'center', flex: 1 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))', gap: '12px', marginBottom: '20px', padding: '14px', background: 'var(--bg2)', borderRadius: 'var(--r)', border: '.5px solid var(--bd)' }}>
+          <div style={{ textAlign: 'center' }}>
             <div style={{ fontFamily: serif, fontSize: '20px', fontWeight: 700, color: 'var(--rvdk)' }}>{stats.tripReports}</div>
-            <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase' }}>Trip Reports</div>
+            <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase' }}>Verified trips</div>
           </div>
-          <div style={{ textAlign: 'center', flex: 1 }}>
-            <div style={{ fontFamily: serif, fontSize: '20px', fontWeight: 700, color: 'var(--rv)' }}>{stats.approvedImprovements}</div>
-            <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase' }}>Improvements</div>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontFamily: serif, fontSize: '20px', fontWeight: 700, color: '#1D9E75' }}>{stats.verifiedCatches}</div>
+            <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase' }}>Verified catches</div>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontFamily: serif, fontSize: '20px', fontWeight: 700, color: 'var(--rv)' }}>{stats.contributionScore}</div>
+            <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase' }}>Contribution pts</div>
           </div>
           {isOwner && (
-            <div style={{ textAlign: 'center', flex: 1 }}>
+            <div style={{ textAlign: 'center' }}>
               <div style={{ fontFamily: serif, fontSize: '20px', fontWeight: 700, color: 'var(--wt)' }}>{savedRivers.length}</div>
-              <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase' }}>Saved Rivers</div>
+              <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase' }}>Saved rivers</div>
             </div>
           )}
         </div>
+
+        {/* Contribution badges — shown only when the user has earned
+            at least one. The labels are intentionally concise; the
+            tier/Q&A badge stays next to the display name at the top. */}
+        {(badges.hazardReporter || badges.accessPointVerifier || badges.qaContributor || badges.topAngler) && (
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '22px' }}>
+            {badges.topAngler && <Badge icon="🎣" label="Top angler" tone="teal" tip="Holds a top-10 catch for at least one species" />}
+            {badges.hazardReporter && <Badge icon="⚠" label="Hazard reporter" tone="red" tip="Reported one or more river hazards" />}
+            {badges.accessPointVerifier && <Badge icon="📍" label="Access point verifier" tone="blue" tip="Submitted one or more access points" />}
+            {badges.qaContributor && <Badge icon="💬" label="Q&A contributor" tone="purple" tip="Answered a question that was marked helpful" />}
+          </div>
+        )}
 
         {/* Saved Rivers (owner only) */}
         {isOwner && savedRivers.length > 0 && (
@@ -219,30 +260,102 @@ export default function ProfilePage() {
           </div>
         )}
 
-        {/* Trip Reports */}
+        {/* Personal bests by species — heaviest verified catch per
+            species, with photo. Derived server-side (one row per
+            species already). */}
+        {catches.length > 0 && (
+          <div style={{ marginBottom: '24px' }}>
+            <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+              Personal bests
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(170px, 1fr))', gap: '10px' }}>
+              {catches.map(c => {
+                const river = ALL_RIVERS.find(r => r.id === c.river_id)
+                return (
+                  <div key={c.id} style={{ border: '.5px solid var(--bd)', borderRadius: 'var(--r)', overflow: 'hidden', background: 'var(--bg)' }}>
+                    {c.photo_url ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={c.photo_url} alt={c.species} style={{ width: '100%', height: '120px', objectFit: 'cover', display: 'block' }} />
+                    ) : (
+                      <div style={{ width: '100%', height: '120px', background: 'var(--bg2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: mono, fontSize: '10px', color: 'var(--tx3)' }}>No photo</div>
+                    )}
+                    <div style={{ padding: '8px 10px' }}>
+                      <div style={{ fontFamily: serif, fontSize: '13px', fontWeight: 600, color: '#042C53' }}>{c.species}</div>
+                      <div style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx2)', marginTop: '2px' }}>
+                        {c.weight_lbs != null ? `${c.weight_lbs} lb` : 'weight —'}
+                        {c.length_inches != null && ` · ${c.length_inches}"`}
+                      </div>
+                      <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', marginTop: '2px' }}>
+                        {river ? (
+                          <Link href={getRiverPath(river)} style={{ color: 'var(--tx3)' }}>{river.n}</Link>
+                        ) : c.river_id}
+                        {' · '}{new Date(c.catch_date + 'T00:00:00').toLocaleDateString()}
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Verified trips — recent list with CFS + rating. */}
         {reports.length > 0 && (
           <div style={{ marginBottom: '24px' }}>
             <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
-              Trip Reports
+              Verified trips
             </div>
-            {reports.map(r => (
-              <div key={r.id} style={{
-                padding: '10px 0', borderBottom: '.5px solid var(--bd)',
-                display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
-              }}>
-                <div>
-                  <div style={{ fontFamily: serif, fontSize: '14px', fontWeight: 600, color: 'var(--rvdk)' }}>
-                    {r.river_name}
+            {reports.slice(0, 20).map(r => {
+              const river = ALL_RIVERS.find(x => x.id === r.river_id)
+              return (
+                <div key={r.id} style={{
+                  padding: '10px 0', borderBottom: '.5px solid var(--bd)',
+                  display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '10px',
+                }}>
+                  <div style={{ minWidth: 0 }}>
+                    <div style={{ fontFamily: serif, fontSize: '14px', fontWeight: 600, color: 'var(--rvdk)' }}>
+                      {river ? (
+                        <Link href={getRiverPath(river)} style={{ color: 'inherit', textDecoration: 'none' }}>{river.n}</Link>
+                      ) : r.river_id}
+                    </div>
+                    <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', marginTop: '2px' }}>
+                      {new Date(r.trip_date + 'T00:00:00').toLocaleDateString()}
+                      {r.cfs_at_time != null && ` · ${r.cfs_at_time.toLocaleString()} cfs`}
+                    </div>
                   </div>
-                  <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', marginTop: '2px' }}>
-                    {r.trip_date || new Date(r.created_at).toLocaleDateString()}
-                  </div>
+                  {r.conditions_rating != null && (
+                    <span style={{ color: 'var(--am)', fontSize: '12px', letterSpacing: '1px', flexShrink: 0 }} title={`${r.conditions_rating}/5 conditions`}>
+                      {'★'.repeat(r.conditions_rating)}{'☆'.repeat(5 - r.conditions_rating)}
+                    </span>
+                  )}
                 </div>
-                <span style={{ color: 'var(--am)', fontSize: '12px', letterSpacing: '1px' }}>
-                  {'★'.repeat(r.rating)}{'☆'.repeat(5 - r.rating)}
-                </span>
-              </div>
-            ))}
+              )
+            })}
+          </div>
+        )}
+
+        {/* Trips by river — breakdown showing which rivers this
+            paddler frequents most. */}
+        {tripsByRiver.length > 0 && (
+          <div style={{ marginBottom: '24px' }}>
+            <div style={{ fontFamily: mono, fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
+              Trips by river
+            </div>
+            <div style={{ border: '.5px solid var(--bd)', borderRadius: 'var(--r)', overflow: 'hidden', background: 'var(--bg)' }}>
+              {tripsByRiver.slice(0, 15).map(entry => {
+                const river = ALL_RIVERS.find(r => r.id === entry.river_id)
+                return (
+                  <div key={entry.river_id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 12px', borderBottom: '.5px solid var(--bd)', fontFamily: mono, fontSize: '11px' }}>
+                    <span>
+                      {river ? (
+                        <Link href={getRiverPath(river)} style={{ color: 'var(--rvdk)', textDecoration: 'none', fontWeight: 600 }}>{river.n}</Link>
+                      ) : entry.river_id}
+                    </span>
+                    <span style={{ color: 'var(--tx3)' }}>{entry.count} trip{entry.count === 1 ? '' : 's'}</span>
+                  </div>
+                )
+              })}
+            </div>
           </div>
         )}
 
@@ -270,14 +383,44 @@ export default function ProfilePage() {
         )}
 
         {/* Empty state */}
-        {reports.length === 0 && improvements.length === 0 && (
+        {reports.length === 0 && catches.length === 0 && improvements.length === 0 && (
           <div style={{ textAlign: 'center', padding: '30px 0', color: 'var(--tx3)' }}>
             <div style={{ fontFamily: mono, fontSize: '11px' }}>
-              No activity yet. Submit a trip report or improve a river to build your profile.
+              No activity yet. Submit a trip report or log a catch to build your profile.
             </div>
           </div>
         )}
       </div>
     </main>
+  )
+}
+
+// Small contribution-badge chip. Tones map to the same palette used
+// across the app for hazards / verified / Q&A highlights.
+function Badge({ icon, label, tone, tip }: {
+  icon: string; label: string;
+  tone: 'teal' | 'red' | 'blue' | 'purple';
+  tip: string;
+}) {
+  const palette: Record<string, { fg: string; bg: string; bd: string }> = {
+    teal:   { fg: '#085041', bg: '#E1F5EE', bd: '#9FE1CB' },
+    red:    { fg: '#A32D2D', bg: '#FBE8E8', bd: '#E8B5B5' },
+    blue:   { fg: '#0C447C', bg: '#E6EFF9', bd: '#B5CEE8' },
+    purple: { fg: '#533AB7', bg: '#EEE9FB', bd: '#C4B5E8' },
+  }
+  const p = palette[tone]
+  return (
+    <span
+      title={tip}
+      style={{
+        fontFamily: mono, fontSize: '10px',
+        padding: '4px 10px', borderRadius: '12px',
+        background: p.bg, color: p.fg, border: `.5px solid ${p.bd}`,
+        display: 'inline-flex', alignItems: 'center', gap: '5px',
+        cursor: 'help',
+      }}
+    >
+      <span aria-hidden="true">{icon}</span> {label}
+    </span>
   )
 }
