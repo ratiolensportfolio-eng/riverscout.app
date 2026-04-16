@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import crypto from 'crypto'
 import { stripe, STRIPE_PRICES } from '@/lib/stripe'
 import { createSupabaseClient } from '@/lib/supabase'
 import { sendEmail } from '@/lib/email'
@@ -41,56 +40,13 @@ function isProCheckout(meta: Record<string, string>): boolean {
 export async function POST(req: NextRequest) {
   const body = await req.text()
   const sig = req.headers.get('stripe-signature')
-  const whsec = process.env.STRIPE_WEBHOOK_SECRET
-
-  // ── Temporary diagnostic block ─────────────────────────────────
-  // Compute the expected HMAC manually so we can compare it against
-  // Stripe's v1 signature. This rules out the three remaining causes
-  // of "Invalid signature" after env redeploy:
-  //   - wrong/missing secret        → manual match fails
-  //   - body byte mutation          → manual match fails AND body
-  //                                   length looks off
-  //   - Stripe-library weirdness    → manual match PASSES but
-  //                                   constructEvent still throws
-  // Remove this block once resolved.
-  if (sig && whsec) {
-    try {
-      const parts = Object.fromEntries(
-        sig.split(',').map(p => {
-          const [k, ...rest] = p.split('=')
-          return [k, rest.join('=')]
-        }),
-      ) as Record<string, string>
-      const ts = parts.t
-      const v1 = parts.v1
-      const signedPayload = `${ts}.${body}`
-      const expected = crypto
-        .createHmac('sha256', whsec)
-        .update(signedPayload, 'utf8')
-        .digest('hex')
-      console.log('[STRIPE-DIAG] body_len:', body.length)
-      console.log('[STRIPE-DIAG] whsec_prefix:', whsec.slice(0, 12))
-      console.log('[STRIPE-DIAG] whsec_len:', whsec.length)
-      console.log('[STRIPE-DIAG] ts:', ts)
-      console.log('[STRIPE-DIAG] v1_stripe:', v1?.slice(0, 16))
-      console.log('[STRIPE-DIAG] v1_expect:', expected.slice(0, 16))
-      console.log('[STRIPE-DIAG] match:', v1 === expected)
-      console.log('[STRIPE-DIAG] now_skew_sec:',
-        Math.abs(Math.floor(Date.now() / 1000) - Number(ts)))
-    } catch (diagErr) {
-      console.error('[STRIPE-DIAG] error:', diagErr)
-    }
-  } else {
-    console.log('[STRIPE-DIAG] missing', { hasSig: !!sig, hasSecret: !!whsec })
-  }
-  // ── End diagnostic ─────────────────────────────────────────────
 
   let event: Stripe.Event
   try {
     event = stripe.webhooks.constructEvent(
       body,
       sig!,
-      whsec!,
+      process.env.STRIPE_WEBHOOK_SECRET!,
     )
   } catch (err) {
     console.error('[STRIPE] Webhook signature verification failed:', err)
