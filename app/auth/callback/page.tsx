@@ -55,6 +55,17 @@ function Callback() {
     //     auto-parses the hash on mount and fires SIGNED_IN
     const sub = supabase.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_IN' && session) {
+        // Fire-and-forget Resend audience tagging. The server route
+        // skips returning users (by user_profiles.created_at age) so
+        // this is effectively first-signup only. Works for Google
+        // OAuth and magic-link flows since both pass through here.
+        fetch('/api/auth/post-signin', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userId: session.user.id }),
+          keepalive: true,
+        }).catch(() => { /* best-effort; never block auth on this */ })
+
         router.replace(next)
       }
     })
