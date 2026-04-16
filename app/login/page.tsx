@@ -11,7 +11,11 @@ const serif = "'Playfair Display', serif"
 
 function LoginForm() {
   const params = useSearchParams()
-  const redirect = params.get('redirect') || '/'
+  // Default post-auth destination is /dashboard. Callers that want a
+  // different landing page pass ?redirect=... (e.g. protected routes
+  // in middleware set ?redirect=/admin so users come back to what
+  // they were trying to reach).
+  const redirect = params.get('redirect') || '/dashboard'
   const error = params.get('error')
 
   const [email, setEmail] = useState('')
