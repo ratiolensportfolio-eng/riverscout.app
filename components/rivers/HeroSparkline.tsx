@@ -83,7 +83,11 @@ function fmtDate(d: Date) {
 
 export default function HeroSparkline({ readings, optRange, condition, gaugeId, currentCfs, avgFlow }: Props) {
   const [forecast, setForecast] = useState<ForecastPoint[] | null>(null)
-  const [forecastFailed, setForecastFailed] = useState(false)
+  // Forecast disabled — NOAA predictions were producing wildly
+  // inaccurate jumps (6k→14k CFS). Historical-only until the
+  // forecast pipeline is verified. The component gracefully renders
+  // just the solid historical line when forecastFailed is true.
+  const [forecastFailed, setForecastFailed] = useState(true)
   const [hover, setHover] = useState<{ x: number; y: number; label: string } | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
 
