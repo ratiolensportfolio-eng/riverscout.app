@@ -53,6 +53,14 @@ export async function POST(req: NextRequest) {
       subscription_data: {
         metadata: { userId, billing },
       },
+      // Terms + Privacy surfaced on the Stripe-hosted checkout page.
+      // Markdown-style links render as real anchors above the submit
+      // button. Same copy as the login fine print.
+      custom_text: {
+        submit: {
+          message: "By subscribing, you agree to RiverScout's [Terms of Service](https://riverscout.app/terms) and [Privacy Policy](https://riverscout.app/privacy).",
+        },
+      },
     })
 
     return NextResponse.json({ url: session.url })
