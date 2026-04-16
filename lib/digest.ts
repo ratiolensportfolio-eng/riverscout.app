@@ -110,10 +110,19 @@ export interface DigestRiver {
   activeHatch: DigestHatch | null
 }
 
+export interface DigestJournalStats {
+  tripsThisMonth: number
+  totalTrips: number
+  totalMiles: number
+  lastTripDate: string | null
+  lastTripRiver: string | null
+}
+
 export interface DigestData {
   user: DigestUser
   rivers: DigestRiver[]
   bestRiverThisWeekend: DigestRiver | null
+  journalStats: DigestJournalStats | null
   generatedAt: string
 }
 
@@ -478,6 +487,31 @@ export async function generateDigest(userId: string): Promise<DigestData | null>
     }
   }
 
+  // Pull journal stats for the "Your paddling" section. Light query:
+  // count + sum from paddling_log, scoped to this user. Returns null
+  // when the user has zero journal entries (the digest template
+  // conditionally hides the section).
+  let journalStats: DigestJournalStats | null = null
+  try {
+    const { data: logEntries } = await supabase
+      .from('paddling_log')
+      .select('trip_date, miles, river_name')
+      .eq('user_id', profile.id)
+      .order('trip_date', { ascending: false })
+      .limit(500)
+    if (logEntries && logEntries.length > 0) {
+      const now = new Date()
+      const monthStart = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-01`
+      journalStats = {
+        totalTrips: logEntries.length,
+        tripsThisMonth: logEntries.filter(e => e.trip_date >= monthStart).length,
+        totalMiles: logEntries.reduce((s, e) => s + (e.miles || 0), 0),
+        lastTripDate: logEntries[0].trip_date,
+        lastTripRiver: logEntries[0].river_name,
+      }
+    }
+  } catch { /* journal table might not exist — no-op */ }
+
   return {
     user: {
       id: profile.id,
@@ -486,6 +520,7 @@ export async function generateDigest(userId: string): Promise<DigestData | null>
     },
     rivers,
     bestRiverThisWeekend,
+    journalStats,
     generatedAt: new Date().toISOString(),
   }
 }

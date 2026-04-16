@@ -2,6 +2,7 @@
 // All outgoing emails from noreply@riverscout.app
 
 const RESEND_API_URL = 'https://api.resend.com/emails'
+const RESEND_CONTACTS_URL = 'https://api.resend.com/audiences'
 const FROM_ADDRESS = 'RiverScout <noreply@riverscout.app>'
 const ADMIN_EMAIL = 'Paddle.rivers.us@gmail.com'
 
@@ -45,6 +46,51 @@ export async function sendEmail({ to, subject, html, replyTo }: SendEmailOptions
     return true
   } catch (err) {
     console.error('[EMAIL] Send failed:', err)
+    return false
+  }
+}
+
+// ── Resend Contacts / Audience tagging ─────────────────────────
+// Upserts a contact in the Resend audience so the weekly digest
+// subscriber list is tagged with source + saved-river slugs.
+// Requires RESEND_API_KEY + RESEND_AUDIENCE_ID env vars. No-ops
+// silently when either is missing (same pattern as sendEmail).
+export async function upsertResendContact(
+  email: string,
+  metadata: { source?: string; rivers?: string[] },
+): Promise<boolean> {
+  const apiKey = process.env.RESEND_API_KEY
+  const audienceId = process.env.RESEND_AUDIENCE_ID
+  if (!apiKey || !audienceId) {
+    console.log('[EMAIL] No RESEND_API_KEY or RESEND_AUDIENCE_ID — skipping contact upsert for', email)
+    return false
+  }
+  try {
+    const res = await fetch(`${RESEND_CONTACTS_URL}/${audienceId}/contacts`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        unsubscribed: false,
+        // Resend stores arbitrary key-value pairs on contacts.
+        // We use 'source' to distinguish onboarding vs manual
+        // and 'rivers' as a comma-separated slug list so the
+        // digest send knows which rivers this user tracks.
+        ...(metadata.source ? { first_name: metadata.source } : {}),
+        ...(metadata.rivers ? { last_name: metadata.rivers.join(',') } : {}),
+      }),
+    })
+    if (!res.ok) {
+      const err = await res.text()
+      console.error('[EMAIL] Resend contacts error:', res.status, err)
+      return false
+    }
+    return true
+  } catch (e) {
+    console.error('[EMAIL] Resend contacts exception:', e)
     return false
   }
 }
@@ -1051,7 +1097,7 @@ function escapeHtml(s: string | null | undefined): string {
  * the email cannot ship without a working one-click unsub link.
  */
 export function digestEmail(data: DigestData, unsubscribeUrl: string): string {
-  const { user, rivers, bestRiverThisWeekend } = data
+  const { user, rivers, bestRiverThisWeekend, journalStats } = data
   const greeting = `Good morning ${user.displayName} \u2014 here's your Thursday river report.`
   const hazardBlock = renderHazardBlock(rivers)
   const riverCards = rivers.map(renderRiverCard).join('')
@@ -1087,6 +1133,36 @@ export function digestEmail(data: DigestData, unsubscribeUrl: string): string {
         </td></tr>
 
         ${bestBlock}
+
+        ${journalStats && journalStats.totalTrips > 0 ? `
+        <tr><td style="padding: 16px 0 0;">
+          <div style="font-family: monospace; font-size: 10px; color: #aaa99a; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; margin-bottom: 10px; padding-top: 12px; border-top: 1px solid #e2e1d8;">
+            Your Paddling
+          </div>
+          <table cellpadding="0" cellspacing="0" style="width: 100%;">
+            <tr>
+              <td style="font-family: monospace; font-size: 13px; color: #042C53; padding: 4px 0;">
+                <strong>${journalStats.totalTrips}</strong> trips logged
+              </td>
+              <td style="font-family: monospace; font-size: 13px; color: #042C53; padding: 4px 0; text-align: right;">
+                <strong>${Math.round(journalStats.totalMiles).toLocaleString()}</strong> miles
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" style="font-family: monospace; font-size: 11px; color: #666660; padding: 2px 0;">
+                ${journalStats.tripsThisMonth > 0
+                  ? `${journalStats.tripsThisMonth} trip${journalStats.tripsThisMonth === 1 ? '' : 's'} this month`
+                  : 'No trips logged this month yet'
+                }${journalStats.lastTripRiver
+                  ? ` \u00B7 Last trip: ${escapeHtml(journalStats.lastTripRiver)}`
+                  : ''}
+              </td>
+            </tr>
+          </table>
+          <div style="margin-top: 8px;">
+            <a href="https://riverscout.app/journal" style="font-family: monospace; font-size: 11px; color: #1D9E75; text-decoration: none;">Log a trip \u2192</a>
+          </div>
+        </td></tr>` : ''}
 
         <tr><td style="padding: 8px 0 22px; text-align: center;">
           <a href="${accountUrl}" style="display: inline-block; padding: 11px 26px; font-family: monospace; font-size: 12px; font-weight: 500; background: #085041; color: #ffffff; text-decoration: none; border-radius: 6px; letter-spacing: .3px;">

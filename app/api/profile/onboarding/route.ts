@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
+import { upsertResendContact } from '@/lib/email'
 
 // /api/profile/onboarding
 //
@@ -97,6 +98,28 @@ export async function POST(req: NextRequest) {
         .from('user_profiles')
         .update({ digest_subscribed: !!value })
         .eq('id', userId)
+
+      // Tag in Resend audience with source + saved-river slugs so the
+      // digest pipeline knows which rivers to include. Best-effort —
+      // no-ops when env vars aren't set.
+      if (value) {
+        const { data: profile } = await supabase
+          .from('user_profiles')
+          .select('email')
+          .eq('id', userId)
+          .maybeSingle()
+        const { data: saved } = await supabase
+          .from('saved_rivers')
+          .select('river_id')
+          .eq('user_id', userId)
+          .limit(20)
+        if (profile?.email) {
+          upsertResendContact(profile.email, {
+            source: 'onboarding',
+            rivers: (saved ?? []).map(s => s.river_id),
+          }).catch(() => { /* best effort */ })
+        }
+      }
     }
 
     return NextResponse.json({ ok: true })
