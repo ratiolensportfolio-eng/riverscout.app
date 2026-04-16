@@ -85,6 +85,20 @@ export async function POST(req: NextRequest) {
       .update(patch)
       .eq('id', userId)
     if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+
+    // Mirror set-digest into user_profiles.digest_subscribed so the
+    // weekly-digest cron actually picks up users who opt in through
+    // onboarding. Two separate tables (profiles + user_profiles) are
+    // a legacy artifact — the cron reads from user_profiles, the
+    // onboarding form writes to profiles. Without this mirror, every
+    // onboarding opt-in silently fell off the recipient list.
+    if (action === 'set-digest') {
+      await supabase
+        .from('user_profiles')
+        .update({ digest_subscribed: !!value })
+        .eq('id', userId)
+    }
+
     return NextResponse.json({ ok: true })
   } catch {
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
