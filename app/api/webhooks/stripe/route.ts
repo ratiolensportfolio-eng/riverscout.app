@@ -4,6 +4,17 @@ import { createSupabaseClient } from '@/lib/supabase'
 import { sendEmail } from '@/lib/email'
 import Stripe from 'stripe'
 
+// Force the Node.js runtime. The Edge runtime streams request bodies
+// differently and Stripe's constructEvent needs the unmodified raw
+// bytes for HMAC verification — running on Edge has been observed to
+// cause "Invalid signature" errors even when the secret is correct.
+// Next.js App Router's default for route handlers is already Node,
+// but making this explicit is defensive against config drift.
+export const runtime = 'nodejs'
+
+// Also force-dynamic so the handler is never prerendered / cached.
+export const dynamic = 'force-dynamic'
+
 const PRO_PRICE_IDS = new Set([STRIPE_PRICES.pro.monthly, STRIPE_PRICES.pro.yearly].filter(Boolean))
 
 function isProSubscription(sub: Stripe.Subscription): boolean {
@@ -28,26 +39,21 @@ function isProCheckout(meta: Record<string, string>): boolean {
 // POST /api/webhooks/stripe — handle Stripe webhook events
 export async function POST(req: NextRequest) {
   const body = await req.text()
-  const sig = req.headers.get('stripe-signature') || req.headers.get('Stripe-Signature') || req.headers.get('STRIPE-SIGNATURE')
-console.log('[STRIPE] all headers:', JSON.stringify(Object.fromEntries(req.headers.entries())))
-console.log('[STRIPE] sig:', sig?.slice(0, 25))
-console.log('[STRIPE] whsec prefix:', process.env.STRIPE_WEBHOOK_SECRET?.slice(0, 10))
-console.log('[STRIPE] body len:', body.length)
-  if (!sig) {
-    return NextResponse.json({ error: 'Missing signature' }, { status: 400 })
-  }
+  const sig = req.headers.get('stripe-signature')
 
   let event: Stripe.Event
   try {
     event = stripe.webhooks.constructEvent(
       body,
-      sig,
+      sig!,
       process.env.STRIPE_WEBHOOK_SECRET!,
     )
   } catch (err) {
-    console.error('Webhook signature verification failed:', err)
+    console.error('[STRIPE] Webhook signature verification failed:', err)
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
   }
+
+  console.log('[STRIPE] Webhook received:', event.type)
 
   const supabase = createSupabaseClient()
 
