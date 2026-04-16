@@ -69,27 +69,9 @@ function LoginForm() {
         <h1 style={{ fontFamily: serif, fontSize: '20px', fontWeight: 700, color: 'var(--rvdk)', textAlign: 'center', marginBottom: '4px' }}>
           Sign in
         </h1>
-        <p style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)', textAlign: 'center', marginBottom: '16px' }}>
+        <p style={{ fontFamily: mono, fontSize: '10px', color: 'var(--tx3)', textAlign: 'center', marginBottom: '24px' }}>
           Submit trip reports, manage flow alerts, and claim your outfitter listing
         </p>
-
-        {/* Email deliverability notice — magic-link emails are landing
-            in spam until custom SMTP (Resend) is wired into Supabase
-            Auth. Google OAuth is unaffected, so steer users there for
-            now. Remove this banner once SMTP is configured. */}
-        <div
-          role="status"
-          style={{
-            fontFamily: mono, fontSize: '10px',
-            background: 'var(--amlt)', color: '#7A4D0E',
-            border: '.5px solid var(--am)', borderRadius: 'var(--r)',
-            padding: '10px 12px', marginBottom: '18px', lineHeight: 1.5,
-          }}
-        >
-          <strong style={{ display: 'block', marginBottom: '2px' }}>Heads up</strong>
-          Google sign-in is working normally. Email magic links are
-          being fixed — please use Google for now.
-        </div>
 
         {emailSent ? (
           <div style={{ textAlign: 'center', padding: '20px', background: 'var(--rvlt)', border: '.5px solid var(--rvmd)', borderRadius: 'var(--rlg)' }}>
