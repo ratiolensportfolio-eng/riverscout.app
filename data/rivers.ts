@@ -31,7 +31,7 @@ export const STATES: StatesDB = {
         needsVerification: ['class-rating-drift'],
         outs: [
           { n: 'Pine River Paddlesports Center', d: 'Full-service outfitter, shuttles, gear, camping', l: 'thepineriver.com' },
-          { n: 'Horina Canoe & Kayak Rental', d: 'Budget-friendly rentals, multiple access points', l: 'horinacanoe.com' },
+          { n: 'Horina Canoe & Kayak Rental', d: 'Budget-friendly rentals, multiple access points', l: '' },
         ],
       },
             {
@@ -49,7 +49,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Au Sable River Natural River Plan', s: 'Michigan DNR', y: 2006, tp: 'Survey', pg: 210, url: 'https://www.michigan.gov/-/media/Project/Websites/dnr/Documents/Fisheries/NaturalRivers/AuSable_plan.pdf' }, { t: 'Au Sable River Assessment', s: 'Michigan DNR Fisheries', y: 2002, tp: 'Ecology', pg: 88, url: 'https://www.researchgate.net/publication/265100820_Au_Sable_River_Assessment' }, { t: 'Au Sable River Habitat Restoration — Lunker Structures', s: 'Trout Unlimited', y: 2024, tp: 'Conservation', pg: 1, url: 'https://prioritywaters.tu.org/michigan/' }, { t: 'Protecting the Au Sable — Climate Change Assessment', s: 'Trout Unlimited / Michigan State University', y: 2023, tp: 'Conservation', pg: 1, url: 'https://www.canr.msu.edu/news/protecting-the-au-sable-river' }],
         revs: [],
-        outs: [{ n: 'Carlisle Canoe Livery', d: 'Grayling-based, full service', l: 'carlislecanoes.com' }, { n: "Penrod's Au Sable", d: 'Rentals, shuttles, multiple put-ins', l: 'penrodsausable.com' }],
+        outs: [{ n: 'Carlisle Canoe Livery', d: 'Grayling-based, full service', l: '' }, { n: "Penrod's Au Sable", d: 'Rentals, shuttles, multiple put-ins', l: '' }],
       },
       {
         id: 'manistee', n: 'Manistee River', lp: true, up: false, wild: true, nat: true, ww: false,
@@ -82,7 +82,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Muskegon River Watershed Management Plan', s: 'MRWA', y: 2003, tp: 'Survey', pg: 240 , url: 'https://mrwa.org/wp-content/uploads/repository/MuskegonManagementPlan.pdf'}],
         revs: [],
-        outs: [{ n: 'Sawmill Canoe Rental', d: 'Day trips, family-friendly', l: 'sawmillcanoe.com' }],
+        outs: [{ n: 'Sawmill Canoe Rental', d: 'Day trips, family-friendly', l: '' }],
       },
       {
         id: 'pere_marquette', n: 'Pere Marquette River', lp: true, up: false, wild: true, nat: true, ww: false,
@@ -458,7 +458,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Two Hearted River Canoe Trips', d: 'Remote UP expeditions', l: 'twoheartedcanoe.com' }],
+        outs: [{ n: 'Two Hearted River Canoe Trips', d: 'Remote UP expeditions', l: '' }],
       },
       {
         id: 'big_manistee_lake', n: 'Big Manistee Lake Branch', lp: true, up: false, wild: false, nat: false, ww: false,
@@ -622,7 +622,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Gauley River NRA Management Plan', s: 'NPS', y: 2000, tp: 'Federal', pg: 180, url: 'https://www.nps.gov/gari/learn/management/index.htm' }, { t: "Gauley River Access Management & Gauley Fest", s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/project/gauley-river-wv/' }],
         revs: [],
-        outs: [{ n: 'ACE Adventure Resort', d: 'Gauley Season specialists since 1976', l: 'aceadventure.com' }, { n: 'Rivers Whitewater', d: 'Upper and Lower Gauley guided trips', l: 'riverswhitewater.com' }],
+        outs: [{ n: 'ACE Adventure Resort', d: 'Gauley Season specialists since 1976', l: '' }, { n: 'Rivers Whitewater', d: 'Upper and Lower Gauley guided trips', l: '' }],
       },
       {
         id: 'newriver', n: 'New River', ww: true, wild: true, mtnst: true, flat: false,
@@ -639,7 +639,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'New River Gorge NP General Management Plan', s: 'NPS', y: 2012, tp: 'Federal', pg: 420, url: 'https://parkplanning.nps.gov/projectHome.cfm?projectID=11040' }, { t: 'New River Dries Flow Restoration — Hawks Nest Relicensing', s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/article/33829/' }],
         revs: [],
-        outs: [{ n: 'ACE Adventure Resort', d: 'New River Gorge specialists', l: 'aceadventure.com' }, { n: 'Class VI River Runners', d: 'New River Gorge guided trips', l: 'class-vi.com' }],
+        outs: [{ n: 'ACE Adventure Resort', d: 'New River Gorge specialists', l: '' }, { n: 'Class VI River Runners', d: 'New River Gorge guided trips', l: '' }],
       },
       {
         id: 'greenbrier', n: 'Greenbrier River', ww: false, wild: false, mtnst: true, flat: true,
@@ -655,7 +655,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Greenbrier River Outfitters', d: 'Marlinton-based canoe and kayak rentals', l: 'greenbriveroutfitters.com' }],
+        outs: [{ n: 'Greenbrier River Outfitters', d: 'Marlinton-based canoe and kayak rentals', l: '' }],
       },
       {
         id: 'cheat', n: 'Cheat River', ww: true, wild: false, mtnst: true, flat: false,
@@ -675,7 +675,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Cheat River Restoration Assessment', s: 'Friends of the Cheat', y: 2015, tp: 'Ecology', pg: 88 , url: 'https://dep.wv.gov/WWE/Programs/nonptsource/WBP/Documents/WP/CheatRiver_WBP.pdf'}],
         revs: [],
-        outs: [{ n: 'Blackwater Outdoor Adventures', d: 'Cheat Canyon guided trips', l: 'blackwateroutdoor.com' }, { n: 'Cheat River Outfitters', d: 'Canyon shuttles and rentals', l: 'cheatriveroutfitters.com' }],
+        outs: [{ n: 'Blackwater Outdoor Adventures', d: 'Cheat Canyon guided trips', l: '' }, { n: 'Cheat River Outfitters', d: 'Canyon shuttles and rentals', l: 'cheatriveroutfitters.com' }],
       },
       {
         id: 'tygart', n: 'Tygart Valley River', ww: true, wild: false, mtnst: true, flat: false,
@@ -904,7 +904,7 @@ export const STATES: StatesDB = {
         docs: [{ t: 'Browns Canyon National Monument Management Plan', s: 'BLM/USFS', y: 2020, tp: 'Federal', pg: 290 , url: 'https://eplanning.blm.gov/public_projects/69924/200147053/20022482/250028686/BCNM_ROD_USFS_July2020-508_signed_opt.pdf'}, { t: "Arkansas River Access Protection & Browns Canyon Advocacy", s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/content/Project/view/id/122/' }],
         revs: [],
         needsVerification: ['class-v-portage-note'],
-        outs: [{ n: 'Dvorak Expeditions', d: 'Arkansas River since 1969, all sections', l: 'dvorakexpeditions.com' }, { n: 'AVA Rafting', d: 'Browns Canyon specialists', l: 'avaraft.com' }],
+        outs: [{ n: 'Dvorak Expeditions', d: 'Arkansas River since 1969, all sections', l: 'dvorakexpeditions.com' }, { n: 'AVA Rafting', d: 'Browns Canyon specialists', l: '' }],
       },
       {
         id: 'poudre', n: 'Cache la Poudre', ww: true, wild: true, mtn: false, front: true,
@@ -966,7 +966,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Roaring Fork Conservancy', d: 'Crystal River guided paddle events', l: 'roaringfork.org' }, { n: 'Elk Mountain Guides', d: 'Upper Crystal trips from Marble', l: 'elkmountainguides.com' }],
+        outs: [{ n: 'Roaring Fork Conservancy', d: 'Crystal River guided paddle events', l: 'roaringfork.org' }, { n: 'Elk Mountain Guides', d: 'Upper Crystal trips from Marble', l: '' }],
       },
       {
         id: 'glenwood', n: 'Colorado River — Glenwood Canyon', ww: true, wild: false, mtn: false, front: false,
@@ -982,7 +982,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Rock Gardens Rafting', d: 'Glenwood Canyon all levels, Glenwood Springs', l: 'rockgardensrafting.com' }, { n: 'Whitewater Rafting LLC', d: 'Colorado River Glenwood trips', l: 'glenwoodrafting.com' }],
+        outs: [{ n: 'Rock Gardens Rafting', d: 'Glenwood Canyon all levels, Glenwood Springs', l: '' }, { n: 'Whitewater Rafting LLC', d: 'Colorado River Glenwood trips', l: 'glenwoodrafting.com' }],
       },
       {
         id: 'blue_co', n: 'Blue River', ww: false, wild: false, mtn: true, front: false,
@@ -1219,7 +1219,7 @@ export const STATES: StatesDB = {
         docs: [{ t: 'Frank Church Wilderness River Management Plan', s: 'USFS Salmon-Challis NF', y: 1985, tp: 'Federal', pg: 280, url: 'https://www.rivers.gov/carp/sites/rivers/files/documents/plans/salmon-wilderness-plan.pdf' }],
         revs: [],
         needsVerification: ['class-v-portage-note'],
-        outs: [{ n: 'Middle Fork Rapid Transit', d: 'Middle Fork guided and fly-in expeditions', l: 'midforkrivertours.com' }, { n: 'Rocky Mountain River Tours', d: 'Middle Fork Salmon multi-day commercial trips', l: 'rmrt.com' }],
+        outs: [{ n: 'Middle Fork Rapid Transit', d: 'Middle Fork guided and fly-in expeditions', l: '' }, { n: 'Rocky Mountain River Tours', d: 'Middle Fork Salmon multi-day commercial trips', l: 'rmrt.com' }],
       },
       {
         id: 'hells_canyon', n: 'Snake River — Hells Canyon', ww: true, wild: true, remote: true, mtn: false,
@@ -1344,7 +1344,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Rogue Wild & Scenic River Management Plan', s: 'USFS Rogue-Siskiyou NF', y: 2011, tp: 'Federal', pg: 195 , url: 'https://rivers.gov/sites/rivers/files/documents/plans/rogue-plan.pdf'}, { t: 'Rogue River Dam Removal — Gold Ray, Gold Hill & Savage Rapids', s: 'American Whitewater', y: 2010, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/content/Project/view/id/rogue/' }],
         revs: [],
-        outs: [{ n: 'Rogue River Raft Trips', d: 'Wild Rogue permits and guided float trips', l: 'rogueriverrafttrips.com' }, { n: 'Oregon Whitewater Adventures', d: 'Grants Pass to Foster Bar', l: 'oregonwhitewater.com' }],
+        outs: [{ n: 'Rogue River Raft Trips', d: 'Wild Rogue permits and guided float trips', l: '' }, { n: 'Oregon Whitewater Adventures', d: 'Grants Pass to Foster Bar', l: 'oregonwhitewater.com' }],
       },
       {
         id: 'deschutes', n: 'Deschutes River', ww: true, wild: true, coastal: false, desert: true,
@@ -1376,7 +1376,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'McKenzie River Wild & Scenic River Plan', s: 'USFS Willamette NF', y: 2002, tp: 'Federal', pg: 125 , url: 'https://www.rivers.gov/sites/rivers/files/documents/plans/mckenzie-plan.pdf'}],
         revs: [],
-        outs: [{ n: 'Oregon Drift Boat Guide Service', d: 'McKenzie drift boat trips', l: 'oregondriftboat.com' }, { n: 'Lane County River Adventures', d: 'McKenzie canoe and kayak trips', l: 'laneriveradventures.com' }],
+        outs: [{ n: 'Oregon Drift Boat Guide Service', d: 'McKenzie drift boat trips', l: '' }, { n: 'Lane County River Adventures', d: 'McKenzie canoe and kayak trips', l: '' }],
       },
       {
         id: 'illinois_or', n: 'Illinois River', ww: true, wild: true, coastal: true, desert: false,
@@ -1392,7 +1392,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Illinois Wild & Scenic River Management Plan', s: 'USFS Rogue-Siskiyou NF', y: 2008, tp: 'Federal', pg: 145 , url: 'https://www.rivers.gov/sites/rivers/files/documents/plans/illinois-plan.pdf'}],
         revs: [],
-        outs: [{ n: 'Oregon Outdoor Adventures', d: 'Illinois River guided multi-day trips', l: 'oregonoutdooradventures.com' }],
+        outs: [{ n: 'Oregon Outdoor Adventures', d: 'Illinois River guided multi-day trips', l: '' }],
       },
       {
         id: 'north_umpqua', n: 'North Umpqua River', ww: false, wild: true, coastal: true, desert: false,
@@ -1408,7 +1408,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'North Umpqua Wild & Scenic River Management Plan', s: 'USFS Umpqua NF', y: 2000, tp: 'Federal', pg: 130 , url: 'https://www.rivers.gov/sites/rivers/files/documents/plans/north-umpqua-plan.pdf'}],
         revs: [],
-        outs: [{ n: 'Steamboat Inn', d: 'North Umpqua fly fishing headquarters since 1957', l: 'thesteamboatinn.com' }, { n: 'Swiftwater Rafting', d: 'North Umpqua Narrows guided day trips', l: 'swiftwaterrafting.com' }],
+        outs: [{ n: 'Steamboat Inn', d: 'North Umpqua fly fishing headquarters since 1957', l: 'thesteamboatinn.com' }, { n: 'Swiftwater Rafting', d: 'North Umpqua Narrows guided day trips', l: '' }],
       },
       {
         id: 'john_day', n: 'John Day River', ww: false, wild: true, coastal: false, desert: true,
@@ -1497,7 +1497,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Leavenworth Outdoor Center', d: 'Wenatchee trips, rentals, instruction', l: 'leavenworthoutdoor.com' }, { n: 'Osprey Rafting', d: 'Tumwater Canyon guided trips', l: 'ospreyrafting.com' }],
+        outs: [{ n: 'Leavenworth Outdoor Center', d: 'Wenatchee trips, rentals, instruction', l: '' }, { n: 'Osprey Rafting', d: 'Tumwater Canyon guided trips', l: 'ospreyrafting.com' }],
       },
       {
         id: 'methow', n: 'Methow River', ww: false, wild: false, pnw: false, eastside: true,
@@ -1512,7 +1512,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Methow Valley Outdoor Adventures', d: 'River trips and instruction', l: 'methowvalleyoutdoor.com' }],
+        outs: [{ n: 'Methow Valley Outdoor Adventures', d: 'River trips and instruction', l: '' }],
       },
       {
         id: 'skagit', n: 'Skagit River', ww: false, wild: true, pnw: true, eastside: false,
@@ -1529,7 +1529,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Upper Skagit Wild & Scenic River Management Plan', s: 'Mount Baker-Snoqualmie NF', y: 2005, tp: 'Federal', pg: 175 , url: 'https://rivers.gov/sites/rivers/files/documents/plans/skagit-plan.pdf'}],
         revs: [],
-        outs: [{ n: 'Osprey River Adventures', d: 'Skagit eagle float trips', l: 'ospreyriveradventures.com' }, { n: 'Skagit River Kayak', d: 'Upper Skagit guided day trips', l: 'skagitkayak.com' }],
+        outs: [{ n: 'Osprey River Adventures', d: 'Skagit eagle float trips', l: '' }, { n: 'Skagit River Kayak', d: 'Upper Skagit guided day trips', l: '' }],
       },
       {
         id: 'skykomish', n: 'Skykomish River', ww: true, wild: false, pnw: true, eastside: false,
@@ -1544,7 +1544,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Orion Expeditions', d: 'Skykomish River raft trips from Gold Bar', l: 'orionexp.com' }, { n: 'RnR Whitewater', d: 'Upper and Lower Sky guided trips', l: 'rnrwhitewater.com' }],
+        outs: [{ n: 'Orion Expeditions', d: 'Skykomish River raft trips from Gold Bar', l: 'orionexp.com' }, { n: 'RnR Whitewater', d: 'Upper and Lower Sky guided trips', l: '' }],
       },
       {
         id: 'sauk', n: 'Sauk River', ww: false, wild: false, pnw: true, eastside: false,
@@ -1559,7 +1559,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Cascades River Sports', d: 'Sauk and Skagit guided float trips', l: 'cascadesriversports.com' }],
+        outs: [{ n: 'Cascades River Sports', d: 'Sauk and Skagit guided float trips', l: '' }],
       },
       {
         id: 'white_salmon', n: 'White Salmon River', ww: true, wild: true, pnw: true, eastside: false,
@@ -1652,7 +1652,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Upper Youghiogheny Flow Regime Improvement', s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/regions/midatlantic/' }],
         revs: [],
-        outs: [{ n: 'Ohiopyle State Park Outfitters', d: 'Lower Yough raft and kayak trips', l: 'ohiopyle.com' }, { n: 'Wilderness Voyageurs', d: 'Yough trips since 1964', l: 'wilderness-voyageurs.com' }, { n: 'White Water Adventurers', d: 'Lower, Middle and Upper Yough', l: 'wwaraft.com' }],
+        outs: [{ n: 'Ohiopyle State Park Outfitters', d: 'Lower Yough raft and kayak trips', l: '' }, { n: 'Wilderness Voyageurs', d: 'Yough trips since 1964', l: 'wilderness-voyageurs.com' }, { n: 'White Water Adventurers', d: 'Lower, Middle and Upper Yough', l: 'wwaraft.com' }],
       },
       {
         id: 'loyalsock', n: 'Loyalsock Creek', ww: true, wild: false, nat: true, scenic: true,
@@ -1668,7 +1668,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Loyalsock Adventures', d: 'Guided creek trips and shuttles', l: 'loyalsockadventures.com' }],
+        outs: [{ n: 'Loyalsock Adventures', d: 'Guided creek trips and shuttles', l: '' }],
       },
       {
         id: 'pinecreek', n: 'Pine Creek', ww: false, wild: false, nat: false, scenic: true,
@@ -1684,7 +1684,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Pine Creek Corridor Management Plan', s: 'Tioga State Forest / PA DCNR', y: 2016, tp: 'Recreation', pg: 145 , url: 'https://www.pa.gov/content/dam/copapwp-pagov/en/fishandboat/documents/about-us/agencyoverview/fisheries-mgmt-plans/pine-creek-plan.pdf'}],
         revs: [],
-        outs: [{ n: 'Pine Creek Outfitters', d: 'Gorge canoe trips and rail-trail shuttles', l: 'pinecreekoutfitters.com' }, { n: "Wolfe's General Store", d: 'Blackwell rentals and camping', l: 'wolfesgeneral.com' }],
+        outs: [{ n: 'Pine Creek Outfitters', d: 'Gorge canoe trips and rail-trail shuttles', l: 'pinecreekoutfitters.com' }, { n: "Wolfe's General Store", d: 'Blackwell rentals and camping', l: '' }],
       },
       {
         id: 'clarion', n: 'Clarion River', ww: false, wild: true, nat: true, scenic: true,
@@ -1700,7 +1700,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Clarion Wild & Scenic River Management Plan', s: 'USFS Allegheny NF', y: 2001, tp: 'Federal', pg: 145 , url: 'https://www.fs.usda.gov/Internet/FSE_DOCUMENTS/stelprdb5108032.pdf'}],
         revs: [],
-        outs: [{ n: 'Clarion River Kayak and Canoe', d: 'Clarion River Gorge rentals and shuttles', l: 'clarionriverkayak.com' }, { n: 'Cook Forest State Park', d: 'Clarion access and camping, old growth forest', l: 'dcnr.pa.gov' }],
+        outs: [{ n: 'Clarion River Kayak and Canoe', d: 'Clarion River Gorge rentals and shuttles', l: '' }, { n: 'Cook Forest State Park', d: 'Clarion access and camping, old growth forest', l: 'dcnr.pa.gov' }],
       },
       {
         id: 'lehigh', n: 'Lehigh River', ww: true, wild: false, nat: false, scenic: true,
@@ -1927,7 +1927,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Slate Run Tackle Shop', d: 'PA Wilds fly fishing headquarters since 1968', l: 'slaterun.com' }],
+        outs: [{ n: 'Slate Run Tackle Shop', d: 'PA Wilds fly fishing headquarters since 1968', l: '' }],
       },
       {
         id: 'brodhead_pa', n: 'Brodhead Creek', ww: false, wild: false, nat: false, scenic: true,
@@ -2032,7 +2032,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Upper Missouri National Wild & Scenic River Management Plan', s: 'BLM Montana', y: 2008, tp: 'Federal', pg: 245 , url: 'https://rivers.gov/sites/rivers/files/documents/plans/upper-missouri-plan.pdf'}, { t: 'Upper Missouri Breaks National Monument Resource Management Plan', s: 'BLM', y: 2008, tp: 'Federal', pg: 320 , url: 'https://npshistory.com/publications/blm/upper-missouri-river-breaks/rod-armp-2008.pdf'}],
         revs: [],
-        outs: [{ n: 'Missouri River Canoe Company', d: 'Fort Benton-based Missouri Breaks trips', l: 'montanacanoe.com' }, { n: 'Upper Missouri River Guides', d: 'Lewis & Clark route canoe expeditions', l: 'uppermissouri.com' }],
+        outs: [{ n: 'Missouri River Canoe Company', d: 'Fort Benton-based Missouri Breaks trips', l: '' }, { n: 'Upper Missouri River Guides', d: 'Lewis & Clark route canoe expeditions', l: 'uppermissouri.com' }],
       },
       {
         id: 'stillwater', n: 'Stillwater River', ww: true, wild: false, remote: false, fishing: true,
@@ -2048,7 +2048,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Absaroka Fly Fishing', d: 'Stillwater River guided float fishing', l: 'absarokaflyfishing.com' }, { n: 'Montana Wilderness Outfitters', d: 'Upper Stillwater canyon trips', l: 'montanawildernessoutfitters.com' }],
+        outs: [{ n: 'Absaroka Fly Fishing', d: 'Stillwater River guided float fishing', l: '' }, { n: 'Montana Wilderness Outfitters', d: 'Upper Stillwater canyon trips', l: 'montanawildernessoutfitters.com' }],
       },
       {
         id: 'yellowstone', n: 'Yellowstone River', ww: true, wild: false, remote: false, fishing: true,
@@ -2155,7 +2155,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Obed Wild & Scenic River Comprehensive Management Plan', s: 'NPS', y: 2004, tp: 'Federal', pg: 160 , url: 'https://www.rivers.gov/sites/rivers/files/documents/plans/obed-plan.pdf'}],
         revs: [],
-        outs: [{ n: 'Obed River Outfitters', d: 'Crossville-based guided Obed trips', l: 'obedriveroutfitters.com' }],
+        outs: [{ n: 'Obed River Outfitters', d: 'Crossville-based guided Obed trips', l: '' }],
       },
       {
         id: 'hiwassee', n: 'Hiwassee River', ww: false, wild: false, nat: false, appalachian: true,
@@ -2204,7 +2204,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Duck River Watershed Management Plan', s: 'Tennessee Department of Environment and Conservation', y: 2020, tp: 'Survey', pg: 195 , url: 'https://www.tn.gov/content/dam/tn/environment/water/duck-river-watershed-planning-partnership/drwpp_initial-report-11-20-2025.pdf'}],
         revs: [],
-        outs: [{ n: 'Duck River Outfitters', d: 'Columbia TN canoe and kayak rentals', l: 'duckriveroutfitters.com' }, { n: 'Tennessee Canoe Livery', d: 'Duck River float trips, shuttles', l: 'tncanoelivery.com' }],
+        outs: [{ n: 'Duck River Outfitters', d: 'Columbia TN canoe and kayak rentals', l: '' }, { n: 'Tennessee Canoe Livery', d: 'Duck River float trips, shuttles', l: '' }],
       },
       {
         id: 'pigeon_tn', n: 'Pigeon River', ww: true, wild: false, nat: false, appalachian: true,
@@ -2324,7 +2324,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Clinch River Outfitters', d: 'Drift boat guides on the Clinch trophy section', l: 'clinchriveroutfitters.com' }],
+        outs: [{ n: 'Clinch River Outfitters', d: 'Drift boat guides on the Clinch trophy section', l: '' }],
       },
       { id: 'hatchie_tn', n: 'Hatchie River', ww: false, wild: false, nat: false, appalachian: false, co: '', len: '149 mi', cls: '', opt: '', g: '07029500', avg: 0, histFlow: 0, mx: 0, my: 0, abbr: 'TN', desc: '<h3>Hatchie River - Tennessee</h3> <p><span>The Hatchie River is a 238-mile-long river in northern Mississippi and southwestern Tennessee. It is of considerable geographic, cultural, and historic significance. In large measure this is because it is the only major river of West Tennessee that has never been impounded, channelized, or otherwise modified by human activity to any major degree, although several of its tributaries have. Its environs are indicative of what much of West Tennessee must have resembled prior to the time of European settlement in early 19th century.</span></p> <p>The Hatc', desig: 'Designated Water Trail', secs: ['Hwy 57 to Powell Chapel', 'Powell Chapel to Hwy 64', 'Hwy 18 to Hwy 100', 'Hwy 100 to Highway 51', 'Hwy 64 to Hwy 18', 'Big Eddy to Hwy 76', 'Estonallie to Big Eddy', 'Highway 51 to Estonallie', 'Hwy 54 to Hwy 51', 'Hwy 70 to Hwy 54', 'Hwy 76 to Hwy 70'], history: [], docs: [{ t: 'Official river website', s: 'Managing agency', y: 0, tp: 'Reference', pg: 0, url: 'https://www.tn.gov/environment/program-areas/na-natural-areas/tn-scenic-rivers/hatchie.html' }, { t: 'Official river website', s: 'Managing agency', y: 0, tp: 'Reference', pg: 0, url: 'https://www.hatchieriver.org/' }], revs: [], outs: [], needsVerification: ['class-rating-nrp', 'map-position-missing'], dataSource: 'nrp', nrpDifficulty: [1, 1] },
       { id: 'french_broad_tn', n: 'French Broad River', ww: false, wild: false, nat: false, appalachian: false, co: '', len: '98 mi', cls: '', opt: '', g: '03455000', avg: 0, histFlow: 0, mx: 0, my: 0, abbr: 'TN', desc: '', desig: 'Designated Water Trail · U.S. Forest Service', secs: ['Highway 321 to Rankin Bridge', 'Bridgeport Market to Highway 321', 'Tent Camping USA to Bridgeport Market', 'The Sandbar to Tent Camping USA', 'Cherokee NF Boat Ramp to The Sandbar', 'Weaver Bend to Cherokee NF Boat Ramp', 'Seven Island\'s State Birding Park to Mutton Hollow', 'Cruze Landing to Ijams', 'Mutton Hollow to Cruze Landing', 'Highway 66 Bridge to Seven Island\'s State Birding Park', 'Douglas Tailwater Access to Highway 66 Bridge', 'Rankin Bridge to Leadvale', 'Leadvale to Walters Bridge', 'Walters Bridge to Mountain Cove Marina'], history: [], docs: [], revs: [], outs: [], needsVerification: ['class-rating-nrp', 'map-position-missing'], dataSource: 'nrp', nrpDifficulty: [1, 1] },
@@ -2366,7 +2366,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'South Fork American River Management Plan', s: 'Auburn State Recreation Area', y: 2019, tp: 'Recreation', pg: 165 , url: 'https://www.parks.ca.gov/?page_id=24325'}],
         revs: [],
-        outs: [{ n: 'OARS American River', d: 'South Fork American trips', l: 'oars.com' }, { n: 'Whitewater Excitement', d: 'All South Fork sections', l: 'whitewaterexcitement.com' }, { n: 'American River Raft Rentals', d: 'Self-guided trips from Coloma', l: 'arrafts.com' }],
+        outs: [{ n: 'OARS American River', d: 'South Fork American trips', l: 'oars.com' }, { n: 'Whitewater Excitement', d: 'All South Fork sections', l: 'whitewaterexcitement.com' }, { n: 'American River Raft Rentals', d: 'Self-guided trips from Coloma', l: '' }],
       },
       {
         id: 'tuolumne', n: 'Tuolumne River', ww: true, wild: true, sierra: true, coastal: false,
@@ -2713,7 +2713,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'James River Scenic River Assessment', s: 'Virginia DCR', y: 2018, tp: 'Survey', pg: 140 , url: 'https://www.dcr.virginia.gov/recreational-planning/document/srreportjamesriver.pdf'}],
         revs: [],
-        outs: [{ n: 'Richmond Raft Company', d: 'James River urban whitewater', l: 'richmondraft.com' }, { n: 'James River Runners', d: 'Upper James canoe trips', l: 'jamesriverrunners.com' }],
+        outs: [{ n: 'Richmond Raft Company', d: 'James River urban whitewater', l: 'richmondraft.com' }, { n: 'James River Runners', d: 'Upper James canoe trips', l: '' }],
       },
       {
         id: 'shenandoah', n: 'Shenandoah River', ww: false, wild: true, appalachian: true, piedmont: false,
@@ -2762,7 +2762,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'New River Outdoors', d: 'New River Virginia trips and rentals', l: 'newriveroutdoors.com' }, { n: 'Wild Virginia', d: 'New River Narrows guided kayak trips', l: 'wildvirginia.com' }],
+        outs: [{ n: 'New River Outdoors', d: 'New River Virginia trips and rentals', l: '' }, { n: 'Wild Virginia', d: 'New River Narrows guided kayak trips', l: 'wildvirginia.com' }],
       },
       {
         id: 'russell_fork', n: 'Russell Fork', ww: true, wild: false, appalachian: true, piedmont: false,
@@ -2778,7 +2778,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Breaks Interstate Park', d: 'Breaks Canyon access and camping', l: 'breakspark.com' }, { n: 'Class VI River Runners', d: 'Russell Fork guided trips (WV-based)', l: 'class-vi.com' }],
+        outs: [{ n: 'Breaks Interstate Park', d: 'Breaks Canyon access and camping', l: 'breakspark.com' }, { n: 'Class VI River Runners', d: 'Russell Fork guided trips (WV-based)', l: '' }],
       },
       {
         id: 'maury', n: 'Maury River', ww: true, wild: false, appalachian: true, piedmont: false,
@@ -2853,7 +2853,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Clore Bros. Outfitters', d: 'Rappahannock and Rapidan paddle rentals, Fredericksburg VA', l: 'clorebros.com' }],
+        outs: [{ n: 'Clore Bros. Outfitters', d: 'Rappahannock and Rapidan paddle rentals, Fredericksburg VA', l: '' }],
       },
       {
         id: 'mossy_creek_va', n: 'Mossy Creek', ww: false, wild: false, appalachian: true, piedmont: false,
@@ -2941,7 +2941,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Big South Fork NRRA General Management Plan', s: 'NPS', y: 2008, tp: 'Federal', pg: 240 , url: 'https://www.nps.gov/biso/learn/management/generalmanagementplan.htm'}],
         revs: [],
-        outs: [{ n: 'Sheltowee Trace Outfitters', d: 'Big South Fork guided and unguided trips', l: 'ky-rafting.com' }, { n: 'Outdoor Adventure Rafting', d: 'Cumberland River whitewater', l: 'outdooradventurerafting.com' }],
+        outs: [{ n: 'Sheltowee Trace Outfitters', d: 'Big South Fork guided and unguided trips', l: 'ky-rafting.com' }, { n: 'Outdoor Adventure Rafting', d: 'Cumberland River whitewater', l: '' }],
       },
       {
         id: 'red_river', n: 'Red River Gorge', ww: false, wild: true, scenic: true, cave: false,
@@ -2957,7 +2957,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Rough Trail Canoe', d: 'Red River Gorge canoe trips and rentals', l: 'roughtrailcanoe.com' }, { n: "Miguel's Pizza & Rock Climbing", d: 'Camping, community hub for gorge visitors', l: 'miguelspizza.com' }],
+        outs: [{ n: 'Rough Trail Canoe', d: 'Red River Gorge canoe trips and rentals', l: '' }, { n: "Miguel's Pizza & Rock Climbing", d: 'Camping, community hub for gorge visitors', l: 'miguelspizza.com' }],
       },
       {
         id: 'green_river', n: 'Green River', ww: false, wild: false, scenic: true, cave: true,
@@ -2974,7 +2974,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Mammoth Cave NP General Management Plan', s: 'NPS', y: 2014, tp: 'Federal', pg: 280 , url: 'https://www.nps.gov/maca/learn/management/upload/MACA-General-Management-Plan-WebVersion.pdf'}],
         revs: [],
-        outs: [{ n: 'Green River Canoe Rental', d: 'Mammoth Cave area canoe trips', l: 'mammothcavecanoe.com' }, { n: 'Mammoth Cave Adventures', d: 'Park canoe concession', l: 'mammothcaveadventures.com' }],
+        outs: [{ n: 'Green River Canoe Rental', d: 'Mammoth Cave area canoe trips', l: 'mammothcavecanoe.com' }, { n: 'Mammoth Cave Adventures', d: 'Park canoe concession', l: '' }],
       },
       {
         id: 'rockcastle', n: 'Rockcastle River', ww: false, wild: true, scenic: true, cave: false,
@@ -3006,7 +3006,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Elkhorn Canoe Trips', d: 'Versailles-based Elkhorn Creek rentals', l: 'elkhorncanoe.com' }],
+        outs: [{ n: 'Elkhorn Canoe Trips', d: 'Versailles-based Elkhorn Creek rentals', l: '' }],
       },
       {
         id: 'kentucky', n: 'Kentucky River', ww: false, wild: false, scenic: true, cave: false,
@@ -3123,7 +3123,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Nantahala River Flow Agreement — 230+ Annual Releases', s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanwhitewater.org/content/Wiki/regions:se:ongoing_projects' }],
         revs: [],
-        outs: [{ n: 'Nantahala Outdoor Center', d: 'NOC — eastern whitewater institution since 1972', l: 'noc.com' }, { n: 'Rolling Thunder River Company', d: 'Nantahala gorge raft trips', l: 'rollingthunderrafting.com' }],
+        outs: [{ n: 'Nantahala Outdoor Center', d: 'NOC — eastern whitewater institution since 1972', l: 'noc.com' }, { n: 'Rolling Thunder River Company', d: 'Nantahala gorge raft trips', l: '' }],
       },
       {
         id: 'chattooga', n: 'Chattooga River', ww: true, wild: true, appalachian: true, piedmont: false,
@@ -3157,7 +3157,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'French Broad River — Craggy Dam Removal Campaign', s: 'American Whitewater', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.americanrivers.org/craggy-dam-removal/' }],
         revs: [],
-        outs: [{ n: 'Nantahala Outdoor Center', d: 'French Broad gorge section trips', l: 'noc.com' }, { n: 'French Broad River Outfitters', d: 'Hot Springs section canoe and kayak', l: 'frenchbroadriveroutfitters.com' }],
+        outs: [{ n: 'Nantahala Outdoor Center', d: 'French Broad gorge section trips', l: 'noc.com' }, { n: 'French Broad River Outfitters', d: 'Hot Springs section canoe and kayak', l: '' }],
       },
       {
         id: 'green_nc', n: 'Green River Narrows', ww: true, wild: false, appalachian: true, piedmont: false,
@@ -3190,7 +3190,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Watauga River Watershed Study', s: 'North Carolina DEQ', y: 2018, tp: 'Survey', pg: 78 , url: 'https://www.deq.nc.gov/water-quality/planning/bpu/watauga/watauga-plans/2018-plan/2018-watauga-executive-summary/download'}],
         revs: [],
-        outs: [{ n: 'High Country Paddlers', d: 'Watauga and local High Country rivers', l: 'highcountrypaddlers.com' }, { n: 'NOC High Country', d: 'Watauga River trips from Boone', l: 'noc.com' }],
+        outs: [{ n: 'High Country Paddlers', d: 'Watauga and local High Country rivers', l: '' }, { n: 'NOC High Country', d: 'Watauga River trips from Boone', l: 'noc.com' }],
       },
       {
         id: 'nolichucky_nc', n: 'Nolichucky River — NC Section', ww: true, wild: false, appalachian: true, piedmont: false,
@@ -3445,7 +3445,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Desert Voyager', d: 'Salt River Canyon guided trips', l: 'desertvoyager.com' }, { n: 'Arizona Outdoor Fun', d: 'Salt River multi-day expeditions', l: 'arizonaoutdoorfun.com' }],
+        outs: [{ n: 'Desert Voyager', d: 'Salt River Canyon guided trips', l: '' }, { n: 'Arizona Outdoor Fun', d: 'Salt River multi-day expeditions', l: 'arizonaoutdoorfun.com' }],
       },
       {
         id: 'verde', n: 'Verde River', ww: false, wild: true, desert: true, canyon: false,
@@ -3461,7 +3461,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Verde River Watershed Assessment', s: 'Arizona DEQ', y: 2020, tp: 'Ecology', pg: 165 , url: 'https://legacy.azdeq.gov/environ/water/assessment/download/verde.pdf'}],
         revs: [],
-        outs: [{ n: 'Verde Adventures', d: 'Verde River canoe and kayak trips', l: 'verdeadventures.com' }, { n: 'Sedona Adventure Tours', d: 'Verde Valley paddling', l: 'sedonaadventuretours.com' }],
+        outs: [{ n: 'Verde Adventures', d: 'Verde River canoe and kayak trips', l: '' }, { n: 'Sedona Adventure Tours', d: 'Verde Valley paddling', l: 'sedonaadventuretours.com' }],
       },
       {
         id: 'oak_creek', n: 'Oak Creek', ww: false, wild: false, desert: false, canyon: true,
@@ -3593,7 +3593,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Great Rocky Mountain Outfitters', d: 'North Platte float fishing from Saratoga', l: 'grmofly.com' }, { n: "Hack's Tackle & Outfitters", d: 'Guided float trips, Northgate Canyon', l: 'hackstackle.com' }],
+        outs: [{ n: 'Great Rocky Mountain Outfitters', d: 'North Platte float fishing from Saratoga', l: '' }, { n: "Hack's Tackle & Outfitters", d: 'Guided float trips, Northgate Canyon', l: 'hackstackle.com' }],
       },
       {
         id: 'wind_river', n: 'Wind River', ww: true, wild: false, remote: true, fishing: true,
@@ -3716,7 +3716,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'San Juan River Habitat Improvement — Pagosa Springs Partnership', s: 'Trout Unlimited', y: 2024, tp: 'Conservation', pg: 1, url: 'https://www.tu.org/magazine/conservation/watersmart-the-smartest-water-program-youve-never-heard-about/' }],
         revs: [],
-        outs: [{ n: 'Wild Rivers Expeditions', d: 'San Juan River guided trips from Bluff', l: 'riversandruin.com' }, { n: 'Four Corners River Sports', d: 'San Juan River rentals and shuttles', l: 'fourcornersriversports.com' }],
+        outs: [{ n: 'Wild Rivers Expeditions', d: 'San Juan River guided trips from Bluff', l: '' }, { n: 'Four Corners River Sports', d: 'San Juan River rentals and shuttles', l: 'fourcornersriversports.com' }],
       },
       {
         id: 'cataract', n: 'Colorado River — Cataract Canyon', ww: true, wild: true, desert: true, canyon: true,
@@ -3992,7 +3992,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Allagash Wilderness Waterway Management Plan', s: 'Maine Bureau of Parks and Lands', y: 2012, tp: 'Recreation', pg: 195 , url: 'https://www.maine.gov/dacf/parks/get_involved/planning_and_acquisition/management_plans/docs/AWW_Final_mgt_plan_2012.pdf'}],
         revs: [],
-        outs: [{ n: 'Allagash Canoe Trips', d: 'Full-service Allagash guided expeditions', l: 'allagashcanoetrips.com' }, { n: 'Pelletier Loggers Family Restaurant & Campground', d: 'Allagash shuttle and logistics', l: 'pelletierloggers.com' }],
+        outs: [{ n: 'Allagash Canoe Trips', d: 'Full-service Allagash guided expeditions', l: 'allagashcanoetrips.com' }, { n: 'Pelletier Loggers Family Restaurant & Campground', d: 'Allagash shuttle and logistics', l: '' }],
       },
       {
         id: 'kennebec', n: "Kennebec River — The Forks", ww: true, wild: false, remote: false, fishing: true,
@@ -4038,7 +4038,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'St. Croix International Waterway Management Plan', s: 'St. Croix International Waterway Commission', y: 2010, tp: 'Federal', pg: 180 , url: 'https://www.stcroix.org/management-plan'}],
         revs: [],
-        outs: [{ n: 'Sunrise Canoe and Kayak', d: 'St. Croix River trips and Downeast Maine outfitting', l: 'sunrisecanoeandkayak.com' }],
+        outs: [{ n: 'Sunrise Canoe and Kayak', d: 'St. Croix River trips and Downeast Maine outfitting', l: '' }],
       },
       {
         id: 'rapid_me', n: 'Rapid River', ww: true, wild: false, remote: true, fishing: true,
@@ -4128,7 +4128,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Adirondack River Outfitters', d: 'Black River whitewater trips', l: 'aronthecreek.com' }],
+        outs: [{ n: 'Adirondack River Outfitters', d: 'Black River whitewater trips', l: '' }],
       },
       {
         id: 'salmon_ny', n: 'Salmon River', ww: true, wild: false, scenic: true, adirondack: false,
@@ -4143,7 +4143,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Whitaker Falls Fly Shop', d: 'Salmon River guiding and gear, Altmar', l: 'whitakerfalls.com' }, { n: 'Fat Nancy\'s Tackle Shop', d: 'Salmon River fishing headquarters, Pulaski', l: 'fatnancys.com' }],
+        outs: [{ n: 'Whitaker Falls Fly Shop', d: 'Salmon River guiding and gear, Altmar', l: '' }, { n: 'Fat Nancy\'s Tackle Shop', d: 'Salmon River fishing headquarters, Pulaski', l: '' }],
       },
       {
         id: 'moose_ny', n: "Moose River — Bottom Moose", ww: true, wild: false, scenic: true, adirondack: true,
@@ -4158,7 +4158,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Adirondack River Outfitters', d: 'Moose River whitewater trips and instruction', l: 'aronthecreek.com' }],
+        outs: [{ n: 'Adirondack River Outfitters', d: 'Moose River whitewater trips and instruction', l: '' }],
       },
       {
         id: 'delaware_ny', n: "Delaware River — Upper", ww: false, wild: true, scenic: true, adirondack: false,
@@ -4339,7 +4339,7 @@ export const STATES: StatesDB = {
         docs: [],
         revs: [],
         needsVerification: ['named-rapid-scout-note'],
-        outs: [{ n: 'Southeastern Expeditions', d: 'Chattooga rafting since 1972, Clayton GA', l: 'southeasternexpeditions.com' }, { n: 'Wildwater Chattooga', d: 'Section III and IV guided trips', l: 'wildwaterchattooga.com' }],
+        outs: [{ n: 'Southeastern Expeditions', d: 'Chattooga rafting since 1972, Clayton GA', l: 'southeasternexpeditions.com' }, { n: 'Wildwater Chattooga', d: 'Section III and IV guided trips', l: '' }],
       },
       {
         id: 'chattahoochee', n: 'Chattahoochee River — Metro Atlanta', ww: false, wild: false, piedmont: true, appalachian: false,
@@ -4354,7 +4354,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Chattahoochee River NRA General Management Plan', s: 'NPS', y: 2009, tp: 'Federal', pg: 280 , url: 'https://npshistory.com/publications/chat/gmp-eis-2009.pdf'}, { t: 'Chattahoochee Wild Trout Improvement — Crayfish Creek Restoration', s: 'Trout Unlimited / Upper Chattahoochee Chapter', y: 2019, tp: 'Conservation', pg: 1, url: 'https://ucctu.org/conservation/embrace-a-stream-projects/' }],
         revs: [],
-        outs: [{ n: 'Shoot the Hooch', d: 'Chattahoochee tubing and kayak rentals', l: 'shootthehooch.com' }, { n: 'High Country Outfitters', d: 'Atlanta paddling gear and Chattahoochee trips', l: 'highcountryoutfitters.com' }],
+        outs: [{ n: 'Shoot the Hooch', d: 'Chattahoochee tubing and kayak rentals', l: '' }, { n: 'High Country Outfitters', d: 'Atlanta paddling gear and Chattahoochee trips', l: 'highcountryoutfitters.com' }],
       },
       {
         id: 'toccoa', n: 'Toccoa River', ww: true, wild: false, piedmont: false, appalachian: true,
@@ -4369,7 +4369,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Toccoa Valley Outfitters', d: 'Toccoa River fly fishing guides and gear', l: 'toccoavalleyoutfitters.com' }, { n: 'Rolling Thunder River Company', d: 'Toccoa River tubing and kayak rentals', l: 'rollingthunderrivercompany.com' }],
+        outs: [{ n: 'Toccoa Valley Outfitters', d: 'Toccoa River fly fishing guides and gear', l: 'toccoavalleyoutfitters.com' }, { n: 'Rolling Thunder River Company', d: 'Toccoa River tubing and kayak rentals', l: '' }],
       },
       {
         id: 'oconee', n: 'Oconee River', ww: false, wild: false, piedmont: true, appalachian: false,
@@ -4384,7 +4384,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Big Dogs on the River', d: 'Athens-based canoe and kayak rentals', l: 'bigdogsontheriver.com' }],
+        outs: [{ n: 'Big Dogs on the River', d: 'Athens-based canoe and kayak rentals', l: '' }],
       },
       {
         id: 'etowah', n: 'Etowah River', ww: false, wild: false, piedmont: false, appalachian: true,
@@ -4399,7 +4399,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Appalachian Outfitters', d: 'Dahlonega-based kayak rentals and Etowah trips', l: 'appalachianoutfitters.com' }],
+        outs: [{ n: 'Appalachian Outfitters', d: 'Dahlonega-based kayak rentals and Etowah trips', l: '' }],
       },
       {
         id: 'amicalola', n: 'Amicalola Creek', ww: true, wild: false, piedmont: false, appalachian: true,
@@ -4508,7 +4508,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Kawishiwi Lodge & Outfitters', d: 'BWCAW canoe outfitting, permits, and gear', l: 'kawishiwi.com' }],
+        outs: [{ n: 'Kawishiwi Lodge & Outfitters', d: 'BWCAW canoe outfitting, permits, and gear', l: '' }],
       },
       {
         id: 'kettle', n: 'Kettle River', ww: true, wild: true, bwca: false, fishing: false,
@@ -4553,7 +4553,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Crow Wing Crest Lodge', d: 'Canoe and kayak rentals on the upper Crow Wing', l: 'crowwingcrestlodge.com' }, { n: 'Huntersville Outfitters', d: 'Multi-day canoe trip outfitting and shuttle service', l: 'huntersvilleoutfitters.com' }],
+        outs: [{ n: 'Crow Wing Crest Lodge', d: 'Canoe and kayak rentals on the upper Crow Wing', l: '' }, { n: 'Huntersville Outfitters', d: 'Multi-day canoe trip outfitting and shuttle service', l: '' }],
       },
       {
         id: 'root', n: 'Root River', ww: false, wild: false, bwca: false, fishing: true,
@@ -4696,7 +4696,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Namekagon Paddle & Bike', d: 'Canoe and kayak rentals, shuttle service along the Namekagon', l: 'namekagonpaddleandbike.com' }],
+        outs: [{ n: 'Namekagon Paddle & Bike', d: 'Canoe and kayak rentals, shuttle service along the Namekagon', l: '' }],
       },
       {
         id: 'peshtigo', n: 'Peshtigo River', ww: true, wild: false, northwoods: true, fishing: false,
@@ -4711,7 +4711,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: "Kosir's Rapid Rafts", d: 'Guided whitewater rafting on the Peshtigo and Menominee rivers', l: 'kosirsrapidrafts.com' }],
+        outs: [{ n: "Kosir's Rapid Rafts", d: 'Guided whitewater rafting on the Peshtigo and Menominee rivers', l: '' }],
       },
       {
         id: 'flambeau', n: 'Flambeau River', ww: true, wild: true, northwoods: true, fishing: true,
@@ -4741,7 +4741,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: "Drifty's Canoe Rental", d: 'Kickapoo River canoe and kayak trips from Ontario', l: 'driftyscanoe.com' }, { n: "Mr. Duck's Canoe Rental", d: 'Family float trips on the Kickapoo, La Farge', l: 'mrducks.com' }],
+        outs: [{ n: "Drifty's Canoe Rental", d: 'Kickapoo River canoe and kayak trips from Ontario', l: '' }, { n: "Mr. Duck's Canoe Rental", d: 'Family float trips on the Kickapoo, La Farge', l: 'mrducks.com' }],
       },
       {
         id: 'black_wi', n: 'Black River', ww: true, wild: false, northwoods: false, fishing: true,
@@ -4878,7 +4878,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Hruska Canoe Livery', d: 'Upper Iowa River canoe and kayak rentals from Kendallville to Decorah', l: 'hruskacanoelivery.com' }, { n: "Randy's Bluffton Store", d: 'Shuttle service, camping, and river info at Bluffton', l: 'blufftoniowa.com' }],
+        outs: [{ n: 'Hruska Canoe Livery', d: 'Upper Iowa River canoe and kayak rentals from Kendallville to Decorah', l: '' }, { n: "Randy's Bluffton Store", d: 'Shuttle service, camping, and river info at Bluffton', l: '' }],
       },
       {
         id: 'yellow_ia', n: 'Yellow River State Forest', scenic: true, fishing: true, prairie: false, bluffs: true,
@@ -4909,7 +4909,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Backbone State Park', d: 'Camping, cabins, and river access in the gorge area', l: 'iowadnr.gov/Places-to-Go/State-Parks/Backbone' }, { n: 'Maquoketa River Paddle Sports', d: 'Kayak and canoe rentals for water trail sections', l: 'maquoketariverpaddlesports.com' }],
+        outs: [{ n: 'Backbone State Park', d: 'Camping, cabins, and river access in the gorge area', l: 'iowadnr.gov/Places-to-Go/State-Parks/Backbone' }, { n: 'Maquoketa River Paddle Sports', d: 'Kayak and canoe rentals for water trail sections', l: '' }],
       },
       {
         id: 'cedar_ia', n: 'Cedar River', scenic: true, fishing: true, prairie: true, bluffs: false,
@@ -5062,7 +5062,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Eleven Point Wild & Scenic River Management Plan', s: 'USFS Mark Twain NF', y: 2005, tp: 'Federal', pg: 148 , url: 'https://rivers.gov/documents/plans/eleven-point-management-direction.pdf'}],
         revs: [],
-        outs: [{ n: 'Eleven Point Canoe Rental', d: 'Float trips and shuttles on the Eleven Point', l: 'elevenpointcanoe.com' }],
+        outs: [{ n: 'Eleven Point Canoe Rental', d: 'Float trips and shuttles on the Eleven Point', l: '' }],
       },
       {
         id: 'st_francis', n: 'St. Francis River', ww: true, scenic: true, ozark: true, spring: false,
@@ -5078,7 +5078,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Millstream Gardens Access', d: 'Free public access maintained by Missouri Dept of Conservation', l: 'mdc.mo.gov/discover-nature/places/millstream-gardens-ca' }],
+        outs: [{ n: 'Millstream Gardens Access', d: 'Free public access maintained by Missouri Dept of Conservation', l: '' }],
       },
       {
         id: 'jacks_fork', n: 'Jacks Fork River', ww: false, scenic: true, ozark: true, spring: true,
@@ -5093,7 +5093,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Jacks Fork Canoe Rental', d: 'NPS-authorized canoe and kayak outfitter, Eminence', l: 'jacksforkcanoe.com' }, { n: 'Alley Spring Outfitters', d: 'Float trips and camping near Alley Spring', l: 'alleyspringoutfitters.com' }],
+        outs: [{ n: 'Jacks Fork Canoe Rental', d: 'NPS-authorized canoe and kayak outfitter, Eminence', l: 'jacksforkcanoe.com' }, { n: 'Alley Spring Outfitters', d: 'Float trips and camping near Alley Spring', l: '' }],
       },
       {
         id: 'meramec', n: 'Meramec River', ww: true, scenic: true, ozark: true, spring: false,
@@ -5108,7 +5108,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Meramec State Park Canoe Rental', d: 'Canoe and kayak rentals at the state park, Sullivan', l: 'mostateparks.com/park/meramec-state-park' }, { n: 'Ozark Outdoors Riverfront Resort', d: 'Meramec River float trips, camping, and cabins near Leasburg', l: 'ozarkoutdoors.net' }],
+        outs: [{ n: 'Meramec State Park Canoe Rental', d: 'Canoe and kayak rentals at the state park, Sullivan', l: 'mostateparks.com/park/meramec-state-park' }, { n: 'Ozark Outdoors Riverfront Resort', d: 'Meramec River float trips, camping, and cabins near Leasburg', l: '' }],
       },
       {
         id: 'big_mo', n: 'Big River', ww: false, scenic: true, ozark: true, spring: false,
@@ -5244,7 +5244,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'War Eagle Creek Outfitters', d: 'Canoe and kayak rentals with shuttle service near Hindsville', l: 'wareaglecreekoutfitters.com' }],
+        outs: [{ n: 'War Eagle Creek Outfitters', d: 'Canoe and kayak rentals with shuttle service near Hindsville', l: '' }],
       },
       {
         id: 'big_piney', n: 'Big Piney Creek', ww: true, scenic: true, ozark: true, spring: false,
@@ -5259,7 +5259,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Ozark Outdoor Supply', d: 'Kayak and canoe rentals for Big Piney Creek trips from Hector', l: 'ozarkoutdoorsupply.com' }, { n: 'Long Pool Recreation Area', d: 'USFS campground and river access at the takeout', l: 'fs.usda.gov/recarea/ozark/recarea/?recid=10983' }],
+        outs: [{ n: 'Ozark Outdoor Supply', d: 'Kayak and canoe rentals for Big Piney Creek trips from Hector', l: '' }, { n: 'Long Pool Recreation Area', d: 'USFS campground and river access at the takeout', l: 'fs.usda.gov/recarea/ozark/recarea/?recid=10983' }],
       },
       {
         id: 'kings_ar', n: 'Kings River', ww: true, scenic: true, ozark: true, spring: false,
@@ -5337,7 +5337,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Atchafalaya Basin Floodway System Project', s: 'USACE', y: 2010, tp: 'Federal', pg: 340 , url: 'https://www.mvn.usace.army.mil/portals/56/docs/pao/brochures/atchafalayabasinproject.pdf'}],
         revs: [],
-        outs: [{ n: 'Atchafalaya Basin Landing', d: 'Guided swamp tours and kayak rentals, Henderson', l: 'atchafalayabasinlanding.com' }, { n: 'Pack & Paddle', d: 'Lafayette-based outfitter, basin trips', l: 'packpaddle.com' }],
+        outs: [{ n: 'Atchafalaya Basin Landing', d: 'Guided swamp tours and kayak rentals, Henderson', l: '' }, { n: 'Pack & Paddle', d: 'Lafayette-based outfitter, basin trips', l: 'packpaddle.com' }],
       },
       {
         id: 'bogue_chitto', n: 'Bogue Chitto River', scenic: true, swamp: false, bayou: false, fishing: true,
@@ -5367,7 +5367,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Whiskey Chitto Canoe Rental', d: 'Shuttle service and canoe rentals, Mittie', l: 'whiskeychittocanoe.com' }],
+        outs: [{ n: 'Whiskey Chitto Canoe Rental', d: 'Shuttle service and canoe rentals, Mittie', l: '' }],
       },
       {
         id: 'tchefuncte', n: 'Tchefuncte River', scenic: true, swamp: false, bayou: false, fishing: true,
@@ -5483,7 +5483,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Okatoma Outdoor Post', d: 'Full-service canoe and kayak outfitter, Seminary', l: 'okatomacanoe.com' }],
+        outs: [{ n: 'Okatoma Outdoor Post', d: 'Full-service canoe and kayak outfitter, Seminary', l: '' }],
       },
       {
         id: 'wolf_ms', n: 'Wolf River', scenic: true, bluff: false, delta: false, fishing: false,
@@ -5498,7 +5498,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Wolf River Watershed Management Plan', s: 'MDEQ', y: 2014, tp: 'Ecology', pg: 88 , url: 'https://www.mdeq.ms.gov/wp-content/uploads/2025/07/Wolf_River_Watershed_Plan_2009.pdf'}],
         revs: [],
-        outs: [{ n: 'Wolf River Canoes', d: 'Kayak and canoe rentals, Perkinston', l: 'wolfrivercanoes.com' }],
+        outs: [{ n: 'Wolf River Canoes', d: 'Kayak and canoe rentals, Perkinston', l: '' }],
       },
       {
         id: 'bowie', n: 'Bowie Creek', scenic: true, bluff: false, delta: false, fishing: true,
@@ -5614,7 +5614,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Cahaba River Watershed Restoration Plan', s: 'USFWS/ADEM', y: 2015, tp: 'Ecology', pg: 195 , url: 'https://www.adem.alabama.gov/programs/water/nps/files/CahabaBMP.pdf'}],
         revs: [],
-        outs: [{ n: 'Cahaba Canoe Launch', d: 'Shelby County access and rentals', l: 'cahabacanoe.com' }],
+        outs: [{ n: 'Cahaba Canoe Launch', d: 'Shelby County access and rentals', l: '' }],
       },
       {
         id: 'locust_fork', n: 'Locust Fork of the Black Warrior', ww: true, scenic: true, appalachian: true, coastal: false,
@@ -5630,7 +5630,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Swann Bridge Canoe Launch', d: 'Put-in access and informal shuttles, Cleveland AL', l: 'blountcountyparks.com' }],
+        outs: [{ n: 'Swann Bridge Canoe Launch', d: 'Put-in access and informal shuttles, Cleveland AL', l: '' }],
       },
       {
         id: 'sipsey_fork', n: 'Sipsey Fork', ww: true, scenic: true, appalachian: true, coastal: false,
@@ -5747,7 +5747,7 @@ export const STATES: StatesDB = {
         docs: [{ t: 'Peace River Comprehensive Watershed Management Plan', s: 'SWFWMD', y: 2017, tp: 'Ecology', pg: 195 , url: 'http://polk.wateratlas.usf.edu/upload/documents/PEACE%20RIVER%20CWM%20PART1.pdf'}],
         revs: [],
         needsVerification: ['cfs-range-wide'],
-        outs: [{ n: 'Canoe Outpost — Peace River', d: 'Full-service canoe and kayak rentals, Arcadia', l: 'canoeoutpost.com' }],
+        outs: [{ n: 'Canoe Outpost — Peace River', d: 'Full-service canoe and kayak rentals, Arcadia', l: '' }],
       },
       {
         id: 'loxahatchee', n: 'Loxahatchee River', spring: false, scenic: true, coastal: true, wildlife: true,
@@ -5895,7 +5895,7 @@ export const STATES: StatesDB = {
         docs: [],
         revs: [],
         needsVerification: ['named-rapid-scout-note'],
-        outs: [{ n: 'Wildwater Chattooga', d: 'Guided Section III and IV trips', l: 'wildwaterchattooga.com' }, { n: 'Chattooga Ridge Outfitters', d: 'Shuttles and kayak rentals, Long Creek SC', l: 'chattoogaridge.com' }],
+        outs: [{ n: 'Wildwater Chattooga', d: 'Guided Section III and IV trips', l: '' }, { n: 'Chattooga Ridge Outfitters', d: 'Shuttles and kayak rentals, Long Creek SC', l: '' }],
       },
       {
         id: 'saluda', n: 'Saluda River', ww: true, scenic: true, piedmont: true, lowcountry: false,
@@ -6161,7 +6161,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Niobrara National Scenic River Management Plan', s: 'NPS', y: 2006, tp: 'Federal', pg: 220 , url: 'https://rivers.gov/sites/rivers/files/documents/plans/niobrara-plan.pdf'}],
         revs: [],
-        outs: [{ n: 'Sunny Brook Camp', d: 'Full-service Niobrara outfitter, cabins and camping', l: 'sunnybrookcamp.com' }, { n: 'Graham Canoe Outfitters', d: 'Canoe and kayak rentals, shuttle service', l: 'grahamcanoeoutfitters.com' }],
+        outs: [{ n: 'Sunny Brook Camp', d: 'Full-service Niobrara outfitter, cabins and camping', l: 'sunnybrookcamp.com' }, { n: 'Graham Canoe Outfitters', d: 'Canoe and kayak rentals, shuttle service', l: '' }],
       },
       {
         id: 'dismal', n: 'Dismal River', scenic: true, prairie: false, sandhills: true, fishing: true,
@@ -6297,7 +6297,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Missouri National Recreational River General Management Plan', s: 'NPS', y: 1999, tp: 'Federal', pg: 280 , url: 'https://rivers.gov/sites/rivers/files/documents/plans/missouri-plan-nps.pdf'}],
         revs: [],
-        outs: [{ n: 'Missouri River Expeditions', d: 'Multi-day guided trips, canoe and kayak rentals', l: 'missouririverexpeditions.com' }],
+        outs: [{ n: 'Missouri River Expeditions', d: 'Multi-day guided trips, canoe and kayak rentals', l: '' }],
       },
       {
         id: 'big_sioux', n: 'Big Sioux River', scenic: true, prairie: true, badlands: false, fishing: true,
@@ -6312,7 +6312,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Big Sioux River Watershed Assessment', s: 'SD DENR', y: 2014, tp: 'Ecology', pg: 155 , url: 'https://danr.sd.gov/Conservation/WatershedProtection/TMDL/docs/TableDocs/tmdl_bigsiouxcentral.pdf'}],
         revs: [],
-        outs: [{ n: 'Palisades State Park', d: 'Canoe and kayak access, camping', l: 'gfp.sd.gov' }, { n: 'Falls Overlook Kayaks', d: 'Sioux Falls urban paddle rentals', l: 'fallsoverlockkayaks.com' }],
+        outs: [{ n: 'Palisades State Park', d: 'Canoe and kayak access, camping', l: 'gfp.sd.gov' }, { n: 'Falls Overlook Kayaks', d: 'Sioux Falls urban paddle rentals', l: '' }],
       },
       {
         id: 'cheyenne_sd', n: 'Cheyenne River', scenic: false, prairie: true, badlands: true, fishing: false,
@@ -6329,7 +6329,7 @@ export const STATES: StatesDB = {
         docs: [{ t: 'Cheyenne River Basin Water Quality Assessment', s: 'SD DENR', y: 2018, tp: 'Hydrology', pg: 120 , url: 'https://danr.sd.gov/Conservation/WatershedProtection/ReportsPublications/uppercheyennefinalreport.pdf'}],
         revs: [],
         needsVerification: ['cfs-range-wide'],
-        outs: [{ n: 'Badlands Adventure Outfitters', d: 'Expedition planning and shuttle service', l: 'badlandsadventure.com' }],
+        outs: [{ n: 'Badlands Adventure Outfitters', d: 'Expedition planning and shuttle service', l: '' }],
       },
       {
         id: 'spearfish', n: 'Spearfish Creek', scenic: true, prairie: false, badlands: false, fishing: true,
@@ -6434,7 +6434,7 @@ export const STATES: StatesDB = {
         docs: [],
         revs: [],
         needsVerification: ['cfs-range-wide'],
-        outs: [{ n: 'Little Missouri River Outfitters', d: 'Medora-based, Badlands expeditions', l: 'littlemissouririver.com' }],
+        outs: [{ n: 'Little Missouri River Outfitters', d: 'Medora-based, Badlands expeditions', l: '' }],
       },
       {
         id: 'sheyenne', n: 'Sheyenne River', scenic: true, prairie: true, badlands: false, fishing: true,
@@ -6467,7 +6467,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Missouri River Adventures', d: 'Multi-day guided Missouri River trips', l: 'missouriveradventures.com' }, { n: 'Cross Ranch State Park', d: 'River access, camping, nature preserve', l: 'parkrec.nd.gov' }],
+        outs: [{ n: 'Missouri River Adventures', d: 'Multi-day guided Missouri River trips', l: '' }, { n: 'Cross Ranch State Park', d: 'River access, camping, nature preserve', l: 'parkrec.nd.gov' }],
       },
       {
         id: 'pembina', n: 'Pembina River', scenic: true, prairie: true, badlands: false, fishing: true,
@@ -6554,7 +6554,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Flint Hills Tallgrass Prairie Conservation Assessment', s: 'TNC / NPS', y: 2010, tp: 'Ecology', pg: 210 , url: 'https://npshistory.com/publications/tapr/nrr-2019-2043.pdf'}],
         revs: [],
-        outs: [{ n: 'Flint Hills Trail Outfitters', d: 'Cottonwood Falls-based, canoe and kayak rentals', l: 'flinthillstrail.com' }],
+        outs: [{ n: 'Flint Hills Trail Outfitters', d: 'Cottonwood Falls-based, canoe and kayak rentals', l: '' }],
       },
       {
         id: 'kaw', n: 'Kansas (Kaw) River', scenic: true, prairie: true, flinthills: false, fishing: true,
@@ -6691,7 +6691,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Illinois River Watershed Management Plan', s: 'Oklahoma Scenic Rivers Commission', y: 2012, tp: 'Ecology', pg: 175 , url: 'https://conservation.ok.gov/wp-content/uploads/2021/07/Illinois-River-Watershed-Based-Plan-2011.pdf'}],
         revs: [],
-        outs: [{ n: 'War Eagle Floats', d: 'Full-service Illinois River outfitter', l: 'wareaglefloats.com' }, { n: 'Sparrowhawk Camp', d: 'Canoe and kayak rentals, riverside camping', l: 'sparrowhawkcamp.com' }],
+        outs: [{ n: 'War Eagle Floats', d: 'Full-service Illinois River outfitter', l: '' }, { n: 'Sparrowhawk Camp', d: 'Canoe and kayak rentals, riverside camping', l: '' }],
       },
       {
         id: 'mountain_fork', n: 'Lower Mountain Fork', ww: true, scenic: true, ozark: false, prairie: false,
@@ -6707,7 +6707,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Beavers Bend Fly Shop', d: 'Guided trout trips, fly fishing instruction', l: 'bfrods.com' }, { n: 'Mountain Fork Outfitters', d: 'Kayak and canoe rentals, shuttles', l: 'mountainforkoutfitters.com' }],
+        outs: [{ n: 'Beavers Bend Fly Shop', d: 'Guided trout trips, fly fishing instruction', l: '' }, { n: 'Mountain Fork Outfitters', d: 'Kayak and canoe rentals, shuttles', l: '' }],
       },
       {
         id: 'blue_ok', n: 'Blue River', ww: false, scenic: true, ozark: false, prairie: true,
@@ -6841,7 +6841,7 @@ export const STATES: StatesDB = {
         docs: [],
         revs: [],
         needsVerification: ['cfs-range-wide'],
-        outs: [{ n: 'Possum Kingdom State Park', d: 'TPWD campground and water access', l: 'tpwd.texas.gov' }, { n: 'Brazos River Paddling Trail', d: 'TPWD mapped trail with access points', l: 'tpwd.texas.gov/fishboat/boat/paddlingtrails/brazos' }],
+        outs: [{ n: 'Possum Kingdom State Park', d: 'TPWD campground and water access', l: 'tpwd.texas.gov' }, { n: 'Brazos River Paddling Trail', d: 'TPWD mapped trail with access points', l: '' }],
       },
       {
         id: 'san_marcos', n: 'San Marcos River', ww: false, scenic: true, desert: false, spring: true,
@@ -6856,7 +6856,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Edwards Aquifer Habitat Conservation Plan — San Marcos Springs', s: 'USFWS / Edwards Aquifer Authority', y: 2013, tp: 'Ecology', pg: 175 , url: 'https://www.edwardsaquifer.net/pdf/Final_HCP.pdf'}],
         revs: [],
-        outs: [{ n: 'TG Canoes', d: 'San Marcos River kayak and canoe rentals', l: 'tgcanoes.com' }],
+        outs: [{ n: 'TG Canoes', d: 'San Marcos River kayak and canoe rentals', l: '' }],
       },
       {
         id: 'guadalupe', n: 'Guadalupe River', ww: true, scenic: true, desert: false, spring: true,
@@ -6872,7 +6872,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Guadalupe River Basin Water Quality Assessment', s: 'TCEQ', y: 2018, tp: 'Hydrology', pg: 145 , url: 'https://www.tceq.texas.gov/waterquality/assessment/02twqi/basins/guadalupe.html'}],
         revs: [],
-        outs: [{ n: 'Gruene River Company', d: 'Tubing, kayaking, and rafting outfitter', l: 'gruenerivercompany.com' }, { n: 'Rockin R River Rides', d: 'New Braunfels tubing and kayak rentals', l: 'rockinr.com' }],
+        outs: [{ n: 'Gruene River Company', d: 'Tubing, kayaking, and rafting outfitter', l: '' }, { n: 'Rockin R River Rides', d: 'New Braunfels tubing and kayak rentals', l: 'rockinr.com' }],
       },
       {
         id: 'devils_river', n: "Devils River", ww: true, scenic: true, desert: true, spring: true,
@@ -7051,7 +7051,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Carson River Watershed Assessment', s: 'Carson Water Subconservancy District', y: 2015, tp: 'Survey', pg: 145 , url: 'https://www.cwsd.org/upper-carson-river-watershed-management-plan-a-voluntary-commitment/'}],
         revs: [],
-        outs: [{ n: 'Carson River Resort', d: 'Float trips and camping, Mexican Dam put-in', l: 'carsonriverresort.com' }],
+        outs: [{ n: 'Carson River Resort', d: 'Float trips and camping, Mexican Dam put-in', l: '' }],
       },
       {
         id: 'humboldt', n: 'Humboldt River', desert: true, mtn: false,
@@ -7066,7 +7066,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Humboldt River Basin Water Resources Assessment', s: 'Nevada Division of Water Resources', y: 2012, tp: 'Hydrology', pg: 180 , url: 'https://ndep.nv.gov/water/rivers-streams-lakes/special-reports/humboldt-basin-studies'}],
         revs: [],
-        outs: [{ n: 'Elko Guide Service', d: 'Humboldt River float trips and Great Basin expeditions', l: 'elkoguideservice.com' }],
+        outs: [{ n: 'Elko Guide Service', d: 'Humboldt River float trips and Great Basin expeditions', l: '' }],
       },
       {
         id: 'walker', n: 'Walker River', desert: true, mtn: true,
@@ -7169,7 +7169,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Mohican River Corridor Management Plan', s: 'Ohio DNR', y: 2010, tp: 'Recreation', pg: 85 , url: 'https://dam.assets.ohio.gov/image/upload/ohiodnr.gov/documents/natural-areas/SR-studies/MohicanSRStudy.pdf'}],
         revs: [],
-        outs: [{ n: "Mohican Adventures", d: 'Canoe, kayak, and tube rentals, Loudonville', l: 'mohicanadventures.com' }, { n: "Pleasant Hill Canoe Livery", d: 'Clear Fork and Mohican trips', l: 'pleasanthillcanoe.com' }],
+        outs: [{ n: "Mohican Adventures", d: 'Canoe, kayak, and tube rentals, Loudonville', l: 'mohicanadventures.com' }, { n: "Pleasant Hill Canoe Livery", d: 'Clear Fork and Mohican trips', l: '' }],
         connectedRoute: { name: 'Black Fork → Mohican → Walhonding → Muskingum → Ohio', riverIds: ['black_fork_oh', 'mohican', 'walhonding_oh', 'muskingum_oh'] },
       },
       {
@@ -7229,7 +7229,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Hocking River Watershed Action Plan', s: 'Ohio EPA', y: 2012, tp: 'Ecology', pg: 156 , url: 'https://dam.assets.ohio.gov/image/upload/epa.ohio.gov/Portals/35/tmdl/HockingRiverTMDL_final_aug09_wo_app.pdf'}],
         revs: [],
-        outs: [{ n: 'Hocking Hills Canoe Livery', d: 'Canoe and kayak rentals with Hocking Hills trip options', l: 'hockinghillscanoelivery.com' }, { n: 'Hocking Hills Adventures', d: 'Guided kayak trips and shuttle service, Logan', l: 'hockinghillsadventures.com' }],
+        outs: [{ n: 'Hocking Hills Canoe Livery', d: 'Canoe and kayak rentals with Hocking Hills trip options', l: '' }, { n: 'Hocking Hills Adventures', d: 'Guided kayak trips and shuttle service, Logan', l: '' }],
       },
       {
         id: 'vermilion_oh', n: 'Vermilion River', ww: false, scenic: true, flat: true,
@@ -7453,7 +7453,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Sugar Creek Watershed Management Plan', s: 'Indiana DEM', y: 2008, tp: 'Ecology', pg: 110 , url: 'https://www.in.gov/idem/nps/resources/watershed-management-plans/sugar-creek-wmp-7-81/'}],
         revs: [],
-        outs: [{ n: 'Sugar Creek Canoe Rental', d: 'Turkey Run area, family trips', l: 'sugarcreekcanoe.com' }],
+        outs: [{ n: 'Sugar Creek Canoe Rental', d: 'Turkey Run area, family trips', l: '' }],
       },
       {
         id: 'blue_in', n: 'Blue River', ww: false, scenic: true, flat: true,
@@ -7599,7 +7599,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Heritage Harbor Sports', d: 'Vermilion River kayak rentals, Ottawa IL', l: 'heritageharborsports.com' }],
+        outs: [{ n: 'Heritage Harbor Sports', d: 'Vermilion River kayak rentals, Ottawa IL', l: '' }],
       },
       {
         id: 'cache_il', n: 'Cache River', ww: false, scenic: true, flat: true,
@@ -7614,7 +7614,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Shawnee Forest Outfitters', d: 'Cache River paddle tours, seasonal', l: 'shawneeforestoutfitters.com' }],
+        outs: [{ n: 'Shawnee Forest Outfitters', d: 'Cache River paddle tours, seasonal', l: '' }],
       },
       {
         id: 'kankakee', n: 'Kankakee River', ww: false, scenic: true, flat: true,
@@ -7793,7 +7793,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Saco River Corridor Management Plan', s: 'Saco River Corridor Commission', y: 2015, tp: 'Recreation', pg: 95 , url: 'https://www.des.nh.gov/sites/g/files/ehbemt341/files/documents/saco-swift-plan.pdf'}],
         revs: [],
-        outs: [{ n: 'Saco Bound', d: 'New England canoe institution since 1969, Center Conway', l: 'sacobound.com' }, { n: 'Canal Bridge Canoes', d: 'Saco River trips from North Conway', l: 'canalbridgecanoes.com' }],
+        outs: [{ n: 'Saco Bound', d: 'New England canoe institution since 1969, Center Conway', l: 'sacobound.com' }, { n: 'Canal Bridge Canoes', d: 'Saco River trips from North Conway', l: '' }],
       },
       {
         id: 'pemi', n: 'Pemigewasset River', ww: true, scenic: true, wild: false,
@@ -7911,7 +7911,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Vermont Canoe & Kayak', d: 'West River release weekends, rentals and shuttles', l: 'vermontcanoe.com' }],
+        outs: [{ n: 'Vermont Canoe & Kayak', d: 'West River release weekends, rentals and shuttles', l: '' }],
       },
       {
         id: 'lamoille', n: 'Lamoille River', ww: true, scenic: true,
@@ -8180,7 +8180,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Quaker Lane Bait & Tackle', d: 'Local info and gear for Wood River access', l: 'quakerlanebait.com' }],
+        outs: [{ n: 'Quaker Lane Bait & Tackle', d: 'Local info and gear for Wood River access', l: '' }],
       },
       {
         id: 'pawcatuck', n: 'Pawcatuck River', scenic: true, flat: true,
@@ -8210,7 +8210,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'Blackstone Valley Tourism Council', d: 'Paddle guides and river access information', l: 'blackstonevalleytourismcouncil.com' }, { n: 'Blackstone Valley Paddle Club', d: 'Group trips and community paddles', l: 'bvpaddle.org' }],
+        outs: [{ n: 'Blackstone Valley Tourism Council', d: 'Paddle guides and river access information', l: '' }, { n: 'Blackstone Valley Paddle Club', d: 'Group trips and community paddles', l: '' }],
       },
       {
         id: 'chipuxet', n: 'Chipuxet River', scenic: true, flat: true,
@@ -8328,7 +8328,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Pinelands Comprehensive Management Plan', s: 'Pinelands Commission', y: 2014, tp: 'Federal', pg: 450 , url: 'https://www.nj.gov/pinelands/cmp/CMP.pdf'}],
         revs: [],
-        outs: [{ n: 'Pinelands Adventures', d: 'Wharton State Forest paddle tours, official concessionaire', l: 'pinelandsadventures.com' }],
+        outs: [{ n: 'Pinelands Adventures', d: 'Wharton State Forest paddle tours, official concessionaire', l: '' }],
       },
       {
         id: 'mullica', n: 'Mullica River', ww: false, flat: true,
@@ -8343,7 +8343,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Mullica River Watershed Management Plan', s: 'Pinelands Commission', y: 2014, tp: 'Ecology', pg: 160 , url: 'https://www.nj.gov/pinelands/infor/reports/Mullica%20River%20Basin%20Report.pdf'}],
         revs: [],
-        outs: [{ n: 'Pinelands Adventures', d: 'Mullica River paddle tours, Wharton State Forest', l: 'pinelandsadventures.com' }, { n: 'Mick-a-Do Canoe Rental', d: 'Mullica and Wading River trips', l: 'mickado.com' }],
+        outs: [{ n: 'Pinelands Adventures', d: 'Mullica River paddle tours, Wharton State Forest', l: '' }, { n: 'Mick-a-Do Canoe Rental', d: 'Mullica and Wading River trips', l: '' }],
       },
       {
         id: 'paulins_kill', n: 'Paulins Kill', ww: false, flat: true,
@@ -8458,7 +8458,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'St. Jones River Watershed Management Plan', s: 'Delaware DNREC', y: 2015, tp: 'Ecology', pg: 85 , url: 'https://documents.dnrec.delaware.gov/swc/district/Documents/NPS/St-Jones-Watershed-Plan.pdf'}],
         revs: [],
-        outs: [{ n: 'First State Paddle', d: 'Dover Greenway and St. Jones guided tours', l: 'firststatepaddle.com' }],
+        outs: [{ n: 'First State Paddle', d: 'Dover Greenway and St. Jones guided tours', l: '' }],
       },
       {
         id: 'christina', n: 'Christina River', scenic: true, tidal: true,
@@ -8503,7 +8503,7 @@ export const STATES: StatesDB = {
         ],
         docs: [],
         revs: [],
-        outs: [{ n: 'First State Paddle', d: 'Red Clay Creek guided tours and rentals', l: 'firststatepaddle.com' }],
+        outs: [{ n: 'First State Paddle', d: 'Red Clay Creek guided tours and rentals', l: '' }],
       },
       {
         id: 'nanticoke', n: 'Nanticoke River', scenic: false, tidal: true,
@@ -8572,7 +8572,7 @@ export const STATES: StatesDB = {
         ],
         docs: [{ t: 'Potomac River Comprehensive Plan', s: 'Interstate Commission on the Potomac River Basin', y: 2018, tp: 'Federal', pg: 280 , url: 'https://www.potomacriver.org/wp-content/uploads/2018/06/Potomac_Comprehensive_Plan.pdf'}],
         revs: [],
-        outs: [{ n: 'Liquid Adventures', d: 'Potomac kayak instruction and Great Falls trips', l: 'liquidadventures.com' }, { n: 'Calleva', d: 'Potomac River kayak and canoe programs, Poolesville', l: 'calleva.org' }],
+        outs: [{ n: 'Liquid Adventures', d: 'Potomac kayak instruction and Great Falls trips', l: '' }, { n: 'Calleva', d: 'Potomac River kayak and canoe programs, Poolesville', l: 'calleva.org' }],
       },
       {
         id: 'savage', n: 'Savage River', ww: true, scenic: false,
