@@ -52,12 +52,16 @@ export async function sendEmail({ to, subject, html, replyTo }: SendEmailOptions
 
 // ── Resend Contacts / Audience tagging ─────────────────────────
 // Upserts a contact in the Resend audience so the weekly digest
-// subscriber list is tagged with source + saved-river slugs.
+// Adds a contact to the Resend audience. Email-only — Resend
+// contacts don't support custom properties, so source/rivers
+// metadata is accepted in the signature for call-site compat
+// but not sent to the API (the old code jammed river slugs
+// into first_name/last_name which produced garbage contacts).
 // Requires RESEND_API_KEY + RESEND_AUDIENCE_ID env vars. No-ops
 // silently when either is missing (same pattern as sendEmail).
 export async function upsertResendContact(
   email: string,
-  metadata: { source?: string; rivers?: string[] },
+  _metadata?: { source?: string; rivers?: string[] },
 ): Promise<boolean> {
   const apiKey = process.env.RESEND_API_KEY
   const audienceId = process.env.RESEND_AUDIENCE_ID
@@ -72,16 +76,7 @@ export async function upsertResendContact(
         'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        email,
-        unsubscribed: false,
-        // Resend stores arbitrary key-value pairs on contacts.
-        // We use 'source' to distinguish onboarding vs manual
-        // and 'rivers' as a comma-separated slug list so the
-        // digest send knows which rivers this user tracks.
-        ...(metadata.source ? { first_name: metadata.source } : {}),
-        ...(metadata.rivers ? { last_name: metadata.rivers.join(',') } : {}),
-      }),
+      body: JSON.stringify({ email, unsubscribed: false }),
     })
     if (!res.ok) {
       const err = await res.text()
