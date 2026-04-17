@@ -279,14 +279,14 @@ export default function SuggestCorrection({ riverId, riverName, stateKey, initia
   if (!open) {
     return (
       <button onClick={() => setOpen(true)} data-improve-river style={{
-        fontFamily: mono, fontSize: '10px', color: 'var(--rv)',
-        background: 'var(--rvlt)', border: '.5px solid var(--rvmd)',
-        borderRadius: '12px', cursor: 'pointer',
-        padding: '4px 12px', letterSpacing: '.3px',
-        transition: 'background .15s',
+        fontFamily: mono, fontSize: '11px', fontWeight: 500, color: '#fff',
+        background: 'var(--rvdk)', border: 'none',
+        borderRadius: 'var(--r)', cursor: 'pointer',
+        padding: '8px 18px', letterSpacing: '.3px',
+        transition: 'opacity .15s', flexShrink: 0,
       }}
-        onMouseEnter={e => (e.currentTarget.style.background = 'var(--rvmd)')}
-        onMouseLeave={e => (e.currentTarget.style.background = 'var(--rvlt)')}
+        onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
+        onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
       >
         Improve This River
       </button>

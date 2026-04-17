@@ -547,8 +547,7 @@ export default async function RiverPage({ params, searchParams }: Props) {
           }}>
             <span style={{
               fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px',
-              padding: '3px 8px', borderRadius: '10px',
-              background: 'var(--rv)', color: '#fff',
+              color: 'var(--rvdk)', opacity: 0.7,
               textTransform: 'uppercase', letterSpacing: '.5px', fontWeight: 600,
               flexShrink: 0,
             }}>
