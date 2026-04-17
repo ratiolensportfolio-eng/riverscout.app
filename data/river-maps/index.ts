@@ -47,6 +47,11 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  black_fork_oh: () => import('./black_fork_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   black_creek_ms: () => import('./black_creek_ms').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
