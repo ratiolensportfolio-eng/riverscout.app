@@ -12,12 +12,27 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  anahulu_hi: () => import('./anahulu_hi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  anchor_ak: () => import('./anchor_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   androscoggin: () => import('./androscoggin').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
   })),
   arkansas: () => import('./arkansas').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  atchafalaya: () => import('./atchafalaya').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -38,6 +53,11 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     riverPath: m.riverPath,
   })),
   big_sioux: () => import('./big_sioux').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  black_az: () => import('./black_az').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -87,12 +107,27 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  bogue_chitto: () => import('./bogue_chitto').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   brandywine: () => import('./brandywine').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
   })),
   brazos: () => import('./brazos').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  broad_ga: () => import('./broad_ga').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  broadkill: () => import('./broadkill').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -107,7 +142,22 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  caddo: () => import('./caddo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   cahaba: () => import('./cahaba').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  calamus: () => import('./calamus').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  canadian_nm: () => import('./canadian_nm').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -132,7 +182,27 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  chattooga_ga: () => import('./chattooga_ga').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  chattooga_sc: () => import('./chattooga_sc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  chattooga_sc_main: () => import('./chattooga_sc_main').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   cheat: () => import('./cheat').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  cheat_narrows: () => import('./cheat_narrows').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -142,12 +212,32 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  christina: () => import('./christina').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  chunky: () => import('./chunky').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   clarion: () => import('./clarion').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  clinch_norris_tn: () => import('./clinch_norris_tn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   concord: () => import('./concord').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  copper_ak: () => import('./copper_ak').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -207,6 +297,11 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  deshka_ak: () => import('./deshka_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   desolation: () => import('./desolation').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
@@ -223,6 +318,21 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     riverPath: m.riverPath,
   })),
   eleven_point: () => import('./eleven_point').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  elkhorn: () => import('./elkhorn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  eramosa_on: () => import('./eramosa_on').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  esopus: () => import('./esopus').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -252,12 +362,27 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  french_on: () => import('./french_on').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  frio: () => import('./frio').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   gallatin: () => import('./gallatin').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
   })),
   gauley: () => import('./gauley').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  gila_box: () => import('./gila_box').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -272,7 +397,17 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  glover: () => import('./glover').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   grand_oh: () => import('./grand_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  grand_on: () => import('./grand_on').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -347,6 +482,11 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  jarbidge: () => import('./jarbidge').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   jordan: () => import('./jordan').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
@@ -358,6 +498,16 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     riverPath: m.riverPath,
   })),
   kankakee: () => import('./kankakee').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  kasilof_ak: () => import('./kasilof_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  kenai_ak: () => import('./kenai_ak').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -377,7 +527,27 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  kiamichi: () => import('./kiamichi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   kickapoo: () => import('./kickapoo').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  kicking_horse_bc: () => import('./kicking_horse_bc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  kiski: () => import('./kiski').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  klutina_ak: () => import('./klutina_ak').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -387,7 +557,17 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  leaf: () => import('./leaf').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   lehigh: () => import('./lehigh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  linville: () => import('./linville').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -412,6 +592,16 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  little_susitna_ak: () => import('./little_susitna_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  llano: () => import('./llano').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   lochsa: () => import('./lochsa').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
@@ -423,6 +613,16 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     riverPath: m.riverPath,
   })),
   loyalsock: () => import('./loyalsock').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  machias: () => import('./machias').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  magnetawan_on: () => import('./magnetawan_on').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -472,6 +672,11 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  mokelumne: () => import('./mokelumne').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   moose_ny: () => import('./moose_ny').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
@@ -502,6 +707,11 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  nanticoke: () => import('./nanticoke').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   newriver: () => import('./newriver').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
@@ -522,12 +732,32 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  nueces: () => import('./nueces').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  obeds: () => import('./obeds').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   ocoee: () => import('./ocoee').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
   })),
   ocqueoc: () => import('./ocqueoc').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  okatoma: () => import('./okatoma').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  payette: () => import('./payette').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -587,6 +817,21 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  raquette: () => import('./raquette').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  raritan: () => import('./raritan').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  red_clay: () => import('./red_clay').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   rifle: () => import('./rifle').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
@@ -597,7 +842,22 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  rogue_mi: () => import('./rogue_mi').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  root: () => import('./root').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   russell_fork: () => import('./russell_fork').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  russian_ak: () => import('./russian_ak').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -622,7 +882,32 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  san_francisco_az: () => import('./san_francisco_az').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   san_juan: () => import('./san_juan').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  savage: () => import('./savage').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  seboeis: () => import('./seboeis').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  sf_boise: () => import('./sf_boise').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  shavers_fork: () => import('./shavers_fork').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -632,7 +917,17 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  shoshone: () => import('./shoshone').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   snake_wy: () => import('./snake_wy').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  speed_on: () => import('./speed_on').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -657,7 +952,32 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  susitna_ak: () => import('./susitna_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   suwannee: () => import('./suwannee').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  swift_nh: () => import('./swift_nh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  talkeetna_ak: () => import('./talkeetna_ak').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  tallahala: () => import('./tallahala').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  tallulah_ga: () => import('./tallulah_ga').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -673,6 +993,11 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     riverPath: m.riverPath,
   })),
   thunder_bay: () => import('./thunder_bay').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  toccoa: () => import('./toccoa').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -697,6 +1022,11 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  tygart_wv: () => import('./tygart_wv').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   upper_iowa: () => import('./upper_iowa').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
@@ -712,7 +1042,22 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  vermilion_oh: () => import('./vermilion_oh').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  vermillion_sd: () => import('./vermillion_sd').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   war_eagle: () => import('./war_eagle').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  washita: () => import('./washita').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -727,6 +1072,11 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  west_branch_ausable_ny: () => import('./west_branch_ausable_ny').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   west_river: () => import('./west_river').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
@@ -737,12 +1087,37 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  white_in: () => import('./white_in').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   white_mi: () => import('./white_mi').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  white_salmon: () => import('./white_salmon').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   whitewater_in: () => import('./whitewater_in').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  whitewater_mn: () => import('./whitewater_mn').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  wind_river: () => import('./wind_river').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  winooski: () => import('./winooski').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
@@ -4238,6 +4613,11 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     riverPath: m.riverPath,
   })),
   yellow_ia_2: () => import('./yellow_ia_2').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
+  zumbro_mn: () => import('./zumbro_mn').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,
     riverPath: m.riverPath,
