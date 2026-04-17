@@ -17,3 +17,9 @@ export const SHOW_PRO_TIER =
 // for its 3-day tail and degrades gracefully, so it stays on regardless.
 export const SHOW_NOAA_FORECAST =
   process.env.NEXT_PUBLIC_SHOW_NOAA_FORECAST === 'true'
+
+// River page V2 layout: dark gradient hero, stat cards row, grouped
+// action bar. ON by default. Set NEXT_PUBLIC_RIVER_V2=false to revert
+// to the classic beige header layout instantly.
+export const RIVER_V2 =
+  process.env.NEXT_PUBLIC_RIVER_V2 !== 'false'

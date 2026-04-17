@@ -1,10 +1,11 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { getRiverBySlug, getStateSlug, getRiverSlug, ALL_RIVERS } from '@/data/rivers'
+import { getRiverBySlug, getStateSlug, getRiverSlug, ALL_RIVERS, STATES } from '@/data/rivers'
 import { fetchGaugeData, formatCfs, celsiusToFahrenheit, coldWaterMessage, coldWaterSeverity } from '@/lib/usgs'
 import HeroSparkline from '@/components/rivers/HeroSparkline'
 import ConnectedRouteBadge from '@/components/rivers/ConnectedRouteBadge'
 import { createSupabaseServerClient } from '@/lib/supabase-server'
+import { RIVER_V2 } from '@/lib/features'
 
 // Lazy lookup of the active gauge's cached avg + section name from
 // the river_gauges table. Returns null when no row exists for that
@@ -308,15 +309,23 @@ export default async function RiverPage({ params, searchParams }: Props) {
     // scroll: <main> grows to fit, the tab content panel grows with
     // it, and the browser handles the page scrollbar.
     <main style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--tx)', display: 'flex', flexDirection: 'column' }}>
-      {/* ── River header — two-column layout ───────────────────
-          Left: river name, badges, metadata
-          Right: big CFS number, condition badge, rate, temp
-          Uses the full header width instead of stacking
-          everything in a single left-aligned column. */}
+      {/* ── River header ──────────────────────────────────────
+          V2: dark gradient hero (navy→teal), white text, pills
+          V1: classic beige header with dark text
+          Toggle: NEXT_PUBLIC_RIVER_V2=false to revert */}
       <div style={{
-        padding: '16px 20px', borderBottom: '.5px solid var(--bd)',
-        background: 'var(--wtlt)', flexShrink: 0,
+        padding: RIVER_V2 ? '24px 20px 20px' : '16px 20px',
+        borderBottom: RIVER_V2 ? 'none' : '.5px solid var(--bd)',
+        background: RIVER_V2 ? 'linear-gradient(165deg, #042C53 0%, #085041 100%)' : 'var(--wtlt)',
+        color: RIVER_V2 ? '#fff' : 'var(--tx)',
+        flexShrink: 0,
       }}>
+        {/* V2 breadcrumb */}
+        {RIVER_V2 && (
+          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', opacity: 0.45, marginBottom: '10px', letterSpacing: '.5px', textTransform: 'uppercase' }}>
+            {STATES[river.stateKey]?.name ?? river.stateKey} › {river.co || 'Unknown Co.'}
+          </div>
+        )}
         <div style={{
           display: 'flex', justifyContent: 'space-between',
           alignItems: 'flex-start', gap: '20px', flexWrap: 'wrap',
@@ -325,8 +334,8 @@ export default async function RiverPage({ params, searchParams }: Props) {
           <div style={{ flex: '1 1 300px', minWidth: 0 }}>
             <h1 style={{
               fontFamily: "'Playfair Display', serif",
-              fontSize: '26px', fontWeight: 700,
-              color: '#042C53', margin: '0 0 6px', lineHeight: 1.2,
+              fontSize: RIVER_V2 ? '32px' : '26px', fontWeight: 700,
+              color: RIVER_V2 ? '#fff' : '#042C53', margin: '0 0 6px', lineHeight: 1.2,
             }}>
               {river.n}
             </h1>
@@ -363,16 +372,16 @@ export default async function RiverPage({ params, searchParams }: Props) {
 
             <div style={{
               fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
-              color: 'var(--wt)', marginBottom: '6px', letterSpacing: '.3px',
+              color: RIVER_V2 ? 'rgba(255,255,255,0.7)' : 'var(--wt)', marginBottom: '6px', letterSpacing: '.3px',
             }}>
               {river.co} · {river.len} · Class {river.cls}
             </div>
 
             <div style={{
               fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
-              color: 'var(--tx2)', marginBottom: '6px',
+              color: RIVER_V2 ? 'rgba(255,255,255,0.7)' : 'var(--tx2)', marginBottom: '6px',
             }}>
-              Optimal: <strong style={{ color: 'var(--rvdk)' }}>{river.opt}</strong> CFS · USGS #{river.g}
+              Optimal: <strong style={{ color: RIVER_V2 ? '#fff' : 'var(--rvdk)' }}>{river.opt}</strong> CFS · USGS #{river.g}
             </div>
 
             {/* Temp + cold-water safety on the left. Tier-based copy
@@ -409,11 +418,13 @@ export default async function RiverPage({ params, searchParams }: Props) {
               </div>
             )}
 
-            {/* Actions row */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '10px' }}>
-              <SaveRiver riverId={river.id} riverName={river.n} />
-              <SaveOffline riverId={river.id} riverName={river.n} gaugeId={river.g} stateSlug={state} riverSlug={slug} />
-            </div>
+            {/* Actions row — only in V1; V2 puts these in the action bar below */}
+            {!RIVER_V2 && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginTop: '10px' }}>
+                <SaveRiver riverId={river.id} riverName={river.n} />
+                <SaveOffline riverId={river.id} riverName={river.n} gaugeId={river.g} stateSlug={state} riverSlug={slug} />
+              </div>
+            )}
           </div>
 
           {/* ── Middle column: 10-day CFS sparkline ── */}
@@ -439,12 +450,12 @@ export default async function RiverPage({ params, searchParams }: Props) {
               <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--rv)', flexShrink: 0 }} className="pulse-dot" />
               <span style={{
                 fontFamily: "'Playfair Display', serif",
-                fontSize: '42px', fontWeight: 700,
-                color: '#0C447C', lineHeight: 1,
+                fontSize: RIVER_V2 ? '52px' : '42px', fontWeight: 700,
+                color: RIVER_V2 ? '#fff' : '#0C447C', lineHeight: 1,
               }}>
                 {formatCfs(flow.cfs)}
               </span>
-              <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '14px', color: 'var(--wt)' }}>CFS</span>
+              <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '14px', color: RIVER_V2 ? 'rgba(255,255,255,0.6)' : 'var(--wt)' }}>CFS</span>
             </div>
 
             {/* Section label — only shown when a non-primary gauge is
@@ -457,7 +468,7 @@ export default async function RiverPage({ params, searchParams }: Props) {
             )}
 
             {flow.gaugeHeightFt !== null && (
-              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', color: 'var(--tx2)', marginBottom: '6px' }}>
+              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', color: RIVER_V2 ? 'rgba(255,255,255,0.5)' : 'var(--tx2)', marginBottom: '6px' }}>
                 {flow.gaugeHeightFt.toFixed(2)} ft gauge height
               </div>
             )}
@@ -519,15 +530,59 @@ export default async function RiverPage({ params, searchParams }: Props) {
         </div>
       </div>
 
-      {/* ── Contextual contribution prompt ───────────────────
-          Replaces the old generic "Improve This River" button
-          with a specific ask that references something actually
-          unverified on this river. Uses the needsVerification
-          tags, or a fallback generic invite if the river has
-          no open verification items. */}
-      {(() => {
-        // Pick the first unverified item to generate a specific ask.
-        // If everything is verified, show a softer generic prompt.
+      {/* ── V2: Stat cards row ────────────────────────────────
+          Overlaps the dark hero by pulling up with negative margin.
+          Shows rate-of-change + water temp as scannable cards. */}
+      {RIVER_V2 && (
+        <div style={{ maxWidth: '1100px', margin: '-16px auto 0', padding: '0 20px', position: 'relative', zIndex: 1 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px' }}>
+            <div style={{ background: 'var(--bg)', borderRadius: '10px', padding: '14px 18px', border: '1px solid var(--bd)', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
+              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '4px' }}>Rate of change</div>
+              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 700, color: '#042C53' }}>{flow.rateLabel || '—'}</div>
+              {flow.changeIn3Hours != null && Math.abs(flow.changeIn3Hours) >= 25 && (
+                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', marginTop: '2px' }}>
+                  {flow.changeIn3Hours > 0 ? '+' : ''}{flow.changeIn3Hours.toLocaleString()} in 3h
+                </div>
+              )}
+            </div>
+            {flow.tempC != null && (() => {
+              const sev = coldWaterSeverity(flow.tempC)
+              const msg = coldWaterMessage(flow.tempC)
+              const isAlert = sev === 'critical' || sev === 'warning'
+              return (
+                <div style={{ background: 'var(--bg)', borderRadius: '10px', padding: '14px 18px', border: `1px solid ${isAlert ? 'var(--dg)' : 'var(--bd)'}`, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
+                  <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '4px' }}>Water temperature</div>
+                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 700, color: isAlert ? '#A32D2D' : '#042C53' }}>{celsiusToFahrenheit(flow.tempC)}°F</div>
+                  {msg && <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: isAlert ? '#A32D2D' : 'var(--tx3)', marginTop: '2px' }}>{msg}</div>}
+                </div>
+              )
+            })()}
+            {flow.gaugeHeightFt != null && (
+              <div style={{ background: 'var(--bg)', borderRadius: '10px', padding: '14px 18px', border: '1px solid var(--bd)', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
+                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '4px' }}>Gauge height</div>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 700, color: '#042C53' }}>{flow.gaugeHeightFt.toFixed(2)} ft</div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ── Action bar / contribution prompt ──────────────────
+          V2: grouped action buttons in one clean row
+          V1: contextual contribution prompt with specific ask */}
+      {RIVER_V2 ? (
+        <div style={{ flexShrink: 0, padding: '14px 20px', borderBottom: '.5px solid var(--bd)', display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
+          <SaveRiver riverId={river.id} riverName={river.n} />
+          <SaveOffline riverId={river.id} riverName={river.n} gaugeId={river.g} stateSlug={state} riverSlug={slug} />
+          <SuggestCorrection
+            riverId={river.id}
+            riverName={river.n}
+            stateKey={river.stateKey}
+            currentValues={currentValuesForSuggest}
+            initialField={undefined}
+          />
+        </div>
+      ) : (() => {
         const firstTag = mergedNeedsVerification[0]
         const tagMeta = firstTag ? (VERIFICATION_TAGS as Record<string, { label: string; description: string; suggestField: string }>)[firstTag] : null
 
