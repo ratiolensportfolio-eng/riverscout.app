@@ -1235,4 +1235,12 @@ export const RIVER_COORDS: Record<string, [number, number]> = {
   charles_ma: [42.3723, -71.2337],
   sudbury_ma: [42.3877, -71.374],
 
+  // Backfilled 2026-04-17 — previously missing
+  boyne_mi: [45.197, -84.952],
+  hatchery_creek_ky: [36.874, -85.146],
+  san_antonio: [35.828, -106.645],
+  rapid_me: [44.794, -71.018],
+  bowie: [31.32, -89.29],
+  battenkill: [43.096, -73.207],
+  bantam: [41.730, -73.200],
 }
