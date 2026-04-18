@@ -3486,7 +3486,22 @@ export default function RiverTabs({ river, flow, initialData }: RiverTabsProps) 
                 ) : (
                   <RiverMap
                     riverName={river.n}
-                    accessPoints={riverMapData.accessPoints}
+                    accessPoints={[
+                      ...riverMapData.accessPoints,
+                      ...(initialData?.campgrounds ?? [])
+                        .filter(c => c.lat && c.lng)
+                        .map(c => ({
+                          name: c.name,
+                          lat: c.lat,
+                          lng: c.lng,
+                          type: 'campsite' as const,
+                          description: [
+                            c.parent_name,
+                            c.reservable ? 'Reservable' : null,
+                            c.distance_miles != null ? `${c.distance_miles.toFixed(1)} mi from river` : null,
+                          ].filter(Boolean).join(' · '),
+                        })),
+                    ]}
                     sections={riverMapData.sections}
                     riverPath={riverMapData.riverPath}
                   />

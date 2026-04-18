@@ -179,6 +179,7 @@ export interface RiverPageData {
   hasSupabaseRapids: boolean   // for the verified-rapids confidence banner
   qa: PrefetchedQAQuestion[]   // Q&A tab — answered first, unanswered after
   accessPoints: PrefetchedAccessPoint[] // Maps & Guides tab — sorted by river_mile asc, nulls last
+  campgrounds: Array<{ id: string; name: string; lat: number; lng: number; parent_name: string | null; reservable: boolean; reservation_url: string | null; fee_description: string | null; distance_miles?: number }>
 }
 
 const TIER_ORDER: Record<string, number> = {
@@ -211,6 +212,7 @@ function emptyResult(): RiverPageData {
     hasSupabaseRapids: false,
     qa: [],
     accessPoints: [],
+    campgrounds: [],
   }
 }
 
@@ -458,6 +460,17 @@ export async function fetchRiverPageData(
     }))
   }
 
+  // Campgrounds within 15 miles — from the RIDB-seeded campgrounds
+  // table. Uses a bounding-box pre-filter then haversine distance.
+  const campgrounds = await (async () => {
+    try {
+      const { fetchCampgroundsNearRiver } = await import('@/lib/campgrounds')
+      return await fetchCampgroundsNearRiver(riverId, supabase, 15)
+    } catch {
+      return []
+    }
+  })()
+
   return {
     tripReports: (tripReportsRes.data ?? []) as PrefetchedTripReport[],
     stockingEvents: (stockingRes.data ?? []) as PrefetchedStockingEvent[],
@@ -469,5 +482,6 @@ export async function fetchRiverPageData(
     hasSupabaseRapids: !!(rapidsRes.data && rapidsRes.data.length > 0),
     qa,
     accessPoints,
+    campgrounds,
   }
 }
