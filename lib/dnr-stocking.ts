@@ -73,6 +73,20 @@ const WATERS_ID_TO_RIVER_ID: Record<number, string> = {
   8298: 'muskegon',           // Muskegon River — Mecosta Co.
   9079: 'boyne_mi',           // Boyne River — Charlevoix Co. (confirmed 2026-04-10)
   10753: 'manistique_mi',     // Manistique River — Schoolcraft Co. (confirmed 2026-04-10)
+  8005: 'manistee',           // Manistee River — Kalkaska/Missaukee Co. (33k brown+rainbow Apr 9)
+  10710: 'rifle_mi',          // Rifle River — Ogemaw Co. (10.5k rainbow Apr 7)
+  7881: 'little_muskegon_mi', // Little Muskegon River — Mecosta Co. (5.5k brown+rainbow Apr 7)
+  9261: 'east_au_gres_mi',    // East Br Au Gres River — Iosco Co. (10.5k rainbow Apr 7)
+  7421: 'ausable',            // Au Sable River — Crawford/Roscommon Co.
+  7429: 'pere_marquette',     // Pere Marquette River — Lake/Mason Co.
+  7424: 'boardman',           // Boardman River — Grand Traverse Co.
+  8272: 'pine_mi',            // Pine River — Lake/Osceola Co.
+  7870: 'little_manistee',    // Little Manistee River — Manistee Co.
+  8134: 'platte_mi',          // Platte River — Benzie Co.
+  9445: 'betsie',             // Betsie River — Benzie Co.
+  7504: 'jordan',             // Jordan River — Antrim/Charlevoix Co.
+  8305: 'white_mi',           // White River — Newaygo Co.
+  10711: 'thunder_bay_mi',    // Thunder Bay River — Montmorency/Alpena Co.
 }
 
 // ── Type definitions ───────────────────────────────────────────
