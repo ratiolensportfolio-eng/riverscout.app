@@ -71,8 +71,7 @@ export const DAM_RELEASES: DamRelease[] = [
   // release date so they can plan a whole season. Replaced with
   // the full enumerated list.
   //
-  // Source: American Whitewater Ocoee #2 page (TVA's old URL
-  // tva.com/environment/lake-levels/ocoee-river-recreation is dead).
+  // Source: TVA Ocoee #2 Recreation Release Calendar (official).
   //
   // VERIFY: this list is built from the standard TVA pattern. If
   // any specific 2026 date is added/removed/cancelled by TVA,
@@ -602,7 +601,7 @@ function buildOcoeeSeason2026(): DamRelease[] {
     '2026-08-05', '2026-08-12', '2026-08-19', '2026-08-26',
   ]
 
-  const sourceUrl = 'https://www.americanwhitewater.org/content/River/detail/id/29/'
+  const sourceUrl = 'https://www.tva.com/environment/lake-levels/Ocoee-2/Recreation-Release-Calendar'
 
   const peak: DamRelease[] = peakDays.map(date => ({
     id: `ocoee_${date.replace(/-/g, '_')}`,
