@@ -75,9 +75,9 @@ interface RateOfChange {
 // 1h and 3h ago. Tolerance ±20 min absorbs the case where USGS misses
 // a reading or the gauge updates on an offset cadence.
 //
-// Thresholds for the rate label match the user's spec:
-//   |rate| < 25       → Stable
-//   25-100            → Rising/falling slowly
+// Thresholds for the rate label:
+//   |rate| < 10       → Stable
+//   10-100            → Rising/falling slowly
 //   100-300           → Rising/falling
 //   > 300             → Rising/falling fast (often a flood signal)
 function calculateRateOfChange(
@@ -115,7 +115,7 @@ function calculateRateOfChange(
   const rate = changePerHour
   const fmt = (n: number) => (n > 0 ? '+' : '') + n.toLocaleString()
 
-  if (Math.abs(rate) < 25) {
+  if (Math.abs(rate) < 10) {
     return { changePerHour, changeIn3Hours, rateLabel: 'Stable', trend: 'flat' }
   }
 

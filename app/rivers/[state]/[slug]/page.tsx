@@ -322,8 +322,8 @@ export default async function RiverPage({ params, searchParams }: Props) {
       }}>
         {/* V2 breadcrumb */}
         {RIVER_V2 && (
-          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', opacity: 0.45, marginBottom: '10px', letterSpacing: '.5px', textTransform: 'uppercase' }}>
-            {STATES[river.stateKey]?.name ?? river.stateKey} › {river.co || 'Unknown Co.'}
+          <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px', color: 'rgba(255,255,255,0.4)', marginBottom: '10px' }}>
+            {STATES[river.stateKey]?.name ?? river.stateKey} · {river.co || 'Unknown Co.'}
           </div>
         )}
         <div style={{
@@ -384,23 +384,48 @@ export default async function RiverPage({ params, searchParams }: Props) {
               Optimal: <strong style={{ color: RIVER_V2 ? '#fff' : 'var(--rvdk)' }}>{river.opt}</strong> CFS · USGS #{river.g}
             </div>
 
-            {/* Temp + cold-water safety on the left. Tier-based copy
-                from coldWaterMessage(): ≤60 caution, ≤50 warning,
-                ≤40 critical. Color tracks severity. */}
+            {/* Divider between metadata and safety warnings */}
+            {(flow.tempC !== null || river.safe_cfs) && (
+              <div style={{
+                borderTop: RIVER_V2 ? '1px solid rgba(255,255,255,0.12)' : '.5px solid var(--bd)',
+                margin: '8px 0 6px', maxWidth: '320px',
+              }} />
+            )}
+
+            {/* Cold-water warning — pill badge with icon */}
             {flow.tempC !== null && (() => {
               const sev = coldWaterSeverity(flow.tempC)
               const msg = coldWaterMessage(flow.tempC)
-              const color = sev === 'critical' ? 'var(--dg)'
-                          : sev === 'warning'  ? '#A32D2D'
-                          : sev === 'caution'  ? '#7A4D0E'
-                          :                       'var(--wt)'
+              if (!sev && !msg) {
+                return (
+                  <div style={{
+                    fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
+                    color: RIVER_V2 ? 'rgba(255,255,255,0.6)' : 'var(--wt)', marginBottom: '4px',
+                  }}>
+                    Water temp: {celsiusToFahrenheit(flow.tempC)}°F
+                  </div>
+                )
+              }
+              const pillBg = RIVER_V2
+                ? (sev === 'critical' ? 'rgba(163,45,45,0.3)' : sev === 'warning' ? 'rgba(163,45,45,0.2)' : 'rgba(186,117,23,0.2)')
+                : (sev === 'critical' ? 'var(--dglt)' : sev === 'warning' ? 'var(--dglt)' : 'var(--amlt)')
+              const pillBorder = RIVER_V2
+                ? (sev === 'critical' ? 'rgba(163,45,45,0.5)' : sev === 'warning' ? 'rgba(163,45,45,0.4)' : 'rgba(186,117,23,0.4)')
+                : (sev === 'critical' ? 'var(--dg)' : sev === 'warning' ? 'var(--dg)' : 'var(--am)')
+              const pillColor = RIVER_V2
+                ? '#fff'
+                : (sev === 'critical' ? 'var(--dg)' : sev === 'warning' ? '#A32D2D' : '#7A4D0E')
               return (
                 <div style={{
-                  fontFamily: "'IBM Plex Mono', monospace", fontSize: '11px',
-                  color, marginBottom: '4px', fontWeight: sev ? 600 : 400,
+                  fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
+                  color: pillColor, background: pillBg,
+                  border: `.5px solid ${pillBorder}`, borderRadius: 'var(--r)',
+                  padding: '5px 10px', marginBottom: '4px',
+                  display: 'inline-flex', alignItems: 'center', gap: '6px',
+                  fontWeight: 600,
                 }}>
-                  Water temp: {celsiusToFahrenheit(flow.tempC)}°F
-                  {msg && ` — ${msg}`}
+                  <span style={{ fontSize: '11px' }}>&#9888;</span>
+                  <span>{celsiusToFahrenheit(flow.tempC)}°F — {msg}</span>
                 </div>
               )
             })()}
@@ -408,8 +433,10 @@ export default async function RiverPage({ params, searchParams }: Props) {
             {river.safe_cfs && (
               <div style={{
                 fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px',
-                color: '#7A4D0E', background: 'var(--amlt)',
-                border: '.5px solid var(--am)', borderRadius: 'var(--r)',
+                color: RIVER_V2 ? '#fff' : '#7A4D0E',
+                background: RIVER_V2 ? 'rgba(186,117,23,0.2)' : 'var(--amlt)',
+                border: RIVER_V2 ? '.5px solid rgba(186,117,23,0.4)' : '.5px solid var(--am)',
+                borderRadius: 'var(--r)',
                 padding: '5px 10px', marginTop: '4px',
                 display: 'inline-flex', alignItems: 'center', gap: '6px',
               }}>

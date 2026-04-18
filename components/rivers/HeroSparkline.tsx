@@ -133,7 +133,7 @@ export default function HeroSparkline({ readings, optRange, condition, gaugeId, 
   ]
   if (!all.length) return null
 
-  const W = 600, H = 130, PAD_X = 4, PAD_Y = 8
+  const W = 600, H = 130, PAD_X = 1, PAD_Y = 6
   const minDate = all[0].date.getTime()
   const maxDate = all.at(-1)!.date.getTime()
   const dateSpan = Math.max(maxDate - minDate, 24 * 60 * 60 * 1000)
