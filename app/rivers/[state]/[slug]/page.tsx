@@ -468,7 +468,7 @@ export default async function RiverPage({ params, searchParams }: Props) {
             )}
 
             {flow.gaugeHeightFt !== null && (
-              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '12px', color: RIVER_V2 ? 'rgba(255,255,255,0.5)' : 'var(--tx2)', marginBottom: '6px' }}>
+              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: RIVER_V2 ? '13px' : '12px', color: RIVER_V2 ? 'rgba(255,255,255,0.65)' : 'var(--tx2)', marginBottom: '6px', fontWeight: RIVER_V2 ? 500 : 400 }}>
                 {flow.gaugeHeightFt.toFixed(2)} ft gauge height
               </div>
             )}
@@ -529,43 +529,6 @@ export default async function RiverPage({ params, searchParams }: Props) {
           </div>
         </div>
       </div>
-
-      {/* ── V2: Stat cards row ────────────────────────────────
-          Overlaps the dark hero by pulling up with negative margin.
-          Shows rate-of-change + water temp as scannable cards. */}
-      {RIVER_V2 && (
-        <div style={{ maxWidth: '1100px', margin: '-16px auto 0', padding: '0 20px', position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-            <div style={{ flex: '1 1 140px', background: 'var(--bg)', borderRadius: '10px', padding: '12px 16px', border: '1px solid var(--bd)', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-              <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '4px' }}>Rate of change</div>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '18px', fontWeight: 700, color: '#042C53' }}>{flow.rateLabel || '—'}</div>
-              {flow.changeIn3Hours != null && Math.abs(flow.changeIn3Hours) >= 25 && (
-                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', marginTop: '2px' }}>
-                  {flow.changeIn3Hours > 0 ? '+' : ''}{flow.changeIn3Hours.toLocaleString()} in 3h
-                </div>
-              )}
-            </div>
-            {flow.tempC != null && (() => {
-              const sev = coldWaterSeverity(flow.tempC)
-              const msg = coldWaterMessage(flow.tempC)
-              const isAlert = sev === 'critical' || sev === 'warning'
-              return (
-                <div style={{ flex: '1 1 140px', background: 'var(--bg)', borderRadius: '10px', padding: '12px 16px', border: `1px solid ${isAlert ? 'var(--dg)' : 'var(--bd)'}`, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-                  <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '4px' }}>Water temperature</div>
-                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '18px', fontWeight: 700, color: isAlert ? '#A32D2D' : '#042C53' }}>{celsiusToFahrenheit(flow.tempC)}°F</div>
-                  {msg && <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: isAlert ? '#A32D2D' : 'var(--tx3)', marginTop: '2px' }}>{msg}</div>}
-                </div>
-              )
-            })()}
-            {flow.gaugeHeightFt != null && (
-              <div style={{ flex: '1 1 140px', background: 'var(--bg)', borderRadius: '10px', padding: '12px 16px', border: '1px solid var(--bd)', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-                <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '4px' }}>Gauge height</div>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '18px', fontWeight: 700, color: '#042C53' }}>{flow.gaugeHeightFt.toFixed(2)} ft</div>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
 
       {/* ── Action bar / contribution prompt ──────────────────
           V2: grouped action buttons in one clean row
