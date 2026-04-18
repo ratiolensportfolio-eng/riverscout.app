@@ -535,10 +535,10 @@ export default async function RiverPage({ params, searchParams }: Props) {
           Shows rate-of-change + water temp as scannable cards. */}
       {RIVER_V2 && (
         <div style={{ maxWidth: '1100px', margin: '-16px auto 0', padding: '0 20px', position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px' }}>
-            <div style={{ background: 'var(--bg)', borderRadius: '10px', padding: '14px 18px', border: '1px solid var(--bd)', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+            <div style={{ flex: '1 1 140px', background: 'var(--bg)', borderRadius: '10px', padding: '12px 16px', border: '1px solid var(--bd)', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
               <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '4px' }}>Rate of change</div>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 700, color: '#042C53' }}>{flow.rateLabel || '—'}</div>
+              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '18px', fontWeight: 700, color: '#042C53' }}>{flow.rateLabel || '—'}</div>
               {flow.changeIn3Hours != null && Math.abs(flow.changeIn3Hours) >= 25 && (
                 <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: 'var(--tx3)', marginTop: '2px' }}>
                   {flow.changeIn3Hours > 0 ? '+' : ''}{flow.changeIn3Hours.toLocaleString()} in 3h
@@ -550,17 +550,17 @@ export default async function RiverPage({ params, searchParams }: Props) {
               const msg = coldWaterMessage(flow.tempC)
               const isAlert = sev === 'critical' || sev === 'warning'
               return (
-                <div style={{ background: 'var(--bg)', borderRadius: '10px', padding: '14px 18px', border: `1px solid ${isAlert ? 'var(--dg)' : 'var(--bd)'}`, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
+                <div style={{ flex: '1 1 140px', background: 'var(--bg)', borderRadius: '10px', padding: '12px 16px', border: `1px solid ${isAlert ? 'var(--dg)' : 'var(--bd)'}`, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
                   <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '4px' }}>Water temperature</div>
-                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 700, color: isAlert ? '#A32D2D' : '#042C53' }}>{celsiusToFahrenheit(flow.tempC)}°F</div>
+                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '18px', fontWeight: 700, color: isAlert ? '#A32D2D' : '#042C53' }}>{celsiusToFahrenheit(flow.tempC)}°F</div>
                   {msg && <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '10px', color: isAlert ? '#A32D2D' : 'var(--tx3)', marginTop: '2px' }}>{msg}</div>}
                 </div>
               )
             })()}
             {flow.gaugeHeightFt != null && (
-              <div style={{ background: 'var(--bg)', borderRadius: '10px', padding: '14px 18px', border: '1px solid var(--bd)', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
+              <div style={{ flex: '1 1 140px', background: 'var(--bg)', borderRadius: '10px', padding: '12px 16px', border: '1px solid var(--bd)', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
                 <div style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: '9px', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '4px' }}>Gauge height</div>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 700, color: '#042C53' }}>{flow.gaugeHeightFt.toFixed(2)} ft</div>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '18px', fontWeight: 700, color: '#042C53' }}>{flow.gaugeHeightFt.toFixed(2)} ft</div>
               </div>
             )}
           </div>
