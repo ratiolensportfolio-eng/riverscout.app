@@ -266,17 +266,24 @@ export default function HeroSparkline({ readings, optRange, condition, gaugeId, 
             <rect
               x={0} width={W}
               y={yOf(avgBandHigh)} height={Math.max(yOf(avgBandLow) - yOf(avgBandHigh), 1)}
-              fill="rgba(120, 140, 150, 0.08)"
+              fill="rgba(120, 140, 150, 0.10)"
             />
             <line
               x1={0} x2={W}
               y1={yOf(avgFlow)} y2={yOf(avgFlow)}
-              stroke="rgba(110, 120, 130, 0.45)" strokeWidth={0.6} strokeDasharray="3,3"
+              stroke="rgba(255, 255, 255, 0.5)" strokeWidth={0.8} strokeDasharray="4,3"
+            />
+            {/* Avg label — background rect for contrast on dark hero */}
+            <rect
+              x={2} y={yOf(avgFlow) - 14}
+              width={72} height={16} rx={3}
+              fill="rgba(0, 0, 0, 0.35)"
             />
             <text
-              x={4} y={yOf(avgFlow) - 3}
-              fontFamily="'IBM Plex Mono', monospace" fontSize="9"
-              fill="rgba(100, 110, 120, 0.7)"
+              x={8} y={yOf(avgFlow) - 2}
+              fontFamily="'IBM Plex Mono', monospace" fontSize="11"
+              fontWeight="600"
+              fill="rgba(255, 255, 255, 0.9)"
             >
               {avgFlow.toLocaleString()} avg
             </text>
