@@ -45,7 +45,7 @@ export default async function MapPage() {
     else stateFlowMap[key] = 'low'
   }
 
-  const stateCount = Object.keys(STATES).length
+  const stateCount = Object.keys(STATES).filter(k => k !== 'canada').length
   const riverCount = ALL_RIVERS.length
 
   return (

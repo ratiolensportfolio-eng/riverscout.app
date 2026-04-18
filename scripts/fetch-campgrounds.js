@@ -23,12 +23,35 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
   process.exit(1)
 }
 
-const STATES = [
+const ALL_STATES = [
   'AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN',
   'IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV',
   'NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN',
   'TX','UT','VT','VA','WA','WV','WI','WY',
 ]
+
+// Support --batch=N to run a subset (0-4). Each batch is 10 states.
+const batchArg = process.argv.find(a => a.startsWith('--batch='))
+const batchNum = batchArg ? parseInt(batchArg.split('=')[1]) : null
+const STATES = batchNum != null
+  ? ALL_STATES.slice(batchNum * 10, (batchNum + 1) * 10)
+  : ALL_STATES
+if (batchNum != null) console.log(`Batch ${batchNum}: ${STATES.join(', ')}\n`)
+
+async function fetchWithRetry(url, retries = 3) {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const res = await fetch(url)
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      return await res.json()
+    } catch (e) {
+      if (attempt === retries) throw e
+      const delay = attempt * 3000
+      process.stdout.write(`(retry ${attempt}, wait ${delay/1000}s)... `)
+      await new Promise(r => setTimeout(r, delay))
+    }
+  }
+}
 
 async function fetchState(state) {
   const all = []
@@ -37,17 +60,12 @@ async function fetchState(state) {
 
   while (true) {
     const url = `${RIDB_BASE}/facilities?state=${state}&activity=CAMPING&limit=${limit}&offset=${offset}&apikey=${RIDB_API_KEY}`
-    const res = await fetch(url)
-    if (!res.ok) {
-      console.error(`  ${state} API error: ${res.status}`)
-      break
-    }
-    const data = await res.json()
+    const data = await fetchWithRetry(url)
     const facilities = data.RECDATA || []
     all.push(...facilities)
     if (facilities.length < limit) break
     offset += limit
-    await new Promise(r => setTimeout(r, 250))
+    await new Promise(r => setTimeout(r, 1200))
   }
   return all
 }
@@ -59,8 +77,7 @@ function cleanHtml(str) {
 }
 
 async function main() {
-  // Dynamic import for supabase
-  const { createClient } = await import('@supabase/supabase-js')
+  const { createClient } = require('@supabase/supabase-js')
   const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, { auth: { persistSession: false } })
 
   let totalInserted = 0
@@ -96,22 +113,22 @@ async function main() {
         updated_at: new Date().toISOString(),
       }))
 
-    // Batch upsert 100 at a time
-    for (let i = 0; i < rows.length; i += 100) {
-      const batch = rows.slice(i, i + 100)
+    // Batch upsert 50 at a time (smaller batches for reliability)
+    for (let i = 0; i < rows.length; i += 50) {
+      const batch = rows.slice(i, i + 50)
       const { error } = await supabase
         .from('campgrounds')
         .upsert(batch, { onConflict: 'id' })
       if (error) {
         totalErrors++
-        if (totalErrors <= 5) console.error(`  ${state} insert error:`, error.message)
+        console.error(`  ${state} batch ${i} insert error:`, error.message)
       } else {
         totalInserted += batch.length
       }
     }
 
     console.log(rows.length)
-    await new Promise(r => setTimeout(r, 300))
+    await new Promise(r => setTimeout(r, 500))
   }
 
   console.log(`\n=== RESULTS ===`)

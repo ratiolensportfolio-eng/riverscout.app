@@ -10,7 +10,7 @@ import type { FlowCondition } from '@/types'
 export const revalidate = 900
 
 export default async function HomePage() {
-  const stateCount = Object.keys(STATES).length
+  const stateCount = Object.keys(STATES).filter(k => k !== 'canada').length
   const riverCount = ALL_RIVERS.length
 
   // Fetch live conditions for every river via batched USGS calls

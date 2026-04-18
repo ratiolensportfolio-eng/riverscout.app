@@ -8,7 +8,7 @@ import RiversIndexClient, { type IndexedRiver } from './RiversIndexClient'
 // immediately and the condition badges fill in over a few seconds.
 
 const RIVER_COUNT = ALL_RIVERS.length
-const STATE_COUNT = Object.keys(STATES).length
+const STATE_COUNT = Object.keys(STATES).filter(k => k !== 'canada').length
 
 export const metadata: Metadata = {
   title: 'All Rivers — Paddling & Fishing Conditions | RiverScout',
