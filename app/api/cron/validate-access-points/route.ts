@@ -13,7 +13,7 @@ import { validateRiverAccessPoints } from '@/lib/snap-validator'
 // the maxDuration cap. Processes up to ~500 points per run.
 
 export const dynamic = 'force-dynamic'
-export const maxDuration = 120
+export const maxDuration = 60
 
 function client() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -43,7 +43,7 @@ export async function GET(req: NextRequest) {
     .not('lat', 'is', null)
     .not('lng', 'is', null)
     .or(`snap_validated_at.is.null,snap_validated_at.lt.${sevenDaysAgo}`)
-    .limit(500)
+    .limit(50)
 
   if (!stalePoints?.length) {
     return NextResponse.json({ message: 'All access points validated.', checked: 0 })
