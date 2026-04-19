@@ -4259,181 +4259,19 @@ function AccessPointRow({
           )}
         </div>
 
-        {/* Body — click anywhere on the card body (except an
-            action button or the inline report form) to open the
-            edit modal pre-filled with this row's values.
-            Permissions are enforced server-side: admins can edit
-            anything, submitters can edit their own pending rows. */}
-        <div
-          onClick={onEdit}
-          role="button"
-          tabIndex={0}
-          onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onEdit() } }}
-          style={{
-            flex: 1, minWidth: 0, paddingBottom: next ? '0' : '12px',
-            cursor: 'pointer', borderRadius: 'var(--r)',
-            transition: 'background .15s',
-          }}
-          onMouseEnter={e => (e.currentTarget.style.background = 'var(--bg2)')}
-          onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
-        >
-          {/* Heading row — name, badge */}
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap', marginBottom: '4px' }}>
-            <h3 style={{
-              fontFamily: apSerif, fontSize: '15px', fontWeight: 600,
-              color: 'var(--tx)', margin: 0, lineHeight: 1.3,
-            }}>
-              {ap.name}
-            </h3>
-            {ap.verification_status === 'verified' && (
-              <span style={{
-                fontFamily: apMono, fontSize: '8px', padding: '2px 7px', borderRadius: '8px',
-                background: '#E1F5EE', color: '#1D9E75', border: '.5px solid #9FE1CB',
-                textTransform: 'uppercase', letterSpacing: '.5px', fontWeight: 600,
-              }}>
-                ✓ Verified
-              </span>
-            )}
-            {ap.verification_status === 'pending' && (
-              <span style={{
-                fontFamily: apMono, fontSize: '8px', padding: '2px 7px', borderRadius: '8px',
-                background: 'var(--bg2)', color: 'var(--tx3)', border: '.5px solid var(--bd2)',
-                textTransform: 'uppercase', letterSpacing: '.5px', fontWeight: 600,
-              }}>
-                Pending
-              </span>
-            )}
-            {ap.verification_status === 'needs_review' && (
-              <span style={{
-                fontFamily: apMono, fontSize: '8px', padding: '2px 7px', borderRadius: '8px',
-                background: '#FBF3E8', color: '#BA7517', border: '.5px solid #E8C54A',
-                textTransform: 'uppercase', letterSpacing: '.5px', fontWeight: 600,
-              }}>
-                ⚠ Needs review
-              </span>
-            )}
-          </div>
-
-          {/* Type / surface / trailer line */}
-          {(ap.access_type || ap.ramp_surface || ap.trailer_access) && (
-            <div style={{ fontFamily: apMono, fontSize: '10px', color: 'var(--tx2)', marginBottom: '3px', lineHeight: 1.5 }}>
-              {[
-                ap.ramp_surface && RAMP_SURFACE_LABELS[ap.ramp_surface] + (ap.access_type === 'boat_ramp' ? ' ramp' : ''),
-                ap.access_type && !ap.ramp_surface && ACCESS_TYPE_LABELS[ap.access_type],
-                ap.trailer_access
-                  ? `Trailer access${ap.max_trailer_length_ft ? ` (up to ${ap.max_trailer_length_ft}ft)` : ''}`
-                  : null,
-              ].filter(Boolean).join(' · ')}
-            </div>
-          )}
-
-          {/* Parking + facilities line */}
-          {(ap.parking_capacity || ap.facilities.length > 0) && (
-            <div style={{ fontFamily: apMono, fontSize: '10px', color: 'var(--tx2)', marginBottom: '6px', lineHeight: 1.5 }}>
-              {ap.parking_capacity && <>Parking: {PARKING_LABELS[ap.parking_capacity]}</>}
-              {ap.parking_fee && ap.fee_amount && <> · {ap.fee_amount}</>}
-              {ap.facilities.length > 0 && <> · {ap.facilities.join(', ')}</>}
-            </div>
-          )}
-
-          {/* Description */}
-          {ap.description && (
-            <div style={{ fontSize: '12px', color: 'var(--tx)', lineHeight: 1.6, fontStyle: 'italic', marginBottom: '6px', paddingLeft: '8px', borderLeft: '2px solid var(--bd2)' }}>
-              &ldquo;{ap.description}&rdquo;
-            </div>
-          )}
-
-          {/* Seasonal notes */}
-          {ap.seasonal_notes && (
-            <div style={{ fontFamily: apMono, fontSize: '10px', color: 'var(--am)', marginBottom: '6px', lineHeight: 1.5 }}>
-              ⚠ {ap.seasonal_notes}
-            </div>
-          )}
-
-          {/* Submitter + freshness line */}
-          <div style={{ fontFamily: apMono, fontSize: '9px', color: 'var(--tx3)', display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '6px' }}>
-            {ap.submitted_by_name && <span>— submitted by {ap.submitted_by_name}</span>}
-            {fresh && <span style={{ color: fresh.color }}>{fresh.text}</span>}
-            {ap.confirmation_count > 0 && <span>{ap.confirmation_count} confirmation{ap.confirmation_count === 1 ? '' : 's'}</span>}
-          </div>
-
-          {/* Action row. Each button uses noBubble() so clicking
-              an action doesn't also fire the row's edit handler. */}
-          <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '6px' }}>
-            <button onClick={noBubble(onConfirm)} disabled={busy} style={apActionBtnStyle}>
-              {busy ? 'Working…' : 'Mark still accurate'}
-            </button>
-            <button onClick={noBubble(onReport)} style={apActionBtnStyle}>
-              Report change
-            </button>
-            <button onClick={noBubble(onMarkHelpful)} disabled={helpfulMarked} style={{ ...apActionBtnStyle, color: helpfulMarked ? 'var(--rv)' : 'var(--tx2)' }}>
-              {helpfulMarked ? '✓ ' : ''}Helpful ({ap.helpful_count})
-            </button>
-            <span style={{
-              marginLeft: 'auto',
-              fontFamily: apMono, fontSize: '9px', color: 'var(--tx3)',
-              padding: '4px 0',
-            }}>
-              click card to edit
-            </span>
-          </div>
-
-          {/* Inline report-change form. The whole div stops
-              propagation so typing/clicking inside it doesn't
-              fire the row's edit handler. */}
-          {reportOpen && (
-            <div
-              onClick={e => e.stopPropagation()}
-              style={{ background: 'var(--bg2)', border: '.5px solid var(--bd)', borderRadius: 'var(--r)', padding: '10px 12px', marginBottom: '8px' }}
-            >
-              <div style={{ fontFamily: apMono, fontSize: '9px', color: 'var(--tx3)', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '.5px' }}>
-                What changed?
-              </div>
-              <select value={reportForm.changeType}
-                onChange={e => onReportFormChange({ ...reportForm, changeType: e.target.value })}
-                style={{ ...apInputStyle, marginBottom: '6px' }}>
-                <option value="">Select…</option>
-                {Object.entries(CHANGE_TYPE_LABELS).map(([k, v]) => (
-                  <option key={k} value={k}>{v}</option>
-                ))}
-              </select>
-              <textarea value={reportForm.notes}
-                onChange={e => onReportFormChange({ ...reportForm, notes: e.target.value })}
-                placeholder="Anything else admins should know?"
-                rows={2}
-                style={{ ...apInputStyle, marginBottom: '6px', resize: 'vertical', fontFamily: 'Georgia, serif', fontSize: '12px' }} />
-              <button
-                onClick={noBubble(onSubmitReport)}
-                disabled={reportSubmitting || !reportForm.changeType}
-                style={{
-                  fontFamily: apMono, fontSize: '10px', padding: '6px 12px', borderRadius: 'var(--r)',
-                  background: 'var(--rv)', color: '#fff', border: 'none',
-                  cursor: reportSubmitting ? 'wait' : 'pointer',
-                }}>
-                {reportSubmitting ? 'Submitting…' : 'Submit report'}
-              </button>
-            </div>
-          )}
-
-          {/* Float segment summary card to next access point. Renders
-              only when we have at least a distance to show. */}
-          {next && (segmentDistance != null || ap.float_time_to_next || ap.next_access_name) && (
-            <div style={{
-              marginTop: '10px', marginBottom: '10px', marginLeft: '0',
-              padding: '10px 12px',
-              background: 'var(--rvlt)', border: '.5px solid var(--rvmd)',
-              borderRadius: 'var(--r)',
-            }}>
-              <div style={{ fontFamily: apMono, fontSize: '9px', color: 'var(--rv)', textTransform: 'uppercase', letterSpacing: '.5px', marginBottom: '4px', fontWeight: 600 }}>
-                {ap.name} → {ap.next_access_name || next.name}
-              </div>
-              <div style={{ fontFamily: apMono, fontSize: '11px', color: 'var(--rvdk)', lineHeight: 1.55 }}>
-                {segmentDistance != null && <>{segmentDistance.toFixed(1)} miles</>}
-                {ap.float_time_to_next && <> · {ap.float_time_to_next}</>}
-              </div>
-            </div>
-          )}
-        </div>
+        {/* Body — collapsed by default, click to expand details.
+            Compact view shows name + type on one line (matches the
+            section card style). Expanded view shows full metadata +
+            action buttons. Click the edit button to open the modal. */}
+        <AccessPointCollapsible
+          ap={ap} next={next} busy={busy}
+          helpfulMarked={helpfulMarked} reportOpen={reportOpen}
+          reportForm={reportForm} reportSubmitting={reportSubmitting}
+          onEdit={onEdit} onConfirm={onConfirm} onReport={onReport}
+          onReportFormChange={onReportFormChange} onSubmitReport={onSubmitReport}
+          onMarkHelpful={onMarkHelpful} noBubble={noBubble}
+          fresh={fresh}
+        />
       </div>
     </div>
   )
@@ -4483,6 +4321,103 @@ function TabInviteBar({ riverName }: { riverName: string }) {
       >
         Improve This River &rarr;
       </a>
+    </div>
+  )
+}
+
+// Collapsible access point card. Compact one-liner by default
+// (matches section card style), click to expand full details.
+function AccessPointCollapsible({
+  ap, next, busy, helpfulMarked, reportOpen, reportForm, reportSubmitting,
+  onEdit, onConfirm, onReport, onReportFormChange, onSubmitReport, onMarkHelpful,
+  noBubble, fresh,
+}: AccessPointRowProps & {
+  noBubble: (fn: () => void) => (e: React.MouseEvent) => void
+  fresh: { text: string; color: string } | null
+}) {
+  const [expanded, setExpanded] = useState(false)
+
+  const typeLabel = [
+    ap.ramp_surface && RAMP_SURFACE_LABELS[ap.ramp_surface],
+    ap.access_type && ACCESS_TYPE_LABELS[ap.access_type],
+    ap.parking_capacity && `Parking: ${PARKING_LABELS[ap.parking_capacity]}`,
+  ].filter(Boolean).join(' · ')
+
+  return (
+    <div style={{ flex: 1, minWidth: 0, paddingBottom: next ? '0' : '12px' }}>
+      {/* Compact row — always visible */}
+      <div
+        onClick={() => setExpanded(!expanded)}
+        role="button"
+        tabIndex={0}
+        onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setExpanded(!expanded) } }}
+        style={{
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          cursor: 'pointer', borderRadius: 'var(--r)', padding: '6px 8px',
+          border: expanded ? '.5px solid var(--rvmd)' : '.5px solid transparent',
+          background: expanded ? 'var(--rvlt)' : 'transparent',
+          transition: 'background .15s, border-color .15s',
+        }}
+        onMouseEnter={e => { if (!expanded) e.currentTarget.style.background = 'var(--bg2)' }}
+        onMouseLeave={e => { if (!expanded) e.currentTarget.style.background = 'transparent' }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
+          <span style={{ fontFamily: apSerif, fontSize: '14px', fontWeight: 600, color: 'var(--tx)' }}>
+            {ap.name}
+          </span>
+          {ap.verification_status === 'verified' && (
+            <span style={{
+              fontFamily: apMono, fontSize: '8px', padding: '1px 6px', borderRadius: '6px',
+              background: '#E1F5EE', color: '#1D9E75', border: '.5px solid #9FE1CB',
+              textTransform: 'uppercase', letterSpacing: '.3px', fontWeight: 600,
+            }}>✓</span>
+          )}
+          {typeLabel && (
+            <span style={{ fontFamily: apMono, fontSize: '10px', color: 'var(--tx3)' }}>{typeLabel}</span>
+          )}
+        </div>
+        <span style={{ fontFamily: apMono, fontSize: '10px', color: 'var(--tx3)', flexShrink: 0 }}>
+          {expanded ? '▾' : '▸'}
+        </span>
+      </div>
+
+      {/* Expanded details */}
+      {expanded && (
+        <div style={{ padding: '8px 8px 4px', borderLeft: '2px solid var(--rvmd)', marginLeft: '6px', marginTop: '4px' }}>
+          {ap.description && (
+            <div style={{ fontSize: '12px', color: 'var(--tx)', lineHeight: 1.6, fontStyle: 'italic', marginBottom: '6px' }}>
+              &ldquo;{ap.description}&rdquo;
+            </div>
+          )}
+
+          {ap.seasonal_notes && (
+            <div style={{ fontFamily: apMono, fontSize: '10px', color: 'var(--am)', marginBottom: '6px' }}>
+              ⚠ {ap.seasonal_notes}
+            </div>
+          )}
+
+          <div style={{ fontFamily: apMono, fontSize: '9px', color: 'var(--tx3)', display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '6px' }}>
+            {ap.submitted_by_name && <span>— submitted by {ap.submitted_by_name}</span>}
+            {fresh && <span style={{ color: fresh.color }}>{fresh.text}</span>}
+            {ap.confirmation_count > 0 && <span>{ap.confirmation_count} confirmation{ap.confirmation_count === 1 ? '' : 's'}</span>}
+          </div>
+
+          <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+            <button onClick={noBubble(() => onEdit())} style={{ ...apActionBtnStyle, background: 'var(--rvdk)', color: '#fff', border: 'none' }}>
+              Edit
+            </button>
+            <button onClick={noBubble(onConfirm)} disabled={busy} style={apActionBtnStyle}>
+              {busy ? 'Working…' : 'Still accurate'}
+            </button>
+            <button onClick={noBubble(onReport)} style={apActionBtnStyle}>
+              Report change
+            </button>
+            <button onClick={noBubble(onMarkHelpful)} disabled={helpfulMarked} style={{ ...apActionBtnStyle, color: helpfulMarked ? 'var(--rv)' : 'var(--tx2)' }}>
+              {helpfulMarked ? '✓ ' : ''}Helpful ({ap.helpful_count})
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
