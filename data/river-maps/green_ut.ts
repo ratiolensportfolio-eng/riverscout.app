@@ -5,13 +5,16 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Access points render from Supabase at runtime.
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Flaming Gorge Dam', lat: 40.916, lng: -109.421, type: 'access', description: 'Main put-in for trophy tailwater. Red Canyon area.' },
-  { name: 'Little Hole', lat: 40.932, lng: -109.56, type: 'access', description: '7 miles below dam. Day use area.' },
+  { name: 'Flaming Gorge Dam', lat: 40.916, lng: -109.421, type: 'access', description: 'Main tailwater put-in, Red Canyon area.' },
+  { name: 'Little Hole', lat: 40.932, lng: -109.558, type: 'access', description: '7 miles below dam, BLM day use.' },
   { name: 'Indian Crossing', lat: 40.924, lng: -109.65, type: 'access', description: 'Browns Park section.' },
+  { name: 'Swinging Bridge', lat: 40.916, lng: -109.707, type: 'access', description: 'BLM.' },
+  { name: 'Dutch John Bridge', lat: 40.921, lng: -109.403, type: 'access', description: 'Near dam, alternate access.' },
 ]
 
 export const sections: RiverSection[] = [
-  { from: 'Flaming Gorge Dam', to: 'Little Hole', miles: 7, paddleTime: '3-4 hours', class: 'I-II', notes: 'Trophy trout tailwater — Green River A section' },
+  { from: 'Flaming Gorge Dam', to: 'Little Hole', miles: 7, paddleTime: '3-4 hours', class: 'I-II', notes: 'Trophy trout tailwater — A section' },
+  { from: 'Little Hole', to: 'Indian Crossing', miles: 7, paddleTime: '3-4 hours', class: 'I-II', notes: 'B section' },
 ]
 
 export const riverPath: [number, number][] = [

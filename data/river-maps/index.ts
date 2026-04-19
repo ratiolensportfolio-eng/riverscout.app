@@ -892,6 +892,11 @@ const registry: Record<string, () => Promise<RiverMapData>> = {
     sections: m.sections,
     riverPath: m.riverPath,
   })),
+  san_juan_nm: () => import('./san_juan_nm').then(m => ({
+    accessPoints: m.accessPoints,
+    sections: m.sections,
+    riverPath: m.riverPath,
+  })),
   savage: () => import('./savage').then(m => ({
     accessPoints: m.accessPoints,
     sections: m.sections,

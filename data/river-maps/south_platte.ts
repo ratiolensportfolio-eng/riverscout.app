@@ -4,13 +4,14 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 778 points, stitched from 1 NRP segments.
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Cheesman Canyon', lat: 39.244, lng: -105.293, type: 'access', description: 'Upper Cheesman Canyon.' },
-  { name: 'Deckers Bridge', lat: 39.216, lng: -105.215, type: 'access', description: 'Most popular access, parking area.' },
-  { name: 'Eleven Mile Canyon', lat: 38.908, lng: -105.474, type: 'access', description: 'Reservoir tailwater section.' },
+  { name: 'Cheesman Canyon / Gill Trailhead', lat: 39.036, lng: -105.607, type: 'access', description: 'CONFIRMED. Walk-in only, 30-min hike to river.' },
+  { name: 'Deckers Bridge (put-in)', lat: 39.25666, lng: -105.22223, type: 'access', description: 'CONFIRMED — riverfacts.com GPS. Most popular access.' },
+  { name: 'Deckers Bridge (takeout)', lat: 39.40722, lng: -105.17223, type: 'access', description: 'CONFIRMED — riverfacts.com GPS.' },
+  { name: 'Dream Stream / Eleven Mile', lat: 38.94, lng: -105.489, type: 'access', description: 'Below Eleven Mile Reservoir.' },
 ]
 
 export const sections: RiverSection[] = [
-  { from: 'Cheesman Canyon', to: 'Deckers Bridge', miles: 3, paddleTime: '2 hours', class: 'I-II', notes: 'Gold Medal trout water' },
+  { from: 'Cheesman Canyon', to: 'Deckers Bridge', miles: 5, paddleTime: '3 hours', class: 'I-II', notes: 'Gold Medal trout water' },
 ]
 
 export const riverPath: [number, number][] = [

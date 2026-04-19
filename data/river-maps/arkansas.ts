@@ -5,17 +5,23 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  { name: 'Buena Vista Whitewater Park', lat: 38.842, lng: -106.133, type: 'access', description: 'Town park put-in.' },
-  { name: 'Fisherman\'s Bridge', lat: 38.778, lng: -106.098, type: 'access', description: 'USFS.' },
-  { name: 'Salida Riverside Park', lat: 38.535, lng: -106, type: 'access', description: 'Town of Salida put-in.' },
-  { name: 'Texas Creek', lat: 38.389, lng: -105.73, type: 'access', description: 'Access point.' },
-  { name: 'Royal Gorge / Canon City', lat: 38.449, lng: -105.324, type: 'take-out', description: 'Below gorge.' },
+  { name: 'Numbers Launch Site', lat: 38.88, lng: -106.22, type: 'access', description: 'Above Buena Vista, Class IV-V put-in.' },
+  { name: 'Buena Vista Riverside Park', lat: 38.842, lng: -106.133, type: 'access', description: 'Town park, kayak playpark.' },
+  { name: 'Fishermans Bridge', lat: 38.76385, lng: -106.08899, type: 'access', description: 'CONFIRMED — riverfacts.com GPS.' },
+  { name: 'Hecla Junction', lat: 38.66, lng: -106.063, type: 'access', description: 'BLM, Browns Canyon NM.' },
+  { name: 'Stone Bridge', lat: 38.61027, lng: -106.06806, type: 'access', description: 'CONFIRMED — riverfacts.com GPS.' },
+  { name: 'Salida Boat Ramp', lat: 38.537778, lng: -105.9925, type: 'access', description: 'CONFIRMED — Colorado Parks & Wildlife.' },
+  { name: 'Rincon', lat: 38.4556, lng: -105.84127, type: 'access', description: 'CONFIRMED — riverfacts.com GPS.' },
+  { name: 'Parkdale Recreation Site', lat: 38.48472, lng: -105.39917, type: 'access', description: 'CONFIRMED — Last access before Royal Gorge.' },
+  { name: 'Canon City takeout', lat: 38.43805, lng: -105.23056, type: 'take-out', description: 'CONFIRMED — Below gorge.' },
 ]
 
 // River sections
 export const sections: RiverSection[] = [
-  { from: 'Buena Vista', to: 'Salida', miles: 26, paddleTime: '6-8 hours', class: 'II-III', notes: 'Browns Canyon National Monument' },
-  { from: 'Salida', to: 'Royal Gorge', miles: 40, paddleTime: '2 days', class: 'III-V', notes: 'Includes Royal Gorge — expert only' },
+  { from: 'Numbers', to: 'Buena Vista', miles: 7, paddleTime: '2-3 hours', class: 'IV-V', notes: 'Expert only — the Numbers' },
+  { from: 'Buena Vista', to: 'Hecla Junction', miles: 15, paddleTime: '5-6 hours', class: 'II-III', notes: 'Browns Canyon National Monument' },
+  { from: 'Salida', to: 'Parkdale', miles: 30, paddleTime: '1-2 days', class: 'III-IV' },
+  { from: 'Parkdale', to: 'Canon City', miles: 10, paddleTime: '3-4 hours', class: 'III-V', notes: 'Royal Gorge — expert only' },
 ]
 
 // River path from USGS NHDPlus High Resolution dataset

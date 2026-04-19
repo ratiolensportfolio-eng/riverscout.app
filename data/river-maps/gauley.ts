@@ -5,17 +5,18 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  { name: 'Summersville Dam', lat: 38.217, lng: -80.853, type: 'access', description: 'Dam release put-in. Upper Gauley Class V.' },
-  { name: 'Carnifex Ferry', lat: 38.241, lng: -80.931, type: 'access', description: 'Access point.' },
-  { name: 'Sweets Falls', lat: 38.224, lng: -80.974, type: 'access', description: 'Major rapid.' },
-  { name: 'Swiss Access / Lower Gauley', lat: 38.208, lng: -81.022, type: 'access', description: 'Transition to Lower Gauley Class III-IV.' },
-  { name: 'Belva', lat: 38.166, lng: -81.092, type: 'take-out', description: 'Lower Gauley takeout.' },
+  { name: 'Summersville Dam', lat: 38.206149, lng: -81.004208, type: 'access', description: 'CONFIRMED — NPS/Recreation.gov. Upper Gauley Class V. Releases Sept-Oct only.' },
+  { name: 'Mason\'s Branch', lat: 38.22, lng: -81.04, type: 'access', description: 'NPS public access, parking, boat launch.' },
+  { name: 'Wood\'s Ferry', lat: 38.222, lng: -81.07, type: 'access', description: 'NPS public access.' },
+  { name: 'Upper Swiss', lat: 38.229, lng: -81.106, type: 'access', description: 'NPS public access.' },
+  { name: 'Bucklick Branch', lat: 38.22682, lng: -81.03062, type: 'access', description: 'CONFIRMED — riverfacts.com GPS. Lower Gauley.' },
+  { name: 'Swiss takeout', lat: 38.22905, lng: -81.12605, type: 'take-out', description: 'CONFIRMED — riverfacts.com GPS.' },
 ]
 
 // River sections
 export const sections: RiverSection[] = [
-  { from: 'Summersville Dam', to: 'Swiss Access', miles: 12, paddleTime: '4-5 hours', class: 'V', notes: 'Upper Gauley — expert only. Scheduled fall releases.' },
-  { from: 'Swiss Access', to: 'Belva', miles: 10, paddleTime: '3-4 hours', class: 'III-IV', notes: 'Lower Gauley — intermediate-advanced.' },
+  { from: 'Summersville Dam', to: 'Upper Swiss', miles: 12, paddleTime: '4-5 hours', class: 'V', notes: 'Upper Gauley — expert only. Fall dam releases.' },
+  { from: 'Bucklick Branch', to: 'Swiss takeout', miles: 10, paddleTime: '3-4 hours', class: 'III-IV', notes: 'Lower Gauley — intermediate-advanced.' },
 ]
 
 // River path from USGS NHDPlus High Resolution dataset
