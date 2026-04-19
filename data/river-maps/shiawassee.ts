@@ -3,7 +3,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Shiawassee River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 106 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Lobdell Lake', lat: 42.78616005492164, lng: -83.84068957548635, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

@@ -4,7 +4,20 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 8959 points, stitched from 1 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Towner Road', lat: 42.82365657921319, lng: -84.93131073836267, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Portland State Game Area', lat: 42.8152010001267, lng: -84.89480300080389, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Fitzgerald Park Canoe Port', lat: 42.76291299993025, lng: -84.76314700031676, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Jaycees Park', lat: 42.75174427615963, lng: -84.74127015069446, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Bunker Road', lat: 42.55237342385361, lng: -84.62136614122203, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'McNamara Landing', lat: 42.58286700383798, lng: -84.60080788334547, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Muskrat Lake', lat: 42.91411804649859, lng: -84.590710819568, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Burchfield Park', lat: 42.61036575035871, lng: -84.58868867747947, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Moores Park', lat: 42.717734299893685, lng: -84.56090861517545, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Riverfront Park', lat: 42.738686828908506, lng: -84.54925625543193, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Sweenys Landing', lat: 42.726465816287764, lng: -84.54589533130138, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Ferguson Park', lat: 42.71352581851538, lng: -84.43017052955373, type: 'access', description: 'MI DNR. Carry-in' },
+]
 
 export const sections: RiverSection[] = []
 

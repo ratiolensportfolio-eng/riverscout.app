@@ -4,7 +4,16 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 792 points, stitched from 7 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Trout Lake Township Park', lat: 46.19054024609351, lng: -85.04182760909467, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Little Brevort Lake SFCG (North)', lat: 46.01899136050057, lng: -85.01563544206697, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Frenchman Lake', lat: 46.18612333076362, lng: -85.0103276905444, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Little Brevort Lake', lat: 46.01617241481226, lng: -85.00706931880889, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Brevort Lake', lat: 45.991133095098355, lng: -84.87824323710355, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'St Ignace', lat: 45.86639703926074, lng: -84.71986540944506, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Carp River Mouth', lat: 46.020106423798374, lng: -84.69101237010071, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Pine River', lat: 46.059814999590834, lng: -84.65747600034332, type: 'access', description: 'MI DNR. Carry-in' },
+]
 
 export const sections: RiverSection[] = []
 

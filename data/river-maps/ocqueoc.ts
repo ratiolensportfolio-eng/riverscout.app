@@ -3,7 +3,14 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Ocqueoc River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 192 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Lake Emma', lat: 45.24829338608699, lng: -83.99077170859273, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Lake Nettie', lat: 45.28983764569876, lng: -83.98206750222677, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Lost Lake', lat: 45.29381965779465, lng: -83.97153244987976, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Lake Ferdelman', lat: 45.233103558888416, lng: -83.96252444064667, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Lake May', lat: 45.25747658374853, lng: -83.94562217061143, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Rogers City Ramp', lat: 45.421826635007896, lng: -83.81149947883068, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

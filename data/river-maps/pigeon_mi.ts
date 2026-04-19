@@ -3,7 +3,25 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Pigeon River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 146 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Big Bass Lake', lat: 44.930390387139774, lng: -84.51108494217222, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Pigeon River', lat: 45.13105900043702, lng: -84.50032399922975, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Shupac Lake SFCG', lat: 44.81938907534642, lng: -84.47776381502133, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Big Bear Lake SFCG', lat: 44.941806740065424, lng: -84.3863257825407, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'West Twin Lake', lat: 44.875387124478195, lng: -84.37251741686663, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Town Corner Lake SFCG', lat: 45.114391664505625, lng: -84.36281702509757, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Bourne Lake', lat: 44.89740399981388, lng: -84.36194000033349, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Gaylanta Lake', lat: 44.97209538203191, lng: -84.30682092968999, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'East Twin Lake', lat: 44.87593772188967, lng: -84.30502829996372, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Tea Lake', lat: 44.84165747916355, lng: -84.2937067268581, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'McCormick Lake', lat: 44.95560486001727, lng: -84.25305119316566, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Avery Lake SFCG', lat: 44.931048889466986, lng: -84.1889679591408, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'De Cheau Lake', lat: 45.030067238135324, lng: -84.18430740086539, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Lake Fifteen SFCG', lat: 44.98444254849182, lng: -84.17696593801618, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Crooked Lake', lat: 44.977333345054525, lng: -84.15354785421435, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Crooked Creek Pond', lat: 44.98690218020966, lng: -84.14401879180303, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Briley Township Park', lat: 45.00279012176739, lng: -84.14391336227324, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

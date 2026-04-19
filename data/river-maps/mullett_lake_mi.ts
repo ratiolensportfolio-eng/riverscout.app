@@ -4,7 +4,18 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 4567 points, stitched from 1 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Cochran Lake', lat: 45.407656904121126, lng: -84.5487760594815, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Mullett Lake Village', lat: 45.56870854997196, lng: -84.50826559594071, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Jewell Rd', lat: 45.50142911933394, lng: -84.49684037219406, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Cheboygan Dam', lat: 45.634426250060464, lng: -84.4803170701687, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Garfield Road', lat: 45.629073993106076, lng: -84.4710832454277, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'The Forks', lat: 45.60888700016941, lng: -84.46861400005989, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Cheboygan County Launch', lat: 45.65361071894633, lng: -84.46774852665234, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Aloha State Park', lat: 45.517748285818975, lng: -84.46357851423397, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Cheboygan State Park', lat: 45.65708656320754, lng: -84.4188029316699, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Long Lake', lat: 45.54149332468806, lng: -84.40881551455762, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

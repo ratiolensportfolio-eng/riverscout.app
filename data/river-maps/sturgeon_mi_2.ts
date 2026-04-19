@@ -4,7 +4,18 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 1439 points, stitched from 3 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Nahma', lat: 45.83845440423032, lng: -86.66238255757982, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Dana Lake', lat: 46.114813522633405, lng: -86.62818307935703, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Corner Lake', lat: 46.15382722964119, lng: -86.60866720826871, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Chicago Lake', lat: 46.0413437390028, lng: -86.60278434163914, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Nahma North', lat: 45.88546600018369, lng: -86.5905869994402, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Little Fish Dam River', lat: 45.90072017241479, lng: -86.56709007503541, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Camp 7 Lake', lat: 46.05921520209819, lng: -86.55154781662968, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Gooseneck Lake', lat: 46.06882257566098, lng: -86.54317329970264, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Lyman Lake', lat: 46.069861160953906, lng: -86.5308601163968, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Jackpine Lake', lat: 46.114325646869375, lng: -86.52244538786329, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

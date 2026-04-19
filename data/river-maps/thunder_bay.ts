@@ -3,7 +3,17 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Thunder Bay River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 107 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'McCollum Lake SFCG', lat: 44.77110711821037, lng: -83.90001645758117, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Fletcher Pond', lat: 44.9901000311112, lng: -83.85588716504257, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Beaver Lake', lat: 44.93050696652365, lng: -83.7945513747941, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'North Shore Hubbard Lake', lat: 44.85571222169994, lng: -83.59257166059075, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'South Bay Hubbard Lake', lat: 44.76108101465348, lng: -83.56551837448231, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Thunder Bay River', lat: 45.012044443051565, lng: -83.55733301411186, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'East Bay Hubbard Lake', lat: 44.82540759746714, lng: -83.52958590439135, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Devils River', lat: 44.92370699956244, lng: -83.42115900061508, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Snug Harbor', lat: 44.903476544137284, lng: -83.39499943622619, type: 'access', description: 'MI DNR. Carry-in' },
+]
 
 export const sections: RiverSection[] = []
 

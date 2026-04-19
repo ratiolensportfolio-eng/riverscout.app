@@ -4,7 +4,32 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 420 points, stitched from 3 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Beatons Lake', lat: 46.32442682426169, lng: -89.3651576075994, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Long Lake', lat: 46.244007004149985, lng: -89.35775081319568, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Beatons Lake', lat: 46.33269008191606, lng: -89.34567479378804, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Clark Lake', lat: 46.23865537789752, lng: -89.33058878265778, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Crooked Lake', lat: 46.24885866766588, lng: -89.28745932302098, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'County Line Lake', lat: 46.335998328194876, lng: -89.28146667963908, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Little Duck Lake', lat: 46.22985485781913, lng: -89.23010534541639, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Robbins Pond', lat: 46.38018300581501, lng: -89.2287013132189, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Duck Lake', lat: 46.19740202394905, lng: -89.21625390829955, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Moon Lake', lat: 46.172778040423786, lng: -89.19801613320715, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Allen Lake', lat: 46.225923651462665, lng: -89.17524669414942, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Paulding Pond', lat: 46.38489899930172, lng: -89.17362029885165, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Dinner Lake', lat: 46.20194582614195, lng: -89.14154666231502, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Deadman Lake', lat: 46.33648386272757, lng: -89.12780935258458, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Grass Lake', lat: 46.17348541781169, lng: -89.1248857966285, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Lac Vieux', lat: 46.15947720480261, lng: -89.11762416495904, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Marion Lake NW', lat: 46.267412524439905, lng: -89.0973815493074, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Marion Lake NE', lat: 46.265597828959365, lng: -89.08296020415804, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Imp Lake', lat: 46.214514871444, lng: -89.0705576436829, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Taylor Lake', lat: 46.251072176066984, lng: -89.04794599408213, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Tamarack Lake', lat: 46.23910713621458, lng: -88.98536365036901, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Kildeer Lake', lat: 46.35363251112351, lng: -88.96030255016143, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Robinson Lake', lat: 46.36063375380453, lng: -88.91321691298785, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Tepee Lake', lat: 46.386384357526474, lng: -88.88301411299108, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

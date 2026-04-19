@@ -4,7 +4,15 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 1364 points, stitched from 1 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Halfway Creek', lat: 41.74328462722099, lng: -83.47590280806126, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'City of Luna Pier', lat: 41.802406755006636, lng: -83.44973671928167, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Otter Creek Mouth', lat: 41.84599417392261, lng: -83.4019748577723, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Bolles Harbor', lat: 41.87339246926685, lng: -83.38128279823259, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Hoffman Memorial', lat: 41.87231199989717, lng: -83.38001600000989, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Hellenburg Field', lat: 41.90883456537634, lng: -83.378677990247, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Bartnik in Sterling State Park', lat: 41.919419718224304, lng: -83.33534340037275, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

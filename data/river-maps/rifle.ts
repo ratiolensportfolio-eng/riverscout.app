@@ -3,7 +3,18 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Rifle River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 86 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Lake George', lat: 44.204751938730425, lng: -84.24674420794936, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Kenneth Road Rifle River', lat: 44.1994112509911, lng: -84.08277037688876, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Moffatt Bridge', lat: 44.14052125628024, lng: -84.04360333159924, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Bush Lake', lat: 44.19289906164841, lng: -84.03713739384904, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Bass Lake', lat: 44.24241799997928, lng: -84.01957700035227, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Bougner Lake', lat: 44.246626999617405, lng: -84.0166270001628, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Little Long Lake', lat: 44.24119455799708, lng: -84.00462903943988, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Hardwood Lake', lat: 44.24374323663487, lng: -84.00053436665607, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Pine River Mouth', lat: 43.97668252185313, lng: -83.85637393454702, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Omer', lat: 44.04447885679543, lng: -83.85514847295286, type: 'access', description: 'MI DNR. Carry-in' },
+]
 
 export const sections: RiverSection[] = []
 

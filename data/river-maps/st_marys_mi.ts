@@ -4,7 +4,16 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 11664 points, stitched from 1 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Raber Township Park', lat: 46.09112383615521, lng: -84.06912365915723, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Cranberry Flooding', lat: 45.97771490809941, lng: -84.00627595590322, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Caribou Lake', lat: 46.0092829996411, lng: -83.99814600021188, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'De Tour Passage', lat: 45.97858200014145, lng: -83.90841899945737, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'De Tour Villiage', lat: 45.99402171077614, lng: -83.89970814058326, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Detour Village', lat: 45.99410700038501, lng: -83.89914500034017, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Maxton Bay', lat: 46.040123000099946, lng: -83.68008600077931, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Potagannissing Flooding', lat: 46.04133846511396, lng: -83.65486248072253, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

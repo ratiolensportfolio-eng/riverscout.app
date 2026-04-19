@@ -4,7 +4,11 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 39264 points, stitched from 1 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Fayette State Park', lat: 45.71006363676383, lng: -86.66729003098126, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Garden Bay', lat: 45.77249596517406, lng: -86.57408812150145, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Portage Bay SFCG', lat: 45.72852446635111, lng: -86.53360402731414, type: 'access', description: 'MI DNR. Carry-in' },
+]
 
 export const sections: RiverSection[] = []
 

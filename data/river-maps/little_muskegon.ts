@@ -3,7 +3,33 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Little Muskegon River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 129 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Brush Lake', lat: 43.639134000767385, lng: -85.68623359210874, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Sandy Beach', lat: 43.4952180002895, lng: -85.62998300047548, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Hungerford Lake', lat: 43.69517637251567, lng: -85.61847207024304, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Newaygo State Park - Hardy Dam Pond', lat: 43.50422914971485, lng: -85.58642241687046, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Brower Park Marina', lat: 43.55964715993239, lng: -85.5489958457488, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Paris County Park', lat: 43.78746299212304, lng: -85.49954638758518, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: '131 Bridge', lat: 43.608660327954766, lng: -85.49352408144331, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Rogers Pond', lat: 43.62309829916489, lng: -85.47313398910082, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'River Bend Bluffs', lat: 43.642066641628666, lng: -85.44282251198406, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Townline Lake', lat: 43.72107468020982, lng: -85.4385719153949, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Muskegon River', lat: 43.790601999551356, lng: -85.43141400018635, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Alma Lake', lat: 43.73635867317092, lng: -85.41478157940554, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Bergess Lake', lat: 43.73233746303833, lng: -85.40353416748837, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Clear Lake', lat: 43.67555337874301, lng: -85.39278308011544, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Hillsview Lake', lat: 43.7125245593656, lng: -85.36838176735404, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Haymarsh Lake Flooding', lat: 43.74787484586998, lng: -85.3541534581648, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Rustford Pond', lat: 43.51636961009267, lng: -85.32901763339548, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Little Muskegon River', lat: 43.54193799987011, lng: -85.30237299931105, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Lake Mecosta', lat: 43.59996145574981, lng: -85.29447729262927, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Brockway Lake', lat: 43.499380204950675, lng: -85.2943280698483, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Chippewa Lake', lat: 43.761426336254516, lng: -85.28442038312753, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Jehnsen Lake', lat: 43.704057484854154, lng: -85.26587728212857, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Lower Evans Lake', lat: 43.71410788538785, lng: -85.2430597545218, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Pretty Lake', lat: 43.69238512827595, lng: -85.23710837056845, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Big Evans Lake', lat: 43.729700787441615, lng: -85.22550079687916, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

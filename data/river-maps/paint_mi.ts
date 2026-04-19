@@ -4,7 +4,27 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 84 points, stitched from 1 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'James Lake', lat: 46.208952201451375, lng: -88.90079494404864, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Chamberlain Lake', lat: 46.36211722945298, lng: -88.8099126079859, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Winslow Lake', lat: 46.340020760002, lng: -88.75727717730393, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Hannah Webb Lake', lat: 46.35212318057554, lng: -88.72379701781541, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Kunze Lake', lat: 46.43960339718652, lng: -88.72150551934917, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Lake Ste. Kathryn', lat: 46.39230083854953, lng: -88.72046404260732, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Marten Lake', lat: 46.39601496765936, lng: -88.69176239884655, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Norway Lake', lat: 46.41746480330037, lng: -88.6873259894637, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Perch Lake', lat: 46.3654471323438, lng: -88.6723769911558, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Net River', lat: 46.23389099992227, lng: -88.60329199985875, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Snake Rapids', lat: 46.25398880936106, lng: -88.58708216587907, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Bates Township Park', lat: 46.13114852314477, lng: -88.58593373805195, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Cable Lake', lat: 46.351920333427884, lng: -88.58499864804746, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'The Wide Waters River', lat: 46.32997134048425, lng: -88.53200582090085, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Emily Lake', lat: 46.112057834805725, lng: -88.49528504509321, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Fire Lake', lat: 46.19758071962622, lng: -88.47626782164618, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Long Lake', lat: 46.117287625774146, lng: -88.45215582173964, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Ericksons Landing', lat: 46.14237607606896, lng: -88.4035665393097, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Swan Lake', lat: 46.16251821050795, lng: -88.39866713347993, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

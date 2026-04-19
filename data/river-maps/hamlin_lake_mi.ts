@@ -4,7 +4,16 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 195 points, stitched from 1 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Ludington State Park', lat: 44.03386044602875, lng: -86.49167835582342, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Loomis Street', lat: 43.95449893519001, lng: -86.46169470142223, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Copeyon Park', lat: 43.94504124720038, lng: -86.44214709259076, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'US 31', lat: 43.92762436280511, lng: -86.41686999260187, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Hamlin Lake', lat: 44.08536702420019, lng: -86.3732222740263, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'First Street Ramp', lat: 44.247239297194064, lng: -86.3398907840136, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Canfield Lake', lat: 44.21191418973139, lng: -86.3205016314393, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Stronach', lat: 44.214371080418026, lng: -86.279069798022, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

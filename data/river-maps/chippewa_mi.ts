@@ -3,7 +3,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Chippewa River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 108 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Littlefield Lake', lat: 43.770829999878295, lng: -84.94750700002821, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Stevenson Lake', lat: 43.760078240282716, lng: -84.82837397341014, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

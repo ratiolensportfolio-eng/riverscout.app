@@ -4,7 +4,31 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 5847 points, stitched from 1 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Tackles Drive', lat: 42.67093365376165, lng: -83.45836500438133, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Long Lake', lat: 42.61399503471252, lng: -83.45712875462696, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Union Lake', lat: 42.611800406393854, lng: -83.44651039780334, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Union Lake', lat: 42.602415000014844, lng: -83.44570900014062, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Pontiac Lake', lat: 42.66335388406112, lng: -83.44225968147755, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Maceday Lake', lat: 42.68160659730961, lng: -83.42996173122951, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Deer Lake', lat: 42.731447999805916, lng: -83.4257970007215, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Middle Straits Lake', lat: 42.57792969106666, lng: -83.41896101172571, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Crescent Lake', lat: 42.64670151996137, lng: -83.39010890397523, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Dodge 4 State Park - Cass Lake', lat: 42.61770711947586, lng: -83.37367385290284, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Loon Lake', lat: 42.68200649402426, lng: -83.36670540961478, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Oakland Lake', lat: 42.69858337936959, lng: -83.36322327743649, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Orchard Lake', lat: 42.581674302893575, lng: -83.36189532251109, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Squaw Lake', lat: 42.81596960893165, lng: -83.30234227015299, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Lake Orion', lat: 42.79004023361543, lng: -83.25468726387257, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Trout Lake', lat: 42.73696558170533, lng: -83.2302297184094, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Chamberlain Lake', lat: 42.78503064745204, lng: -83.21665160992345, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Prince Lake', lat: 42.79764378143662, lng: -83.20130166535446, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Shoe Lake', lat: 42.78657421498646, lng: -83.19813632371374, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Hart Lake', lat: 42.7830347621103, lng: -83.19782068044105, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Graham Lakes South', lat: 42.78620267341248, lng: -83.19041063873637, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Lakeville Lake', lat: 42.822298688166875, lng: -83.15593487605992, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Stony Creek Metro Park', lat: 42.71883840397452, lng: -83.08520488861522, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

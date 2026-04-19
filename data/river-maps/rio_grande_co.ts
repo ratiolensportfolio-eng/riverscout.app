@@ -4,7 +4,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 1202 points, stitched from 1 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Rio Grande Boat Takeout', lat: 36.99864913, lng: -105.71856552, type: 'access', description: 'BLM Colorado. Boat takeout' },
+]
 
 export const sections: RiverSection[] = []
 

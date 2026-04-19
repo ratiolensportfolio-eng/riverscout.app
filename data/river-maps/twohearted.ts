@@ -3,7 +3,17 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Two Hearted River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 120 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Blind Sucker 1 SFCG', lat: 46.669932456065844, lng: -85.76121343905335, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Blind Sucker 2 SFCG', lat: 46.669236013183024, lng: -85.75956950310052, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Muskallonge Lake State Park', lat: 46.67464700388131, lng: -85.63430174848914, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Perch Lake SFCG', lat: 46.62928098304856, lng: -85.60132955294014, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Mouth Of Two Hearted River SFCG', lat: 46.699282144223616, lng: -85.42065520218415, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Pike Lake SFCG', lat: 46.6439052122917, lng: -85.41180556360165, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Litte Lake Harbor', lat: 46.715877216919154, lng: -85.35916918187544, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Culhane SFCG', lat: 46.69625688043733, lng: -85.35686608489932, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Bodi Lake SFCG', lat: 46.70299010981318, lng: -85.32323579011836, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

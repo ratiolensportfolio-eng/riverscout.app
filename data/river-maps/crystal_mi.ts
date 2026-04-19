@@ -3,7 +3,11 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Crystal River (Glen Arbor) (MICHIGAN) — geometry from USGS NHDPlus HR
 // 45 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Glen Lake', lat: 44.866321064506444, lng: -86.00059326732442, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Lime Lake', lat: 44.88811615261676, lng: -85.85124276137944, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Solon Township Park', lat: 44.85030529123089, lng: -85.79265947868276, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

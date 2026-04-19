@@ -3,7 +3,14 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Black River (Cheboygan) (MICHIGAN) — geometry from USGS NHDPlus HR
 // 123 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Black Lake SFCG', lat: 45.48802990998636, lng: -84.26449273059534, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Onaway State Park - Black Lake', lat: 45.43613703849411, lng: -84.23558465269807, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Bear Den Lake', lat: 45.20184511753739, lng: -84.21962814995328, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Little Tomahawk Lake', lat: 45.23074865289414, lng: -84.17882819144413, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Shoepac Lake SFCG', lat: 45.24211524602632, lng: -84.17073179052086, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Tomahawk Lake SFCG', lat: 45.22957142815417, lng: -84.16091572310157, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

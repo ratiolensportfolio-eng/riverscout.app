@@ -4,7 +4,13 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 1671 points, stitched from 2 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Walker Flats Impoundment', lat: 43.04829146028007, lng: -82.58792359983896, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Marine City', lat: 42.702665696789545, lng: -82.50035689359746, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'St. Clair Municipal Ramp', lat: 42.819967956079786, lng: -82.48903428968742, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'I-94 Bridge Ramp', lat: 42.99539834493171, lng: -82.44611718574234, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: '12th St. Municipal Ramp', lat: 42.98290329124655, lng: -82.43609063201818, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

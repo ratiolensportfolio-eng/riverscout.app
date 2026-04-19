@@ -4,7 +4,14 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 906 points, stitched from 6 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Manistique Municipal Ramp', lat: 45.95238359518141, lng: -86.25143782135645, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Manistique River', lat: 45.95152596954067, lng: -86.248479121246, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Merwin Creek Sfcg', lat: 46.03471163625898, lng: -86.12206483209886, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Doyle Township Park', lat: 45.98787596461927, lng: -86.04246702365143, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'McDonald Lake', lat: 45.983085321186394, lng: -85.98973725439492, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Seul.choix.pte', lat: 45.92225387270732, lng: -85.91233381544083, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

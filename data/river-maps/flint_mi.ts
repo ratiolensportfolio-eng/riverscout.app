@@ -4,7 +4,16 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 9151 points, stitched from 1 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Bluegill', lat: 43.09656297299495, lng: -83.63050769138528, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Holloway Reservoir', lat: 43.116013767481604, lng: -83.47419407105326, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Murphy Lake', lat: 43.293423108929744, lng: -83.46087373641659, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Nepessing Lake', lat: 43.02468152198876, lng: -83.37279088066781, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'South Branch Flint River', lat: 43.145398863767696, lng: -83.35368055830078, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Sawdel Lake', lat: 43.14217756799846, lng: -83.34496347048443, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Long Lake', lat: 43.10010721296791, lng: -83.22991179357967, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Watts Lake', lat: 43.12121701526147, lng: -83.22560727316547, type: 'access', description: 'MI DNR. Carry-in' },
+]
 
 export const sections: RiverSection[] = []
 

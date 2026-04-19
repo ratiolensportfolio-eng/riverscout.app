@@ -4,7 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 1067 points, stitched from 1 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Cowdrey Lake Rec Site Boat Dock', lat: 40.83904336, lng: -106.3127195, type: 'access', description: 'BLM Colorado. BOAT DOCK - STEEL' },
+  { name: 'Cowdrey Lake Rec Site Boat Ramp', lat: 40.83909163, lng: -106.31269178, type: 'access', description: 'BLM Colorado. BOAT RAMP - 21 X 33 - CONCRETE' },
+]
 
 export const sections: RiverSection[] = []
 

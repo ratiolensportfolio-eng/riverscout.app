@@ -4,7 +4,37 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 1821 points, stitched from 1 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Curtis Lake', lat: 41.851643000036375, lng: -85.9408360004017, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Paradise Lake', lat: 41.89256803873266, lng: -85.91771973694665, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Donnell Lake', lat: 41.90737218975078, lng: -85.89702683196529, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Chain Lake', lat: 41.8578535290219, lng: -85.8958000998144, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Belas Lake', lat: 41.94013710752623, lng: -85.87625025786454, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Kirk Lake', lat: 41.92963666956474, lng: -85.87567646967739, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Gravel Lake', lat: 42.07823077161581, lng: -85.87431140593019, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Fish Lake', lat: 42.04118430399745, lng: -85.85690952134887, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Forked Lake', lat: 41.928409772384214, lng: -85.84751109660054, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Cedar Lake', lat: 42.087052093732346, lng: -85.84006368265477, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Bogart Lake', lat: 41.97398855849754, lng: -85.81315326545983, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Huzzy Lake', lat: 42.1340409679202, lng: -85.81306421306702, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Hemlock Lake', lat: 42.065891117797605, lng: -85.80398740553615, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Driskels Lake', lat: 41.904829783136314, lng: -85.80021435970204, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Bankson Lake', lat: 42.12767415669111, lng: -85.79188209230892, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Fox Lake', lat: 41.91613827604455, lng: -85.79147660494286, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Long Lake', lat: 41.95409580947302, lng: -85.76230720894442, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Harwood Lake', lat: 41.92863605067733, lng: -85.7613261611024, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Corey Lake', lat: 41.92958903004945, lng: -85.76071883145417, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Paw Paw Lake', lat: 42.16044124227812, lng: -85.74325247902965, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Mud Lake', lat: 41.93518326087862, lng: -85.7313867392886, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Clear Lake', lat: 41.941234148159005, lng: -85.72486707671364, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Pleasant Lake', lat: 41.94953714650113, lng: -85.71265262530544, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Noah Lake', lat: 41.93888768201711, lng: -85.58862338007921, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Stump Bay', lat: 41.94199269332212, lng: -85.58158057323149, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Fishers Lake', lat: 41.990666186582175, lng: -85.5769586090955, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Barton Lake', lat: 42.09719608302549, lng: -85.56937950019635, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Covered Bridge Park', lat: 41.96743458084314, lng: -85.53610454157884, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Portage Lake', lat: 42.04076280196376, lng: -85.51946535447803, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

@@ -4,7 +4,12 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 599 points, stitched from 2 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Forest Lake SFCG', lat: 46.304999040159835, lng: -86.86891770583887, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Au Train River Basin', lat: 46.26428900020675, lng: -86.85608600024521, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Little Round Lake', lat: 46.26428000014749, lng: -86.78406500046589, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Irwin Lake', lat: 46.21764701236778, lng: -86.62405777536252, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

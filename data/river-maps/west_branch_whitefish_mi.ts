@@ -4,7 +4,11 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 386 points, stitched from 2 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Rapid River', lat: 46.10756299973743, lng: -87.11625699981285, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Kipling', lat: 45.86336511501126, lng: -87.0182321914461, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Rapid River Mouth', lat: 45.91466002336932, lng: -86.96549870352513, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

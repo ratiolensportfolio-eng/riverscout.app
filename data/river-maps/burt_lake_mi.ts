@@ -4,7 +4,19 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 2951 points, stitched from 1 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Douglas Lake', lat: 45.57037018289542, lng: -84.71369473374168, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Lancaster Lake', lat: 45.61888250169617, lng: -84.70945964410792, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Maple Bay SFCG', lat: 45.48734518489875, lng: -84.70658387695458, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Burt Lake', lat: 45.516447999640846, lng: -84.70032999948053, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Munro Lake', lat: 45.623110208403844, lng: -84.67842288480084, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Silver Lake', lat: 45.27122063831576, lng: -84.63675666936204, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Burt Lake State Park', lat: 45.40372734782334, lng: -84.6287651990024, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Rondo', lat: 45.322293639691566, lng: -84.62300553142036, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Haakwood SFCG', lat: 45.302873810096415, lng: -84.61451998423213, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Indian River', lat: 45.41268500003901, lng: -84.60896599989755, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Meadows', lat: 45.28888665769779, lng: -84.60278301482762, type: 'access', description: 'MI DNR. Carry-in' },
+]
 
 export const sections: RiverSection[] = []
 

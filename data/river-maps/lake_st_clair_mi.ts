@@ -4,7 +4,20 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 3002 points, stitched from 1 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Clinton River Cut-off', lat: 42.56229388437773, lng: -82.84332024546673, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Selfridge', lat: 42.630364984485624, lng: -82.82001620769198, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Metro Beach Metro Park West', lat: 42.58089531981599, lng: -82.7943447657241, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Harley Ensign Memorial', lat: 42.59326933556603, lng: -82.77474041048853, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Brandenburg Memorial Park', lat: 42.66560743004697, lng: -82.75869471060028, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Deckers Landing', lat: 42.63315039961457, lng: -82.65100858364542, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Snooks', lat: 42.58568083539399, lng: -82.64091849857239, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Fair Haven', lat: 42.6745410829401, lng: -82.63229307229129, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Ames', lat: 42.59777112733822, lng: -82.60030734811897, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'North Channel', lat: 42.61408925768578, lng: -82.55012473684927, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Algonac Municipal Ramp', lat: 42.62003763216255, lng: -82.52888098007315, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Algonac State Park', lat: 42.64695500051892, lng: -82.51362199930439, type: 'access', description: 'MI DNR. Carry-in' },
+]
 
 export const sections: RiverSection[] = []
 

@@ -3,7 +3,38 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Flat River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 102 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Wabasis Lake Park', lat: 43.13836948970308, lng: -85.39617513452298, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Big Pine Island Lake', lat: 43.102038837140995, lng: -85.37119450029668, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Lincoln Lake', lat: 43.24225372450608, lng: -85.36489686565938, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Muskellunge Lake', lat: 43.31336337348734, lng: -85.35075219486883, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Bass Lake', lat: 43.267965572391795, lng: -85.32287167929285, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Rainbow Lake', lat: 43.337061907237924, lng: -85.30867088610762, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Whites Bridge', lat: 43.01486927314215, lng: -85.29807390680291, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Hunter Lake', lat: 43.29761807430244, lng: -85.26747267483961, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Ingalls Road', lat: 43.05335499963748, lng: -85.26381400063687, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'West Lake', lat: 43.32947611920562, lng: -85.2618489833923, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Flat River', lat: 43.14998329475079, lng: -85.25289823910617, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Belding Dam', lat: 43.09678002559468, lng: -85.23560138803442, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Belding Dam Impoundment', lat: 43.09548006978494, lng: -85.21836563683337, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Clifford Lake', lat: 43.30161214089622, lng: -85.18276832382215, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Dickerson Lake', lat: 43.298771271437964, lng: -85.1712056538431, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Humany Dam Impoundment', lat: 43.11298714934422, lng: -85.16893212748323, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Nevins Lake', lat: 43.283313521148976, lng: -85.14077840496655, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Derby Lake', lat: 43.2761849723047, lng: -85.13192122639855, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Long Lake', lat: 43.109481476164746, lng: -85.12747409709212, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Clear Lake', lat: 43.127014552251055, lng: -85.11150518342419, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Grass Lake North', lat: 43.13495131151655, lng: -85.10402160147662, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Grass Lake - South', lat: 43.264271866041824, lng: -85.0923800698249, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Hemmingway Lake', lat: 43.33235200017839, lng: -85.08622499955223, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Twin Stone Lakes - East', lat: 43.254072775843944, lng: -85.08182893111616, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Colby Lake', lat: 43.26627774176225, lng: -85.07780870680413, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Ionia Fairground', lat: 42.97390123902149, lng: -85.07049920857465, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Woodard Lake', lat: 43.080031239207806, lng: -85.05973341874567, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Half Moon Lake', lat: 43.25206245538855, lng: -85.05884628281255, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Triangle Lake', lat: 43.285606889139714, lng: -84.9946494406708, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Six Lakes', lat: 43.25626699934235, lng: -84.98372500013642, type: 'access', description: 'MI DNR. Carry-in' },
+]
 
 export const sections: RiverSection[] = []
 

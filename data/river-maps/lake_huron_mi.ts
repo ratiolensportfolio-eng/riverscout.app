@@ -4,7 +4,11 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 8906 points, stitched from 3 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Hammond Bay', lat: 45.590245791208496, lng: -84.16102657037744, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Ocqueoc River Mouth', lat: 45.48870348666518, lng: -84.07649191116784, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Hammond Point', lat: 45.49584934760047, lng: -84.03604801873175, type: 'access', description: 'MI DNR. Carry-in' },
+]
 
 export const sections: RiverSection[] = []
 

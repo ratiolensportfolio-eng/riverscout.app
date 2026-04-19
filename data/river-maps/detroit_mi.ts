@@ -4,7 +4,19 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 1085 points, stitched from 1 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Dixie Highway - Swan Creek', lat: 41.994688796169754, lng: -83.2860884955006, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Swan Creek - Lake Erie', lat: 41.98610299992677, lng: -83.28194500015114, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Mouillee Creek Mouth', lat: 42.023549698405084, lng: -83.22404796431086, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Huron River Mouth', lat: 42.037889478779896, lng: -83.19837735653248, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Lake Erie Metropark', lat: 42.079915138886264, lng: -83.19433946696216, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Elizabeth Park', lat: 42.12806319399805, lng: -83.17822993047213, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Harrison Ave/Rotary Park', lat: 42.14659927217487, lng: -83.17358941741706, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Wyandotte Municipal Ramp', lat: 42.226932068859334, lng: -83.14719987365488, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Ecorse Municipal Ramp', lat: 42.23612868572911, lng: -83.14706955849351, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Belanger Park', lat: 42.26992417346951, lng: -83.11222987045667, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Riverside Park', lat: 42.313775950862116, lng: -83.07780257100877, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

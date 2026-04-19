@@ -4,7 +4,14 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 270 points, 121/200 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Railroad Bridge Recreation Site Boat Launch', lat: 38.92395511, lng: -106.16995161, type: 'access', description: 'BLM Colorado. Boat Launch' },
+  { name: 'Fishermans Bridge Receation Site Boat Launch', lat: 38.76734982, lng: -106.09479193, type: 'access', description: 'BLM Colorado. Boat Launch' },
+  { name: 'Big Bend Recreation Site Boat Launch', lat: 38.57404663, lng: -106.07807632, type: 'access', description: 'BLM Colorado. Boat Launch' },
+  { name: 'Ruby Mountain Recreation Site Boat Ramp', lat: 38.75220423, lng: -106.07082034, type: 'access', description: 'BLM Colorado. Boat Launch' },
+  { name: 'Stone Bridge Recreation Site Boat Launch', lat: 38.61155022, lng: -106.06340151, type: 'access', description: 'BLM Colorado. Boat launch' },
+  { name: 'Hecla Junction Rec Site', lat: 38.6513684, lng: -106.05101813, type: 'access', description: 'BLM Colorado. Boat launch' },
+]
 
 // River sections
 export const sections: RiverSection[] = []

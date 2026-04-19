@@ -4,7 +4,11 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 625 points, stitched from 1 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Ewen South Branch Ontonagon River', lat: 46.53408000012945, lng: -89.27729399954816, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Ewen', lat: 46.5344009450065, lng: -89.276930238617, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Steusser Lake', lat: 46.451145226146174, lng: -89.24852387957971, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

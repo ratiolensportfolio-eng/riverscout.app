@@ -4,7 +4,16 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 150 points, stitched from 1 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Golden Lake', lat: 46.170915555462386, lng: -88.88444280152663, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'State Line Lake', lat: 46.04337219135432, lng: -88.85042986423942, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Hagerman Lake', lat: 46.0477450450148, lng: -88.78210446952052, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Bass Lake', lat: 46.04329066597714, lng: -88.77020589307779, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Lake Ottawa', lat: 46.07502046297646, lng: -88.76596491307863, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Camp Lake', lat: 46.04157589100311, lng: -88.73012151612022, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Stanley Lake', lat: 46.06303147445926, lng: -88.70019590097819, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Pentoga County Park', lat: 46.0425762437349, lng: -88.51540311390457, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

@@ -3,7 +3,17 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Sturgeon River (LP) (MICHIGAN) — geometry from USGS NHDPlus HR
 // 132 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Dixon Lake', lat: 44.990765688108645, lng: -84.63410732302243, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Section One Lake', lat: 44.852115943095185, lng: -84.62050071182773, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Guthrie Lake', lat: 44.85703549464743, lng: -84.60968800515603, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Opal Lake', lat: 44.921839828310155, lng: -84.60921769768828, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Emerald Lake', lat: 44.937756195861915, lng: -84.60329517781865, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Big Lake', lat: 45.00996247869985, lng: -84.58769880276155, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Trowbridge Road', lat: 45.22032218145314, lng: -84.58462693302597, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Sturgeon River', lat: 45.130572000105474, lng: -84.58343600074195, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Pickerel Lake SFCG', lat: 45.17696872300948, lng: -84.51982042757344, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

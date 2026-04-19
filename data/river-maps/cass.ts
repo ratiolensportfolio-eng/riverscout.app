@@ -3,7 +3,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Cass River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 177 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Chippewa Landing', lat: 43.48253511125386, lng: -83.38813790708252, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 

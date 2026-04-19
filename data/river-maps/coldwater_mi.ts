@@ -3,7 +3,29 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Coldwater River — polyline from National Rivers Project (NRP).
 // 723 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Oliverda Lake', lat: 42.038938627508934, lng: -85.25513279875135, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Matteson Lake', lat: 41.939693391586594, lng: -85.19847544183027, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Union Lake', lat: 42.05670925458131, lng: -85.18236311733156, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Lee Lake', lat: 42.178931247889054, lng: -85.11665817159285, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Cary Lake', lat: 41.90142855851862, lng: -85.10990919612566, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Warner Lake', lat: 42.14607653613507, lng: -85.0495852053265, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Lake of the Woods', lat: 41.84732561423652, lng: -85.04080924198811, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Randall Lake', lat: 41.97874430941313, lng: -85.03468358761891, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Craig Lake', lat: 42.005321624745804, lng: -85.02442807552944, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Silver Lake', lat: 41.786796911255415, lng: -85.00387509336146, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Coldwater Lake', lat: 41.833406997758225, lng: -84.98822020306675, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Nottawa Lake', lat: 42.146509427092624, lng: -84.98671610156318, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Loon Lake', lat: 41.86891993686894, lng: -84.94276221189918, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Middle Lake', lat: 41.89140307819618, lng: -84.91640396436055, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Marble Lake', lat: 41.912862605027264, lng: -84.89980138568815, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Quincy-Marble Lake', lat: 41.93535495373382, lng: -84.89637777533723, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Curry Park', lat: 42.141357753516246, lng: -84.8179278989294, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Homer', lat: 42.14674895868685, lng: -84.80176165608088, type: 'access', description: 'MI DNR. Carry-in' },
+  { name: 'Hemlock Lake', lat: 41.899329157691994, lng: -84.79871229114654, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Long Lake', lat: 41.88015580705052, lng: -84.79413634692533, type: 'access', description: 'MI DNR. Improved ramp' },
+  { name: 'Round Lake', lat: 41.89918166698346, lng: -84.77087644257524, type: 'access', description: 'MI DNR. Improved ramp' },
+]
 
 export const sections: RiverSection[] = []
 
