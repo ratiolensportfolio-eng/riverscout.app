@@ -3,7 +3,15 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Thornapple River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 28 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Middleville', lat: 42.71057668977278, lng: -85.46523373050076, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 5.' },
+  { name: 'Irving Road', lat: 42.68935216927868, lng: -85.42513250372303, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 5.' },
+  { name: 'Airport Road', lat: 42.661865173851524, lng: -85.35587625244462, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 10.' },
+  { name: 'Thornapple Lake Road', lat: 42.624075999845836, lng: -85.14586399982686, type: 'access', description: 'MI DNR Boat Launch. Improved ramp.' },
+  { name: 'M-66', lat: 42.60768799955086, lng: -85.09425500008429, type: 'access', description: 'MI DNR Boat Launch. Improved ramp.' },
+  { name: 'Reed Street', lat: 42.61092000023253, lng: -85.07562199992512, type: 'access', description: 'MI DNR Boat Launch. Improved ramp.' },
+  { name: 'Mason Road', lat: 42.61608200055597, lng: -85.05754399942265, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+]
 
 export const sections: RiverSection[] = []
 

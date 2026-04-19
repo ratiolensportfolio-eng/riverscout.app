@@ -3,7 +3,14 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Manistique River — polyline from National Rivers Project (NRP).
 // 423 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Manistique Municipal Ramp', lat: 45.95238359518141, lng: -86.25143782135645, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 40.' },
+  { name: 'Manistique River', lat: 45.95152596954067, lng: -86.248479121246, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 6.' },
+  { name: 'Merwin Creek Sfcg', lat: 46.03471163625898, lng: -86.12206483209886, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 10.' },
+  { name: 'Mead Creek Sfcg', lat: 46.182616838858685, lng: -85.9866719352587, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 10.' },
+  { name: 'Germfask', lat: 46.24747000013001, lng: -85.92430899970505, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+  { name: 'Ten Curves', lat: 46.25865335051007, lng: -85.87166622686095, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 10.' },
+]
 
 export const sections: RiverSection[] = []
 

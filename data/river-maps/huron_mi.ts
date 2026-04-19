@@ -3,7 +3,11 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Huron River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 107 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Big Eric Bridge', lat: 46.86454100044378, lng: -88.082310999399, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+  { name: 'Island Lake Recreation Area', lat: 42.51028515931712, lng: -83.70059349239, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 5.' },
+  { name: 'Gallup Park', lat: 42.27652697801281, lng: -83.69592197806713, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 57.' },
+]
 
 export const sections: RiverSection[] = []
 

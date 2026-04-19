@@ -3,7 +3,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // White River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 150 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Diamond', lat: 43.47693308497134, lng: -86.20218251151509, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 6.' },
+  { name: 'Seng', lat: 43.55655900011574, lng: -86.0750560000181, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 7.' },
+]
 
 export const sections: RiverSection[] = []
 

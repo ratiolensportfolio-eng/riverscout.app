@@ -3,7 +3,15 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Betsie River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 120 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'River Road', lat: 44.61741668486081, lng: -86.12255434582215, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 4.' },
+  { name: 'Grace Road', lat: 44.606065753192716, lng: -86.11260076642439, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 12.' },
+  { name: 'Homestead Dam', lat: 44.59637062824366, lng: -86.0791684007252, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 50.' },
+  { name: 'Homestead Dam', lat: 44.59626000018329, lng: -86.07914299997844, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+  { name: 'County Line Bridge', lat: 44.51394600006606, lng: -86.0441320000112, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+  { name: 'Kurick Road', lat: 44.50166499959044, lng: -85.98018399977366, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+  { name: 'Grass Lake SFCG', lat: 44.59156475880023, lng: -85.84713385233901, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 10.' },
+]
 
 export const sections: RiverSection[] = []
 

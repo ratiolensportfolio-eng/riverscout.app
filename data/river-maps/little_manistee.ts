@@ -3,7 +3,14 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Little Manistee River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 136 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Old Stronach Bridge', lat: 44.21014409317759, lng: -86.24524307850587, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 10.' },
+  { name: 'Six Mile Bridge', lat: 44.18372315309412, lng: -86.16743010580898, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 5.' },
+  { name: 'Nine Mile Bridge', lat: 44.1710118734251, lng: -86.10360279005783, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 3.' },
+  { name: 'Fox Bridge', lat: 44.11939223834074, lng: -85.9825667490608, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 4.' },
+  { name: 'Indian Bridge', lat: 44.0908084548138, lng: -85.9035565965954, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 20.' },
+  { name: 'Spencer Bridge', lat: 44.06841753066571, lng: -85.88525234508468, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 20.' },
+]
 
 export const sections: RiverSection[] = []
 

@@ -3,7 +3,24 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Muskegon River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 112 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Maple Island', lat: 43.318413864165805, lng: -86.0334735910432, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 25.' },
+  { name: 'Bridgeton Township Park', lat: 43.346744000279415, lng: -85.94004500065506, type: 'access', description: 'MI DNR Boat Launch. Improved ramp.' },
+  { name: 'Marl Pit Creek', lat: 43.36234477806759, lng: -85.91648554451525, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 4.' },
+  { name: 'Andersons Flats', lat: 43.38882188981458, lng: -85.82857496091398, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 25.' },
+  { name: 'Muskegon Lake', lat: 43.41523691876889, lng: -85.81141082210557, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 53.' },
+  { name: 'Henning Park', lat: 43.4189960674225, lng: -85.78999152199097, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 96.' },
+  { name: 'High Rollway', lat: 43.4148621818439, lng: -85.71901015634505, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 75.' },
+  { name: 'Pine Street', lat: 43.42344724744926, lng: -85.67547157197029, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 77.' },
+  { name: 'Brower Park Marina', lat: 43.55964715993239, lng: -85.5489958457488, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 102.' },
+  { name: 'Paris County Park', lat: 43.78746299212304, lng: -85.49954638758518, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 15.' },
+  { name: '131 Bridge', lat: 43.608660327954766, lng: -85.49352408144331, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 40.' },
+  { name: 'River Bend Bluffs', lat: 43.642066641628666, lng: -85.44282251198406, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 10.' },
+  { name: 'Muskegon River', lat: 43.790601999551356, lng: -85.43141400018635, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+  { name: 'Evart Riverside', lat: 43.89568351234666, lng: -85.25748726538559, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 18.' },
+  { name: 'Crawford Park', lat: 43.946868721529846, lng: -85.14990243184506, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 6.' },
+  { name: 'Temple SFCG', lat: 44.023080197441274, lng: -85.03869259873184, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 5.' },
+]
 
 export const sections: RiverSection[] = []
 

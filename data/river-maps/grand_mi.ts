@@ -4,7 +4,45 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 1501 points, stitched from 1 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Grand Haven Municipal', lat: 43.075880039558214, lng: -86.22902563163548, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 105.' },
+  { name: 'Mill Point Park', lat: 43.07432682858048, lng: -86.20542737261465, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 64.' },
+  { name: 'Scott Flahive Memorial', lat: 43.06149400065447, lng: -86.20224099988206, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+  { name: 'Indian Channel', lat: 43.032296792919865, lng: -86.14570293074846, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 45.' },
+  { name: 'Robinson', lat: 43.03970263306509, lng: -86.08387681123004, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 58.' },
+  { name: 'Ottawa Riverside County Park', lat: 43.022754901823305, lng: -86.03391455836662, type: 'access', description: 'MI DNR Boat Launch. Improved ramp.' },
+  { name: 'Deer Creek Park', lat: 43.010683411079825, lng: -85.93633422817659, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 6.' },
+  { name: 'Georgetown', lat: 42.94454503605431, lng: -85.85470395331544, type: 'access', description: 'MI DNR Boat Launch. Improved ramp.' },
+  { name: 'Grandville', lat: 42.912974669322494, lng: -85.76808442385249, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 15.' },
+  { name: 'Johnson Park', lat: 42.929307925101035, lng: -85.75989176858525, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 63.' },
+  { name: 'Butterworth Park', lat: 42.952427000029196, lng: -85.6901630004835, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+  { name: 'Comstock Riverside Park', lat: 42.999447915732524, lng: -85.67177628225251, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 45.' },
+  { name: 'Rogue River Mouth', lat: 43.063079819653446, lng: -85.58510215912047, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 37.' },
+  { name: 'Knapp Street Bridge', lat: 43.00554494037362, lng: -85.54181028271422, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 14.' },
+  { name: 'Ada', lat: 42.95594811892935, lng: -85.47657487575063, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 20.' },
+  { name: 'Lowell - Grand River', lat: 42.924561999518524, lng: -85.40169199967974, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+  { name: 'Saranac', lat: 42.9327729243601, lng: -85.21467734516995, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 15.' },
+  { name: 'Ionia Fairground', lat: 42.97390123902149, lng: -85.07049920857465, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 60.' },
+  { name: 'Lyons', lat: 42.97757734777526, lng: -84.94168378821327, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 5.' },
+  { name: 'Towner Road', lat: 42.82365657921319, lng: -84.93131073836267, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 20.' },
+  { name: 'Webber Impoundment', lat: 42.95395162116218, lng: -84.90498724422902, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 18.' },
+  { name: 'Weber Dam Fish Ladder', lat: 42.95290699945574, lng: -84.90097299960043, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 20.' },
+  { name: 'Portland State Game Area', lat: 42.8152010001267, lng: -84.89480300080389, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+  { name: 'Fitzgerald Park Canoe Port', lat: 42.76291299993025, lng: -84.76314700031676, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+  { name: 'Jaycees Park', lat: 42.75174427615963, lng: -84.74127015069446, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 16.' },
+  { name: 'McArthur River Park', lat: 42.50488974848037, lng: -84.64863783102406, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 5.' },
+  { name: 'Smithville Dam Grand River', lat: 42.499913000006956, lng: -84.62997099993527, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+  { name: 'Bunker Road', lat: 42.55237342385361, lng: -84.62136614122203, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 19.' },
+  { name: 'McNamara Landing', lat: 42.58286700383798, lng: -84.60080788334547, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 10.' },
+  { name: 'Burchfield Park', lat: 42.61036575035871, lng: -84.58868867747947, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+  { name: 'Gale Road', lat: 42.482722999860584, lng: -84.58178099967286, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 5.' },
+  { name: 'Moores Park', lat: 42.717734299893685, lng: -84.56090861517545, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 15.' },
+  { name: 'Riverfront Park', lat: 42.738686828908506, lng: -84.54925625543193, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+  { name: 'Sweenys Landing', lat: 42.726465816287764, lng: -84.54589533130138, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 8.' },
+  { name: 'Tompkins Bridge', lat: 42.39127374908203, lng: -84.54185763359747, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 15.' },
+  { name: 'Trestle Bridge', lat: 42.39607161326432, lng: -84.48965827026238, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 5.' },
+  { name: 'Maple Grove Bridge', lat: 42.342743742729965, lng: -84.40238511632045, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 12.' },
+]
 
 export const sections: RiverSection[] = []
 

@@ -3,7 +3,17 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Kalamazoo River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 115 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Spear Street', lat: 42.66019400021688, lng: -86.20560300037936, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+  { name: 'Hacklander', lat: 42.63638842415199, lng: -86.16311709136751, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 44.' },
+  { name: 'New Richmond', lat: 42.651700398260296, lng: -86.10769875557834, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 26.' },
+  { name: 'M-89 Bridge', lat: 42.59365576336214, lng: -85.98338716327724, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 4.' },
+  { name: 'Allegan Dam East', lat: 42.56651656629814, lng: -85.95201775389906, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 109.' },
+  { name: 'Comstock', lat: 42.28559473295439, lng: -85.51536837515808, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 5.' },
+  { name: 'Kalamazoo River', lat: 42.32412194042825, lng: -85.3578875303623, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 12.' },
+  { name: '20th Street', lat: 42.33706068606739, lng: -85.22972024522377, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 6.' },
+  { name: 'River Park', lat: 42.29144779616215, lng: -85.11664966379331, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 6.' },
+]
 
 export const sections: RiverSection[] = []
 

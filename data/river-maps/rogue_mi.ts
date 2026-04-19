@@ -3,7 +3,11 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Geometry from USGS NHDPlus HR — 302 points
 // GNIS match: Rogue River
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Rogue River', lat: 43.12272500000567, lng: -85.64960999955017, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+  { name: 'Rogue River', lat: 43.14714399989172, lng: -85.5642329996729, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 5.' },
+  { name: 'Rockford', lat: 43.120166383543655, lng: -85.56154758813456, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 5.' },
+]
 
 export const sections: RiverSection[] = []
 

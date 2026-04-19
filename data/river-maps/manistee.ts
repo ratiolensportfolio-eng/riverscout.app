@@ -3,7 +3,29 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Manistee River, MI — full USGS NHDPlus HR extraction
 // 361 points, sorted east→west (headwaters to mouth)
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'First Street Ramp', lat: 44.247239297194064, lng: -86.3398907840136, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 290.' },
+  { name: 'Bridge Street', lat: 44.26478199976409, lng: -86.30270500074596, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+  { name: 'Rainbow Bend', lat: 44.292637022317656, lng: -86.1486538078364, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 50.' },
+  { name: 'Bear Creek', lat: 44.29141519852454, lng: -86.11400698652982, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 20.' },
+  { name: 'Blacksmith Bayou', lat: 44.26203319273676, lng: -86.03594215860012, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 10.' },
+  { name: 'High Bridge', lat: 44.26722272689686, lng: -86.0138439357469, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 40.' },
+  { name: 'Tippy Dam', lat: 44.25984208532228, lng: -85.94327613633526, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 450.' },
+  { name: 'Red Bridge', lat: 44.283491168399514, lng: -85.86136415121294, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 30.' },
+  { name: 'Harvey River', lat: 44.43897939124965, lng: -85.64137174169124, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 4.' },
+  { name: 'Old US-131 SFCG', lat: 44.492870999726726, lng: -85.52789400025813, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+  { name: 'Baxter Bridge', lat: 44.492841300778665, lng: -85.52785264733325, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 6.' },
+  { name: 'US-131 Roadside Park', lat: 44.485373000115246, lng: -85.40469299940649, type: 'access', description: 'MI DNR Boat Launch. Improved ramp.' },
+  { name: 'Lucas Road', lat: 44.50552358930284, lng: -85.31074896183664, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 10.' },
+  { name: 'Rainbow Jim Bridge', lat: 44.52720871193141, lng: -85.27549253109765, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 6.' },
+  { name: 'Smithville', lat: 44.52327072843266, lng: -85.17948431726776, type: 'access', description: 'MI DNR Boat Launch. Improved ramp. Parking: 20.' },
+  { name: 'Sand Banks', lat: 44.54071893560636, lng: -85.14167501190637, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 15.' },
+  { name: 'West Sharon Road', lat: 44.58592700022832, lng: -85.08996400026844, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 24.' },
+  { name: 'Three Mile Bend', lat: 44.59744951316362, lng: -85.02768476908369, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 5.' },
+  { name: 'CCC Bridge SFCG East', lat: 44.6144909745607, lng: -84.99127593264639, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 20.' },
+  { name: 'Manistee River', lat: 44.65585700022199, lng: -84.90063399939343, type: 'access', description: 'MI DNR Boat Launch. Carry-in.' },
+  { name: 'Manistee River Bridge', lat: 44.692354475578064, lng: -84.84741715997059, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 10.' },
+]
 
 export const sections: RiverSection[] = []
 

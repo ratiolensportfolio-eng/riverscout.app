@@ -3,7 +3,12 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Boardman River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 129 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Boardman River', lat: 44.764565000246726, lng: -85.61520600034451, type: 'access', description: 'MI DNR Boat Launch. Improved ramp.' },
+  { name: 'River Road', lat: 44.65095729813451, lng: -85.5906694647071, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 10.' },
+  { name: 'Schecks Place SFCG', lat: 44.651371559233624, lng: -85.44618502101234, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 40.' },
+  { name: 'Forks SFCG', lat: 44.67425922381968, lng: -85.39715147616667, type: 'access', description: 'MI DNR Boat Launch. Carry-in. Parking: 5.' },
+]
 
 export const sections: RiverSection[] = []
 
