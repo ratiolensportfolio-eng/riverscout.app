@@ -3,7 +3,11 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Gunnison River — Main — polyline from National Rivers Project (NRP).
 // 1089 points, stitched from 2 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Orchard Boat Ramp', lat: 38.76804975, lng: -107.90304514, type: 'access', description: 'BLM Colorado. ' },
+  { name: 'Gunnison Forks Boat Ramp', lat: 38.7832317, lng: -107.83687048, type: 'access', description: 'BLM Colorado. Part of boat ramp is on private.' },
+  { name: 'Gunnison Forks', lat: 38.7844366, lng: -107.83431126, type: 'access', description: 'BLM Colorado. North Fork of Gunnison River Boat Ramp' },
+]
 
 export const sections: RiverSection[] = []
 

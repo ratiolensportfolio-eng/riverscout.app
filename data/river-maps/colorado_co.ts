@@ -4,7 +4,11 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 3264 points, stitched from 5 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Lyons Gulch Boat Ramp', lat: 39.69838458, lng: -107.07209688, type: 'access', description: 'BLM Colorado. Boat Ramp- Aggregate' },
+  { name: 'Cottonwood Island Boat Ramp', lat: 39.71222698, lng: -107.04522524, type: 'access', description: 'BLM Colorado. Boat Ramp- aggregate' },
+  { name: 'Pinball Access Boat Ramp', lat: 39.83294102, lng: -106.94756786, type: 'access', description: 'BLM Colorado. Boat Ramp- natural' },
+]
 
 export const sections: RiverSection[] = []
 

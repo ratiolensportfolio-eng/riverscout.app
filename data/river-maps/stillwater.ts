@@ -3,7 +3,15 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Stillwater River (MONTANA) — geometry from USGS NHDPlus HR
 // 165 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Boulder Forks', lat: 45.657689999999995, lng: -110.10872, type: 'access', description: 'MT FWP FAS. Hand Launch' },
+  { name: 'Grey Bear', lat: 45.7864, lng: -110.06635, type: 'access', description: 'MT FWP FAS. Ramp (Gravel)' },
+  { name: 'Big Rock', lat: 45.79293, lng: -109.96446, type: 'access', description: 'MT FWP FAS. Hand Launch' },
+  { name: 'Buffalo Jump', lat: 45.43636, lng: -109.79713, type: 'access', description: 'MT FWP FAS. Hand Launch' },
+  { name: 'Pelican', lat: 45.752759999999995, lng: -109.76764, type: 'access', description: 'MT FWP FAS. Ramp (Concrete)' },
+  { name: 'Moraine', lat: 45.462959999999995, lng: -109.75635, type: 'access', description: 'MT FWP FAS. Hand Launch' },
+  { name: 'Castle Rock', lat: 45.47303, lng: -109.74104, type: 'access', description: 'MT FWP FAS. Hand Launch' },
+]
 
 export const sections: RiverSection[] = []
 

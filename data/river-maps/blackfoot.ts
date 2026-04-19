@@ -3,7 +3,20 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Blackfoot River (MONTANA) — geometry from USGS NHDPlus HR
 // 112 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Roundup', lat: 46.94598536, lng: -113.43310729, type: 'access', description: 'MT FWP FAS. Raft Slide Launch' },
+  { name: 'Three Stall', lat: 46.93754433, lng: -113.38747826, type: 'access', description: 'MT FWP FAS. Hand Launch' },
+  { name: 'Harpers Lake', lat: 47.0216, lng: -113.38056, type: 'access', description: 'MT FWP FAS. Ramp (Gravel)' },
+  { name: 'Clearwater Crossing', lat: 47.001059999999995, lng: -113.38001, type: 'access', description: 'MT FWP FAS. Hand Launch' },
+  { name: 'Russell Gates Memorial', lat: 47.0234361, lng: -113.30602344, type: 'access', description: 'MT FWP FAS. Ramp (Gravel)' },
+  { name: 'Scotty Brown Bridge', lat: 47.01838, lng: -113.24022, type: 'access', description: 'MT FWP FAS. Hand Launch' },
+  { name: 'Upsata Lake', lat: 47.07304, lng: -113.22980000000001, type: 'access', description: 'MT FWP FAS. Ramp (Gravel)' },
+  { name: 'Monture Creek', lat: 47.03648, lng: -113.21986, type: 'access', description: 'MT FWP FAS. Hand Launch' },
+  { name: 'River Junction', lat: 46.98574, lng: -113.13637, type: 'access', description: 'MT FWP FAS. Ramp (Gravel)' },
+  { name: 'Harry Morgan', lat: 46.98095, lng: -113.09732, type: 'access', description: 'MT FWP FAS. Ramp (Gravel)' },
+  { name: 'Cedar Meadow', lat: 46.897349999999996, lng: -113.05945, type: 'access', description: 'MT FWP FAS. Ramp (Primitive)' },
+  { name: 'Browns Lake', lat: 46.94574, lng: -113.01085, type: 'access', description: 'MT FWP FAS. Ramp (Concrete)' },
+]
 
 export const sections: RiverSection[] = []
 

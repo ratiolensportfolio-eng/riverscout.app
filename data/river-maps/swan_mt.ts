@@ -4,7 +4,16 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 41 points, stitched from 1 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Somers', lat: 48.07748, lng: -114.23552, type: 'access', description: 'MT FWP FAS. Ramp (Concrete), Dock' },
+  { name: 'Sportsmans Bridge', lat: 48.0908, lng: -114.11760000000001, type: 'access', description: 'MT FWP FAS. Ramp (Concrete)' },
+  { name: 'Bigfork', lat: 48.060500000000005, lng: -114.07837, type: 'access', description: 'MT FWP FAS. Dock, Ramp (Concrete)' },
+  { name: 'Woods Bay', lat: 48.00054, lng: -114.06327, type: 'access', description: 'MT FWP FAS. Dock, Ramp (Concrete)' },
+  { name: 'Echo Lake', lat: 48.13062, lng: -114.03798, type: 'access', description: 'MT FWP FAS. Ramp (Concrete), Dock' },
+  { name: 'Horseshoe Lake/Ferndale', lat: 48.0217, lng: -113.99758, type: 'access', description: 'MT FWP FAS. Ramp (Gravel), Dock' },
+  { name: 'Loon Lake/Ferndale', lat: 48.02623, lng: -113.99097, type: 'access', description: 'MT FWP FAS. Ramp (Gravel)' },
+  { name: 'Swan River', lat: 48.04185, lng: -113.97846, type: 'access', description: 'MT FWP FAS. Hand Launch' },
+]
 
 export const sections: RiverSection[] = []
 

@@ -3,7 +3,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Gallatin River (MONTANA) — geometry from USGS NHDPlus HR
 // 5 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Axtell Bridge', lat: 45.62339, lng: -111.20486, type: 'access', description: 'MT FWP FAS. Hand Launch' },
+]
 
 export const sections: RiverSection[] = []
 

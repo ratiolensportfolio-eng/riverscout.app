@@ -3,7 +3,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Eagle River — polyline from National Rivers Project (NRP).
 // 983 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Community Boat Ramp', lat: 39.65171482, lng: -106.98508049, type: 'access', description: 'BLM Colorado. Boat Ramp- Natural' },
+  { name: 'Wolcott Boat Ramp', lat: 39.71325035, lng: -106.69789079, type: 'access', description: 'BLM Colorado. Concrete Boat Ramp' },
+]
 
 export const sections: RiverSection[] = []
 

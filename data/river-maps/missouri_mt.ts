@@ -3,7 +3,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Missouri River — Upper Missouri Breaks (MONTANA) — geometry from USGS NHDPlus HR
 // 11 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Loma Bridge', lat: 47.931909999999995, lng: -110.50547, type: 'access', description: 'MT FWP FAS. Ramp (Gravel)' },
+]
 
 export const sections: RiverSection[] = []
 

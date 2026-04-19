@@ -3,7 +3,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Colorado River — Glenwood Canyon (COLORADO) — geometry from USGS NHDPlus HR
 // 24 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'South Canyon Boat Ramp', lat: 39.56515514, lng: -107.41688681, type: 'access', description: 'BLM Colorado. South Canyon Boat Ramp' },
+]
 
 export const sections: RiverSection[] = []
 
