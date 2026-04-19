@@ -184,6 +184,9 @@ export default function RiverMap({ riverName, accessPoints, sections, riverPath,
               <span style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
                 <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#BA7517', display: 'inline-block' }} /> Portage
               </span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#185FA5', display: 'inline-block' }} /> Campground
+              </span>
             </div>
           </div>
         )}
