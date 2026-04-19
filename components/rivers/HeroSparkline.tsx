@@ -91,10 +91,12 @@ export default function HeroSparkline({ readings, optRange, condition, gaugeId, 
   const [hover, setHover] = useState<{ x: number; y: number; label: string } | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
 
-  // Pull the NOAA forecast once. The endpoint sometimes returns 404
-  // (no NWS mapping for that gauge) — that's fine, we'll just render
-  // historical-only.
+  // Forecast fetch DISABLED — NOAA predictions were producing
+  // wildly inaccurate jumps (6k→14k CFS on the Manistee). The
+  // forecast pipeline needs a verification pass before re-enabling.
+  // Set NEXT_PUBLIC_SHOW_NOAA_FORECAST=true to re-enable.
   useEffect(() => {
+    if (process.env.NEXT_PUBLIC_SHOW_NOAA_FORECAST !== 'true') return
     if (!gaugeId) { setForecastFailed(true); return }
     let cancel = false
     fetch(`/api/pro/forecast?gaugeId=${gaugeId}`)
