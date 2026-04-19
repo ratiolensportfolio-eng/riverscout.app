@@ -4,9 +4,15 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 2259 points, stitched from 7 NRP segments.
 // Access points render from Supabase at runtime.
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'Flaming Gorge Dam', lat: 40.916, lng: -109.421, type: 'access', description: 'Main put-in for trophy tailwater. Red Canyon area.' },
+  { name: 'Little Hole', lat: 40.932, lng: -109.56, type: 'access', description: '7 miles below dam. Day use area.' },
+  { name: 'Indian Crossing', lat: 40.924, lng: -109.65, type: 'access', description: 'Browns Park section.' },
+]
 
-export const sections: RiverSection[] = []
+export const sections: RiverSection[] = [
+  { from: 'Flaming Gorge Dam', to: 'Little Hole', miles: 7, paddleTime: '3-4 hours', class: 'I-II', notes: 'Trophy trout tailwater — Green River A section' },
+]
 
 export const riverPath: [number, number][] = [
   [-109.9134, 39.8411],

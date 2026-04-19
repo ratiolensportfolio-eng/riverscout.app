@@ -4,10 +4,18 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 112 points
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Croton Dam', lat: 43.43712, lng: -85.66410, type: 'put-in', description: 'Below the dam — start of the best trout and steelhead water on the Muskegon.' },
+  { name: 'Reedsburg Dam', lat: 43.773, lng: -85.543, type: 'access', description: 'Upper access, Osceola County.' },
+  { name: 'Croton Dam (above)', lat: 43.526, lng: -85.621, type: 'access', description: 'Above Croton — different character than below.' },
+  { name: 'Croton Dam (below)', lat: 43.521, lng: -85.622, type: 'access', description: 'Below dam — steelhead and salmon access.' },
+  { name: 'Newaygo City', lat: 43.416, lng: -85.798, type: 'access', description: 'City park access, paved ramp.' },
+  { name: 'Bridgeton', lat: 43.292, lng: -85.879, type: 'access', description: 'Mid-lower access.' },
+  { name: 'Muskegon State Park', lat: 43.227, lng: -86.332, type: 'access', description: 'Lower river near Lake Michigan.' },
 ]
 
-export const sections: RiverSection[] = []
+export const sections: RiverSection[] = [
+  { from: 'Croton Dam (below)', to: 'Newaygo City', miles: 12, paddleTime: '4-5 hours', class: 'I' },
+  { from: 'Newaygo City', to: 'Bridgeton', miles: 14, paddleTime: '5-6 hours', class: 'I' },
+]
 
 export const riverPath: [number, number][] = [
   [-85.618, 43.5107],

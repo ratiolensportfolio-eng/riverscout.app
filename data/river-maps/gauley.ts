@@ -5,33 +5,17 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  { name: 'Jodie', lat: 38.22603, lng: -81.15235, type: 'access', description: 'WVDNR — parking: yes' },
-  { name: 'Persinger Creek', lat: 38.29911, lng: -80.76943, type: 'access', description: 'NPS — parking: yes' },
-  { name: 'Gauley Tailwaters River Access', lat: 38.21835, lng: -80.88952, type: 'access', description: 'Gauley River National Recreation Area — parking: yes' },
-  { name: 'Gauley Tailwaters River Access', lat: 38.21537, lng: -80.88852, type: 'access', description: 'Gauley River National Recreation Area — parking: yes' },
-  { name: 'Masons Branch River Access', lat: 38.22306, lng: -80.99017, type: 'access', description: 'Gauley River National Recreation Area — parking: yes' },
-  { name: 'Woods Ferry River Access', lat: 38.20393, lng: -81.01512, type: 'access', description: 'Gauley River National Recreation Area — parking: yes' },
-  { name: 'Upper Swiss River Access', lat: 38.22368, lng: -81.12067, type: 'access', description: 'Gauley River National Recreation Area — parking: yes' },
+  { name: 'Summersville Dam', lat: 38.217, lng: -80.853, type: 'access', description: 'Dam release put-in. Upper Gauley Class V.' },
+  { name: 'Carnifex Ferry', lat: 38.241, lng: -80.931, type: 'access', description: 'Access point.' },
+  { name: 'Sweets Falls', lat: 38.224, lng: -80.974, type: 'access', description: 'Major rapid.' },
+  { name: 'Swiss Access / Lower Gauley', lat: 38.208, lng: -81.022, type: 'access', description: 'Transition to Lower Gauley Class III-IV.' },
+  { name: 'Belva', lat: 38.166, lng: -81.092, type: 'take-out', description: 'Lower Gauley takeout.' },
 ]
 
 // River sections
 export const sections: RiverSection[] = [
-  {
-    from: "Summersville Dam",
-    to: "Peters Creek",
-    miles: 12,
-    paddleTime: "4\u20136 hours",
-    class: "IV-V",
-    notes: "Premier big-water Class V run. Pillow Rock, Lost Paddle, Iron Ring among signature rapids. Dam-release dependent (Sept\u2013Oct Gauley Season).",
-  },
-  {
-    from: "Peters Creek",
-    to: "Swiss",
-    miles: 13,
-    paddleTime: "4\u20135 hours",
-    class: "III-IV",
-    notes: "Slightly mellower than Upper but still demanding. Pure Screaming Hell and Koontz Flume are highlights.",
-  },
+  { from: 'Summersville Dam', to: 'Swiss Access', miles: 12, paddleTime: '4-5 hours', class: 'V', notes: 'Upper Gauley — expert only. Scheduled fall releases.' },
+  { from: 'Swiss Access', to: 'Belva', miles: 10, paddleTime: '3-4 hours', class: 'III-IV', notes: 'Lower Gauley — intermediate-advanced.' },
 ]
 
 // River path from USGS NHDPlus High Resolution dataset

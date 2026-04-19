@@ -4,21 +4,24 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 361 points, sorted east→west (headwaters to mouth)
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Hodenpyl Dam', lat: 44.3644, lng: -85.8204, type: 'access', description: 'Below Hodenpyl Dam. Upper access for the lower Manistee float. Off 26 Mile Rd / O\'Rourke Dr. Consumers Energy.' },
-  { name: 'Upper River Rd Access', lat: 44.3220, lng: -85.7580, type: 'access', description: 'Off Upper River Rd south of Hodenpyl. Carry-in access.' },
-  { name: 'Red Bridge', lat: 44.2835, lng: -85.8614, type: 'access', description: 'Off Coates Hwy. Popular put-in and take-out. Hodenpyl Dam to Red Bridge is a 4-hour float.' },
-  { name: 'High Bridge', lat: 44.2672, lng: -86.0138, type: 'access-campsite', description: 'USFS campground and river access off High Bridge Rd. 16 sites, first come first served.' },
-  { name: 'Bear Creek', lat: 44.2914, lng: -86.1140, type: 'access', description: 'Bear Creek access off River Rd. High Bridge to Bear Creek is a 3-hour float.' },
-  { name: 'Tippy Dam', lat: 44.2598, lng: -85.9433, type: 'access', description: 'Below Tippy Dam backwaters. Major steelhead and salmon fishery. Consumers Energy.' },
-  { name: 'Rainbow Bend', lat: 44.2926, lng: -86.1487, type: 'access', description: 'Off Rainbow Bend Rd. Access below Bear Creek.' },
-  { name: 'Blacksmith Bayou', lat: 44.2620, lng: -86.0359, type: 'access', description: 'Blacksmith Bayou access between High Bridge and Tippy Dam.' },
+  { name: 'Tippy Dam Canoe Launch', lat: 44.1468, lng: -85.9687, type: 'access', description: 'Below Tippy Dam, upper float section.' },
+  { name: 'Bear Creek Road', lat: 44.193, lng: -85.984, type: 'access', description: 'State forest access.' },
+  { name: 'High Bridge', lat: 44.241, lng: -86.019, type: 'access-campsite', description: 'Off High Bridge Road. USFS campground, 16 sites.' },
+  { name: 'Sawdust Bridge', lat: 44.268, lng: -86.057, type: 'access', description: 'USFS access.' },
+  { name: 'Red Bridge', lat: 44.31, lng: -86.098, type: 'access-campsite', description: 'State forest campground.' },
+  { name: 'Manistee River Bridge M-55', lat: 44.34, lng: -86.16, type: 'access', description: 'Near Wellston.' },
+  { name: 'CCC Bridge', lat: 44.364, lng: -86.2, type: 'access', description: 'USFS.' },
+  { name: 'Magoon Creek', lat: 44.391, lng: -86.239, type: 'access', description: 'State forest.' },
+  { name: 'Coates Highway', lat: 44.418, lng: -86.278, type: 'access', description: 'Access point.' },
+  { name: 'Manistee / Lake Michigan', lat: 44.253, lng: -86.348, type: 'take-out', description: 'River mouth at Manistee city.' },
 ]
 
 export const sections: RiverSection[] = [
-  { from: 'Hodenpyl Dam', to: 'Red Bridge', miles: 10, paddleTime: '4 hours', class: 'Riffles', notes: 'Scenic float through national forest. Light riffles, some sweepers.' },
-  { from: 'Red Bridge', to: 'High Bridge', miles: 8, paddleTime: '3 hours', class: 'Riffles', notes: 'Popular day trip. Easy current, forested banks.' },
-  { from: 'High Bridge', to: 'Bear Creek', miles: 6, paddleTime: '3 hours', class: 'Riffles', notes: 'Quieter section through USFS land.' },
-  { from: 'Bear Creek', to: 'Tippy Dam', miles: 8, paddleTime: '3-4 hours', class: 'Riffles', notes: 'Backwater slows near Tippy Dam impoundment.' },
+  { from: 'Tippy Dam', to: 'Bear Creek Road', miles: 5, paddleTime: '2 hours', class: 'Riffles' },
+  { from: 'Bear Creek Road', to: 'High Bridge', miles: 5, paddleTime: '2 hours', class: 'Riffles' },
+  { from: 'High Bridge', to: 'Red Bridge', miles: 6, paddleTime: '2.5 hours', class: 'Riffles' },
+  { from: 'Red Bridge', to: 'CCC Bridge', miles: 6, paddleTime: '2.5 hours', class: 'Riffles' },
+  { from: 'CCC Bridge', to: 'Manistee / Lake Michigan', miles: 10, paddleTime: '4 hours', class: 'Riffles' },
 ]
 
 export const riverPath: [number, number][] = [

@@ -5,33 +5,15 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 // Access points snapped to riverPath geometry
 export const accessPoints: AccessPoint[] = [
-  { name: 'Nantahala River', lat: 35.37250, lng: -83.56380, type: 'access', description: 'Informal' },
-  { name: 'Duke Big Choga', lat: 35.17919, lng: -83.68639, type: 'access', description: 'Duke Energy' },
-  { name: 'Duke Rocky Branch', lat: 35.18198, lng: -83.65622, type: 'access', description: 'Duke Energy' },
-  { name: 'USFS Slot Falls', lat: 35.24810, lng: -83.63947, type: 'access', description: 'USFS' },
-  { name: 'USFS Whiteoak', lat: 35.25032, lng: -83.64001, type: 'access', description: 'USFS' },
-  { name: 'USFS Cascades', lat: 35.24804, lng: -83.64364, type: 'access', description: 'USFS' },
-  { name: 'USFS Upper Nantahala', lat: 35.24708, lng: -83.65357, type: 'access', description: 'USFS' },
-  { name: 'USFS Upper Nantahala', lat: 35.24830, lng: -83.65532, type: 'access', description: 'USFS' },
-  { name: 'USFS Nantahala Commercial', lat: 35.27314, lng: -83.67706, type: 'access', description: 'USFS' },
-  { name: 'USFS Nantahala', lat: 35.27414, lng: -83.68089, type: 'access', description: 'USFS' },
-  { name: 'USFS Ferebee', lat: 35.30309, lng: -83.65318, type: 'access', description: 'USFS' },
-  { name: 'USFS Surfers', lat: 35.33294, lng: -83.62786, type: 'access', description: 'USFS' },
-  { name: 'USFS Nantahala Falls', lat: 35.33331, lng: -83.59705, type: 'access', description: 'USFS' },
-  { name: 'USFS Nantahala Commercial', lat: 35.33149, lng: -83.59361, type: 'access', description: 'USFS' },
-  { name: 'USFS Nantahala Commercial 2', lat: 35.33187, lng: -83.59093, type: 'access', description: 'USFS' },
+  { name: 'Ferebee Memorial Park', lat: 35.362, lng: -83.722, type: 'access', description: 'Upper put-in above gorge.' },
+  { name: 'Nantahala Outdoor Center (NOC)', lat: 35.378, lng: -83.697, type: 'access', description: 'Main commercial hub, outfitters, restaurant, gear.' },
+  { name: 'Nantahala Falls', lat: 35.379, lng: -83.695, type: 'access', description: 'Class III falls, most photographed section.' },
+  { name: 'Wesser', lat: 35.388, lng: -83.693, type: 'take-out', description: 'Standard takeout at NOC.' },
 ]
 
 // River sections
 export const sections: RiverSection[] = [
-  {
-    from: "Ferebee Park",
-    to: "NOC (Nantahala Outdoor Center)",
-    miles: 8,
-    paddleTime: "3\u20134 hours",
-    class: "II-III",
-    notes: "One of the Southeast\u2019s most popular runs. Consistent dam-release flow keeps it runnable year-round. Cold water (45\u201350\u00b0F). Nantahala Falls at the end is the crux Class III.",
-  },
+  { from: 'Ferebee Memorial Park', to: 'Wesser', miles: 8, paddleTime: '3-4 hours', class: 'II-III', notes: 'Dam-release run, consistent flow' },
 ]
 
 // River path from USGS NHDPlus High Resolution dataset
