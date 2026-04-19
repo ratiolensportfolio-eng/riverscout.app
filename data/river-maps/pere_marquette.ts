@@ -3,9 +3,24 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Pere Marquette River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 129 points
 
-export const accessPoints: AccessPoint[] = []
+export const accessPoints: AccessPoint[] = [
+  { name: 'M-37 Bridge (Baldwin)', lat: 43.889, lng: -85.852, type: 'access', description: 'Flies-only section begins. USFS.' },
+  { name: 'Gleasons Landing', lat: 43.886, lng: -85.979, type: 'access-campsite', description: 'USFS, water, toilets, camping. Flies-only section ends here.' },
+  { name: 'Bowmans Bridge', lat: 43.885, lng: -86.046, type: 'access-campsite', description: 'USFS, water, toilets, camping, 5 miles west of Baldwin on 56th St.' },
+  { name: 'Rainbow Rapids', lat: 43.882, lng: -86.093, type: 'access', description: 'USFS, picnic area, restrooms.' },
+  { name: 'Upper Branch Bridge', lat: 43.873, lng: -86.176, type: 'access-campsite', description: 'USFS, parking, restrooms, camping.' },
+  { name: 'Walhalla Bridge', lat: 43.887, lng: -86.298, type: 'access', description: 'DNR site.' },
+  { name: 'Indian Bridge', lat: 43.893, lng: -86.335, type: 'access', description: 'USFS, lower river.' },
+  { name: 'Scottville Riverside', lat: 43.956, lng: -86.275, type: 'access', description: 'City park, paved ramp.' },
+  { name: 'US-31 / Lake Michigan', lat: 44.023, lng: -86.424, type: 'take-out', description: 'Lower takeout near Ludington.' },
+]
 
-export const sections: RiverSection[] = []
+export const sections: RiverSection[] = [
+  { from: 'M-37 Bridge', to: 'Gleasons Landing', miles: 8, paddleTime: '4 hours', class: 'I', notes: 'Flies-only section' },
+  { from: 'Gleasons Landing', to: 'Bowmans Bridge', miles: 5, paddleTime: '2.5 hours', class: 'I' },
+  { from: 'Bowmans Bridge', to: 'Rainbow Rapids', miles: 4, paddleTime: '2 hours', class: 'I' },
+  { from: 'Rainbow Rapids', to: 'Indian Bridge', miles: 15, paddleTime: '6-7 hours', class: 'I', notes: 'Lower river, wider' },
+]
 
 export const riverPath: [number, number][] = [
   [-85.8912, 43.8679],
