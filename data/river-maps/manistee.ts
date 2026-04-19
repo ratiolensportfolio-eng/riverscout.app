@@ -4,16 +4,21 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 361 points, sorted east→west (headwaters to mouth)
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'M-66 Boat Launch', lat: 44.4915, lng: -85.2278, type: 'access', description: 'Major USFS access on the upper-middle Manistee.' },
-  { name: 'High Bridge', lat: 44.452, lng: -85.525, type: 'access-campsite', description: 'USFS campground — 16 sites, first come first served. Also a river access point.' },
-  { name: 'Red Bridge', lat: 44.3917, lng: -85.65, type: 'access', description: 'Popular float section take-out.' },
-  { name: 'Tippy Dam', lat: 44.345, lng: -85.915, type: 'access', description: 'Below the dam — steelhead and salmon fishery.' },
+  { name: 'Hodenpyl Dam', lat: 44.3480, lng: -85.7270, type: 'access', description: 'Below Hodenpyl Dam. Upper access for the lower Manistee float. Consumers Energy.' },
+  { name: 'Upper River Rd Access', lat: 44.3220, lng: -85.7580, type: 'access', description: 'Off Upper River Rd south of Hodenpyl. Carry-in access.' },
+  { name: 'Red Bridge', lat: 44.2835, lng: -85.8614, type: 'access', description: 'Off Coates Hwy. Popular put-in and take-out. Hodenpyl Dam to Red Bridge is a 4-hour float.' },
+  { name: 'High Bridge', lat: 44.2672, lng: -86.0138, type: 'access-campsite', description: 'USFS campground and river access off High Bridge Rd. 16 sites, first come first served.' },
+  { name: 'Bear Creek', lat: 44.2914, lng: -86.1140, type: 'access', description: 'Bear Creek access off River Rd. High Bridge to Bear Creek is a 3-hour float.' },
+  { name: 'Tippy Dam', lat: 44.2598, lng: -85.9433, type: 'access', description: 'Below Tippy Dam backwaters. Major steelhead and salmon fishery. Consumers Energy.' },
+  { name: 'Rainbow Bend', lat: 44.2926, lng: -86.1487, type: 'access', description: 'Off Rainbow Bend Rd. Access below Bear Creek.' },
+  { name: 'Blacksmith Bayou', lat: 44.2620, lng: -86.0359, type: 'access', description: 'Blacksmith Bayou access between High Bridge and Tippy Dam.' },
 ]
 
 export const sections: RiverSection[] = [
-  { from: 'M-66 Boat Launch', to: 'High Bridge', miles: 12, paddleTime: '4-5 hours', class: 'I', notes: 'Scenic upper float, light riffles' },
-  { from: 'High Bridge', to: 'Red Bridge', miles: 8, paddleTime: '3-4 hours', class: 'I', notes: 'Most popular day-trip section' },
-  { from: 'Red Bridge', to: 'Tippy Dam', miles: 15, paddleTime: '5-7 hours', class: 'I', notes: 'Longer float, some deadfall' },
+  { from: 'Hodenpyl Dam', to: 'Red Bridge', miles: 10, paddleTime: '4 hours', class: 'Riffles', notes: 'Scenic float through national forest. Light riffles, some sweepers.' },
+  { from: 'Red Bridge', to: 'High Bridge', miles: 8, paddleTime: '3 hours', class: 'Riffles', notes: 'Popular day trip. Easy current, forested banks.' },
+  { from: 'High Bridge', to: 'Bear Creek', miles: 6, paddleTime: '3 hours', class: 'Riffles', notes: 'Quieter section through USFS land.' },
+  { from: 'Bear Creek', to: 'Tippy Dam', miles: 8, paddleTime: '3-4 hours', class: 'Riffles', notes: 'Backwater slows near Tippy Dam impoundment.' },
 ]
 
 export const riverPath: [number, number][] = [
