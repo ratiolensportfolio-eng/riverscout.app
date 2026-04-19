@@ -57,7 +57,7 @@ export const accessPoints: AccessPoint[] = [
     name: 'Peterson Bridge',
     lat: 44.19066,
     lng: -85.76988,
-    type: 'access',
+    type: 'access-campsite',
     description: 'Most popular starting point. USFS campground and access on M-37. North side launch. Peterson Bridge Campground is the only USFS campground on the Pine.',
   },
   {

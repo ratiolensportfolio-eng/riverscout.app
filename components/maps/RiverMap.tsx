@@ -8,7 +8,7 @@ export interface AccessPoint {
   name: string
   lat: number
   lng: number
-  type: 'put-in' | 'take-out' | 'access' | 'portage' | 'campsite'
+  type: 'put-in' | 'take-out' | 'access' | 'portage' | 'campsite' | 'access-campsite'
   description?: string
 }
 
@@ -98,12 +98,15 @@ export default function RiverMap({ riverName, accessPoints, sections, riverPath,
           pt.type === 'take-out' ? '#A32D2D' :
           pt.type === 'portage' ? '#BA7517' :
           pt.type === 'campsite' ? '#185FA5' :
+          pt.type === 'access-campsite' ? '#185FA5' :
           '#085041'
 
         const el = document.createElement('div')
+        const isCombo = pt.type === 'access-campsite'
         el.style.cssText = `
-          width: 14px; height: 14px; border-radius: 50%;
-          background: ${color}; border: 2px solid #fff;
+          width: ${isCombo ? '16px' : '14px'}; height: ${isCombo ? '16px' : '14px'}; border-radius: 50%;
+          background: ${isCombo ? 'linear-gradient(135deg, #085041 50%, #185FA5 50%)' : color};
+          border: 2px solid #fff;
           box-shadow: 0 2px 6px rgba(0,0,0,.3); cursor: pointer;
         `
 
@@ -111,7 +114,7 @@ export default function RiverMap({ riverName, accessPoints, sections, riverPath,
           .setHTML(`
             <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; max-width: 200px;">
               <div style="font-weight: 600; margin-bottom: 2px;">${pt.name}</div>
-              <div style="font-size: 9px; color: #666; text-transform: uppercase; letter-spacing: .5px;">${pt.type.replace('-', ' ')}</div>
+              <div style="font-size: 9px; color: #666; text-transform: uppercase; letter-spacing: .5px;">${pt.type === 'access-campsite' ? 'Access + Campground' : pt.type.replace('-', ' ')}</div>
               ${pt.description ? `<div style="font-size: 10px; color: #444; margin-top: 4px;">${pt.description}</div>` : ''}
               <div style="font-size: 9px; color: #999; margin-top: 4px;">${pt.lat.toFixed(5)}, ${pt.lng.toFixed(5)}</div>
             </div>
@@ -186,6 +189,9 @@ export default function RiverMap({ riverName, accessPoints, sections, riverPath,
               </span>
               <span style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
                 <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#185FA5', display: 'inline-block' }} /> Campground
+              </span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'linear-gradient(135deg, #085041 50%, #185FA5 50%)', display: 'inline-block' }} /> Access + Camp
               </span>
             </div>
           </div>

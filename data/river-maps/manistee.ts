@@ -5,7 +5,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 
 export const accessPoints: AccessPoint[] = [
   { name: 'M-66 Boat Launch', lat: 44.4915, lng: -85.2278, type: 'access', description: 'Major USFS access on the upper-middle Manistee.' },
-  { name: 'High Bridge', lat: 44.452, lng: -85.525, type: 'campsite', description: 'USFS campground — 16 sites, first come first served.' },
+  { name: 'High Bridge', lat: 44.452, lng: -85.525, type: 'access-campsite', description: 'USFS campground — 16 sites, first come first served. Also a river access point.' },
   { name: 'Red Bridge', lat: 44.3917, lng: -85.65, type: 'access', description: 'Popular float section take-out.' },
   { name: 'Tippy Dam', lat: 44.345, lng: -85.915, type: 'access', description: 'Below the dam — steelhead and salmon fishery.' },
 ]
