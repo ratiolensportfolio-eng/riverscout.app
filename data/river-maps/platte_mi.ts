@@ -4,10 +4,20 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 138 points
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Platte River Point', lat: 44.73193, lng: -86.15546, type: 'take-out', description: 'Take-out where the Platte meets Lake Michigan in Sleeping Bear Dunes.' },
+  { name: 'Veterans Memorial SFCG', lat: 44.6584, lng: -85.9457, type: 'access-campsite', description: 'Uppermost paddling put-in, near fish hatchery. Upper Platte starts here — fast water, tight turns, experienced paddlers. 3.5 hrs to Deadstream.' },
+  { name: 'Platte River SFCG', lat: 44.6500, lng: -86.0200, type: 'access-campsite', description: 'Mid-upper section access, campground on site. 13062 Goose Road, Honor.' },
+  { name: 'Deadstream Road', lat: 44.7100, lng: -86.0800, type: 'access', description: 'End of upper Platte trip, 2 hrs to M-22. River slows approaching Platte Lake. Roadside parking with short carry.' },
+  { name: 'M-22 Bridge / NPS Picnic Area', lat: 44.7199, lng: -86.1175, type: 'access', description: 'Main lower Platte put-in, NPS Platte River Picnic Area. Fish cleaning station, picnic pavilion, restrooms, railing launch system. 2.5 hrs to Lake Michigan.' },
+  { name: 'Fish Weir', lat: 44.7450, lng: -86.1600, type: 'access', description: 'Below Loon Lake, 2-hour float to mouth. Quarter mile carry from road on gravel path. Portage required when weir gates are closed Aug–Oct.' },
+  { name: 'El Dorado Park', lat: 44.7520, lng: -86.1750, type: 'access', description: 'Last landing before Lake Michigan, 1 mile from mouth, 30-min float. Picnic tables, vault toilet, deck overlook. NPS managed.' },
+  { name: 'Platte River Point', lat: 44.7580, lng: -86.1920, type: 'take-out', description: 'Terminus. Paved boat launch, restrooms, parking. Sandy spit at Lake Michigan with Sleeping Bear Dunes views.' },
 ]
 
-export const sections: RiverSection[] = []
+export const sections: RiverSection[] = [
+  { from: 'Veterans Memorial SFCG', to: 'Deadstream Road', miles: 10, paddleTime: '3.5 hours', class: 'I-II', notes: 'Fast water, tight turns, experienced paddlers. Upper Platte.' },
+  { from: 'Deadstream Road', to: 'M-22 Bridge', miles: 5, paddleTime: '2 hours', class: 'I', notes: 'River slows approaching Platte Lake.' },
+  { from: 'M-22 Bridge', to: 'Platte River Point', miles: 7, paddleTime: '2.5 hours', class: 'I', notes: 'Lower Platte through Sleeping Bear Dunes. Possible portage at Fish Weir Aug–Oct.' },
+]
 
 export const riverPath: [number, number][] = [
   [-85.7543, 44.6881],

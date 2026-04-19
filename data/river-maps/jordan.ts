@@ -4,11 +4,19 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 138 points
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Jordan Park Boat Ramp', lat: 44.57809, lng: -89.50073, type: 'access', description: 'Portage County Parks Department' },
-  { name: 'Jordan Park Canoe Launch', lat: 44.58070, lng: -89.49761, type: 'access', description: 'Portage County Parks Department' },
+  { name: 'Pinney Bridge', lat: 45.00845, lng: -85.01804, type: 'access-campsite', description: 'Uppermost access, state forest campground nearby, 15 rustic sites.' },
+  { name: 'Graves Crossing', lat: 45.03302, lng: -85.06406, type: 'access-campsite', description: 'State launch, campground with well pump and pit toilets, 10 barrier-free sites. Most popular upper put-in.' },
+  { name: 'Chestonia Bridge', lat: 45.06045, lng: -85.06908, type: 'access', description: 'Newest launch on the Jordan, intermediate access point.' },
+  { name: 'Webster Road Bridge', lat: 45.10100, lng: -85.09682, type: 'access', description: 'State launch with facilities, river widens here, good for less experienced paddlers.' },
+  { name: 'Rogers Road Bridge', lat: 45.13265, lng: -85.12378, type: 'access', description: 'Lower access, takeout for most day trips from Jordan Valley Outfitters.' },
 ]
 
-export const sections: RiverSection[] = []
+export const sections: RiverSection[] = [
+  { from: 'Pinney Bridge', to: 'Graves Crossing', miles: 3, paddleTime: '1.5 hours', class: 'I', notes: 'Tight upper section, fast current' },
+  { from: 'Graves Crossing', to: 'Chestonia Bridge', miles: 3, paddleTime: '1.5 hours', class: 'I', notes: 'Scenic, moderate current' },
+  { from: 'Chestonia Bridge', to: 'Webster Road Bridge', miles: 4, paddleTime: '2 hours', class: 'I', notes: 'River widens, easier paddling' },
+  { from: 'Webster Road Bridge', to: 'Rogers Road Bridge', miles: 3, paddleTime: '1.5 hours', class: 'I', notes: 'Lower section, common day trip takeout' },
+]
 
 export const riverPath: [number, number][] = [
   [-84.9113, 45.0736],
