@@ -325,6 +325,7 @@ export async function fetchRiverPageData(
       .select('*')
       .eq('river_id', riverId)
       .neq('verification_status', 'rejected')
+      .or('coordinates_suspect.is.null,coordinates_suspect.eq.false')
       .order('river_mile', { ascending: true, nullsFirst: false })
       .order('created_at', { ascending: true })
       .limit(50),
