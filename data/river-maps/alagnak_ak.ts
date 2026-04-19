@@ -3,12 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Alagnak River — polyline from National Rivers Project (NRP).
 // 2649 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Kukalek Lake', lat: 59.13092, lng: -155.55042, type: 'access' },
-  { name: 'Nonvianuk Lake', lat: 59.01785, lng: -155.59611, type: 'access', description: 'Private' },
-  { name: 'Confluence', lat: 59.02225, lng: -155.84984, type: 'access' },
-  { name: 'Kvichak River', lat: 59.00466, lng: -156.85616, type: 'access' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

@@ -3,18 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Bois Brule River — polyline from National Rivers Project (NRP).
 // 4623 points, stitched from 5 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Pine Tree Canoe Landing', lat: 46.61549, lng: -91.58170, type: 'access', description: 'Brule River State Forest' },
-  { name: 'Copper Range Campground Canoe Launch', lat: 46.61032, lng: -91.58364, type: 'access', description: 'Brule River State Forest' },
-  { name: 'Bois Brule Canoe Landing', lat: 46.53896, lng: -91.59425, type: 'access', description: 'Brule River State Forest' },
-  { name: 'Highway 2 Canoe Landing', lat: 46.55054, lng: -91.58906, type: 'access', description: 'Brule River State Forest' },
-  { name: 'Stones Bridge Canoe Launch', lat: 46.43423, lng: -91.67488, type: 'access', description: 'Brule River State Forest' },
-  { name: 'Stones Bridge Canoe Launch', lat: 46.43423, lng: -91.67488, type: 'access', description: 'Brule River State Forest' },
-  { name: 'Stone Chimney Canoe Launch', lat: 46.41691, lng: -91.71201, type: 'access', description: 'Brule River State Forest' },
-  { name: 'Stone Chimney Canoe Launch', lat: 46.41691, lng: -91.71201, type: 'access', description: 'Brule River State Forest' },
-  { name: 'Highway 13 Canoe Landing', lat: 46.67796, lng: -91.59536, type: 'access', description: 'Brule River State Forest' },
-  { name: 'Winneboujou Canoe Launch', lat: 46.51653, lng: -91.60358, type: 'access', description: 'Brule River State Forest' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

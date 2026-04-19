@@ -3,23 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Tuscarawas River — polyline from National Rivers Project (NRP).
 // 12159 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Tuscarawas River Access', lat: 41.02171, lng: -81.54950, type: 'access', description: 'parking: yes' },
-  { name: 'Tuscarawas River Access', lat: 40.87750, lng: -81.58342, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Tuscarawas River Access', lat: 40.81091, lng: -81.52890, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Tuscarawas River Access', lat: 40.75200, lng: -81.52873, type: 'access', description: 'parking: yes' },
-  { name: 'Tuscarawas River Access', lat: 40.71673, lng: -81.52203, type: 'access', description: 'parking: yes' },
-  { name: 'Tuscarawas River Access', lat: 40.65427, lng: -81.47004, type: 'access', description: 'parking: yes' },
-  { name: 'Tuscarawas River Access', lat: 40.55687, lng: -81.41439, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Tuscarawas River Access', lat: 40.53045, lng: -81.42969, type: 'access', description: 'parking: yes' },
-  { name: 'Tuscarawas River Access', lat: 40.35943, lng: -81.44214, type: 'access', description: 'parking: yes' },
-  { name: 'Tuscarawas River Access', lat: 40.35616, lng: -81.43859, type: 'access', description: 'parking: yes' },
-  { name: 'Tuscarawas River Access', lat: 40.28512, lng: -81.68454, type: 'access', description: 'parking: yes' },
-  { name: 'Tuscarawas River Access', lat: 40.86206, lng: -81.57588, type: 'access', description: 'parking: yes' },
-  { name: 'Tuscarawas River Access', lat: 40.39357, lng: -81.39114, type: 'access', description: 'parking: yes' },
-  { name: 'Tuscarawas River Access', lat: 40.48139, lng: -81.44889, type: 'access', description: 'parking: yes' },
-  { name: 'Tuscarawas River Access', lat: 40.45556, lng: -81.42083, type: 'access', description: 'parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

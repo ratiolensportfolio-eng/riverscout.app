@@ -3,11 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // North Umpqua River — polyline from National Rivers Project (NRP).
 // 9760 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Bogus Creek', lat: 43.32358, lng: -122.79948, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Susan Creek Day-use Area', lat: 43.29815, lng: -122.90549, type: 'access', description: 'BLM — restrooms, parking: yes' },
-  { name: 'Cable Crossing', lat: 43.32401, lng: -122.99804, type: 'access', description: 'BLM — restrooms, parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

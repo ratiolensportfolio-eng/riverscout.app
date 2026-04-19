@@ -4,21 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 155 points, 155/157 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Davis Park (Conway)', lat: 44.033, lng: -71.128, type: 'put-in', description: 'Standard put-in for the Saco — New England\'s classic family canoe camping river.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "North Conway",
-    to: "Fryeburg ME",
-    miles: 15,
-    paddleTime: "4\u20136 hours",
-    class: "I-II",
-    notes: "Most popular canoe day trip in New England. Sandy beaches, gentle current, and mountain views. Class I-II riffles in the upper stretch, flatwater meanders below Conway. Best July through September.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

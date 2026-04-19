@@ -4,24 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 163 points, 129/129 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Fife Brook Dam', lat: 42.639, lng: -72.942, type: 'put-in', description: 'Dam release put-in for the most popular rafting run in New England.' },
-  { name: 'Zoar Gap', lat: 42.617, lng: -72.905, type: 'access', description: 'The signature Class III rapid.' },
-  { name: 'Charlemont', lat: 42.629, lng: -72.868, type: 'access', description: 'Town of Charlemont access.' },
-  { name: 'Shelburne Falls', lat: 42.605, lng: -72.739, type: 'take-out', description: 'Historic village with the Bridge of Flowers.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "Fife Brook Dam",
-    to: "Charlemont",
-    miles: 8,
-    paddleTime: "2\u20134 hours",
-    class: "II-IV",
-    notes: "Fife Brook section of the Deerfield River. Dam-release dependent with Zoar Gap (Class III) as the highlight. Popular New England whitewater run.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

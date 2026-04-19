@@ -3,45 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Clarks Fork Yellowstone — polyline from National Rivers Project (NRP).
 // 569 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Bobby Brown SP Campground', lat: 33.96883, lng: -82.58072, type: 'access', description: 'DNR-PRHS — fee' },
-  { name: 'Bobby Brown SP Day Use', lat: 33.97280, lng: -82.57605, type: 'access', description: 'DNR-PRHS — parking: yes, fee' },
-  { name: 'Elijah Clark SP Cabins', lat: 33.85661, lng: -82.41306, type: 'access', description: 'DNR-PRHS — fee' },
-  { name: 'Elijah Clark SP Day Use', lat: 33.85540, lng: -82.39800, type: 'access', description: 'DNR-PRHS — parking: yes, fee' },
-  { name: 'Fishing Creek (SR79)', lat: 33.89176, lng: -82.58030, type: 'access', description: 'DNR-WRD — parking: yes' },
-  { name: 'Mistletoe SP Cabins', lat: 33.64826, lng: -82.36966, type: 'access', description: 'DNR-PRHS — parking: yes, fee' },
-  { name: 'Mistletoe SP Day Use', lat: 33.65503, lng: -82.37351, type: 'access', description: 'DNR-PRHS — restrooms, parking: yes, fee' },
-  { name: 'State Highway 78/Little River', lat: 33.63597, lng: -82.59238, type: 'access', description: 'DNR-WRD — parking: yes' },
-  { name: 'Windfield Campground', lat: 33.65143, lng: -82.42310, type: 'access', description: 'COE — fee' },
-  { name: 'Lake Springs Park', lat: 33.66183, lng: -82.22740, type: 'access', description: 'COE — parking: yes, fee' },
-  { name: 'Petersburg Campground', lat: 33.66087, lng: -82.26607, type: 'access', description: 'COE — parking: yes, fee' },
-  { name: 'Keg Creek Ramp', lat: 33.64323, lng: -82.30603, type: 'access', description: 'COE — parking: yes, fee' },
-  { name: 'Ridge Road Campground', lat: 33.67867, lng: -82.26448, type: 'access', description: 'COE — parking: yes, fee' },
-  { name: 'Morrahs Ramp', lat: 33.99272, lng: -82.59373, type: 'access', description: 'COE — parking: yes, fee' },
-  { name: 'Cherokee RA', lat: 33.70562, lng: -82.34327, type: 'access', description: 'COE — parking: yes, fee' },
-  { name: 'Double Branches Ramp', lat: 33.73500, lng: -82.33830, type: 'access', description: 'COE — fee' },
-  { name: 'Clay Hill Campground', lat: 33.66617, lng: -82.43958, type: 'access', description: 'COE — fee' },
-  { name: 'Bussey Point Campground', lat: 33.72065, lng: -82.30142, type: 'access', description: 'COE — parking: yes, fee' },
-  { name: 'Parkway Ramp', lat: 33.85015, lng: -82.39315, type: 'access', description: 'COE — fee' },
-  { name: 'Chamberlain Ferry Ramp', lat: 33.83390, lng: -82.35498, type: 'access', description: 'COE — parking: yes, fee' },
-  { name: 'Amity RA', lat: 33.64613, lng: -82.47713, type: 'access', description: 'COE — parking: yes, fee' },
-  { name: 'Leathersville Ramp', lat: 33.70408, lng: -82.39865, type: 'access', description: 'COE — parking: yes, fee' },
-  { name: 'Murry Creek Campground', lat: 33.87960, lng: -82.46993, type: 'access', description: 'COE — parking: yes, fee' },
-  { name: 'Fishing Creek Ramp', lat: 33.91303, lng: -82.55592, type: 'access', description: 'COE — parking: yes, fee' },
-  { name: 'Hester Ferry Campground', lat: 33.93550, lng: -82.52860, type: 'access', description: 'COE — fee' },
-  { name: 'Gill Point RA', lat: 33.94740, lng: -82.59418, type: 'access', description: 'COE — parking: yes, fee' },
-  { name: 'Broad River Campground', lat: 33.97587, lng: -82.63143, type: 'access', description: 'COE — parking: yes, fee' },
-  { name: 'Big Hart Park', lat: 33.61607, lng: -82.51117, type: 'access', description: 'COE — parking: yes, fee' },
-  { name: 'Raysville Campground', lat: 33.63818, lng: -82.47695, type: 'access', description: 'COE — parking: yes, fee' },
-  { name: 'Elijah Clark SP (Campground 1)', lat: 33.85557, lng: -82.41207, type: 'access', description: 'DNR-PRHS — fee' },
-  { name: 'Elijah Clark SP (Campground 2)', lat: 33.85899, lng: -82.40376, type: 'access', description: 'DNR-PRHS — fee' },
-  { name: 'Mistletoe SP Campground', lat: 33.66745, lng: -82.38056, type: 'access', description: 'DNR-PRHS — fee' },
-  { name: 'Clarks River Boat Ramp', lat: 37.04314, lng: -88.54757, type: 'access', description: 'parking: yes' },
-  { name: 'Milliken Mills Carrydown', lat: 36.90672, lng: -88.41083, type: 'access', description: 'parking: yes' },
-  { name: 'Tucker Lane Carrydown', lat: 36.89505, lng: -88.37873, type: 'access', description: 'parking: yes' },
-  { name: 'USFWS Recreational Area', lat: 36.85727, lng: -88.33717, type: 'access', description: 'parking: yes' },
-  { name: 'Crandall', lat: 44.86689, lng: -109.64434, type: 'access', description: 'Shoshone National Forest' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

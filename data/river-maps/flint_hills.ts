@@ -4,34 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 219 points, 87/87 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  {
-    name: "Marion",
-    lat: 38.2196,
-    lng: -96.5663,
-    type: "put-in",
-    description: "Put-in near Marion. The South Fork Cottonwood winds through the heart of the tallgrass Flint Hills.",
-  },
-  {
-    name: "Cottonwood Falls",
-    lat: 38.3459,
-    lng: -96.4901,
-    type: "take-out",
-    description: "Take-out at Cottonwood Falls. Historic Chase County seat with the iconic 1873 limestone courthouse.",
-  },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "Marion",
-    to: "Cottonwood Falls",
-    miles: 25,
-    paddleTime: "8\u201312 hours",
-    class: "I-II",
-    notes: "Remote tallgrass prairie paddling through the Flint Hills. Gentle current with a few rocky riffles. Very little development along the banks\u2014one of the last intact tallgrass prairie ecosystems on Earth. Best in spring when water levels are adequate; can be too low by midsummer.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

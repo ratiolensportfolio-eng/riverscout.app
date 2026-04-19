@@ -3,25 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Little Tennessee River — polyline from National Rivers Project (NRP).
 // 4842 points, stitched from 2 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Sawmill Creek', lat: 35.35637, lng: -83.50617, type: 'access', description: 'NCWRC' },
-  { name: 'Wiggins Creek', lat: 35.33924, lng: -83.53199, type: 'access', description: 'NCWRC' },
-  { name: 'Tellico Creek', lat: 35.28890, lng: -83.49150, type: 'access', description: 'NCWRC' },
-  { name: 'Rattlesnake Creek', lat: 35.30698, lng: -83.52256, type: 'access', description: 'NCWRC' },
-  { name: 'Swinging Bridge', lat: 35.32522, lng: -83.52377, type: 'access', description: 'NCWRC' },
-  { name: 'Spring Ridge', lat: 35.00960, lng: -83.38520, type: 'access', description: 'NCWRC' },
-  { name: 'Riverside', lat: 35.08987, lng: -83.38110, type: 'access', description: 'NCWRC' },
-  { name: 'Tessentee', lat: 35.07956, lng: -83.38309, type: 'access', description: 'NCWRC' },
-  { name: 'Prentiss Bridge', lat: 35.12223, lng: -83.37436, type: 'access', description: 'TVA' },
-  { name: 'Tassee Landing', lat: 35.17291, lng: -83.37236, type: 'access', description: 'NCWRC' },
-  { name: 'Emory Dam', lat: 35.18988, lng: -83.37839, type: 'access', description: 'NCWRC' },
-  { name: 'Gibson Bottoms', lat: 35.22838, lng: -83.39084, type: 'access', description: 'NCWRC' },
-  { name: 'Iotla Bridge', lat: 35.23505, lng: -83.39463, type: 'access', description: 'NCWRC' },
-  { name: 'McCoy Bridge Anselmo', lat: 35.27131, lng: -83.43964, type: 'access', description: 'NCWRC' },
-  { name: 'Needmore', lat: 35.32864, lng: -83.52232, type: 'access', description: 'NCWRC' },
-  { name: 'Lower Wiggins Creek', lat: 35.34235, lng: -83.52737, type: 'access', description: 'NCWRC' },
-  { name: 'Brush Creek', lat: 35.32671, lng: -83.51337, type: 'access', description: 'NCWRC' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

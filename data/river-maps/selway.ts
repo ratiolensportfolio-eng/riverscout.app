@@ -3,16 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Selway River — polyline from National Rivers Project (NRP).
 // 1884 points, stitched from 2 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Paradise Boating Site', lat: 45.86056, lng: -114.74423, type: 'access', description: 'Bitterroot National Forest — restrooms, parking: overnight' },
-  { name: 'Race Track', lat: 46.04685, lng: -115.29675, type: 'access', description: 'Nez Perce Clearwater National Forest — parking: overnight' },
-  { name: 'Race Creek', lat: 46.04460, lng: -115.28553, type: 'access', description: 'Nez Perce Clearwater National Forest — restrooms, parking: overnight' },
-  { name: 'Shearer', lat: 45.98946, lng: -114.84146, type: 'access', description: 'Nez Perce Clearwater National Forest' },
-  { name: 'Moose Creek', lat: 46.12245, lng: -114.92733, type: 'access', description: 'Nez Perce Clearwater National Forest' },
-  { name: 'Johnson Bar', lat: 46.10821, lng: -115.55733, type: 'access', description: 'Nez Perce Clearwater National Forest — restrooms, parking: overnight' },
-  { name: 'Twenty Mile Bar', lat: 46.07330, lng: -115.37670, type: 'access', description: 'Nez Perce Clearwater National Forest — restrooms, parking: overnight' },
-  { name: 'Below Selway Falls', lat: 46.05703, lng: -115.31582, type: 'access', description: 'Nez Perce National Forest' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

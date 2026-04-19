@@ -3,9 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Cheat River (WEST VIRGINIA) — geometry from USGS NHDPlus HR
 // 38 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Sunset Harbor Marina', lat: 39.67833, lng: -79.85832, type: 'access', description: 'No Control Sign — restrooms, parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

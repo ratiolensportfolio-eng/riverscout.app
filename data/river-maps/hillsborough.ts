@@ -3,19 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Hillsborough River — polyline from National Rivers Project (NRP).
 // 4539 points, stitched from 2 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Rick\'S On The River - Marina - Bar - Grill', lat: 27.96300, lng: -82.47370, type: 'access', description: 'restrooms, parking: yes, fee' },
-  { name: 'Rotary Riverfront Park - City Of Temple Terrace', lat: 28.05485, lng: -82.36366, type: 'access', description: 'City Of Temple Terrace — restrooms, parking: yes' },
-  { name: 'John B. Sargeant Public Boat Ramp', lat: 28.08135, lng: -82.28540, type: 'access', description: 'Hillsborough County — restrooms, parking: yes' },
-  { name: 'Riverhills Park Boat Ramp - City Of Temple Terrace', lat: 28.02123, lng: -82.38770, type: 'access', description: 'City Of Temple Terrace — restrooms, parking: yes' },
-  { name: 'Lowry Park Public Boat Ramp', lat: 28.01259, lng: -82.46512, type: 'access', description: 'City Of Tampa — restrooms, parking: yes' },
-  { name: 'Morris Bridge Park', lat: 28.09894, lng: -82.31187, type: 'access', description: 'Hillsborough County — restrooms, parking: yes' },
-  { name: 'Hillsborough River State Park Canoe Launch', lat: 28.14838, lng: -82.23547, type: 'access', description: 'Florida Department Of Environmental Protection — restrooms, parking: yes, fee' },
-  { name: 'Trout Creek Park Canoe Launch', lat: 28.08778, lng: -82.34900, type: 'access', description: 'Hillsborough County — restrooms, parking: yes' },
-  { name: 'Dead River Park', lat: 28.12843, lng: -82.26448, type: 'access', description: 'Florida Department Of Environmental Protection — restrooms, parking: yes' },
-  { name: 'Lettuce Lake Park', lat: 28.07333, lng: -82.37825, type: 'access', description: 'restrooms' },
-  { name: 'Rowlett Rark', lat: 28.02582, lng: -82.42869, type: 'access', description: 'restrooms, parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

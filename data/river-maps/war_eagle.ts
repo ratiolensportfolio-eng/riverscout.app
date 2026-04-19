@@ -3,10 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // War Eagle Creek (ARKANSAS) — geometry from USGS NHDPlus HR
 // 9 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Withrow Springs State Park Access', lat: 36.15018, lng: -93.74052, type: 'access', description: 'ASP' },
-  { name: 'War Eagle Creek Walk-in Access', lat: 36.17680, lng: -93.79898, type: 'access', description: 'AGFC' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

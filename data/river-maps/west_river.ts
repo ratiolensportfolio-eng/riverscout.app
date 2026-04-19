@@ -4,41 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 264 points, 106/106 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  {
-    name: "Jamaica State Park",
-    lat: 43.1028,
-    lng: -72.7723,
-    type: "put-in",
-    description: "Put-in at Jamaica State Park. Dam-release runs draw paddlers from across New England.",
-  },
-  {
-    name: "Townshend Dam",
-    lat: 43.0504,
-    lng: -72.6984,
-    type: "portage",
-    description: "Townshend Dam portage. Army Corps flood-control dam requiring carry around.",
-  },
-  {
-    name: "Brattleboro Area",
-    lat: 42.8946,
-    lng: -72.5919,
-    type: "take-out",
-    description: "Take-out near Brattleboro where the West River meets the Connecticut River.",
-  },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "Jamaica State Park",
-    to: "Townshend Dam",
-    miles: 8,
-    paddleTime: "2\u20133 hours",
-    class: "II-IV",
-    notes: "Dam-release whitewater classic. The Jamaica section features Dumplings rapid (Class IV) and continuous action. Scheduled releases in spring and fall.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

@@ -3,11 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Roaring Fork River — polyline from National Rivers Project (NRP).
 // 729 points, stitched from 2 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Wingo Junction Recreation Site', lat: 39.34257, lng: -107.00610, type: 'access', description: 'Bureau of Land Managemant — parking: yes' },
-  { name: 'Bob Terrell State Wildlife Area & Boat Ramp', lat: 39.41493, lng: -107.22223, type: 'access', description: 'Colorado Parks and Wildlife — parking: yes' },
-  { name: 'Sam Caudill State Wildlife Area', lat: 39.47970, lng: -107.28655, type: 'access', description: 'Colorado Parks and Wildlife — parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

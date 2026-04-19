@@ -4,49 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 102 points, 44/200 segments stitched
 
 // Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
-export const accessPoints: AccessPoint[] = [
-  {
-    name: 'Tumwater Canyon',
-    lat: 47.8089,
-    lng: -120.7173,
-    type: 'put-in',
-    description: 'Upper put-in on US-2 in Tumwater Canyon. Technical Class III-IV whitewater through a steep, narrow gorge.',
-  },
-  {
-    name: 'Leavenworth',
-    lat: 47.7426,
-    lng: -120.663,
-    type: 'access',
-    description: 'Town access near the Bavarian village. Take-out for Tumwater run or put-in for the mellower lower section.',
-  },
-  {
-    name: 'Monitor',
-    lat: 47.7185,
-    lng: -120.6628,
-    type: 'take-out',
-    description: 'Lower take-out at Monitor. End point for the Leavenworth to Monitor float.',
-  },
-]
+export const accessPoints: AccessPoint[] = []
 
 // Wenatchee River sections
-export const sections: RiverSection[] = [
-  {
-    from: 'Tumwater Canyon',
-    to: 'Leavenworth',
-    miles: 8,
-    paddleTime: '1.5\u20132.5 hours',
-    class: 'III-IV',
-    notes: 'Technical whitewater through Tumwater Canyon along US-2. Continuous rapids with Drunkard"s Drop and Rock"n"Roll. Best at 4,000\u20138,000 CFS.',
-  },
-  {
-    from: 'Leavenworth',
-    to: 'Monitor',
-    miles: 12,
-    paddleTime: '2\u20133 hours',
-    class: 'II-III',
-    notes: 'Easier float below Leavenworth through open valley. Snowberry and Granny"s rapids. Good intermediate run.',
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

@@ -4,21 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 278 points, 111/111 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'The Forks', lat: 45.354, lng: -69.974, type: 'take-out', description: 'Take-out at the confluence with the Dead River.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "Harris Dam",
-    to: "The Forks",
-    miles: 12,
-    paddleTime: "4\u20135 hours",
-    class: "III-IV",
-    notes: "Premier dam-release whitewater run in Maine. Magic Falls is the crux rapid (Class IV). Reliable flows from scheduled releases. Most paddlers go with commercial outfitters.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

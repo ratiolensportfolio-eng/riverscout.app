@@ -3,44 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Maquoketa River (IOWA) — geometry from USGS NHDPlus HR
 // 68 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Adirondack Shelter', lat: 42.07174, lng: -90.69889, type: 'access' },
-  { name: 'Buzzard Ridge', lat: 42.14690, lng: -90.87648, type: 'access', description: 'Jackson CCB — restrooms' },
-  { name: 'Pin Oak Access', lat: 42.45541, lng: -91.43246, type: 'access', description: 'Delaware CCB' },
-  { name: 'Bailey\'S Ford Park', lat: 42.44310, lng: -91.40963, type: 'access', description: 'Delaware CCB — restrooms' },
-  { name: 'Canton Access', lat: 42.16262, lng: -90.89435, type: 'access' },
-  { name: 'Hartwick Access', lat: 42.41018, lng: -91.36356, type: 'access' },
-  { name: 'Highway 52 Access', lat: 42.15727, lng: -90.33920, type: 'access', description: 'Jackson CCB' },
-  { name: 'Joinerville Park', lat: 42.08106, lng: -90.75152, type: 'access', description: 'Jackson CCB' },
-  { name: 'Maquoketa City Access', lat: 42.07525, lng: -90.67003, type: 'access', description: 'Maquoketa' },
-  { name: 'Maquoketa River Access', lat: 42.40976, lng: -91.34249, type: 'access', description: 'Delhi' },
-  { name: 'Spragueville Access', lat: 42.08087, lng: -90.43552, type: 'access', description: 'Jackson CCB' },
-  { name: 'Turtle Creek Park', lat: 42.40459, lng: -91.37891, type: 'access', description: 'Delaware CCB — restrooms' },
-  { name: 'Backbone State Park', lat: 42.59940, lng: -91.53834, type: 'access', description: 'Iowa DNR — restrooms' },
-  { name: 'Bridgeport Canoe Access', lat: 42.08447, lng: -90.63258, type: 'access', description: 'Jackson CCB' },
-  { name: 'Chenelworth Canoe Access', lat: 42.10947, lng: -90.79696, type: 'access', description: 'Jackson CCB' },
-  { name: 'Damon Bridge Canoe Access', lat: 42.11877, lng: -90.39382, type: 'access', description: 'Jackson CCB' },
-  { name: 'Dundee Access', lat: 42.57984, lng: -91.54877, type: 'access', description: 'Delaware CCB' },
-  { name: 'Dunlap Park', lat: 42.33745, lng: -91.25787, type: 'access', description: 'Delaware CCB — restrooms' },
-  { name: 'East River Park', lat: 42.48074, lng: -91.45793, type: 'access', description: 'Manchester' },
-  { name: 'Highway 136', lat: 42.20370, lng: -91.00491, type: 'access', description: 'Jones CCB' },
-  { name: 'Indian Bluff', lat: 42.21396, lng: -91.06821, type: 'access', description: 'WMA' },
-  { name: 'Iron Bridge Canoe Access', lat: 42.10134, lng: -90.51840, type: 'access', description: 'Private' },
-  { name: 'Lindsey Bridge Access', lat: 42.54818, lng: -91.50979, type: 'access', description: 'NA' },
-  { name: 'Millertown Bridge', lat: 42.12449, lng: -90.85821, type: 'access', description: 'Jackson CCB' },
-  { name: 'Mon-Maq Dam', lat: 42.24532, lng: -91.17237, type: 'access', description: 'Jones CCB' },
-  { name: 'Morehead Canoe Access', lat: 42.09040, lng: -90.79683, type: 'access', description: 'Jackson CCB' },
-  { name: 'Pictured Rocks', lat: 42.20628, lng: -91.10275, type: 'access', description: 'Iowa DNR — restrooms' },
-  { name: 'Pioneer Road River Access', lat: 42.39086, lng: -91.29050, type: 'access', description: 'NA' },
-  { name: 'Quaker Mill Dam', lat: 42.50769, lng: -91.47413, type: 'access', description: 'NA' },
-  { name: 'Retz Wildlife Area', lat: 42.39776, lng: -91.31493, type: 'access', description: 'Delaware CCB' },
-  { name: 'Royertown Canoe Access', lat: 42.12018, lng: -90.82981, type: 'access', description: 'Jackson CCB' },
-  { name: 'Shearer Wildlife Area', lat: 42.40620, lng: -91.32641, type: 'access', description: 'Delaware CCB' },
-  { name: 'Supples Bridge Access', lat: 42.18509, lng: -90.97727, type: 'access', description: 'Jones CCB' },
-  { name: 'Tirrill Park', lat: 42.48763, lng: -91.46249, type: 'access', description: 'Manchester — restrooms' },
-  { name: 'Retz Wildlife Area', lat: 42.39776, lng: -91.31493, type: 'access', description: 'Delaware CCB' },
-  { name: 'Shearer Wildlife Area', lat: 42.40620, lng: -91.32641, type: 'access', description: 'Delaware CCB' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

@@ -4,30 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 197 points, 134/135 segments stitched
 
 // Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
-export const accessPoints: AccessPoint[] = [
-  { name: 'Canyon Lake Dam (Below)', lat: 29.869, lng: -98.193, type: 'put-in', description: 'Put-in below Canyon Dam for the cold-water tailrace — Texas\'s only year-round trout fishery.' },
-  { name: 'Gruene (Rockin\' R)', lat: 29.736, lng: -98.105, type: 'take-out', description: 'Historic Gruene access.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // Guadalupe River sections
-export const sections: RiverSection[] = [
-  {
-    from: 'Canyon Dam',
-    to: 'Gruene',
-    miles: 12,
-    paddleTime: '4\u20136 hours',
-    class: 'I-II',
-    notes: 'Cold tailwater trout section below Canyon Dam. Texas" premier trout fishery with year-round cold water. Mild riffles and pools.',
-  },
-  {
-    from: 'Gruene',
-    to: 'New Braunfels',
-    miles: 8,
-    paddleTime: '2\u20134 hours',
-    class: 'I-II',
-    notes: 'The famous Texas Hill Country tubing stretch. Easy floating through Gruene and into New Braunfels. Very popular in summer.',
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

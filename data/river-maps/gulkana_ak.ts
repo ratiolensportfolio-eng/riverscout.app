@@ -3,10 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Gulkana River — polyline from National Rivers Project (NRP).
 // 932 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Paxson Lake Campground', lat: 62.88652, lng: -145.52629, type: 'access', description: 'BLM — restrooms, parking: yes' },
-  { name: 'Sourdough Creek Campground', lat: 62.52655, lng: -145.52479, type: 'access', description: 'BLM — parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

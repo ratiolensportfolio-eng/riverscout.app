@@ -3,18 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Kokosing River — polyline from National Rivers Project (NRP).
 // 5552 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Kokosing River Access', lat: 40.39949, lng: -82.50121, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Kokosing River Access', lat: 40.38373, lng: -82.47040, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Kokosing River Access', lat: 40.37609, lng: -82.40358, type: 'access', description: 'parking: yes' },
-  { name: 'Kokosing River Access', lat: 40.40484, lng: -82.32167, type: 'access', description: 'parking: yes' },
-  { name: 'Kokosing River Access', lat: 40.39684, lng: -82.27794, type: 'access', description: 'parking: yes' },
-  { name: 'Kokosing River Access', lat: 40.36033, lng: -82.16145, type: 'access', description: 'parking: yes' },
-  { name: 'Kokosing River Access', lat: 40.37717, lng: -82.43374, type: 'access', description: 'parking: yes' },
-  { name: 'Kokosing River Access', lat: 40.35767, lng: -82.38487, type: 'access', description: 'parking: yes' },
-  { name: 'Kokosing River Access', lat: 40.37290, lng: -82.19980, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Kokosing River Access', lat: 40.37830, lng: -82.23983, type: 'access', description: 'parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

@@ -4,38 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 232 points, 112/200 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Sailor Bar / Illinois BTAF', lat: 38.63398, lng: -121.23402, type: 'access', description: 'Sacramento County Regional Parks — parking: yes, fee' },
-  { name: 'Upper Sunrise Recreation Area', lat: 38.63203, lng: -121.23570, type: 'access', description: 'Sacramento County Regional Parks — parking: yes, fee' },
-  { name: 'Lower Sunrise Recreation Area', lat: 38.63219, lng: -121.27087, type: 'access', description: 'Sacramento County Regional Parks — parking: yes' },
-  { name: 'Fair Oaks', lat: 38.63317, lng: -121.27087, type: 'access', description: 'Sacramento County Regional Parks — parking: yes' },
-  { name: 'Rossmoor Bar', lat: 38.62953, lng: -121.29523, type: 'access', description: 'Sacramento County Regional Parks — parking: yes, fee' },
-  { name: 'River Bend Park', lat: 38.59656, lng: -121.33086, type: 'access', description: 'Sacramento County Regional Parks — parking: yes, fee' },
-  { name: 'Harrington BTAF', lat: 38.58024, lng: -121.34120, type: 'access', description: 'Sacramento County Regional Parks — parking: yes' },
-  { name: 'Watt Ave BTAF', lat: 38.56645, lng: -121.38085, type: 'access', description: 'Sacramento County Regional Parks — parking: yes, fee' },
-  { name: 'Howe Ave BLF', lat: 38.55985, lng: -121.40502, type: 'access', description: 'Sacramento County Regional Parks — parking: yes, fee' },
-  { name: 'Discovery Park', lat: 38.60047, lng: -121.50884, type: 'access', description: 'Sacramento County Regional Parks — parking: yes, fee' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "Chili Bar",
-    to: "Salmon Falls",
-    miles: 11,
-    paddleTime: "4\u20135 hours",
-    class: "III",
-    notes: "Classic California Class III. Meatgrinder, Troublemaker, and Satan\u2019s Cesspool are the marquee rapids. High volume in spring.",
-  },
-  {
-    from: "Salmon Falls",
-    to: "Folsom Lake",
-    miles: 5,
-    paddleTime: "2\u20133 hours",
-    class: "III-IV",
-    notes: "The Gorge section. Tighter canyon with bigger drops. Often requires higher flows to run cleanly. Take-out depends on lake level.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

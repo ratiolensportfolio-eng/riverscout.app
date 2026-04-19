@@ -3,20 +3,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Boardman River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 129 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Forks Campground', lat: 44.72, lng: -85.457, type: 'access-campsite', description: 'Upper Boardman, USFS.' },
-  { name: 'Supply Road', lat: 44.696, lng: -85.497, type: 'access', description: 'USFS.' },
-  { name: 'Schecks Place', lat: 44.67, lng: -85.535, type: 'access-campsite', description: 'State forest campground.' },
-  { name: 'Brown Bridge Pond', lat: 44.646, lng: -85.539, type: 'access', description: 'Below Brown Bridge Dam removal site.' },
-  { name: 'Ranch Rudolf', lat: 44.622, lng: -85.532, type: 'access', description: 'Private/access road.' },
-  { name: 'Traverse City', lat: 44.762, lng: -85.62, type: 'take-out', description: 'River mouth at Grand Traverse Bay.' },
-]
+export const accessPoints: AccessPoint[] = []
 
-export const sections: RiverSection[] = [
-  { from: 'Forks Campground', to: 'Supply Road', miles: 3, paddleTime: '1.5 hours', class: 'I' },
-  { from: 'Supply Road', to: 'Schecks Place', miles: 3, paddleTime: '1.5 hours', class: 'I' },
-  { from: 'Schecks Place', to: 'Brown Bridge Pond', miles: 3, paddleTime: '1.5 hours', class: 'I', notes: 'Dam removal area' },
-]
+export const sections: RiverSection[] = []
 
 export const riverPath: [number, number][] = [
   [-85.3957, 44.6749],

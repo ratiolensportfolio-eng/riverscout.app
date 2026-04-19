@@ -3,22 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Farmington River — polyline from National Rivers Project (NRP).
 // 576 points, stitched from 2 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Rt. 20, Riverton CT', lat: 41.96049, lng: -73.02040, type: 'access', description: 'parking: yes' },
-  { name: 'Pipeline Crossing', lat: 41.94301, lng: -73.01357, type: 'access', description: 'parking: yes' },
-  { name: 'Peoples State Forest', lat: 41.92513, lng: -72.99894, type: 'access', description: 'CT Dept. of Energy and Environmental Protection — parking: yes, fee' },
-  { name: 'Rt. 181/318 Bridge', lat: 41.91254, lng: -72.98758, type: 'access', description: 'parking: yes' },
-  { name: 'Callahan Memorial Park', lat: 41.87840, lng: -72.97593, type: 'access' },
-  { name: 'Satan\'s Kingdom State Recreation Area', lat: 41.85692, lng: -72.95798, type: 'access', description: 'CT Dept. of Energy and Environmental Protection — parking: yes' },
-  { name: 'Nepaug State Forest', lat: 41.84248, lng: -72.94807, type: 'access', description: 'CT Dept. of Energy and Environmental Protection — parking: yes' },
-  { name: 'West River Rd., Above High Bank Rapid', lat: 41.92876, lng: -73.00298, type: 'access', description: 'parking: yes' },
-  { name: 'Rail Trail Parking Lot on Rte 179 - Burlington', lat: 41.79394, lng: -72.92530, type: 'access', description: 'parking: yes' },
-  { name: 'Route 4 Bridge - Farmington', lat: 41.72850, lng: -72.82947, type: 'access', description: 'parking: yes' },
-  { name: 'Tariffville Park - Simsbury', lat: 41.91730, lng: -72.76840, type: 'access', description: 'Simsbury Culture, Parks & Recreation — restrooms, parking: yes' },
-  { name: 'Tariffville Gorge - East Granby', lat: 41.90471, lng: -72.76002, type: 'access', description: 'parking: yes' },
-  { name: '187 Bridge - East Granby', lat: 41.89751, lng: -72.74918, type: 'access', description: 'parking: yes' },
-  { name: 'River Street Boat Launch - Windsor', lat: 41.90135, lng: -72.67037, type: 'access', description: 'Town of Windsor — parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

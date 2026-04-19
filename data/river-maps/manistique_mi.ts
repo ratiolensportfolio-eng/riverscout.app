@@ -3,9 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Manistique River — polyline from National Rivers Project (NRP).
 // 423 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Manistique River Roadside Park', lat: 46.23169, lng: -85.92839, type: 'access', description: 'Michigan Department of Transportation — restrooms, parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

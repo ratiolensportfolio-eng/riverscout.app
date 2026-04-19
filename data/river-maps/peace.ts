@@ -3,24 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Peace River (FLORIDA) — geometry from USGS NHDPlus HR
 // 101 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Wauchula Griffin Road Public Boat Ramp - Fwc # R-4', lat: 27.54047, lng: -81.79172, type: 'access', description: 'Hardee County — parking: yes' },
-  { name: 'Gardner Boat Ramp', lat: 27.34641, lng: -81.82628, type: 'access', description: 'Hardee County — parking: yes' },
-  { name: 'Pioneer Park And Public Boat Ramp (Zolfo Springs)', lat: 27.50354, lng: -81.80566, type: 'access', description: 'Hardee County — restrooms, parking: yes' },
-  { name: 'Wauchula Riverside Park And Public Boat Ramp', lat: 27.55080, lng: -81.79476, type: 'access', description: 'parking: yes' },
-  { name: 'Punta Gorda Municipal Marina (Aka. Laishley Park)', lat: 26.93868, lng: -82.05173, type: 'access', description: 'City Of Punta Gorda — restrooms, parking: yes' },
-  { name: 'Darst Park Public Boat Ramp', lat: 26.95212, lng: -82.00975, type: 'access', description: 'Charlotte County — parking: yes' },
-  { name: 'Harbor Heights Park Public Boat Ramp', lat: 26.99011, lng: -81.99554, type: 'access', description: 'Charlotte County — restrooms, parking: yes' },
-  { name: 'Peace River Canoe Launch At Highway 60', lat: 27.90152, lng: -81.81716, type: 'access', description: 'Polk County — parking: yes' },
-  { name: 'Lettuce Lake Public Boat Ramp', lat: 27.07515, lng: -81.98887, type: 'access', description: 'Desoto County — restrooms, parking: yes' },
-  { name: 'Desoto Veterans Park Public Boat Launch', lat: 27.22397, lng: -81.88194, type: 'access', description: 'Desoto County — restrooms, parking: yes' },
-  { name: 'Nocatee Boat Ramp', lat: 27.16221, lng: -81.90207, type: 'access', description: 'Desoto County — parking: yes' },
-  { name: 'Brownville Park', lat: 27.30208, lng: -81.84593, type: 'access', description: 'Desoto County — restrooms, parking: yes' },
-  { name: 'Liverpool Park', lat: 27.04385, lng: -81.98580, type: 'access', description: 'Desoto County — restrooms, parking: yes' },
-  { name: 'Deep Creek Park Public Boat Ramp', lat: 27.06065, lng: -82.00292, type: 'access', description: 'Desoto County — restrooms, parking: yes' },
-  { name: 'Fort Meade Outdoor Recreation Area', lat: 27.74710, lng: -81.78007, type: 'access', description: 'City Of Fort Meade — parking: yes' },
-  { name: 'Chester Roberts Park', lat: 26.95721, lng: -82.06050, type: 'access', description: 'Charlotte County' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

@@ -3,9 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Betsie River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 120 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Grass Lake Road', lat: 44.58271, lng: -85.85035, type: 'put-in', description: 'Upper Betsie access.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

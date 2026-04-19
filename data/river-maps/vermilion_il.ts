@@ -3,15 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Vermilion River (ILLINOIS) — geometry from USGS NHDPlus HR
 // 112 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Vermilion River Access', lat: 41.09369, lng: -82.48762, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Vermilion River Access', lat: 41.42000, lng: -82.35667, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Vermilion River Access', lat: 41.42403, lng: -82.36509, type: 'access', description: 'parking: yes' },
-  { name: 'Vermilion River Access', lat: 41.27453, lng: -82.40315, type: 'access', description: 'parking: yes' },
-  { name: 'Vermilion River Access', lat: 41.33088, lng: -82.34872, type: 'access', description: 'parking: yes' },
-  { name: 'Vermilion River Access', lat: 41.38278, lng: -82.31500, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Vermilion River Access', lat: 41.42500, lng: -82.36611, type: 'access', description: 'restrooms, parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

@@ -4,32 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 232 points, 64/64 segments stitched
 
 // Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
-export const accessPoints: AccessPoint[] = [
-  { name: 'Tugaloo Lake Boat Ramp', lat: 34.73667, lng: -83.34559, type: 'access' },
-  { name: 'Highway 28 Put-In', lat: 34.90785, lng: -83.18127, type: 'access' },
-  { name: 'Earl\'s Ford', lat: 34.87957, lng: -83.22871, type: 'access' },
-  { name: 'Highway 76 Bridge', lat: 34.81405, lng: -83.30644, type: 'access' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // Chattooga River sections
-export const sections: RiverSection[] = [
-  {
-    from: 'Highway 28 Bridge',
-    to: 'Woodall Shoals',
-    miles: 10,
-    paddleTime: '4\u20136 hours',
-    class: 'III-IV',
-    notes: 'Section III \u2014 the classic Chattooga run from the movie "Deliverance." Bull Sluice (Class IV) is the crux rapid. Beautiful Wild and Scenic river corridor.',
-  },
-  {
-    from: 'Woodall Shoals',
-    to: 'Lake Tugaloo',
-    miles: 8,
-    paddleTime: '4\u20136 hours',
-    class: 'IV-V',
-    notes: 'Section IV \u2014 expert-only whitewater featuring the Five Falls sequence: Entrance, Corkscrew, Crack-in-the-Rock, Jawbone, and Sock-em-Dog. Mandatory portages for most paddlers.',
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

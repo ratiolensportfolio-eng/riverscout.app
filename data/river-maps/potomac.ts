@@ -4,21 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 193 points, 94/94 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Anglers Inn', lat: 38.996, lng: -77.239, type: 'take-out', description: 'Popular Class II-III put-in below Great Falls on the Maryland side.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "Great Falls Overlook",
-    to: "Carderock",
-    miles: 4,
-    paddleTime: "2\u20134 hours",
-    class: "II-V",
-    notes: "Great Falls to Carderock. Class V falls (portage for most), then Class II-III Mather Gorge below. Popular expert kayak run near Washington, D.C.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

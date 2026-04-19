@@ -3,11 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Deep Creek — polyline from National Rivers Project (NRP).
 // 2098 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Deep River County Park', lat: 41.49076, lng: -87.23546, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Riverview Park', lat: 41.56653, lng: -87.23751, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Bicentennial Park', lat: 41.57101, lng: -87.24044, type: 'access', description: 'Indiana Department of Natural Resources' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

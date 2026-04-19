@@ -4,30 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 225 points, 142/142 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Cahaba River NWR (Bibb County)', lat: 33.072, lng: -87.066, type: 'put-in', description: 'US Fish & Wildlife access in the Cahaba River National Wildlife Refuge.' },
-  { name: 'Centreville', lat: 32.939, lng: -87.117, type: 'take-out', description: 'Town of Centreville access.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "Grants Mill",
-    to: "Cahaba Lily Preserve",
-    miles: 25,
-    paddleTime: "8\u201310 hours",
-    class: "I-II",
-    notes: "From urban Birmingham into increasingly wild terrain. Class I-II shoals and riffles over bedrock. The Cahaba is one of the most biodiverse rivers in North America. Visit in late May for the iconic Cahaba lily bloom.",
-  },
-  {
-    from: "Cahaba Lily Preserve",
-    to: "Centreville",
-    miles: 30,
-    paddleTime: "10\u201312 hours",
-    class: "I",
-    notes: "Gentle, wide river through rural Alabama. Mostly flatwater with occasional riffles. Great for a relaxed multi-day float. Rich aquatic biodiversity\u2014over 130 fish species and 40 mussel species call the Cahaba home.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

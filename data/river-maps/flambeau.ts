@@ -3,27 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Flambeau River — polyline from National Rivers Project (NRP).
 // 3533 points, stitched from 4 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'HOLTS LANDING ACCESS', lat: 46.01020, lng: -90.36839, type: 'access', description: 'Flambeau River State Forest' },
-  { name: 'Hines Park Access', lat: 45.94269, lng: -90.43817, type: 'access', description: 'City of Park Falls' },
-  { name: 'Flambeau River Portage Access', lat: 45.55474, lng: -90.95924, type: 'access', description: 'Xcel Energy' },
-  { name: 'Park Falls Carry-in', lat: 45.94745, lng: -90.43340, type: 'access', description: 'City of Park Falls' },
-  { name: 'DEMARS BRIDGE CARRY-IN', lat: 45.90204, lng: -90.47483, type: 'access', description: 'Renewable World Energy' },
-  { name: 'Beaver Dam Carry-in Landing', lat: 45.61657, lng: -90.90674, type: 'access', description: 'Flambeau River State Forest' },
-  { name: 'Hervas Boat Landing', lat: 45.63977, lng: -90.83484, type: 'access', description: 'Flambeau River State Forest' },
-  { name: 'Park Falls Boat Ramp', lat: 45.91414, lng: -90.44799, type: 'access', description: 'City of Park Falls' },
-  { name: 'Highway W Canoe Landing', lat: 45.76775, lng: -90.76107, type: 'access', description: 'Flambeau River State Forest' },
-  { name: 'Flambeau River Boat Launch (Sixmile Landing', lat: 45.86348, lng: -90.54918, type: 'access', description: 'Renewable World Energies' },
-  { name: 'Dix Dox Landing', lat: 45.86262, lng: -90.70476, type: 'access', description: 'Flambeau River State Forest' },
-  { name: 'County Hwy E Boat Ramp', lat: 45.33313, lng: -91.22846, type: 'access' },
-  { name: 'Flambeau River Access', lat: 45.58830, lng: -90.92332, type: 'access' },
-  { name: 'Flambeau River Boat Ramp', lat: 45.84075, lng: -90.66107, type: 'access', description: 'Flambeau River State Forest' },
-  { name: 'Agenda Landing Access', lat: 45.98858, lng: -90.39475, type: 'access', description: 'Town of Agenda' },
-  { name: 'Flambeau River Access', lat: 45.40936, lng: -91.21767, type: 'access', description: 'Xcel Energy' },
-  { name: 'Nine Mile Landing', lat: 45.85247, lng: -90.60023, type: 'access', description: 'Flambeau River State Forest' },
-  { name: 'Camp 41 Canoe Landing', lat: 45.69219, lng: -90.81345, type: 'access', description: 'Flambeau River State Forest' },
-  { name: 'Robinson Landing', lat: 46.06527, lng: -90.23378, type: 'access', description: 'Turtle Flambeau Scenic Waters' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

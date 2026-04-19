@@ -3,9 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Kettle River (MINNESOTA) — geometry from USGS NHDPlus HR
 // 26 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Kettle Creek State Park', lat: 41.37645, lng: -77.92872, type: 'access', description: 'COE — parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

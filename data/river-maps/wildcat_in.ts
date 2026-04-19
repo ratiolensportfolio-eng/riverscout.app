@@ -3,14 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Wildcat Creek — polyline from National Rivers Project (NRP).
 // 7073 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Wildcat Creek at Fairfield Park', lat: 40.38941, lng: -86.76112, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Knop Lake Wildcat Creek Access', lat: 40.45955, lng: -86.66416, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Adam\'s Mill', lat: 40.48067, lng: -86.50806, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Tippecanoe County Park', lat: 40.43908, lng: -86.80262, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Burlington', lat: 40.48708, lng: -86.39529, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Wildcat Lake Access', lat: 46.16630, lng: -89.61145, type: 'access', description: 'NHAL Recreation Team Leader' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

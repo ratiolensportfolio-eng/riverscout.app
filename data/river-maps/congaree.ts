@@ -3,13 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Congaree River — polyline from National Rivers Project (NRP).
 // 1802 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Barney Jordan Landing', lat: 33.96500, lng: -81.03633, type: 'access', description: 'Richland County — parking: yes' },
-  { name: 'Thomas Newman Landing', lat: 33.94924, lng: -81.02895, type: 'access', description: 'City of Cayce — parking: yes' },
-  { name: 'Bates Bridge Landing', lat: 33.75324, lng: -80.64526, type: 'access', description: 'parking: yes' },
-  { name: 'Granby Park Access', lat: 33.98352, lng: -81.04538, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Congaree Creek Canoe Launch', lat: 33.94251, lng: -81.04520, type: 'access', description: 'parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

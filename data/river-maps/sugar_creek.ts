@@ -4,33 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 176 points, 173/173 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Atterbury FWA', lat: 39.36323, lng: -85.99716, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Sugar Creek Access', lat: 40.70029, lng: -81.59831, type: 'access', description: 'parking: yes' },
-  { name: 'Sugar Creek Access', lat: 40.63568, lng: -81.55414, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Sugar Creek Access', lat: 40.63702, lng: -81.54743, type: 'access', description: 'parking: yes' },
-  { name: 'Sugar Lake', lat: 41.56417, lng: -79.94589, type: 'access', description: 'PFBC — parking: yes' },
-  { name: 'Sugar Maple Lake - North Access', lat: 46.10419, lng: -89.07432, type: 'access' },
-  { name: 'Sugar Maple Lake - South Access', lat: 46.10183, lng: -89.07413, type: 'access' },
-  { name: 'Albany Park', lat: 42.71006, lng: -89.43967, type: 'access', description: 'Village of Albany' },
-  { name: 'County X Ramp', lat: 42.79994, lng: -89.48626, type: 'access', description: 'Town of Brooklyn' },
-  { name: 'Sugar River Access', lat: 42.54246, lng: -89.34133, type: 'access', description: 'Wildlife Technician' },
-  { name: 'Albany Wildlife Area', lat: 42.73354, lng: -89.44297, type: 'access', description: 'Wildlife Technician' },
-  { name: 'Sugar River Park Boat Ramp', lat: 42.51879, lng: -89.30577, type: 'access', description: 'Public Works - Parks Division' },
-  { name: 'Sugar River Carry-in', lat: 42.54999, lng: -89.36640, type: 'access' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "Shades State Park",
-    to: "Cox Ford Covered Bridge",
-    miles: 12,
-    paddleTime: "4\u20136 hours",
-    class: "I-II",
-    notes: "Gentle float through Indiana\"s covered-bridge country. Sandstone bluffs, old-growth forest, and several historic covered bridges along the way. Best in spring with moderate water levels.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

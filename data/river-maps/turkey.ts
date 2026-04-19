@@ -3,37 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Turkey River — polyline from National Rivers Project (NRP).
 // 1223 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Vernon Springs Impoundment', lat: 43.34695, lng: -92.13886, type: 'access', description: 'Howard CCB — restrooms' },
-  { name: 'Big Springs Fish Hatchery', lat: 42.91256, lng: -91.48280, type: 'access', description: 'Iowa DNR — restrooms' },
-  { name: 'Cardinal Marsh', lat: 43.32984, lng: -92.07669, type: 'access', description: 'Iowa DNR' },
-  { name: 'Clermont Park', lat: 42.99793, lng: -91.65892, type: 'access', description: 'Clermont' },
-  { name: 'Eldorado Bridge', lat: 43.05153, lng: -91.83982, type: 'access', description: 'Eldorado' },
-  { name: 'Elkader Access Lower', lat: 42.85136, lng: -91.40075, type: 'access', description: 'Elkader' },
-  { name: 'Elkader Access Upper', lat: 42.85728, lng: -91.40619, type: 'access', description: 'Elkader' },
-  { name: 'Ffa Canoe Access', lat: 42.99724, lng: -91.65565, type: 'access' },
-  { name: 'Fort Atkinson Access', lat: 43.14643, lng: -91.93052, type: 'access', description: 'NA — restrooms' },
-  { name: 'Frieden Park', lat: 42.90883, lng: -91.47402, type: 'access', description: 'Clayton CCB' },
-  { name: 'Garber Access', lat: 42.74004, lng: -91.26165, type: 'access', description: 'Garber' },
-  { name: 'Gilbertson Park', lat: 42.95833, lng: -91.62349, type: 'access', description: 'Fayette CCB' },
-  { name: 'Kings Bridge', lat: 43.32725, lng: -92.10079, type: 'access', description: 'NA' },
-  { name: 'Millville Access', lat: 42.70774, lng: -91.07622, type: 'access', description: 'Millville' },
-  { name: 'Motor Mill Access', lat: 42.80619, lng: -91.34750, type: 'access', description: 'Clayton CCB — restrooms' },
-  { name: 'Osterdock Access', lat: 42.73194, lng: -91.15943, type: 'access', description: 'Osterdock' },
-  { name: 'Turkey River Access', lat: 43.34040, lng: -92.11114, type: 'access', description: 'Iowa DNR' },
-  { name: 'Turkey River Access', lat: 42.71764, lng: -91.01038, type: 'access', description: 'NA' },
-  { name: 'Turkey River Canoe Access', lat: 43.01779, lng: -91.73044, type: 'access' },
-  { name: 'Turkey River Park', lat: 42.84322, lng: -91.40208, type: 'access', description: 'Clayton CCB — restrooms' },
-  { name: 'Valley Access', lat: 42.97782, lng: -91.65157, type: 'access', description: 'NA' },
-  { name: 'Vernon Springs Park', lat: 43.34696, lng: -92.13655, type: 'access', description: 'Howard CCB — restrooms' },
-  { name: 'W42 Bridge', lat: 43.04888, lng: -91.78610, type: 'access', description: 'NA' },
-  { name: 'Cardinal Marsh', lat: 43.32984, lng: -92.07669, type: 'access', description: 'Iowa DNR' },
-  { name: 'Turkey River Access', lat: 43.34040, lng: -92.11114, type: 'access', description: 'Iowa DNR' },
-  { name: 'Key Bridge', lat: 33.79472, lng: -82.14431, type: 'access', description: 'parking: yes' },
-  { name: 'SC 283 Bridge Access', lat: 33.83011, lng: -82.11405, type: 'access', description: 'parking: yes' },
-  { name: 'Turkey Run Lake', lat: 39.96796, lng: -80.58440, type: 'access', description: 'NA — restrooms, parking: yes' },
-  { name: 'Turkey Run Lake', lat: 38.96818, lng: -81.77289, type: 'access', description: 'No Control Sign — restrooms, parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

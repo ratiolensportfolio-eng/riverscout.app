@@ -4,29 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 220 points, 77/77 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Little Miami River Access', lat: 39.49800, lng: -84.10048, type: 'access', description: 'parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "John Bryan SP",
-    to: "Xenia",
-    miles: 15,
-    paddleTime: "4\u20136 hours",
-    class: "I-II",
-    notes: "Upper Little Miami through the Clifton Gorge area. Small ledges and riffles in the limestone gorge. Scenic stretch with Glen Helen Nature Preserve nearby.",
-  },
-  {
-    from: "Xenia",
-    to: "Morrow",
-    miles: 30,
-    paddleTime: "1\u20132 days",
-    class: "I",
-    notes: "Gentle flatwater float through rural southwestern Ohio. Easy current, great for beginners. Little Miami Scenic Trail runs alongside for shuttle logistics.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

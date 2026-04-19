@@ -3,14 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Dolores River — polyline from National Rivers Project (NRP).
 // 753 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Bedrock Recreation Site', lat: 38.30461, lng: -108.89443, type: 'access', description: 'Bureau of Land Managemant — parking: yes' },
-  { name: 'San Miguel Confluence', lat: 38.37983, lng: -108.80280, type: 'access', description: 'Bureau of Land Managemant — parking: yes' },
-  { name: 'Gateway', lat: 38.68004, lng: -108.97975, type: 'access', description: 'parking: yes' },
-  { name: 'Bradfield Recreation Site', lat: 37.65642, lng: -108.73582, type: 'access', description: 'Bureau of Land Managemant — restrooms, parking: 1' },
-  { name: 'Mountain Sheep Point Rec Site', lat: 37.79541, lng: -108.82597, type: 'access', description: 'Bureau of Land Managemant — restrooms, parking: 1' },
-  { name: 'Gypsum Valley', lat: 38.13389, lng: -108.88067, type: 'access', description: 'Bureau of Land Managemant — parking: 1' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

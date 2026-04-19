@@ -8,25 +8,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Four sites near the mouth (Camp Ten Bridge, Riverbank Park, Harbor St,
 // AuSable River Boat Launch) have no verified coord yet — omitted until
 // one is handed in so no bad pin ever ships.
-export const accessPoints: AccessPoint[] = [
-  { name: 'Stephan Bridge (Gates Lodge)', lat: 44.66, lng: -84.698, type: 'access', description: 'Upper access, Grayling area, near Gates Au Sable Lodge.' },
-  { name: 'Burton\'s Landing', lat: 44.635, lng: -84.588, type: 'access', description: 'USFS.' },
-  { name: 'Parmalee Bridge', lat: 44.556, lng: -84.455, type: 'access', description: 'USGS gauge 04136900 — confirmed gauge location.' },
-  { name: 'Whirlpool Access', lat: 44.43, lng: -83.959, type: 'access', description: 'State forest.' },
-  { name: '4001 Bridge', lat: 44.466, lng: -83.659, type: 'access', description: 'Last takeout on National Scenic River section.' },
-  { name: 'Rainbow Bend', lat: 44.433, lng: -83.551, type: 'access', description: 'Mid-river access.' },
-  { name: 'Foote Dam', lat: 44.543, lng: -83.445, type: 'access', description: 'Below Foote Dam.' },
-  { name: 'Oscoda / Lake Huron', lat: 44.428, lng: -83.333, type: 'take-out', description: 'River mouth at Lake Huron.' },
-  { name: 'Chase Bridge (Mason Tract)', lat: 44.424, lng: -84.583, type: 'access', description: 'Upper South Branch.' },
-  { name: 'Lovells Area', lat: 44.847, lng: -84.361, type: 'access', description: 'North Branch, near gauge 04134500.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // Au Sable River sections with distances and paddle times
-export const sections: RiverSection[] = [
-  { from: 'Stephan Bridge', to: 'Burton\'s Landing', miles: 8, paddleTime: '3-4 hours', class: 'I', notes: 'Upper Au Sable, flies-only stretch' },
-  { from: 'Burton\'s Landing', to: 'Parmalee Bridge', miles: 12, paddleTime: '5-6 hours', class: 'I' },
-  { from: 'Parmalee Bridge', to: '4001 Bridge', miles: 20, paddleTime: '8-10 hours', class: 'I', notes: 'National Scenic River section' },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

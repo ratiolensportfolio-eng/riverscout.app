@@ -3,26 +3,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Manistee River, MI — full USGS NHDPlus HR extraction
 // 361 points, sorted east→west (headwaters to mouth)
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Tippy Dam Canoe Launch', lat: 44.1468, lng: -85.9687, type: 'access', description: 'Below Tippy Dam, upper float section.' },
-  { name: 'Bear Creek Road', lat: 44.193, lng: -85.984, type: 'access', description: 'State forest access.' },
-  { name: 'High Bridge', lat: 44.241, lng: -86.019, type: 'access-campsite', description: 'Off High Bridge Road. USFS campground, 16 sites.' },
-  { name: 'Sawdust Bridge', lat: 44.268, lng: -86.057, type: 'access', description: 'USFS access.' },
-  { name: 'Red Bridge', lat: 44.31, lng: -86.098, type: 'access-campsite', description: 'State forest campground.' },
-  { name: 'Manistee River Bridge M-55', lat: 44.34, lng: -86.16, type: 'access', description: 'Near Wellston.' },
-  { name: 'CCC Bridge', lat: 44.364, lng: -86.2, type: 'access', description: 'USFS.' },
-  { name: 'Magoon Creek', lat: 44.391, lng: -86.239, type: 'access', description: 'State forest.' },
-  { name: 'Coates Highway', lat: 44.418, lng: -86.278, type: 'access', description: 'Access point.' },
-  { name: 'Manistee / Lake Michigan', lat: 44.253, lng: -86.348, type: 'take-out', description: 'River mouth at Manistee city.' },
-]
+export const accessPoints: AccessPoint[] = []
 
-export const sections: RiverSection[] = [
-  { from: 'Tippy Dam', to: 'Bear Creek Road', miles: 5, paddleTime: '2 hours', class: 'Riffles' },
-  { from: 'Bear Creek Road', to: 'High Bridge', miles: 5, paddleTime: '2 hours', class: 'Riffles' },
-  { from: 'High Bridge', to: 'Red Bridge', miles: 6, paddleTime: '2.5 hours', class: 'Riffles' },
-  { from: 'Red Bridge', to: 'CCC Bridge', miles: 6, paddleTime: '2.5 hours', class: 'Riffles' },
-  { from: 'CCC Bridge', to: 'Manistee / Lake Michigan', miles: 10, paddleTime: '4 hours', class: 'Riffles' },
-]
+export const sections: RiverSection[] = []
 
 export const riverPath: [number, number][] = [
   [-84.9995, 44.608],

@@ -3,28 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Des Plaines River — polyline from National Rivers Project (NRP).
 // 13421 points, stitched from 2 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Russell Road Launch', lat: 42.48913, lng: -87.92491, type: 'access', description: 'Lake County Forest Preserve District — parking: yes' },
-  { name: 'Wadsworth Road Launch', lat: 42.42859, lng: -87.92942, type: 'access', description: 'Lake County Forest Preserve District — parking: yes' },
-  { name: 'Gowe Park Launch', lat: 42.36867, lng: -87.91755, type: 'access', description: 'Lake County Forest Preserve District — parking: yes' },
-  { name: 'Independence Grove Launch', lat: 42.31484, lng: -87.95705, type: 'access', description: 'Lake County Forest Preserve District — parking: yes' },
-  { name: 'Oak Spring Road Launch', lat: 42.28853, lng: -87.93780, type: 'access', description: 'Lake County Forest Preserve District — parking: yes' },
-  { name: 'Route 60 Launch', lat: 42.23964, lng: -87.93961, type: 'access', description: 'Lake County Forest Preserve District — parking: yes' },
-  { name: 'Rivershire Park Launch', lat: 42.18939, lng: -87.91720, type: 'access', description: 'Lincolnshire — parking: yes' },
-  { name: 'Allison Woods Canoe Ramp', lat: 42.10087, lng: -87.88560, type: 'access', description: 'Forest Preserves of Cook County — parking: yes' },
-  { name: 'Stony Ford Canoe Ramp', lat: 41.81296, lng: -87.80969, type: 'access', description: 'Forest Preserves of Cook County — parking: yes' },
-  { name: 'Columbia Woods', lat: 41.73051, lng: -87.88958, type: 'access', description: 'Forest Preserves of Cook County — parking: yes' },
-  { name: 'Knollwood Launch', lat: 41.71002, lng: -87.93196, type: 'access', description: 'Burr Ridge Park District — parking: yes' },
-  { name: 'Lemont Road', lat: 41.68221, lng: -88.00331, type: 'access', description: 'Metropolitan Water Reclamation District — parking: yes' },
-  { name: 'Isle a la Cache', lat: 41.63988, lng: -88.07092, type: 'access', description: 'Forest Preserve District of Will County — parking: yes' },
-  { name: 'Plank Road Meadow', lat: 41.81787, lng: -87.83181, type: 'access', description: 'Forest Preserves of Cook County — parking: yes' },
-  { name: 'Irving Park Rd. Picnic Area', lat: 41.95415, lng: -87.85623, type: 'access', description: 'Forest Preserves of Cook County — parking: yes' },
-  { name: 'Park Ridge Dam', lat: 42.01339, lng: -87.86519, type: 'access' },
-  { name: 'Dam #4', lat: 41.99354, lng: -87.85915, type: 'access' },
-  { name: 'Dempster Street Dam', lat: 42.03850, lng: -87.88279, type: 'access' },
-  { name: 'McKinleyWdsKerrySheridanGrove', lat: 41.41305, lng: -88.22220, type: 'access', description: 'Forest Preserve District of Will County — parking: yes' },
-  { name: 'McKinley Woods FP', lat: 41.38371, lng: -88.24038, type: 'access', description: 'Forest Preserve District of Will County — parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

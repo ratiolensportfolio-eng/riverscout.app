@@ -3,34 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Clarion River (PENNSYLVANIA) — geometry from USGS NHDPlus HR
 // 129 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Clear Creek State Park', lat: 41.35277, lng: -79.02359, type: 'access', description: 'DCNR — parking: yes' },
-  { name: 'Toby Boat Launch', lat: 41.22388, lng: -79.38758, type: 'access', description: 'Clarion Township — parking: yes' },
-  { name: 'Kilgus Road Canoe Launch', lat: 41.55441, lng: -78.59635, type: 'access', description: 'COE — parking: yes' },
-  { name: 'Glen Hazel Access', lat: 41.54379, lng: -78.61393, type: 'access', description: 'Unknown — parking: yes' },
-  { name: 'Johnsonburg Access', lat: 41.49890, lng: -78.68144, type: 'access', description: 'Unknown — parking: yes' },
-  { name: '322 Bridge Access', lat: 41.22315, lng: -79.40199, type: 'access', description: 'Unknown — parking: yes' },
-  { name: 'Dear Creek Access', lat: 41.17213, lng: -79.47761, type: 'access', description: 'Unknown — parking: yes' },
-  { name: 'Callensburg Access', lat: 41.13029, lng: -79.55465, type: 'access', description: 'Unknown' },
-  { name: 'Alum Rock Access Point', lat: 41.13419, lng: -79.62440, type: 'access', description: 'Unknown — parking: yes' },
-  { name: 'Wilcox Canoe Launch', lat: 41.57929, lng: -78.68925, type: 'access', description: 'Jones Township — parking: yes' },
-  { name: 'Pale Whale Canoe Livery', lat: 41.32880, lng: -79.20456, type: 'access', description: 'Mike McMurray - Pale Whale Canoe Livery — parking: yes, fee' },
-  { name: 'Cook Forest Canoe Rental', lat: 41.33317, lng: -79.12598, type: 'access', description: 'Brent Lipford - Cook Forest Canoe Rental — parking: yes, fee' },
-  { name: 'Love\'s Canoe Launch', lat: 41.42102, lng: -78.73464, type: 'access', description: 'Country Squirrel Outfitters — parking: yes' },
-  { name: 'Portland Mills', lat: 41.36874, lng: -78.82840, type: 'access', description: 'PA Fish & Boat Commission — parking: overnight' },
-  { name: 'Arroyo', lat: 41.39039, lng: -78.88111, type: 'access', description: 'PA Fish & Boat Commission — parking: overnight' },
-  { name: 'Irwin Run', lat: 41.40010, lng: -78.90597, type: 'access', description: 'Allegheny National Forest — restrooms, parking: overnight, fee' },
-  { name: 'Hallton', lat: 41.40071, lng: -78.93243, type: 'access', description: 'PA Fish & Boat Commission — parking: overnight' },
-  { name: 'Robin Island', lat: 41.35928, lng: -79.00662, type: 'access', description: 'Allegheny National Forest — restrooms, parking: overnight, fee' },
-  { name: 'Heath Station', lat: 41.35013, lng: -79.01616, type: 'access', description: 'PA Fish & Boat Commission — parking: yes' },
-  { name: 'Millstone', lat: 41.35290, lng: -79.07113, type: 'access', description: 'Allegheny National Forest — restrooms, parking: overnight, fee' },
-  { name: 'Clear Creek', lat: 41.33311, lng: -79.10412, type: 'access', description: 'PA Fish & Boat Commission — restrooms, parking: yes' },
-  { name: 'Barnett', lat: 41.34078, lng: -79.13505, type: 'access', description: 'PA Fish & Boat Commission — restrooms, parking: yes' },
-  { name: 'Cook Forest', lat: 41.32648, lng: -79.17524, type: 'access', description: 'PA Fish & Boat Commission — restrooms, parking: yes' },
-  { name: 'Cooksburg', lat: 41.33195, lng: -79.20780, type: 'access', description: 'PA Fish & Boat Commission — parking: yes' },
-  { name: 'Gravel Lick', lat: 41.30499, lng: -79.24542, type: 'access', description: 'PA Fish & Boat Commission — restrooms, parking: overnight' },
-  { name: 'Mill Creek', lat: 41.23519, lng: -79.32178, type: 'access', description: 'PA Fish & Boat Commission — parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

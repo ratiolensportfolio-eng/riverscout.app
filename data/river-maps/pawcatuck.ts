@@ -3,17 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Pawcatuck River — polyline from National Rivers Project (NRP).
 // 344 points, stitched from 2 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Shannock Falls (Lower Shannock)', lat: 41.44783, lng: -71.64362, type: 'access', description: 'parking: yes' },
-  { name: 'Biscuit City Landing', lat: 41.45093, lng: -71.61517, type: 'access', description: 'parking: yes' },
-  { name: 'John (Jay) Cronan River Access', lat: 41.44512, lng: -71.68122, type: 'access', description: 'parking: yes' },
-  { name: 'Francis Carter Preserve', lat: 41.43239, lng: -71.69332, type: 'access', description: 'The Nature Conservancy — parking: yes' },
-  { name: 'Burdickville', lat: 41.41720, lng: -71.72900, type: 'access' },
-  { name: 'Bradford Landing', lat: 41.40643, lng: -71.74803, type: 'access', description: 'parking: yes' },
-  { name: 'Potter Hill Dam', lat: 41.41387, lng: -71.79687, type: 'access', description: 'parking: yes' },
-  { name: 'Worden Pond', lat: 41.42960, lng: -71.56733, type: 'access', description: 'parking: yes' },
-  { name: 'Main Street Boat Ramp', lat: 41.37500, lng: -71.83213, type: 'access', description: 'restrooms, parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

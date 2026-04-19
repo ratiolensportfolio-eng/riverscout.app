@@ -4,21 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 106 points, 44/200 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Illinois River Boat Ramp', lat: 36.16684, lng: -94.43459, type: 'access', description: 'AGFC' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "Tenkiller Ferry",
-    to: "Tahlequah",
-    miles: 12,
-    paddleTime: "4\u20136 hours",
-    class: "I-II",
-    notes: "Scenic Ozark float through eastern Oklahoma. Gentle Class I-II water, limestone bluffs, and clear pools. Very popular summer float trip.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

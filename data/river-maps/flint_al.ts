@@ -3,19 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Flint Creek — polyline from National Rivers Project (NRP).
 // 9151 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Crooks Landing', lat: 32.33679, lng: -84.03113, type: 'access', description: 'DNR-WRD — parking: yes' },
-  { name: 'George Hooks (SR49)', lat: 32.29702, lng: -84.04583, type: 'access', description: 'DNR-WRD — parking: yes' },
-  { name: 'Hawkins Bridge', lat: 32.66929, lng: -84.09824, type: 'access', description: 'DNR-WRD — parking: yes' },
-  { name: 'Marine Corps Ditch', lat: 31.54078, lng: -84.13992, type: 'access', description: 'DNR-WRD — parking: yes' },
-  { name: 'Newton (SR37)', lat: 31.30878, lng: -84.33520, type: 'access', description: 'DNR-WRD — parking: yes' },
-  { name: 'Norman\'s Ferry', lat: 31.15928, lng: -84.47770, type: 'access', description: 'DNR-WRD — parking: yes' },
-  { name: 'State Highway 32', lat: 31.72516, lng: -84.01897, type: 'access', description: 'DNR-WRD — parking: yes' },
-  { name: 'Punks Landing', lat: 31.43878, lng: -84.14201, type: 'access', description: 'DNR-WRD — parking: yes' },
-  { name: 'Big Lazer Hand Launch', lat: 32.80130, lng: -84.39723, type: 'access', description: 'Unknown — parking: yes' },
-  { name: 'BIG LAZER CREEK WMA', lat: 32.77670, lng: -84.36903, type: 'access', description: 'Unknown' },
-  { name: 'SPREWELL BLUFF EAST WMA', lat: 32.85329, lng: -84.48124, type: 'access', description: 'Unknown' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

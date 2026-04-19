@@ -3,35 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Smith River — polyline from National Rivers Project (NRP).
 // 93 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Smith Park Lake Boat Ramp', lat: 33.24190, lng: -94.00568, type: 'access', description: 'AGFC' },
-  { name: 'Brown\'s Flat', lat: 41.98190, lng: -123.96051, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'Patrick Creek', lat: 41.87199, lng: -123.84494, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'Sandy Beach', lat: 41.86356, lng: -123.85901, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Madrone', lat: 41.85674, lng: -123.88549, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'Panther Flat', lat: 41.84171, lng: -123.93273, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'Mary Adams', lat: 41.84204, lng: -124.01340, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'Hardscrabble Creek', lat: 41.83882, lng: -124.02588, type: 'access', description: 'parking: yes' },
-  { name: 'Middle Fork Gorge', lat: 41.82210, lng: -124.03204, type: 'access', description: 'parking: overnight' },
-  { name: 'Myrtle Beach Creek', lat: 41.80116, lng: -124.05456, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'Slant Bridge Boat Ramp', lat: 41.79906, lng: -124.05617, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'Craig\'s Beach', lat: 41.79359, lng: -124.02623, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'Jedediah Smith Redwood State Park', lat: 41.79283, lng: -124.08508, type: 'access', description: 'CA State Parks — restrooms, parking: overnight, fee' },
-  { name: 'Goose Creek', lat: 41.68554, lng: -123.92398, type: 'access', description: 'parking: yes' },
-  { name: 'Steven Bridge', lat: 41.69320, lng: -123.92992, type: 'access', description: 'parking: yes' },
-  { name: 'Hardy Ford', lat: 37.22002, lng: -79.80136, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
-  { name: 'Hales Ford', lat: 37.14297, lng: -79.65694, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
-  { name: 'Scruggs #8', lat: 37.05126, lng: -79.66339, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
-  { name: 'Penhook #9', lat: 37.01303, lng: -79.62557, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
-  { name: 'Anthony Ford #4', lat: 37.02918, lng: -79.58969, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
-  { name: 'Smith Lake Access', lat: 46.05275, lng: -91.48191, type: 'access' },
-  { name: 'Lone Rock Unit #2', lat: 43.18693, lng: -90.21779, type: 'access', description: 'Lower Wisconsin State Riverway' },
-  { name: 'Smith Lake Access', lat: 43.46993, lng: -88.18665, type: 'access', description: 'Town of Barton' },
-  { name: 'Smith Lake Carry-in Access', lat: 46.13341, lng: -91.27067, type: 'access', description: 'Land & Water Conservation Dept.' },
-  { name: 'Lone Rock Unit #2', lat: 43.18693, lng: -90.21779, type: 'access', description: 'Lower Wisconsin State Riverway' },
-  { name: 'Smith Lake Access', lat: 45.64322, lng: -87.91813, type: 'access', description: 'Assistant Parks Administrator' },
-  { name: 'Smith Lake County Park Boat Landing', lat: 45.90521, lng: -90.49888, type: 'access', description: 'Forestry & Parks Dept.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

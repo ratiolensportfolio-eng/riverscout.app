@@ -3,13 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Platte River (NEBRASKA) — geometry from USGS NHDPlus HR
 // 35 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Humphrey Access', lat: 39.33721, lng: -94.81572, type: 'access' },
-  { name: 'Platte Falls Conservation Area', lat: 39.38409, lng: -94.77241, type: 'access' },
-  { name: 'Platte Falls Conservation Area', lat: 39.38369, lng: -94.76974, type: 'access' },
-  { name: 'Sharps Station Access', lat: 39.40045, lng: -94.72300, type: 'access' },
-  { name: 'Schimmel City Access', lat: 39.29140, lng: -94.81893, type: 'access' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

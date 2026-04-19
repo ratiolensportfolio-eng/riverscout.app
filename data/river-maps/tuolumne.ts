@@ -3,11 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Tuolumne River (CALIFORNIA) — geometry from USGS NHDPlus HR
 // 5 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Merals Pool', lat: 37.83646, lng: -120.05347, type: 'access', description: 'Stanislaus National Forest — restrooms, parking: overnight' },
-  { name: 'Cherry Creek', lat: 37.89522, lng: -119.97134, type: 'access', description: 'Stanislaus National Forest — parking: overnight' },
-  { name: 'Wards Ferry', lat: 37.87804, lng: -120.29417, type: 'access', description: 'Mother Lode Field Office, BLM — restrooms, parking: overnight' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

@@ -4,18 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 195 points, 86/86 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Ferebee Memorial Park', lat: 35.362, lng: -83.722, type: 'access', description: 'Upper put-in above gorge on US-19.' },
-  { name: 'Patton\'s Run', lat: 35.373, lng: -83.707, type: 'access', description: 'Mid-river access.' },
-  { name: 'Nantahala Outdoor Center (NOC)', lat: 35.378, lng: -83.697, type: 'access', description: 'CONFIRMED — USGS topo. Main hub, outfitters, restaurant, shuttle.' },
-  { name: 'Nantahala Falls', lat: 35.379, lng: -83.695, type: 'access', description: 'Class III falls, most photographed.' },
-  { name: 'Wesser takeout', lat: 35.388, lng: -83.693, type: 'take-out', description: 'Standard takeout at NOC.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  { from: 'Ferebee Memorial Park', to: 'Wesser', miles: 8, paddleTime: '3-4 hours', class: 'II-III', notes: 'Dam-release run, consistent flow. NOC provides shuttles.' },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

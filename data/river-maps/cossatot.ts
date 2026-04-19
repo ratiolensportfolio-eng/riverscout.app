@@ -3,11 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Cossatot River (ARKANSAS) — geometry from USGS NHDPlus HR
 // 14 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Hwy 246 State Park Picnic Area', lat: 34.37960, lng: -94.23682, type: 'access', description: 'Cassatot River State Park — parking: yes' },
-  { name: 'Ed Banks Rd', lat: 34.33963, lng: -94.25089, type: 'access', description: 'Cassatot River State Park — parking: yes' },
-  { name: 'Hwy 278 Bridge', lat: 34.29588, lng: -94.17602, type: 'access', description: 'Cassatot River State Park — parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

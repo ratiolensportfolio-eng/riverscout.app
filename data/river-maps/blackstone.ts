@@ -3,12 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Blackstone River (RHODE ISLAND) — geometry from USGS NHDPlus HR
 // 57 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Blackstone Gorge', lat: 42.01548, lng: -71.55320, type: 'access', description: 'Blackstone River Valley National Historical Park' },
-  { name: 'River Bend Farm Visitor Center', lat: 42.09420, lng: -71.62310, type: 'access', description: 'Blackstone River Valley National Historical Park — restrooms' },
-  { name: 'River Island Park', lat: 41.99939, lng: -71.51417, type: 'access', description: 'Blackstone River Valley National Historical Park' },
-  { name: 'Central Falls Landing', lat: 41.89884, lng: -71.39045, type: 'access', description: 'Blackstone River Valley National Historical Park' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

@@ -3,10 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Tellico River — polyline from National Rivers Project (NRP).
 // 334 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Big Creek', lat: 35.45670, lng: -84.27261, type: 'access', description: 'TWRA — restrooms, parking: overnight' },
-  { name: 'Ballplay Ramp', lat: 35.52010, lng: -84.19290, type: 'access', description: 'TWRA — restrooms, parking: overnight' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

@@ -3,40 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Namekagon River (WISCONSIN) — geometry from USGS NHDPlus HR
 // 128 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Namekagon Trail Landing', lat: 46.08279, lng: -92.11478, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'McDowell Bridge Landing', lat: 46.05802, lng: -92.06536, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'Fritz Landing', lat: 46.04261, lng: -92.04622, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'Howell Landing', lat: 46.02780, lng: -92.01152, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'West Howell Landing', lat: 46.02739, lng: -92.01293, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Whispering Pines Landing', lat: 46.00950, lng: -91.98061, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'County Road K Landing', lat: 45.95320, lng: -91.89159, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'Trego Town Park Landing', lat: 45.90960, lng: -91.82480, type: 'access', description: 'Washburn County — parking: yes' },
-  { name: 'Namekagon River Visitor Center', lat: 45.90536, lng: -91.81628, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'Earl Park Landing', lat: 45.91565, lng: -91.76569, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'Big Bend Landing', lat: 45.93243, lng: -91.75051, type: 'access', description: 'parking: overnight' },
-  { name: 'Springbrook Landing', lat: 45.95369, lng: -91.68644, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'North Springbrook Landing', lat: 45.97539, lng: -91.65497, type: 'access', description: 'parking: overnight' },
-  { name: 'Groat Landing', lat: 45.99540, lng: -91.63457, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'Stinnett Landing', lat: 45.98404, lng: -91.58999, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'West River Landing', lat: 45.97808, lng: -91.57664, type: 'access', description: 'State (WI) — parking: overnight' },
-  { name: 'Hayward Landing', lat: 46.00302, lng: -91.48904, type: 'access', description: 'State (WI) — restrooms, parking: overnight' },
-  { name: 'Eagle\'s Landing', lat: 46.03048, lng: -91.44501, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Trout Run Landing', lat: 46.05128, lng: -91.43117, type: 'access', description: 'parking: overnight' },
-  { name: 'Phipps Landing', lat: 46.07321, lng: -91.41727, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'Larsen Landing', lat: 46.10744, lng: -91.38524, type: 'access', description: 'parking: overnight' },
-  { name: 'Thompson Bridge Landing', lat: 46.14702, lng: -91.34884, type: 'access', description: 'County, city, or private — parking: yes' },
-  { name: 'Pacwawong Flowage Landing', lat: 46.14979, lng: -91.34496, type: 'access', description: 'County, city, or private — parking: yes' },
-  { name: 'Cable Wayside and Landing', lat: 46.18764, lng: -91.32077, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'Phillipi Bridge Landing', lat: 46.19829, lng: -91.29088, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'Cap Creek Landing', lat: 46.19779, lng: -91.23826, type: 'access', description: 'parking: overnight' },
-  { name: 'County Road M Landing', lat: 46.20658, lng: -91.22772, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'Namekagon Dam Landing', lat: 46.22445, lng: -91.14851, type: 'access', description: 'restrooms, parking: overnight' },
-  { name: 'Cable Wayside Access', lat: 46.18758, lng: -91.32061, type: 'access', description: 'NPS Visitor Center' },
-  { name: 'Namekagon River Canoe Launch', lat: 46.08318, lng: -92.11438, type: 'access' },
-  { name: 'Larsen Bridge Landing', lat: 46.10688, lng: -91.38509, type: 'access' },
-  { name: 'Squaw Bend Bridge Access', lat: 46.17130, lng: -91.33035, type: 'access', description: 'NPS Visitor Center' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

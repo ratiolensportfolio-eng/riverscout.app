@@ -4,31 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 124 points, 50/64 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Wood River Wetland canoe launch', lat: 42.58114, lng: -121.93133, type: 'access', description: 'BLM — restrooms, parking: yes' },
-  { name: 'Petric Park', lat: 42.58799, lng: -121.93148, type: 'access', description: 'Klamath County — restrooms, parking: yes' },
-  { name: 'Barberville', lat: 41.54067, lng: -71.69647, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Hope Valley Dam', lat: 41.50318, lng: -71.71665, type: 'access', description: 'parking: yes' },
-  { name: 'Wyoming Dam Fishing Access', lat: 41.51588, lng: -71.70287, type: 'access', description: 'parking: yes' },
-  { name: 'Wood River at Route 165', lat: 41.57292, lng: -71.72098, type: 'access', description: 'parking: yes' },
-  { name: 'Alton Pond Landing', lat: 41.43810, lng: -71.72233, type: 'access', description: 'parking: yes' },
-  { name: 'Hope Valley Fishing Access', lat: 41.51202, lng: -71.70640, type: 'access', description: 'parking: yes' },
-  { name: 'Switch Road Wood River Access', lat: 41.49350, lng: -71.71578, type: 'access', description: 'parking: yes' },
-  { name: 'Wyoming Pond at Skunk Hill Road', lat: 41.52228, lng: -71.69183, type: 'access', description: 'parking: yes' },
-  { name: 'Woodville Dam Portage', lat: 41.45963, lng: -71.71907, type: 'access' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "Arcadia Management Area",
-    to: "Alton",
-    miles: 8,
-    paddleTime: "3\u20134 hours",
-    class: "I-II",
-    notes: "One of Rhode Island\"s best paddling streams. Narrow and winding through Arcadia, with small Class I-II riffles. Watch for downed trees in the upper section. Best at moderate water levels in spring or after rain.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

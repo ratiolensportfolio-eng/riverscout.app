@@ -3,41 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Lynches River — polyline from National Rivers Project (NRP).
 // 16984 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Highway 15 Access', lat: 34.24975, lng: -80.21306, type: 'access', description: 'South Carolina Department of Transportation — parking: yes' },
-  { name: 'Highway 401 Landing', lat: 34.12870, lng: -80.13158, type: 'access', description: 'South Carolina Department of Transportation — parking: yes' },
-  { name: 'Highway 76 Landing', lat: 34.07687, lng: -80.04518, type: 'access', description: 'parking: yes' },
-  { name: 'Highway 52 Access', lat: 34.05166, lng: -79.75403, type: 'access', description: 'South Carolina Department of Transportation — parking: yes' },
-  { name: 'Half Moon Landing', lat: 33.85033, lng: -79.54547, type: 'access', description: 'Florence County — parking: yes' },
-  { name: 'Bartell Landing', lat: 33.85739, lng: -79.52612, type: 'access', description: 'parking: yes' },
-  { name: 'Venter\'s Landing', lat: 33.83905, lng: -79.44835, type: 'access', description: 'American Legion Post 144 — parking: yes' },
-  { name: 'Lee State Park #1', lat: 34.20328, lng: -80.20998, type: 'access' },
-  { name: 'Lee State Park #2', lat: 34.19946, lng: -80.20695, type: 'access' },
-  { name: 'Lee State Park #3', lat: 34.19790, lng: -80.20697, type: 'access' },
-  { name: 'Lee State Park #4', lat: 34.19288, lng: -80.19837, type: 'access' },
-  { name: 'Field\'s Bridge Road', lat: 34.17124, lng: -80.17009, type: 'access', description: 'parking: yes' },
-  { name: 'Sardis Church Landing', lat: 34.02338, lng: -79.94896, type: 'access', description: 'parking: yes' },
-  { name: 'Olanta Highway Bridge', lat: 33.99030, lng: -79.88329, type: 'access', description: 'parking: yes' },
-  { name: 'Meadow Prong Road', lat: 34.00162, lng: -79.81048, type: 'access', description: 'parking: yes' },
-  { name: 'Syrup Mill Road', lat: 34.02616, lng: -79.78999, type: 'access', description: 'parking: yes' },
-  { name: 'Lynches River County Park Access', lat: 34.03407, lng: -79.79060, type: 'access', description: 'Florence County — restrooms, parking: yes' },
-  { name: 'Highway 301 Access', lat: 34.04949, lng: -79.78513, type: 'access', description: 'parking: yes' },
-  { name: 'Catfish Landing', lat: 34.01826, lng: -79.71438, type: 'access', description: 'parking: yes' },
-  { name: 'Jefford\'s Landing', lat: 34.01777, lng: -79.71327, type: 'access', description: 'parking: yes' },
-  { name: 'Bunk Road Landing', lat: 34.00002, lng: -79.69770, type: 'access', description: 'parking: yes' },
-  { name: 'Indigo Landing', lat: 33.95374, lng: -79.67905, type: 'access', description: 'parking: yes' },
-  { name: 'Cockfield Landing', lat: 33.94738, lng: -79.68666, type: 'access', description: 'parking: yes' },
-  { name: 'Courtney Point Road Landing', lat: 33.92931, lng: -79.67377, type: 'access', description: 'parking: yes' },
-  { name: 'Lee Landing', lat: 33.90801, lng: -79.65154, type: 'access', description: 'parking: yes' },
-  { name: 'Riverside Landing', lat: 33.89490, lng: -79.63179, type: 'access' },
-  { name: 'Bennie Landing', lat: 33.87618, lng: -79.61472, type: 'access', description: 'parking: yes' },
-  { name: 'Sandstone Landing', lat: 33.87081, lng: -79.59670, type: 'access', description: 'parking: yes' },
-  { name: 'New Landing', lat: 33.86045, lng: -79.58907, type: 'access', description: 'parking: yes' },
-  { name: 'Pitch Landing', lat: 33.85639, lng: -79.57838, type: 'access', description: 'parking: yes' },
-  { name: 'Glen\'s Bluff Landing', lat: 33.85311, lng: -79.50250, type: 'access', description: 'parking: yes' },
-  { name: 'Eaddy Landing', lat: 33.83564, lng: -79.42197, type: 'access', description: 'parking: yes' },
-  { name: 'Persimmon Bluff Landing', lat: 33.83482, lng: -79.40756, type: 'access', description: 'parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

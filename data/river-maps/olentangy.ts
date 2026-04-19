@@ -3,36 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Olentangy River — polyline from National Rivers Project (NRP).
 // 9337 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Olentangy River Access', lat: 40.75478, lng: -82.89717, type: 'access', description: 'parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.71888, lng: -82.93688, type: 'access', description: 'parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.70413, lng: -82.94212, type: 'access', description: 'parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.68947, lng: -82.94528, type: 'access', description: 'parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.67463, lng: -82.94382, type: 'access', description: 'parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.65243, lng: -82.96175, type: 'access', description: 'parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.64251, lng: -82.96566, type: 'access', description: 'parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.63651, lng: -82.96679, type: 'access', description: 'parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.54398, lng: -83.01893, type: 'access', description: 'parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.52953, lng: -83.01247, type: 'access', description: 'parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.51301, lng: -83.03281, type: 'access', description: 'parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.36826, lng: -83.06863, type: 'access', description: 'restrooms' },
-  { name: 'Olentangy River Access', lat: 40.32210, lng: -83.07051, type: 'access', description: 'parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.30408, lng: -83.06233, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.28625, lng: -83.06480, type: 'access', description: 'parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.21513, lng: -83.06103, type: 'access', description: 'parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.15474, lng: -83.04441, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.11023, lng: -83.03320, type: 'access', description: 'restrooms' },
-  { name: 'Olentangy River Access', lat: 40.09093, lng: -83.03503, type: 'access', description: 'restrooms' },
-  { name: 'Olentangy River Access', lat: 40.03404, lng: -83.02649, type: 'access', description: 'parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.01033, lng: -83.01740, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Olentangy River Access', lat: 39.96702, lng: -83.01930, type: 'access' },
-  { name: 'Olentangy River Access', lat: 40.35388, lng: -83.06836, type: 'access', description: 'parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.30683, lng: -83.05784, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.07405, lng: -83.03478, type: 'access', description: 'parking: yes' },
-  { name: 'Olentangy River Access', lat: 39.99020, lng: -83.02440, type: 'access', description: 'parking: yes' },
-  { name: 'Olentangy River Access', lat: 39.98240, lng: -83.02120, type: 'access', description: 'parking: yes' },
-  { name: 'Olentangy River Access', lat: 40.13484, lng: -83.03245, type: 'access', description: 'parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

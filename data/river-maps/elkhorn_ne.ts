@@ -3,19 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Elkhorn River — polyline from National Rivers Project (NRP).
 // 316 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'American Whitewater/Elkhorn Acres Access', lat: 38.26761, lng: -84.81547, type: 'access', description: 'parking: yes' },
-  { name: 'Cardome Ramp', lat: 38.22075, lng: -84.56416, type: 'access', description: 'parking: yes' },
-  { name: 'Elkhorn Campground Access', lat: 38.21515, lng: -84.79825, type: 'access', description: 'parking: yes, fee' },
-  { name: 'Great Crossings Ramp', lat: 38.21683, lng: -84.60487, type: 'access', description: 'parking: yes' },
-  { name: 'Oser Landing', lat: 38.21318, lng: -84.54515, type: 'access', description: 'parking: yes' },
-  { name: 'Pfeiffer Fish Hatchery Access', lat: 38.31817, lng: -84.82642, type: 'access', description: 'parking: yes' },
-  { name: 'Robinson Dam Access', lat: 38.21175, lng: -84.62636, type: 'access', description: 'parking: yes' },
-  { name: 'Switzer Covered Bridge', lat: 38.25375, lng: -84.75183, type: 'access', description: 'parking: yes' },
-  { name: 'T. N. Sullivan WMA', lat: 38.28188, lng: -84.81977, type: 'access', description: 'parking: yes' },
-  { name: 'Confluence with Little North Santiam', lat: 44.81830, lng: -122.39100, type: 'access', description: 'BLM' },
-  { name: 'Elkhorn Creek headwaters (hike in)', lat: 44.80580, lng: -122.28500, type: 'access', description: 'BLM' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

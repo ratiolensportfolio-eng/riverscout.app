@@ -3,37 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // St. Francis River — polyline from National Rivers Project (NRP).
 // 12655 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Flowers Access', lat: 35.27387, lng: -90.55942, type: 'access', description: 'AGFC' },
-  { name: 'Huxtable Access', lat: 34.74578, lng: -90.62205, type: 'access', description: 'AGFC' },
-  { name: 'Jerry Stewart Access', lat: 35.01721, lng: -90.62822, type: 'access', description: 'AGFC' },
-  { name: 'St. Francis Sunken Lands Iron Bridge Access', lat: 35.70659, lng: -90.47265, type: 'access', description: 'AGFC' },
-  { name: 'St. Francis Sunken Lands Oak Donnick Access', lat: 35.60258, lng: -90.46186, type: 'access', description: 'AGFC' },
-  { name: 'St. Francis Sunken Lands Don Lovell Access #1', lat: 35.58685, lng: -90.43884, type: 'access', description: 'AGFC' },
-  { name: 'St. Francis Sunken Lands Stephen\'s Landing Access', lat: 35.67855, lng: -90.47385, type: 'access', description: 'AGFC' },
-  { name: 'St. Francis Sunken Lands Cockleburr Slough Access', lat: 35.79011, lng: -90.38625, type: 'access', description: 'AGFC' },
-  { name: 'St. Francis Sunken Lands Lake City Access #2', lat: 35.82067, lng: -90.43262, type: 'access', description: 'Other' },
-  { name: 'St. Francis Sunken Lands Williams Access', lat: 35.91993, lng: -90.42325, type: 'access', description: 'AGFC' },
-  { name: 'St. Francis Sunken Lands Marked Tree Access', lat: 35.53250, lng: -90.42414, type: 'access', description: 'AGFC' },
-  { name: 'St. Francis Sunken Lands Lester Access', lat: 35.87715, lng: -90.45177, type: 'access', description: 'Other' },
-  { name: 'St. Francis Sunken Lands Jackson Landing Access', lat: 35.94210, lng: -90.38093, type: 'access', description: 'AGFC' },
-  { name: 'St Francis Access', lat: 36.45585, lng: -90.13838, type: 'access', description: 'AGFC' },
-  { name: 'St. Francis Sunken Lands Highway 412 Access', lat: 36.04587, lng: -90.34614, type: 'access', description: 'AGFC' },
-  { name: 'St. Francis Sunken Lands Deep Landing Access', lat: 35.74789, lng: -90.42962, type: 'access', description: 'AGFC' },
-  { name: 'St. Francis Sunken Lands Dement Landing Access', lat: 36.08687, lng: -90.32154, type: 'access', description: 'AGFC' },
-  { name: 'St. Francis Sunken Lands Lake City Access #1', lat: 35.82148, lng: -90.43612, type: 'access', description: 'Other' },
-  { name: 'St. Francis Sunken Lands Don Lovell Access #2', lat: 35.58682, lng: -90.43899, type: 'access', description: 'AGFC' },
-  { name: 'St. Francis Sunken Lands Payneway Access', lat: 35.54363, lng: -90.48315, type: 'access', description: 'AGFC' },
-  { name: 'St. Francis Sunken Lands Turkey Slough Access', lat: 35.72232, lng: -90.39223, type: 'access', description: 'AGFC' },
-  { name: 'Ben Cash Memorial Conservation Area', lat: 36.18594, lng: -90.20205, type: 'access' },
-  { name: 'Millstream Gardens Conservation Area', lat: 37.57340, lng: -90.47143, type: 'access' },
-  { name: 'Roselle Access', lat: 37.59502, lng: -90.49876, type: 'access' },
-  { name: 'Syenite Access', lat: 37.68123, lng: -90.41349, type: 'access' },
-  { name: 'Fisk Access', lat: 36.78115, lng: -90.20172, type: 'access' },
-  { name: 'Chalk Bluff Trail Access', lat: 36.48415, lng: -90.15700, type: 'access' },
-  { name: 'Thompson Ford Access', lat: 37.55556, lng: -90.35721, type: 'access' },
-  { name: 'Ben Cash Memorial Conservation Area', lat: 36.17047, lng: -90.20976, type: 'access' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

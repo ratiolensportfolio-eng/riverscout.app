@@ -3,12 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Methow River (WASHINGTON) — geometry from USGS NHDPlus HR
 // 15 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'The Winthrop Barn Auditorium', lat: 48.47608, lng: -120.18821, type: 'access', description: 'Town of Winthrop — parking: yes' },
-  { name: 'Carlton Access', lat: 48.24617, lng: -120.11761, type: 'access', description: 'WA Department of Fish and Wildlife — restrooms, parking: yes' },
-  { name: 'Averill Public Access', lat: 48.15087, lng: -120.05699, type: 'access', description: 'WA Department of Fish and Wildlife — restrooms, parking: yes' },
-  { name: 'Douglas County PUD river access', lat: 48.04620, lng: -119.91562, type: 'access', description: 'Douglas County PUD — restrooms, parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

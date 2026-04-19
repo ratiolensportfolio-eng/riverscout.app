@@ -3,15 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Caney Fork — polyline from National Rivers Project (NRP).
 // 1731 points, stitched from 8 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'I-40 Welcome Center', lat: 36.14245, lng: -85.80758, type: 'access', description: 'TWRA / TDOT — restrooms, parking: yes' },
-  { name: 'South Carthage', lat: 36.22415, lng: -85.94263, type: 'access', description: 'County — restrooms, parking: overnight' },
-  { name: 'Happy Hollow', lat: 36.13150, lng: -85.80710, type: 'access', description: 'TWRA — parking: overnight' },
-  { name: 'Betty\'s Island', lat: 36.14694, lng: -85.83968, type: 'access', description: 'TWRA — parking: overnight' },
-  { name: 'Stonewall Bridge', lat: 36.18504, lng: -85.90655, type: 'access', description: 'TWRA — restrooms, parking: overnight' },
-  { name: 'Lancaster Hwy. Pull Off', lat: 36.11588, lng: -85.84648, type: 'access', description: 'parking: yes' },
-  { name: 'Kirby Rd. Pull Off', lat: 36.14664, lng: -85.86343, type: 'access', description: 'parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

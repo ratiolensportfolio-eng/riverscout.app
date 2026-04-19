@@ -3,14 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Sudbury River — polyline from National Rivers Project (NRP).
 // 362 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Lincoln Canoe Launch', lat: 42.41916, lng: -71.36093, type: 'access', description: 'parking: yes' },
-  { name: 'River Road', lat: 42.37371, lng: -71.38208, type: 'access', description: 'parking: yes' },
-  { name: 'Greenways Landing', lat: 42.35015, lng: -71.36735, type: 'access', description: 'parking: yes' },
-  { name: 'Sherman Bridge Road', lat: 42.39639, lng: -71.36463, type: 'access', description: 'State — parking: yes' },
-  { name: 'Route 20', lat: 42.36339, lng: -71.37468, type: 'access', description: 'State — parking: yes' },
-  { name: 'Little Farms Road', lat: 42.33505, lng: -71.39447, type: 'access', description: 'Town of Framingham Conservation Comm — parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

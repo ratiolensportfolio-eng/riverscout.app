@@ -3,28 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Missisquoi River — polyline from National Rivers Project (NRP).
 // 506 points, stitched from 2 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Diorio Access', lat: 45.07306, lng: -72.38742, type: 'access', description: 'Township of Potton — restrooms' },
-  { name: 'Camping Carrefour', lat: 45.02997, lng: -72.44137, type: 'access', description: 'parking: overnight' },
-  { name: 'Glen Sutton', lat: 45.03800, lng: -72.54485, type: 'access' },
-  { name: 'Unnamed Access 1', lat: 44.99352, lng: -72.67218, type: 'access' },
-  { name: 'Unnamed Access 2', lat: 44.99623, lng: -72.67064, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Davis Park', lat: 44.99798, lng: -72.67551, type: 'access', description: 'Town of Richford — restrooms, parking: overnight' },
-  { name: 'East Berkshire', lat: 44.93473, lng: -72.70928, type: 'access', description: 'parking: yes' },
-  { name: 'Lawyers Landing', lat: 44.90213, lng: -72.80460, type: 'access', description: 'NFCT — parking: overnight' },
-  { name: 'Lower Enosburg Falls', lat: 44.90556, lng: -72.81495, type: 'access', description: 'NFCT — parking: yes' },
-  { name: 'North Sheldon Bridge', lat: 44.90716, lng: -72.90455, type: 'access', description: 'parking: overnight' },
-  { name: 'Sheldon Springs Dam', lat: 44.90973, lng: -72.98237, type: 'access', description: 'parking: yes' },
-  { name: 'East Highgate', lat: 44.93532, lng: -72.99542, type: 'access', description: 'parking: overnight' },
-  { name: 'Unnamed Access 3', lat: 44.91054, lng: -73.10578, type: 'access', description: 'NFCT — parking: overnight' },
-  { name: 'Upper Swanton Dam', lat: 44.92087, lng: -73.12577, type: 'access', description: 'parking: overnight' },
-  { name: 'Marble Mill Park', lat: 44.92274, lng: -73.12411, type: 'access', description: 'NFCT — parking: overnight' },
-  { name: 'Louies Landing', lat: 44.95851, lng: -73.16657, type: 'access', description: 'parking: overnight' },
-  { name: 'Macs Bend', lat: 44.96932, lng: -73.16884, type: 'access', description: 'parking: overnight' },
-  { name: 'Canoe & Co.', lat: 45.04156, lng: -72.50211, type: 'access', description: 'Canoe & Co. — restrooms, parking: yes' },
-  { name: 'Mac\'s Bend Boat Launch', lat: 44.97224, lng: -73.16793, type: 'access', description: 'Missisquoi National Wildlife Refuge — restrooms, parking: yes' },
-  { name: 'Louie\'s Landing Boat Launch', lat: 44.95816, lng: -73.16618, type: 'access', description: 'Missisquoi National Wildlife Refuge — parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

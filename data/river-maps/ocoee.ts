@@ -4,32 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 235 points, 102/103 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Ocoee Dam #3', lat: 35.04263, lng: -84.46471, type: 'access', description: 'Cherokee National Forest — restrooms, parking: yes' },
-  { name: 'Ocoee Whitewater Center', lat: 35.06659, lng: -84.46131, type: 'access', description: 'Cherokee National Forest — restrooms, parking: yes' },
-  { name: 'Ocoee Dam #2', lat: 35.08295, lng: -84.49162, type: 'access', description: 'Cherokee National Forest — restrooms, parking: yes' },
-  { name: 'Middle Ocoee Take-Out', lat: 35.09699, lng: -84.54864, type: 'access', description: 'Cherokee National Forest — parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "Ocoee Dam #2",
-    to: "Olympic Section Start",
-    miles: 5,
-    paddleTime: "2\u20133 hours",
-    class: "III-IV",
-    notes: "The classic Middle Ocoee. Tablesaw, Broken Nose, Double Suck, and Hell Hole are key rapids. Dam-release schedule controls flow.",
-  },
-  {
-    from: "Olympic Section Start",
-    to: "US-64 Bridge",
-    miles: 3,
-    paddleTime: "1\u20132 hours",
-    class: "III-IV",
-    notes: "Upper/Olympic section built for the 1996 Atlanta Games. Steeper gradient with man-made features. Limited release days.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

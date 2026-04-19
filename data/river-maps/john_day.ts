@@ -3,18 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // John Day River — polyline from National Rivers Project (NRP).
 // 4823 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Service Creek', lat: 44.79244, lng: -120.00057, type: 'access', description: 'BLM — restrooms, parking: yes, fee' },
-  { name: 'Twickenham', lat: 44.73680, lng: -120.16547, type: 'access', description: 'ODFW — restrooms, parking: yes, fee' },
-  { name: 'Priest Hole', lat: 44.73987, lng: -120.27128, type: 'access', description: 'BLM — restrooms, parking: yes, fee' },
-  { name: 'Lower Burnt Ranch', lat: 44.74625, lng: -120.36409, type: 'access', description: 'BLM — restrooms, parking: yes, fee' },
-  { name: 'Clarno', lat: 44.91610, lng: -120.46991, type: 'access', description: 'Owned by OSP&R, managed by BLM — restrooms, parking: yes, fee' },
-  { name: 'Thirtymile/Armstrong Road', lat: 45.16022, lng: -120.47065, type: 'access', description: 'BLM — restrooms, parking: yes, fee' },
-  { name: 'Cottonwood/ J.S. Burres', lat: 45.47692, lng: -120.46869, type: 'access', description: 'Oregon State Parks — restrooms, parking: yes, fee' },
-  { name: 'Starvation Lane', lat: 45.50619, lng: -120.36227, type: 'access', description: 'Oregon State Parks — parking: yes, fee' },
-  { name: 'Rock Creek', lat: 45.57668, lng: -120.40440, type: 'access', description: 'BLM — parking: yes, fee' },
-  { name: 'McDonald Crossing', lat: 45.59069, lng: -120.40850, type: 'access', description: 'County Road — restrooms, parking: yes, fee' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

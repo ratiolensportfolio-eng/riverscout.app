@@ -4,22 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 231 points, 98/98 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Dingmans Ferry', lat: 41.217, lng: -74.863, type: 'put-in', description: 'NPS access in Delaware Water Gap NRA.' },
-  { name: 'Kittatinny Point (Water Gap)', lat: 40.968, lng: -75.126, type: 'take-out', description: 'NPS visitor center at the Delaware Water Gap itself — the iconic river gap through Kittatinny Ridge.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "Milford",
-    to: "Delaware Water Gap",
-    miles: 25,
-    paddleTime: "1\u20132 days",
-    class: "I-II",
-    notes: "Relaxed float through the Delaware Water Gap NRA. Gentle Class I-II riffles with long pools. Excellent multi-day camping on river islands and NPS sites.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

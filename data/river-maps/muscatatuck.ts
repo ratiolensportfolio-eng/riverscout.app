@@ -3,12 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Muscatatuck River — polyline from National Rivers Project (NRP).
 // 4709 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'White-Muscatatuck', lat: 38.77376, lng: -86.16601, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Milport', lat: 38.76544, lng: -86.10266, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Sages Ferry', lat: 38.75488, lng: -85.93488, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Low Water Bridge', lat: 38.76649, lng: -86.04650, type: 'access', description: 'Indiana Department of Natural Resources' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

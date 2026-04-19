@@ -3,34 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Mad River — polyline from National Rivers Project (NRP).
 // 6020 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Mad River Access', lat: 40.24907, lng: -83.75536, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 40.24344, lng: -83.76456, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 40.22272, lng: -83.77287, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 40.19464, lng: -83.79678, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 40.15645, lng: -83.78683, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 40.13180, lng: -83.80978, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Mad River Access', lat: 40.12992, lng: -83.80975, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 40.10747, lng: -83.79931, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 39.94376, lng: -83.84908, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 40.08587, lng: -83.80141, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 40.06839, lng: -83.81051, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 40.05279, lng: -83.81522, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 40.02818, lng: -83.82104, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 40.00740, lng: -83.82312, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 39.97636, lng: -83.82204, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 39.96395, lng: -83.83155, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 39.90029, lng: -83.92005, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 39.89159, lng: -83.93530, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 39.80697, lng: -84.08723, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Mad River Access', lat: 39.77443, lng: -84.16118, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 39.76946, lng: -84.17519, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 39.76722, lng: -84.18733, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Mad River Access', lat: 40.15510, lng: -83.78820, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 39.78784, lng: -84.12431, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Mad River Access', lat: 39.76865, lng: -84.18367, type: 'access', description: 'parking: yes' },
-  { name: 'Mad River Access', lat: 40.25203, lng: -83.74841, type: 'access', description: 'restrooms, parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

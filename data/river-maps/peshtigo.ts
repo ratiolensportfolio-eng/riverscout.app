@@ -3,22 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Peshtigo River (WISCONSIN) — geometry from USGS NHDPlus HR
 // 95 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'East Side Boat Launch', lat: 45.04664, lng: -87.74436, type: 'access', description: 'Parks & Recreation Department' },
-  { name: 'Peshtigo River Access 1 - Goodman Park Rd.', lat: 45.51172, lng: -88.43541, type: 'access', description: 'US Forest Service' },
-  { name: 'Peshtigo River Access 3 - Kalata Road', lat: 45.66536, lng: -88.65246, type: 'access', description: 'US Forest Service' },
-  { name: 'Peshtigo River Access - Michigan Creek Rd.', lat: 45.56210, lng: -88.49513, type: 'access', description: 'US Forest Service' },
-  { name: 'BOAT LANDING #12 - ROARING RAPIDS', lat: 45.38115, lng: -88.30065, type: 'access', description: 'Peshtigo River State Forest' },
-  { name: 'Peshtigo River Access', lat: 45.12826, lng: -87.87935, type: 'access', description: 'Town of Grover' },
-  { name: 'Seymour Rapids Ramp', lat: 45.26080, lng: -88.12613, type: 'access', description: 'Peshtigo River State Forest' },
-  { name: 'Boat Landing #1 - Peshtigo', lat: 45.10892, lng: -87.75777, type: 'access', description: 'Forest Superintendent' },
-  { name: 'County BB (Klingsborns) Peshtigo River Access', lat: 44.98879, lng: -87.66582, type: 'access', description: 'Wildlife Biologist' },
-  { name: 'NW Front Street Boat Ramp', lat: 45.05584, lng: -87.74897, type: 'access', description: 'Parks & Recreation Department' },
-  { name: 'Boat Launch #14 - Thunder River', lat: 45.26932, lng: -88.18680, type: 'access', description: 'Peshtigo River State Forest' },
-  { name: 'Peshtigo Harbor Access - End of Harbor Road', lat: 44.97401, lng: -87.65649, type: 'access' },
-  { name: 'Peshtigo River Access 2 - Browns Road', lat: 45.61069, lng: -88.59283, type: 'access', description: 'US Forest Service' },
-  { name: 'Peshtigo Lake Access', lat: 45.58265, lng: -88.89160, type: 'access', description: 'Public Works Dept.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

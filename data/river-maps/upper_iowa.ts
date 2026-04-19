@@ -4,54 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 210 points, 141/141 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Black Hawk Point', lat: 43.47407, lng: -91.29495, type: 'access', description: 'Iowa DNR' },
-  { name: 'Lidtke Park', lat: 43.46515, lng: -92.27908, type: 'access', description: 'Howard CCB — restrooms' },
-  { name: 'Wild Landing', lat: 43.42885, lng: -91.39733, type: 'access', description: 'restrooms' },
-  { name: 'Bluffton Access', lat: 43.40625, lng: -91.89919, type: 'access', description: 'Iowa DNR' },
-  { name: 'Bluffton Fir Preserve', lat: 43.41031, lng: -91.91187, type: 'access', description: 'Winneshiek CCB' },
-  { name: 'Canoe Creek Access', lat: 43.36717, lng: -91.61656, type: 'access', description: 'Iowa DNR' },
-  { name: 'Chattahoochie Access', lat: 43.31647, lng: -91.81615, type: 'access', description: 'Winneshiek CCB' },
-  { name: 'Chester Access', lat: 43.48912, lng: -92.34813, type: 'access', description: 'Howard CCB' },
-  { name: 'Chimney Rock Park', lat: 43.42171, lng: -91.93499, type: 'access', description: 'Winneshiek CCB' },
-  { name: 'Coldwater Creek Rd Bridge', lat: 43.43141, lng: -91.99715, type: 'access', description: 'NA' },
-  { name: 'Decorah Access', lat: 43.30458, lng: -91.77166, type: 'access', description: 'Decorah' },
-  { name: 'Florenceville Access', lat: 43.49659, lng: -92.12947, type: 'access', description: 'NA' },
-  { name: 'Freeport Access', lat: 43.30550, lng: -91.74285, type: 'access', description: 'Freeport' },
-  { name: 'French Creek Bridge Access', lat: 43.41937, lng: -91.39328, type: 'access', description: 'NA' },
-  { name: 'Highway 76 Access', lat: 43.42399, lng: -91.51214, type: 'access', description: 'NA' },
-  { name: 'Inverson Bridge Access', lat: 43.41253, lng: -91.57715, type: 'access', description: 'Iowa DNR' },
-  { name: 'Kendalville Park', lat: 43.44151, lng: -92.03812, type: 'access', description: 'Winneshiek CCB' },
-  { name: 'Lower Dam', lat: 43.34019, lng: -91.64150, type: 'access', description: 'Iowa DNR' },
-  { name: 'Lundy Bridge Access', lat: 43.34889, lng: -91.62009, type: 'access', description: 'Iowa DNR' },
-  { name: 'Malanaphy Spring', lat: 43.34502, lng: -91.84282, type: 'access', description: 'Iowa DNR' },
-  { name: 'Road Sweep Access', lat: 43.31425, lng: -91.72880, type: 'access', description: 'NA' },
-  { name: 'Souhrada Forest', lat: 43.48715, lng: -92.22331, type: 'access', description: 'Howard CCB' },
-  { name: 'Trout Run Access', lat: 43.29061, lng: -91.75932, type: 'access', description: 'Iowa DNR' },
-  { name: 'Upper Dam - Lower Access', lat: 43.32154, lng: -91.68733, type: 'access', description: 'Iowa DNR' },
-  { name: 'Upper Dam - Upper Access', lat: 43.32279, lng: -91.68620, type: 'access', description: 'Iowa DNR' },
-  { name: 'Upper Iowa Access', lat: 43.47110, lng: -92.25749, type: 'access', description: 'NA' },
-  { name: 'Upper Iowa Access', lat: 43.42738, lng: -91.46250, type: 'access', description: 'NA' },
-  { name: 'Upper Iowa River Access', lat: 43.32257, lng: -91.70915, type: 'access', description: 'Iowa DNR' },
-  { name: 'Will Baker Park', lat: 43.30017, lng: -91.80782, type: 'access', description: 'Decorah' },
-  { name: 'Upper Iowa River - Lowell\'S Bridge', lat: 43.33966, lng: -91.83483, type: 'access', description: 'Iowa DNR' },
-  { name: 'Upper Iowa River - Plymouth Rock', lat: 43.43457, lng: -91.99688, type: 'access', description: 'Iowa DNR' },
-  { name: 'Bluffton Fir Preserve', lat: 43.41031, lng: -91.91187, type: 'access', description: 'Winneshiek CCB' },
-  { name: 'Decorah Access', lat: 43.30458, lng: -91.77166, type: 'access', description: 'Decorah' },
-  { name: 'Souhrada Forest', lat: 43.48715, lng: -92.22331, type: 'access', description: 'Howard CCB' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "Kendallville",
-    to: "Decorah",
-    miles: 25,
-    paddleTime: "8\u201310 hours",
-    class: "I-II",
-    notes: "Classic Driftless Area float through towering limestone bluffs and spring-fed tributaries. Mostly gentle current with a few Class II riffles. Great for multi-day camping trips.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

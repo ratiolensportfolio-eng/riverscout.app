@@ -3,40 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Scioto River — polyline from National Rivers Project (NRP).
 // 14160 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Scioto Brush Creek, North & Main Branch Access', lat: 38.95205, lng: -83.30913, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto Brush Creek, North & Main Branch Access', lat: 38.94693, lng: -83.30275, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto Brush Creek, North & Main Branch Access', lat: 38.91738, lng: -83.24587, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto Brush Creek, North & Main Branch Access', lat: 38.86266, lng: -83.19029, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Scioto Brush Creek, North & Main Branch Access', lat: 38.84133, lng: -83.09545, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto Brush Creek, North & Main Branch Access', lat: 38.83738, lng: -83.06472, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto Brush Creek, South Fork Access', lat: 38.82082, lng: -83.29473, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto Brush Creek, South Fork Access', lat: 38.83183, lng: -83.27822, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 40.64390, lng: -83.61072, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 40.56392, lng: -83.31535, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 40.52750, lng: -83.20549, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Scioto River Access', lat: 40.45004, lng: -83.19053, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 40.44019, lng: -83.19152, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 40.24620, lng: -83.14945, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 40.15327, lng: -83.12645, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 40.02772, lng: -83.09305, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Scioto River Access', lat: 39.96735, lng: -83.03355, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 39.94270, lng: -83.00208, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 39.83284, lng: -83.00684, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 39.77256, lng: -83.00655, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 39.60152, lng: -82.95566, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 39.34117, lng: -82.98142, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Scioto River Access', lat: 39.34046, lng: -82.97556, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 39.04584, lng: -83.05153, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 38.95318, lng: -83.04553, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 38.73096, lng: -83.01148, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 40.11685, lng: -83.11233, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Scioto River Access', lat: 40.10927, lng: -83.11225, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 40.09966, lng: -83.11156, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 40.07111, lng: -83.10693, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 40.01524, lng: -83.09325, type: 'access', description: 'parking: yes' },
-  { name: 'Scioto River Access', lat: 39.55788, lng: -82.99471, type: 'access', description: 'parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

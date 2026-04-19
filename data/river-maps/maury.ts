@@ -3,10 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Maury River — polyline from National Rivers Project (NRP).
 // 280 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'VMI Route 60 Bridge', lat: 37.74558, lng: -79.37060, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
-  { name: 'Locker Landing', lat: 37.62473, lng: -79.44437, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

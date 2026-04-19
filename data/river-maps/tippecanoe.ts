@@ -3,21 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Tippecanoe River — polyline from National Rivers Project (NRP).
 // 12854 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Pulaski', lat: 40.97614, lng: -86.65603, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Winamac City Park', lat: 41.05229, lng: -86.59922, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Winamac - South', lat: 41.02400, lng: -86.58514, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Aubbeenaubbee Public Access Site', lat: 41.12517, lng: -86.39145, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Tippecanoe River State Park', lat: 41.13191, lng: -86.58820, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Haschell Bridge', lat: 41.09758, lng: -86.55632, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Mollenhour', lat: 41.24335, lng: -86.04809, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Germany Bridge', lat: 41.11690, lng: -86.31401, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Oakdale Dam', lat: 40.65322, lng: -86.75617, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Pond \'N River', lat: 40.95735, lng: -86.68501, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Monterey Town Park', lat: 41.15958, lng: -86.48029, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Talma', lat: 41.15366, lng: -86.13923, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Old Tip Town', lat: 41.21859, lng: -86.11604, type: 'access', description: 'Indiana Department of Natural Resources' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

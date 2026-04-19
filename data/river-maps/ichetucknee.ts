@@ -4,22 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 22 points, 7/7 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Headspring', lat: 29.984, lng: -82.762, type: 'put-in', description: 'Ichetucknee Springs State Park.' },
-  { name: 'US-27 Takeout (Dampier\'s Landing)', lat: 29.956, lng: -82.758, type: 'take-out', description: 'Southern take-out for the Ichetucknee float.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "Headspring",
-    to: "Dampier Landing",
-    miles: 6,
-    paddleTime: "2\u20133 hours",
-    class: "I",
-    notes: "Gentle spring-fed float through Ichetucknee Springs State Park. Crystal-clear water, manatees, turtles, and lush vegetation. Popular summer tubing destination.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

@@ -3,14 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Lochsa River (IDAHO) — geometry from USGS NHDPlus HR
 // 13 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: '9 Mile', lat: 46.39125, lng: -115.21783, type: 'access', description: 'Nez Perce Clearwater National Forest — parking: overnight' },
-  { name: 'Bald Mountain', lat: 46.38330, lng: -115.23357, type: 'access', description: 'Nez Perce Clearwater National Forest — restrooms, parking: overnight' },
-  { name: 'Fish Creek', lat: 46.33478, lng: -115.34486, type: 'access', description: 'Nez Perce Clearwater National Forest — restrooms, parking: yes' },
-  { name: 'Knife Edge', lat: 46.22742, lng: -115.47387, type: 'access', description: 'Nez Perce Clearwater National Forest — restrooms, parking: overnight, fee' },
-  { name: 'Split Creek', lat: 46.23103, lng: -115.41610, type: 'access', description: 'Nez Perce Clearwater National Forest — restrooms, parking: overnight' },
-  { name: 'White Pine', lat: 46.44571, lng: -115.09041, type: 'access', description: 'Nez Perce Clearwater National Forest — parking: overnight' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

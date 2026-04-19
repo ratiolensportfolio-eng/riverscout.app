@@ -3,30 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Mohican River (OHIO) — geometry from USGS NHDPlus HR
 // 111 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Mohican River Access', lat: 40.59270, lng: -82.21353, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Mohican River Access', lat: 40.59541, lng: -82.20353, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Mohican River Access', lat: 40.57012, lng: -82.18558, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Mohican River Access', lat: 40.55322, lng: -82.19814, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Mohican River Access', lat: 40.52228, lng: -82.19587, type: 'access', description: 'parking: yes' },
-  { name: 'Mohican River Access', lat: 40.46784, lng: -82.19608, type: 'access', description: 'parking: yes' },
-  { name: 'Mohican River Access', lat: 40.46506, lng: -82.19331, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Mohican River Access', lat: 40.36044, lng: -82.16119, type: 'access', description: 'parking: yes' },
-  { name: 'Mohican River, Black Fork Access', lat: 40.91267, lng: -82.53252, type: 'access', description: 'parking: yes' },
-  { name: 'Mohican River, Black Fork Access', lat: 40.85158, lng: -82.42992, type: 'access', description: 'parking: yes' },
-  { name: 'Mohican River, Black Fork Access', lat: 40.83700, lng: -82.42020, type: 'access', description: 'parking: yes' },
-  { name: 'Mohican River, Black Fork Access', lat: 40.80027, lng: -82.38760, type: 'access', description: 'parking: yes' },
-  { name: 'Mohican River, Black Fork Access', lat: 40.73884, lng: -82.36307, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Mohican River, Black Fork Access', lat: 40.70467, lng: -82.35442, type: 'access', description: 'parking: yes' },
-  { name: 'Mohican River, Clear Fork Access', lat: 40.70819, lng: -82.65233, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Mohican River, Clear Fork Access', lat: 40.69770, lng: -82.60522, type: 'access', description: 'parking: yes' },
-  { name: 'Mohican River, Clear Fork Access', lat: 40.69158, lng: -82.59380, type: 'access', description: 'parking: yes' },
-  { name: 'Mohican River, Clear Fork Access', lat: 40.62036, lng: -82.50494, type: 'access', description: 'parking: yes' },
-  { name: 'Mohican River, Clear Fork Access', lat: 40.62987, lng: -82.38365, type: 'access', description: 'parking: yes' },
-  { name: 'Mohican River, Clear Fork Access', lat: 40.60665, lng: -82.25919, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Mohican River, Lake Fork Access', lat: 40.72332, lng: -82.15492, type: 'access', description: 'parking: yes' },
-  { name: 'Mohican River, Lake Fork Access', lat: 40.66501, lng: -82.15138, type: 'access', description: 'parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

@@ -3,38 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Broad River — polyline from National Rivers Project (NRP).
 // 3200 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Broad River (SR17)', lat: 33.97292, lng: -82.77132, type: 'access', description: 'DNR-WRD — parking: yes' },
-  { name: 'NC Highway 150 Bridge', lat: 35.20089, lng: -81.66593, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Big Bay Access - Gaston Shoals Lake', lat: 35.14753, lng: -81.60884, type: 'access', description: 'parking: yes' },
-  { name: 'Shelby Highway Bridge', lat: 35.12452, lng: -81.58719, type: 'access', description: 'parking: yes' },
-  { name: 'Cherokee Falls North', lat: 35.06517, lng: -81.54720, type: 'access', description: 'parking: yes' },
-  { name: 'Cherokee Falls South', lat: 35.06383, lng: -81.54563, type: 'access', description: 'parking: yes' },
-  { name: 'Pick Hill Access', lat: 35.04107, lng: -81.49537, type: 'access', description: 'Duke Energy — parking: yes' },
-  { name: 'Ninety-Nine Islands Dam Boat Ramp', lat: 35.03005, lng: -81.49713, type: 'access', description: 'Duke Energy — parking: yes' },
-  { name: 'Ninety-Nine Islands Boat Ramp', lat: 35.02963, lng: -81.49128, type: 'access', description: 'Duke Energy — parking: yes' },
-  { name: 'Ninety-Nine Islands Boat Ramp', lat: 35.02677, lng: -81.48985, type: 'access', description: 'Duke Energy — parking: yes' },
-  { name: 'Broad River - Woods Ferry', lat: 34.70981, lng: -81.45617, type: 'access', description: 'US Forest Service — parking: yes' },
-  { name: 'Woods Ferry Recreation Area', lat: 34.70292, lng: -81.45393, type: 'access', description: 'US Forest Service — restrooms, parking: yes' },
-  { name: 'Sandy River Access', lat: 34.57244, lng: -81.42171, type: 'access', description: 'US Forest Service — parking: yes' },
-  { name: 'Hellers Creek', lat: 34.31937, lng: -81.37460, type: 'access', description: 'parking: yes' },
-  { name: 'Cannons Creek', lat: 34.28685, lng: -81.36267, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'SC Hwy 213 Bridge', lat: 34.25022, lng: -81.32861, type: 'access', description: 'parking: yes' },
-  { name: 'Cherokee Ford Recreation Area', lat: 35.07478, lng: -81.56091, type: 'access', description: 'parking: yes' },
-  { name: 'Hickory Grove Road Bridge', lat: 34.93784, lng: -81.47993, type: 'access' },
-  { name: 'Neal Shoals Dam Canoe Access', lat: 34.66448, lng: -81.44615, type: 'access', description: 'parking: yes' },
-  { name: 'Strother\'s Landing', lat: 34.39254, lng: -81.39614, type: 'access', description: 'parking: yes' },
-  { name: 'Peake-Alston Canoe Access', lat: 34.24324, lng: -81.31945, type: 'access', description: 'parking: yes' },
-  { name: 'Harbison State Forest Canoe Access', lat: 34.10450, lng: -81.11800, type: 'access', description: 'SC Forestry Commission — parking: yes' },
-  { name: 'Riverfront Park Access', lat: 34.00302, lng: -81.05369, type: 'access', description: 'City of Columbia — parking: yes' },
-  { name: 'Columbia Canal Diversion Dam', lat: 34.03290, lng: -81.06819, type: 'access', description: 'City of Columbia — restrooms, parking: yes' },
-  { name: 'Bowens River Access and Parking Area', lat: 35.13372, lng: -81.59040, type: 'access', description: 'Duke Energy — parking: yes' },
-  { name: 'Lockhart Put In below Lockhart Dam #2', lat: 34.77949, lng: -81.45610, type: 'access', description: 'Town of Lockhart — parking: yes' },
-  { name: 'Shelton Ferry Landing Boat Ramp and Parking Area', lat: 34.48639, lng: -81.42477, type: 'access', description: 'Newberry County — parking: yes' },
-  { name: 'Lockhart Take Out above Lockhart Dam #1', lat: 34.79723, lng: -81.46145, type: 'access', description: 'Town of Lockhart — parking: yes' },
-  { name: 'Worth Mountain WMA', lat: 34.93615, lng: -81.47306, type: 'access', description: 'SCDNR — parking: yes' },
-  { name: 'Broad River Greenway River Access and Parking Area', lat: 35.20182, lng: -81.66375, type: 'access', description: 'Cleveland County and Town of Boiling Springs — restrooms, parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

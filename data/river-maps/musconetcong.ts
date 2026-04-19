@@ -3,14 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Musconetcong River — polyline from National Rivers Project (NRP).
 // 2100 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Stephensburg Wildlife Management Area', lat: 40.80364, lng: -74.86270, type: 'access', description: 'NJ Department of Environmental Protection — parking: yes' },
-  { name: 'Stephens State Park', lat: 40.87334, lng: -74.80589, type: 'access', description: 'NJ Department of Environmental Protection — parking: yes' },
-  { name: 'Saxton Falls', lat: 40.88832, lng: -74.79739, type: 'access', description: 'parking: yes' },
-  { name: 'Hampton Borough Municipal Park', lat: 40.71106, lng: -74.96789, type: 'access', description: 'Hampton Borough — parking: yes' },
-  { name: 'Bethlehem/Musconetcong Wildlife Management Area 1', lat: 40.70437, lng: -74.98783, type: 'access', description: 'NJ Department of Environmental Protection — parking: yes' },
-  { name: 'Bethlehem/Musconetcong Wildlife Management Area 2', lat: 40.67966, lng: -75.04589, type: 'access', description: 'NJ Department of Environmental Protection — parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

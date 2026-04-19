@@ -3,9 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Rapidan River — polyline from National Rivers Project (NRP).
 // 53 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Elys Ford', lat: 38.35929, lng: -77.68545, type: 'access', description: 'Virginia Department of Game and Inland Fisheries' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

@@ -4,48 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 63 points, 29/29 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Motor Boat Club Road Access', lat: 34.87892, lng: -82.48929, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Timmerman Landing', lat: 34.65174, lng: -82.45760, type: 'access', description: 'Town of Pelzer — parking: yes' },
-  { name: 'Chappell\'s Highway Bridge', lat: 34.17488, lng: -81.86447, type: 'access', description: 'parking: yes' },
-  { name: 'Saluda River Resort', lat: 34.17421, lng: -81.69708, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Saluda Shoals Park', lat: 34.04661, lng: -81.19065, type: 'access', description: 'Irmo Chapin Recreation Commission — restrooms, parking: yes' },
-  { name: 'Hope Ferry Access', lat: 34.04605, lng: -81.19096, type: 'access', description: 'SCE&G — parking: yes' },
-  { name: 'Lyman Street Landing', lat: 34.63746, lng: -82.44962, type: 'access', description: 'parking: yes' },
-  { name: 'Saluda Lake Boat Ramp', lat: 34.86330, lng: -82.48925, type: 'access', description: 'parking: yes' },
-  { name: 'Hunts Bridge Road Access', lat: 34.93898, lng: -82.52481, type: 'access', description: 'parking: yes' },
-  { name: 'Saluda Lake Dam', lat: 34.85184, lng: -82.48487, type: 'access', description: 'parking: yes' },
-  { name: 'Saluda River Yacht Club', lat: 34.84042, lng: -82.48054, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Dolly Cooper Park Access', lat: 34.80371, lng: -82.47071, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'River Street, Piedmont', lat: 34.70471, lng: -82.46495, type: 'access' },
-  { name: 'Cooley Bridge Access', lat: 34.55512, lng: -82.41823, type: 'access', description: 'parking: yes' },
-  { name: 'Holiday Dam', lat: 34.52714, lng: -82.37489, type: 'access', description: 'parking: yes' },
-  { name: 'Mountain Creek Road', lat: 34.50067, lng: -82.33413, type: 'access' },
-  { name: 'Erwin Mill Bridge', lat: 34.46363, lng: -82.30623, type: 'access', description: 'parking: yes' },
-  { name: 'Access on river left', lat: 34.40531, lng: -82.24389, type: 'access', description: 'parking: yes' },
-  { name: 'Ware Shoals/Irvin Pitts Park', lat: 34.40363, lng: -82.23829, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Souls Harbor', lat: 34.32517, lng: -82.16831, type: 'access', description: 'Greenwood County — parking: yes' },
-  { name: 'Buzzard\'s Roost', lat: 34.16731, lng: -81.90771, type: 'access', description: 'parking: yes' },
-  { name: 'SCE&G Access/Gardendale', lat: 34.02966, lng: -81.13907, type: 'access', description: 'SCE&G — parking: yes' },
-  { name: 'Gervais Street Bridge', lat: 33.99514, lng: -81.05232, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Senate Street Landing', lat: 33.99472, lng: -81.04901, type: 'access', description: 'parking: yes' },
-  { name: 'Maddox Bridge Road', lat: 34.43367, lng: -82.26572, type: 'access', description: 'parking: yes' },
-  { name: 'Beacham Road Access', lat: 34.39163, lng: -82.22531, type: 'access', description: 'parking: yes' },
-  { name: 'River Road River Access and Parking Area', lat: 34.70590, lng: -82.46606, type: 'access', description: 'parking: yes' },
-  { name: 'Higgins Bridge', lat: 34.18251, lng: -81.72468, type: 'access', description: 'SCE&G — parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "Lake Murray Dam",
-    to: "Saluda Shoals Park",
-    miles: 10,
-    paddleTime: "3\u20135 hours",
-    class: "II-IV",
-    notes: "Dam-release river\u2014difficulty varies dramatically with water level. At low flows it is a Class II rock garden; at high release it becomes continuous Class III-IV whitewater. Always check the generation schedule before paddling.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

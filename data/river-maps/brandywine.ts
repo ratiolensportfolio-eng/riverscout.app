@@ -4,41 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 108 points, 44/44 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  {
-    name: "Chadds Ford",
-    lat: 39.8692,
-    lng: -75.5931,
-    type: "put-in",
-    description: "Put-in at Chadds Ford, PA. Historic Brandywine Battlefield area\u2014Andrew Wyeth country.",
-  },
-  {
-    name: "Brandywine Creek State Park",
-    lat: 39.8172,
-    lng: -75.57,
-    type: "access",
-    description: "Mid-river access at Brandywine Creek State Park. Tulip-tree forest and rocky shoals.",
-  },
-  {
-    name: "Wilmington",
-    lat: 39.7488,
-    lng: -75.54,
-    type: "take-out",
-    description: "Take-out in Wilmington, DE. Urban finish through parkland along the Brandywine.",
-  },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "Chadds Ford",
-    to: "Wilmington",
-    miles: 8,
-    paddleTime: "3\u20135 hours",
-    class: "I-III",
-    notes: "Scenic creek running from Pennsylvania\"s Brandywine Valley into Wilmington. Class I-II in most sections with a few Class III ledges and rock gardens. Water level dependent\u2014best after rain. Watch for low-head dams that may require portage.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

@@ -3,9 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Kalamazoo River (MICHIGAN) — geometry from USGS NHDPlus HR
 // 115 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Allegan City Dam', lat: 42.52488, lng: -85.84581, type: 'take-out', description: 'City access below the dam.' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

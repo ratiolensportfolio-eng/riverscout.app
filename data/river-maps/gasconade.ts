@@ -3,24 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Gasconade River — polyline from National Rivers Project (NRP).
 // 22612 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Wilbur Allen Memorial Conservation Area', lat: 37.39620, lng: -92.39916, type: 'access' },
-  { name: 'Buzzard Bluff Access', lat: 37.33190, lng: -92.39493, type: 'access' },
-  { name: 'Hazelgreen Access', lat: 37.75929, lng: -92.45256, type: 'access' },
-  { name: 'Pointers Creek Access', lat: 38.42493, lng: -91.74216, type: 'access' },
-  { name: 'Rollins Ferry Access', lat: 38.39356, lng: -91.82035, type: 'access' },
-  { name: 'Bell Chute Access', lat: 38.07515, lng: -91.88855, type: 'access' },
-  { name: 'Paydown Access', lat: 38.23014, lng: -91.81412, type: 'access' },
-  { name: 'Riddle Bridge Access', lat: 37.90954, lng: -92.13267, type: 'access' },
-  { name: 'Schlicht Springs Access', lat: 37.90337, lng: -92.28479, type: 'access' },
-  { name: 'Fredericksburg Ferry Access', lat: 38.60324, lng: -91.63319, type: 'access' },
-  { name: 'Gasconade Park Access', lat: 38.66827, lng: -91.55518, type: 'access' },
-  { name: 'Helds Island Access', lat: 38.55302, lng: -91.59776, type: 'access' },
-  { name: 'Jerome Access', lat: 37.93483, lng: -91.97772, type: 'access' },
-  { name: 'Mitschele Access', lat: 37.80084, lng: -92.34091, type: 'access' },
-  { name: 'Camp Branch Access', lat: 37.26339, lng: -92.46594, type: 'access' },
-  { name: 'Adams (Anna M) Access', lat: 37.62880, lng: -92.32862, type: 'access' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

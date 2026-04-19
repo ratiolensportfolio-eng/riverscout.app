@@ -3,42 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Schuylkill River — polyline from National Rivers Project (NRP).
 // 2173 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Auburn Dam', lat: 40.60924, lng: -76.11984, type: 'access', description: 'PFBC — parking: yes' },
-  { name: 'Five Locks Access', lat: 40.52259, lng: -75.99661, type: 'access', description: 'PFBC — parking: yes' },
-  { name: 'South Pottstown', lat: 40.24111, lng: -75.65000, type: 'access', description: 'North Coventry Township — parking: yes' },
-  { name: 'Tow Path Park', lat: 40.22445, lng: -75.61695, type: 'access', description: 'East Coventry Township — parking: yes' },
-  { name: 'Norristown Riverfront Park', lat: 40.11560, lng: -75.35499, type: 'access', description: 'Norristown Boro — parking: yes' },
-  { name: 'Spring City', lat: 40.17240, lng: -75.53041, type: 'access', description: 'Spring City Boro — parking: yes' },
-  { name: 'Phoenixville', lat: 40.15866, lng: -75.51092, type: 'access', description: 'PFBC — parking: yes' },
-  { name: 'Betzwood', lat: 40.10863, lng: -75.42146, type: 'access', description: 'National Park Service — parking: yes' },
-  { name: 'Limerick Township', lat: 40.20980, lng: -75.56419, type: 'access', description: 'Limerick Township — parking: yes' },
-  { name: 'Pottsville', lat: 40.66663, lng: -76.23533, type: 'access', description: 'Unknown' },
-  { name: 'Kernsville', lat: 40.57290, lng: -76.00386, type: 'access', description: 'Unknown — parking: yes' },
-  { name: 'Epler\'s Landing', lat: 40.39673, lng: -75.97362, type: 'access', description: 'Unknown — parking: yes' },
-  { name: 'Stoudt\'s Ferry Bridge Landing', lat: 40.41076, lng: -75.97210, type: 'access', description: 'Schuylkill River Greenway Association — parking: yes' },
-  { name: 'Pottstown Riverfront Park', lat: 40.24239, lng: -75.65297, type: 'access', description: 'Borough of Pottstown — parking: yes' },
-  { name: 'Upper Schuylkill Valley Park', lat: 40.16090, lng: -75.50654, type: 'access', description: 'Montgomery County — parking: yes' },
-  { name: 'Mont Clare', lat: 40.14472, lng: -75.50902, type: 'access', description: 'Unknown — parking: yes' },
-  { name: 'Ganshahawny Park Landing', lat: 40.24846, lng: -75.71582, type: 'access', description: 'Douglass Township — parking: yes' },
-  { name: 'Walnut Street Landing', lat: 39.95159, lng: -75.18114, type: 'access', description: 'Unknown' },
-  { name: 'Bartram\'s Garden', lat: 39.93361, lng: -75.20822, type: 'access', description: 'Philadephia Parks & Recreations — parking: yes' },
-  { name: 'East Park Canoe House Ramp', lat: 39.99370, lng: -75.19390, type: 'access', description: 'Fairmount Park Commission — parking: yes' },
-  { name: 'Flat Rock Park', lat: 40.04450, lng: -75.25390, type: 'access', description: 'Lower Merion Township — parking: yes, fee' },
-  { name: 'Upper Merion Boat House', lat: 40.10911, lng: -75.34940, type: 'access', description: 'Unknown — parking: yes' },
-  { name: 'Union Township Landing', lat: 40.26359, lng: -75.77856, type: 'access', description: 'Union Township — parking: yes' },
-  { name: 'Gibraltar Unimproved Landing', lat: 40.28913, lng: -75.87798, type: 'access', description: 'Berks County' },
-  { name: 'Jackson\'s Landing', lat: 40.32400, lng: -75.92630, type: 'access', description: 'City of Reading' },
-  { name: 'Reading Riverfront Park', lat: 40.33050, lng: -75.93840, type: 'access', description: 'City of Reading' },
-  { name: 'Felix Dam Park', lat: 40.39096, lng: -75.96700, type: 'access', description: 'Muhlenberg Township — parking: yes' },
-  { name: 'Leesport', lat: 40.44560, lng: -75.96820, type: 'access', description: 'Leesport Boro — parking: yes' },
-  { name: 'Peter Yarnell Park Landing', lat: 40.52150, lng: -75.99780, type: 'access', description: 'Schuylkill River Greenway Association — parking: yes' },
-  { name: 'Hamburg Landing', lat: 40.55640, lng: -75.98830, type: 'access', description: 'Borough of Hamburg — parking: yes' },
-  { name: 'Port Clinton Landing', lat: 40.57820, lng: -76.02910, type: 'access', description: 'Port Clinton Borough — parking: yes' },
-  { name: 'Auburn-Rt. 987 Landing', lat: 40.60208, lng: -76.08879, type: 'access', description: 'Schuylkill County — parking: yes' },
-  { name: 'Informal Auburn Dam landing', lat: 40.61030, lng: -76.11960, type: 'access' },
-  { name: 'Schuylkill Haven Landing', lat: 40.63300, lng: -76.17390, type: 'access', description: 'Schuylkill Haven Borough — parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

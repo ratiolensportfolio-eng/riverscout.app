@@ -3,26 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Stillwater River (MONTANA) — geometry from USGS NHDPlus HR
 // 165 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Stillwater River Access', lat: 40.16717, lng: -84.40376, type: 'access', description: 'parking: yes' },
-  { name: 'Stillwater River Access', lat: 40.05174, lng: -84.36582, type: 'access', description: 'parking: yes' },
-  { name: 'Stillwater River Access', lat: 40.02267, lng: -84.34076, type: 'access', description: 'parking: yes' },
-  { name: 'Stillwater River Access', lat: 39.96397, lng: -84.32413, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Stillwater River Access', lat: 39.90902, lng: -84.29818, type: 'access', description: 'parking: yes' },
-  { name: 'Stillwater River Access', lat: 39.87455, lng: -84.29292, type: 'access', description: 'parking: yes' },
-  { name: 'Stillwater River Access', lat: 39.86879, lng: -84.27961, type: 'access', description: 'parking: yes' },
-  { name: 'Stillwater River Access', lat: 39.83850, lng: -84.24585, type: 'access', description: 'parking: yes' },
-  { name: 'Stillwater River Access', lat: 39.79840, lng: -84.20631, type: 'access', description: 'parking: yes' },
-  { name: 'Stillwater River Access', lat: 40.18875, lng: -84.47822, type: 'access', description: 'parking: yes' },
-  { name: 'Stillwater River Access', lat: 40.16422, lng: -84.44329, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Stillwater River Access', lat: 40.15720, lng: -84.39983, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Stillwater River Access', lat: 40.15025, lng: -84.37820, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Stillwater River Access', lat: 40.12086, lng: -84.35930, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Stillwater River Access', lat: 40.05773, lng: -84.35619, type: 'access', description: 'parking: yes' },
-  { name: 'Stillwater River Access', lat: 39.80741, lng: -84.20529, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Stillwater River Access', lat: 39.78195, lng: -84.20217, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Stillwater Lake', lat: 41.70396, lng: -75.48559, type: 'access', description: 'COE — parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

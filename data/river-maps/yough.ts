@@ -4,54 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 200 points, 171/171 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Jockey Hollow', lat: 39.74948, lng: -79.41464, type: 'access', description: 'PFBC — parking: yes' },
-  { name: 'Hazlebaker', lat: 40.09091, lng: -79.72673, type: 'access', description: 'Hazlebaker Recreation — parking: yes, fee' },
-  { name: 'Cedar Creek Park Access', lat: 40.17838, lng: -79.77765, type: 'access', description: 'Westmoreland County Parks — parking: yes' },
-  { name: 'Firedock', lat: 40.20163, lng: -79.76489, type: 'access', description: 'West Newton Boro — parking: yes' },
-  { name: 'McKeesport Access', lat: 40.35225, lng: -79.87138, type: 'access', description: 'McKeesport — fee' },
-  { name: 'Boston Park', lat: 40.31194, lng: -79.82889, type: 'access', description: 'Elizabeth Township PF&BC — parking: yes' },
-  { name: 'Coulterville', lat: 40.29919, lng: -79.80236, type: 'access', description: 'Youghiogheny Sports People Assn. — parking: yes' },
-  { name: 'Tubs Run', lat: 39.76770, lng: -79.39809, type: 'access', description: 'COE — parking: yes' },
-  { name: 'Somerfield North', lat: 39.75393, lng: -79.39545, type: 'access', description: 'COE — parking: yes, fee' },
-  { name: 'Somerfield South', lat: 39.74972, lng: -79.39219, type: 'access', description: 'COE — parking: yes, fee' },
-  { name: 'Breast Access', lat: 39.79681, lng: -79.36541, type: 'access', description: 'COE — parking: yes, fee' },
-  { name: 'Outflow', lat: 39.80260, lng: -79.36896, type: 'access', description: 'COE — parking: yes' },
-  { name: 'McKees Point Marina', lat: 40.35122, lng: -79.86934, type: 'access', description: 'Unknown — fee' },
-  { name: 'Buena Vista', lat: 40.27747, lng: -79.79747, type: 'access', description: 'Mon-Yough Trail Council — parking: yes' },
-  { name: 'Sutersville Borough Rec Park', lat: 40.23752, lng: -79.80619, type: 'access', description: 'Sutersville Borough' },
-  { name: 'West Newton Public Launch', lat: 40.21890, lng: -79.76528, type: 'access', description: 'West Newton Boro — parking: yes' },
-  { name: 'Smithton Beach', lat: 40.15817, lng: -79.74649, type: 'access', description: 'parking: yes' },
-  { name: 'Whitsett', lat: 40.10727, lng: -79.75542, type: 'access' },
-  { name: 'Perry Township', lat: 40.09556, lng: -79.74334, type: 'access' },
-  { name: 'Dawson-Dickerson Run', lat: 40.04536, lng: -79.66200, type: 'access', description: 'parking: yes' },
-  { name: 'Connellsville', lat: 40.02084, lng: -79.59719, type: 'access', description: 'City of Connelsville — parking: yes' },
-  { name: 'Bruner Run Access', lat: 39.92678, lng: -79.48660, type: 'access', description: 'Unknown' },
-  { name: 'Loop Take-Out', lat: 39.87501, lng: -79.49583, type: 'access', description: 'Unknown' },
-  { name: 'Lower Yough Put-In', lat: 39.86724, lng: -79.49416, type: 'access' },
-  { name: 'Middle Yough Take-Out', lat: 39.86890, lng: -79.48694, type: 'access' },
-  { name: 'Middle Yough Ramcat', lat: 39.82624, lng: -79.37878, type: 'access' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "Confluence",
-    to: "Ohiopyle Falls",
-    miles: 9,
-    paddleTime: "3\u20134 hours",
-    class: "I-II",
-    notes: "Gentle Middle Yough. Great for beginners and families. Scenic run through Ohiopyle State Park.",
-  },
-  {
-    from: "Ohiopyle Launch",
-    to: "Bruner Run",
-    miles: 7.5,
-    paddleTime: "3\u20134 hours",
-    class: "III-IV",
-    notes: "Pennsylvania\u2019s most popular whitewater run. Cucumber, Dimple Rock, River\u2019s End are standout rapids. Managed access system on summer weekends.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

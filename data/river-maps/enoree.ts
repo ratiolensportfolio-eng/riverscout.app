@@ -3,27 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Enoree River — polyline from National Rivers Project (NRP).
 // 4652 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Forest Service Road 339 Boat Ramp', lat: 34.51392, lng: -81.61346, type: 'access', description: 'parking: yes' },
-  { name: 'Van Patton\'s Shoals - Highway 418', lat: 34.75319, lng: -82.10804, type: 'access' },
-  { name: 'Allen Bridge Road', lat: 34.71912, lng: -82.06923, type: 'access', description: 'parking: yes' },
-  { name: 'Highway 101 Bridge', lat: 34.69592, lng: -82.05712, type: 'access', description: 'parking: yes' },
-  { name: 'Harris Bridge', lat: 34.68333, lng: -82.03973, type: 'access', description: 'parking: yes' },
-  { name: 'Kilgore Bridge', lat: 34.66865, lng: -82.01227, type: 'access', description: 'parking: yes' },
-  { name: 'RiverStreet Enoree', lat: 34.65067, lng: -81.96113, type: 'access' },
-  { name: 'Clippard Street Access', lat: 34.65004, lng: -81.95711, type: 'access' },
-  { name: 'Yarborough Mill Bridge', lat: 34.60910, lng: -81.91188, type: 'access', description: 'parking: yes' },
-  { name: 'Horseshoe Falls/ Musgrove Mill River Access', lat: 34.59431, lng: -81.85506, type: 'access', description: 'restrooms, parking: yes' },
-  { name: 'Musgrove Mill State Park', lat: 34.59446, lng: -81.84969, type: 'access', description: 'parking: yes' },
-  { name: 'Jones Bridge', lat: 34.57420, lng: -81.78860, type: 'access', description: 'parking: yes' },
-  { name: 'Brazzelman\'s Bridge', lat: 34.42220, lng: -81.51830, type: 'access', description: 'parking: yes' },
-  { name: 'Keitt\'s Bridge', lat: 34.42328, lng: -81.46687, type: 'access', description: 'parking: yes' },
-  { name: 'Pelham Mill Park', lat: 34.85722, lng: -82.22648, type: 'access', description: 'Greenville County Parks and Rec — parking: yes' },
-  { name: 'Park at Taylors Mill', lat: 34.91987, lng: -82.28084, type: 'access', description: 'Taylors Town Square — restrooms, parking: yes' },
-  { name: 'Forest Service 336A Landing', lat: 34.54172, lng: -81.65978, type: 'access', description: 'USDA FS — parking: yes' },
-  { name: 'Forest Service 339 Landing', lat: 34.52536, lng: -81.61706, type: 'access', description: 'USDA FS — parking: yes' },
-  { name: 'Fountain inn Road River Access', lat: 34.75238, lng: -82.10890, type: 'access' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

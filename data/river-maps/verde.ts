@@ -3,11 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Verde River (ARIZONA) — geometry from USGS NHDPlus HR
 // 10 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Beasley Flat Picnic Site', lat: 34.47651, lng: -111.80071, type: 'access', description: 'Prescott National Forest — restrooms, parking: yes' },
-  { name: 'Childs Dispersed Camping Area', lat: 34.34802, lng: -111.69736, type: 'access', description: 'Coconino National Forest — restrooms, parking: overnight' },
-  { name: 'Sheep Bridge', lat: 34.07759, lng: -111.70737, type: 'access', description: 'Tonto National Forest — parking: overnight' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

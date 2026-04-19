@@ -3,16 +3,9 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // South Platte River — polyline from National Rivers Project (NRP).
 // 778 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Cheesman Canyon / Gill Trailhead', lat: 39.036, lng: -105.607, type: 'access', description: 'CONFIRMED. Walk-in only, 30-min hike to river.' },
-  { name: 'Deckers Bridge (put-in)', lat: 39.25666, lng: -105.22223, type: 'access', description: 'CONFIRMED — riverfacts.com GPS. Most popular access.' },
-  { name: 'Deckers Bridge (takeout)', lat: 39.40722, lng: -105.17223, type: 'access', description: 'CONFIRMED — riverfacts.com GPS.' },
-  { name: 'Dream Stream / Eleven Mile', lat: 38.94, lng: -105.489, type: 'access', description: 'Below Eleven Mile Reservoir.' },
-]
+export const accessPoints: AccessPoint[] = []
 
-export const sections: RiverSection[] = [
-  { from: 'Cheesman Canyon', to: 'Deckers Bridge', miles: 5, paddleTime: '3 hours', class: 'I-II', notes: 'Gold Medal trout water' },
-]
+export const sections: RiverSection[] = []
 
 export const riverPath: [number, number][] = [
   [-109.4833, 44.2918],

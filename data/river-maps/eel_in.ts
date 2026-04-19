@@ -3,23 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Eel River — polyline from National Rivers Project (NRP).
 // 3800 points, stitched from 1 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Pedrazzini Boat Ramp', lat: 40.63760, lng: -124.28243, type: 'access', description: 'Humboldt County Parks — parking: yes' },
-  { name: 'Alderpoint', lat: 40.18084, lng: -123.61317, type: 'access', description: 'parking: yes' },
-  { name: 'Dos Rios', lat: 39.71437, lng: -123.35211, type: 'access', description: 'parking: yes' },
-  { name: 'Grizzly Creek Redwoods State Park', lat: 40.48639, lng: -123.90628, type: 'access', description: 'CA State Parks — restrooms, parking: overnight, fee' },
-  { name: 'Hwy 36 Bridge', lat: 40.47582, lng: -123.96022, type: 'access', description: 'parking: yes' },
-  { name: 'Van Arsdale Dam', lat: 39.38671, lng: -123.11507, type: 'access', description: 'parking: yes' },
-  { name: 'South Whitley', lat: 41.08349, lng: -85.62611, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Riverside Park Public Access Site', lat: 40.76063, lng: -86.35303, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Old Mill Site', lat: 40.91395, lng: -85.94202, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Bear Grass', lat: 40.94783, lng: -85.89064, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Chili Canoe Site', lat: 40.85749, lng: -86.02738, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Laketon', lat: 40.97257, lng: -85.83362, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Liberty Mills', lat: 41.02882, lng: -85.73647, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Spencer Park', lat: 40.76416, lng: -86.32381, type: 'access', description: 'Indiana Department of Natural Resources' },
-  { name: 'Adamsboro Bridge', lat: 40.78243, lng: -86.26413, type: 'access', description: 'Indiana Department of Natural Resources' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

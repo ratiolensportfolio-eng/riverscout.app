@@ -3,11 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Kobuk River — polyline from National Rivers Project (NRP).
 // 2051 points, stitched from 2 NRP segments.
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Walker Lake', lat: 67.06061, lng: -154.31617, type: 'access' },
-  { name: 'Lower Kobuk Canyon', lat: 66.81930, lng: -154.67883, type: 'access' },
-  { name: 'Kobuk Village', lat: 66.90719, lng: -156.88310, type: 'access' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

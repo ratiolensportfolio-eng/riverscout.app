@@ -3,22 +3,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Cumberland River — Big South Fork (KENTUCKY) — geometry from USGS NHDPlus HR
 // 49 points
 
-export const accessPoints: AccessPoint[] = [
-  { name: 'Mouth of Laurel Ramp', lat: 36.94517, lng: -84.29581, type: 'access', description: 'parking: yes' },
-  { name: 'Noe\'s Dock #2', lat: 36.94477, lng: -84.29809, type: 'access', description: 'parking: yes' },
-  { name: 'Redbird Ramp', lat: 36.76210, lng: -84.22165, type: 'access', description: 'parking: yes' },
-  { name: 'Thompson Park Ramp', lat: 36.86030, lng: -83.88931, type: 'access', description: 'parking: yes' },
-  { name: 'Thunderstruck Ramp', lat: 36.80766, lng: -84.35463, type: 'access', description: 'parking: yes' },
-  { name: 'Varilla Ramp', lat: 36.74468, lng: -83.61032, type: 'access', description: 'KDFWR — parking: yes' },
-  { name: 'Williamsburg Ramp', lat: 36.74656, lng: -84.17014, type: 'access', description: 'parking: yes' },
-  { name: 'Cumberland Falls Carrydown', lat: 36.84210, lng: -84.34350, type: 'access', description: 'parking: yes' },
-  { name: 'Four Mile Ramp', lat: 36.79300, lng: -83.75343, type: 'access', description: 'KDFWR — parking: yes' },
-  { name: 'Long Bottom Access', lat: 36.77717, lng: -84.34548, type: 'access', description: 'parking: yes' },
-  { name: 'Mouth of Indian', lat: 36.78776, lng: -84.34988, type: 'access', description: 'parking: yes' },
-  { name: 'Artemus Rock Access', lat: 36.82398, lng: -83.84397, type: 'access', description: 'KDFWR — parking: yes' },
-  { name: 'Mayor Marcella Mountjoy River Launch', lat: 36.74518, lng: -84.15802, type: 'access', description: 'KDFWR — parking: yes' },
-  { name: 'Shelby Park', lat: 36.16524, lng: -86.72734, type: 'access', description: 'restrooms, parking: yes' },
-]
+export const accessPoints: AccessPoint[] = []
 
 export const sections: RiverSection[] = []
 

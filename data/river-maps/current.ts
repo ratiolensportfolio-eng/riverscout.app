@@ -4,35 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 39 points, 14/200 segments stitched
 
 // Access points snapped to riverPath geometry
-export const accessPoints: AccessPoint[] = [
-  { name: 'Johnston\'s Eddy Boat Ramp', lat: 36.35778, lng: -90.77929, type: 'access', description: 'AGFC' },
-  { name: 'T. L. Wright Memorial Access (Doniphan)', lat: 36.61410, lng: -90.83158, type: 'access' },
-  { name: 'T. L. Wright Memorial Access (Doniphan)', lat: 36.61413, lng: -90.83163, type: 'access' },
-  { name: 'Van Buren Riverfront Park', lat: 36.99240, lng: -91.01445, type: 'access' },
-  { name: 'Van Buren Riverfront Park', lat: 36.99248, lng: -91.01492, type: 'access' },
-  { name: 'Rocky Creek Conservation Area', lat: 37.16916, lng: -91.16859, type: 'access' },
-  { name: 'Two Rivers Access (NPS Ozark NCR)', lat: 37.19030, lng: -91.27596, type: 'access' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // River sections
-export const sections: RiverSection[] = [
-  {
-    from: "Montauk",
-    to: "Akers Ferry",
-    miles: 30,
-    paddleTime: "1\u20132 days",
-    class: "I-II",
-    notes: "Crystal-clear spring-fed water through the Ozarks. Easy Class I-II riffles with deep blue pools. Cedar Grove makes a good midway stop.",
-  },
-  {
-    from: "Akers Ferry",
-    to: "Two Rivers",
-    miles: 25,
-    paddleTime: "1\u20132 days",
-    class: "I-II",
-    notes: "Scenic float past bluffs, caves, and springs. Round Spring cave tour is a worthwhile side trip. Gentle current suitable for all skill levels.",
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [

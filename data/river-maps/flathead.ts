@@ -4,40 +4,10 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 155 points, 166/176 segments stitched
 
 // Access points snapped to USGS NHDPlus river geometry (upstream to downstream)
-export const accessPoints: AccessPoint[] = [
-  { name: 'Cascadilla Creek', lat: 48.42470, lng: -113.77035, type: 'access', description: 'Flathead National Forest — restrooms, parking: overnight' },
-  { name: 'Schafer Meadows', lat: 48.07773, lng: -113.24842, type: 'put-in', description: 'Flathead National Forest' },
-  { name: 'Bear Creek', lat: 48.23379, lng: -113.56619, type: 'access', description: 'Flathead National Forest — restrooms, parking: overnight' },
-  { name: 'Paola Creek', lat: 48.34360, lng: -113.64005, type: 'access', description: 'Flathead National Forest — restrooms, parking: overnight' },
-  { name: 'Mocassin Creek', lat: 48.48030, lng: -113.84703, type: 'access', description: 'Flathead National Forest — restrooms, parking: overnight' },
-  { name: 'West Glacier', lat: 48.50469, lng: -113.99354, type: 'access', description: 'Flathead National Forest — restrooms, parking: yes' },
-  { name: 'Blankenship Bridge', lat: 48.46551, lng: -114.07037, type: 'access', description: 'Flathead County — restrooms, parking: overnight' },
-  { name: 'Canadian Border', lat: 49.00044, lng: -114.47522, type: 'access', description: 'Flathead National Forest — restrooms, parking: overnight' },
-  { name: 'Ford Access', lat: 48.87462, lng: -114.37374, type: 'access', description: 'Flathead National Forest — restrooms, parking: overnight' },
-  { name: 'Polebridge Access', lat: 48.78279, lng: -114.28317, type: 'access', description: 'Flathead National Forest — restrooms, parking: overnight' },
-  { name: 'Big Creek Campground', lat: 48.60267, lng: -114.16227, type: 'access', description: 'Flathead National Forest — restrooms, parking: overnight, fee' },
-  { name: 'Glacier Rim Access', lat: 48.49295, lng: -114.12654, type: 'access', description: 'Flathead National Forest — restrooms, parking: overnight' },
-]
+export const accessPoints: AccessPoint[] = []
 
 // Middle Fork Flathead sections
-export const sections: RiverSection[] = [
-  {
-    from: 'Schafer Meadows',
-    to: 'Bear Creek',
-    miles: 50,
-    paddleTime: '3\u20134 days',
-    class: 'II-III',
-    notes: 'Remote wilderness float through the Bob Marshall and Great Bear Wilderness areas. Crystal-clear water, grizzly country, excellent fishing. Fly-in access only.',
-  },
-  {
-    from: 'Bear Creek',
-    to: 'West Glacier',
-    miles: 44,
-    paddleTime: '2\u20133 days',
-    class: 'III-IV',
-    notes: 'Exciting whitewater canyon section along Glacier National Park"s southern boundary. Spruce Park, Jaws, and Bonecrusher rapids. Best at 5,000\u201315,000 CFS.',
-  },
-]
+export const sections: RiverSection[] = []
 
 // River path from USGS NHDPlus High Resolution dataset
 export const riverPath: [number, number][] = [
