@@ -4,7 +4,7 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 361 points, sorted east→west (headwaters to mouth)
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'Hodenpyl Dam', lat: 44.3480, lng: -85.7270, type: 'access', description: 'Below Hodenpyl Dam. Upper access for the lower Manistee float. Consumers Energy.' },
+  { name: 'Hodenpyl Dam', lat: 44.3644, lng: -85.8204, type: 'access', description: 'Below Hodenpyl Dam. Upper access for the lower Manistee float. Off 26 Mile Rd / O\'Rourke Dr. Consumers Energy.' },
   { name: 'Upper River Rd Access', lat: 44.3220, lng: -85.7580, type: 'access', description: 'Off Upper River Rd south of Hodenpyl. Carry-in access.' },
   { name: 'Red Bridge', lat: 44.2835, lng: -85.8614, type: 'access', description: 'Off Coates Hwy. Popular put-in and take-out. Hodenpyl Dam to Red Bridge is a 4-hour float.' },
   { name: 'High Bridge', lat: 44.2672, lng: -86.0138, type: 'access-campsite', description: 'USFS campground and river access off High Bridge Rd. 16 sites, first come first served.' },
