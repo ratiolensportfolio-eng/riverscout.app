@@ -1,88 +1,100 @@
 'use client'
 
-// Wraps the saved-river cards on the dashboard with HTML5 drag and
-// drop. Persists the new order via /api/saved-rivers/reorder on
-// drop. Falls back gracefully when the API call fails — the local
-// state stays updated, the next page render will re-fetch from the
-// server.
+// Wraps the saved-river cards on the dashboard with up/down arrow
+// buttons for reordering. Replaces the old HTML5 drag-and-drop
+// which caused rage-clicking (cards were draggable but also
+// clickable, with no visual affordance for the drag).
 //
-// We use HTML5 dnd directly to avoid pulling in a dnd library — the
-// dashboard is server-rendered and we want to keep client JS lean.
+// Persists the new order via /api/saved-rivers/reorder on every
+// move. Falls back gracefully when the API call fails — the local
+// state stays updated.
 
 import { useEffect, useState } from 'react'
 
+const mono = "'IBM Plex Mono', monospace"
+
 interface Props {
   userId: string
-  riverIds: string[]      // initial server-rendered order
-  children: React.ReactNode[]  // one card per riverId, same order
+  riverIds: string[]
+  children: React.ReactNode[]
 }
 
 export default function DraggableCardList({ userId, riverIds, children }: Props) {
-  // Mirror server order locally. Reordering only mutates this; the
-  // children prop stays the same — we render in `order` index order.
   const [order, setOrder] = useState<string[]>(riverIds)
-  const [draggingId, setDraggingId] = useState<string | null>(null)
-  const [overId, setOverId] = useState<string | null>(null)
 
-  // Map id → index into the `children` array so we can re-render in
-  // the new order without rebuilding the children themselves.
   const idIndex = new Map(riverIds.map((id, i) => [id, i]))
 
-  // Sync if server order changes after mount (e.g. user saved a new
-  // river in another tab).
   useEffect(() => { setOrder(riverIds) }, [riverIds.join('|')])  // eslint-disable-line react-hooks/exhaustive-deps
 
-  function onDragStart(id: string) {
-    setDraggingId(id)
-  }
-  function onDragOver(e: React.DragEvent, id: string) {
-    e.preventDefault()
-    if (draggingId && id !== draggingId) setOverId(id)
-  }
-  function onDrop(e: React.DragEvent, targetId: string) {
-    e.preventDefault()
-    if (!draggingId || draggingId === targetId) {
-      setDraggingId(null); setOverId(null); return
-    }
-    const next = order.filter(x => x !== draggingId)
-    const insertAt = next.indexOf(targetId)
-    next.splice(insertAt, 0, draggingId)
+  function move(id: string, direction: 'up' | 'down') {
+    const idx = order.indexOf(id)
+    if (idx === -1) return
+    if (direction === 'up' && idx === 0) return
+    if (direction === 'down' && idx === order.length - 1) return
+
+    const next = [...order]
+    const swapIdx = direction === 'up' ? idx - 1 : idx + 1
+    ;[next[idx], next[swapIdx]] = [next[swapIdx], next[idx]]
     setOrder(next)
-    setDraggingId(null); setOverId(null)
-    // Persist (best effort)
+
     fetch('/api/saved-rivers/reorder', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId, riverIds: next }),
-    }).catch(() => { /* keep local order anyway */ })
+    }).catch(() => {})
   }
 
   return (
     <>
-      {order.map(id => {
+      {order.map((id, i) => {
         const childIdx = idIndex.get(id)
         if (childIdx == null) return null
-        const isDragging = draggingId === id
-        const isOver = overId === id
         return (
-          <div
-            key={id}
-            draggable
-            onDragStart={() => onDragStart(id)}
-            onDragOver={e => onDragOver(e, id)}
-            onDragLeave={() => setOverId(null)}
-            onDrop={e => onDrop(e, id)}
-            onDragEnd={() => { setDraggingId(null); setOverId(null) }}
-            style={{
-              opacity: isDragging ? 0.4 : 1,
-              transform: isOver ? 'translateY(-2px)' : 'none',
-              transition: 'transform 80ms ease-out, opacity 80ms',
-              cursor: 'grab',
-            }}
-          >
+          <div key={id} style={{ position: 'relative' }}>
+            <div style={{
+              position: 'absolute', right: '8px', top: '8px',
+              display: 'flex', gap: '2px', zIndex: 2,
+            }}>
+              <ArrowButton
+                direction="up"
+                disabled={i === 0}
+                onClick={() => move(id, 'up')}
+              />
+              <ArrowButton
+                direction="down"
+                disabled={i === order.length - 1}
+                onClick={() => move(id, 'down')}
+              />
+            </div>
             {children[childIdx]}
           </div>
         )
       })}
     </>
+  )
+}
+
+function ArrowButton({ direction, disabled, onClick }: {
+  direction: 'up' | 'down'; disabled: boolean; onClick: () => void
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      aria-label={`Move ${direction}`}
+      style={{
+        fontFamily: mono, fontSize: '11px',
+        width: '24px', height: '24px',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        background: 'var(--bg)', color: disabled ? 'var(--bd)' : 'var(--tx3)',
+        border: '.5px solid var(--bd)', borderRadius: '4px',
+        cursor: disabled ? 'default' : 'pointer',
+        opacity: disabled ? 0.4 : 1,
+        transition: 'opacity 100ms',
+        padding: 0,
+      }}
+    >
+      {direction === 'up' ? '▲' : '▼'}
+    </button>
   )
 }
