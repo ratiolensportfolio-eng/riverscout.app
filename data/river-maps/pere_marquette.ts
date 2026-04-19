@@ -4,22 +4,28 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // 129 points
 
 export const accessPoints: AccessPoint[] = [
-  { name: 'M-37 Bridge (Baldwin)', lat: 43.889, lng: -85.852, type: 'access', description: 'Flies-only section begins. USFS.' },
-  { name: 'Gleasons Landing', lat: 43.886, lng: -85.979, type: 'access-campsite', description: 'USFS, water, toilets, camping. Flies-only section ends here.' },
-  { name: 'Bowmans Bridge', lat: 43.885, lng: -86.046, type: 'access-campsite', description: 'USFS, water, toilets, camping, 5 miles west of Baldwin on 56th St.' },
-  { name: 'Rainbow Rapids', lat: 43.882, lng: -86.093, type: 'access', description: 'USFS, picnic area, restrooms.' },
-  { name: 'Upper Branch Bridge', lat: 43.873, lng: -86.176, type: 'access-campsite', description: 'USFS, parking, restrooms, camping.' },
-  { name: 'Walhalla Bridge', lat: 43.887, lng: -86.298, type: 'access', description: 'DNR site.' },
-  { name: 'Indian Bridge', lat: 43.893, lng: -86.335, type: 'access', description: 'USFS, lower river.' },
-  { name: 'Scottville Riverside', lat: 43.956, lng: -86.275, type: 'access', description: 'City park, paved ramp.' },
-  { name: 'US-31 / Lake Michigan', lat: 44.023, lng: -86.424, type: 'take-out', description: 'Lower takeout near Ludington.' },
+  { name: 'Forks Bridge', lat: 43.85663, lng: -85.84114, type: 'access', description: 'Uppermost access.' },
+  { name: 'M-37 Bridge', lat: 43.85755, lng: -85.85147, type: 'access', description: 'Flies-only section.' },
+  { name: 'Green Cottage', lat: 43.86164, lng: -85.88113, type: 'access', description: 'Launch only, toilets, difficult take-out.' },
+  { name: 'Gleasons Landing', lat: 43.87103, lng: -85.9196, type: 'access-campsite', description: 'USFS, water, toilets, camping. Flies-only section ends here.' },
+  { name: 'Bowmans Bridge', lat: 43.8889, lng: -85.9419, type: 'access-campsite', description: 'USFS, water, toilets, camping. 5 miles west of Baldwin on 56th St.' },
+  { name: 'Rainbow Rapids', lat: 43.92259, lng: -85.97616, type: 'access', description: 'USFS, picnic area, restrooms.' },
+  { name: 'Sulak Landing', lat: 43.92615, lng: -86.00589, type: 'access', description: 'DNR site.' },
+  { name: 'Upper Branch Bridge', lat: 43.92847, lng: -86.02057, type: 'access-campsite', description: 'USFS, parking, restrooms, camping.' },
+  { name: 'Lower Branch Bridge', lat: 43.93533, lng: -86.05066, type: 'access', description: 'USFS.' },
+  { name: 'Walhalla Bridge', lat: 43.93296, lng: -86.11515, type: 'access', description: 'DNR site.' },
 ]
 
 export const sections: RiverSection[] = [
-  { from: 'M-37 Bridge', to: 'Gleasons Landing', miles: 8, paddleTime: '4 hours', class: 'I', notes: 'Flies-only section' },
-  { from: 'Gleasons Landing', to: 'Bowmans Bridge', miles: 5, paddleTime: '2.5 hours', class: 'I' },
-  { from: 'Bowmans Bridge', to: 'Rainbow Rapids', miles: 4, paddleTime: '2 hours', class: 'I' },
-  { from: 'Rainbow Rapids', to: 'Indian Bridge', miles: 15, paddleTime: '6-7 hours', class: 'I', notes: 'Lower river, wider' },
+  { from: 'Forks Bridge', to: 'M-37 Bridge', miles: 1.5, paddleTime: '20 min', class: 'I' },
+  { from: 'M-37 Bridge', to: 'Green Cottage', miles: 3.5, paddleTime: '1.5 hours', class: 'I' },
+  { from: 'Green Cottage', to: 'Gleasons Landing', miles: 3.5, paddleTime: '1.5 hours', class: 'I' },
+  { from: 'Gleasons Landing', to: 'Bowmans Bridge', miles: 2.5, paddleTime: '1 hour', class: 'I' },
+  { from: 'Bowmans Bridge', to: 'Rainbow Rapids', miles: 9, paddleTime: '2.5 hours', class: 'I' },
+  { from: 'Rainbow Rapids', to: 'Sulak Landing', miles: 3, paddleTime: '1 hour', class: 'I' },
+  { from: 'Sulak Landing', to: 'Upper Branch Bridge', miles: 3, paddleTime: '1 hour', class: 'I' },
+  { from: 'Upper Branch Bridge', to: 'Lower Branch Bridge', miles: 2.5, paddleTime: '1.5 hours', class: 'I' },
+  { from: 'Lower Branch Bridge', to: 'Walhalla Bridge', miles: 8, paddleTime: '2.5 hours', class: 'I' },
 ]
 
 export const riverPath: [number, number][] = [

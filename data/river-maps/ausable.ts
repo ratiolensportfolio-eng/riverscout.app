@@ -7,25 +7,55 @@ import type { AccessPoint, RiverSection } from '@/components/maps/RiverMap'
 // Coordinates hand-provided from on-the-ground knowledge, not derived.
 // Four sites near the mouth (Camp Ten Bridge, Riverbank Park, Harbor St,
 // AuSable River Boat Launch) have no verified coord yet — omitted until
-// one is handed in so no bad pin ever ships.
+// OWNER-VERIFIED coordinates — every point GPS-confirmed.
+// DO NOT OVERWRITE. Protected data.
 export const accessPoints: AccessPoint[] = [
-  { name: 'Stephan Bridge (Gates Lodge)', lat: 44.66, lng: -84.698, type: 'access', description: 'Upper access, Grayling area, near Gates Au Sable Lodge.' },
-  { name: 'Burton\'s Landing', lat: 44.635, lng: -84.588, type: 'access', description: 'USFS.' },
-  { name: 'Parmalee Bridge', lat: 44.556, lng: -84.455, type: 'access', description: 'USGS gauge 04136900 — confirmed gauge location.' },
-  { name: 'Whirlpool Access', lat: 44.43, lng: -83.959, type: 'access', description: 'State forest.' },
-  { name: '4001 Bridge', lat: 44.466, lng: -83.659, type: 'access', description: 'Last takeout on National Scenic River section.' },
-  { name: 'Rainbow Bend', lat: 44.433, lng: -83.551, type: 'access', description: 'Mid-river access.' },
-  { name: 'Foote Dam', lat: 44.543, lng: -83.445, type: 'access', description: 'Below Foote Dam.' },
-  { name: 'Oscoda / Lake Huron', lat: 44.428, lng: -83.333, type: 'take-out', description: 'River mouth at Lake Huron.' },
-  { name: 'Chase Bridge (Mason Tract)', lat: 44.424, lng: -84.583, type: 'access', description: 'Upper South Branch.' },
-  { name: 'Lovells Area', lat: 44.847, lng: -84.361, type: 'access', description: 'North Branch, near gauge 04134500.' },
+  { name: 'Burtons Landing', lat: 44.66433, lng: -84.64764, type: 'access-campsite', description: 'DNR Restrooms, Camping.' },
+  { name: 'Keystone Landing', lat: 44.66604, lng: -84.62733, type: 'access-campsite', description: 'DNR Restrooms, Camping.' },
+  { name: 'Stephan Bridge Launch', lat: 44.67919, lng: -84.57344, type: 'access', description: 'DNR Restrooms.' },
+  { name: 'Wakeley Bridge', lat: 44.66008, lng: -84.50731, type: 'access', description: 'County Park.' },
+  { name: 'Connors Flats', lat: 44.66864, lng: -84.43887, type: 'access', description: 'DNR Restrooms.' },
+  { name: 'McMasters Bridge', lat: 44.66492, lng: -84.39702, type: 'access', description: 'DNR, bathrooms.' },
+  { name: 'Parmalee Canoe Landing', lat: 44.67563, lng: -84.29287, type: 'access-campsite', description: 'DNR Restrooms, Camping.' },
+  { name: 'Luzerne TWP Park', lat: 44.67565, lng: -84.27256, type: 'access', description: 'Township Park.' },
+  { name: 'Whirlpool Canoe Launch', lat: 44.68234, lng: -84.24087, type: 'access', description: 'DNR, Bathrooms.' },
+  { name: 'Mio Dam Pond', lat: 44.66174, lng: -84.13184, type: 'access', description: 'Dam pond access.' },
+  { name: 'Mio Au Sable River Launch', lat: 44.66013, lng: -84.1271, type: 'access', description: 'USFS Restrooms.' },
+  { name: 'Louds Rest Stop', lat: 44.66154, lng: -84.10506, type: 'access', description: 'USFS.' },
+  { name: 'Au Sable Loop', lat: 44.65845, lng: -84.09176, type: 'access', description: 'USFS.' },
+  { name: 'Comins Flats', lat: 44.65415, lng: -84.0433, type: 'access', description: 'DNR, Restrooms.' },
+  { name: 'Davis Rest Stop', lat: 44.65138, lng: -83.9923, type: 'access', description: 'USFS, restrooms.' },
+  { name: 'McKinley Landing', lat: 44.64228, lng: -83.94167, type: 'access', description: 'USFS Restrooms.' },
+  { name: 'Buttercup Landing', lat: 44.6425, lng: -83.91348, type: 'access-campsite', description: 'USFS. Restrooms, camping.' },
+  { name: '4001 Bridge Landing', lat: 44.61175, lng: -83.83686, type: 'access', description: 'USFS.' },
+  { name: 'Alcona Park Launch', lat: 44.57898, lng: -83.80463, type: 'access', description: 'County Park, Restrooms.' },
+  { name: 'Alcona Dam Lower Launch', lat: 44.56108, lng: -83.80285, type: 'access', description: 'Consumers Power, Restrooms.' },
+  { name: 'Thompsons Landing', lat: 44.50362, lng: -83.79986, type: 'access', description: 'USFS, Restrooms.' },
+  { name: 'Loud Dam Upper Launch', lat: 44.46226, lng: -83.72243, type: 'access', description: 'Dam access.' },
+  { name: 'Five Channels Dam Upper Launch', lat: 44.45846, lng: -83.67712, type: 'access', description: 'Consumers Power.' },
+  { name: 'Sawmill Point Launch', lat: 44.45905, lng: -83.60873, type: 'access', description: 'USFS, Restrooms.' },
+  { name: 'Cooke Dam Upper Launch', lat: 44.47232, lng: -83.57222, type: 'access', description: 'Consumers Power, restrooms.' },
+  { name: 'Cooke Dam Lower Launch', lat: 44.47347, lng: -83.5696, type: 'access', description: 'Consumers Power, Restrooms.' },
+  { name: 'Foote Dam', lat: 44.43786, lng: -83.43281, type: 'access', description: 'DNR, restrooms.' },
+  { name: 'Whirlpool Angler Access', lat: 44.43457, lng: -83.39088, type: 'access', description: 'USFS Restrooms.' },
+  { name: 'Lake Huron', lat: 44.40689, lng: -83.32115, type: 'take-out', description: 'River mouth.' },
 ]
 
-// Au Sable River sections with distances and paddle times
+// OWNER-VERIFIED sections — DO NOT OVERWRITE
 export const sections: RiverSection[] = [
-  { from: 'Stephan Bridge', to: 'Burton\'s Landing', miles: 8, paddleTime: '3-4 hours', class: 'I', notes: 'Upper Au Sable, flies-only stretch' },
-  { from: 'Burton\'s Landing', to: 'Parmalee Bridge', miles: 12, paddleTime: '5-6 hours', class: 'I' },
-  { from: 'Parmalee Bridge', to: '4001 Bridge', miles: 20, paddleTime: '8-10 hours', class: 'I', notes: 'National Scenic River section' },
+  { from: 'Burtons Landing', to: 'Keystone Landing', miles: 3, paddleTime: '2 hours', class: 'I' },
+  { from: 'Keystone Landing', to: 'Stephan Bridge', miles: 4, paddleTime: '1.5 hours', class: 'I' },
+  { from: 'Stephan Bridge', to: 'Wakeley Bridge', miles: 5, paddleTime: '1.5 hours', class: 'I' },
+  { from: 'Wakeley Bridge', to: 'Connors Flats', miles: 4, paddleTime: '1 hour', class: 'I' },
+  { from: 'Connors Flats', to: 'McMasters Bridge', miles: 5, paddleTime: '2 hours', class: 'I' },
+  { from: 'McMasters Bridge', to: 'Parmalee Canoe Landing', miles: 7, paddleTime: '2.5 hours', class: 'I' },
+  { from: 'Parmalee Canoe Landing', to: 'Luzerne TWP Park', miles: 2, paddleTime: '1 hour', class: 'I' },
+  { from: 'Luzerne TWP Park', to: 'Whirlpool Canoe Launch', miles: 3, paddleTime: '1 hour', class: 'I' },
+  { from: 'Whirlpool Canoe Launch', to: 'Mio Dam Pond', miles: 8, paddleTime: '2 hours', class: 'I' },
+  { from: '4001 Bridge Landing', to: 'Alcona Park Launch', miles: 3, paddleTime: '30 min', class: 'I' },
+  { from: 'Thompsons Landing', to: 'Loud Dam Upper Launch', miles: 8, paddleTime: '3 hours', class: 'I' },
+  { from: 'Cooke Dam Lower Launch', to: 'Foote Dam', miles: 15, paddleTime: '5 hours', class: 'I' },
+  { from: 'Foote Dam', to: 'Whirlpool Angler Access', miles: 4, paddleTime: '1.5 hours', class: 'I' },
 ]
 
 // River path from USGS NHDPlus High Resolution dataset
